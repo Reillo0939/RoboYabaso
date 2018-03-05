@@ -2,16 +2,17 @@
 	"name": "RoboYabaso TrpgLineBot",
 	"description": "簡單的、模組化的TrpgLineBot",
 	"repository": "https://github.com/zeteticl/RoboYabaso.git",
-	"keywords": ["RoboYabaso", "Line Bot", "TRPG"],
+	"keywords": ["Reillo", "Line Bot", "TRPG"],
 	"env": {
 		"LINE_CHANNEL_SECRET": {
-			"description": "LINE_Channel_Secret"
+			"description": "688dbba3162d03462b5c51176b27529b"
 		},
 		"LINE_CHANNEL_ACCESSTOKEN": {
-			"description": "LINE_Channel_Accesstoken"
+			"description": "n5TFOsvRP39srGsrWqgS197H7Rbl3SFUhtIefZBALWqKMNWuGptPXy3ECoVbvidZRDU5Aci7pfC2KqBSE2nXB7uCICz/rSVFdnWxL9uiJuvuo9cWR3sW0d8TXTYKdISzCj23FS55zNBdUTkU24P48gdB04t89/1O/w1cDnyilFU=
+"
 		},
 		"KEY_WORD": {
-			"description": "你的機器人的名字"
+			"description": "夢之領域"
 		}
 	}
 }
