@@ -28,7 +28,7 @@ app.set('port', (process.env.PORT || 5000));
 // views is directory for all template files
 app.get('/', function(req, res) {
 //	res.send(parseInput(req.query.input));
-	res.send('Hello');
+	res.send('Hello OK test');
 });
 app.post('/', jsonParser, function(req, res) {
 	let event = req.body.events[0];
