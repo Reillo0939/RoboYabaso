@@ -8,10 +8,10 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 function d66(text) {
 	let returnStr = '';
 	if(text != null){
-	returnStr =	'D66：' + text + ' → ' + rollbase.Dice(6) + rollbase.Dice(6);
+	returnStr =	'D66：' + text + ' → ' + rollbase.Dice(6)+'  ' + rollbase.Dice(6);
 	}
 	else{
-	returnStr = 'D66 → ' + rollbase.Dice(6) + rollbase.Dice(6);
+	returnStr = 'D66 → ' + rollbase.Dice(6) +'  ' + rollbase.Dice(6);
 	}
 	rply.text = returnStr;
 	return rply;
@@ -29,10 +29,10 @@ function d66s(text) {
 		temp1 = temp2;
 	}
 	if(text != null){
-	returnStr =	'D66s：' + text + ' → ' + temp0 + temp1;
+	returnStr =	'D66s：' + text + ' → ' + temp0 +'  ' + temp1;
 	}
 	else{
-	returnStr = 'D66s → ' +  temp0 + temp1;
+	returnStr = 'D66s → ' +  temp0 +'  ' + temp1;
 	}
 	rply.text = returnStr;
 	return rply;
