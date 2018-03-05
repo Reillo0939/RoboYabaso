@@ -5,7 +5,7 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 function Help() {
 rply =		{
   "type": "template",
-  "altText": "【擲骰BOT】v1.30 \
+  "altText": "【夢之領域BOT】v0.00001 \
 \n 例如輸入2d6+1　攻撃！\
 \n 會輸出）2d6+1：攻撃  9[6+3]+1 = 10\
 \n 如上面一樣,在骰子數字後方隔空白位打字,可以進行發言。\
@@ -19,6 +19,7 @@ rply =		{
 \n Choice：啓動語choice/隨機/選項/選1\
 \n (問題)(啓動語)(問題)  (選項1) (選項2) \
 \n 例子 隨機收到聖誕禮物數 1 2 3 >4  \
+\n 輸入87 ?????????? \
 更多請到 www.hktrpg.com查詢",
   "template": {
       "type": "carousel",
