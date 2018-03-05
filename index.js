@@ -87,7 +87,14 @@ break;
   }
 }
 */
+var linebot = require('linebot');
+var express = require('express');
 
+var bot = linebot({
+  channelId: channel Id,
+  channelSecret: channel Secret,
+  channelAccessToken: channel Access Token
+});
 bot.on('message', function(event) {
   console.log(event); //把收到訊息的 event 印出來看看
 });
