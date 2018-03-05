@@ -1,4 +1,4 @@
-/*
+
 {
   "name": "Zetetic",
   "version": "1.0.0",
@@ -20,17 +20,4 @@
     "Line"
   ],
   "license": "MIT"
-}
-*/
-
-{
-  "name": "linechat",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "node ."
-  },
-  "author": "",
-  "license": "ISC"
 }
