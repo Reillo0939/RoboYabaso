@@ -23,8 +23,7 @@ function parseInput(rplyToken, inputStr) {
 
 	//普通ROLL擲骰判定在此	
 	if (inputStr.match(/\w/)!=null && inputStr.toLowerCase().match(/\d+d+\d/)!=null) return exports.rollbase.nomalDiceRoller(inputStr,mainMsg[0],mainMsg[1],mainMsg[2]);
-	//87
-	if (trigger.match(/87/) != null) return exports.funny.bsMo();	
+	
 	//xBy>A 指令開始於此
 	if (trigger.match(/^(\d+)(b)(\d+)$/i)!= null) return exports.advroll.xBy(trigger,mainMsg[1],mainMsg[2]);
 	//xUy 指令開始於此	
@@ -82,7 +81,8 @@ function parseInput(rplyToken, inputStr) {
 	
 	//FLAG指令開始於此
 	if (trigger.match(/立flag|死亡flag/) != null) return exports.funny.BStyleFlagSCRIPTS() ;	
-	
+	//87
+	if (trigger.match(/87/) != null) return exports.funny.bsMo() ;	
 	//鴨霸獸指令開始於此
 	if (trigger.match(/鴨霸獸|巴獸/) != null) return exports.funny.randomReply() ;	
 	if (trigger.match(/運氣|運勢/) != null) return exports.funny.randomLuck(mainMsg) ; //占卜運氣		
