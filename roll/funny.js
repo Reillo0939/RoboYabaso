@@ -65,7 +65,7 @@ rply.text = rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;
 }
 
-function mouse() {
+function bsmo() {
 let rplyArr = ['\
 「應該不是在指思考了很久的那位吧？」', '\
 「你以為這是彩蛋嗎？  對就是彩蛋！」', '\
