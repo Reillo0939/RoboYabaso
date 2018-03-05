@@ -392,6 +392,7 @@ function choice(input,str) {
 
 module.exports = {
 	BStyleFlagSCRIPTS,
+	bsMo,
 	randomReply,
 	randomLuck,
 	RockPaperScissors,
