@@ -64,7 +64,16 @@ let rplyArr = ['\
 rply.text = rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;
 }
-	
+
+function mouse
+let rplyArr = ['\
+「應該不是在指思考了很久的那位吧？」', '\
+「你以為這是彩蛋嗎？  對就是彩蛋！」', '\
+「你是說某鼠嗎？」'];
+rply.text = rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+return rply;
+}
+
 function randomReply() {
 let rplyArr = ['\
 你們死定了呃呃呃不要糾結這些……所以是在糾結哪些？', '\
