@@ -8,6 +8,7 @@ function Card() {
  if((rarity>=89) && (rarity<100))SR();
   if((rarity>=58) && (rarity<89))R();
   if(rarity<58)N();
+return rply;
 }
 function N() {
 let rplyArr = [
