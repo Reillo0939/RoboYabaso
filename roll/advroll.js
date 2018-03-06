@@ -19,7 +19,7 @@ function d66(text) {
 
 function xyxy(x1,y1,x2,y2,text) {
 	var temp =0;
-	temp = ((x2-x1)^2+(y2-y1)^2)^0.5;
+	temp = Math.pow(Math.pow(x2-x1,2)+Math.pow(x2-x1,2),0.5);
 	let returnStr = '';	if(text != null){
 	returnStr =	'距離為：'  + ' → ' +temp +' ' + text;
 	}
