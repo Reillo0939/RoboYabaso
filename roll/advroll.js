@@ -16,6 +16,17 @@ function d66(text) {
 	rply.text = returnStr;
 	return rply;
 }
+
+function xyxy(x1,y1,x2,y2,text) {
+	let returnStr = '';	if(text != null){
+	returnStr =	'D66：' + text + ' → ' + rollbase.Dice(6)+'  ' + rollbase.Dice(6);
+	}
+	else{
+	returnStr = 'D66 → ' + rollbase.Dice(6) +'  ' + rollbase.Dice(6);
+	}
+	rply.text = returnStr;
+	return rply;
+}
 ////////////////////////////////////////
 //////////////// D66s
 ////////////////////////////////////////
@@ -139,6 +150,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 	return rply;
 	}
 module.exports = {
+xyxy:xyxy,
 d66:d66, 
 d66s:d66s, 
 xBy:xBy, 
