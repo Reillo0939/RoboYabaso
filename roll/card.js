@@ -58,5 +58,5 @@ return rply;
 
 
 module.exports = {
-	Card:Card
+	Card
 };
