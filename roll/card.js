@@ -19,7 +19,7 @@ let rplyArr = [
 '\編號06:N木劍',
 '\編號07:R偽裝成R的N',
 '\編號08:SR偽裝成SR的N',
-'\編號09:SSR偽裝成SSR的N',
+'\編號09:SSR偽裝成SSR的N'
 ];
 rply.text = rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;	
@@ -30,7 +30,7 @@ let rplyArr = [
 '\編號12:R炎刃', 
 '\編號13:R風之弓',
 '\編號14:R海之鞭',
-'\編號15:R地之杖', 
+'\編號15:R地之杖'
 ];
 rply.text = rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;	
@@ -40,7 +40,7 @@ let rplyArr = [
 '\編號91:SR風之劍', 
 '\編號92:SR火之劍', 
 '\編號93:SR海之劍',
-'\編號94:SR地之劍', 
+'\編號94:SR地之劍'
 ];
 rply.text = rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;	
@@ -50,7 +50,7 @@ let rplyArr = [
 '\編號101:SSR風神', 
 '\編號102:SSR火山之神', 
 '\編號103:SSR海洋之神',
-'\編號104:SSR大地之神', 
+'\編號104:SSR大地之神'
 ];
 rply.text = rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;	
