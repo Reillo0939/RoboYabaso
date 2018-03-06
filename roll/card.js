@@ -3,7 +3,7 @@ var funny = require('./funny.js');
 var rply ={type : 'text'}; //type是必需的,但可以更改
 
 function Card(frequency) {
-rply.text='';
+rply.text='你抽到了:';
 for(i=1;i<=frequency;i++){
  let rarity=rollbase.Dice(100);
  if(rarity==100)SSR();
