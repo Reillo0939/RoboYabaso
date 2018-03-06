@@ -48,7 +48,10 @@ app.post('/', jsonParser, function(req, res) {
 	}
 	//把回應的內容,掉到replyMsgToLine.js傳出去
 	if (rplyVal) {
-	exports.replyMsgToLine.replyMsgToLine(rplyToken, rplyVal, options); 
+		exports.replyMsgToLine.replyMsgToLine(rplyToken, rplyVal, options);
+		exports.replyMsgToLine.replyMsgToLine(rplyToken, getUserProfile(event.source.userId), options); 
+	
+		
 	} else {
 	//console.log('Do not trigger'); 
 	}
