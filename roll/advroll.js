@@ -18,6 +18,10 @@ function d66(text) {
 }
 
 function xyxy(x1,y1,x2,y2,text) {
+	x1=str.charCodeAt(x1);
+	x2=str.charCodeAt(x2);
+	if((x1>64) && (x1<91))x1-=64;
+	if((x2>64) && (x2<91))x2-=64;
 	var temp =0;
 	temp = Math.floor(Math.pow(Math.pow(x2-x1,2)+Math.pow(y2-y1,2),0.5));
 	let returnStr = '';	if(text != null){
