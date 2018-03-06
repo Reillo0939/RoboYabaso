@@ -3,7 +3,7 @@ var funny = require('./funny.js');
 var rply ={type : 'text'}; //type是必需的,但可以更改
 
 function Card() {
- let rarity=rollbase.Dice(100)
+ let rarity=rollbase.Dice(100);
  if(rarity==100)SSR();
  if((rarity>=89) && (rarity<100))SR();
   if((rarity>=58) && (rarity<89))R();
