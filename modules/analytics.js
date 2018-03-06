@@ -83,7 +83,7 @@ function parseInput(rplyToken, inputStr) {
 	if (trigger.match(/立flag|死亡flag/) != null) return exports.funny.BStyleFlagSCRIPTS() ;	
 	//87
 	if (trigger.match(/87/) != null) return exports.funny.bsMo() ;
-	if (trigger.match(/bot座標/) != null) return exports.advroll.xyxy(mainMsg[1],mainMsg[2],mainMsg[3],mainMsg[4],mainMsg[5]) ;
+	if (trigger.match(/bot距離/) != null) return exports.advroll.xyxy(mainMsg[1],mainMsg[2],mainMsg[3],mainMsg[4],mainMsg[5]) ;
 	//鴨霸獸指令開始於此
 	if (trigger.match(/鴨霸獸|巴獸/) != null) return exports.funny.randomReply() ;	
 	if (trigger.match(/運氣|運勢/) != null) return exports.funny.randomLuck(mainMsg) ; //占卜運氣		
