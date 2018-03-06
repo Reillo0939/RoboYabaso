@@ -2,12 +2,15 @@ var rollbase = require('./rollbase.js');
 var funny = require('./funny.js');
 var rply ={type : 'text'}; //type是必需的,但可以更改
 
-function Card() {
+function Card(frequency) {
+rply.text='';
+for(i=1,i<frequency,i++){
  let rarity=rollbase.Dice(100);
  if(rarity==100)SSR();
  if((rarity>=89) && (rarity<100))SR();
   if((rarity>=58) && (rarity<89))R();
   if(rarity<58)N();
+}
 return rply;
 }
 function N() {
@@ -24,7 +27,7 @@ let rplyArr = [
 '\[010] [N] 風之庇護',
 '\[011] [N] 土之庇護'
 ];
-rply.text = rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;	
 }
 function R() {
@@ -41,7 +44,7 @@ let rplyArr = [
 '\[039] [R] 雷銘的0.2mm自動鉛筆',
 '\[040] [R] 夜月那快撐不住的肝'
 ];
-rply.text = rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;	
 }
 function SR() {
@@ -58,7 +61,7 @@ let rplyArr = [
 '\[069] [SR] 雷銘的用不壞的平板',
 '\[070] [SR] 夜月那超越人類的肝'
 ];
-rply.text = rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+rply.text = rply.text +'\n' + rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;	
 }
 function SSR() {
@@ -75,7 +78,7 @@ let rplyArr = [
 '\[099] [SSR] 雷銘',
 '\[100] [SSR] 夜月'
 ];
-rply.text = rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;	
 }
 
