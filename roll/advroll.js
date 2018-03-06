@@ -22,6 +22,9 @@ function xyxy(x1,y1,x2,y2,text) {
 	x2=x2.charCodeAt(0);
 	if((x1>64) && (x1<91))x1-=64;
 	if((x2>64) && (x2<91))x2-=64;
+	if((x1>96) && (x1<123))x1-=96
+	if((x2>96) && (x2<123))x2-=96
+	
 	var temp =0;
 	temp = Math.floor(Math.pow(Math.pow(x2-x1,2)+Math.pow(y2-y1,2),0.5));
 	let returnStr = '';	if(text != null){
