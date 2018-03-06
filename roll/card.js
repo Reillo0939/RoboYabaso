@@ -38,7 +38,7 @@ let rplyArr = [
 '\[036] [R] 鼠的畫ex',
 '\[037] [R] 雷洛那沒bug的程式',
 '\[038] [R] 翅膀那雷神',
-'\[039] [R] 雷銘的0.3mm自動鉛筆',
+'\[039] [R] 雷銘的0.2mm自動鉛筆',
 '\[040] [R] 夜月那快撐不住的肝'
 ];
 rply.text = rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
