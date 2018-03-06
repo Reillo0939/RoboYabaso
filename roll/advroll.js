@@ -18,8 +18,10 @@ function d66(text) {
 }
 
 function xyxy(x1,y1,x2,y2,text) {
+	int temp =0;
+	temp = ((x2-x1)^2+(y2-y1)^2)^0.5;
 	let returnStr = '';	if(text != null){
-	returnStr =	'D66：' + text + ' → ' + rollbase.Dice(6)+'  ' + rollbase.Dice(6);
+	returnStr =	'距離為：'  + ' → ' +temp +' ' + text;
 	}
 	else{
 	returnStr = 'D66 → ' + rollbase.Dice(6) +'  ' + rollbase.Dice(6);
