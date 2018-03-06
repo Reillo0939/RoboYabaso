@@ -21,6 +21,9 @@ let rplyArr = [
 '\編號08:SR偽裝成SR的N',
 '\編號09:SSR偽裝成SSR的N',
 ];
+rply.text = rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+return rply;	
+}
 function R() {
 let rplyArr = [
 '\編號11:R鐵劍', 
@@ -29,6 +32,9 @@ let rplyArr = [
 '\編號14:R海之鞭',
 '\編號15:R地之杖', 
 ];
+rply.text = rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+return rply;	
+}
 function SR() {
 let rplyArr = [
 '\編號91:SR風之劍', 
