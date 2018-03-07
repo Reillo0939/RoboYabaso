@@ -15,7 +15,7 @@ do {
     if((rollbase.Dice(100)>=50)&& (Water<50) && (Points<100)){Water++;Points++;}
     if((rollbase.Dice(100)>=50)&& (Wind<50) && (Points<100)){Wind++;Points++;}
     if((rollbase.Dice(100)>=50)&& (Earth<50) && (Points<100)){Earth++;Points++;}
-} while (Points < 100);
+} while (Points < 10);
 
 rply.text=
 '['+ name +']  年齡：' +age +
