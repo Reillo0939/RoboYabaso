@@ -4,6 +4,23 @@ var app = express();
 var jsonParser = bodyParser.json();
 var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
 var channelSecret = process.env.LINE_CHANNEL_SECRET;
+var linebot = require('linebot');
+ 
+var bot = linebot({
+  channelId: 1487304211,
+  channelSecret: channelSecret,
+  channelAccessToken: channelAccessToken
+});
+ 
+bot.on('message', function (event) {
+  event.reply(event.message.text).then(function (data) {
+    // success
+  }).catch(function (error) {
+    // error
+  });
+});
+ 
+bot.listen('/linewebhook', 5000);
 // Load `*.js` under modules directory as properties
 //  i.e., `User.js` will become `exports['User']` or `exports.User`
 require('fs').readdirSync(__dirname + '/modules/').forEach(function(file) {
