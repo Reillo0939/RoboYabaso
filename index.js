@@ -23,6 +23,14 @@ bot.on('message', function (event) {
 bot.listen('/linewebhook', 5000);
 // Load `*.js` under modules directory as properties
 //  i.e., `User.js` will become `exports['User']` or `exports.User`
+function getDisplayName(eve){
+   bot.getUserProfile(eve.source.userId);
+   eve.source.profile().then(function (profile) {
+      users[eve.source.userId].replies[0]=profile.displayName;
+   }).catch(function (error) {
+       // error 
+   });
+}
 require('fs').readdirSync(__dirname + '/modules/').forEach(function(file) {
   if (file.match(/\.js$/) !== null && file !== 'index.js') {
     var name = file.replace('.js', '');
@@ -53,7 +61,7 @@ app.post('/', jsonParser, function(req, res) {
 	let msg = event.message.text;
 	let rplyToken = event.replyToken;
 	let a = event.source.userId;
-	let b=bot.getUserProfile(a).displayName;
+	let b=getDisplayName(event);
 	let rplyVal = {};
 	console.log(msg + '  ' + a +'  '+b );
 	//訊息來到後, 會自動呼叫handleEvent 分類,然後跳到analytics.js進行骰組分析
