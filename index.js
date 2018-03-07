@@ -76,7 +76,7 @@ app.post('/', jsonParser, function(req, res) {
 	let msg = event.message.text;
 	let rplyToken = event.replyToken;
 	let a = event.source.userId;
-	let b;
+	var b;
 	bot.getUserProfile(a).then(function (profile) {
 
    b=profile.displayName;
