@@ -49,7 +49,7 @@ function parseInput(rplyToken, inputStr, id) {
 	
 	if (trigger.match(/^coc7角色背景$/)!= null ) return exports.coc.PcBG();
   
-	if (trigger.match(/^bothelp$|^bot幫助$/)!= null ) return exports.help.Help();
+	if (trigger.match(/^help$/)!= null ) return exports.help.Help();
 	
 	
 	//nc指令開始於此 來自Rainsting/TarotLineBot 
@@ -83,11 +83,11 @@ function parseInput(rplyToken, inputStr, id) {
 	if (trigger.match(/立flag|死亡flag/) != null) return exports.funny.BStyleFlagSCRIPTS() ;	
 	//87
 	if (trigger.match(/87/) != null) return exports.funny.bsMo() ;
-	if (trigger.match(/法術抽卡|法術單抽/) != null) return exports.card.Card(1,id) ;
-	if (trigger.match(/法術10連抽/) != null) return exports.card.Card(10,id) ;
-	if (trigger.match(/bot身分|bot身份/) != null) return exports.card.IDCA(id) ;
-	if (trigger.match(/法術角色創立/) != null) return exports.Character.CM(mainMsg[1],mainMsg[2]) ;
-	if (trigger.match(/外裝角色創立/) != null) return exports.Character.CT(mainMsg[1],mainMsg[2]) ;
+	if (trigger.match(/(^法術池抽卡$|^法術池單抽$)/) != null) return exports.card.Card(1,id) ;
+	if (trigger.match(/^法術池10連抽$/) != null) return exports.card.Card(10,id) ;
+	if (trigger.match(/(^玩家身分$|^玩家身份$)/) != null) return exports.card.IDCA(id) ;
+	if (trigger.match(/^法術角色創立$/) != null) return exports.Character.CM(mainMsg[1],mainMsg[2]) ;
+	if (trigger.match(/^外裝角色創立$/) != null) return exports.Character.CT(mainMsg[1],mainMsg[2]) ;
 	
 	if (trigger.match(/bot距離/) != null) return exports.advroll.xyxy(mainMsg[1],mainMsg[2],mainMsg[3],mainMsg[4],mainMsg[5]) ;
 	//鴨霸獸指令開始於此
