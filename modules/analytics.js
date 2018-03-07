@@ -86,8 +86,8 @@ function parseInput(rplyToken, inputStr, id) {
 	if (trigger.match(/bot抽卡/) != null) return exports.card.Card(1,id) ;
 	if (trigger.match(/bot10連抽/) != null) return exports.card.Card(10,id) ;
 	if (trigger.match(/bot身分|bot身份/) != null) return exports.card.IDCA(id) ;
-	if (trigger.match(/角色創立M/) != null) return exports.Character.CM(mainMsg[1],mainMsg[2]) ;
-	if (trigger.match(/角色創立T/) != null) return exports.Character.CT(mainMsg[1],mainMsg[2]) ;
+	if (trigger.match(/法術角色創立/) != null) return exports.Character.CM(mainMsg[1],mainMsg[2]) ;
+	if (trigger.match(/機甲角色創立T/) != null) return exports.Character.CT(mainMsg[1],mainMsg[2]) ;
 	
 	if (trigger.match(/bot距離/) != null) return exports.advroll.xyxy(mainMsg[1],mainMsg[2],mainMsg[3],mainMsg[4],mainMsg[5]) ;
 	//鴨霸獸指令開始於此
