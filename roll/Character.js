@@ -66,7 +66,7 @@ Reaction=rollbase.Dice(70-age);
 Control=rollbase.Dice(70-age);
 }
 if((age>=16)&&(age<=39)){
-Occupation='外部機甲操縱人員';
+Occupation='外部裝甲操縱人員';
 HP=((rollbase.Dice(20) - 1) * 9)+20;
 MP=((rollbase.Dice(20) - 1) * 9)+20;
 ATK=rollbase.Dice(50);
