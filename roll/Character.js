@@ -2,7 +2,7 @@ var rollbase = require('./rollbase.js');
 var funny = require('./funny.js');
 var rply ={type : 'text'}; //type是必需的,但可以更改
 
-function CharacterM(name,age) {
+function CM(name,age) {
 	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation;
 if((age>=30)&&(age<=65)){
 Occupation='媒介使';
@@ -55,7 +55,7 @@ rply.text=
 '\n土屬適性： '+ Earth ;
 return rply;	
 }
-function CharacterT(name,age) {
+function CT(name,age) {
 	var HP,MP,ATK,Reaction,Occupation,Control;
 if((age>=40)&&(age<=60)){
 Occupation='較不適合戰鬥者';
@@ -95,6 +95,6 @@ return rply;
 
 
 module.exports = {
-	CharacterT:CharacterT,
-	CharacterM:CharacterM
+	CM:CM,
+	CT:CT
 };
