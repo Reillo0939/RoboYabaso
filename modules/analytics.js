@@ -83,8 +83,8 @@ function parseInput(rplyToken, inputStr, id) {
 	if (trigger.match(/立flag|死亡flag/) != null) return exports.funny.BStyleFlagSCRIPTS() ;	
 	//87
 	if (trigger.match(/87/) != null) return exports.funny.bsMo() ;
-	if (trigger.match(/bot抽卡/) != null) return exports.card.Card(1,id) ;
-	if (trigger.match(/bot10連抽/) != null) return exports.card.Card(10,id) ;
+	if (trigger.match(/法術抽卡|法術單抽/) != null) return exports.card.Card(1,id) ;
+	if (trigger.match(/法術10連抽/) != null) return exports.card.Card(10,id) ;
 	if (trigger.match(/bot身分|bot身份/) != null) return exports.card.IDCA(id) ;
 	if (trigger.match(/法術角色創立/) != null) return exports.Character.CM(mainMsg[1],mainMsg[2]) ;
 	if (trigger.match(/外裝角色創立/) != null) return exports.Character.CT(mainMsg[1],mainMsg[2]) ;
