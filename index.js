@@ -88,3 +88,25 @@ break;
        break;
   }
 }
+var values = [
+  [
+    // Cell values ...
+  ],
+  // Additional rows ...
+];
+var body = {
+  values: text
+};
+service.spreadsheets.values.update({
+  spreadsheetId: spreadsheetId,
+  range: range,
+  valueInputOption: valueInputOption,
+  resource: body
+}, function(err, result) {
+  if(err) {
+    // Handle error
+    console.log(err);
+  } else {
+    console.log('%d cells updated.', result.updatedCells);
+  }
+});
