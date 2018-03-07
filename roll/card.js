@@ -24,6 +24,11 @@ if((rarity>=89) && (rarity<100))SR();
  if((rarity>=58) && (rarity<89))R();
  if(rarity<58)N();
 }
+if(frequency==10){
+let rarity=rollbase.Dice(100);
+if(rarity>=96)SSR();
+if(rarity<96)SR();
+}
 }
 return rply;
 }
