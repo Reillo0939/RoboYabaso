@@ -40,19 +40,18 @@ let rplyArr = [
 '\[003] [N] [Item] 一定墜落的翅膀',
 '\[004] [N] [Item] 雷銘的筆',
 '\[005] [N] [Item] 夜月的肝',
-'\[006] [N] [Item] 木劍',
-'\[007] [N] [Accessories] 火之庇護',
-'\[008] [N] [Accessories] 水之庇護',
-'\[009] [N] [Accessories] 風之庇護',
-'\[010] [N] [Accessories] 土之庇護',
-'\[011] [N] [Skill] 熱量控制',
-'\[012] [N] [Skill] 燃燒現象',
-'\[013] [N] [Skill] 質能轉換-水',
-'\[014] [N] [Skill] 水流控制',
-'\[015] [N] [Skill] 簡單氣壓控制',
-'\[016] [N] [Skill] 強制位移',
-'\[017] [N] [Skill] 密度控制-物',
-'\[018] [N] [Skill] 土牆建立'
+'\[006] [N] [Accessories] 火之庇護',
+'\[007] [N] [Accessories] 水之庇護',
+'\[008] [N] [Accessories] 風之庇護',
+'\[009] [N] [Accessories] 土之庇護',
+'\[010] [N] [Skill] 熱量控制',
+'\[011] [N] [Skill] 燃燒現象',
+'\[012] [N] [Skill] 質能轉換-水',
+'\[013] [N] [Skill] 水流控制',
+'\[014] [N] [Skill] 簡單氣壓控制',
+'\[015] [N] [Skill] 強制位移',
+'\[016] [N] [Skill] 密度控制-物',
+'\[017] [N] [Skill] 土牆建立'
 ];
 rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;	
@@ -81,7 +80,7 @@ function SR() {
 let rplyArr = [
 '\[060] [N] [Item] 偽裝成[SR]的[N]卡',
 '\[061] [SR] [Item] 鼠那超進步的畫',
-'\[062] [SR] [Item] [Item] 雷洛那超簡潔的程式',
+'\[062] [SR] [Item] 雷洛那超簡潔的程式',
 '\[063] [SR] [Item] 翅膀雷好雷滿',
 '\[064] [SR] [Item] 雷銘的用不壞的平板',
 '\[065] [SR] [Item] 夜月那超越人類的肝',
