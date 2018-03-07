@@ -4,7 +4,7 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 
 function Card(frequency,id) {
 rply.text='你抽到了:';
-if(id='U7c4779fd913aff927f26d7f6bedd87d1'){
+if(id=='U7c4779fd913aff927f26d7f6bedd87d1'){
 for(i=1;i<=frequency;i++){
  SSR();
 }
