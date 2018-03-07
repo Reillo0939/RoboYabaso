@@ -2,7 +2,7 @@ var rollbase = require('./rollbase.js');
 var funny = require('./funny.js');
 var rply ={type : 'text'}; //type是必需的,但可以更改
 
-function Character(name,age) {
+function CharacterM(name,age) {
 	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation;
 if((age>=30)&&(age<=65)){
 Occupation='媒介使';
@@ -55,7 +55,43 @@ rply.text=
 '\n土屬適性： '+ Earth ;
 return rply;	
 }
+function CharacterT(name,age) {
+	var HP,MP,ATK,Reaction,Occupation,Control;
+if((age>=40)&&(age<=60)){
+Occupation='較不適合戰鬥者';
+HP=((rollbase.Dice(20) - 1) * 9)+20;
+MP=((rollbase.Dice(5) - 1) * 9)+20;
+ATK=rollbase.Dice(70-age);
+Reaction=rollbase.Dice(70-age);
+Control=rollbase.Dice(70-age);
+}
+if((age>=16)&&(age<=39)){
+Occupation='外部機甲操縱人員';
+HP=((rollbase.Dice(20) - 1) * 9)+20;
+MP=((rollbase.Dice(20) - 1) * 9)+20;
+ATK=rollbase.Dice(50);
+Reaction=rollbase.Dice(50);
+Control=rollbase.Dice(50);
+}
+if((age<16)||(age>60)){
+Occupation='不適合戰鬥者';
+HP=rollbase.Dice(20) ;
+MP=rollbase.Dice(20) ;
+ATK=rollbase.Dice(5);
+Reaction=rollbase.Dice(5);
+Control=rollbase.Dice(5);
+}
 
+rply.text=
+'['+ name +']  年齡：' +age +
+'\n職業：  ' + Occupation +
+'\n生命值： '+ HP +
+'\nBata粒子適性： '+ MP +
+'\n物理適性： '+ ATK +
+'\n控制能力： '+ Control +
+'\n反應力： '+ Reaction ;
+return rply;	
+}
 
 
 module.exports = {
