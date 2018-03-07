@@ -2,14 +2,21 @@ var rollbase = require('./rollbase.js');
 var funny = require('./funny.js');
 var rply ={type : 'text'}; //type是必需的,但可以更改
 
-function Card(frequency) {
+function Card(frequency,id) {
 rply.text='你抽到了:';
+if(id='U7c4779fd913aff927f26d7f6bedd87d1'){
 for(i=1;i<=frequency;i++){
- let rarity=rollbase.Dice(100);
- if(rarity==100)SSR();
- if((rarity>=89) && (rarity<100))SR();
-  if((rarity>=58) && (rarity<89))R();
-  if(rarity<58)N();
+ SSR();
+}
+}
+else{
+for(i=1;i<=frequency;i++){
+let rarity=rollbase.Dice(100);
+if(rarity==100)SSR();
+if((rarity>=89) && (rarity<100))SR();
+ if((rarity>=58) && (rarity<89))R();
+ if(rarity<58)N();
+}
 }
 return rply;
 }
