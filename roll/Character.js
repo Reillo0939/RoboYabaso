@@ -43,7 +43,7 @@ Earth=rollbase.Dice(5);
 
 rply.text=
 '['+ name +']  年齡：' +age +
-'\n職業：  " + Occupation +
+'\n職業：  ' + Occupation +
 '\n生命值： '+ HP +
 '\nBata粒子適性： '+ MP +
 '\n物理適性： '+ ATK +
