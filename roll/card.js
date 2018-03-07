@@ -3,7 +3,12 @@ var funny = require('./funny.js');
 var rply ={type : 'text'}; //type是必需的,但可以更改
 
 function IDC(frequency,id) {
-if(id=='U7c4779fd913aff927f26d7f6bedd87d1')rply.text='GM:';
+if(id=='U7c4779fd913aff927f26d7f6bedd87d1'){
+	rply.text='GM';
+}
+else {
+	rply.text='87';
+}
 return rply;
 }
 
