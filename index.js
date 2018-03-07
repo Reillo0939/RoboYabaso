@@ -98,8 +98,8 @@ var body = {
   values: 'text'
 };
 service.spreadsheets.values.update({
-  spreadsheetId: spreadsheetId,
-  range: range,
+  spreadsheetId: 'A1',
+  range: 1,
   valueInputOption: valueInputOption,
   resource: body
 }, function(err, result) {
