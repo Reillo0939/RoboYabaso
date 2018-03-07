@@ -25,7 +25,7 @@ bot.listen('/linewebhook', 5000);
 //  i.e., `User.js` will become `exports['User']` or `exports.User`
 function getDisplayName(eve){
    bot.getUserProfile(eve.source.userId);
-   eve.source.profile().then(function (profile) {
+   eve.source.profile.then(function (profile) {
       users[eve.source.userId].replies[0]=profile.displayName;
    }).catch(function (error) {
        // error 
