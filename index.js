@@ -35,7 +35,7 @@ app.post('/', jsonParser, function(req, res) {
 	let msgType = event.message.type;
 	let msg = event.message.text;
 	let rplyToken = event.replyToken;
-	let a = LineBot.getUserProfile(event.source.userId);
+	let a = app.getUserProfile(event.source.userId);
 	let rplyVal = {};
 	console.log(msg + '  ' + a );
 	//訊息來到後, 會自動呼叫handleEvent 分類,然後跳到analytics.js進行骰組分析
