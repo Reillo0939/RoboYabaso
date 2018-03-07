@@ -83,8 +83,8 @@ function parseInput(rplyToken, inputStr, id) {
 	if (trigger.match(/立flag|死亡flag/) != null) return exports.funny.BStyleFlagSCRIPTS() ;	
 	//87
 	if (trigger.match(/87/) != null) return exports.funny.bsMo() ;
-	if (trigger.match(/bot抽卡/) != null) return exports.card.Card(1) ;
-	if (trigger.match(/bot10連抽/) != null) return exports.card.Card(10) ;
+	if (trigger.match(/bot抽卡/) != null) return exports.card.Card(1,id) ;
+	if (trigger.match(/bot10連抽/) != null) return exports.card.Card(10,id) ;
 	
 	
 	if (trigger.match(/bot距離/) != null) return exports.advroll.xyxy(mainMsg[1],mainMsg[2],mainMsg[3],mainMsg[4],mainMsg[5]) ;
