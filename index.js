@@ -76,7 +76,7 @@ app.post('/', jsonParser, function(req, res) {
 	let msg = event.message.text;
 	let rplyToken = event.replyToken;
 	let a = event.source.userId;
-	let b=bot.getUserProfile(a).displayName;
+	let b=bot.getUserProfile(a).profile.displayName;
 	let rplyVal = {};
 	console.log(msg + '  ' + a +'  '+b );
 	//訊息來到後, 會自動呼叫handleEvent 分類,然後跳到analytics.js進行骰組分析
