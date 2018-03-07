@@ -95,7 +95,7 @@ var values = [
   // Additional rows ...
 ];
 var body = {
-  values: text
+  values: 'text'
 };
 service.spreadsheets.values.update({
   spreadsheetId: spreadsheetId,
