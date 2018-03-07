@@ -95,5 +95,6 @@ return rply;
 
 
 module.exports = {
-	Character:Character
+	CharacterT:CharacterT,
+	CharacterM:CharacterM
 };
