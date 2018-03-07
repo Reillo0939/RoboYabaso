@@ -3,8 +3,9 @@ var funny = require('./funny.js');
 var rply ={type : 'text'}; //type是必需的,但可以更改
 
 function IDCA(id) {
-if(id=='U7c4779fd913aff927f26d7f6bedd87d1'){rply.text='GM';}
-else {rply.text='87';}
+rply.text='一般人';
+if((id=='U7c4779fd913aff927f26d7f6bedd87d1')|(id=='Uc9b4571605aabd3e94edd7c189144278'))rply.text='GM';
+if(id=='U03ea5079ab82c0beb53ee2c3a7735778')rply.text='測試人員';
 return rply;
 }
 
