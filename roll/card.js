@@ -10,7 +10,7 @@ return rply;
 }
 
 function Card(frequency,id) {
-rply.text='你抽到了:';
+rply.text='你抽到了：';
 if(id==''){
 for(i=1;i<=frequency;i++){
  SSR();
@@ -24,6 +24,7 @@ if((rarity>=89) && (rarity<100))SR();
  if((rarity>=58) && (rarity<89))R();
  if(rarity<58)N();
 }
+rply.text+='\n多送你一張：';
 if(frequency==10){
 let rarity=rollbase.Dice(100);
 if(rarity>=96)SSR();
