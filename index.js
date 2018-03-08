@@ -39,12 +39,13 @@ var oauth2Client = new OAuth2(  '399740110786-lq7lj10lalj51lg867rorffctc3k9o94.a
 'WNBjc6GaC8_m7SFH5_qxuWUq',
   'https://dream-realm.herokuapp.com:5000'
 );
+var API_KEY = 'AIzaSyCEtwsTELMS5YtDw3A6LesTHvQ4OrElgGA'; // specify your API key here
 
 //試算表的ID，引號不能刪掉
 var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
  var sheets = google.sheets('v4');
 sheets.spreadsheets.values.get({
-auth: oauth2Client,
+auth: API_KEY,
   spreadsheetId: mySheetId,
   range: 'test!A1:A1'
 }, function(err, result) {
