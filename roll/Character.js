@@ -15,6 +15,7 @@ Fire=rollbase.Dice(70-age);
 Water=rollbase.Dice(70-age);
 Wind=rollbase.Dice(70-age);
 Earth=rollbase.Dice(70-age);
+Growing=rollbase.Dice(50-age);
 }
 if((age>=14)&&(age<=29)){
 Occupation='放出使';
@@ -46,15 +47,6 @@ rply.text=
 ;
 if((age<14)||(age>65)){
 Occupation='不適合戰鬥者';
-HP=rollbase.Dice(20) ;
-MP=rollbase.Dice(20) ;
-ATK=rollbase.Dice(5);
-Reaction=rollbase.Dice(5);
-None=rollbase.Dice(5);
-Fire=rollbase.Dice(5);	
-Water=rollbase.Dice(5);
-Wind=rollbase.Dice(5);
-Earth=rollbase.Dice(5);
 rply.text=
 '['+ name +']  年齡：' +age +
 '\n職業：  ' + Occupation ;
@@ -72,6 +64,7 @@ MP=((rollbase.Dice(5) - 1) * 9)+20;
 ATK=rollbase.Dice(70-age);
 Reaction=rollbase.Dice(70-age);
 Control=rollbase.Dice(70-age);
+rollbase.Dice(55-age);
 }
 if((age>=16)&&(age<=39)){
 Occupation='外部裝甲操縱人員';
