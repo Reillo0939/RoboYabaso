@@ -47,7 +47,7 @@ var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
 sheets.spreadsheets.values.get({
 auth: API_KEY,
   spreadsheetId: '1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg',
-  range: 'A1:A1'
+  range: 'test!A1:B2'
 }, function(err, result) {
   if(err) {
     // Handle error
