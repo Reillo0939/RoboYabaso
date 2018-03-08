@@ -46,8 +46,8 @@ var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
  var sheets = google.sheets('v4');
 sheets.spreadsheets.values.get({
 auth: API_KEY,
-  spreadsheetId: mySheetId,
-  range: 'test!A1:A1'
+  spreadsheetId: '1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg',
+  range: 'A1:A1'
 }, function(err, result) {
   if(err) {
     // Handle error
