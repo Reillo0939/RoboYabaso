@@ -54,10 +54,10 @@ authorize(function(authClient) {
     spreadsheetId: mySheetId,  // TODO: Update placeholder value.
 
     // The A1 notation of the values to update.
-    range: 'my-range',  // TODO: Update placeholder value.
+    range: 'A1',  // TODO: Update placeholder value.
 
     // How the input data should be interpreted.
-    valueInputOption: '',  // TODO: Update placeholder value.
+    valueInputOption: '01',  // TODO: Update placeholder value.
 
     resource: {
       // TODO: Add desired properties to the request body. All existing properties
@@ -86,7 +86,7 @@ function authorize(callback) {
   //   'https://www.googleapis.com/auth/drive'
   //   'https://www.googleapis.com/auth/drive.file'
   //   'https://www.googleapis.com/auth/spreadsheets'
-  var authClient =oauth2Client;
+  var authClient ='z9gr8MowvkKKI_xI7HfaunSO';
 
   if (authClient == null) {
     console.log('authentication failed');
