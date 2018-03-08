@@ -67,9 +67,12 @@ return rply;
 
 function bsMo() {
 let rplyArr = ['\
-「應該不是在指思考了很久的那位吧？」', '\
-「你以為這是彩蛋嗎？  對就是彩蛋！」', '\
-「你是說某鼠嗎？」'];
+「8*7=56」', '\
+「8+7=15」', '\
+「8-7=1」', '\
+「8/7=1.142857」', '\
+「8^7=2097152」', '\
+「你才87」'];
 rply.text = rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;
 }
