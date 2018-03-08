@@ -44,7 +44,7 @@ var API_KEY = 'AIzaSyCEtwsTELMS5YtDw3A6LesTHvQ4OrElgGA'; // specify your API key
 //試算表的ID，引號不能刪掉
 var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
  var sheets = google.sheets('v4');
-var cat = sheets.spreadsheets.values.get({
+var cat.text = sheets.spreadsheets.values.get({
 auth: API_KEY,
   spreadsheetId: '1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg',
   range: 'test!A1:A1'
