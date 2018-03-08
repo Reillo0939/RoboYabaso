@@ -65,7 +65,7 @@ Wind=rollbase.Dice(5);
 Earth=rollbase.Dice(5);
 rply.text=
 '['+ name +']  年齡：' +age +
-'\n職業：  ' + Occupation +
+'\n職業：  ' + Occupation ;
 }
 
 
