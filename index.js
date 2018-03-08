@@ -47,7 +47,7 @@ var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
 var cat;
 
  sheets.spreadsheets.values.get({
-auth: oauth2Client,
+auth: API_KEY,
   spreadsheetId: '1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg',
   range: 'test!A1:A1'
 }, function(err, result) {
@@ -55,7 +55,7 @@ auth: oauth2Client,
     // Handle error
     console.log(err);
   } else {
-	  cat = result.values ;
+	  cat =response.values[0][0];;
     var numRows = result.values ? result.values.length : 0;
     console.log('%d rows retrieved.', numRows);
   }
