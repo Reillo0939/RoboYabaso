@@ -55,7 +55,7 @@ auth: API_KEY,
     // Handle error
     console.log(err);
   } else {
-	  cat =result.values[string];
+	  cat =result.values[0];
     var numRows = result.values ? result.values.length : 0;
     console.log('%d rows retrieved.', numRows);
   }
