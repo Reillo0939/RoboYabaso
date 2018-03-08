@@ -35,19 +35,18 @@ var myClientSecret={"installed":{"client_id":"399740110786-ai6tcngsubr5d8jc1qdir
 
 var auth = new googleAuth();
 var OAuth2 = google.auth.OAuth2;
-var oauth2Client = new OAuth2(
-  '399740110786-ai6tcngsubr5d8jc1qdirv5b1ehmft9h.apps.googleusercontent.com',
+var oauth2Client = new OAuth2(  '399740110786-ai6tcngsubr5d8jc1qdirv5b1ehmft9h.apps.googleusercontent.com',
 'z9gr8MowvkKKI_xI7HfaunSO',
   ["urn:ietf:wg:oauth:2.0:oob","http://localhost"]
 );
-
 
 //試算表的ID，引號不能刪掉
 var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
  var sheets = google.sheets('v4');
 sheets.spreadsheets.values.get({
+auth: oauth2Client,
   spreadsheetId: mySheetId,
-  range: 'test!A1:D1'
+  range: 'test!A1:A1'
 }, function(err, result) {
   if(err) {
     // Handle error
