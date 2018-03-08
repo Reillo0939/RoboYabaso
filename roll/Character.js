@@ -28,8 +28,8 @@ Water=rollbase.Dice(50);
 Wind=rollbase.Dice(50);
 Earth=rollbase.Dice(50);
 Growing=Math.floor(((35-ATK)+(35-None)+(35-Fire)+(35-Water)+(35-Wind)+(35-Earth))*0.5);
-if(Growing<=10)Growing=rollbase.Dice(5)+10;
 }
+if(Growing<=10)Growing=rollbase.Dice(5)+10;
 rply.text=
 '['+ name +']  年齡：' +age +
 '\n職業：  ' + Occupation +
@@ -64,7 +64,7 @@ rply.text=
 return rply;	
 }
 function CT(name,age) {
-	var HP,MP,ATK,Reaction,Occupation,Control;
+	var HP,MP,ATK,Reaction,Occupation,Control,Growing;
 if((age>=40)&&(age<=60)){
 Occupation='外部裝甲操縱人員';
 HP=((rollbase.Dice(20) - 1) * 9)+20;
@@ -80,15 +80,9 @@ MP=((rollbase.Dice(20) - 1) * 9)+20;
 ATK=rollbase.Dice(50);
 Reaction=rollbase.Dice(50);
 Control=rollbase.Dice(50);
+Growing=Math.floor(((35-ATK)+(35-Control))*0.5);
 }
-if((age<16)||(age>60)){
-Occupation='不適合戰鬥者';
-HP=rollbase.Dice(20) ;
-MP=rollbase.Dice(20) ;
-ATK=rollbase.Dice(5);
-Reaction=rollbase.Dice(5);
-Control=rollbase.Dice(5);
-}
+if(Growing<=10)Growing=rollbase.Dice(5)+10;
 if((Control<10)||(MP<50))Occupation='外骨骼裝備步兵';
 rply.text=
 '['+ name +']  年齡：' +age +
@@ -97,10 +91,16 @@ rply.text=
 '\nBata粒子適性： '+ MP +
 '\n物理適性： '+ ATK +
 '\n控制能力： '+ Control +
-'\n反應力： '+ Reaction ;
+'\n反應力： '+ Reaction +
+'\n成長點： '+  Growing;
+
+if((age<16)||(age>60)){
+Occupation='不適合戰鬥者';
+'['+ name +']  年齡：' +age +
+'\n職業：  ' + Occupation ;
+}
 return rply;	
 }
-
 
 module.exports = {
 	CM:CM,
