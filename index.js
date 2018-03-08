@@ -37,7 +37,7 @@ var myClientSecret={"installed":{"client_id":"399740110786-ai6tcngsubr5d8jc1qdir
 var OAuth2 = google.auth.OAuth2;
 var oauth2Client = new OAuth2(  '399740110786-lq7lj10lalj51lg867rorffctc3k9o94.apps.googleusercontent.com',
 'WNBjc6GaC8_m7SFH5_qxuWUq',
-  'https://www.googleapis.com/auth/spreadsheets'
+  'https://dream-realm.herokuapp.com:5000'
 );
 
 //試算表的ID，引號不能刪掉
