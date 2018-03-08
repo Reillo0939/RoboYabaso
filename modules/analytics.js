@@ -89,6 +89,8 @@ function parseInput(rplyToken, inputStr, id) {
 	if (trigger.match(/^法術角色創立$/) != null) return exports.Character.CM(mainMsg[1],mainMsg[2]) ;
 	if (trigger.match(/^外裝角色創立$/) != null) return exports.Character.CT(mainMsg[1],mainMsg[2]) ;
 	
+	if (trigger.match(/^角色創立說明$/) != null) return exports.help.Character() ;
+	
 	if (trigger.match(/bot距離/) != null) return exports.advroll.xyxy(mainMsg[1],mainMsg[2],mainMsg[3],mainMsg[4],mainMsg[5]) ;
 	//鴨霸獸指令開始於此
 	if (trigger.match(/鴨霸獸|巴獸/) != null) return exports.funny.randomReply() ;	
