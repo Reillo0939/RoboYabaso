@@ -35,7 +35,7 @@ var myClientSecret={"installed":{"client_id":"399740110786-ai6tcngsubr5d8jc1qdir
 
 var auth = new googleAuth();
 var OAuth2 = google.auth.OAuth2;
-var oauth2Client = new OAuth2(  '399740110786-ai6tcngsubr5d8jc1qdirv5b1ehmft9h.apps.googleusercontent.com',
+var oauth2Client = new OAuth2(  'Google Sheets API Quickstart',
 'z9gr8MowvkKKI_xI7HfaunSO',
   'https://console.developers.google.com/apis/dashboard?project=linebot-0939&hl=zh-tw&duration=PT1H'
 );
