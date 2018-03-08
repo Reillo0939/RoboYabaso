@@ -49,13 +49,13 @@ var cat;
  sheets.spreadsheets.values.get({
 auth: API_KEY,
   spreadsheetId: '1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg',
-  range: 'test!A1:A1'
+  range: 'test'!A1:B1
 }, function(err, result) {
   if(err) {
     // Handle error
     console.log(err);
   } else {
-	  cat =response.values[0][0];;
+	  cat =result.values
     var numRows = result.values ? result.values.length : 0;
     console.log('%d rows retrieved.', numRows);
   }
