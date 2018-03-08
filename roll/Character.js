@@ -27,7 +27,7 @@ Fire=rollbase.Dice(50);
 Water=rollbase.Dice(50);
 Wind=rollbase.Dice(50);
 Earth=rollbase.Dice(50);
-Growing=((50-ATK)+(50-None)+(50-Fire)+(50-Water)+(50-Wind)+(50-Earth))*(rollbase.Dice(11) + 4)*0.1
+Growing=Math.floor(((50-ATK)+(50-None)+(50-Fire)+(50-Water)+(50-Wind)+(50-Earth))*(rollbase.Dice(10))*0.1)
 }
 rply.text=
 '['+ name +']  年齡：' +age +
