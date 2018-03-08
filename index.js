@@ -2,6 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var jsonParser = bodyParser.json();
+var google = require('googleapis');
+var sheets = google.sheets('v4');
 var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
 var channelSecret = process.env.LINE_CHANNEL_SECRET;
 var linebot = require('linebot');
@@ -32,22 +34,16 @@ var googleAuth = require('google-auth-library');
 var myClientSecret={"installed":{"client_id":"399740110786-ai6tcngsubr5d8jc1qdirv5b1ehmft9h.apps.googleusercontent.com","project_id":"linebot-0939","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://accounts.google.com/o/oauth2/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"z9gr8MowvkKKI_xI7HfaunSO","redirect_uris":["urn:ietfwg:oauth:2.0:oob","http://localhost"]}}
 
 var auth = new googleAuth();
-var oauth2Client = new auth.OAuth2(myClientSecret.installed.client_id,myClientSecret.installed.client_secret, myClientSecret.installed.redirect_uris[0]);
+var OAuth2 = google.auth.OAuth2;
+var oauth2Client = new OAuth2(
+  '399740110786-ai6tcngsubr5d8jc1qdirv5b1ehmft9h.apps.googleusercontent.com',
+'z9gr8MowvkKKI_xI7HfaunSO',
+  ["urn:ietf:wg:oauth:2.0:oob","http://localhost"]
+);
+
 
 //試算表的ID，引號不能刪掉
 var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
-var values = [
-  [
-    '030'
-  ],
-  // Additional rows ...
-];
-var body = {
-  values: values
-};
-var google = require('googleapis');
-var sheets = google.sheets('v4');
-
 authorize(function(authClient) {
   var request = {
     // The ID of the spreadsheet to update.
@@ -86,7 +82,7 @@ function authorize(callback) {
   //   'https://www.googleapis.com/auth/drive'
   //   'https://www.googleapis.com/auth/drive.file'
   //   'https://www.googleapis.com/auth/spreadsheets'
-  var authClient ='z9gr8MowvkKKI_xI7HfaunSO';
+  var authClient =oauth2Client;
 
   if (authClient == null) {
     console.log('authentication failed');
