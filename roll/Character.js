@@ -3,7 +3,7 @@ var funny = require('./funny.js');
 var rply ={type : 'text'}; //type是必需的,但可以更改
 
 function CM(name,age) {
-	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation;
+	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation,Growing;
 if((age>=30)&&(age<=65)){
 Occupation='媒介使';
 HP=((rollbase.Dice(20) - 1) * 9)+20;
@@ -15,18 +15,6 @@ Fire=rollbase.Dice(70-age);
 Water=rollbase.Dice(70-age);
 Wind=rollbase.Dice(70-age);
 Earth=rollbase.Dice(70-age);
-rply.text=
-'['+ name +']  年齡：' +age +
-'\n職業：  ' + Occupation +
-'\n生命值： '+ HP +
-'\nBata粒子適性： '+ MP +
-'\n物理適性： '+ ATK +
-'\n反應力： '+ Reaction +
-'\n放出適性： '+ None +
-'\n火屬適性： '+ Fire +
-'\n水屬適性： '+ Water +
-'\n風屬適性： '+ Wind +
-'\n土屬適性： '+ Earth ;
 }
 if((age>=14)&&(age<=29)){
 Occupation='放出使';
@@ -39,6 +27,8 @@ Fire=rollbase.Dice(50);
 Water=rollbase.Dice(50);
 Wind=rollbase.Dice(50);
 Earth=rollbase.Dice(50);
+Growing=((50-ATK)+(50-None)+(50-Fire)+(50-Water)+(50-Wind)+(50-Earth))*(rollbase.Dice(11) + 4)*0.1
+}
 rply.text=
 '['+ name +']  年齡：' +age +
 '\n職業：  ' + Occupation +
@@ -50,8 +40,9 @@ rply.text=
 '\n火屬適性： '+ Fire +
 '\n水屬適性： '+ Water +
 '\n風屬適性： '+ Wind +
-'\n土屬適性： '+ Earth ;
-}
+'\n土屬適性： '+ Earth +
+'\n成長點： '+  Growing	
+;
 if((age<14)||(age>65)){
 Occupation='不適合戰鬥者';
 HP=rollbase.Dice(20) ;
