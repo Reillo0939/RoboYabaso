@@ -86,7 +86,7 @@ function authorize(callback) {
   //   'https://www.googleapis.com/auth/drive'
   //   'https://www.googleapis.com/auth/drive.file'
   //   'https://www.googleapis.com/auth/spreadsheets'
-  var authClient = '399740110786-ai6tcngsubr5d8jc1qdirv5b1ehmft9h.apps.googleusercontent.com';
+  var authClient =myClientSecret;
 
   if (authClient == null) {
     console.log('authentication failed');
