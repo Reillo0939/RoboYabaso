@@ -45,7 +45,8 @@ var API_KEY = 'AIzaSyCEtwsTELMS5YtDw3A6LesTHvQ4OrElgGA'; // specify your API key
 var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
  var sheets = google.sheets('v4');
 var cat ={type : 'text'};
-cat.text = sheets.spreadsheets.values.get({
+
+ sheets.spreadsheets.values.get({
 auth: API_KEY,
   spreadsheetId: '1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg',
   range: 'test!A1:A1'
@@ -54,6 +55,7 @@ auth: API_KEY,
     // Handle error
     console.log(err);
   } else {
+	  cat.text = result.values ;
     var numRows = result.values ? result.values.length : 0;
     console.log('%d rows retrieved.', numRows);
   }
