@@ -37,7 +37,7 @@ var myClientSecret={"installed":{"client_id":"399740110786-ai6tcngsubr5d8jc1qdir
 var OAuth2 = google.auth.OAuth2;
 var oauth2Client = new OAuth2(  '399740110786-lq7lj10lalj51lg867rorffctc3k9o94.apps.googleusercontent.com',
 'WNBjc6GaC8_m7SFH5_qxuWUq',
-  'https://dream-realm.herokuapp.com:5000'
+  'https://dream-realm.herokuapp.com/index.js'
 );
 var API_KEY = 'AIzaSyCEtwsTELMS5YtDw3A6LesTHvQ4OrElgGA'; // specify your API key here
 
@@ -47,7 +47,7 @@ var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
 var cat;
 
  sheets.spreadsheets.values.get({
-auth: API_KEY,
+auth: oauth2Client,
   spreadsheetId: '1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg',
   range: 'test!A1:A1'
 }, function(err, result) {
