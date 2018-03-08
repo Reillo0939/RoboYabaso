@@ -37,15 +37,29 @@ var oauth2Client = new auth.OAuth2(myClientSecret.installed.client_id,myClientSe
 
 //試算表的ID，引號不能刪掉
 var mySheetId='請輸入試算表的ID編號';
-
-var title='';
-var users=[];
-
-var totalSteps=0;
-var myQuestions=[];
-
-
-
+var sheets = google.sheets('v4');
+var values = [
+  [
+    '030'
+  ],
+  // Additional rows ...
+];
+var body = {
+  values: values
+};
+sheets.spreadsheets.values.update({
+  spreadsheetId: spreadsheetId,
+  range: range,
+  valueInputOption: valueInputOption,
+  resource: body
+}, function(err, result) {
+  if(err) {
+    // Handle error
+    console.log(err);
+  } else {
+    console.log('%d cells updated.', result.updatedCells);
+  }
+});
 require('fs').readdirSync(__dirname + '/modules/').forEach(function(file) {
   if (file.match(/\.js$/) !== null && file !== 'index.js') {
     var name = file.replace('.js', '');
@@ -76,7 +90,7 @@ app.post('/', jsonParser, function(req, res) {
 	let msg = event.message.text;
 	let rplyToken = event.replyToken;
 	let a = event.source.userId;
-	var b;
+	let b;
 	bot.getUserProfile(a).then(function (profile) {
 
    b=profile.displayName;
