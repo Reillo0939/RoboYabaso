@@ -44,10 +44,10 @@ var API_KEY = 'AIzaSyCEtwsTELMS5YtDw3A6LesTHvQ4OrElgGA'; // specify your API key
 //試算表的ID，引號不能刪掉
 var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
  var sheets = google.sheets('v4');
-sheets.spreadsheets.values.get({
+var cat = sheets.spreadsheets.values.get({
 auth: API_KEY,
   spreadsheetId: '1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg',
-  range: 'test!A1:B2'
+  range: 'test!A1:A1'
 }, function(err, result) {
   if(err) {
     // Handle error
@@ -98,7 +98,7 @@ app.post('/', jsonParser, function(req, res) {
 
 
 	let rplyVal = {};
-	console.log(msg + '  ' + a +'  '+b );
+	console.log(msg + '  ' + a +'  '+cat );
 	//訊息來到後, 會自動呼叫handleEvent 分類,然後跳到analytics.js進行骰組分析
 	//如希望增加修改骰組,只要修改analytics.js的條件式 和ROLL內的骰組檔案即可,然後在HELP.JS 增加說明.
 	try {
