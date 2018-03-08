@@ -44,27 +44,21 @@ var oauth2Client = new OAuth2(
 
 //試算表的ID，引號不能刪掉
 var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
-function appendMyRow(userId) {
-   var request = {
-      auth: oauth2Client,
-      spreadsheetId: mySheetId,
-      range:encodeURI('test'),
-      insertDataOption: 'INSERT_ROWS',
-      valueInputOption: 'RAW',
-      resource: {
-        "values": [
-          '030'
-        ]
-      }
-   };
-   var sheets = google.sheets('v4');
-   sheets.spreadsheets.values.append(request, function(err, response) {
-      if (err) {
-         console.log('The API returned an error: ' + err);
-         return;
-      }
-   });
-}
+ var sheets = google.sheets('v4');
+sheets.spreadsheets.values.get({
+  spreadsheetId: mySheetId,
+  range: 'test!A1:D1'
+}, function(err, result) {
+  if(err) {
+    // Handle error
+    console.log(err);
+  } else {
+    var numRows = result.values ? result.values.length : 0;
+    console.log('%d rows retrieved.', numRows);
+  }
+});
+
+
 require('fs').readdirSync(__dirname + '/modules/').forEach(function(file) {
   if (file.match(/\.js$/) !== null && file !== 'index.js') {
     var name = file.replace('.js', '');
