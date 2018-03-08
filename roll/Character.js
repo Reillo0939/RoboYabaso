@@ -15,7 +15,7 @@ Fire=rollbase.Dice(70-age);
 Water=rollbase.Dice(70-age);
 Wind=rollbase.Dice(70-age);
 Earth=rollbase.Dice(70-age);
-Growing=rollbase.Dice(65-age);
+Growing=rollbase.Dice(66-age);
 }
 if((age>=14)&&(age<=29)){
 Occupation='放出使';
@@ -64,7 +64,7 @@ MP=((rollbase.Dice(5) - 1) * 9)+20;
 ATK=rollbase.Dice(70-age);
 Reaction=rollbase.Dice(70-age);
 Control=rollbase.Dice(70-age);
-rollbase.Dice(60-age);
+rollbase.Dice(61-age);
 }
 if((age>=16)&&(age<=39)){
 Occupation='外部裝甲操縱人員';
