@@ -36,7 +36,7 @@ var auth = new googleAuth();
 var oauth2Client = new auth.OAuth2(myClientSecret.installed.client_id,myClientSecret.installed.client_secret, myClientSecret.installed.redirect_uris[0]);
 
 //試算表的ID，引號不能刪掉
-var mySheetId='請輸入試算表的ID編號';
+var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
 var sheets = google.sheets('v4');
 var values = [
   [
@@ -48,9 +48,9 @@ var body = {
   values: values
 };
 sheets.spreadsheets.values.update({
-  spreadsheetId: spreadsheetId,
-  range: range,
-  valueInputOption: valueInputOption,
+  spreadsheetId: mySheetId,
+  range: 'A1',
+  valueInputOption: 'RAW',
   resource: body
 }, function(err, result) {
   if(err) {
