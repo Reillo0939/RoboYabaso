@@ -35,9 +35,9 @@ var myClientSecret={"installed":{"client_id":"399740110786-ai6tcngsubr5d8jc1qdir
 
 //var auth = new googleAuth();
 var OAuth2 = google.auth.OAuth2;
-var oauth2Client = new OAuth2(  '399740110786-ai6tcngsubr5d8jc1qdirv5b1ehmft9h.apps.googleusercontent.com',
-'z9gr8MowvkKKI_xI7HfaunSO',
-  'https://accounts.google.com/o/oauth2/auth'
+var oauth2Client = new OAuth2(  '399740110786-lq7lj10lalj51lg867rorffctc3k9o94.apps.googleusercontent.com',
+'WNBjc6GaC8_m7SFH5_qxuWUq',
+  'https://dream-realm.herokuapp.com/'
 );
 
 //試算表的ID，引號不能刪掉
