@@ -24,7 +24,6 @@ bot.listen('/linewebhook', 5000);
 // Load `*.js` under modules directory as properties
 //  i.e., `User.js` will become `exports['User']` or `exports.User`
 
-var google = require('googleapis');
 var googleAuth = require('google-auth-library');
 
 //以下的引號內請輸入申請LineBot取得的各項資料，逗號及引號都不能刪掉
@@ -87,7 +86,7 @@ function authorize(callback) {
   //   'https://www.googleapis.com/auth/drive'
   //   'https://www.googleapis.com/auth/drive.file'
   //   'https://www.googleapis.com/auth/spreadsheets'
-  var authClient = null;
+  var authClient = '399740110786-ai6tcngsubr5d8jc1qdirv5b1ehmft9h.apps.googleusercontent.com';
 
   if (authClient == null) {
     console.log('authentication failed');
