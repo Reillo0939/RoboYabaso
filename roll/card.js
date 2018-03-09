@@ -104,10 +104,10 @@ let rplyArr = [
 '\[097] [SSR] [Partner] Wings',
 '\[098] [SSR] [Partner] 雷銘',
 '\[099] [SSR] [Partner] 夜月',
-'\[100] [SR] [Skill] 萬物燃盡',
-'\[101] [SR] [Skill] 水刃劃出',
-'\[102] [SR] [Skill] 風壓炸裂',
-'\[103] [SR] [Skill] 大地石封'
+'\[100] [SSR] [Skill] 萬物燃盡',
+'\[101] [SSR] [Skill] 水刃劃出',
+'\[102] [SSR] [Skill] 風壓炸裂',
+'\[103] [SSR] [Skill] 大地石封'
 ];
 rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;	
