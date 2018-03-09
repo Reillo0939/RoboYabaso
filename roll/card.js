@@ -8,7 +8,7 @@ if((id=='U7c4779fd913aff927f26d7f6bedd87d1')|(id=='Uc9b4571605aabd3e94edd7c18914
 return rply;
 }
 
-function Card(frequency,id) {
+function MCard(frequency,id) {
 rply.text='你抽到了：';
 if(id==''){
 for(i=1;i<=frequency;i++){
@@ -18,22 +18,22 @@ for(i=1;i<=frequency;i++){
 else{
 for(i=1;i<=frequency;i++){
 let rarity=rollbase.Dice(100);
-if(rarity==100)SSR();
-if((rarity>=89) && (rarity<100))SR();
- if((rarity>=58) && (rarity<89))R();
- if(rarity<58)N();
+if(rarity==100)MSSR();
+if((rarity>=89) && (rarity<100))MSR();
+ if((rarity>=58) && (rarity<89))MR();
+ if(rarity<58)MN();
 }
 
 if(frequency==10){
 rply.text+='\n多送你一張：';
 let rarity=rollbase.Dice(100);
-if(rarity>=96)SSR();
-if(rarity<96)SR();
+if(rarity>=96)MSSR();
+if(rarity<96)MSR();
 }
 }
 return rply;
 }
-function N() {
+function MN() {
 let rplyArr = [
 '\[001] [N] [Item] 鼠的畫', 
 '\[002] [N] [Item] 雷洛的程式', 
@@ -56,7 +56,7 @@ let rplyArr = [
 rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;	
 }
-function R() {
+function MR() {
 let rplyArr = [
 '\[030] [N] [Item] 偽裝成[R]的[N]卡',
 '\[031] [R] [Item] 鼠的畫ex',
@@ -76,7 +76,7 @@ let rplyArr = [
 rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;	
 }
-function SR() {
+function MSR() {
 let rplyArr = [
 '\[060] [N] [Item] 偽裝成[SR]的[N]卡',
 '\[061] [SR] [Item] 鼠那超進步的畫',
@@ -92,7 +92,7 @@ let rplyArr = [
 rply.text = rply.text +'\n' + rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;	
 }
-function SSR() {
+function MSSR() {
 let rplyArr = [
 '\[090] [N] [Item] 偽裝成[SSR]的[N]卡',
 '\[091] [SSR] [Accessories] 颶風之神', 
@@ -113,8 +113,105 @@ rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length
 return rply;	
 }
 
+function TCard(frequency,id) {
+rply.text='你抽到了：';
+if(id==''){
+for(i=1;i<=frequency;i++){
+ SSR();
+}
+}
+else{
+for(i=1;i<=frequency;i++){
+let rarity=rollbase.Dice(100);
+if(rarity==100)TSSR();
+if((rarity>=89) && (rarity<100))TSR();
+ if((rarity>=58) && (rarity<89))TR();
+ if(rarity<58)TN();
+}
+
+if(frequency==10){
+rply.text+='\n多送你一張：';
+let rarity=rollbase.Dice(100);
+if(rarity>=96)TSSR();
+if(rarity<96)TSR();
+}
+}
+return rply;
+}
+
+function TN() {
+let rplyArr = [
+'\[001] [N] [Item] 鼠的畫', 
+'\[002] [N] [Item] 雷洛的程式', 
+'\[003] [N] [Item] 一定墜落的翅膀',
+'\[004] [N] [Item] 雷銘的筆',
+'\[005] [N] [Item] 夜月的肝',
+'\[006] [N] [Accessories] 火之庇護',
+'\[007] [N] [Accessories] 水之庇護',
+'\[008] [N] [Accessories] 風之庇護',
+'\[009] [N] [Accessories] 土之庇護',
+'\[018] [N] [Skill] 磁懸推進',
+'\[019] [N] [Skill] 連結武裝切換',
+'\[020] [N] [Skill] 複合武器切換'
+];
+rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+return rply;	
+}
+function TR() {
+let rplyArr = [
+'\[030] [N] [Item] 偽裝成[R]的[N]卡',
+'\[031] [R] [Item] 鼠的畫ex',
+'\[032] [R] [Item] 雷洛那沒bug的程式',
+'\[033] [R] [Item] 翅膀那雷神',
+'\[034] [R] [Item] 雷銘的0.2mm自動鉛筆',
+'\[035] [R] [Item] 夜月那快撐不住的肝',
+'\[044] [R] [Skill] 墊步突擊',
+'\[045] [R] [Skill] 誤差修正',
+'\[046] [R] [Skill] 雷達'
+];
+rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+return rply;	
+}
+function TSR() {
+let rplyArr = [
+'\[060] [N] [Item] 偽裝成[SR]的[N]卡',
+'\[061] [SR] [Item] 鼠那超進步的畫',
+'\[062] [SR] [Item] 雷洛那超簡潔的程式',
+'\[063] [SR] [Item] 翅膀雷好雷滿',
+'\[064] [SR] [Item] 雷銘的用不壞的平板',
+'\[065] [SR] [Item] 夜月那超越人類的肝',
+'\[070] [SR] [Skill] 全彈射擊',
+'\[071] [SR] [Skill] 極速穿擊',
+'\[072] [SR] [Skill] 具現化武裝:27mm炮',
+'\[073] [SR] [Skill] 具現化武裝:八連裝導彈倉'
+];
+rply.text = rply.text +'\n' + rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+return rply;	
+}
+function TSSR() {
+let rplyArr = [
+'\[090] [N] [Item] 偽裝成[SSR]的[N]卡',
+'\[091] [SSR] [Accessories] 颶風之神', 
+'\[092] [SSR] [Accessories] 烈火之神', 
+'\[093] [SSR] [Accessories] 大海之神',
+'\[094] [SSR] [Accessories] 大地之神',
+'\[095] [SSR] [Partner] 鼠',
+'\[096] [SSR] [Partner] 雷洛',
+'\[097] [SSR] [Partner] Wings',
+'\[098] [SSR] [Partner] 雷銘',
+'\[099] [SSR] [Partner] 夜月',
+'\[104] [SSR] [Skill] 具現化武裝:電磁軌加速炮',
+'\[105] [SSR] [Skill] 具現化武裝:浮游護盾'
+];
+rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+return rply;	
+}
+
+
+
 
 module.exports = {
-	Card:Card,
+	MCard:MCard,
+		TCard:TCard,
 	IDCA:IDCA
 };
