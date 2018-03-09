@@ -49,7 +49,9 @@ let rplyArr = [
 '\[014] [N] [Skill] 簡單氣壓控制',
 '\[015] [N] [Skill] 強制位移',
 '\[016] [N] [Skill] 密度控制-物',
-'\[017] [N] [Skill] 土牆建立'
+'\[017] [N] [Skill] 土牆建立',
+'\[021] [N] [Skill] 能量轉換概論',
+'\[022] [N] [Skill] 能量放出實驗'
 ];
 rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;	
@@ -67,7 +69,9 @@ let rplyArr = [
 '\[040] [R] [Skill] 噴氣移動',
 '\[041] [R] [Skill] 位移加速',
 '\[042] [R] [Skill] 沙漠化',
-'\[043] [R] [Skill] 流沙'
+'\[043] [R] [Skill] 流沙',
+'\[047] [R] [Skill] 能量壓縮實驗',
+'\[048] [R] [Skill] 簡單建構模擬'
 ];
 rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;	
@@ -81,7 +85,8 @@ let rplyArr = [
 '\[066] [SR] [Skill] 燃燒標記',
 '\[067] [SR] [Skill] 創水控制',
 '\[068] [SR] [Skill] 風壓推移',
-'\[069] [SR] [Skill] 點石成金'
+'\[069] [SR] [Skill] 點石成金',
+'\[074] [SR] [Skill] 屬性纏繞'
 ];
 rply.text = rply.text +'\n' + rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;	
@@ -99,7 +104,8 @@ let rplyArr = [
 '\[100] [SSR] [Skill] 萬物燃盡',
 '\[101] [SSR] [Skill] 水刃劃出',
 '\[102] [SSR] [Skill] 風壓炸裂',
-'\[103] [SSR] [Skill] 大地石封'
+'\[103] [SSR] [Skill] 大地石封',
+'\[106] [SSR] [Skill] 具現化概論'
 ];
 rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;	
