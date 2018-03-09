@@ -19,9 +19,9 @@ let rplyArr = [
 
 '\[022] [N] [Skill] 能量放出實驗'
 ];
-if(id>9){rply.text='施工中';}
+if(Number(id)>9){rply.text='施工中';}
 else{
-rply.text=rplyArr[id];}
+rply.text=rplyArr[Number(id)];}
 return rply;
 }
 module.exports = {
