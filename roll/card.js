@@ -35,11 +35,9 @@ return rply;
 }
 function MN() {
 let rplyArr = [
-'\[001] [N] [Item] 鼠的畫', 
 '\[002] [N] [Item] 雷洛的程式', 
 '\[003] [N] [Item] 一定墜落的翅膀',
 '\[004] [N] [Item] 雷銘的筆',
-'\[005] [N] [Item] 夜月的肝',
 '\[006] [N] [Accessories] 火之庇護',
 '\[007] [N] [Accessories] 水之庇護',
 '\[008] [N] [Accessories] 風之庇護',
@@ -59,11 +57,9 @@ return rply;
 function MR() {
 let rplyArr = [
 '\[030] [N] [Item] 偽裝成[R]的[N]卡',
-'\[031] [R] [Item] 鼠的畫ex',
-'\[032] [R] [Item] 雷洛那沒bug的程式',
+'\[032] [R] [Item] 雷洛那有點強的bot',
 '\[033] [R] [Item] 翅膀那雷神',
 '\[034] [R] [Item] 雷銘的0.2mm自動鉛筆',
-'\[035] [R] [Item] 夜月那快撐不住的肝',
 '\[036] [R] [Skill] 熱距離延長',
 '\[037] [R] [Skill] 燃燒現象強化',
 '\[038] [R] [Skill] 水壓提升(小)',
@@ -79,11 +75,9 @@ return rply;
 function MSR() {
 let rplyArr = [
 '\[060] [N] [Item] 偽裝成[SR]的[N]卡',
-'\[061] [SR] [Item] 鼠那超進步的畫',
 '\[062] [SR] [Item] 雷洛那超簡潔的程式',
 '\[063] [SR] [Item] 翅膀雷好雷滿',
 '\[064] [SR] [Item] 雷銘的用不壞的平板',
-'\[065] [SR] [Item] 夜月那超越人類的肝',
 '\[066] [SR] [Skill] 燃燒標記',
 '\[067] [SR] [Skill] 創水控制',
 '\[068] [SR] [Skill] 風壓推移',
@@ -99,11 +93,9 @@ let rplyArr = [
 '\[092] [SSR] [Accessories] 烈火之神', 
 '\[093] [SSR] [Accessories] 大海之神',
 '\[094] [SSR] [Accessories] 大地之神',
-'\[095] [SSR] [Partner] 鼠',
 '\[096] [SSR] [Partner] 雷洛',
 '\[097] [SSR] [Partner] Wings',
 '\[098] [SSR] [Partner] 雷銘',
-'\[099] [SSR] [Partner] 夜月',
 '\[100] [SSR] [Skill] 萬物燃盡',
 '\[101] [SSR] [Skill] 水刃劃出',
 '\[102] [SSR] [Skill] 風壓炸裂',
@@ -142,14 +134,7 @@ return rply;
 function TN() {
 let rplyArr = [
 '\[001] [N] [Item] 鼠的畫', 
-'\[002] [N] [Item] 雷洛的程式', 
-'\[003] [N] [Item] 一定墜落的翅膀',
-'\[004] [N] [Item] 雷銘的筆',
 '\[005] [N] [Item] 夜月的肝',
-'\[006] [N] [Accessories] 火之庇護',
-'\[007] [N] [Accessories] 水之庇護',
-'\[008] [N] [Accessories] 風之庇護',
-'\[009] [N] [Accessories] 土之庇護',
 '\[018] [N] [Skill] 磁懸推進',
 '\[019] [N] [Skill] 連結武裝切換',
 '\[020] [N] [Skill] 複合武器切換'
@@ -161,9 +146,6 @@ function TR() {
 let rplyArr = [
 '\[030] [N] [Item] 偽裝成[R]的[N]卡',
 '\[031] [R] [Item] 鼠的畫ex',
-'\[032] [R] [Item] 雷洛那沒bug的程式',
-'\[033] [R] [Item] 翅膀那雷神',
-'\[034] [R] [Item] 雷銘的0.2mm自動鉛筆',
 '\[035] [R] [Item] 夜月那快撐不住的肝',
 '\[044] [R] [Skill] 墊步突擊',
 '\[045] [R] [Skill] 誤差修正',
@@ -176,9 +158,6 @@ function TSR() {
 let rplyArr = [
 '\[060] [N] [Item] 偽裝成[SR]的[N]卡',
 '\[061] [SR] [Item] 鼠那超進步的畫',
-'\[062] [SR] [Item] 雷洛那超簡潔的程式',
-'\[063] [SR] [Item] 翅膀雷好雷滿',
-'\[064] [SR] [Item] 雷銘的用不壞的平板',
 '\[065] [SR] [Item] 夜月那超越人類的肝',
 '\[070] [SR] [Skill] 全彈射擊',
 '\[071] [SR] [Skill] 極速穿擊',
@@ -191,14 +170,7 @@ return rply;
 function TSSR() {
 let rplyArr = [
 '\[090] [N] [Item] 偽裝成[SSR]的[N]卡',
-'\[091] [SSR] [Accessories] 颶風之神', 
-'\[092] [SSR] [Accessories] 烈火之神', 
-'\[093] [SSR] [Accessories] 大海之神',
-'\[094] [SSR] [Accessories] 大地之神',
 '\[095] [SSR] [Partner] 鼠',
-'\[096] [SSR] [Partner] 雷洛',
-'\[097] [SSR] [Partner] Wings',
-'\[098] [SSR] [Partner] 雷銘',
 '\[099] [SSR] [Partner] 夜月',
 '\[104] [SSR] [Skill] 具現化武裝:電磁軌加速炮',
 '\[105] [SSR] [Skill] 具現化武裝:浮游護盾'
