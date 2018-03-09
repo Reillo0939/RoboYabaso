@@ -21,7 +21,7 @@ let rplyArr = [
 ];
 if(id>9){rply.text='施工中';}
 else{
-rply.text=rplyArr(id);}
+rply.text=rplyArr[id];}
 return rply;
 }
 module.exports = {
