@@ -83,8 +83,13 @@ function parseInput(rplyToken, inputStr, id) {
 	if (trigger.match(/立flag|死亡flag/) != null) return exports.funny.BStyleFlagSCRIPTS() ;	
 	//87
 	if (trigger.match(/87/) != null) return exports.funny.bsMo() ;
-	if (trigger.match(/(^法術池抽卡$|^法術池單抽$)/) != null) return exports.card.Card(1,id) ;
-	if (trigger.match(/^法術池10連抽$/) != null) return exports.card.Card(10,id) ;
+	if (trigger.match(/(^法術池抽卡$|^法術池單抽$)/) != null) return exports.card.MCard(1,id) ;
+	if (trigger.match(/^法術池10連抽$/) != null) return exports.card.MCard(10,id) ;
+	
+		if (trigger.match(/(^外裝池抽卡$|^外裝池單抽$)/) != null) return exports.card.TCard(1,id) ;
+	if (trigger.match(/^外裝池10連抽$/) != null) return exports.card.TCard(10,id) ;
+	
+	
 	if (trigger.match(/(^玩家身分$|^玩家身份$)/) != null) return exports.card.IDCA(id) ;
 	if (trigger.match(/^法術角色創立$/) != null) return exports.Character.CM(mainMsg[1],mainMsg[2]) ;
 	if (trigger.match(/^外裝角色創立$/) != null) return exports.Character.CT(mainMsg[1],mainMsg[2]) ;
