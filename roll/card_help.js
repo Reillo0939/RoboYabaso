@@ -115,7 +115,7 @@ let rplyArr = [
 	'\[106] [SSR] [Skill] 具現化概論'
 	
 ];
-if(Number(id)>9){rply.text='施工中';}
+if(Number(id)>106){rply.text='施工中';}
 else{
 rply.text=rplyArr[Number(id)];}
 return rply;
