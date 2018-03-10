@@ -89,7 +89,7 @@ function parseInput(rplyToken, inputStr, id) {
 		if (trigger.match(/(^外裝池抽卡$|^外裝池單抽$)/) != null) return exports.card.TCard(1,id) ;
 	if (trigger.match(/^外裝池10連抽$/) != null) return exports.card.TCard(10,id) ;
 	if (trigger.match(/^卡片查詢$/) != null) return exports.card_help.CardH(mainMsg[1]) ;
-	
+	if (trigger.match(/^卡池資訊$/) != null) return exports.card.ICard() ;
 	
 	if (trigger.match(/(^玩家身分$|^玩家身份$)/) != null) return exports.card.IDCA(id) ;
 	if (trigger.match(/^法術角色創立$/) != null) return exports.Character.CM(mainMsg[1],mainMsg[2]) ;
