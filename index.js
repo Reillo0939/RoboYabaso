@@ -22,7 +22,7 @@ bot.on('message', function (event) {
   });
 });
  
-bot.listen('/linewebhook', 5000);
+bot.listen('/linewebhook', process.env.PORT || 5000;
 // Load `*.js` under modules directory as properties
 //  i.e., `User.js` will become `exports['User']` or `exports.User`
 
