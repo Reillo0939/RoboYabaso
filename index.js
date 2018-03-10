@@ -28,7 +28,7 @@ event.source.profile().then(function (profile) {
 b=profile.displayName;
 
 msg = handleEvent(event,a,b);
-  event.reply('Hello ' + profile.displayName);
+  event.reply(msg);
 });
 
  /*event.reply(msg).then(function(data) {
