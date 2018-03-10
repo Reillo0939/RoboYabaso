@@ -102,7 +102,7 @@ app.post('/', jsonParser, function(req, res) {
 
 	let rplyVal = {};
 	console.log(msg + '  ' + a +'  '+cat );
-	Bot.push(U7c4779fd913aff927f26d7f6bedd87d1, test);
+	bot.push('U7c4779fd913aff927f26d7f6bedd87d1', 'test');
 	//訊息來到後, 會自動呼叫handleEvent 分類,然後跳到analytics.js進行骰組分析
 	//如希望增加修改骰組,只要修改analytics.js的條件式 和ROLL內的骰組檔案即可,然後在HELP.JS 增加說明.
 	try {
