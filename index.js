@@ -4,7 +4,7 @@ var app = express();//262
 
 
 
-var jsonParser = bodyParser.json();
+var jsonParser = bot.parser();
 var google = require('googleapis');
 var sheets = google.sheets('v4');
 var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
@@ -21,9 +21,7 @@ bot.on('message', function(event) { if (event.message.type = 'text') { var msg =
  console.log(msg); }).catch(function(error) { // error
   console.log('error'); }); } });
   
-  bot.listen('/linewebhook', process.env.PORT || 5000, function () {
-  console.log('LineBot is running.');
-});
+
  
 //bot.listen('/linewebhook', process.env.PORT || 5000);
 // Load `*.js` under modules directory as properties
@@ -95,7 +93,7 @@ app.post('/', jsonParser, function(req, res) {
 	let msg = event.message.text;
 	let rplyToken = event.replyToken;
 	let a = event.source.userId;
-	let b;
+	var b;
 	bot.getUserProfile(a).then(function (profile) {
 
    b=profile.displayName;
