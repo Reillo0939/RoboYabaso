@@ -33,12 +33,13 @@ event.source.profile().then(function (profile) {
   event.reply('Hello ' + profile.displayName);
 });
 
-/* event.reply(msg).then(function(data) {
+ /*event.reply(msg).then(function(data) {
   // success
  console.log(b); }).catch(function(error) { 
  // error
-  console.log('error'); }*/
-  ); } });
+  console.log('error'); }
+  ); */
+  } });
   
  
 
