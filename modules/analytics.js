@@ -83,11 +83,11 @@ function parseInput(rplyToken, inputStr, id) {
 	if (trigger.match(/立flag|死亡flag/) != null) return exports.funny.BStyleFlagSCRIPTS() ;	
 	//87
 	if (trigger.match(/87/) != null) return exports.funny.bsMo() ;
-	if (trigger.match(/(^'法術池 抽卡'$|^'法術池 單抽'$)/) != null) return exports.card.MCard(1,id) ;
-	if (trigger.match(/^'法術池 10連抽'$/) != null) return exports.card.MCard(10,id) ;
+	if (trigger.match(/(^法術池抽卡$|^法術池單抽$)/) != null) return exports.card.MCard(1,id) ;
+	if (trigger.match(/^法術池10連抽$/) != null) return exports.card.MCard(10,id) ;
 	
-		if (trigger.match(/(^'外裝池 抽卡'$|^'外裝池 單抽'$)/) != null) return exports.card.TCard(1,id) ;
-	if (trigger.match(/^'外裝池 10連抽'$/) != null) return exports.card.TCard(10,id) ;
+		if (trigger.match(/(^外裝池抽卡$|^外裝池單抽$)/) != null) return exports.card.TCard(1,id) ;
+	if (trigger.match(/^外裝池10連抽$/) != null) return exports.card.TCard(10,id) ;
 	if (trigger.match(/^卡片查詢$/) != null) return exports.card_help.CardH(mainMsg[1]) ;
 	if (trigger.match(/^卡池資訊$/) != null) return exports.card.ICard() ;
 	
