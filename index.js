@@ -16,11 +16,25 @@ var jsonParser = bot.parser();
 var google = require('googleapis');
 var sheets = google.sheets('v4');
 
- /*
-bot.on('message', function(event) { if (event.message.type = 'text') { var msg = event.message.text; event.reply(msg).then(function(data) { // success
- console.log(msg); }).catch(function(error) { // error
+ 
+bot.on('message', function(event) { if (event.message.type = 'text') { 
+var msg = event.message.text;
+let a = event.source.userId;
+	var b;
+	bot.getUserProfile(a).then(function (profile) {
+
+   b=profile.displayName;
+
+});
+
+	msg = handleEvent(event,a);
+
+
+
+ event.reply(msg).then(function(data) { // success
+ console.log(b); }).catch(function(error) { // error
   console.log('error'); }); } });
-  */
+  
  
 
  
