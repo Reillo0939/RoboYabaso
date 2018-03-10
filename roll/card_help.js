@@ -131,7 +131,7 @@ let rplyArr = [
 	'\[106] [SSR] [Skill] 具現化概論 \n 使用條件：放出適性40 \n 前置技能：能量壓縮實驗,簡單建構模擬 \n 距離4 \n 具現化出想要的武器 \n MP：20'
 	
 ];
-if(Number(id)>106){rply.text='[id] [UR] [None] 暫無卡片';}
+if(Number(id)>106){rply.text='[' + id + '] [UR] [None] 暫無卡片';}
 else{
 rply.text=rplyArr[Number(id)];}
 return rply;
