@@ -17,13 +17,9 @@ var bot = linebot({
   channelAccessToken: 'n5TFOsvRP39srGsrWqgS197H7Rbl3SFUhtIefZBALWqKMNWuGptPXy3ECoVbvidZRDU5Aci7pfC2KqBSE2nXB7uCICz/rSVFdnWxL9uiJuvuo9cWR3sW0d8TXTYKdISzCj23FS55zNBdUTkU24P48gdB04t89/1O/w1cDnyilFU='
 });
  
-bot.on('message', function (event) {
-  event.reply(event.message.text).then(function (data) {
-    // success
-  }).catch(function (error) {
-    // error
-  });
-});
+bot.on('message', function(event) { if (event.message.type = 'text') { var msg = event.message.text; event.reply(msg).then(function(data) { // success
+ console.log(msg); }).catch(function(error) { // error
+  console.log('error'); }); } });
  
 //bot.listen('/linewebhook', process.env.PORT || 5000);
 // Load `*.js` under modules directory as properties
@@ -131,8 +127,6 @@ app.listen(app.get('port'), function() {
 });
 
 
-setTimeout(function(){
-    	bot.push('U7c4779fd913aff927f26d7f6bedd87d1', 'test');},5000);
 
 function handleEvent(event,id) {
   switch (event.type) {
