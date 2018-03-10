@@ -114,7 +114,6 @@ app.post('/', jsonParser, function(req, res) {
 	}
 	//把回應的內容,掉到replyMsgToLine.js傳出去
 	if (rplyVal) {
-		bot.push('U7c4779fd913aff927f26d7f6bedd87d1', 'test');
 		exports.replyMsgToLine.replyMsgToLine(rplyToken, rplyVal, options);
 	
 		
@@ -127,6 +126,12 @@ app.post('/', jsonParser, function(req, res) {
 app.listen(app.get('port'), function() {
 	console.log('Node app is running on port', app.get('port'));
 });
+
+
+setTimeout(function(){
+    	bot.push('U7c4779fd913aff927f26d7f6bedd87d1', 'test');
+    console.log('send: ok';
+},5000);
 
 function handleEvent(event,id) {
   switch (event.type) {
