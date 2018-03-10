@@ -2,15 +2,15 @@ var rollbase = require('./rollbase.js');
 var funny = require('./funny.js');
 var rply ={type : 'text'}; //type是必需的,但可以更改
 
-function IDCA(id) {
-rply.text='測試人員';//U7c4779fd913aff927f26d7f6bedd87d1  雷洛Uc9b4571605aabd3e94edd7c189144278屬
-if(id=='U7c4779fd913aff927f26d7f6bedd87d1')rply.text='GM';
-if(id=='Uc9b4571605aabd3e94edd7c189144278')rply.text='GM';
+function IDCA(id,name) {
+rply.text=name+'為測試人員';//U7c4779fd913aff927f26d7f6bedd87d1  雷洛Uc9b4571605aabd3e94edd7c189144278屬
+if(id=='U7c4779fd913aff927f26d7f6bedd87d1')rply.text=name+'為GM';
+if(id=='Uc9b4571605aabd3e94edd7c189144278')rply.text=name+'為GM';
 return rply;
 }
 
-function MCard(frequency,id) {
-rply.text='你抽到了：';
+function MCard(frequency,id,name) {
+rply.text=name+'抽到了：';
 if(id==''){
 for(i=1;i<=frequency;i++){
  SSR();
@@ -112,8 +112,8 @@ rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length
 return rply;	
 }
 
-function TCard(frequency,id) {
-rply.text='你抽到了：';
+function TCard(frequency,id,name) {
+rply.text=name+'抽到了：';
 if(id==''){
 for(i=1;i<=frequency;i++){
  SSR();
