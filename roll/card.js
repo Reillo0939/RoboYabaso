@@ -184,7 +184,7 @@ let rplyArr = [
 rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;	
 }
-function TSSR() {
+function ICard() {
 rply.text = 
 	'本周卡池\n'+
 	'=法術池:=\n'+
