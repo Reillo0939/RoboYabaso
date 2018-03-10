@@ -9,7 +9,7 @@ require('fs').readdirSync('./roll/').forEach(function(file) {
 
 //用來呼叫骰組,新增骰組的話,要寫條件式到下面呼叫 
 //格式是 exports.骰組檔案名字.function名
-function parseInput(rplyToken, inputStr, id) {
+function parseInput(rplyToken, inputStr, id,name) {
 	//console.log('InputStr: ' + inputStr);
 	_isNaN = function(obj) 	{
 	return isNaN(parseInt(obj));  
@@ -83,15 +83,15 @@ function parseInput(rplyToken, inputStr, id) {
 	if (trigger.match(/立flag|死亡flag/) != null) return exports.funny.BStyleFlagSCRIPTS() ;	
 	//87
 	if (trigger.match(/87/) != null) return exports.funny.bsMo() ;
-	if (trigger.match(/(^"法術池"抽卡$|^"法術池"單抽$)/) != null) return exports.card.MCard(1,id) ;
-	if (trigger.match(/^"法術池"10連抽$/) != null) return exports.card.MCard(10,id) ;
+	if (trigger.match(/(^"法術池"抽卡$|^"法術池"單抽$)/) != null) return exports.card.MCard(1,id,name) ;
+	if (trigger.match(/^"法術池"10連抽$/) != null) return exports.card.MCard(10,id,name) ;
 	
-		if (trigger.match(/(^"外裝池"抽卡$|^"外裝池"單抽$)/) != null) return exports.card.TCard(1,id) ;
-	if (trigger.match(/^"外裝池"10連抽$/) != null) return exports.card.TCard(10,id) ;
+		if (trigger.match(/(^"外裝池"抽卡$|^"外裝池"單抽$)/) != null) return exports.card.TCard(1,id,name) ;
+	if (trigger.match(/^"外裝池"10連抽$/) != null) return exports.card.TCard(10,id,name) ;
 	if (trigger.match(/^卡片查詢$/) != null) return exports.card_help.CardH(mainMsg[1]) ;
 	if (trigger.match(/^卡池資訊$/) != null) return exports.card.ICard() ;
 	
-	if (trigger.match(/(^玩家身分$|^玩家身份$)/) != null) return exports.card.IDCA(id) ;
+	if (trigger.match(/(^玩家身分$|^玩家身份$)/) != null) return exports.card.IDCA(id,name) ;
 	if (trigger.match(/^法術角色創立$/) != null) return exports.Character.CM(mainMsg[1],mainMsg[2]) ;
 	if (trigger.match(/^外裝角色創立$/) != null) return exports.Character.CT(mainMsg[1],mainMsg[2]) ;
 	
