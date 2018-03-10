@@ -18,18 +18,16 @@ var sheets = google.sheets('v4');
 
  
 bot.on('message', function(event) { if (event.message.type = 'text') { 
-var msg = event.message.text;
+var msg = '';
 let a = event.source.userId;
-	var b;
-	bot.getUserProfile(a).then(function (profile) {
+	let b='';
 
-   b=profile.displayName;
-
-});
-
-	msg = handleEvent(event,a);
+	
 
 event.source.profile().then(function (profile) {
+b=profile.displayName;
+
+msg = handleEvent(event,a,b);
   event.reply('Hello ' + profile.displayName);
 });
 
@@ -151,13 +149,13 @@ app.listen(app.get('port'), function() {
 
 
 
-function handleEvent(event,id) {
+function handleEvent(event,id,name) {
   switch (event.type) {
     case 'message':
       const message = event.message;
       switch (message.type) {
         case 'text':
-          return exports.analytics.parseInput(event.rplyToken, event.message.text,id); 
+          return exports.analytics.parseInput(event.rplyToken, event.message.text,id,name); 
         default:
            break;
       }
