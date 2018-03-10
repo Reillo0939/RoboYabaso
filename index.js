@@ -26,10 +26,10 @@ let a = event.source.userId;
 
 event.source.profile().then(function (profile) {
 b=profile.displayName;
-
+//Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
 msg = handleEvent(event,a,b);
   event.reply(msg);
-  console.log(event.source.groupId);
+  console.log(b+'  '+event.message.text);
 });
 
  /*event.reply(msg).then(function(data) {
