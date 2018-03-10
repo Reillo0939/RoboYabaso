@@ -1,12 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();//262
-
-
-
-var jsonParser = bot.parser();
-var google = require('googleapis');
-var sheets = google.sheets('v4');
 var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
 var channelSecret = process.env.LINE_CHANNEL_SECRET;
 var linebot = require('linebot');
@@ -16,6 +10,12 @@ var bot = linebot({
   channelSecret: channelSecret,
   channelAccessToken: channelAccessToken
 });
+
+
+var jsonParser = bot.parser();
+var google = require('googleapis');
+var sheets = google.sheets('v4');
+
  
 bot.on('message', function(event) { if (event.message.type = 'text') { var msg = event.message.text; event.reply(msg).then(function(data) { // success
  console.log(msg); }).catch(function(error) { // error
