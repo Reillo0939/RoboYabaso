@@ -129,9 +129,7 @@ app.listen(app.get('port'), function() {
 
 
 setTimeout(function(){
-    	bot.push('U7c4779fd913aff927f26d7f6bedd87d1', 'test');
-    console.log('send: ok';
-},5000);
+    	bot.push('U7c4779fd913aff927f26d7f6bedd87d1', 'test');},5000);
 
 function handleEvent(event,id) {
   switch (event.type) {
