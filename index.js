@@ -20,6 +20,10 @@ var bot = linebot({
 bot.on('message', function(event) { if (event.message.type = 'text') { var msg = event.message.text; event.reply(msg).then(function(data) { // success
  console.log(msg); }).catch(function(error) { // error
   console.log('error'); }); } });
+  
+  bot.listen('/linewebhook', process.env.PORT || 5000, function () {
+  console.log('LineBot is running.');
+});
  
 //bot.listen('/linewebhook', process.env.PORT || 5000);
 // Load `*.js` under modules directory as properties
