@@ -16,11 +16,12 @@ var jsonParser = bot.parser();
 var google = require('googleapis');
 var sheets = google.sheets('v4');
 
- 
+ /*
 bot.on('message', function(event) { if (event.message.type = 'text') { var msg = event.message.text; event.reply(msg).then(function(data) { // success
  console.log(msg); }).catch(function(error) { // error
   console.log('error'); }); } });
-  
+  */
+ 
 
  
 //bot.listen('/linewebhook', process.env.PORT || 5000);
