@@ -184,12 +184,36 @@ let rplyArr = [
 rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;	
 }
+function TSSR() {
+rply.text = 
+	'本周卡池\n'+
+	'=法術池:=\n'+
+	' -SSR卡機率1% \n'+
+	' -SR卡機率10% \n'+
+	' -R卡機率30% \n'+
+	' -N卡機率59% \n'+
+	'=10連抽保底SR機率：=\n'+
+	' -SSR卡機率5% \n'+
+	' -SR卡機率95% \n'+
+	'--------------------------'+
+	'=外裝池:=\n'+
+	' -SSR卡機率1% \n'+
+	' -SR卡機率10% \n'+
+	' -R卡機率30% \n'+
+	' -N卡機率59% \n'+
+	'=10連抽保底SR機率：=\n'+
+	' -SSR卡機率5% \n'+
+	' -SR卡機率95% \n'+
+	;
+return rply;	
+}
 
 
 
 
 module.exports = {
 	MCard:MCard,
-		TCard:TCard,
+	TCard:TCard,
+	ICard:ICard,
 	IDCA:IDCA
 };
