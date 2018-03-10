@@ -9,7 +9,7 @@ var channelSecret = process.env.LINE_CHANNEL_SECRET;
 var linebot = require('linebot');
  
 var bot = linebot({
-  channelId: 1487304211,
+  channelId: '1487304211',
   channelSecret: channelSecret,
   channelAccessToken: channelAccessToken
 });
@@ -92,7 +92,7 @@ app.post('/', jsonParser, function(req, res) {
 	let msg = event.message.text;
 	let rplyToken = event.replyToken;
 	let a = event.source.userId;
-	var b='';
+	let b;
 	bot.getUserProfile(a).then(function (profile) {
 
    b=profile.displayName;
@@ -101,7 +101,7 @@ app.post('/', jsonParser, function(req, res) {
 
 
 	let rplyVal = {};
-	console.log(msg + '  ' + a +'  '+cat );
+	console.log(msg + '  ' + a +'  '+b );
 
 	//訊息來到後, 會自動呼叫handleEvent 分類,然後跳到analytics.js進行骰組分析
 	//如希望增加修改骰組,只要修改analytics.js的條件式 和ROLL內的骰組檔案即可,然後在HELP.JS 增加說明.
