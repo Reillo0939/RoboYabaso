@@ -29,6 +29,7 @@ b=profile.displayName;
 
 msg = handleEvent(event,a,b);
   event.reply(msg);
+  console.log(event.source.groupId);
 });
 
  /*event.reply(msg).then(function(data) {
