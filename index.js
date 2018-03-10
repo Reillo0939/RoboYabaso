@@ -12,9 +12,9 @@ var channelSecret = process.env.LINE_CHANNEL_SECRET;
 var linebot = require('linebot');
  
 var bot = linebot({
-  channelId: '1487304211',
-  channelSecret: '688dbba3162d03462b5c51176b27529b',
-  channelAccessToken: 'n5TFOsvRP39srGsrWqgS197H7Rbl3SFUhtIefZBALWqKMNWuGptPXy3ECoVbvidZRDU5Aci7pfC2KqBSE2nXB7uCICz/rSVFdnWxL9uiJuvuo9cWR3sW0d8TXTYKdISzCj23FS55zNBdUTkU24P48gdB04t89/1O/w1cDnyilFU='
+  channelId: 1487304211,
+  channelSecret: 688dbba3162d03462b5c51176b27529b,
+  channelAccessToken: n5TFOsvRP39srGsrWqgS197H7Rbl3SFUhtIefZBALWqKMNWuGptPXy3ECoVbvidZRDU5Aci7pfC2KqBSE2nXB7uCICz/rSVFdnWxL9uiJuvuo9cWR3sW0d8TXTYKdISzCj23FS55zNBdUTkU24P48gdB04t89/1O/w1cDnyilFU=
 });
  
 bot.on('message', function(event) { if (event.message.type = 'text') { var msg = event.message.text; event.reply(msg).then(function(data) { // success
@@ -113,7 +113,7 @@ app.post('/', jsonParser, function(req, res) {
 	}
 	//把回應的內容,掉到replyMsgToLine.js傳出去
 	if (rplyVal) {
-		//exports.replyMsgToLine.replyMsgToLine(rplyToken, rplyVal, options);
+		exports.replyMsgToLine.replyMsgToLine(rplyToken, rplyVal, options);
 	
 		
 	} else {
