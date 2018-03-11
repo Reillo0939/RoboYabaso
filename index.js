@@ -17,7 +17,7 @@ var googleAuth = require('google-auth-library');
 var OAuth2 = google.auth.OAuth2;
 var oauth2Client = new OAuth2(  '399740110786-ai6tcngsubr5d8jc1qdirv5b1ehmft9h.apps.googleusercontent.com',
 'GFRUPZFJo1qNKIYabC2T34CD',
-  'http://localhost'
+  'urn:ietf:wg:oauth:2.0:oob'
 );
 
 //var API_KEY = 'AIzaSyCEtwsTELMS5YtDw3A6LesTHvQ4OrElgGA'; 
