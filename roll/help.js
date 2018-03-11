@@ -3,11 +3,13 @@ var funny = require('./funny.js');
 var rply ={type : 'text'}; //type是必需的,但可以更改
 
 function Help() {
-rply.text ='【夢之領域BOT】v0.4' +
+rply.text ='【夢之領域BOT】v0.4.5' +
 '\n 輸入87'+
 '\n  -效果不明 '+
 '\n bot距離 x1 y1 x2 y2 文字  '+
 '\n  -取兩點距離(向下取整數)  '+
+'\n 傷害計算 基礎值 浮動值 +多少% -多少%'+
+'\n  -自動算出傷害(向下取整數)  '+
 '\n 卡池資訊'+
 '\n  -查看本周卡池的資訊與抽卡方式'+
 '\n 卡片查詢 卡片id  '+
@@ -17,7 +19,8 @@ rply.text ='【夢之領域BOT】v0.4' +
 '\n v0.3更新訊息'+
 '\n  -優化說明'+
 '\n  -新憎卡片查詢系統'+
-'\n  -新憎卡池資訊系統';
+'\n  -新憎卡池資訊系統'+
+'\n  -新憎傷害計算';
 return rply;	
 }
 function Character() {
