@@ -41,10 +41,12 @@ function xyxy(x1,y1,x2,y2,text) {
 function Damage(Base,Float,Enhanced,Weaken,name) {
 	if(Float<=0){Float=1;Base--;}
 	var temp =0;
-	temp = (parseFloat(Base)+parseFloat(rollbase.Dice(Float)))*((Enhanced*0.01)+1)*(1-(Weaken*0.01));
+	var roll=rollbase.Dice(Float)
+	temp = (parseFloat(Base)+parseFloat(roll))*((Enhanced*0.01)+1)*(1-(Weaken*0.01));
 	let returnStr = '';	
 	rply.text =
 		'['+name+']造成的的傷害：\n'+
+		'('+parseFloat(Base)+'+'+parseFloat(roll)+')'+'x'((Enhanced*0.01)+1)+'x'+(1-(Weaken*0.01))+'=\n'+
 		Math.floor(temp);
 	return rply;
 }
