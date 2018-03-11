@@ -32,13 +32,14 @@ sheets.spreadsheets.values.get({
       auth: API_KEY,
       spreadsheetId: mySheetId,
       range:encodeURI('test'),
-   }, function(err, response) {
-      if (err) {
-         console.log('讀取問題檔的API產生問題：' + err);
-         return;
-      }
-      cat= response.values[1][1];
-      console.log('title已下載完畢！');
+   }, function(err, result) {
+  if(err) {
+    // Handle error
+    console.log(err);
+  } else {
+    var numRows = result.values ? result.values.length : 0;
+    console.log('%d rows retrieved.', numRows);
+  }
    });
 b=profile.displayName;
 //Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
