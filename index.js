@@ -16,10 +16,11 @@ var sheets = google.sheets('v4');
 var googleAuth = require('google-auth-library');
 var myClientSecret={"installed":{"client_id":"399740110786-ai6tcngsubr5d8jc1qdirv5b1ehmft9h.apps.googleusercontent.com","project_id":"linebot-0939","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://accounts.google.com/o/oauth2/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"z9gr8MowvkKKI_xI7HfaunSO","redirect_uris":["urn:ietfwg:oauth:2.0:oob","http://localhost"]}}
 var OAuth2 = google.auth.OAuth2;
-var oauth2Client = new OAuth2(  '399740110786-lq7lj10lalj51lg867rorffctc3k9o94',
+/*var oauth2Client = new OAuth2(  '399740110786-lq7lj10lalj51lg867rorffctc3k9o94',
 'WNBjc6GaC8_m7SFH5_qxuWUq',
   'http://localhost'
-);
+);*/
+var oauth2Client = new auth.OAuth2(myClientSecret.installed.client_id,myClientSecret.installed.client_secret, myClientSecret.installed.redirect_uris[0]);
 //var API_KEY = 'AIzaSyCEtwsTELMS5YtDw3A6LesTHvQ4OrElgGA'; 
 var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
 var cat='';
