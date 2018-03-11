@@ -20,7 +20,7 @@ var oauth2Client = new OAuth2(  '399740110786-lq7lj10lalj51lg867rorffctc3k9o94',
 'WNBjc6GaC8_m7SFH5_qxuWUq',
   'http://localhost'
 );
-var API_KEY = 'AIzaSyCEtwsTELMS5YtDw3A6LesTHvQ4OrElgGA'; 
+//var API_KEY = 'AIzaSyCEtwsTELMS5YtDw3A6LesTHvQ4OrElgGA'; 
 var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
 var cat='';
 bot.on('message', function(event) { if (event.message.type = 'text') { 
