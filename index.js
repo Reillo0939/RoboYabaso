@@ -29,7 +29,7 @@ let a = event.source.userId;
 	let b='';
 event.source.profile().then(function (profile) {
 sheets.spreadsheets.values.get({
-      auth: API_KEY,
+      auth: oauth2Client,
       spreadsheetId: mySheetId,
       range:encodeURI('工作表2'),
    }, function(err, result) {
