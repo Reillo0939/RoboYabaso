@@ -1,6 +1,17 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();//262
+var API_KEY = 'AIzaSyCEtwsTELMS5YtDw3A6LesTHvQ4OrElgGA'; 
+var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
+var jsonParser = bot.parser();
+var google = require('googleapis');
+var googleAuth = require('google-auth-library');
+var OAuth2 = google.auth.OAuth2;
+var oauth2Client = new OAuth2(  '399740110786-lq7lj10lalj51lg867rorffctc3k9o94',
+'WNBjc6GaC8_m7SFH5_qxuWUq',
+  'http://localhost:3000/oauth2callback'
+);
+var sheets = google.sheets('v4');
 var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
 var channelSecret = process.env.LINE_CHANNEL_SECRET;
 var linebot = require('linebot');
@@ -12,18 +23,13 @@ var bot = linebot({
 });
 
 
-var jsonParser = bot.parser();
-var google = require('googleapis');
-var sheets = google.sheets('v4');
+
 
  
 bot.on('message', function(event) { if (event.message.type = 'text') { 
 var msg = '';
 let a = event.source.userId;
 	let b='';
-
-	
-
 event.source.profile().then(function (profile) {
 b=profile.displayName;
 //Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
@@ -31,23 +37,11 @@ msg = handleEvent(event,a,b);
   event.reply(msg);
   console.log(b+'  '+event.message.text);
 });
-
- /*event.reply(msg).then(function(data) {
-  // success
- console.log(b); }).catch(function(error) { 
- // error
-  console.log('error'); }
-  ); */
   } });
   
- 
 
- 
-//bot.listen('/linewebhook', process.env.PORT || 5000);
-// Load `*.js` under modules directory as properties
-//  i.e., `User.js` will become `exports['User']` or `exports.User`
 
-var googleAuth = require('google-auth-library');
+
 
 //以下的引號內請輸入申請LineBot取得的各項資料，逗號及引號都不能刪掉
 
@@ -55,32 +49,10 @@ var googleAuth = require('google-auth-library');
 var myClientSecret={"installed":{"client_id":"399740110786-ai6tcngsubr5d8jc1qdirv5b1ehmft9h.apps.googleusercontent.com","project_id":"linebot-0939","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://accounts.google.com/o/oauth2/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"z9gr8MowvkKKI_xI7HfaunSO","redirect_uris":["urn:ietfwg:oauth:2.0:oob","http://localhost"]}}
 
 //var auth = new googleAuth();
-var OAuth2 = google.auth.OAuth2;
-var oauth2Client = new OAuth2(  '399740110786-lq7lj10lalj51lg867rorffctc3k9o94',
-'WNBjc6GaC8_m7SFH5_qxuWUq',
-  'http://localhost:3000/oauth2callback'
-);
-var API_KEY = 'AIzaSyCEtwsTELMS5YtDw3A6LesTHvQ4OrElgGA'; // specify your API key here
 
-//試算表的ID，引號不能刪掉
-var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
- var sheets = google.sheets('v4');
 var cat='';
 
- sheets.spreadsheets.values.get({
-auth: API_KEY,
-  spreadsheetId: '1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg',
-  range: 'A1'
-}, function(err, result) {
-  if(err) {
-    // Handle error
-    console.log(err);
-  } else {
-	  cat =result.value;
-    var numRows = result.values ? result.values.length : 0;
-    console.log('%d rows retrieved.', numRows);
-  }
-});
+ 
 
 
 require('fs').readdirSync(__dirname + '/modules/').forEach(function(file) {
