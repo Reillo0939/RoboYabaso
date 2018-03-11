@@ -14,8 +14,9 @@ var jsonParser = bot.parser();
 var google = require('googleapis');
 var sheets = google.sheets('v4');
 var googleAuth = require('google-auth-library');
+var auth = new googleAuth();
 var OAuth2 = google.auth.OAuth2;
-var oauth2Client = new OAuth2(  '399740110786-ai6tcngsubr5d8jc1qdirv5b1ehmft9h.apps.googleusercontent.com',
+var oauth2Client = new auth.OAuth2(  '399740110786-ai6tcngsubr5d8jc1qdirv5b1ehmft9h.apps.googleusercontent.com',
 'GFRUPZFJo1qNKIYabC2T34CD',
   'urn:ietf:wg:oauth:2.0:oob'
 );
