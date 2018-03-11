@@ -46,7 +46,7 @@ function Damage(Base,Float,Enhanced,Weaken,name) {
 	let returnStr = '';	
 	rply.text =
 		'['+name+']造成的的傷害：\n'+
-		'('+parseFloat(Base)+'+'+parseFloat(roll)+')'+'x'((Enhanced*0.01)+1)+'x'+(1-(Weaken*0.01))+'=\n'+
+		'(' + parseFloat(Base) + '+' + parseFloat(roll) + ')' + 'x' + ((Enhanced*0.01)+1) + 'x' + (1-(Weaken*0.01)) + '=\n' +
 		Math.floor(temp);
 	return rply;
 }
