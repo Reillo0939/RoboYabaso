@@ -37,7 +37,7 @@ sheets.spreadsheets.values.get({
          console.log('讀取問題檔的API產生問題：' + err);
          return;
       }
-      cat= response.values[0][0];
+      cat= response.values[1][1];
       console.log('title已下載完畢！');
    });
 b=profile.displayName;
