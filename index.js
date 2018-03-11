@@ -28,10 +28,17 @@ var msg = '';
 let a = event.source.userId;
 	let b='';
 event.source.profile().then(function (profile) {
-cat=sheets.spreadsheets.values.get({
+sheets.spreadsheets.values.get({
       auth: API_KEY,
       spreadsheetId: mySheetId,
-      range:'A1:A1'
+      range:encodeURI('test'),
+   }, function(err, response) {
+      if (err) {
+         console.log('讀取問題檔的API產生問題：' + err);
+         return;
+      }
+      cat= response.values[0][0];
+      console.log('title已下載完畢！');
    });
 b=profile.displayName;
 //Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
