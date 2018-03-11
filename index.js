@@ -22,8 +22,12 @@ var oauth2Client = new OAuth2(  '399740110786-lq7lj10lalj51lg867rorffctc3k9o94',
 );
 var API_KEY = 'AIzaSyCEtwsTELMS5YtDw3A6LesTHvQ4OrElgGA'; // specify your API key here
 var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
-
-
+var cat='';
+cat=sheets.spreadsheets.values.get({
+      auth: APT_KEY,
+      spreadsheetId: mySheetId,
+      range:'A1:A1',
+   });
 
 
 bot.on('message', function(event) { if (event.message.type = 'text') { 
@@ -35,7 +39,7 @@ b=profile.displayName;
 //Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
 msg =exports.analytics.parseInput(event.rplyToken, event.message.text,a,b);
   event.reply(msg);
-  console.log(b+'  '+event.message.text);
+  console.log(b+'  '+event.message.text+'   '+cat);
 });
   } });
  
