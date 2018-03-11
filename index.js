@@ -10,8 +10,6 @@ var bot = linebot({
   channelSecret: channelSecret,
   channelAccessToken: channelAccessToken
 });
-
-
 var jsonParser = bot.parser();
 var google = require('googleapis');
 var sheets = google.sheets('v4');
@@ -25,6 +23,9 @@ var oauth2Client = new OAuth2(  '399740110786-lq7lj10lalj51lg867rorffctc3k9o94',
 var API_KEY = 'AIzaSyCEtwsTELMS5YtDw3A6LesTHvQ4OrElgGA'; // specify your API key here
 var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
 
+
+
+
 bot.on('message', function(event) { if (event.message.type = 'text') { 
 var msg = '';
 let a = event.source.userId;
@@ -37,18 +38,13 @@ msg =exports.analytics.parseInput(event.rplyToken, event.message.text,a,b);
   console.log(b+'  '+event.message.text);
 });
   } });
-  
-
-
-
-
+ 
 require('fs').readdirSync(__dirname + '/modules/').forEach(function(file) {
   if (file.match(/\.js$/) !== null && file !== 'index.js') {
     var name = file.replace('.js', '');
     exports[name] = require('./modules/' + file);
   }
 });
-
 app.set('port', (process.env.PORT || 5000));
 // views is directory for all template files
 app.get('/', function(req, res) {
@@ -57,34 +53,6 @@ app.get('/', function(req, res) {
 });
 app.post('/', jsonParser, function(req, res) {
 });
-
 app.listen(app.get('port'), function() {
 	console.log('Node app is running on port', app.get('port'));
 });
-
-function handleEvent(event,id,name) {
-  switch (event.type) {
-    case 'message':
-      const message = event.message;
-      switch (message.type) {
-        case 'text':
-          return exports.analytics.parseInput(event.rplyToken, event.message.text,id,name); 
-        default:
-           break;
-      }
-    case 'follow':
-		break;
-    case 'unfollow':
-       break;
-    case 'join':
-break;
-    case 'leave':
-       break;
-    case 'postback':
-       break;
-    case 'beacon':
-      break;
-    default:
-       break;
-  }
-}
