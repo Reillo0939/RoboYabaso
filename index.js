@@ -21,7 +21,7 @@ var oauth2Client = new auth.OAuth2(  '399740110786-ai6tcngsubr5d8jc1qdirv5b1ehmf
   'urn:ietf:wg:oauth:2.0:oob'
 );
 
-//var API_KEY = 'AIzaSyCEtwsTELMS5YtDw3A6LesTHvQ4OrElgGA'; 
+var API_KEY = 'AIzaSyBM_GM_ZVEqwDsOPmpVBR3XI3BhwD4Bfm4'; 
 var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
 var cat='';
 bot.on('message', function(event) { if (event.message.type = 'text') { 
@@ -30,7 +30,7 @@ let a = event.source.userId;
 	let b='';
 event.source.profile().then(function (profile) {
 sheets.spreadsheets.values.get({
-      auth: oauth2Client,
+      auth: API_KEY,
       spreadsheetId: mySheetId,
       range:encodeURI('工作表2'),
    }, function(err, result) {
