@@ -36,6 +36,21 @@ function xyxy(x1,y1,x2,y2,text) {
 	rply.text = returnStr;
 	return rply;
 }
+
+
+function Damage(Base,Float,Enhanced,Weaken,name) {
+	if(Float<=0){Float=1;Base--;}
+	var temp =0;
+	temp = (Base+rollbase.Dice(Float))*(Enhanced*0.01+1)*(Weaken*0.01);
+	let returnStr = '';	
+	rply.text =
+		'['+name+']造成的的傷害：\n'+
+		temp;
+	return rply;
+}
+
+
+
 ////////////////////////////////////////
 //////////////// D66s
 ////////////////////////////////////////
@@ -163,5 +178,6 @@ xyxy:xyxy,
 d66:d66, 
 d66s:d66s, 
 xBy:xBy, 
-xUy:xUy
+xUy:xUy,
+Damage:Damage
 };
