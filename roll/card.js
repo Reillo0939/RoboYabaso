@@ -168,7 +168,7 @@ let rplyArr = [
 '\[065] [SR] [Item] 夜月那超越人類的肝',
 '\[070] [SR] [Skill] 全彈射擊',
 '\[071] [SR] [Skill] 極速穿擊',
-'\[072] [SR] [Skill] 具現化武裝:27mm炮',
+'\[072] [SR] [Skill] 具現化武裝:76mm炮',
 '\[073] [SR] [Skill] 具現化武裝:八連裝導彈倉'
 ];
 rply.text = rply.text +'\n' + rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
