@@ -45,7 +45,7 @@ function Damage(Base,Float,Enhanced,Weaken,name) {
 	let returnStr = '';	
 	rply.text =
 		'['+name+']造成的的傷害：\n'+
-		temp;
+		Math.floor(temp);
 	return rply;
 }
 
