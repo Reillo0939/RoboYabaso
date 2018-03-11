@@ -26,9 +26,8 @@ var cat='';
 cat=sheets.spreadsheets.values.get({
       auth: APT_KEY,
       spreadsheetId: mySheetId,
-      range:'A1:A1',
+      range:'A1:A1'
    });
-
 
 bot.on('message', function(event) { if (event.message.type = 'text') { 
 var msg = '';
