@@ -15,13 +15,6 @@ var bot = linebot({
 var jsonParser = bot.parser();
 var google = require('googleapis');
 var sheets = google.sheets('v4');
-
- 
-bot.on('message', function(event) { if (event.message.type = 'text') { 
-var msg = '';
-let a = event.source.userId;
-	let b='';
-
 var googleAuth = require('google-auth-library');
 var myClientSecret={"installed":{"client_id":"399740110786-ai6tcngsubr5d8jc1qdirv5b1ehmft9h.apps.googleusercontent.com","project_id":"linebot-0939","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://accounts.google.com/o/oauth2/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"z9gr8MowvkKKI_xI7HfaunSO","redirect_uris":["urn:ietfwg:oauth:2.0:oob","http://localhost"]}}
 var OAuth2 = google.auth.OAuth2;
@@ -31,12 +24,15 @@ var oauth2Client = new OAuth2(  '399740110786-lq7lj10lalj51lg867rorffctc3k9o94',
 );
 var API_KEY = 'AIzaSyCEtwsTELMS5YtDw3A6LesTHvQ4OrElgGA'; // specify your API key here
 var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
- var sheets = google.sheets('v4');
 
+bot.on('message', function(event) { if (event.message.type = 'text') { 
+var msg = '';
+let a = event.source.userId;
+	let b='';
 event.source.profile().then(function (profile) {
 b=profile.displayName;
 //Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
-msg = handleEvent(event,a,b);
+msg =exports.analytics.parseInput(event.rplyToken, event.message.text,a,b);
   event.reply(msg);
   console.log(b+'  '+event.message.text);
 });
