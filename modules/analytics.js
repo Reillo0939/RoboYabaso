@@ -98,6 +98,10 @@ function parseInput(rplyToken, inputStr, id,name) {
 	if (trigger.match(/^角色創立說明$/) != null) return exports.help.Character() ;
 	
 	if (trigger.match(/bot距離/) != null) return exports.advroll.xyxy(mainMsg[1],mainMsg[2],mainMsg[3],mainMsg[4],mainMsg[5]) ;
+	
+	if (trigger.match(/傷害計算/) != null) return exports.advroll.Damage(mainMsg[1],mainMsg[2],mainMsg[3],mainMsg[4],name) ;
+	
+	
 	//鴨霸獸指令開始於此
 	if (trigger.match(/鴨霸獸|巴獸/) != null) return exports.funny.randomReply() ;	
 	if (trigger.match(/運氣|運勢/) != null) return exports.funny.randomLuck(mainMsg) ; //占卜運氣		
