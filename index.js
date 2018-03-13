@@ -16,9 +16,9 @@ var sheets = google.sheets('v4');
 var googleAuth = require('google-auth-library');
 var auth = new googleAuth();
 //var OAuth2 = google.auth.OAuth2;
-var oauth2Client = new auth.OAuth2(  '399740110786-ai6tcngsubr5d8jc1qdirv5b1ehmft9h.apps.googleusercontent.com',
-'GFRUPZFJo1qNKIYabC2T34CD',
-  'urn:ietf:wg:oauth:2.0:oob'
+var oauth2Client = new auth.OAuth2(  '399740110786-ne3lhespt77ni2mt99ae1sunohrts5jh.apps.googleusercontent.com',
+'OzjUGCSYtQExFf4k_XJc9Q_W',
+  'https://dream-realm-v2.herokuapp.com/oauth2calkback'
 );
 
 var API_KEY = 'AIzaSyBM_GM_ZVEqwDsOPmpVBR3XI3BhwD4Bfm4'; 
