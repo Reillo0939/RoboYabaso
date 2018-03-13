@@ -45,8 +45,17 @@ event.source.profile().then(function (profile) {
    });*/
 b=profile.displayName;
 //Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
+
 msg =exports.analytics.parseInput(event.rplyToken, event.message.text,a,b);
+if(event.message.text=='武裝裝甲聯合戰線'){
+event.reply({
+  type: 'image',
+  originalContentUrl: 'https://drive.google.com/file/d/1BuOEecMc1Eqo9ER1DAHzgNukClyEchRf/preview',
+  previewImageUrl: 'https://drive.google.com/file/d/1BuOEecMc1Eqo9ER1DAHzgNukClyEchRf/preview'
+});
+}
   event.reply(msg);
+	
   console.log(b+'  '+event.message.text+'   '+cat);
 });
   } });
