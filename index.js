@@ -33,8 +33,8 @@ sheets.spreadsheets.values.get({
   auth: API_KEY,
       spreadsheetId: mySheetId,
       range:'test!A1:A1',
-	valueRenderOption: '',
-	dateTimeRenderOption: '',
+	//valueRenderOption: '',
+	//dateTimeRenderOption: '',
 	
 	
 }, function(err, response) {
