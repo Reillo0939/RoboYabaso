@@ -50,8 +50,8 @@ msg =exports.analytics.parseInput(event.rplyToken, event.message.text,a,b);
 if(event.message.text=='武裝裝甲聯合戰線'){
 event.reply({
   type: 'image',
-  originalContentUrl: 'https://drive.google.com/file/d/1BuOEecMc1Eqo9ER1DAHzgNukClyEchRf/preview',
-  previewImageUrl: 'https://drive.google.com/file/d/1BuOEecMc1Eqo9ER1DAHzgNukClyEchRf/preview'
+  originalContentUrl: 'https://drive.google.com/file/d/1BuOEecMc1Eqo9ER1DAHzgNukClyEchRf/view',
+  previewImageUrl: 'https://drive.google.com/file/d/1BuOEecMc1Eqo9ER1DAHzgNukClyEchRf/view'
 });
 }
   event.reply(msg);
