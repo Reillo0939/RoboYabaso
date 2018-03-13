@@ -29,21 +29,17 @@ var msg = '';
 let a = event.source.userId;
 	let b='';
 event.source.profile().then(function (profile) {
-sheets.spreadsheets.values.batchGet({
+sheets.spreadsheets.values.get({
       auth: API_KEY,
-	spreadsheetId: mySheetId,
-valueRanges:[{
-      range:'test!A1:B2'
-}],
+      spreadsheetId: mySheetId,
+      range:encodeURI('test'),
    }, function(err, response) {
-  if(err) {
-    // Handle error
-    console.log(err);
-  } else {
-    var numRows = response.values ? response.values.length : 0;
-	 cat=numRows;
-    console.log('%d rows retrieved.', numRows);
-  }
+      if (err) {
+         console.log('讀取問題檔的API產生問題：' + err);
+         return;
+      }
+      //title= response.values[0][0];
+      console.log('test   '+response.values[0][0]);
    });
 b=profile.displayName;
 //Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
