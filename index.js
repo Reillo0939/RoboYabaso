@@ -31,10 +31,10 @@ let a = event.source.userId;
 event.source.profile().then(function (profile) {
 sheets.spreadsheets.values.batchGet({
       auth: API_KEY,
-valueRanges[
-      spreadsheetId: mySheetId,
+	spreadsheetId: mySheetId,
+valueRanges[{
       range:'test!A1:B2'
-	]
+}],
    }, function(err, result) {
   if(err) {
     // Handle error
