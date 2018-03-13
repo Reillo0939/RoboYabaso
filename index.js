@@ -38,8 +38,8 @@ sheets.spreadsheets.values.get({
     // Handle error
     console.log(err);
   } else {
-    var numRows='';
-    numRows.text = result.range;
+    var numRows='test';
+    numRows = result.range;
     console.log('retrieved.   ' + numRows);
   }
 });
