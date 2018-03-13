@@ -32,7 +32,7 @@ event.source.profile().then(function (profile) {
 sheets.spreadsheets.values.get({
       auth: API_KEY,
       spreadsheetId: mySheetId,
-      range:encodeURI('test'),
+      range:'test!A1:A1',
    }, function(err, response) {
       if (err) {
          console.log('讀取問題檔的API產生問題：' + err);
