@@ -39,7 +39,7 @@ sheets.spreadsheets.values.get({
     console.log(err);
   } else {
     var numRows='test';
-    numRows = response.range;
+    numRows = response.range.text;
     console.log('retrieved.   ' + numRows);
   }
 });
