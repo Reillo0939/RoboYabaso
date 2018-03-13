@@ -40,7 +40,7 @@ sheets.spreadsheets.values.get({
   } else {
     var numRows='';
     numRows.text = result.range;
-    console.log('%d rows retrieved.', numRows);
+    console.log('retrieved.   ' + numRows);
   }
 });
 b=profile.displayName;
