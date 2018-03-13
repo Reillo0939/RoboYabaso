@@ -1,4 +1,4 @@
-var express = require('express');
+var express = require('express');//
 var bodyParser = require('body-parser');
 var app = express();//262
 var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
