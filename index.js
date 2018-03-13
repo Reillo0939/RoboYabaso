@@ -42,9 +42,9 @@ sheets.spreadsheets.values.get({
     // Handle error
     console.log(err);
   } else {
-   // var numRows='test';
-   // numRows.text = response.range;
-    console.log('retrieved.   ' + JSON.stringify(response[], null, 2));
+    var numRows=;
+    numRows = response.values;
+    console.log('retrieved.   ' + numRows.values);
   }
 });
 b=profile.displayName;
