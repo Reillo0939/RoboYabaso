@@ -42,7 +42,7 @@ sheets.spreadsheets.values.get({
     // Handle error
     console.log(err);
   } else {
-    var numRows=;
+    var numRows;
     numRows = response.values;
     console.log('retrieved.   ' + numRows.values);
   }
