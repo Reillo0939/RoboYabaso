@@ -52,14 +52,17 @@ event.reply({
   type: 'image',
   originalContentUrl: 'https://2.bp.blogspot.com/-dibK0MP77Y4/WqfB0d9kSzI/AAAAAAAADI0/671E52U2nRkOAvS22z5iPlA8tnWR8ud-ACLcBGAs/s320/AAUF.jpg',
   previewImageUrl: 'https://2.bp.blogspot.com/-dibK0MP77Y4/WqfB0d9kSzI/AAAAAAAADI0/671E52U2nRkOAvS22z5iPlA8tnWR8ud-ACLcBGAs/s320/AAUF.jpg'
-});
+},
+  { type: 'text', text: '擁有超現代技術與使用beta粒子能量的聯合' });
 }
 if(event.message.text=='蓋爾奇亞聯合'){
 event.reply({
   type: 'image',
   originalContentUrl: 'https://3.bp.blogspot.com/--uGy8owGA_A/WqfB0MIYEXI/AAAAAAAADIw/IdjKaTUd_jkXq3bYqMER7j2nrlaC6XLHwCLcBGAs/s320/GU.jpg',
   previewImageUrl: 'https://3.bp.blogspot.com/--uGy8owGA_A/WqfB0MIYEXI/AAAAAAAADIw/IdjKaTUd_jkXq3bYqMER7j2nrlaC6XLHwCLcBGAs/s320/GU.jpg'
-});
+},
+  { type: 'text', text: '融合現代科技與beta粒子魔法技術的聯合國家' }
+	   );
 }
   event.reply(msg);
 	
