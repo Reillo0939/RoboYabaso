@@ -30,14 +30,10 @@ let a = event.source.userId;
 	let b='';
 event.source.profile().then(function (profile) {
 sheets.spreadsheets.values.get({
-      //auth: API_KEY,
+      auth: API_KEY,
       spreadsheetId: mySheetId,
       range:'test!A1:A1',
-   }, function(err, response) {
-      if (err) {
-         console.log('讀取問題檔的API產生問題：' + err);
-         return;
-      }
+   }, function(response) {
       //title= response.values[0][0];
       console.log('test   '+response.values[0][0]);
    });
