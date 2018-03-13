@@ -4,7 +4,7 @@ var app = express();//262
 var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
 var channelSecret = process.env.LINE_CHANNEL_SECRET;
 var linebot = require('linebot');///030
- var channelId='1487304211';
+ var channelId='1567989750';
 var bot = linebot({
   channelId: channelId,
   channelSecret: channelSecret,
