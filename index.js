@@ -29,14 +29,19 @@ var msg = '';
 let a = event.source.userId;
 	let b='';
 event.source.profile().then(function (profile) {
-sheets.spreadsheets.values.get({
-      auth: API_KEY,
+service.spreadsheets.values.get({
+  auth: API_KEY,
       spreadsheetId: mySheetId,
       range:'test!A1:A1',
-   }, function(response) {
-      //title= response.values[0][0];
-      console.log('test   '+response.values[0][0]);
-   });
+}, function(err, result) {
+  if(err) {
+    // Handle error
+    console.log(err);
+  } else {
+    var numRows = result.values[0];
+    console.log('%d rows retrieved.', numRows);
+  }
+});
 b=profile.displayName;
 //Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
 
