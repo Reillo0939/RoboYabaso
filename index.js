@@ -45,7 +45,7 @@ sheets.spreadsheets.values.get({
   } else {
     var numRows;
     numRows = response.values;
-    console.log('retrieved.   ' + numRows.length);
+    console.log('retrieved.   ' + numRows[0].length);
   }
 });
 b=profile.displayName;
