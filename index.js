@@ -30,7 +30,7 @@ let a = event.source.userId;
 	let b='';
 event.source.profile().then(function (profile) {
 sheets.spreadsheets.values.get({
-      auth: API_KEY,
+      //auth: API_KEY,
       spreadsheetId: mySheetId,
       range:'test!A1:A1',
    }, function(err, response) {
