@@ -32,7 +32,8 @@ event.source.profile().then(function (profile) {
 sheets.spreadsheets.values.get({
   auth: API_KEY,
       spreadsheetId: mySheetId,
-      range:'test!A1:A3',
+      //range:'test!A1:A3',
+	range:encodeURI('test'),
 	//valueRenderOption: '',
 	//dateTimeRenderOption: '',
 	
@@ -44,7 +45,7 @@ sheets.spreadsheets.values.get({
   } else {
     var numRows;
     numRows = response.values;
-    console.log('retrieved.   ' + numRows[0][0]);
+    console.log('retrieved.   ' + numRows.length);
   }
 });
 b=profile.displayName;
