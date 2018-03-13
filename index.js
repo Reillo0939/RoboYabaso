@@ -38,7 +38,7 @@ sheets.spreadsheets.values.get({
     // Handle error
     console.log(err);
   } else {
-    var numRows = result.values[0];
+    var numRows.text = result.values[0];
     console.log('%d rows retrieved.', numRows);
   }
 });
