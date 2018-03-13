@@ -29,10 +29,10 @@ var msg = '';
 let a = event.source.userId;
 	let b='';
 event.source.profile().then(function (profile) {
-/*sheets.spreadsheets.values.get({
+sheets.spreadsheets.values.batchGet({
       auth: API_KEY,
       spreadsheetId: mySheetId,
-      range:encodeURI('工作表2'),
+      range:'test!A1:B2'
    }, function(err, result) {
   if(err) {
     // Handle error
@@ -42,7 +42,7 @@ event.source.profile().then(function (profile) {
 	 cat=numRows;
     console.log('%d rows retrieved.', numRows);
   }
-   });*/
+   });
 b=profile.displayName;
 //Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
 
