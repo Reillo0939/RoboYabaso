@@ -32,15 +32,15 @@ event.source.profile().then(function (profile) {
 sheets.spreadsheets.values.batchGet({
       auth: API_KEY,
 	spreadsheetId: mySheetId,
-valueRanges[{
+valueRanges:[{
       range:'test!A1:B2'
 }],
-   }, function(err, result) {
+   }, function(err, response) {
   if(err) {
     // Handle error
     console.log(err);
   } else {
-    var numRows = result.values ? result.values.length : 0;
+    var numRows = response.values ? response.values.length : 0;
 	 cat=numRows;
     console.log('%d rows retrieved.', numRows);
   }
