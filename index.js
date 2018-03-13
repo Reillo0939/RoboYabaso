@@ -33,13 +33,13 @@ sheets.spreadsheets.values.get({
   auth: API_KEY,
       spreadsheetId: mySheetId,
       range:'test!A1:A1'
-}, function(err, result) {
+}, function(err, response) {
   if(err) {
     // Handle error
     console.log(err);
   } else {
     var numRows='test';
-    numRows = result.range;
+    numRows = response.range;
     console.log('retrieved.   ' + numRows);
   }
 });
