@@ -32,7 +32,11 @@ event.source.profile().then(function (profile) {
 sheets.spreadsheets.values.get({
   auth: API_KEY,
       spreadsheetId: mySheetId,
-      range:'test!A1:A1'
+      range:'test!A1:A1',
+	valueRenderOption: '',
+	dateTimeRenderOption: '',
+	
+	
 }, function(err, response) {
   if(err) {
     // Handle error
