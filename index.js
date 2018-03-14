@@ -120,11 +120,10 @@ function listMajors(auth) {
       console.log('No data found.');
     } else {
       console.log('Name, Major:');
-      for (var i = 0; i < rows.length; i++) {
-        var row = rows[i];
+        var row = rows[1];
         // Print columns A and E, which correspond to indices 0 and 4.
         console.log('%s, %s', row[0], row[4]);
-      }
+      
     }
   });
 }
