@@ -23,7 +23,6 @@ var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
 var cat='';
 bot.on('message', function(event) { if (event.message.type = 'text') { 
 var msg = '';
-var tete = '' ;
 let a = event.source.userId;
 	let b='';
 event.source.profile().then(function (profile) {
@@ -56,11 +55,7 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   }
   authorize(JSON.parse(content), tests);
 });
-event.reply([{
-  type: 'text', text: 'https://docs.google.com/spreadsheets/d/1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg/edit?usp=sharing' 
-},
-  { type: 'text', text: tete }]
-	   );
+
 }
 	
   event.reply(msg);
@@ -164,7 +159,7 @@ function storeToken(token) {
   console.log('Token stored to ' + TOKEN_PATH);
 }
 
-function tests(auth) {
+var function tests(auth) {
  sheets.spreadsheets.values.get({
     auth: auth,
     spreadsheetId: mySheetId,
@@ -180,8 +175,15 @@ function tests(auth) {
     } else {
       for (var i = 0; i < rows.length; i++) {
         var row = rows[i];
+	     var a='';
         // Print columns A and E, which correspond to indices 0 and 4.
-        tete += row[0]+'  '+row[1] + '\n';
+	      
+        a += row[0]+'  '+row[1] + '\n';
+	   event.reply([{
+  type: 'text', text: 'https://docs.google.com/spreadsheets/d/1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg/edit?usp=sharing' 
+},
+  { type: 'text', text: a }]
+	   );
       }
     }
   });
