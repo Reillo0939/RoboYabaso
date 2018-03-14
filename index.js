@@ -58,27 +58,7 @@ var msg = '';
 let a = event.source.userId;
 	let b='';
 event.source.profile().then(function (profile) {
-sheets.spreadsheets.values.get({
-  auth: oauth2Client,
-      spreadsheetId: mySheetId,
-      range:'test!A1:A3',
-}, function(err, response) {
-    if (err) {
-      console.log('The API returned an error: ' + err);
-      return;
-    }
-    var rows = response.values;
-    if (rows.length == 0) {
-      console.log('No data found.');
-    } else {
-      console.log('Name, Major:');
-      for (var i = 0; i < rows.length; i++) {
-        var row = rows[i];
-        // Print columns A and E, which correspond to indices 0 and 4.
-        console.log('%s, %s', row[0], row[4]);
-      }
-    }
-  });
+listMajors(oauth2Client);
 b=profile.displayName;
 //Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
 
@@ -124,3 +104,27 @@ app.listen(app.get('port'), function() {
 	console.log('Node app is running on port', app.get('port'));
 });
 
+function listMajors(auth) {
+  var sheets = google.sheets('v4');
+  sheets.spreadsheets.values.get({
+    auth: auth,
+    spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
+    range: 'Class Data!A2:E',
+  }, function(err, response) {
+    if (err) {
+      console.log('The API returned an error: ' + err);
+      return;
+    }
+    var rows = response.values;
+    if (rows.length == 0) {
+      console.log('No data found.');
+    } else {
+      console.log('Name, Major:');
+      for (var i = 0; i < rows.length; i++) {
+        var row = rows[i];
+        // Print columns A and E, which correspond to indices 0 and 4.
+        console.log('%s, %s', row[0], row[4]);
+      }
+    }
+  });
+}
