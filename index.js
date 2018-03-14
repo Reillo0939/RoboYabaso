@@ -215,6 +215,7 @@ var body = {
   values: values
 };
 sheets.spreadsheets.values.update({
+ auth: auth,
   spreadsheetId: mySheetId,
   range: 'test!A7:A7',
   valueInputOption: 'USER_ENTERED',
