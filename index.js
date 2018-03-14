@@ -32,7 +32,7 @@ var scopes = [
   'https://www.googleapis.com/auth/drive.file',
 'https://www.googleapis.com/auth/drive.readonly',
 	'https://www.googleapis.com/auth/spreadsheets',
-	'https://www.googleapis.com/auth/spreadsheets.readonly',
+	'https://www.googleapis.com/auth/spreadsheets.readonly'
 ];
 
 var url = oauth2Client.generateAuthUrl({
