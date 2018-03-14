@@ -55,7 +55,14 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   }
   authorize(JSON.parse(content), tests);
 });
-
+   event.reply([{
+  type: 'text', text: 'https://docs.google.com/spreadsheets/d/1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg/edit?usp=sharing' 
+},
+  { type: 'text', text: cat }]
+	   );
+      }
+    }
+  });
 }
 	
   event.reply(msg);
@@ -179,12 +186,5 @@ function tests(auth) {
         // Print columns A and E, which correspond to indices 0 and 4.
 	      
         a += row[0]+'  '+row[1] + '\n';
-	   event.reply([{
-  type: 'text', text: 'https://docs.google.com/spreadsheets/d/1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg/edit?usp=sharing' 
-},
-  { type: 'text', text: a }]
-	   );
-      }
-    }
-  });
+	cat=a;
 }
