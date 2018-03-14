@@ -18,8 +18,8 @@ var auth = new googleAuth();
 var OAuth2 = google.auth.OAuth2;
 var REDIRECT_URL='urn:ietf:wg:oauth:2.0:oob';
 var oauth2Client = new OAuth2(
-  '399740110786-ai6tcngsubr5d8jc1qdirv5b1ehmft9h.apps.googleusercontent.com',
-  'GFRUPZFJo1qNKIYabC2T34CD',
+  '399740110786-f7j06o0tsbmvbk2v570qc13g0a034iqa.apps.googleusercontent.com',
+  'm7LO-KOhUMl3TZ4ni1FA8xGo',
  REDIRECT_URL
 );
 
@@ -41,6 +41,13 @@ var url = oauth2Client.generateAuthUrl({
 
   // Optional property that passes state parameters to redirect URI
   // state: 'foo'
+});
+
+oauth2Client.setCredentials({
+  access_token: 'ya29.Glt-BXwq15YrVak0a8aMtYz2EZT0vWlET_heOeXynWVNo_5O2ZKtid1YsU_Xa0XRlJTQLWHloiHzryok-8-6-VgQBh92NIqayQ-fsmrl2X9ngz28SJDtKT8u-lVb',
+  refresh_token: '1/-qRe494bLdbG1DKCRfNzP3LHFTXnAEtcPQ7FiuPfv6k'
+  // Optional, provide an expiry_date (milliseconds since the Unix Epoch)
+  // expiry_date: (new Date()).getTime() + (1000 * 60 * 60 * 24 * 7)
 });
 
 var API_KEY = 'AIzaSyBM_GM_ZVEqwDsOPmpVBR3XI3BhwD4Bfm4'; 
@@ -93,7 +100,7 @@ event.reply([{
 }
   event.reply(msg);
 	
-  console.log(b+'  '+event.message.text+'   '+url);
+  console.log(b+'  '+event.message.text+'   '+cat);
 });
   } });
  
