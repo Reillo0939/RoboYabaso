@@ -55,13 +55,11 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   }
   authorize(JSON.parse(content), tests);
 });
-   event.reply([{
+event.reply([{
   type: 'text', text: 'https://docs.google.com/spreadsheets/d/1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg/edit?usp=sharing' 
 },
-  { type: 'text', text: cat }]
-	   );
-      }
-	
+  { type: 'text', text: cat }]);	
+}
   event.reply(msg);
 	
   console.log(b+'  '+event.message.text+'   '+cat);
