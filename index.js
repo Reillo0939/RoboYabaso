@@ -61,9 +61,6 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   { type: 'text', text: cat }]
 	   );
       }
-    }
-  });
-}
 	
   event.reply(msg);
 	
