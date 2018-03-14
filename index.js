@@ -16,10 +16,35 @@ var sheets = google.sheets('v4');
 var googleAuth = require('google-auth-library');
 var auth = new googleAuth();
 //var OAuth2 = google.auth.OAuth2;
-var oauth2Client = new auth.OAuth2(  '399740110786-ne3lhespt77ni2mt99ae1sunohrts5jh.apps.googleusercontent.com',
+/*var oauth2Client = new auth.OAuth2(  '399740110786-ne3lhespt77ni2mt99ae1sunohrts5jh.apps.googleusercontent.com',
 'OzjUGCSYtQExFf4k_XJc9Q_W',
   'https://dream-realm-v2.herokuapp.com/oauth2calkback'
+);*/
+var oauth2Client = new OAuth2(
+  '399740110786-ne3lhespt77ni2mt99ae1sunohrts5jh.apps.googleusercontent.com',
+  'OzjUGCSYtQExFf4k_XJc9Q_W',
+  'https://dream-realm-v2.herokuapp.com/oauth2calkback'
 );
+
+// generate a url that asks permissions for Google+ and Google Calendar scopes
+var scopes = [
+  'https://www.googleapis.com/auth/drive',
+  'https://www.googleapis.com/auth/drive.file',
+'https://www.googleapis.com/auth/drive.readonly',
+	'https://www.googleapis.com/auth/spreadsheets',
+	'https://www.googleapis.com/auth/spreadsheets.readonly',
+];
+
+var url = oauth2Client.generateAuthUrl({
+  // 'online' (default) or 'offline' (gets refresh_token)
+  access_type: 'offline',
+
+  // If you only need one scope you can pass it as a string
+  scope: scopes,
+
+  // Optional property that passes state parameters to redirect URI
+  // state: 'foo'
+});
 
 var API_KEY = 'AIzaSyBM_GM_ZVEqwDsOPmpVBR3XI3BhwD4Bfm4'; 
 var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
