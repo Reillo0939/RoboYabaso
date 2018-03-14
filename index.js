@@ -18,32 +18,6 @@ var auth = new googleAuth();
 var OAuth2 = google.auth.OAuth2;
 var REDIRECT_URL='urn:ietf:wg:oauth:2.0:oob';
 // generate a url that asks permissions for Google+ and Google Calendar scopes
-var scopes = [
-  'https://www.googleapis.com/auth/drive',
-  'https://www.googleapis.com/auth/drive.file',
-'https://www.googleapis.com/auth/drive.readonly',
-	'https://www.googleapis.com/auth/spreadsheets',
-	'https://www.googleapis.com/auth/spreadsheets.readonly'
-];
-
-var url = oauth2Client.generateAuthUrl({
-  // 'online' (default) or 'offline' (gets refresh_token)
-  access_type: 'offline',
-
-  // If you only need one scope you can pass it as a string
-  scope: scopes,
-
-  // Optional property that passes state parameters to redirect URI
-  // state: 'foo'
-});
-
-oauth2Client.setCredentials({
-  access_token: 'ya29.Glt-BXwq15YrVak0a8aMtYz2EZT0vWlET_heOeXynWVNo_5O2ZKtid1YsU_Xa0XRlJTQLWHloiHzryok-8-6-VgQBh92NIqayQ-fsmrl2X9ngz28SJDtKT8u-lVb',
-  refresh_token: '1/-qRe494bLdbG1DKCRfNzP3LHFTXnAEtcPQ7FiuPfv6k'
-  // Optional, provide an expiry_date (milliseconds since the Unix Epoch)
-  // expiry_date: (new Date()).getTime() + (1000 * 60 * 60 * 24 * 7)
-});
-
 var API_KEY = 'AIzaSyBM_GM_ZVEqwDsOPmpVBR3XI3BhwD4Bfm4'; 
 var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
 var cat='';
