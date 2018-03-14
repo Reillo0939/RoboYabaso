@@ -210,12 +210,13 @@ function gotgpt(auth) {
   ],
 ];
 var body = {
- valueInputOption : 'RAW',
   values: values
 };
 	var request = {
     spreadsheetId: mySheetId,
         range: 'test!A7:A7',
+        insertDataOption: 'INSERT_ROWS',
+      valueInputOption: 'RAW',
         resource: {
       body
     },
