@@ -208,7 +208,7 @@ function gotgpt(auth,input) {
 	
 	
 	var values = [
-  [input
+  ['030'
   ],
 ];
 var body = {
