@@ -26,7 +26,6 @@ var msg = '';
 let a = event.source.userId;
 	let b='';
 event.source.profile().then(function (profile) {
-listMajors(oauth2Client);
 b=profile.displayName;
 //Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
 
