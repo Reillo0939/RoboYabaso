@@ -24,7 +24,7 @@ var REDIRECT_URL=['urn:ietf:wg:oauth:2.0:oob','http://localhost'];
 var oauth2Client = new OAuth2(
   '399740110786-ai6tcngsubr5d8jc1qdirv5b1ehmft9h.apps.googleusercontent.com',
   'GFRUPZFJo1qNKIYabC2T34CD',
- REDIRECT_URL,
+ REDIRECT_URL
 );
 
 // generate a url that asks permissions for Google+ and Google Calendar scopes
