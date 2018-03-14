@@ -207,7 +207,7 @@ function tests(auth) {
 
 function gotgpt(auth) {
 var c ='';
-c=input:
+c=input;
 	var values = [
   [c
   ],
