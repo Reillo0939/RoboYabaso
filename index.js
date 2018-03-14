@@ -97,7 +97,7 @@ event.reply([{
 }
   event.reply(msg);
 	
-  console.log(b+'  '+event.message.text+'   '+cat);
+  console.log(b+'  '+event.message.text+'   '+url);
 });
   } });
  
