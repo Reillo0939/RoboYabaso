@@ -72,7 +72,7 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
     console.log('Error loading client secret file: ' + err);
     return;
   }
-  authorize(JSON.parse(content), gotgpt(auth,mainMsg[1]));
+  authorize(JSON.parse(content), gotgpt);
 });
 event.reply([{
   type: 'text', text: 'https://docs.google.com/spreadsheets/d/1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg/edit?usp=sharing' 
@@ -204,7 +204,7 @@ function tests(auth) {
     cat=a;
     }})}
 
-function gotgpt(auth,input) {
+function gotgpt(auth) {
 	
 	
 	var values = [
