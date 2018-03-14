@@ -47,6 +47,7 @@ event.reply([{
   { type: 'text', text: '融合現代科技與beta粒子魔法技術的聯合國家' }]
 	   );
 }
+	
 if(event.message.text=='試算表測試'){
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   if (err) {
@@ -60,8 +61,24 @@ event.reply([{
 },
   { type: 'text', text: cat }]);	
 }
-  event.reply(msg);
+	let msgSplitor = (/\S+/ig);	
+	let mainMsg = event.message.text.match(msgSplitor); //定義輸入字串
+	let trigger = mainMsg[0].toString().toLowerCase(); //指定啟動詞在第一個詞&把大階強制轉成細階
+if(trigger.match(/寫入實驗/) != null){
+		
 	
+fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+  if (err) {
+    console.log('Error loading client secret file: ' + err);
+    return;
+  }
+  authorize(JSON.parse(content), gotgpt(auth,mainMsg[1]));
+});
+event.reply([{
+  type: 'text', text: 'https://docs.google.com/spreadsheets/d/1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg/edit?usp=sharing' 
+}]);	
+}	
+  event.reply(msg);
   console.log(b+'  '+event.message.text+'   '+cat);
 });
   } });
@@ -186,3 +203,27 @@ function tests(auth) {
 }
     cat=a;
     }})}
+
+function gotgpt(auth,input) {
+	
+	
+	var values = [
+  [input
+  ],
+];
+var body = {
+  values: values
+};
+sheets.spreadsheets.values.update({
+  spreadsheetId: mySheetId,
+  range: 'test!A7:A7',
+  valueInputOption: USER_ENTERED,
+  resource: body
+}, function(err, result) {
+  if(err) {
+    // Handle error
+    console.log(err);
+  } else {
+    console.log('%d cells updated.', result.updatedCells);
+  }
+});
