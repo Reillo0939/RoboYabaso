@@ -21,6 +21,7 @@ var REDIRECT_URL='urn:ietf:wg:oauth:2.0:oob';
 var API_KEY = 'AIzaSyBM_GM_ZVEqwDsOPmpVBR3XI3BhwD4Bfm4'; 
 var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
 var cat='';
+var input='':
 bot.on('message', function(event) { if (event.message.type = 'text') { 
 var msg = '';
 let a = event.source.userId;
@@ -66,7 +67,7 @@ event.reply([{
 	let trigger = mainMsg[0].toString().toLowerCase(); //指定啟動詞在第一個詞&把大階強制轉成細階
 if(trigger.match(/寫入實驗/) != null){
 		
-	
+	input=mainMsg[1];
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   if (err) {
     console.log('Error loading client secret file: ' + err);
@@ -205,8 +206,10 @@ function tests(auth) {
     }})}
 
 function gotgpt(auth) {
+var c ='';
+c=input:
 	var values = [
-  ['030'
+  [c
   ],
 ];
 var body = {
