@@ -217,7 +217,7 @@ var body = {
 sheets.spreadsheets.values.update({
   spreadsheetId: mySheetId,
   range: 'test!A7:A7',
-  valueInputOption: USER_ENTERED,
+  valueInputOption: 'USER_ENTERED',
   resource: body
 }, function(err, result) {
   if(err) {
