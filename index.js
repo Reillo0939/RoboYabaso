@@ -17,11 +17,6 @@ var googleAuth = require('google-auth-library');
 var auth = new googleAuth();
 var OAuth2 = google.auth.OAuth2;
 var REDIRECT_URL='urn:ietf:wg:oauth:2.0:oob';
-/*var oauth2Client = new auth.OAuth2(  '399740110786-ne3lhespt77ni2mt99ae1sunohrts5jh.apps.googleusercontent.com',
-'OzjUGCSYtQExFf4k_XJc9Q_W',
-  'https://dream-realm-v2.herokuapp.com/oauth2calkback'
-);*/
-
 var oauth2Client = new OAuth2(
   '399740110786-ai6tcngsubr5d8jc1qdirv5b1ehmft9h.apps.googleusercontent.com',
   'GFRUPZFJo1qNKIYabC2T34CD',
@@ -47,12 +42,7 @@ var url = oauth2Client.generateAuthUrl({
   // Optional property that passes state parameters to redirect URI
   // state: 'foo'
 });
-oauth2Client.getToken(code, function (err, tokens) {
-  // Now tokens contains an access_token and an optional refresh_token. Save them.
-  if (!err) {
-    oauth2Client.setCredentials(tokens);
-  }
-});
+
 var API_KEY = 'AIzaSyBM_GM_ZVEqwDsOPmpVBR3XI3BhwD4Bfm4'; 
 var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
 var cat='';
