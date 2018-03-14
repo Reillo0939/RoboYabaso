@@ -159,7 +159,7 @@ function storeToken(token) {
   console.log('Token stored to ' + TOKEN_PATH);
 }
 
-var function tests(auth) {
+function tests(auth) {
  sheets.spreadsheets.values.get({
     auth: auth,
     spreadsheetId: mySheetId,
