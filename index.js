@@ -218,7 +218,7 @@ sheets.spreadsheets.values.update({
  auth: auth,
   spreadsheetId: mySheetId,
   range: 'test!A7:A7',
-  valueInputOption: 'RAW',
+  valueInputOption:'RAW',
   resource: body
 }, function(err, result) {
   if(err) {
