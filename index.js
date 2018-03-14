@@ -183,3 +183,4 @@ function tests(auth) {
         a += row[0]+'  '+row[1] + '\n';
 	cat=a;
 }
+    }
