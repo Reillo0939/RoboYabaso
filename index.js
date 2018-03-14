@@ -181,5 +181,7 @@ function tests(auth) {
         // Print columns A and E, which correspond to indices 0 and 4.
 	      
         a += row[0]+'  '+row[1] + '\n';
-	cat=a;
-}}})}
+	
+}
+    cat=a;
+    }})}
