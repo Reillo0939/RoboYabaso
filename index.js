@@ -227,3 +227,4 @@ sheets.spreadsheets.values.update({
     console.log('%d cells updated.', result.updatedCells);
   }
 });
+}
