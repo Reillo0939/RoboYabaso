@@ -49,27 +49,13 @@ event.reply([{
 	   );
 }
 if(event.message.text=='試算表測試'){
-	sheets.spreadsheets.values.get({
-    auth: auth,
-    spreadsheetId: mySheetId,
-    range: 'test!A1:B6',
-  }, function(err, response) {
-    if (err) {
-      console.log('The API returned an error: ' + err);
-      return;
-    }
-    var rows = response.values;
-    if (rows.length == 0) {
-      console.log('No data found.');
-    } else {
-      for (var i = 0; i < rows.length; i++) {
-        var row = rows[i];
-	var tete = '' ;
-        // Print columns A and E, which correspond to indices 0 and 4.
-        tete += row[0]+'  '+row[1] + '\n';
-      }
-    }
-  });
+fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+  if (err) {
+    console.log('Error loading client secret file: ' + err);
+    return;
+  }
+  authorize(JSON.parse(content), tests);
+});
 event.reply([{
   type: 'text', text: 'https://docs.google.com/spreadsheets/d/1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg/edit?usp=sharing' 
 },
@@ -187,3 +173,26 @@ function storeToken(token) {
   console.log('Token stored to ' + TOKEN_PATH);
 }
 
+function tests(auth) {
+ sheets.spreadsheets.values.get({
+    auth: auth,
+    spreadsheetId: mySheetId,
+    range: 'test!A1:B6',
+  }, function(err, response) {
+    if (err) {
+      console.log('The API returned an error: ' + err);
+      return;
+    }
+    var rows = response.values;
+    if (rows.length == 0) {
+      console.log('No data found.');
+    } else {
+      for (var i = 0; i < rows.length; i++) {
+        var row = rows[i];
+	var tete = '' ;
+        // Print columns A and E, which correspond to indices 0 and 4.
+        tete += row[0]+'  '+row[1] + '\n';
+      }
+    }
+  });
+}
