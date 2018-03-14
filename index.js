@@ -61,22 +61,24 @@ event.source.profile().then(function (profile) {
 sheets.spreadsheets.values.get({
   auth: oauth2Client,
       spreadsheetId: mySheetId,
-      //range:'test!A1:A3',
-	range:encodeURI('test'),
-	//valueRenderOption: '',
-	//dateTimeRenderOption: '',
-	
-	
+      range:'test!A1:A3',
 }, function(err, response) {
-  if(err) {
-    // Handle error
-    console.log(err);
-  } else {
-    var numRows;
-    numRows = response.values;
-    console.log('retrieved.   ' + numRows[1].length);
-  }
-});
+    if (err) {
+      console.log('The API returned an error: ' + err);
+      return;
+    }
+    var rows = response.values;
+    if (rows.length == 0) {
+      console.log('No data found.');
+    } else {
+      console.log('Name, Major:');
+      for (var i = 0; i < rows.length; i++) {
+        var row = rows[i];
+        // Print columns A and E, which correspond to indices 0 and 4.
+        console.log('%s, %s', row[0], row[4]);
+      }
+    }
+  });
 b=profile.displayName;
 //Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
 
