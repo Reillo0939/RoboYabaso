@@ -216,7 +216,7 @@ var body = {
     spreadsheetId: mySheetId,
         range: 'test!A7:A7',
         insertDataOption: 'INSERT_ROWS',
-      valueInputOption: 'RAW',
+      valueInputOption: 'raw',
         resource: {
       body
     },
