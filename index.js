@@ -215,8 +215,7 @@ var body = {
 	var request = {
     spreadsheetId: mySheetId,
         range: 'test!A7:A7',
-        insertDataOption: 'INSERT_ROWS',
-      valueInputOption: 'raw',
+      valueInputOption: 'RAW',
         resource: {
       body
     },
