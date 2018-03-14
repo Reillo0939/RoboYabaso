@@ -217,7 +217,7 @@ var body = {
         range: 'test!A7:A7',
       valueInputOption: 'RAW',
         resource: {
-      body
+      values: values
     },
 
     auth: auth,
