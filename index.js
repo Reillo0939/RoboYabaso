@@ -205,8 +205,6 @@ function tests(auth) {
     }})}
 
 function gotgpt(auth) {
-	
-	
 	var values = [
   ['030'
   ],
@@ -214,13 +212,18 @@ function gotgpt(auth) {
 var body = {
   values: values
 };
-sheets.spreadsheets.values.update({
- auth: auth,
-  spreadsheetId: mySheetId,
-  range: 'test!A7:A7',
-  valueInputOption:'RAW',
-  resource: body
-}, function(err, result) {
+	var request = {
+    spreadsheetId: mySheetId,
+        range: 'test!A7:A7',
+    valueInputOption: 'RAW',
+        resource: {
+      body
+    },
+
+    auth: auth,
+  };
+	
+sheets.spreadsheets.values.update(request, function(err, result) {
   if(err) {
     // Handle error
     console.log(err);
