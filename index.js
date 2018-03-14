@@ -23,6 +23,7 @@ var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
 var cat='';
 bot.on('message', function(event) { if (event.message.type = 'text') { 
 var msg = '';
+var tete = '' ;
 let a = event.source.userId;
 	let b='';
 event.source.profile().then(function (profile) {
@@ -179,7 +180,6 @@ function tests(auth) {
     } else {
       for (var i = 0; i < rows.length; i++) {
         var row = rows[i];
-	var tete = '' ;
         // Print columns A and E, which correspond to indices 0 and 4.
         tete += row[0]+'  '+row[1] + '\n';
       }
