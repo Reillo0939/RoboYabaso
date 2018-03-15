@@ -199,7 +199,7 @@ function tests(auth) {
     if (rows.length == 0) {
       console.log('No data found.');
     } else {
-	     var row = rows[i];
+	     var row = rows[0];
 	    Characters[0]=row[0];
 	    Characters[1]=row[1];
 	    Characters[2]=row[2];
