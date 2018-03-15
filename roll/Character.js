@@ -118,7 +118,7 @@ rply.text=
 '\n水屬適性： '+ Water +
 '\n風屬適性： '+ Wind +
 '\n土屬適性： '+ Earth +
-'\n成長點： '+  Growing	
+'\n成長點： '+  Growing	+'\n' + Characters[0][0] +  Characters[0][1]+ Characters[0][2]
 ;
 if((age<14)||(age>65)){
 Occupation='不適合戰鬥者';
