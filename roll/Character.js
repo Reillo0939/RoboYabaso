@@ -204,8 +204,9 @@ function tests(auth) {
 	    Cha[0]=row[0];
 	    Cha[1]=row[1];
 	    Cha[2]=row[2];
+	    Characters[0]=Cha;
     }})
-Characters[0]=Cha;
+
 }
 
 
