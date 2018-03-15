@@ -189,7 +189,7 @@ function tests(auth) {
  sheets.spreadsheets.values.get({
     auth: auth,
     spreadsheetId: mySheetId,
-    range: 'test',
+    range: '角色',
   }, function(err, response) {
     if (err) {
       console.log('The API returned an error: ' + err);
