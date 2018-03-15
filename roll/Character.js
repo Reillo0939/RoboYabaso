@@ -73,18 +73,8 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 var Characters = [];
 var cat,re;
 function CM(name,age,id) {
-re=0;
 	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation,Growing;
-fs.readFile('client_secret.json', function processClientSecrets(err, content) {
-  if (err) {
-    console.log('Error loading client secret file: ' + err);
-    return;
-  }
-  authorize(JSON.parse(content), tests);
-});
-for(var u=0;u<12000;u++){
-if(re==1)break;
-}
+oz();
 console.log('幹');
 for(var tt=0;tt<cat;tt++){
 if(Characters[tt][0]==id){
@@ -190,10 +180,17 @@ module.exports = {
 	CT:CT
 };
 
+function oz() {
+fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+  if (err) {
+    console.log('Error loading client secret file: ' + err);
+    return;
+  }
+  authorize(JSON.parse(content), tests);
+});
 
 
-
-
+}
 
 
 
@@ -228,7 +225,7 @@ function tests(auth) {
 	    }
 	    
     }})
-re=1;
+
 }
 
 
