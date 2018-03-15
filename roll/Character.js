@@ -213,7 +213,7 @@ function tests(auth) {
 	    			Cha[j]=row[j];
 			}
 			else{
-				Cha[j]=0;
+				Cha[j]='0';
 			}
 		}
 		    Characters[i]=Cha;
