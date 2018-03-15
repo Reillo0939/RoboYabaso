@@ -69,7 +69,7 @@ function storeToken(token) {
 }
 //-------------------------------------------------------------------------------------------------------------------------------
 var rply ={type : 'text'}; //type是必需的,但可以更改
-
+var Characters = [];
 function CM(name,age) {
 	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation,Growing;
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
@@ -176,7 +176,9 @@ module.exports = {
 	CM:CM,
 	CT:CT
 };
+
 function tests(auth) {
+	var aa = [];
  sheets.spreadsheets.values.get({
     auth: auth,
     spreadsheetId: mySheetId,
@@ -187,18 +189,26 @@ function tests(auth) {
       return;
     }
     var rows = response.values;
-	 var Characters = [];
+	 
     if (rows.length == 0) {
       console.log('No data found.');
     } else {
 	     
       for (var i = 0; i < rows.length; i++) {
         var row = rows[i];
-	var Cha =Characters[i];
+	var Cha =aa[i];
 	      for(var j=0;j<15;j++){
 		Cha[j]=row[j];}
 }
-    }})}
+    }})
+for (var i = 0; i < Characters.length; i++) {
+	var Cha =aa[i];
+	var cc = Characters[i];
+	      for(var j=0;j<15;j++){
+		cc[j]=Cha[j];}
+}
+
+}
 
 /*function gotgpt(auth) {
 var c ='';
