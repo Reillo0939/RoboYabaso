@@ -80,10 +80,12 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   }
   authorize(JSON.parse(content), tests);
 });
-var ax = Characters.indexOf(id); // 1
+for(var tt=0;tt<10;tt++){
+var ax = Characters[tt].indexOf(id); // 1
 if(ax != -1){
 rply.text='你已有角色';
 return rply;	
+}
 }
 if((age>=30)&&(age<=65)){
 Occupation='媒介使';
