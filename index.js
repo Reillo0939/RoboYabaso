@@ -198,10 +198,10 @@ function tests(auth) {
         var row = rows[i];
 	    
         // Print columns A and E, which correspond to indices 0 and 4.
-	      if(i ==rows.length){
+	      if(i ==rows.length-1){
         a += 'id ' + row[0]+'name '+row[1] +'LV '+row[2];}
 	      else{
-		      a += 'id ' + row[0]+'name '+row[1] +'LV '+row[2]+'\n';
+		      a += 'id ' + row[0]+' name '+row[1] +' LV '+row[2]+'\n';
 	      }
 	
 }
