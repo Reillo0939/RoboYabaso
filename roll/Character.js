@@ -71,7 +71,7 @@ function storeToken(token) {
 var rply ={type : 'text'}; //type是必需的,但可以更改
 var Characters = [];
 var cat;
-function CM(name,age,idss) {
+function CM(name,age,id) {
 	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation,Growing;
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   if (err) {
@@ -80,12 +80,12 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   }
   authorize(JSON.parse(content), tests);
 });
-for( var t=0;t<50;t++){
-if(Characters[t][0]==idss){
+/*for( var t=0;t<50;t++){
+if(Characters[t][0]==id){
 rply.text='你已有角色';
 return rply;	
 }
-}
+}*/
 if((age>=30)&&(age<=65)){
 Occupation='媒介使';
 HP=((rollbase.Dice(20) - 1) * 9)+20;
@@ -125,7 +125,7 @@ rply.text=
 '\n水屬適性： '+ Water +
 '\n風屬適性： '+ Wind +
 '\n土屬適性： '+ Earth +
-'\n成長點： '+  Growing	
+'\n成長點： '+  Growing	+'\n'+id
 ;
 if((age<14)||(age>65)){
 Occupation='不適合戰鬥者';
