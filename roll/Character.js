@@ -135,7 +135,7 @@ rply.text=
 '['+ name +']  年齡：' +age +
 '\n職業：  ' + Occupation ;
 }
-
+console.log('不要這麼慢喔');
 
 return rply;	
 }
