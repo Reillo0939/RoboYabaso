@@ -206,11 +206,11 @@ function tests(auth) {
         var row = rows[i];
 	var Cha =aa[i];
 	      for(var j=0;j<15;j++){
-		Cha[j]=row[j];}
+		Cha[j]=row[j];
+	      }
 }
     }})
 for (var i = 0; i < Characters.length; i++) {
-	var Cha =aa[i];
 	var cc = Characters[i];
 	      for(var j=0;j<15;j++){
 		cc[j]=Cha[j];}
