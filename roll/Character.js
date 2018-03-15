@@ -72,6 +72,8 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 var Characters = [];
 var cat;
 function CM(name,age,id) {
+	var ids='';
+	ids=id;
 	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation,Growing;
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   if (err) {
@@ -81,7 +83,7 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   authorize(JSON.parse(content), tests);
 });
 for( var t=0;t<50;t++){
-if(Characters[t][0]=='Uc9b4571605aabd3e94edd7c189144278'){
+if(Characters[t][0]==ids){
 rply.text='你已有角色';
 return rply;	
 }
