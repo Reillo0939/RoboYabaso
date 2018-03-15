@@ -82,8 +82,8 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   }
   authorize(JSON.parse(content), tests);
 });
-while( re==0) {
-　
+for(var u=0;u<6000;u++){
+if(re==1)break;
 }
 console.log('幹');
 for(var tt=0;tt<cat;tt++){
