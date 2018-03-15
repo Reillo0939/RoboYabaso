@@ -87,6 +87,7 @@ rply.text='你已有角色';
 return rply;	
 }
 }
+console.log('騙人的吧');
 if((age>=30)&&(age<=65)){
 Occupation='媒介使';
 HP=((rollbase.Dice(20) - 1) * 9)+20;
