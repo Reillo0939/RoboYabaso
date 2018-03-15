@@ -67,6 +67,41 @@ function storeToken(token) {
   fs.writeFile(TOKEN_PATH, JSON.stringify(token));
   console.log('Token stored to ' + TOKEN_PATH);
 }
+
+function tests(auth) {
+ sheets.spreadsheets.values.get({
+    auth: auth,
+    spreadsheetId: mySheetId,
+    range: 'Character',
+  }, function(err, response) {
+    if (err) {
+      console.log('The API returned an error: ' + err);
+      return;
+    }
+    var rows = response.values;
+    if (rows.length == 0) {
+      console.log('No data found.');
+    } else {
+	    cat=rows.length;
+	    for (var i = 0; i < rows.length; i++) {
+	     var row = rows[i];
+	     var Cha=[];
+		for(var j = 0 ; j < 15;j++){
+			if(row[j]!= null){
+	    			Cha[j]=row[j];
+			}
+			else{
+				Cha[j]='0';
+			}
+			console.log(Cha[j]);
+		}
+		    Characters[i]=Cha;
+	    }
+	    
+    }})
+
+}
+
 //-------------------------------------------------------------------------------------------------------------------------------
 var rply ={type : 'text'}; //type是必需的,但可以更改
 var Characters = [];
@@ -192,39 +227,6 @@ module.exports = {
 
 
 
-function tests(auth) {
- sheets.spreadsheets.values.get({
-    auth: auth,
-    spreadsheetId: mySheetId,
-    range: 'Character',
-  }, function(err, response) {
-    if (err) {
-      console.log('The API returned an error: ' + err);
-      return;
-    }
-    var rows = response.values;
-    if (rows.length == 0) {
-      console.log('No data found.');
-    } else {
-	    cat=rows.length;
-	    for (var i = 0; i < rows.length; i++) {
-	     var row = rows[i];
-	     var Cha=[];
-		for(var j = 0 ; j < 15;j++){
-			if(row[j]!= null){
-	    			Cha[j]=row[j];
-			}
-			else{
-				Cha[j]='0';
-			}
-			console.log(Cha[j]);
-		}
-		    Characters[i]=Cha;
-	    }
-	    
-    }})
-
-}
 
 
 /*function gotgpt(auth) {
