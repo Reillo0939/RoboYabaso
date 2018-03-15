@@ -186,7 +186,6 @@ module.exports = {
 
 
 function tests(auth) {
-	var aa = [];
  sheets.spreadsheets.values.get({
     auth: auth,
     spreadsheetId: mySheetId,
@@ -197,26 +196,15 @@ function tests(auth) {
       return;
     }
     var rows = response.values;
-	 
     if (rows.length == 0) {
       console.log('No data found.');
     } else {
-	     
-      for (var i = 0; i < rows.length; i++) {
-        var row = rows[i];
-	var Cha =aa[i];
-	      for(var j=0;j<15;j++){
-		Cha[j]=row[j];
-	      }
-}
-    }})
-for (var i = 0; i < Characters.length; i++) {
-	var cc = Characters[i];
-	      for(var j=0;j<15;j++){
-		cc[j]=Cha[j];}
-}
+	     var row = rows[i];
+	    Characters[0]=row[0];
+	    Characters[1]=row[1];
+	    Characters[2]=row[2];
+    }})}
 
-}
 
 /*function gotgpt(auth) {
 var c ='';
