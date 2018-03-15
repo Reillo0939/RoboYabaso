@@ -183,7 +183,7 @@ function tests(auth) {
  sheets.spreadsheets.values.get({
     auth: auth,
     spreadsheetId: mySheetId,
-    range: 'test!A1:B6',
+    range: 'test',
   }, function(err, response) {
     if (err) {
       console.log('The API returned an error: ' + err);
@@ -198,8 +198,11 @@ function tests(auth) {
         var row = rows[i];
 	    
         // Print columns A and E, which correspond to indices 0 and 4.
-	      
-        a += row[0]+'  '+row[1] + '\n';
+	      if(i ==rows.length){
+        a += 'id ' + row[0]+'name '+row[1] +'LV '+row[2];}
+	      else{
+		      a += 'id ' + row[0]+'name '+row[1] +'LV '+row[2]+'\n';
+	      }
 	
 }
     cat=a;
