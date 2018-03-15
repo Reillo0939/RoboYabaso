@@ -71,7 +71,7 @@ function storeToken(token) {
 var rply ={type : 'text'}; //type是必需的,但可以更改
 var Characters = [];
 var cat;
-function CM(name,age) {
+function CM(name,age,id) {
 	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation,Growing;
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   if (err) {
@@ -137,7 +137,7 @@ rply.text=
 
 return rply;	
 }
-function CT(name,age) {
+function CT(name,age,id) {
 	var HP,MP,ATK,Reaction,Occupation,Control,Growing;
 if((age>=40)&&(age<=60)){
 Occupation='外部裝甲操縱人員';
