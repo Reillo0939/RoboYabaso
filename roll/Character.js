@@ -1,5 +1,6 @@
 var rollbase = require('./rollbase.js');
 var funny = require('./funny.js');
+var main = require('/index.js');
 var rply ={type : 'text'}; //type是必需的,但可以更改
 
 function CM(name,age) {
