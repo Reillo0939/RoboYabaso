@@ -70,6 +70,7 @@ function storeToken(token) {
 //-------------------------------------------------------------------------------------------------------------------------------
 var rply ={type : 'text'}; //type是必需的,但可以更改
 var Characters = [];
+var cat;
 function CM(name,age) {
 	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation,Growing;
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
@@ -119,7 +120,7 @@ rply.text=
 '\n水屬適性： '+ Water +
 '\n風屬適性： '+ Wind +
 '\n土屬適性： '+ Earth +
-'\n成長點： '+  Growing	+'\n' + Characters[0][0] +  Characters[0][1]+ Characters[0][2]
+'\n成長點： '+  Growing	+'\n' + cat
 ;
 if((age<14)||(age>65)){
 Occupation='不適合戰鬥者';
@@ -177,7 +178,58 @@ module.exports = {
 	CT:CT
 };
 
+
 function tests(auth) {
+ sheets.spreadsheets.values.get({
+    auth: auth,
+    spreadsheetId: mySheetId,
+    range: 'test',
+  }, function(err, response) {
+    if (err) {
+      console.log('The API returned an error: ' + err);
+      return;
+    }
+    var rows = response.values;
+    if (rows.length == 0) {
+      console.log('No data found.');
+    } else {
+	     var a='';
+      for (var i = 0; i < rows.length; i++) {
+        var row = rows[i];
+	    
+        // Print columns A and E, which correspond to indices 0 and 4.
+	      if(i ==rows.length-1){
+        a += 'id ' + row[0]+' name '+row[1] +' LV '+row[2];}
+	      else{
+		      a += 'id ' + row[0]+' name '+row[1] +' LV '+row[2]+'\n';
+	      }
+	
+}
+    cat=a;
+    }})}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*function tests(auth) {
 	var aa = [];
  sheets.spreadsheets.values.get({
     auth: auth,
@@ -208,7 +260,7 @@ for (var i = 0; i < Characters.length; i++) {
 		cc[j]=Cha[j];}
 }
 
-}
+}*/
 
 /*function gotgpt(auth) {
 var c ='';
