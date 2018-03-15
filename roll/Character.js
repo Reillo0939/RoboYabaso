@@ -99,22 +99,6 @@ function tests(auth) {
 	    }
 	    
     }})
-
-}
-
-//-------------------------------------------------------------------------------------------------------------------------------
-var rply ={type : 'text'}; //type是必需的,但可以更改
-var Characters = [];
-var cat;
-function CM(name,age,id) {
-	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation,Growing;
-fs.readFile('client_secret.json', function processClientSecrets(err, content) {
-  if (err) {
-    console.log('Error loading client secret file: ' + err);
-    return;
-  }
-  authorize(JSON.parse(content), tests);
-});
 console.log('幹');
 for(var tt=0;tt<cat;tt++){
 if(Characters[tt][0]==id){
@@ -171,6 +155,24 @@ rply.text=
 '\n職業：  ' + Occupation ;
 }
 
+}
+
+//-------------------------------------------------------------------------------------------------------------------------------
+var rply ={type : 'text'}; //type是必需的,但可以更改
+var Characters = [];
+var cat;
+	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation,Growing,id,name,age;
+function CM(names,ages,ids) {
+name=names;
+age=ages;
+id=ids;
+fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+  if (err) {
+    console.log('Error loading client secret file: ' + err);
+    return;
+  }
+  authorize(JSON.parse(content), tests);
+});
 
 return rply;	
 }
