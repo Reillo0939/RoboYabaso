@@ -67,6 +67,15 @@ function storeToken(token) {
   fs.writeFile(TOKEN_PATH, JSON.stringify(token));
   console.log('Token stored to ' + TOKEN_PATH);
 }
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+
 //-------------------------------------------------------------------------------------------------------------------------------
 var rply ={type : 'text'}; //type是必需的,但可以更改
 var Characters = [];
@@ -80,61 +89,7 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   }
   authorize(JSON.parse(content), tests);
 });
-
-setTimeout(ccc(name,age,id),2000);
-
-setTimeout(return rply;	,3000)
-
-}
-function CT(name,age,id) {
-	var HP,MP,ATK,Reaction,Occupation,Control,Growing;
-if((age>=40)&&(age<=60)){
-Occupation='外部裝甲操縱人員';
-HP=((rollbase.Dice(20) - 1) * 9)+20;
-MP=((rollbase.Dice(5) - 1) * 9)+20;
-ATK=rollbase.Dice(70-age);
-Reaction=rollbase.Dice(70-age);
-Control=rollbase.Dice(70-age);
-Growing=rollbase.Dice(61-age);
-}
-if((age>=16)&&(age<=39)){
-Occupation='外部裝甲操縱人員';
-HP=((rollbase.Dice(20) - 1) * 9)+50;
-MP=((rollbase.Dice(20) - 1) * 9)+20;
-ATK=rollbase.Dice(50);
-Reaction=rollbase.Dice(50);
-Control=rollbase.Dice(50);
-Growing=Math.floor(((35-ATK)+(35-Control))*0.5);
-}
-if(Growing<=10)Growing=rollbase.Dice(5)+10;
-if((Control<10)||(MP<50))Occupation='外骨骼裝備步兵';
-rply.text=
-'['+ name +']  年齡：' +age +
-'\n職業：  ' + Occupation +
-'\n生命值： '+ HP +
-'\nBata粒子適性： '+ MP +
-'\n物理適性： '+ ATK +
-'\n控制能力： '+ Control +
-'\n反應力： '+ Reaction +
-'\n成長點： '+  Growing;
-
-if((age<16)||(age>60)){
-Occupation='不適合戰鬥者';
-rply.text=
-'['+ name +']  年齡：' +age +
-'\n職業：  ' + Occupation ;
-}
-return rply;	
-}
-
-module.exports = {
-	CM:CM,
-	CT:CT
-};
-
-
-
-function ccc(name,age,id){
+sleep(2000);
 console.log('幹');
 for(var tt=0;tt<cat;tt++){
 if(Characters[tt][0]==id){
@@ -192,7 +147,57 @@ rply.text=
 }
 
 
+return rply;	
 }
+function CT(name,age,id) {
+	var HP,MP,ATK,Reaction,Occupation,Control,Growing;
+if((age>=40)&&(age<=60)){
+Occupation='外部裝甲操縱人員';
+HP=((rollbase.Dice(20) - 1) * 9)+20;
+MP=((rollbase.Dice(5) - 1) * 9)+20;
+ATK=rollbase.Dice(70-age);
+Reaction=rollbase.Dice(70-age);
+Control=rollbase.Dice(70-age);
+Growing=rollbase.Dice(61-age);
+}
+if((age>=16)&&(age<=39)){
+Occupation='外部裝甲操縱人員';
+HP=((rollbase.Dice(20) - 1) * 9)+50;
+MP=((rollbase.Dice(20) - 1) * 9)+20;
+ATK=rollbase.Dice(50);
+Reaction=rollbase.Dice(50);
+Control=rollbase.Dice(50);
+Growing=Math.floor(((35-ATK)+(35-Control))*0.5);
+}
+if(Growing<=10)Growing=rollbase.Dice(5)+10;
+if((Control<10)||(MP<50))Occupation='外骨骼裝備步兵';
+rply.text=
+'['+ name +']  年齡：' +age +
+'\n職業：  ' + Occupation +
+'\n生命值： '+ HP +
+'\nBata粒子適性： '+ MP +
+'\n物理適性： '+ ATK +
+'\n控制能力： '+ Control +
+'\n反應力： '+ Reaction +
+'\n成長點： '+  Growing;
+
+if((age<16)||(age>60)){
+Occupation='不適合戰鬥者';
+rply.text=
+'['+ name +']  年齡：' +age +
+'\n職業：  ' + Occupation ;
+}
+return rply;	
+}
+
+module.exports = {
+	CM:CM,
+	CT:CT
+};
+
+
+
+
 
 
 
