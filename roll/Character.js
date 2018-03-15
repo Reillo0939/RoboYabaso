@@ -82,7 +82,7 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   }
   authorize(JSON.parse(content), tests);
 });
-for(var u=0;u<6000;u++){
+for(var u=0;u<12000;u++){
 if(re==1)break;
 }
 console.log('幹');
