@@ -200,9 +200,10 @@ function tests(auth) {
       console.log('No data found.');
     } else {
 	     var row = rows[0];
-	    Characters[0]=row[0];
-	    Characters[1]=row[1];
-	    Characters[2]=row[2];
+	    var Cha[]=Characters[0];
+	    Cha[0]=row[0];
+	    Cha[1]=row[1];
+	    Cha[2]=row[2];
     }})}
 
 
