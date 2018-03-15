@@ -89,7 +89,7 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   }
   authorize(JSON.parse(content), tests);
 });
-sleep(2000);
+sleep(4000);
 console.log('幹');
 for(var tt=0;tt<cat;tt++){
 if(Characters[tt][0]==id){
