@@ -80,7 +80,10 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   }
   authorize(JSON.parse(content), tests);
 });
-
+if(Characters[1][0]=='Uc9b4571605aabd3e94edd7c189144278'){
+rply.text='你已有角色';
+return rply;	
+}
 if((age>=30)&&(age<=65)){
 Occupation='媒介使';
 HP=((rollbase.Dice(20) - 1) * 9)+20;
@@ -199,12 +202,14 @@ function tests(auth) {
     if (rows.length == 0) {
       console.log('No data found.');
     } else {
-	     var row = rows[0];
-	    var Cha=[];
-	    Cha[0]=row[0];
-	    Cha[1]=row[1];
-	    Cha[2]=row[2];
-	    Characters[0]=Cha;
+	    for (var i = 0; i < rows.length; i++) {
+	     var row = rows[i];
+	     var Cha=[];
+		for(var j=0;j<15;j++){
+	    Cha[j]=row[i];
+		}
+	    }
+	    Characters[i]=Cha;
     }})
 
 }
