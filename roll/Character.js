@@ -4,7 +4,7 @@ var fs = require('fs');
 var readline = require('readline');
 var google = require('googleapis');
 var googleAuth = require('google-auth-library');
-
+var sheets = google.sheets('v4');
 // If modifying these scopes, delete your previously saved credentials
 // at ~./sheetsapi.json
 var SCOPES = [
