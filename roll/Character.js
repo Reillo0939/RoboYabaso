@@ -208,7 +208,12 @@ function tests(auth) {
 	     var row = rows[i];
 	     var Cha=[];
 		for(var j = 0 ; j < 15;j++){
+			if(row[j]!= null){
 	    Cha[j]=row[j];
+			}
+			else{
+				Cha[j]=0;
+			}
 		}
 		    Characters[i]=Cha;
 	    }
