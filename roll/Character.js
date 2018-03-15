@@ -101,3 +101,56 @@ module.exports = {
 	CM:CM,
 	CT:CT
 };
+function tests(auth) {
+ sheets.spreadsheets.values.get({
+    auth: main.auth,
+    spreadsheetId: main.mySheetId,
+    range: '角色',
+  }, function(err, response) {
+    if (err) {
+      console.log('The API returned an error: ' + err);
+      return;
+    }
+    var rows = response.values;
+    if (rows.length == 0) {
+      console.log('No data found.');
+    } else {
+	     var Characters = [];
+      for (var i = 0; i < rows.length; i++) {
+        var row = rows[i];
+	var Cha =Characters[i];
+	      for(var j=0;j<15;j++){
+		Cha[j]=row[j];}
+}
+    }})}
+
+/*function gotgpt(auth) {
+var c ='';
+c=input;
+	var values = [
+  [c
+  ],
+];
+var body = {
+  values: values
+};
+	var request = {
+    spreadsheetId: mySheetId,
+        range: 'test!A7:A7',
+      valueInputOption: 'RAW',
+        resource: {
+      values: values
+    },
+
+    auth: auth,
+  };
+	
+sheets.spreadsheets.values.update(request, function(err, result) {
+  if(err) {
+    // Handle error
+    console.log(err);
+  } else {
+    console.log('%d cells updated.', result.updatedCells);
+  }
+});
+}*/
