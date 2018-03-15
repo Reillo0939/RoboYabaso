@@ -200,7 +200,7 @@ function tests(auth) {
       console.log('No data found.');
     } else {
 	     var row = rows[0];
-	    var Cha[]=Characters[0];
+	    var Cha=Characters[0];
 	    Cha[0]=row[0];
 	    Cha[1]=row[1];
 	    Cha[2]=row[2];
