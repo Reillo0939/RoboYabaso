@@ -67,38 +67,19 @@ function storeToken(token) {
   fs.writeFile(TOKEN_PATH, JSON.stringify(token));
   console.log('Token stored to ' + TOKEN_PATH);
 }
-
-function tests(auth) {
- sheets.spreadsheets.values.get({
-    auth: auth,
-    spreadsheetId: mySheetId,
-    range: 'Character',
-  }, function(err, response) {
-    if (err) {
-      console.log('The API returned an error: ' + err);
-      return;
-    }
-    var rows = response.values;
-    if (rows.length == 0) {
-      console.log('No data found.');
-    } else {
-	    cat=rows.length;
-	    for (var i = 0; i < rows.length; i++) {
-	     var row = rows[i];
-	     var Cha=[];
-		for(var j = 0 ; j < 15;j++){
-			if(row[j]!= null){
-	    			Cha[j]=row[j];
-			}
-			else{
-				Cha[j]='0';
-			}
-			console.log(Cha[j]);
-		}
-		    Characters[i]=Cha;
-	    }
-	    
-    }})
+//-------------------------------------------------------------------------------------------------------------------------------
+var rply ={type : 'text'}; //type是必需的,但可以更改
+var Characters = [];
+var cat;
+function CM(name,age,id) {
+	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation,Growing;
+fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+  if (err) {
+    console.log('Error loading client secret file: ' + err);
+    return;
+  }
+  authorize(JSON.parse(content), tests);
+});
 console.log('幹');
 for(var tt=0;tt<cat;tt++){
 if(Characters[tt][0]==id){
@@ -155,24 +136,6 @@ rply.text=
 '\n職業：  ' + Occupation ;
 }
 
-}
-
-//-------------------------------------------------------------------------------------------------------------------------------
-var rply ={type : 'text'}; //type是必需的,但可以更改
-var Characters = [];
-var cat;
-	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation,Growing,id,name,age;
-function CM(names,ages,ids) {
-name=names;
-age=ages;
-id=ids;
-fs.readFile('client_secret.json', function processClientSecrets(err, content) {
-  if (err) {
-    console.log('Error loading client secret file: ' + err);
-    return;
-  }
-  authorize(JSON.parse(content), tests);
-});
 
 return rply;	
 }
@@ -229,6 +192,39 @@ module.exports = {
 
 
 
+function tests(auth) {
+ sheets.spreadsheets.values.get({
+    auth: auth,
+    spreadsheetId: mySheetId,
+    range: 'Character',
+  }, function(err, response) {
+    if (err) {
+      console.log('The API returned an error: ' + err);
+      return;
+    }
+    var rows = response.values;
+    if (rows.length == 0) {
+      console.log('No data found.');
+    } else {
+	    cat=rows.length;
+	    for (var i = 0; i < rows.length; i++) {
+	     var row = rows[i];
+	     var Cha=[];
+		for(var j = 0 ; j < 15;j++){
+			if(row[j]!= null){
+	    			Cha[j]=row[j];
+			}
+			else{
+				Cha[j]='0';
+			}
+			console.log(Cha[j]);
+		}
+		    Characters[i]=Cha;
+	    }
+	    
+    }})
+
+}
 
 
 /*function gotgpt(auth) {
