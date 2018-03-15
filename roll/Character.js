@@ -71,7 +71,13 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 
 function CM(name,age) {
 	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation,Growing;
-	
+fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+  if (err) {
+    console.log('Error loading client secret file: ' + err);
+    return;
+  }
+  authorize(JSON.parse(content), tests);
+});
 
 if((age>=30)&&(age<=65)){
 Occupation='媒介使';
