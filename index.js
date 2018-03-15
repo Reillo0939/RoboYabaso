@@ -26,6 +26,9 @@ bot.on('message', function(event) { if (event.message.type = 'text') {
 var msg = '';
 let a = event.source.userId;
 	let b='';
+	
+	emp.oz.parseInput();
+	
 event.source.profile().then(function (profile) {
 b=profile.displayName;
 //Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
@@ -88,6 +91,7 @@ require('fs').readdirSync(__dirname + '/modules/').forEach(function(file) {
   if (file.match(/\.js$/) !== null && file !== 'index.js') {
     var name = file.replace('.js', '');
     exports[name] = require('./modules/' + file);
+    emp[name] = require('./roll/' + file);
   }
 });
 app.set('port', (process.env.PORT || 5000));
