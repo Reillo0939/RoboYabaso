@@ -89,8 +89,9 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   }
   authorize(JSON.parse(content), tests);
 });
-sleep(4000);
+sleep(2000);
 console.log('幹');
+sleep(2000);
 for(var tt=0;tt<cat;tt++){
 if(Characters[tt][0]==id){
 rply.text='你已有角色';
