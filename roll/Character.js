@@ -81,7 +81,7 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   authorize(JSON.parse(content), tests);
 });
 for( var t=0;t<50;t++){
-if(Characters[t][0]==id){
+if(Characters[t][0]=='Uc9b4571605aabd3e94edd7c189144278'){
 rply.text='你已有角色';
 return rply;	
 }
