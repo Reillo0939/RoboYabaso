@@ -1,6 +1,7 @@
 var express = require('express');//
 var bodyParser = require('body-parser');
 var app = express();//262
+var ox = require('./roll/Character.js');
 var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
 var channelSecret = process.env.LINE_CHANNEL_SECRET;
 var linebot = require('linebot');///030
@@ -27,8 +28,8 @@ var msg = '';
 let a = event.source.userId;
 	let b='';
 	
-	emp.oz.parseInput();
 	
+	ox.oz();
 event.source.profile().then(function (profile) {
 b=profile.displayName;
 //Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
@@ -91,7 +92,7 @@ require('fs').readdirSync(__dirname + '/modules/').forEach(function(file) {
   if (file.match(/\.js$/) !== null && file !== 'index.js') {
     var name = file.replace('.js', '');
     exports[name] = require('./modules/' + file);
-    emp[name] = require('./roll/' + file);
+   
   }
 });
 app.set('port', (process.env.PORT || 5000));
