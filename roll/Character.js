@@ -1,22 +1,78 @@
 var rollbase = require('./rollbase.js');
 var funny = require('./funny.js');
-var main = require('../index.js');
+var fs = require('fs');
+var readline = require('readline');
+var google = require('googleapis');
+var googleAuth = require('google-auth-library');
+
+// If modifying these scopes, delete your previously saved credentials
+// at ~./sheetsapi.json
+var SCOPES = [
+  'https://www.googleapis.com/auth/drive',
+  'https://www.googleapis.com/auth/drive.file',
+'https://www.googleapis.com/auth/drive.readonly',
+	'https://www.googleapis.com/auth/spreadsheets',
+	'https://www.googleapis.com/auth/spreadsheets.readonly'
+];
+var TOKEN_DIR = './';
+var TOKEN_PATH = TOKEN_DIR + 'sheetsapi.json';
+function authorize(credentials, callback) {
+  var clientSecret = 'm7LO-KOhUMl3TZ4ni1FA8xGo';
+  var clientId = '399740110786-f7j06o0tsbmvbk2v570qc13g0a034iqa.apps.googleusercontent.com';
+  var redirectUrl ='urn:ietf:wg:oauth:2.0:oob';
+  var auth = new googleAuth();
+  var oauth2Client = new auth.OAuth2(clientId, clientSecret, redirectUrl);
+  fs.readFile(TOKEN_PATH, function(err, token) {
+    if (err) {
+      getNewToken(oauth2Client, callback);
+    } else {
+      oauth2Client.credentials = JSON.parse(token);
+      callback(oauth2Client);
+    }
+  });
+}
+
+function getNewToken(oauth2Client, callback) {
+  var authUrl = oauth2Client.generateAuthUrl({
+    access_type: 'offline',
+    scope: SCOPES
+  });
+  console.log('Authorize this app by visiting this url: ', authUrl);
+  var rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+  rl.question('Enter the code from that page here: ', function(code) {
+    rl.close();
+    oauth2Client.getToken(code, function(err, token) {
+      if (err) {
+        console.log('Error while trying to retrieve access token', err);
+        return;
+      }
+      oauth2Client.credentials = token;
+      storeToken(token);
+      callback(oauth2Client);
+    });
+  });
+}
+function storeToken(token) {
+  try {
+    fs.mkdirSync(TOKEN_DIR);
+  } catch (err) {
+    if (err.code != 'EEXIST') {
+      throw err;
+    }
+  }
+  fs.writeFile(TOKEN_PATH, JSON.stringify(token));
+  console.log('Token stored to ' + TOKEN_PATH);
+}
+//-------------------------------------------------------------------------------------------------------------------------------
 var rply ={type : 'text'}; //type是必需的,但可以更改
 
 function CM(name,age) {
 	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation,Growing;
 	
-	main.fs.readFile('../client_secret.json', function processClientSecrets(err, content) {
-  if (err) {
-    console.log('Error loading client secret file: ' + err);
-    return;
-  }
-  authorize(JSON.parse(content), tests);
-});
-	
-	
-	
-	
+
 if((age>=30)&&(age<=65)){
 Occupation='媒介使';
 HP=((rollbase.Dice(20) - 1) * 9)+20;
@@ -115,8 +171,8 @@ module.exports = {
 };
 function tests(auth) {
  sheets.spreadsheets.values.get({
-    auth: main.auth,
-    spreadsheetId: main.mySheetId,
+    auth: auth,
+    spreadsheetId: mySheetId,
     range: '角色',
   }, function(err, response) {
     if (err) {
