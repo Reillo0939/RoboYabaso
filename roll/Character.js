@@ -80,6 +80,7 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   }
   authorize(JSON.parse(content), tests);
 });
+	
 for( var t=0;t<50;t++){
 if(Characters[t][0]==id){
 rply.text='你已有角色';
@@ -209,7 +210,7 @@ function tests(auth) {
 	     var Cha=[];
 		for(var j = 0 ; j < 15;j++){
 			if(row[j]!= null){
-	    Cha[j]=row[j];
+	    			Cha[j]=row[j];
 			}
 			else{
 				Cha[j]=0;
