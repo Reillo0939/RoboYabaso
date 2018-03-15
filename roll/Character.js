@@ -1,4 +1,4 @@
-var rollbase = require('./rollbase.js');//
+var rollbase = require('./rollbase.js');
 var funny = require('./funny.js');
 var fs = require('fs');
 var readline = require('readline');
