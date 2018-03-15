@@ -74,7 +74,8 @@ var Characters = [];
 var cat,re;
 function CM(name,age,id) {
 	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation,Growing;
-oz();
+
+
 console.log('幹');
 for(var tt=0;tt<cat;tt++){
 if(Characters[tt][0]==id){
@@ -177,7 +178,8 @@ return rply;
 
 module.exports = {
 	CM:CM,
-	CT:CT
+	CT:CT,
+	oz:oz
 };
 
 function oz() {
