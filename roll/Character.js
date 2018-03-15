@@ -206,7 +206,7 @@ function tests(auth) {
 	     var row = rows[i];
 	     var Cha=[];
 		for(var j=0;j<15;j++){
-	    Cha[j]=row[i];
+	    Cha[j]=row[j];
 		}
 	    }
 	    Characters[i]=Cha;
