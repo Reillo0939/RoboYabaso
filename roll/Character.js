@@ -67,20 +67,13 @@ function storeToken(token) {
   fs.writeFile(TOKEN_PATH, JSON.stringify(token));
   console.log('Token stored to ' + TOKEN_PATH);
 }
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
-}
 
 //-------------------------------------------------------------------------------------------------------------------------------
 var rply ={type : 'text'}; //type是必需的,但可以更改
 var Characters = [];
-var cat;
+var cat,re;
 function CM(name,age,id) {
+re=0;
 	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation,Growing;
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   if (err) {
@@ -89,9 +82,10 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   }
   authorize(JSON.parse(content), tests);
 });
-sleep(2000);
+while( re==0) {
+　
+}
 console.log('幹');
-sleep(2000);
 for(var tt=0;tt<cat;tt++){
 if(Characters[tt][0]==id){
 rply.text='你已有角色';
@@ -234,7 +228,7 @@ function tests(auth) {
 	    }
 	    
     }})
-
+re=1;
 }
 
 
