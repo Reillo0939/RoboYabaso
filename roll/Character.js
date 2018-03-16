@@ -240,7 +240,7 @@ function tests(auth) {
 function gotgpt(auth) {
 
 	var values = [
-      ['c'],['a'],
+      ['c','a'],
 ];
 var body = {
   values: values
