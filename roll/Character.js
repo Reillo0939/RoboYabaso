@@ -238,10 +238,11 @@ function tests(auth) {
 
 
 function gotgpt(auth) {
-
+var leng=Characters.length+1;
 	var values = [
       ['c','a'],
 ];
+	var range='Character!A' + leng ;
 var body = {
   values: values
 };
