@@ -130,23 +130,25 @@ rply.text=
 }
 	console.log('test OK 1');
 var hh=Characters.length;
+var ddd=[];
 console.log('test OK 2');
-Characters[hh][0] = 'id' ;
-Characters[hh][1] = name ;
-Characters[hh][2] = age ;
-Characters[hh][3] = 'G.U.' ;
-Characters[hh][4] = Occupation ;
-Characters[hh][5] = HP ;
-Characters[hh][6] = MP ;
-Characters[hh][7] = ATK ;
-Characters[hh][8] = Reaction ;
-Characters[hh][9]  = None ;
-Characters[hh][10] = Fire ;
-Characters[hh][11] = Water ;
-Characters[hh][12] = Wind ;
-Characters[hh][13] = Earth ;
-Characters[hh][14] = Growing ;
-Characters[hh][15] = '0' ;
+ddd[0] = id ;
+ddd[1] = name ;
+ddd[2] = age ;
+ddd[3] = 'G.U.' ;
+ddd[4] = Occupation ;
+ddd[5] = HP ;
+ddd[6] = MP ;
+ddd[7] = ATK ;
+ddd[8] = Reaction ;
+ddd[9]  = None ;
+ddd[10] = Fire ;
+ddd[11] = Water ;
+ddd[12] = Wind ;
+ddd[13] = Earth ;
+ddd[14] = Growing ;
+ddd[15] = '0' ;
+Characters[hh]=ddd;
 
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   if (err) {
