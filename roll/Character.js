@@ -252,7 +252,7 @@ name +' 的角色'+
 '\n未分配的成長點： '+  Characters[fd][14]	
 ;
 	}
-	if(Characters[fd][3]==' G.U.'){
+	if(Characters[fd][3]=='G.U.'){
 	rply.text=
 name +' 的角色'+
 '\n['+ Characters[fd][1] +']  年齡：' +Characters[fd][2] +
