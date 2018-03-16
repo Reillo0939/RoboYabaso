@@ -257,7 +257,8 @@ var leng=Characters.length;
       ,Characters[leng-1][8],Characters[leng-1][9],Characters[leng-1][10],Characters[leng-1][11]
       ,Characters[leng-1][12],Characters[leng-1][13],Characters[leng-1][14],Characters[leng-1][15]],
 ];
-	var range='Character!A' + (leng+1);
+	leng++;
+	var range='Character!A' + leng;
 var body = {
   values: values
 };
