@@ -247,7 +247,7 @@ var body = {
 };
 	var request = {
     spreadsheetId: mySheetId,
-        range: 'Character!A3:A3',
+        range: 'Character!A3',
       valueInputOption: 'RAW',
         resource: {
       values: values
