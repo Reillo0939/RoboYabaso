@@ -84,6 +84,10 @@ event.reply([{
   type: 'text', text: 'https://docs.google.com/spreadsheets/d/1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg/edit?usp=sharing' 
 }]);	
 }	
+if(event.message.text=='( ´･ω･`)'){
+event.reply(
+  { type: 'text', text: '( ´･ω･`)' });
+}
   event.reply(msg);
   console.log(b+'  '+event.message.text+'   '+cat);
 });
