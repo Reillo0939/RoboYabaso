@@ -163,7 +163,7 @@ function CT(name,age,id) {
 	var HP,MP,ATK,Reaction,Occupation,Control,Growing;
 for(var tt=0;tt<Characters.length;tt++){
 if(Characters[tt][0]==id){
-rply.text='你已有角色，若要修改請找GM';
+rply.text= name + ' 你已有角色，若要修改請找GM';
 return rply;	
 }
 }
@@ -234,11 +234,52 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
 
 return rply;	
 }
+function CV(id,name) {
+for(var fd=0;tt<Characters.length;tt++){
+if(Characters[fd][0]==id){
+	if(Characters[fd][3]=='A.A.U.F'){
+		rply.text=
+name +' 的角色'+
+'\n['+ Characters[fd][1] +']  年齡：' +Characters[fd][2] +
+'\n職業：  ' + Characters[fd][4] +
+'\n生命值： '+ Characters[fd][5] +
+'\nBata粒子適性： '+ Characters[fd][5] +
+'\n物理適性： '+ Characters[fd][7] +
+'\n控制能力： '+ Characters[fd][15] +
+'\n反應力： '+ Characters[fd][8] +
+'\n未分配的成長點： '+  Characters[fd][14]	
+;
+	}
+	if(Characters[fd][3]==' G.U.'){
+	rply.text=
+name +' 的角色'+
+'\n['+ Characters[fd][1] +']  年齡：' +Characters[fd][2] +
+'\n職業：  ' + Characters[fd][4] +
+'\n生命值： '+ Characters[fd][5] +
+'\nBata粒子適性： '+ Characters[fd][5] +
+'\n物理適性： '+ Characters[fd][7] +
+'\n反應力： '+ Characters[fd][8] +
+'\n放出適性： '+ Characters[fd][9] +
+'\n火屬適性： '+ Characters[fd][10] +
+'\n水屬適性： '+ Characters[fd][11] +
+'\n風屬適性： '+ Characters[fd][12] +
+'\n土屬適性： '+ Characters[fd][13] +
+'\n未分配的成長點： '+  Characters[fd][14]	
+;
+	}
+	
+return rply;	
+}
+}
+	rply.text= name+' 你沒有角色，如果有遺失請與GM聯絡';
+return rply;	
+}
 
 module.exports = {
 	CM:CM,
 	CT:CT,
-	oz:oz
+	oz:oz,
+	CV:CV
 };
 
 function oz() {
