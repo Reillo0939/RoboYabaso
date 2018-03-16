@@ -128,6 +128,7 @@ rply.text=
 '['+ name +']  年齡：' +age +
 '\n職業：  ' + Occupation ;
 }
+	console.log('test OK 1');
 var hh=Characters.length;
 Characters[hh][0] =id;
 Characters[hh][1] =name;
@@ -145,6 +146,7 @@ Characters[hh][12] =Wind;
 Characters[hh][13] =Earth;
 Characters[hh][14] =Growing;
 Characters[hh][15] ='0';
+console.log('test OK 2');
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   if (err) {
     console.log('Error loading client secret file: ' + err);
