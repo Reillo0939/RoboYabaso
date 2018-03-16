@@ -235,6 +235,7 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
 return rply;	
 }
 function CV(id,name) {
+	rply.text= name+' 你沒有角色，如果有遺失請與GM聯絡';
 for(var fd=0;fd<Characters.length;fd++){
 if(Characters[fd][0]==id){
 	if(Characters[fd][3]=='A.A.U.F'){
@@ -267,11 +268,8 @@ name +' 的角色'+
 '\n未分配的成長點： '+  Characters[fd][14]	
 ;
 	}
-	
-return rply;	
 }
 }
-	rply.text= name+' 你沒有角色，如果有遺失請與GM聯絡';
 return rply;	
 }
 
