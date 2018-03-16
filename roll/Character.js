@@ -74,22 +74,13 @@ var Characters = [];
 var cat,re;
 function CM(name,age,id) {
 	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation,Growing;
-fs.readFile('client_secret.json', function processClientSecrets(err, content) {
-  if (err) {
-    console.log('Error loading client secret file: ' + err);
-    return;
-  }
-  authorize(JSON.parse(content), gotgpt);
-});
 
-console.log('幹');
 for(var tt=0;tt<cat;tt++){
 if(Characters[tt][0]==id){
 rply.text='你已有角色';
 return rply;	
 }
 }
-console.log('騙人的吧');
 if((age>=30)&&(age<=65)){
 Occupation='媒介使';
 HP=((rollbase.Dice(20) - 1) * 9)+20;
@@ -137,8 +128,30 @@ rply.text=
 '['+ name +']  年齡：' +age +
 '\n職業：  ' + Occupation ;
 }
-
-
+var hh=Characters.length;
+Characters[hh][0] =id;
+Characters[hh][1] =name;
+Characters[hh][2] =age;
+Characters[hh][3] ='G.U.';
+Characters[hh][4] =Occupation;
+Characters[hh][5] =HP;
+Characters[hh][6] =MP;
+Characters[hh][7] =ATK;
+Characters[hh][8] =Reaction;
+Characters[hh][9] =None;
+Characters[hh][10] =Fire;
+Characters[hh][11] =Water;
+Characters[hh][12] =Wind;
+Characters[hh][13] =Earth;
+Characters[hh][14] =Growing;
+Characters[hh][15] ='0';
+fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+  if (err) {
+    console.log('Error loading client secret file: ' + err);
+    return;
+  }
+  authorize(JSON.parse(content), gotgpt);
+});
 return rply;	
 }
 function CT(name,age,id) {
@@ -237,11 +250,14 @@ function tests(auth) {
 
 
 function gotgpt(auth) {
-var leng=Characters.length+1;
+var leng=Characters.length;
 	var values = [
-      ['c','a'],
+      [Characters[leng-1][0] ,Characters[leng-1][1],Characters[leng-1][2],Characters[leng-1][3]
+      ,Characters[leng-1][4],Characters[leng-1][5],Characters[leng-1][6],Characters[leng-1][7]
+      ,Characters[leng-1][8],Characters[leng-1][9],Characters[leng-1][10],Characters[leng-1][11]
+      ,Characters[leng-1][12],Characters[leng-1][13],Characters[leng-1][14],Characters[leng-1][15]],
 ];
-	var range='Character!A' + leng ;
+	var range='Character!A' + (leng+1);
 var body = {
   values: values
 };
