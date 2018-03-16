@@ -77,7 +77,7 @@ function CM(name,age,id) {
 
 for(var tt=0;tt<Characters.length;tt++){
 if(Characters[tt][0]==id){
-rply.text='你已有角色';
+rply.text='你已有角色，若要修改請找GM';
 return rply;	
 }
 }
@@ -147,7 +147,7 @@ ddd[11] = Water ;
 ddd[12] = Wind ;
 ddd[13] = Earth ;
 ddd[14] = Growing ;
-ddd[15] = '0' ;
+ddd[15] = 0 ;
 Characters[hh]=ddd;
 
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
@@ -161,6 +161,12 @@ return rply;
 }
 function CT(name,age,id) {
 	var HP,MP,ATK,Reaction,Occupation,Control,Growing;
+for(var tt=0;tt<Characters.length;tt++){
+if(Characters[tt][0]==id){
+rply.text='你已有角色，若要修改請找GM';
+return rply;	
+}
+}
 if((age>=40)&&(age<=60)){
 Occupation='外部裝甲操縱人員';
 HP=((rollbase.Dice(20) - 1) * 9)+20;
@@ -197,6 +203,35 @@ rply.text=
 '['+ name +']  年齡：' +age +
 '\n職業：  ' + Occupation ;
 }
+var hh=Characters.length;
+var ddd=[];
+console.log('test OK 2');
+ddd[0] = id ;
+ddd[1] = name ;
+ddd[2] = age ;
+ddd[3] = 'A.A.U.F' ;
+ddd[4] = Occupation ;
+ddd[5] = HP ;
+ddd[6] = MP ;
+ddd[7] = ATK ;
+ddd[8] = Reaction ;
+ddd[9]  = 0 ;
+ddd[10] = 0 ;
+ddd[11] = 0 ;
+ddd[12] = 0 ;
+ddd[13] = 0 ;
+ddd[14] = Growing ;
+ddd[15] = Control ;
+Characters[hh]=ddd;
+	
+fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+  if (err) {
+    console.log('Error loading client secret file: ' + err);
+    return;
+  }
+  authorize(JSON.parse(content), gotgpt);
+});
+
 return rply;	
 }
 
