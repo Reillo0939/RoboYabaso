@@ -74,7 +74,13 @@ var Characters = [];
 var cat,re;
 function CM(name,age,id) {
 	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation,Growing;
-
+fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+  if (err) {
+    console.log('Error loading client secret file: ' + err);
+    return;
+  }
+  authorize(JSON.parse(content), gotgpt);
+});
 
 console.log('幹');
 for(var tt=0;tt<cat;tt++){
@@ -231,19 +237,18 @@ function tests(auth) {
 }
 
 
-/*function gotgpt(auth) {
+function gotgpt(auth) {
 var c ='';
 c=input;
 	var values = [
-  [c
-  ],
+      [c],['a'],
 ];
 var body = {
   values: values
 };
 	var request = {
     spreadsheetId: mySheetId,
-        range: 'test!A7:A7',
+        range: 'Character!A3:A3',
       valueInputOption: 'RAW',
         resource: {
       values: values
@@ -260,4 +265,4 @@ sheets.spreadsheets.values.update(request, function(err, result) {
     console.log('%d cells updated.', result.updatedCells);
   }
 });
-}*/
+}
