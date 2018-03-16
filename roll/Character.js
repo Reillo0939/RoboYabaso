@@ -75,7 +75,7 @@ var cat,re;
 function CM(name,age,id) {
 	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation,Growing;
 
-for(var tt=0;tt<cat;tt++){
+for(var tt=0;tt<Characters.length;tt++){
 if(Characters[tt][0]==id){
 rply.text='你已有角色';
 return rply;	
