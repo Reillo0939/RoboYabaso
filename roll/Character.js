@@ -263,7 +263,6 @@ var leng=Characters.length;
       ,Characters[leng-1][12],Characters[leng-1][13],Characters[leng-1][14],Characters[leng-1][15]],
 ];
 	console.log('test OK');
-	leng++;
 	var range='Character!A' + leng;
 var body = {
   values: values
