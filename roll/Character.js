@@ -235,7 +235,7 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
 return rply;	
 }
 function CV(id,name) {
-for(var fd=0;tt<Characters.length;tt++){
+for(var fd=0;fd<Characters.length;fd++){
 if(Characters[fd][0]==id){
 	if(Characters[fd][3]=='A.A.U.F'){
 		rply.text=
