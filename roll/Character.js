@@ -238,6 +238,7 @@ function CV(id,name) {
 	rply.text= name+' 你沒有角色，如果有遺失請與GM聯絡';
 for(var fd=0;fd<Characters.length;fd++){
 if(Characters[fd][0]==id){
+	 console.log('IN');
 	if(Characters[fd][3]=='A.A.U.F'){
 		rply.text=
 name +' 的角色'+
