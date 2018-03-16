@@ -54,36 +54,15 @@ event.reply([{
 	   );
 }
 	
-if(event.message.text=='試算表測試'){
-fs.readFile('client_secret.json', function processClientSecrets(err, content) {
-  if (err) {
-    console.log('Error loading client secret file: ' + err);
-    return;
-  }
-  authorize(JSON.parse(content), tests);
-});
-event.reply([{
-  type: 'text', text: 'https://docs.google.com/spreadsheets/d/1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg/edit?usp=sharing' 
-},
-  { type: 'text', text: cat }]);	
+if(event.message.text=='重新載入'){
+if(a=='U7c4779fd913aff927f26d7f6bedd87d1'||a=='Uc9b4571605aabd3e94edd7c189144278'){
+ox.oz();
+event.reply({ type: 'text', text: '重新載入，請稍後片刻' });	
 }
-	let msgSplitor = (/\S+/ig);	
-	let mainMsg = event.message.text.match(msgSplitor); //定義輸入字串
-	let trigger = mainMsg[0].toString().toLowerCase(); //指定啟動詞在第一個詞&把大階強制轉成細階
-if(trigger.match(/寫入實驗/) != null){
-		
-	input=mainMsg[1];
-fs.readFile('client_secret.json', function processClientSecrets(err, content) {
-  if (err) {
-    console.log('Error loading client secret file: ' + err);
-    return;
-  }
-  authorize(JSON.parse(content), gotgpt);
-});
-event.reply([{
-  type: 'text', text: 'https://docs.google.com/spreadsheets/d/1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg/edit?usp=sharing' 
-}]);	
-}	
+else{
+event.reply({type: 'text', text: 'GM才能使用' });	
+}
+}
 if(event.message.text=='( ´･ω･`)'){
 event.reply(
   { type: 'text', text: '( ´･ω･`)' });
