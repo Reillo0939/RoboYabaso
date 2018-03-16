@@ -131,8 +131,7 @@ rply.text=
 	console.log('test OK 1');
 var hh=Characters.length;
 console.log('test OK 2');
-Characters[hh][0] = id ;
-	console.log('test OK 3');
+Characters[hh][0] = 'id' ;
 Characters[hh][1] = name ;
 Characters[hh][2] = age ;
 Characters[hh][3] = 'G.U.' ;
@@ -147,7 +146,6 @@ Characters[hh][11] = Water ;
 Characters[hh][12] = Wind ;
 Characters[hh][13] = Earth ;
 Characters[hh][14] = Growing ;
-	
 Characters[hh][15] = '0' ;
 
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
