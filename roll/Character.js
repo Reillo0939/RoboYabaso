@@ -227,7 +227,6 @@ function tests(auth) {
 			else{
 				Cha[j]='0';
 			}
-			console.log(Cha[j]);
 		}
 		    Characters[i]=Cha;
 	    }
