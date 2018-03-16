@@ -67,6 +67,10 @@ if(event.message.text=='( ´･ω･`)'){
 event.reply(
   { type: 'text', text: '( ´･ω･`)' });
 }
+if(event.message.text=='(´・ω・`)'){
+event.reply(
+  { type: 'text', text: '(´・ω・`)' });
+}
   event.reply(msg);
   console.log(b+'  '+event.message.text+'   '+cat);
 });
