@@ -81,6 +81,18 @@ rply.text='你已有角色，若要修改請找GM';
 return rply;	
 }
 }
+if(name==null && age==null){
+rply.text='請詳細閱讀創角說明';
+return rply;	
+}
+if(name==null){
+rply.text='你的名字呢';
+return rply;	
+}
+if(age==null){
+rply.text='你幾歲了';
+return rply;	
+}
 if((age>=30)&&(age<=65)){
 Occupation='媒介使';
 HP=((rollbase.Dice(20) - 1) * 9)+20;
