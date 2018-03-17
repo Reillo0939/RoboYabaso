@@ -326,7 +326,7 @@ function tests(auth) {
 	    for (var i = 0; i < rows.length; i++) {
 	     var row = rows[i];
 	     var Cha=[];
-		for(var j = 0 ; j < 15;j++){
+		for(var j = 0 ; j < 16;j++){
 			if(row[j]!= null){
 	    			Cha[j]=row[j];
 			}
