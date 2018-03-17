@@ -285,7 +285,7 @@ name +' 的角色'+
 }
 return rply;	
 }
-function CV(name,names) {
+function CI(name,names) {
 	rply.text='抱歉' + name + ' 我查不到這個玩家的資料';
 for(var fd=0;fd<Characters.length;fd++){
 if(Characters[fd][1]==names){
