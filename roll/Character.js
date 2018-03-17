@@ -270,7 +270,7 @@ name +' 的角色'+
 '\n['+ Characters[fd][1] +']  年齡：' +Characters[fd][2] +
 '\n職業：  ' + Characters[fd][4] +
 '\n生命值： '+ Characters[fd][5] +
-'\nBata粒子適性： '+ Characters[fd][5] +
+'\nBata粒子適性： '+ Characters[fd][6] +
 '\n物理適性： '+ Characters[fd][7] +
 '\n反應力： '+ Characters[fd][8] +
 '\n放出適性： '+ Characters[fd][9] +
