@@ -94,7 +94,7 @@ function parseInput(rplyToken, inputStr, id,name) {
 	
 	if (trigger.match(/(^玩家權限$|^玩家權限$)/) != null) return exports.card.IDCA(id,name) ;
 	
-	if (trigger=='GU角色創立') return exports.Character.CM(mainMsg[1],mainMsg[2],id) ;
+	if (trigger=='gU角色創立') return exports.Character.CM(mainMsg[1],mainMsg[2],id) ;
 	if (trigger=='AAUF角色創立') return exports.Character.CT(mainMsg[1],mainMsg[2],id) ;
 	
 	if (trigger.match(/^角色資料$/) != null) return exports.Character.CV(id,name) ;
