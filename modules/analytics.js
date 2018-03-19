@@ -17,6 +17,7 @@ function parseInput(rplyToken, inputStr, id,name) {
 	let msgSplitor = (/\S+/ig);	
 	let mainMsg = inputStr.match(msgSplitor); //定義輸入字串
 	let trigger = mainMsg[0].toString().toLowerCase()
+	console.log(trigger);
 	; //指定啟動詞在第一個詞&把大階強制轉成細階
 
 	//在下面位置開始分析trigger
