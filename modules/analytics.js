@@ -16,7 +16,8 @@ function parseInput(rplyToken, inputStr, id,name) {
 	
 	let msgSplitor = (/\S+/ig);	
 	let mainMsg = inputStr.match(msgSplitor); //定義輸入字串
-	let trigger = mainMsg[0].toString().toLowerCase(); //指定啟動詞在第一個詞&把大階強制轉成細階
+	let trigger = mainMsg[0].toString().toLowerCase()
+	; //指定啟動詞在第一個詞&把大階強制轉成細階
 
 	//在下面位置開始分析trigger
 
@@ -31,7 +32,7 @@ function parseInput(rplyToken, inputStr, id,name) {
 	if (trigger.match(/^ccb$|^cc$|^ccn[1-2]$|^cc[1-2]$/)!= null && mainMsg[1]<=1000 )
 	{		
 	//ccb指令開始於此
-	if (trigger == 'ccb'&& mainMsg[1]<=99) return exports.coc.coc6(mainMsg[1],mainMsg[2]);
+	if (trigger == 'c.c.b'&& mainMsg[1]<=99) return exports.coc.coc6(mainMsg[1],mainMsg[2]);
 	
 	//cc指令開始於此
 	if (trigger == 'cc'&& mainMsg[1]<=1000) return exports.coc.coc7(mainMsg[1],mainMsg[2]);
