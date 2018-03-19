@@ -30,10 +30,10 @@ function parseInput(rplyToken, inputStr, id,name) {
 	//xUy 指令開始於此	
 	if (trigger.match(/^(\d+)(u)(\d+)$/i)!= null && isNaN(mainMsg[1])== false) return exports.advroll.xUy(trigger,mainMsg[1],mainMsg[2],mainMsg[3]);
 	
-	if (trigger.match(/^c.c.b$|^cc$|^ccn[1-2]$|^cc[1-2]$/)!= null && mainMsg[1]<=1000 )
+	if (trigger.match(/^ccb$|^cc$|^ccn[1-2]$|^cc[1-2]$/)!= null && mainMsg[1]<=1000 )
 	{		
 	//ccb指令開始於此
-	if (trigger == 'c.c.b'&& mainMsg[1]<=99) return exports.coc.coc6(mainMsg[1],mainMsg[2]);
+	if (trigger == 'ccb'&& mainMsg[1]<=99) return exports.coc.coc6(mainMsg[1],mainMsg[2]);
 	
 	//cc指令開始於此
 	if (trigger == 'cc'&& mainMsg[1]<=1000) return exports.coc.coc7(mainMsg[1],mainMsg[2]);
@@ -48,7 +48,7 @@ function parseInput(rplyToken, inputStr, id,name) {
 	
 	if (trigger.match(/(^cc6版創角$|^cc六版創角$)/) != null && mainMsg[1] != NaN )	return exports.coc.build6char(mainMsg[1]);
 	
-	if (trigger.match(/^coc7角色背景$/)!= null ) return exports.coc.PcBG();
+	if (trigger.match(/^c.o.c7角色背景$/)!= null ) return exports.coc.PcBG();
   
 	if (trigger.match(/^help$/)!= null ) return exports.help.Help();
 	
