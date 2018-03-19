@@ -87,7 +87,7 @@ function parseInput(rplyToken, inputStr, id,name) {
 	if (trigger.match('"G.U"10連抽') != null) return exports.card.MCard(10,id,name) ;
 	
 		if (trigger.match('A.A.U.F"抽卡'||'"外裝池"單抽') != null) return exports.card.TCard(1,id,name) ;
-	if (trigger.match('"A.A.U.F"10連抽') != null) return exports.card.TCard(10,id,name) ;
+	if (trigger.match('"A.A.U.F"10連抽') return exports.card.TCard(10,id,name) ;
 	if (trigger.match(/^卡片查詢$/) != null) return exports.card_help.CardH(mainMsg[1]) ;
 	if (trigger.match(/^卡池資訊$/) != null) return exports.card.ICard() ;
 	
