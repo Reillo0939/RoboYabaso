@@ -1,4 +1,3 @@
-// Load `*.js` under roll directory as properties
 //  i.e., `User.js` will become `exports['User']` or `exports.User`
 require('fs').readdirSync('./roll/').forEach(function(file) {
 	if (file.match(/\.js$/) !== null && file !== 'index.js') {
@@ -83,20 +82,17 @@ function parseInput(rplyToken, inputStr, id,name) {
 	if (trigger.match(/立flag|死亡flag/) != null) return exports.funny.BStyleFlagSCRIPTS() ;	
 	//87
 	if (trigger.match(/87/) != null) return exports.funny.bsMo() ;
-	
 	if (inputStr=='"G.U"抽卡') return exports.card.MCard(1,id,name) ;
 	if (inputStr=='"G.U"10連抽') return exports.card.MCard(10,id,name) ;
-	if (inputStr=='A.A.U.F"抽卡') return exports.card.TCard(1,id,name) ;
-	if (inputStr=='"A.A.U.F"10連抽') return exports.card.TCard(10,id,name) ;
 	
+		if (inputStr=='A.A.U.F"抽卡') return exports.card.TCard(1,id,name) ;
+	if (inputStr=='"A.A.U.F"10連抽') return exports.card.TCard(10,id,name) ;
 	if (trigger.match(/^卡片查詢$/) != null) return exports.card_help.CardH(mainMsg[1]) ;
 	if (trigger.match(/^卡池資訊$/) != null) return exports.card.ICard() ;
 	
 	if (trigger.match(/(^玩家權限$|^玩家權限$)/) != null) return exports.card.IDCA(id,name) ;
-	
-	if (inputStr=='GU角色創立') return exports.Character.CM(mainMsg[1],mainMsg[2],id) ;
-	if (inputStr=='AAUF角色創立') return exports.Character.CT(mainMsg[1],mainMsg[2],id) ;
-	
+	if (trigger.match(/^GU角色創立$/) != null) return exports.Character.CM(mainMsg[1],mainMsg[2],id) ;
+	if (trigger.match(/^AAUF角色創立$/) != null) return exports.Character.CT(mainMsg[1],mainMsg[2],id) ;
 	if (trigger.match(/^角色資料$/) != null) return exports.Character.CV(id,name) ;
 	if (trigger.match(/^角色查詢$/) != null) return exports.Character.CI(name,mainMsg[1]) ;
 	
@@ -125,4 +121,3 @@ function parseInput(rplyToken, inputStr, id,name) {
 module.exports = {
 	parseInput:parseInput
 };
-
