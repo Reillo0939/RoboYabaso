@@ -48,7 +48,7 @@ function parseInput(rplyToken, inputStr, id,name) {
 	
 	if (trigger.match(/(^cc6版創角$|^cc六版創角$)/) != null && mainMsg[1] != NaN )	return exports.coc.build6char(mainMsg[1]);
 	
-	if (trigger.match(/^c.o.c7角色背景$/)!= null ) return exports.coc.PcBG();
+	if (trigger.match(/^coc7角色背景$/)!= null ) return exports.coc.PcBG();
   
 	if (trigger.match(/^help$/)!= null ) return exports.help.Help();
 	
@@ -93,8 +93,8 @@ function parseInput(rplyToken, inputStr, id,name) {
 	if (trigger.match(/^卡池資訊$/) != null) return exports.card.ICard() ;
 	
 	if (trigger.match(/(^玩家權限$|^玩家權限$)/) != null) return exports.card.IDCA(id,name) ;
-	if (trigger.match(/^gu角色創立$/) != null) return exports.Character.CM(mainMsg[1],mainMsg[2],id) ;
-	if (trigger.match(/^aauf角色創立$/) != null) return exports.Character.CT(mainMsg[1],mainMsg[2],id) ;
+	if (trigger.match(/^g.u角色創立$/) != null) return exports.Character.CM(mainMsg[1],mainMsg[2],id) ;
+	if (trigger.match(/^a.a.u.f角色創立$/) != null) return exports.Character.CT(mainMsg[1],mainMsg[2],id) ;
 	if (trigger.match(/^角色資料$/) != null) return exports.Character.CV(id,name) ;
 	if (trigger.match(/^角色查詢$/) != null) return exports.Character.CI(name,mainMsg[1]) ;
 	
