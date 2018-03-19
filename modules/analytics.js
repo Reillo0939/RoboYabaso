@@ -32,7 +32,7 @@ function parseInput(rplyToken, inputStr, id,name) {
 	if (trigger.match(/^ccb$|^cc$|^ccn[1-2]$|^cc[1-2]$/)!= null && mainMsg[1]<=1000 )
 	{		
 	//ccb指令開始於此
-	if (trigger == 'cc.b'&& mainMsg[1]<=99) return exports.coc.coc6(mainMsg[1],mainMsg[2]);
+	if (trigger == 'ccb'&& mainMsg[1]<=99) return exports.coc.coc6(mainMsg[1],mainMsg[2]);
 	
 	//cc指令開始於此
 	if (trigger == 'cc'&& mainMsg[1]<=1000) return exports.coc.coc7(mainMsg[1],mainMsg[2]);
@@ -94,8 +94,8 @@ function parseInput(rplyToken, inputStr, id,name) {
 	
 	if (trigger.match(/(^玩家權限$|^玩家權限$)/) != null) return exports.card.IDCA(id,name) ;
 	
-	if (trigger=='g.U角色創立') return exports.Character.CM(mainMsg[1],mainMsg[2],id) ;
-	if (trigger=='a.A.U.F角色創立') return exports.Character.CT(mainMsg[1],mainMsg[2],id) ;
+	if (trigger=='GU角色創立') return exports.Character.CM(mainMsg[1],mainMsg[2],id) ;
+	if (trigger=='AAUF角色創立') return exports.Character.CT(mainMsg[1],mainMsg[2],id) ;
 	
 	if (trigger.match(/^角色資料$/) != null) return exports.Character.CV(id,name) ;
 	if (trigger.match(/^角色查詢$/) != null) return exports.Character.CI(name,mainMsg[1]) ;
