@@ -15,7 +15,7 @@ function coc6(chack,text){
 	{
 		if (temp == 100) rply.text = 'ccb<=' + chack + ' ' + temp + ' → 啊！大失敗！；' + text;
 		if (temp <= chack) rply.text = 'ccb<=' + chack +	' ' + temp + ' → 成功；' + text;
-		else rply.text = 'ccb<=' + chack	+ ' ' +	temp + ' →'+ text' 失敗；';
+		else rply.text = 'ccb<=' + chack	+ ' ' +	temp + ' →'+ text + ' 失敗；';
 	}
 	return rply;
 }	
