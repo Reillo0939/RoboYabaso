@@ -91,7 +91,7 @@ function BuildRollDice(inputStr){
 	let mutiOrNot = text0.toLowerCase();
 	
 	//排除小數點
-	if (mutiOrNot.toString().match(/\./)!=null)return undefined;
+	//if (mutiOrNot.toString().match(/\./)!=null)return undefined;
 
 	//先定義要輸出的Str
 	let finalStr = '' ;	
