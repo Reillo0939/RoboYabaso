@@ -72,12 +72,12 @@ function storeToken(token) {
 var rply ={type : 'text'}; //type是必需的,但可以更改
 var Characters = [];
 var cat,re;
-function CM(name,age,id) {
+function CM(name,age,id,names) {
 	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation,Growing;
 
 for(var tt=0;tt<Characters.length;tt++){
 if(Characters[tt][0]==id){
-rply.text='你已有角色，若要修改請找GM';
+rply.text=names +' 你已有角色，若要修改請找GM';
 return rply;	
 }
 }
@@ -120,7 +120,7 @@ Earth=rollbase.Dice(50);
 Growing=Math.floor(((35-ATK)+(35-None)+(35-Fire)+(35-Water)+(35-Wind)+(35-Earth))*0.5);
 }
 if(Growing<=10)Growing=rollbase.Dice(5)+10;
-rply.text=
+rply.text=names +'\n'
 '['+ name +']  年齡：' +age +
 '\n職業：  ' + Occupation +
 '\n生命值： '+ HP +
@@ -135,10 +135,8 @@ rply.text=
 '\n成長點： '+  Growing	
 ;
 if((age<14)||(age>65)){
-Occupation='不適合戰鬥者';
-rply.text=
-'['+ name +']  年齡：' +age +
-'\n職業：  ' + Occupation ;
+rply.text='這年齡不適合戰鬥請重新創角";
+return rply;
 }
 	console.log('test OK 1');
 var hh=Characters.length;
@@ -171,11 +169,11 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
 });
 return rply;	
 }
-function CT(name,age,id) {
+function CT(name,age,id,names) {
 	var HP,MP,ATK,Reaction,Occupation,Control,Growing;
 for(var tt=0;tt<Characters.length;tt++){
 if(Characters[tt][0]==id){
-rply.text= name + ' 你已有角色，若要修改請找GM';
+rply.text= names + ' 你已有角色，若要修改請找GM';
 return rply;	
 }
 }
@@ -210,10 +208,8 @@ rply.text=
 '\n成長點： '+  Growing;
 
 if((age<16)||(age>60)){
-Occupation='不適合戰鬥者';
-rply.text=
-'['+ name +']  年齡：' +age +
-'\n職業：  ' + Occupation ;
+rply.text='這年齡不適合戰鬥請重新創角";
+return rply;
 }
 var hh=Characters.length;
 var ddd=[];
