@@ -84,11 +84,11 @@ function parseInput(rplyToken, inputStr, id,name) {
 	if (trigger.match(/立flag|死亡flag/) != null) return exports.funny.BStyleFlagSCRIPTS() ;	
 	//87
 	if (trigger.match(/87/) != null) return exports.funny.bsMo() ;
-	if (inputStr=='"G.U"抽卡') return exports.card.MCard(1,id,name) ;
-	if (inputStr=='"G.U"10連抽') return exports.card.MCard(10,id,name) ;
+	if (trigger.match(/^"g.u"抽卡/) != null) return exports.card.MCard(1,id,name) ;//"G.U"抽卡
+	if (trigger.match(/^"g.u"10連抽/) != null) return exports.card.MCard(10,id,name) ;//"G.U"10連抽
 	
-		if (inputStr=='A.A.U.F"抽卡') return exports.card.TCard(1,id,name) ;
-	if (inputStr=='"A.A.U.F"10連抽') return exports.card.TCard(10,id,name) ;
+	if (trigger.match(/^"a.a.u.f"抽卡/) != null) return exports.card.TCard(1,id,name) ;//"A.A.U.F"抽卡
+	if (trigger.match(/^"a.a.u.f"10連抽/) != null) return exports.card.TCard(10,id,name) ;//"A.A.U.F"10連抽
 	if (trigger.match(/^卡片查詢$/) != null) return exports.card_help.CardH(mainMsg[1]) ;
 	if (trigger.match(/^卡池資訊$/) != null) return exports.card.ICard() ;
 	
