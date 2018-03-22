@@ -135,7 +135,7 @@ rply.text=names +'\n'
 '\n成長點： '+  Growing	
 ;
 if((age<14)||(age>65)){
-rply.text='這年齡不適合戰鬥請重新創角";
+rply.text='這年齡不適合戰鬥請重新創角';
 return rply;
 }
 	console.log('test OK 1');
@@ -208,7 +208,7 @@ rply.text=
 '\n成長點： '+  Growing;
 
 if((age<16)||(age>60)){
-rply.text='這年齡不適合戰鬥請重新創角";
+rply.text='這年齡不適合戰鬥請重新創角';
 return rply;
 }
 var hh=Characters.length;
