@@ -123,6 +123,7 @@ if(Growing<=10)Growing=rollbase.Dice(5)+10;
 rply.text=names +'\n'
 '['+ name +']  年齡：' +age +
 '\n職業：  ' + Occupation +
+'\n軍階： '+  '訓練兵'+
 '\n生命值： '+ HP +
 '\nBata粒子適性： '+ MP +
 '\n物理適性： '+ ATK +
@@ -158,6 +159,7 @@ ddd[12] = Wind ;
 ddd[13] = Earth ;
 ddd[14] = Growing ;
 ddd[15] = 0 ;
+ddd[16] = '訓練兵' ;
 Characters[hh]=ddd;
 
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
@@ -200,6 +202,7 @@ if((Control<10)||(MP<50))Occupation='外骨骼裝備步兵';
 rply.text=
 '['+ name +']  年齡：' +age +
 '\n職業：  ' + Occupation +
+'\n軍階： '+  '訓練兵'+
 '\n生命值： '+ HP +
 '\nBata粒子適性： '+ MP +
 '\n物理適性： '+ ATK +
@@ -230,6 +233,7 @@ ddd[12] = 0 ;
 ddd[13] = 0 ;
 ddd[14] = Growing ;
 ddd[15] = Control ;
+ddd[16] = '訓練兵' ;
 Characters[hh]=ddd;
 	
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
@@ -252,6 +256,7 @@ if(Characters[fd][0]==id){
 name +' 的角色'+
 '\n['+ Characters[fd][1] +']  年齡：' +Characters[fd][2] +
 '\n職業：  ' + Characters[fd][4] +
+'\n軍階： '+  Characters[fd][16]	+
 '\n生命值： '+ Characters[fd][5] +
 '\nBata粒子適性： '+ Characters[fd][6] +
 '\n物理適性： '+ Characters[fd][7] +
@@ -265,6 +270,7 @@ name +' 的角色'+
 name +' 的角色'+
 '\n['+ Characters[fd][1] +']  年齡：' +Characters[fd][2] +
 '\n職業：  ' + Characters[fd][4] +
+'\n軍階： '+  Characters[fd][16]	+
 '\n生命值： '+ Characters[fd][5] +
 '\nBata粒子適性： '+ Characters[fd][6] +
 '\n物理適性： '+ Characters[fd][7] +
@@ -291,6 +297,7 @@ if(Characters[fd][1]==names){
 name +' 我找到的角色是'+
 '\n['+ Characters[fd][1] +']  年齡：' +Characters[fd][2] +
 '\n職業：  ' + Characters[fd][4] +
+'\n軍階： '+  Characters[fd][16]	+
 '\n生命值： '+ Characters[fd][5] +
 '\nBata粒子適性： '+ Characters[fd][6] +
 '\n物理適性： '+ Characters[fd][7] +
@@ -304,6 +311,7 @@ name +' 我找到的角色是'+
 name +' 我找到的角色是'+
 '\n['+ Characters[fd][1] +']  年齡：' +Characters[fd][2] +
 '\n職業：  ' + Characters[fd][4] +
+'\n軍階： '+  Characters[fd][16]	+
 '\n生命值： '+ Characters[fd][5] +
 '\nBata粒子適性： '+ Characters[fd][6] +
 '\n物理適性： '+ Characters[fd][7] +
@@ -361,7 +369,7 @@ function tests(auth) {
 	    for (var i = 0; i < rows.length; i++) {
 	     var row = rows[i];
 	     var Cha=[];
-		for(var j = 0 ; j < 16;j++){
+		for(var j = 0 ; j < 17;j++){
 			if(row[j]!= null){
 	    			Cha[j]=row[j];
 			}
@@ -383,7 +391,7 @@ var leng=Characters.length;
       [Characters[leng-1][0] ,Characters[leng-1][1],Characters[leng-1][2],Characters[leng-1][3]
       ,Characters[leng-1][4],Characters[leng-1][5],Characters[leng-1][6],Characters[leng-1][7]
       ,Characters[leng-1][8],Characters[leng-1][9],Characters[leng-1][10],Characters[leng-1][11]
-      ,Characters[leng-1][12],Characters[leng-1][13],Characters[leng-1][14],Characters[leng-1][15]],
+      ,Characters[leng-1][12],Characters[leng-1][13],Characters[leng-1][14],Characters[leng-1][15]],,Characters[leng-1][16]],
 ];
 	console.log('test OK');
 	var range='Character!A' + leng;
