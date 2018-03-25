@@ -444,7 +444,7 @@ sheets.spreadsheets.values.update(request, function(err, result) {
 function CCCN(auth) {
 var leng=ccN;
 	var values = [
-      [Characters[leng][0] ,Characters[leng][1],]
+      [Characters[leng+1][0] ,Characters[leng+1][1],]
 ];
 	console.log('test OK');
 	var range='Character!A' + leng;
