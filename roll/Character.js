@@ -288,7 +288,7 @@ name +' 的角色'+
 return rply;	
 }
 function CI(name,names) {
-	rply.text='抱歉' + name + ' 我查不到這個玩家的資料';
+	
 for(var fd=0;fd<Characters.length;fd++){
 if(Characters[fd][1]==names){
 	 console.log('IN');
@@ -349,6 +349,48 @@ function CCN(id,name,Cname) {
 	return rply;	
 }
 
+function CSG(id,name,select,Points) {
+	rply.text= name+' 你沒有角色，如果有遺失請與GM聯絡';
+for(var fd=0;fd<Characters.length;fd++){
+if(Characters[fd][0]==id){
+	 console.log('IN');
+	if(Characters[fd][3]=='A.A.U.F'){
+		rply.text=
+name +' 的角色'+
+'\n['+ Characters[fd][1] +']  年齡：' +Characters[fd][2] +
+'\n職業：  ' + Characters[fd][4] +
+'\n軍階： '+  Characters[fd][16]	+
+'\n生命值： '+ Characters[fd][5] +
+'\nBata粒子適性： '+ Characters[fd][6] +
+'\n物理適性： '+ Characters[fd][7] +
+'\n控制能力： '+ Characters[fd][15] +
+'\n反應力： '+ Characters[fd][8] +
+'\n未分配的成長點： '+  Characters[fd][14]	
+;
+	}
+	if(Characters[fd][3]=='G.U.'){
+	rply.text=
+name +' 的角色'+
+'\n['+ Characters[fd][1] +']  年齡：' +Characters[fd][2] +
+'\n職業：  ' + Characters[fd][4] +
+'\n軍階： '+  Characters[fd][16]	+
+'\n生命值： '+ Characters[fd][5] +
+'\nBata粒子適性： '+ Characters[fd][6] +
+'\n物理適性： '+ Characters[fd][7] +
+'\n反應力： '+ Characters[fd][8] +
+'\n放出適性： '+ Characters[fd][9] +
+'\n火屬適性： '+ Characters[fd][10] +
+'\n水屬適性： '+ Characters[fd][11] +
+'\n風屬適性： '+ Characters[fd][12] +
+'\n土屬適性： '+ Characters[fd][13] +
+'\n未分配的成長點： '+  Characters[fd][14]	
+;
+	}
+}
+}
+return rply;	
+}
+
 function CCL() {
 	rply.text='';
 for(var fd=1;fd<Characters.length;fd++){
@@ -364,7 +406,8 @@ module.exports = {
 	CV:CV,
 	CI:CI,
 	CCN:CCN,
-	CCL:CCL
+	CCL:CCL,
+	CSG:CSG
 };
 
 function oz() {
