@@ -353,8 +353,15 @@ function CSG(id,name,select,Points) {
 	rply.text= name+' 你沒有角色，如果有遺失請與GM聯絡';
 for(var fd=0;fd<Characters.length;fd++){
 if(Characters[fd][0]==id){
-	 console.log('IN');
 	if(Characters[fd][3]=='A.A.U.F'){
+		if(select!=''){
+			if(Points!=''){
+				
+			}
+			else{rply.text=name +'你未輸入數值';}
+		}
+		else{rply.text=name +'你可分配\n-物理適性\n-放出適性\n-火屬適性\n-水屬適性\n-風屬適性\n-土屬適性';}
+		
 		rply.text=
 name +' 的角色'+
 '\n['+ Characters[fd][1] +']  年齡：' +Characters[fd][2] +
