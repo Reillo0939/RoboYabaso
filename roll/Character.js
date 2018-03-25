@@ -328,12 +328,26 @@ name +' 我找到的角色是'+
 }
 return rply;	
 }
+
+function CCN(id,name,Cname) {
+	rply.text= name+' 你沒有角色，如果有遺失請與GM聯絡';
+	for(var fd=0;fd<Characters.length;fd++){
+		if(Characters[fd][0]==id){
+	 		console.log('IN');
+			Characters[fd][1]=Cname;
+			rply.text=name +' 改名成功';
+		}
+	}
+	return rply;	
+}
+
 module.exports = {
 	CM:CM,
 	CT:CT,
 	oz:oz,
 	CV:CV,
-	CI:CI
+	CI:CI,
+	CCN:CCN
 };
 
 function oz() {
