@@ -101,6 +101,7 @@ function parseInput(rplyToken, inputStr, id,name) {
 	if (trigger.match(/自身情報/)!= null) return exports.Character.CV(id,name) ;
 	if (trigger.match(/查詢/)!= null) return exports.Character.CI(name,mainMsg[1]) ;
 	if (trigger.match(/改名/)!= null) return exports.Character.CCN(id,name,mainMsg[1]) ;
+	if (trigger.match(/列表/)!= null) return exports.Character.CCL() ;
 	}
 	
 	if (trigger.match(/^角色創立說明$/) != null) return exports.help.Character() ;
