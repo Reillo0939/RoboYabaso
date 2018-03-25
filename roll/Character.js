@@ -337,15 +337,16 @@ function CCN(id,name,Cname) {
 	 		console.log('IN');
 			Characters[fd][1]=Cname;
 			rply.text=name +' 改名成功';
+			fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+  			if (err) {
+   			 console.log('Error loading client secret file: ' + err);
+    			return;
+  			}
+  			authorize(JSON.parse(content), CCCN);
+			});
 		}
 	}
-	fs.readFile('client_secret.json', function processClientSecrets(err, content) {
-  if (err) {
-    console.log('Error loading client secret file: ' + err);
-    return;
-  }
-  authorize(JSON.parse(content), CCCN);
-});
+	
 	return rply;	
 }
 
@@ -353,6 +354,7 @@ function CSG(id,name,select,Points) {
 	rply.text= name+' 你沒有角色，如果有遺失請與GM聯絡';
 for(var fd=0;fd<Characters.length;fd++){
 if(Characters[fd][0]==id){
+	ccN=fd;
 	if(Characters[fd][3]=='A.A.U.F'){
 		if(select=='物理適性'||select=='控制能力'){
 			if(Points!=null && isNaN(Points)!=1){
@@ -365,6 +367,13 @@ if(Characters[fd][0]==id){
 					Characters[fd][14]-=Points;
 					rply.text='分配成功';				}
 				else{rply.text='點數不足';}
+				fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+  				if (err) {
+    				console.log('Error loading client secret file: ' + err);
+    				return;
+  				}
+  				authorize(JSON.parse(content), CCCN);
+				});
 			}
 			else{rply.text=name +'你未輸入數值或是數值錯誤';}
 		}
@@ -398,6 +407,13 @@ if(Characters[fd][0]==id){
 					Characters[fd][14]-=Points;
 					rply.text='分配成功';				}
 				else{rply.text='點數不足';}
+				fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+  				if (err) {
+    				console.log('Error loading client secret file: ' + err);
+    				return;
+  				}
+  				authorize(JSON.parse(content), CCCN);
+				});
 			}
 			else{rply.text=name +'你未輸入數值或是數值錯誤';}
 		}
@@ -514,7 +530,10 @@ sheets.spreadsheets.values.update(request, function(err, result) {
 function CCCN(auth) {
 var leng=ccN;
 	var values = [
-      [Characters[leng][1],]
+      [Characters[leng][1],Characters[leng][2],Characters[leng][3]
+      ,Characters[leng][4],Characters[leng][5],Characters[leng][6],Characters[leng][7]
+      ,Characters[leng][8],Characters[leng][9],Characters[leng][10],Characters[leng][11]
+      ,Characters[leng][12],Characters[leng][13],Characters[leng][14],Characters[leng][15],Characters[leng][16]],]
 ];
 	console.log('test OK');
 	var range='Character!B' + (leng+1);
