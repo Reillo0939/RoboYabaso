@@ -99,7 +99,7 @@ function parseInput(rplyToken, inputStr, id,name) {
 	
 	if (trigger.match(/玩家/) != null){
 	if (trigger.match(/自身情報/)!= null) return exports.Character.CV(id,name) ;
-	if (mainMsg[1]='查詢') return exports.Character.CI(name,mainMsg[2]) ;
+	if (mainMsg[1]=='查詢') return exports.Character.CI(name,mainMsg[2]) ;
 	}
 	
 	if (trigger.match(/^角色創立說明$/) != null) return exports.help.Character() ;
