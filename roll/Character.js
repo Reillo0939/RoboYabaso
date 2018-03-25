@@ -370,7 +370,7 @@ if(Characters[fd][0]==id){
 					Characters[fd][14]-=Points;
 					rply.text='分配成功';
 				}
-				else{rply.text='點數不足;}
+				else{rply.text='點數不足';}
 			}
 			else{rply.text=name +'你未輸入數值或是數值錯誤';}
 		}
