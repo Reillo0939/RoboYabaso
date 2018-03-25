@@ -370,23 +370,23 @@ if(Characters[fd][0]==id){
 					Characters[fd][14]-=Points;
 					rply.text='分配成功';				}
 				else if(select=='放出適性' && Characters[fd][14]>=Points){
-					Characters[fd][9]=parseInt(Characters[fd][7],10)+parseInt(Points, 10);
+					Characters[fd][9]=parseInt(Characters[fd][9],10)+parseInt(Points, 10);
 					Characters[fd][14]-=Points;
 					rply.text='分配成功';				}
 				else if(select=='火屬適性' && Characters[fd][14]>=Points){
-					Characters[fd][10]=parseInt(Characters[fd][7],10)+parseInt(Points, 10);
+					Characters[fd][10]=parseInt(Characters[fd][10],10)+parseInt(Points, 10);
 					Characters[fd][14]-=Points;
 					rply.text='分配成功';				}
 				else if(select=='水屬適性' && Characters[fd][14]>=Points){
-					Characters[fd][11]=parseInt(Characters[fd][7],10)+parseInt(Points, 10);
+					Characters[fd][11]=parseInt(Characters[fd][11],10)+parseInt(Points, 10);
 					Characters[fd][14]-=Points;
 					rply.text='分配成功';				}
 				else if(select=='風屬適性' && Characters[fd][14]>=Points){
-					Characters[fd][12]=parseInt(Characters[fd][7],10)+parseInt(Points, 10);
+					Characters[fd][12]=parseInt(Characters[fd][12],10)+parseInt(Points, 10);
 					Characters[fd][14]-=Points;
 					rply.text='分配成功';				}
 				else if(select=='土屬適性' && Characters[fd][14]>=Points){
-					Characters[fd][13]=parseInt(Characters[fd][7],10)+parseInt(Points, 10);
+					Characters[fd][13]=parseInt(Characters[fd][13],10)+parseInt(Points, 10);
 					Characters[fd][14]-=Points;
 					rply.text='分配成功';				}
 				else{rply.text='點數不足';}
