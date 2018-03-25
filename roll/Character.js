@@ -533,7 +533,7 @@ var leng=ccN;
       [Characters[leng][1],Characters[leng][2],Characters[leng][3]
       ,Characters[leng][4],Characters[leng][5],Characters[leng][6],Characters[leng][7]
       ,Characters[leng][8],Characters[leng][9],Characters[leng][10],Characters[leng][11]
-      ,Characters[leng][12],Characters[leng][13],Characters[leng][14],Characters[leng][15],Characters[leng][16]],]
+      ,Characters[leng][12],Characters[leng][13],Characters[leng][14],Characters[leng][15],Characters[leng][16]],
 ];
 	console.log('test OK');
 	var range='Character!B' + (leng+1);
