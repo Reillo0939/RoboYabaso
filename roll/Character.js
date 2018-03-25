@@ -366,7 +366,7 @@ if(Characters[fd][0]==id){
 	if(select=='物理適性'||select=='放出適性'||select=='火屬適性'||select=='水屬適性'||select=='風屬適性'||select=='土屬適性'){
 			if(Points!=null && isNaN(Points)!=1){
 				if(select=='物理適性' && Characters[fd][14]>=Points){
-					Characters[fd][7]+=Points;
+					Characters[fd][7]=Characters[fd][7]+parseInt(Points, 10);
 					Characters[fd][14]-=Points;
 					rply.text='分配成功';
 				}
