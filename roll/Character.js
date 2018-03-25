@@ -359,7 +359,7 @@ if(Characters[fd][0]==id){
 				if(select=='物理適性' && Characters[fd][14]>=Points){
 					Characters[fd][7]=parseInt(Characters[fd][7],10)+parseInt(Points, 10);
 					Characters[fd][14]-=Points;
-					rply.text='分配成功';				}		}
+					rply.text='分配成功';				}
 				else if(select=='控制能力' && Characters[fd][14]>=Points){
 					Characters[fd][15]=parseInt(Characters[fd][15],10)+parseInt(Points, 10);
 					Characters[fd][14]-=Points;
