@@ -350,7 +350,7 @@ function CCN(id,name,Cname) {
 }
 
 function CCL() {
-	
+	rply.text='';
 for(var fd=1;fd<Characters.length;fd++){
 	rply.text+=Characters[fd][1] +'\n';
 }
