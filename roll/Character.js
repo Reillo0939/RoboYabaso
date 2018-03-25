@@ -355,7 +355,7 @@ for(var fd=0;fd<Characters.length;fd++){
 if(Characters[fd][0]==id){
 	if(Characters[fd][3]=='A.A.U.F'){
 		if(select!=null){
-			if(Points!=null && isNaN(Points)){
+			if(Points!=null && isNaN(Points)!=1){
 				
 			}
 			else{rply.text=name +'你未輸入數值或是數值錯誤';}
@@ -364,7 +364,7 @@ if(Characters[fd][0]==id){
 	}
 	if(Characters[fd][3]=='G.U.'){
 	if(select!=null){
-			if(Points!=null && isNaN(Points)){
+			if(Points!=null && isNaN(Points)!=1){
 				
 			}
 			else{rply.text=name +'你未輸入數值或是數值錯誤';}
