@@ -95,9 +95,12 @@ function parseInput(rplyToken, inputStr, id,name) {
 	if (trigger.match(/(^玩家權限$|^玩家權限$)/) != null) return exports.card.IDCA(id,name) ;
 	if (trigger.match(/^g.u角色創立$/) != null) return exports.Character.CM(mainMsg[1],mainMsg[2],id,name) ;
 	if (trigger.match(/^a.a.u.f角色創立$/) != null) return exports.Character.CT(mainMsg[1],mainMsg[2],id,name) ;
-	if (trigger.match(/^角色資料$/) != null) return exports.Character.CV(id,name) ;
-	if (trigger.match(/^角色查詢$/) != null) return exports.Character.CI(name,mainMsg[1]) ;
 	
+	
+	if (trigger.match(/^玩家$/) != null){
+	if (mainMsg[1]='自身情報') return exports.Character.CV(id,name) ;
+	if (mainMsg[1]='查詢') return exports.Character.CI(name,mainMsg[2]) ;
+	}
 	
 	if (trigger.match(/^角色創立說明$/) != null) return exports.help.Character() ;
 	
