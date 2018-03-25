@@ -373,7 +373,7 @@ name +' 的角色'+
 '\n控制能力： '+ Characters[fd][15] +
 '\n反應力： '+ Characters[fd][8] +
 '\n未分配的成長點： '+  Characters[fd][14]	
-;
+;*/
 	}
 	if(Characters[fd][3]=='G.U.'){
 	rply.text=
