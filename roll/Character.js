@@ -363,9 +363,14 @@ if(Characters[fd][0]==id){
 		else{rply.text=name +'你可分配\n-物理適性\n-控制能力';}
 	}
 	if(Characters[fd][3]=='G.U.'){
-	if(select!=null){
+	if(select=='物理適性'&&select=='放出適性'&&select=='火屬適性'&&select=='水屬適性'&&select=='風屬適性'&&select=='土屬適性'){
 			if(Points!=null && isNaN(Points)!=1){
-				
+				if(select=='物理適性' && Characters[fd][14]>=Points){
+					Characters[fd][7]+=Points;
+					Characters[fd][14]-=Points;
+					rply.text='分配成功;
+				}
+				else{rply.text='點數不足;}
 			}
 			else{rply.text=name +'你未輸入數值或是數值錯誤';}
 		}
