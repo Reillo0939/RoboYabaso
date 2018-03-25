@@ -349,13 +349,22 @@ function CCN(id,name,Cname) {
 	return rply;	
 }
 
+function CCL() {
+	
+for(var fd=1;fd<Characters.length;fd++){
+	rply.text=Characters[fd][1] +'\n';
+}
+return rply;	
+}
+
 module.exports = {
 	CM:CM,
 	CT:CT,
 	oz:oz,
 	CV:CV,
 	CI:CI,
-	CCN:CCN
+	CCN:CCN,
+	CCL:CCL
 };
 
 function oz() {
