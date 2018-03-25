@@ -354,8 +354,8 @@ function CSG(id,name,select,Points) {
 for(var fd=0;fd<Characters.length;fd++){
 if(Characters[fd][0]==id){
 	if(Characters[fd][3]=='A.A.U.F'){
-		if(select!=''){
-			if(Points!=''){
+		if(select!=null){
+			if(Points!=null){
 				
 			}
 			else{rply.text=name +'你未輸入數值';}
@@ -363,8 +363,8 @@ if(Characters[fd][0]==id){
 		else{rply.text=name +'你可分配\n-物理適性\n-控制能力';}
 	}
 	if(Characters[fd][3]=='G.U.'){
-	if(select!=''){
-			if(Points!=''){
+	if(select!=null){
+			if(Points!=null){
 				
 			}
 			else{rply.text=name +'你未輸入數值';}
