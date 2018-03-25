@@ -368,7 +368,7 @@ if(Characters[fd][0]==id){
 				if(select=='物理適性' && Characters[fd][14]>=Points){
 					Characters[fd][7]+=Points;
 					Characters[fd][14]-=Points;
-					rply.text='分配成功;
+					rply.text='分配成功';
 				}
 				else{rply.text='點數不足;}
 			}
