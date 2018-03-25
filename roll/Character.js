@@ -333,7 +333,7 @@ function CCN(id,name,Cname) {
 	rply.text= name+' 你沒有角色，如果有遺失請與GM聯絡';
 	for(var fd=0;fd<Characters.length;fd++){
 		if(Characters[fd][0]==id){
-			ccn=fd;
+			ccN=fd;
 	 		console.log('IN');
 			Characters[fd][1]=Cname;
 			rply.text=name +' 改名成功';
