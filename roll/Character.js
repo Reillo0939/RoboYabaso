@@ -330,7 +330,7 @@ return rply;
 }
 
 function CCN(id,name,Cname) {
-	rply.text= name+' 你沒有角色，如果有遺失請與GM聯絡';
+	rply.text+= name+' 你沒有角色，如果有遺失請與GM聯絡';
 	for(var fd=0;fd<Characters.length;fd++){
 		if(Characters[fd][0]==id){
 			ccN=fd;
