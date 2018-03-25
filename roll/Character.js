@@ -392,10 +392,11 @@ return rply;
 }
 
 function CCL() {
-	rply.text='';
+	rply.text='目前的玩家有\n';
 for(var fd=1;fd<Characters.length;fd++){
-	rply.text+=Characters[fd][1] +'\n';
+	rply.text+='陣營： '+ Characters[fd][3] + '名稱： '+Characters[fd][1] +'\n';
 }
+	rply.text+='這些';
 return rply;	
 }
 
