@@ -360,38 +360,16 @@ if(Characters[fd][0]==id){
 			}
 			else{rply.text=name +'你未輸入數值';}
 		}
-		else{rply.text=name +'你可分配\n-物理適性\n-放出適性\n-火屬適性\n-水屬適性\n-風屬適性\n-土屬適性';}
-		
-		/*rply.text=
-name +' 的角色'+
-'\n['+ Characters[fd][1] +']  年齡：' +Characters[fd][2] +
-'\n職業：  ' + Characters[fd][4] +
-'\n軍階： '+  Characters[fd][16]	+
-'\n生命值： '+ Characters[fd][5] +
-'\nBata粒子適性： '+ Characters[fd][6] +
-'\n物理適性： '+ Characters[fd][7] +
-'\n控制能力： '+ Characters[fd][15] +
-'\n反應力： '+ Characters[fd][8] +
-'\n未分配的成長點： '+  Characters[fd][14]	
-;*/
+		else{rply.text=name +'你可分配\n-物理適性\n-控制能力';}
 	}
 	if(Characters[fd][3]=='G.U.'){
-	rply.text=
-name +' 的角色'+
-'\n['+ Characters[fd][1] +']  年齡：' +Characters[fd][2] +
-'\n職業：  ' + Characters[fd][4] +
-'\n軍階： '+  Characters[fd][16]	+
-'\n生命值： '+ Characters[fd][5] +
-'\nBata粒子適性： '+ Characters[fd][6] +
-'\n物理適性： '+ Characters[fd][7] +
-'\n反應力： '+ Characters[fd][8] +
-'\n放出適性： '+ Characters[fd][9] +
-'\n火屬適性： '+ Characters[fd][10] +
-'\n水屬適性： '+ Characters[fd][11] +
-'\n風屬適性： '+ Characters[fd][12] +
-'\n土屬適性： '+ Characters[fd][13] +
-'\n未分配的成長點： '+  Characters[fd][14]	
-;
+	if(select!=''){
+			if(Points!=''){
+				
+			}
+			else{rply.text=name +'你未輸入數值';}
+		}
+		else{rply.text=name +'你可分配\n-物理適性\n-放出適性\n-火屬適性\n-水屬適性\n-風屬適性\n-土屬適性';}
 	}
 }
 }
