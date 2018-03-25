@@ -71,7 +71,7 @@ function storeToken(token) {
 //-------------------------------------------------------------------------------------------------------------------------------
 var rply ={type : 'text'}; //type是必需的,但可以更改
 var Characters = [];
-var cat,re;
+var cat,re,ccN;
 function CM(name,age,id,names) {
 	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation,Growing;
 
@@ -333,11 +333,19 @@ function CCN(id,name,Cname) {
 	rply.text= name+' 你沒有角色，如果有遺失請與GM聯絡';
 	for(var fd=0;fd<Characters.length;fd++){
 		if(Characters[fd][0]==id){
+			ccn=fd;
 	 		console.log('IN');
 			Characters[fd][1]=Cname;
 			rply.text=name +' 改名成功';
 		}
 	}
+	fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+  if (err) {
+    console.log('Error loading client secret file: ' + err);
+    return;
+  }
+  authorize(JSON.parse(content), CCCN);
+});
 	return rply;	
 }
 
@@ -406,6 +414,37 @@ var leng=Characters.length;
       ,Characters[leng-1][4],Characters[leng-1][5],Characters[leng-1][6],Characters[leng-1][7]
       ,Characters[leng-1][8],Characters[leng-1][9],Characters[leng-1][10],Characters[leng-1][11]
       ,Characters[leng-1][12],Characters[leng-1][13],Characters[leng-1][14],Characters[leng-1][15],Characters[leng-1][16]],
+];
+	console.log('test OK');
+	var range='Character!A' + leng;
+var body = {
+  values: values
+};
+	var request = {
+    spreadsheetId: mySheetId,
+        range: range,
+      valueInputOption: 'RAW',
+        resource: {
+      values: values
+    },
+
+    auth: auth,
+  };
+	
+sheets.spreadsheets.values.update(request, function(err, result) {
+  if(err) {
+    // Handle error
+    console.log(err);
+  } else {
+    console.log('%d cells updated.', result.updatedCells);
+  }
+});
+}
+
+function CCCN(auth) {
+var leng=ccn;
+	var values = [
+      [Characters[leng][0] ,Characters[leng][1],]
 ];
 	console.log('test OK');
 	var range='Character!A' + leng;
