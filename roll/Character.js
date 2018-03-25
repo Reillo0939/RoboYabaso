@@ -355,19 +355,19 @@ for(var fd=0;fd<Characters.length;fd++){
 if(Characters[fd][0]==id){
 	if(Characters[fd][3]=='A.A.U.F'){
 		if(select!=null){
-			if(Points!=null){
+			if(Points!=null && isNaN(Points)){
 				
 			}
-			else{rply.text=name +'你未輸入數值';}
+			else{rply.text=name +'你未輸入數值或是數值錯誤';}
 		}
 		else{rply.text=name +'你可分配\n-物理適性\n-控制能力';}
 	}
 	if(Characters[fd][3]=='G.U.'){
 	if(select!=null){
-			if(Points!=null){
+			if(Points!=null && isNaN(Points)){
 				
 			}
-			else{rply.text=name +'你未輸入數值';}
+			else{rply.text=name +'你未輸入數值或是數值錯誤';}
 		}
 		else{rply.text=name +'你可分配\n-物理適性\n-放出適性\n-火屬適性\n-水屬適性\n-風屬適性\n-土屬適性';}
 	}
