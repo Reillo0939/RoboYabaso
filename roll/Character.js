@@ -362,7 +362,7 @@ if(Characters[fd][0]==id){
 		}
 		else{rply.text=name +'你可分配\n-物理適性\n-放出適性\n-火屬適性\n-水屬適性\n-風屬適性\n-土屬適性';}
 		
-		rply.text=
+		/*rply.text=
 name +' 的角色'+
 '\n['+ Characters[fd][1] +']  年齡：' +Characters[fd][2] +
 '\n職業：  ' + Characters[fd][4] +
