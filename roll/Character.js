@@ -406,7 +406,9 @@ if(Characters[fd][0]==id){
 					Characters[fd][13]=parseInt(Characters[fd][13],10)+parseInt(Points, 10);
 					Characters[fd][14]-=Points;
 					rply.text='配置成功';				}
-				else{rply.text='點數不足';}
+				else{rply.text='點數不足';
+				    console.log('成長點'+Characters[fd][14]);
+				    }
 				fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   				if (err) {
     				console.log('Error loading client secret file: ' + err);
