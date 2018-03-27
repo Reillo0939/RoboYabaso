@@ -447,7 +447,13 @@ return reggg;
 function oA(x,y) {
 Characters[x][17]=y;
 ccN=x;
-authorize(JSON.parse(content), CCCN);
+	fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+  				if (err) {
+    				console.log('Error loading client secret file: ' + err);
+    				return;
+  				}
+  				authorize(JSON.parse(content), CCCN);
+				});
 }
 
 function oL() {
