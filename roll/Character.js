@@ -160,6 +160,7 @@ ddd[13] = Earth ;
 ddd[14] = Growing ;
 ddd[15] = 0 ;
 ddd[16] = '訓練兵' ;
+ddd[17] = 5000 ;
 Characters[hh]=ddd;
 
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
@@ -234,6 +235,7 @@ ddd[13] = 0 ;
 ddd[14] = Growing ;
 ddd[15] = Control ;
 ddd[16] = '訓練兵' ;
+ddd[17] = 5000 ;
 Characters[hh]=ddd;
 	
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
@@ -262,7 +264,8 @@ name +' 的角色'+
 '\n物理適性： '+ Characters[fd][7] +
 '\n控制能力： '+ Characters[fd][15] +
 '\n反應力： '+ Characters[fd][8] +
-'\n未分配的成長點： '+  Characters[fd][14]	
+'\n未分配的成長點： '+  Characters[fd][14]	+
+'\n持有金幣： '+  Characters[fd][17]	
 ;
 	}
 	if(Characters[fd][3]=='G.U.'){
@@ -280,7 +283,8 @@ name +' 的角色'+
 '\n水屬適性： '+ Characters[fd][11] +
 '\n風屬適性： '+ Characters[fd][12] +
 '\n土屬適性： '+ Characters[fd][13] +
-'\n未分配的成長點： '+  Characters[fd][14]	
+'\n未分配的成長點： '+  Characters[fd][14]	+
+'\n持有金幣： '+  Characters[fd][17]	
 ;
 	}
 }
@@ -479,7 +483,7 @@ function tests(auth) {
 	    for (var i = 0; i < rows.length; i++) {
 	     var row = rows[i];
 	     var Cha=[];
-		for(var j = 0 ; j < 17;j++){
+		for(var j = 0 ; j < 18;j++){
 			if(row[j]!= null){
 	    			Cha[j]=row[j];
 			}
@@ -501,7 +505,8 @@ var leng=Characters.length;
       [Characters[leng-1][0] ,Characters[leng-1][1],Characters[leng-1][2],Characters[leng-1][3]
       ,Characters[leng-1][4],Characters[leng-1][5],Characters[leng-1][6],Characters[leng-1][7]
       ,Characters[leng-1][8],Characters[leng-1][9],Characters[leng-1][10],Characters[leng-1][11]
-      ,Characters[leng-1][12],Characters[leng-1][13],Characters[leng-1][14],Characters[leng-1][15],Characters[leng-1][16]],
+      ,Characters[leng-1][12],Characters[leng-1][13],Characters[leng-1][14],Characters[leng-1][15],Characters[leng-1][16]
+      ,Characters[leng-1][17]],
 ];
 	console.log('test OK');
 	var range='Character!A' + leng;
