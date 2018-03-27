@@ -437,10 +437,18 @@ for(var fd=1;fd<Characters.length;fd++){
 return rply;	
 }
 
+function oC(x,y) {
+var reggg;
+reggg=Characters[x][y];
+return reggg;	
+
+}
+
 module.exports = {
 	CM:CM,
 	CT:CT,
 	oz:oz,
+	oC:oC,
 	CV:CV,
 	CI:CI,
 	CCN:CCN,
