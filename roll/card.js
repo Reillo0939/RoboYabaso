@@ -13,6 +13,7 @@ return rply;
 }
 
 function MCard(frequency,id,name) {
+	for(i=0;i<ox.Characters.length;i++){}
 rply.text=name+'抽到了：';
 if(id==''){
 for(i=1;i<=frequency;i++){
