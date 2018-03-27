@@ -449,11 +449,11 @@ Characters[x][17]=y;
 ccN=x;
 authorize(JSON.parse(content), CCCN);
 }
+
 function oL() {
 var reggg;
 reggg=Characters.length;
 return reggg;	
-
 }
 module.exports = {
 	CM:CM,
