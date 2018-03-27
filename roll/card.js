@@ -2,12 +2,13 @@ var rollbase = require('./rollbase.js');
 var funny = require('./funny.js');
 var ox = require('./Character.js');
 var rply ={type : 'text'}; //type是必需的,但可以更改
-console.log(ox.Characters[1][1]);
+
 
 function IDCA(id,name) {
 rply.text=name+'為測試人員';//U7c4779fd913aff927f26d7f6bedd87d1  雷洛Uc9b4571605aabd3e94edd7c189144278屬
 if(id=='U7c4779fd913aff927f26d7f6bedd87d1')rply.text=name+'為GM';
 if(id=='Uc9b4571605aabd3e94edd7c189144278')rply.text=name+'為GM';
+console.log(ox.Characters[1][1]);
 return rply;
 }
 
