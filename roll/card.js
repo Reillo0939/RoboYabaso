@@ -13,6 +13,7 @@ return rply;
 }
 
 function MCard(frequency,id,name) {
+	console.log(ox.oL);
 	for(var i=0;i<ox.oL;i++){
 	if(ox.oC(i,0)==id)console.log(ox.oC(i,1));
 	}
