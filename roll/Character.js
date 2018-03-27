@@ -306,8 +306,7 @@ name +' 我找到的角色是'+
 '\nBata粒子適性： '+ Characters[fd][6] +
 '\n物理適性： '+ Characters[fd][7] +
 '\n控制能力： '+ Characters[fd][15] +
-'\n反應力： '+ Characters[fd][8] +
-'\n未分配的成長點： '+  Characters[fd][14]	
+'\n反應力： '+ Characters[fd][8] 
 ;
 	}
 	if(Characters[fd][3]=='G.U.'){
@@ -324,8 +323,7 @@ name +' 我找到的角色是'+
 '\n火屬適性： '+ Characters[fd][10] +
 '\n水屬適性： '+ Characters[fd][11] +
 '\n風屬適性： '+ Characters[fd][12] +
-'\n土屬適性： '+ Characters[fd][13] +
-'\n未分配的成長點： '+  Characters[fd][14]	
+'\n土屬適性： '+ Characters[fd][13] 
 ;
 	}
 }
