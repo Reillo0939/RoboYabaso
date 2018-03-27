@@ -13,9 +13,12 @@ return rply;
 }
 
 function MCard(frequency,id,name) {
+	var ggg,ttt;
 	console.log(ox.oL());
 	for(var i=0;i<ox.oL();i++){
-	if(ox.oC(i,0)==id)console.log(ox.oC(i,1));
+	if(ox.oC(i,0)==id){
+		ggg=i;
+		ttt=ox.oC(ggg,17);
 	}
 rply.text=name+'抽到了：';
 if(id==''){
@@ -33,6 +36,8 @@ if((rarity>=89) && (rarity<100))MSR();
 }
 
 if(frequency==10){
+ox.oA(ggg,ttt-1000);
+	
 rply.text+='\n多送你一張：';
 let rarity=rollbase.Dice(100);
 if(rarity>=96)MSSR();
