@@ -120,7 +120,7 @@ Earth=rollbase.Dice(50);
 Growing=Math.floor(((35-ATK)+(35-None)+(35-Fire)+(35-Water)+(35-Wind)+(35-Earth))*0.5);
 }
 if(Growing<=10)Growing=rollbase.Dice(5)+10;
-rply.text=names +'\n'
+rply.text=names +'\n'+
 '['+ name +']  年齡：' +age +
 '\n職業：  ' + Occupation +
 '\n軍階： '+  '訓練兵'+
