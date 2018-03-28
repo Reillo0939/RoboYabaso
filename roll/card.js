@@ -8,7 +8,6 @@ function IDCA(id,name) {
 rply.text=name+'為測試人員';//U7c4779fd913aff927f26d7f6bedd87d1  雷洛Uc9b4571605aabd3e94edd7c189144278屬
 if(id=='U7c4779fd913aff927f26d7f6bedd87d1')rply.text=name+'為GM';
 if(id=='Uc9b4571605aabd3e94edd7c189144278')rply.text=name+'為GM';
-console.log(ox.oC(2,1));
 return rply;
 }
 
@@ -19,6 +18,10 @@ function MCard(frequency,id,name) {
 	if(ox.oC(i,0)==id){
 		ggg=i;
 		ttt=ox.oC(ggg,17);}
+	}
+	if(ttt<frequency*10){
+		rply.text=name+'金錢不足：';
+		return rply;
 	}
 rply.text=name+'抽到了：';
 if(id==''){
@@ -36,8 +39,6 @@ if((rarity>=89) && (rarity<100))MSR();
 }
 
 if(frequency==10){
-ox.oA(ggg,ttt-1000);
-	
 rply.text+='\n多送你一張：';
 let rarity=rollbase.Dice(100);
 if(rarity>=96)MSSR();
@@ -67,6 +68,7 @@ let rplyArr = [
 '\[022] [N] [Skill] 能量放出實驗'
 ];
 rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+ox.oA(ggg,ttt-frequency*100);
 return rply;	
 }
 function MR() {
