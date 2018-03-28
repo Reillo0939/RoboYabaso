@@ -11,7 +11,7 @@ if(id=='Uc9b4571605aabd3e94edd7c189144278')rply.text=name+'為GM';
 return rply;
 }
 function dd() {
-player.length=0;
+player=[];
 }
 function battles(id,name,ab) {
 	var ggg,ttt;
