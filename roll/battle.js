@@ -59,7 +59,8 @@ if(ab=='戰鬥開始' && start==0 && player.length==2){
 	}
 if(start==1){
 	if(id==player[hit][0] && ab=='攻擊'){
-		var rnggg=rollbase.Dice(100);
+		var rnggg;
+		rnggg=rollbase.Dice(100);
 		if(rnggg>(50+player[1-hit][7]-player[hit][7])){
 			player[1-hit][2]=player[1-hit][2]-player[hit][6];
 		hit=1-hit;
