@@ -14,6 +14,9 @@ return rply;
 function battles(id,name,ab) {
 	var ggg,ttt;
 if(ab=='戰鬥參與'){
+	if(player.length==2){
+		rply.text='已達參與上限';
+		return rply;}
 var od=[];
   for(var i=0;i<ox.oL();i++){
 	if(ox.oC(i,0)==id){
@@ -26,6 +29,7 @@ var od=[];
 		od[5]=ox.oC(i,6);
 		od[6]=ox.oC(i,7);
 		od[7]=ox.oC(i,8);
+		player[player.length]=od[];
 		rply.text=name+'你的'+od[1]+'已參與\n'+
 			'HP '+od[2]+'/'+od[3]+
 			'\nbata粒子 '+od[4]+'/'+od[5]+
