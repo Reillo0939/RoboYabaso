@@ -45,6 +45,7 @@ if(rarity>=96)MSSR();
 if(rarity<96)MSR();
 }
 }
+ox.oA(ggg,ttt-frequency*100);
 return rply;
 }
 function MN() {
@@ -68,7 +69,6 @@ let rplyArr = [
 '\[022] [N] [Skill] 能量放出實驗'
 ];
 rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
-ox.oA(ggg,ttt-frequency*100);
 return rply;	
 }
 function MR() {
