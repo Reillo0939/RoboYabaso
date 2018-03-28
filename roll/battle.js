@@ -1,4 +1,4 @@
-var rollbase = require('./rollbase.js');
+/*var rollbase = require('./rollbase.js');
 var funny = require('./funny.js');
 var ox = require('./Character.js');
 var rply ={type : 'text'}; //type是必需的,但可以更改
@@ -38,3 +38,4 @@ module.exports = {
 	battles:battles
 };
 
+*/
