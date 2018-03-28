@@ -61,7 +61,7 @@ if(ab=='戰鬥開始' && start==0 && player.length==2){
 //let rarity=rollbase.Dice(100);
 //ox.oA(ggg,ttt-frequency*100);
 
-}
+
 
 module.exports = {
 	battles:battles,
