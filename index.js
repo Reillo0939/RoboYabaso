@@ -2,6 +2,7 @@ var express = require('express');//
 var bodyParser = require('body-parser');
 var app = express();//262
 var ox = require('./roll/Character.js');
+var ba = require('./roll/battle.js');
 var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
 var channelSecret = process.env.LINE_CHANNEL_SECRET;
 var linebot = require('linebot');///030
@@ -35,7 +36,9 @@ let a = event.source.userId;
 event.source.profile().then(function (profile) {
 b=profile.displayName;
 //Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
-
+if(battle==1){
+ba.battles(a,b,event.message.text);
+}
 if(battle==0){
 if(event.message.text=='戰鬥模式啟動'){
 if(a=='U7c4779fd913aff927f26d7f6bedd87d1'||a=='Uc9b4571605aabd3e94edd7c189144278'){
