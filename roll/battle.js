@@ -41,6 +41,7 @@ var od=[];
 			'\nbata粒子 '+od[4]+'/'+od[5]+
 			'\n物理適性 '+od[6]+
 			'\n反應力'+od[7];
+		console.log(player.length);
 		return rply;
   }
 	}
