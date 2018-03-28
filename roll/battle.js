@@ -22,7 +22,7 @@ if(ab=='戰鬥參與'){
 var od=[];
   for(var i=0;i<ox.oL();i++){
 	if(ox.oC(i,0)==id){
-		if(ox.oC(i,0)==player[0][0]){
+		if(player.length==1 && ox.oC(i,0)==player[0][0]){
 			rply.text='無法重複參與';
 		return rply;
 		}
