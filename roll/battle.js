@@ -59,8 +59,23 @@ if(ab=='戰鬥開始' && start==0 && player.length==2){
 	}
 if(start==1){
 	if(id==player[hit][0] && ab=='攻擊'){
-		player[1-hit][2]=player[1-hit][2]-player[hit][6];
+		var rnggg=rollbase.Dice(100);
+		if(rnggg>(50+player[1-hit][7]-player[hit][7])){
+			player[1-hit][2]=player[1-hit][2]-player[hit][6];
 		hit=1-hit;
+		}
+		else{
+			hit=1-hit;
+			rply.text=player[hit][1]+'閃避成功'+
+			'\nHP '+player[hit][2]+'/'+player[hit][3]+
+			'\nbata粒子 '+player[hit][4]+'/'+player[hit][5]+
+			'\n物理適性 '+player[hit][6]+
+			'\n反應力'+player[hit][7]+
+		'\n輪到'+player[hit][1]+'的回合了'+
+		'\n 可用選項：攻擊';
+		return rply;
+		}
+		
 	}
 	if(player[hit][2]<=0){
 		rply.text=player[1-hit][1]+'勝利';
