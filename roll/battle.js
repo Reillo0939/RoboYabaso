@@ -58,7 +58,7 @@ if(ab=='戰鬥開始' && start==0 && player.length==2){
 		return rply;
 	}
 if(start==1){
-	if(id==player[hit][0] && ab='攻擊'){
+	if(id==player[hit][0] && ab=='攻擊'){
 		player[1-hit][2]=player[1-hit][2]-player[hit][6];
 		hit=1-hit;
 	}
@@ -66,6 +66,7 @@ if(start==1){
 		rply.text=player[1-hit][1]+'勝利';
 		start=0;
 		dd();
+		hit=1;
 		return rply;
 	}
 	rply.text=player[hit][1]+
