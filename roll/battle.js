@@ -74,7 +74,8 @@ if(start==1){
 			'\nbata粒子 '+player[hit][4]+'/'+player[hit][5]+
 			'\n物理適性 '+player[hit][6]+
 			'\n反應力'+player[hit][7]+
-		'\n輪到'+player[hit][1]+'的回合了';
+		'\n輪到'+player[hit][1]+'的回合了'+
+		'\n 可用選項：攻擊';
 		return rply;
 	}
 }
