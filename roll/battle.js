@@ -52,7 +52,8 @@ var od=[];
 }
 
 module.exports = {
-	battles:battles
+	battles:battles,
+	dd:dd
 };
 
 
