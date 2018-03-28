@@ -23,6 +23,7 @@ var API_KEY = 'AIzaSyBM_GM_ZVEqwDsOPmpVBR3XI3BhwD4Bfm4';
 var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
 var cat='';
 var input='';
+var battle=0;
 ox.oz();
 bot.on('message', function(event) { if (event.message.type = 'text') { 
 var msg = '';
@@ -35,7 +36,18 @@ event.source.profile().then(function (profile) {
 b=profile.displayName;
 //Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
 
-msg =exports.analytics.parseInput(event.rplyToken, event.message.text,a,b);
+
+if(event.message.text=='戰鬥模式啟動'&&battle==0){
+if(a=='U7c4779fd913aff927f26d7f6bedd87d1'||a=='Uc9b4571605aabd3e94edd7c189144278'){
+battle=1;
+event.reply({ type: 'text', text: '已啟動戰鬥模式' });	
+}
+else{
+event.reply({type: 'text', text: 'GM才能使用' });	
+}
+}
+	if(battle==0){
+		msg =exports.analytics.parseInput(event.rplyToken, event.message.text,a,b);
 if(event.message.text=='武裝裝甲聯合戰線'){
 event.reply([{
   type: 'image',
@@ -53,7 +65,17 @@ event.reply([{
   { type: 'text', text: '蓋爾奇亞聯合是最初發現β粒子的聯合陣營，在發現之後進行了將近十年的非公開研究，這十年間，β粒子成為了新的能源，科技水平大幅的提升，使得聯合外的部分國家互相簽定了人才技術互通協約。然而在研究的第十年，第十一實驗設施發生了粒子洩漏事故，並在該區域產生了非自然性的環境改變，此計畫才不得不公諸於世。雖然粒子的存在被眾人所知，但研究也有了新的突破，β粒子不再局限於能源，研究團隊在洩漏事故所產生的環境異變中了解到了其改變既有事物的能力，並嘗試以人來控制局部事像的改變，經歷了許多次的失敗和犧牲，建構出了現今的魔術系統。' }]
 	   );
 }
-	
+
+if(event.message.text=='( ´･ω･`)'){
+event.reply(
+  { type: 'text', text: '( ´･ω･`)' });
+}
+if(event.message.text=='(´・ω・`)'){
+event.reply(
+  { type: 'text', text: '(´・ω・`)' });
+}
+		 event.reply(msg);
+	}
 if(event.message.text=='重新載入'){
 if(a=='U7c4779fd913aff927f26d7f6bedd87d1'||a=='Uc9b4571605aabd3e94edd7c189144278'){
 ox.oz();
@@ -63,15 +85,7 @@ else{
 event.reply({type: 'text', text: 'GM才能使用' });	
 }
 }
-if(event.message.text=='( ´･ω･`)'){
-event.reply(
-  { type: 'text', text: '( ´･ω･`)' });
-}
-if(event.message.text=='(´・ω・`)'){
-event.reply(
-  { type: 'text', text: '(´・ω・`)' });
-}
-  event.reply(msg);
+
   console.log(b+'  '+event.message.text+'   '+cat);
 });
   } });
