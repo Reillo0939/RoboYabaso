@@ -36,8 +36,8 @@ event.source.profile().then(function (profile) {
 b=profile.displayName;
 //Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
 
-
-if(event.message.text=='戰鬥模式啟動'&&battle==0){
+if(battle==0){
+if(event.message.text=='戰鬥模式啟動'){
 if(a=='U7c4779fd913aff927f26d7f6bedd87d1'||a=='Uc9b4571605aabd3e94edd7c189144278'){
 battle=1;
 event.reply({ type: 'text', text: '已啟動戰鬥模式' });	
@@ -46,7 +46,6 @@ else{
 event.reply({type: 'text', text: 'GM才能使用' });	
 }
 }
-	if(battle==0){
 		msg =exports.analytics.parseInput(event.rplyToken, event.message.text,a,b);
 if(event.message.text=='武裝裝甲聯合戰線'){
 event.reply([{
