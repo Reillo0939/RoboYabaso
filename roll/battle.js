@@ -10,7 +10,9 @@ if(id=='U7c4779fd913aff927f26d7f6bedd87d1')rply.text=name+'為GM';
 if(id=='Uc9b4571605aabd3e94edd7c189144278')rply.text=name+'為GM';
 return rply;
 }
-
+function dd() {
+player.length=0;
+}
 function battles(id,name,ab) {
 	var ggg,ttt;
 if(ab=='戰鬥參與'){
