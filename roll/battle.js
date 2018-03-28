@@ -61,7 +61,7 @@ if(start==1){
 	if(id==player[hit][0] && ab=='攻擊'){
 		var rnggg;
 		rnggg=rollbase.Dice(100);
-		if(rnggg>(50+parseInt(player[1-hit][7])-parseInt(player[hit][7]))){
+		if(rnggg>(20+parseInt(player[1-hit][7])-parseInt(player[hit][7]))){
 			player[1-hit][2]=player[1-hit][2]-player[hit][6];
 		hit=1-hit;
 		}
