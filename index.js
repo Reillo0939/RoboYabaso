@@ -37,7 +37,8 @@ event.source.profile().then(function (profile) {
 b=profile.displayName;
 //Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
 if(battle==1){
-ba.battles(a,b,event.message.text);
+msg=ba.battles(a,b,event.message.text);
+event.reply(msg);
 }
 if(battle==0){
 if(event.message.text=='戰鬥模式啟動'){
