@@ -31,6 +31,7 @@ var od=[];
 			'\nbata粒子 '+od[4]+'/'+od[5]+
 			'\n物理適性 '+od[6]+
 			'\n反應力'+od[7];
+		return rply;
   }
 	}
 }
@@ -41,7 +42,7 @@ var od=[];
 //rply.text+='\n多送你一張：';
 //let rarity=rollbase.Dice(100);
 //ox.oA(ggg,ttt-frequency*100);
-return rply;
+
 }
 
 module.exports = {
