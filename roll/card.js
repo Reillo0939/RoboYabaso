@@ -127,6 +127,17 @@ return rply;
 }
 
 function TCard(frequency,id,name) {
+	var ggg,ttt;
+	console.log(ox.oL());
+	for(var i=0;i<ox.oL();i++){
+	if(ox.oC(i,0)==id){
+		ggg=i;
+		ttt=ox.oC(ggg,17);}
+	}
+	if(ttt<frequency*100){
+		rply.text=name+'金錢不足：';
+		return rply;
+	}
 rply.text=name+'抽到了：';
 if(id==''){
 for(i=1;i<=frequency;i++){
@@ -149,6 +160,7 @@ if(rarity>=96)TSSR();
 if(rarity<96)TSR();
 }
 }
+	ox.oA(ggg,ttt-frequency*100);
 return rply;
 }
 
