@@ -44,37 +44,14 @@ var od=[];
 		return rply;
   }
 	}
+	
+	
 }
-	if(ab=='戰鬥開始' && start==0 && player.length==2){
+if(ab=='戰鬥開始' && start==0 && player.length==2){
 		start=1;
 		rply.text='戰鬥展開';
 		return rply;
-/*var od=[];
-  for(var i=0;i<ox.oL();i++){
-	if(ox.oC(i,0)==id){
-		if(player.length==1 && ox.oC(i,0)==player[0][0]){
-			rply.text='無法重複參與';
-		return rply;
-		}
-		ggg=i;
-		od[0]=ox.oC(i,0);
-    		od[1]=ox.oC(i,1);
-    		od[2]=ox.oC(i,5);
-		od[3]=ox.oC(i,5);
-		od[4]=ox.oC(i,6);
-		od[5]=ox.oC(i,6);
-		od[6]=ox.oC(i,7);
-		od[7]=ox.oC(i,8);
-		player[player.length]=od;
-		rply.text=name+'你的'+od[1]+'已參與\n'+
-			'HP '+od[2]+'/'+od[3]+
-			'\nbata粒子 '+od[4]+'/'+od[5]+
-			'\n物理適性 '+od[6]+
-			'\n反應力'+od[7];
-		return rply;
-  }*/
 	}
-	
 }
   
 
