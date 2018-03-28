@@ -19,7 +19,7 @@ function MCard(frequency,id,name) {
 		ggg=i;
 		ttt=ox.oC(ggg,17);}
 	}
-	if(ttt<frequency*10){
+	if(ttt<frequency*100){
 		rply.text=name+'金錢不足：';
 		return rply;
 	}
