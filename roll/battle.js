@@ -61,14 +61,10 @@ var od=[];
 }
 	if(trigger.match(/^取消參與$/) != null&& start==0){
 var od=[];
-	if(player[0][0]==id){
-		od[1]=player[0][1];
-		player.splice(0,1);
-		rply.text=name+'你的'+od[1]+'已取消參與';
-		return rply; }
-	if(player[1][0]==id){
-		od[1]=player[1][1];
-		player.splice(1,1);
+	for(var i=0;i<player.length;i++)
+	if(player[i][0]==id){
+		od[1]=player[i][1];
+		player.splice(i,1);
 		rply.text=name+'你的'+od[1]+'已取消參與';
 		return rply; }
 	
