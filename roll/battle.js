@@ -187,7 +187,7 @@ var od=[];
 							'\n物理適性 '+player[i][6]+
 							'\n反應力'+player[i][7];
 							if(player[i][1]<=0){
-								rply.text=rply.text+'\n'+player[i][1]+'已倒地':
+								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
 								player.splice(i,1);
 							}
 							self++;
