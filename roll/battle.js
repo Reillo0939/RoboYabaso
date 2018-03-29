@@ -50,11 +50,13 @@ var od=[];
 	if(ab=='取消參與'&& start==0){
 
 	if(player[0][0]==id){
+		od[1]=player[0][0];
 		player[0]=player[1];
 		player[1]=[];
 		rply.text=name+'你的'+od[1]+'已取消參與';
 		return rply; }
 	if(player[1][0]==id){
+		od[1]=player[1][0];
 		player[1]=[];
 		rply.text=name+'你的'+od[1]+'已取消參與';
 		return rply; }
