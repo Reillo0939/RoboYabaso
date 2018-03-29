@@ -80,7 +80,7 @@ if(start==1){
 		
 	}
 	if(player[hit][2]<=0){
-		rply.text='\nHP '+player[hit][2]+'/'+player[hit][3]+'(-'+player[1-hit][6]+')'+
+		rply.text=player[hit][1]+'\nHP '+player[hit][2]+'/'+player[hit][3]+'(-'+player[1-hit][6]+')'+
 			'\nbata粒子 '+player[hit][4]+'/'+player[hit][5]+
 			'\n物理適性 '+player[hit][6]+
 			'\n反應力'+player[hit][7]+
@@ -91,7 +91,7 @@ if(start==1){
 		return rply;
 	}
 	rply.text=player[hit][1]+
-			'\nHP '+player[hit][2]+'/'+player[hit][3]+
+			'\nHP '+player[hit][2]+'/'+player[hit][3]+'(-'+player[1-hit][6]+')'+
 			'\nbata粒子 '+player[hit][4]+'/'+player[hit][5]+
 			'\n物理適性 '+player[hit][6]+
 			'\n反應力'+player[hit][7]+
