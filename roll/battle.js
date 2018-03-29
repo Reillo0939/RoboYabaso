@@ -46,7 +46,7 @@ var od=[];
 		return rply;
   }
 	}
-	
+}
 	if(ab=='取消參與'&& start==0){
 
 	if(player[0][0]==id){
