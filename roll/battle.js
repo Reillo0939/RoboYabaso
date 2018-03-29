@@ -5,6 +5,7 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 var player=[];
 var start=0;
 var hit=1;
+var rnggg;
 function IDCA(id,name) {
 rply.text=name+'為測試人員';//U7c4779fd913aff927f26d7f6bedd87d1  雷洛Uc9b4571605aabd3e94edd7c189144278屬
 if(id=='U7c4779fd913aff927f26d7f6bedd87d1')rply.text=name+'為GM';
@@ -59,7 +60,7 @@ if(ab=='戰鬥開始' && start==0 && player.length==2){
 	}
 if(start==1){
 	if(id==player[hit][0] && ab=='攻擊'){
-		var rnggg;
+		
 		rnggg=rollbase.Dice(100);
 		if(rnggg>(20+parseInt(player[1-hit][7])-parseInt(player[hit][7]))){
 			player[1-hit][2]=player[1-hit][2]-player[hit][6];
@@ -79,7 +80,11 @@ if(start==1){
 		
 	}
 	if(player[hit][2]<=0){
-		rply.text=player[1-hit][1]+'勝利';
+		rply.text='\nHP '+player[hit][2]+'/'+player[hit][3]+'(-'+player[1-hit][6]+')'+
+			'\nbata粒子 '+player[hit][4]+'/'+player[hit][5]+
+			'\n物理適性 '+player[hit][6]+
+			'\n反應力'+player[hit][7]+
+			'\n' + player[1-hit][1]+'勝利';
 		start=0;
 		dd();
 		hit=1;
