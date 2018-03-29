@@ -177,18 +177,21 @@ var od=[];
 		if(start==1){
 			if(id==player[self][0] && trigger.match(/^攻擊$/) != null && mainMsg[1] != null ){
 				for(var i=0;i<player.length;i++){
-					if(player[i][1]==mainMsg[1] && player[i][1]==player[self][1]){
+					if(player[i][1]==mainMsg[1] && player[i][1]!=player[self][1]){
 						rnggg=rollbase.Dice(100);
 						if(rnggg>(20+parseInt(player[i][7])-parseInt(player[self][7]))){
-							
 							player[i][2]=player[i][2]-player[self][6];
 							rply.text=player[i][1]+
 							'\nHP '+player[i][2]+'/'+player[i][3]+'(-'+player[self][6]+')'+
 							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
 							'\n物理適性 '+player[i][6]+
 							'\n反應力'+player[i][7];
+							if(player[i][1]<=0){
+								rply.text=rply.text+'\n'+player[i][1]+'已倒地':
+								player.splice(i,1);
+							}
 							self++;
-							if(self==player.length)self=0;
+							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n輪到'+player[self][1]+'的回合了'+
 							'\n 可用選項：攻擊';
 
@@ -202,8 +205,6 @@ var od=[];
 						}
 						else{
 							rnggg=rollbase.Dice(100);
-							if(rnggg>(20+parseInt(player[i][7])-parseInt(player[self][7]))){
-							player[i][2]=player[i][2]-player[self][6];
 							self++;
 							if(self==4)self=0;
 							rply.text=player[i][1]+'閃避成功'+
@@ -214,15 +215,13 @@ var od=[];
 							'\n\n輪到'+player[self][1]+'的回合了'+
 							'\n 可用選項：攻擊';
 							return rply;
-							}
 						}
 					}
-			
-			rply.text=player[self][1]+'的回合'+
-				'\n 可用選項：攻擊';
-				return rply;
 				}
 			}
+				rply.text=player[self][1]+'的回合'+
+				'\n 可用選項：攻擊';
+				return rply;
 		}
 	}
 }
