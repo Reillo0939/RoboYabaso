@@ -17,7 +17,12 @@ player.length=0;
 }
 function battles(id,name,ab) {
 	var ggg,ttt;
-if(ab=='戰鬥參與'&& start==0){
+	let msgSplitor = (/\S+/ig);	
+	let mainMsg = ab.match(msgSplitor); //定義輸入字串
+	let trigger = mainMsg[0].toString()
+	
+	
+if(trigger.match(/^戰鬥參與$/) != null && start==0){
 	if(player.length==2){
 		rply.text='已達參與上限';
 		return rply;}
@@ -47,7 +52,7 @@ var od=[];
   }
 	}
 }
-	if(ab=='取消參與'&& start==0){
+	if(trigger.match(/^取消參與$/) != null&& start==0){
 var od=[];
 	if(player[0][0]==id){
 		od[1]=player[0][1];
@@ -61,7 +66,7 @@ var od=[];
 		return rply; }
 	
 }
-if(ab=='戰鬥開始' && start==0 && player.length==2){
+if(trigger.match(/^戰鬥開始$/) != null && start==0 && player.length==2){
 		start=1;
 		
 		if(player[0][7]>=player[1][7])hit=0;
@@ -71,7 +76,7 @@ if(ab=='戰鬥開始' && start==0 && player.length==2){
 		return rply;
 	}
 if(start==1){
-	if(id==player[hit][0] && ab=='攻擊'){
+	if(id==player[hit][0] && trigger.match(/^攻擊$/) != null){
 		
 		rnggg=rollbase.Dice(100);
 		if(rnggg>(20+parseInt(player[1-hit][7])-parseInt(player[hit][7]))){
