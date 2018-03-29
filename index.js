@@ -99,7 +99,7 @@ event.reply({type: 'text', text: 'GM才能使用' });
 }
 }
 
-  console.log(b+'  '+event.message.text+'   '+cat);
+  console.log(a+'   '+b+'  '+event.message.text+'   '+cat);
 });
   } });
  
