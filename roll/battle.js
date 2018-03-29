@@ -43,9 +43,11 @@ if(trigger.match(/^戰鬥參與$/) != null && start==0){
 var od=[];
   for(var i=0;i<ox.oL();i++){
 	if(ox.oC(i,0)==id){
-		if(player.length==1 && ox.oC(i,0)==player[0][0]){
-			rply.text='無法重複參與';
-		return rply;
+		if(var j=0;j<player.length;j++){
+			if(player.length==1 && ox.oC(i,0)==player[j][0]){
+				rply.text='無法重複參與';
+			return rply;
+			}
 		}
 		ggg=i;
 		od[0]=ox.oC(i,0);
