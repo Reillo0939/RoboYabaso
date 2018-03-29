@@ -6,6 +6,7 @@ var player=[];
 var start=0;
 var hit=1;
 var rnggg;
+var mode;
 function IDCA(id,name) {
 rply.text=name+'為測試人員';//U7c4779fd913aff927f26d7f6bedd87d1  雷洛Uc9b4571605aabd3e94edd7c189144278屬
 if(id=='U7c4779fd913aff927f26d7f6bedd87d1')rply.text=name+'為GM';
@@ -21,7 +22,13 @@ function battles(id,name,ab) {
 	let mainMsg = ab.match(msgSplitor); //定義輸入字串
 	let trigger = mainMsg[0].toString()
 	
+	if(trigger.match(/^2人對戰模式$/) != null && start==0){
+		mode=1;
+	        rply.text='已轉為2人對戰模式';
+		return rply;
+	}
 	
+	if(mode==1){
 if(trigger.match(/^戰鬥參與$/) != null && start==0){
 	if(player.length==2){
 		rply.text='已達參與上限';
@@ -115,6 +122,7 @@ if(start==1){
 		'\n輪到'+player[hit][1]+'的回合了'+
 		'\n 可用選項：攻擊';
 		return rply;
+		}
 	}
 }
   
