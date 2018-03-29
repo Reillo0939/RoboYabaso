@@ -179,7 +179,11 @@ var od=[];
 			player.sort(function (a,b){return b[7]-a[7]});
 			rply.text='戰鬥展開'+
 			'\n'+player[self][1]+'先手'+
-			'\n 可用選項：攻擊';
+			'\n 可用選項：攻擊 目標'+
+			'\n 目標有';
+			for(var k=0;k<player.length;k++){
+				if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
+			}
 			return rply;
 		}
 		if(start==1){
@@ -201,8 +205,11 @@ var od=[];
 							self++;
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n輪到'+player[self][1]+'的回合了'+
-							'\n 可用選項：攻擊';
-
+							'\n 可用選項：攻擊 目標'+
+							'\n 目標有';
+							for(var k=0;k<player.length;k++){
+								if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
+							}
 							if(player.length==1){
 								rply.text= player[0][1]+'勝利';
 								start=0;
@@ -220,7 +227,11 @@ var od=[];
 							'\n物理適性 '+player[i][6]+
 							'\n反應力'+player[i][7]+
 							'\n\n輪到'+player[self][1]+'的回合了'+
-							'\n 可用選項：攻擊';
+							'\n 可用選項：攻擊 目標'+
+							'\n 目標有';
+							for(var k=0;k<player.length;k++){
+								if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
+							}
 							return rply;
 						}
 					}
