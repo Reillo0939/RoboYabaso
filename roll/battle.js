@@ -199,7 +199,7 @@ var od=[];
 					if(player[i][1]==mainMsg[1] && player[i][1]!=player[self][1]){
 						rnggg=rollbase.Dice(100);
 						if(rnggg > (20 + parseInt(player[i][7]) - parseInt(player[self][7]) ) ){
-							damage=player[self][6]*(rollbase.Dice(10)+5)*0.1;
+							damage=Math.round(player[self][6]*(rollbase.Dice(10)+5)*0.1);
 							player[i][2]=player[i][2]-damage;
 							rply.text=player[i][1]+
 							'\nHP '+player[i][2]+'/'+player[i][3]+'(-'+damage+')'+
@@ -317,7 +317,7 @@ var od=[];
 					if(player[i][1]==mainMsg[1] && player[i][1]!=player[self][1]){
 						rnggg=rollbase.Dice(100);
 						if(rnggg > (20 + parseInt(player[i][7]) - parseInt(player[self][7]) ) ){
-							damage=player[self][6]*(rollbase.Dice(10)+5)*0.1;
+							damage=Math.round(player[self][6]*(rollbase.Dice(10)+5)*0.1);
 							player[i][2]=player[i][2]-damage;
 							rply.text=player[i][1]+
 							'\nHP '+player[i][2]+'/'+player[i][3]+'(-'+damage+')'+
@@ -363,7 +363,7 @@ var od=[];
 					}
 				}
 			}
-				rply.text=rply.text+'\n\n輪到'+player[self][1]+'的回合了'+
+				rply.text='\n\n輪到'+player[self][1]+'的回合了'+
 							'\n 可用選項：攻擊 目標'+
 							'\n 目標有';
 				for(var k=0;k<player.length;k++){
