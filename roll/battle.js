@@ -42,6 +42,7 @@ function battles(id,name,ab) {
 	        rply.text='已轉為8人對戰模式';
 		return rply;
 	}
+	rply.text='';
 	if(mode==1){
 		ga(2,mainMsg,trigger,id,name);
 		return rply;
@@ -173,7 +174,7 @@ var od=[];
 					}
 				}
 			}
-				rply.text='\n\n輪到'+player[self][1]+'的回合了'+
+				rply.text='輪到'+player[self][1]+'的回合了'+
 							'\n 可用選項：攻擊 目標'+
 							'\n 目標有';
 				for(var k=0;k<player.length;k++){
