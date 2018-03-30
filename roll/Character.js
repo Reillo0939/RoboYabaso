@@ -371,15 +371,15 @@ if(Characters[fd][0]==id){
 	ccN=fd;
 	if(Characters[fd][3]=='A.A.U.F'){
 		if(select=='物理適性'||select=='控制能力'){
-			if(Points!=null && isNaN(Points)==0 && Characters[fd][14]>=Points && Points>=0){
+			if(Points!=null && isNaN(Points)==0 && parseInt(Characters[fd][14],10)>=parseInt(Points,10) && parseInt(Points,10)>=0){
 				console.log('成長點'+Characters[fd][14]);
 				if(select=='物理適性' ){
 					Characters[fd][7]=parseInt(Characters[fd][7],10)+parseInt(Points, 10);
-					Characters[fd][14]=parseInt(Characters[fd][14])-parseInt(Points);
+					Characters[fd][14]=parseInt(Characters[fd][14],10)-parseInt(Points,10);
 					rply.text='配置成功';				}
 				else if(select=='控制能力'){
 					Characters[fd][15]=parseInt(Characters[fd][15],10)+parseInt(Points, 10);
-					Characters[fd][14]=parseInt(Characters[fd][14])-parseInt(Points);
+					Characters[fd][14]=parseInt(Characters[fd][14],10)-parseInt(Points,10);
 					rply.text='配置成功';				}
 				else{rply.text='點數不足';}
 				fs.readFile('client_secret.json', function processClientSecrets(err, content) {
@@ -396,31 +396,31 @@ if(Characters[fd][0]==id){
 	}
 	if(Characters[fd][3]=='G.U.'){
 	if(select=='物理適性'||select=='放出適性'||select=='火屬適性'||select=='水屬適性'||select=='風屬適性'||select=='土屬適性'){
-			if(Points!=null && isNaN(Points)==0 && Characters[fd][14]>=Points && Points>=0){
+			if(Points!=null && isNaN(Points)==0 && parseInt(Characters[fd][14],10)>=parseInt(Points,10) && parseInt(Points,10)>=0){
 				console.log('成長點'+Characters[fd][14]);
 				if(select=='物理適性' ){
 					Characters[fd][7]=parseInt(Characters[fd][7],10)+parseInt(Points, 10);
-					Characters[fd][14]=parseInt(Characters[fd][14])-parseInt(Points);
+					Characters[fd][14]=parseInt(Characters[fd][14],10)-parseInt(Points,10);
 					rply.text='配置成功';				}
 				else if(select=='放出適性'){
 					Characters[fd][9]=parseInt(Characters[fd][9],10)+parseInt(Points, 10);
-					Characters[fd][14]=parseInt(Characters[fd][14])-parseInt(Points);
+					Characters[fd][14]=parseInt(Characters[fd][14],10)-parseInt(Points,10);
 					rply.text='配置成功';				}
 				else if(select=='火屬適性'){
 					Characters[fd][10]=parseInt(Characters[fd][10],10)+parseInt(Points, 10);
-					Characters[fd][14]=parseInt(Characters[fd][14])-parseInt(Points);
+					Characters[fd][14]=parseInt(Characters[fd][14],10)-parseInt(Points,10);
 					rply.text='配置成功';				}
 				else if(select=='水屬適性'){
 					Characters[fd][11]=parseInt(Characters[fd][11],10)+parseInt(Points, 10);
-					Characters[fd][14]=parseInt(Characters[fd][14])-parseInt(Points);
+					Characters[fd][14]=parseInt(Characters[fd][14],10)-parseInt(Points,10);
 					rply.text='配置成功';				}
 				else if(select=='風屬適性'){
 					Characters[fd][12]=parseInt(Characters[fd][12],10)+parseInt(Points, 10);
-					Characters[fd][14]=parseInt(Characters[fd][14])-parseInt(Points);
+					Characters[fd][14]=parseInt(Characters[fd][14],10)-parseInt(Points,10);
 					rply.text='配置成功';				}
 				else if(select=='土屬適性'){
 					Characters[fd][13]=parseInt(Characters[fd][13],10)+parseInt(Points, 10);
-					Characters[fd][14]=parseInt(Characters[fd][14])-parseInt(Points);
+					Characters[fd][14]=parseInt(Characters[fd][14],10)-parseInt(Points,10);
 					rply.text='配置成功';				}
 				else{rply.text='點數不足';
 				    }
