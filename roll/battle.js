@@ -220,7 +220,7 @@ var od=[];
 						}
 						else{
 							self++;
-							if(self==4)self=0;
+							if(self>=player.length)self=0;
 							rply.text=player[i][1]+'閃避成功'+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
 							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
