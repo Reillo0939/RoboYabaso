@@ -37,7 +37,7 @@ function battles(id,name,ab) {
 		return rply;
 	}
 	if(trigger.match(/^8人對戰模式$/) != null && start==0){
-		mode=2;
+		mode=3;
 		dd();
 	        rply.text='已轉為8人對戰模式';
 		return rply;
