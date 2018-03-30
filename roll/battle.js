@@ -70,7 +70,7 @@ var od=[];
 			'HP '+od[2]+'/'+od[3]+
 			'\nbata粒子 '+od[4]+'/'+od[5]+
 			'\n物理適性 '+od[6]+
-			'\n反應力'+od[7];
+			'\n反應力'+od[7]		+'\n目前參與人數： '+player.length+'/2';
 		return rply;
   }
 	}
@@ -81,7 +81,8 @@ var od=[];
 	if(player[i][0]==id){
 		od[1]=player[i][1];
 		player.splice(i,1);
-		rply.text=name+'你的'+od[1]+'已取消參與';
+		rply.text=name+'你的'+od[1]+'已取消參與'
+		+'\n目前參與人數： '+player.length+'/2';
 		return rply; }
 	
 }
@@ -163,7 +164,8 @@ var od=[];
 			'HP '+od[2]+'/'+od[3]+
 			'\nbata粒子 '+od[4]+'/'+od[5]+
 			'\n物理適性 '+od[6]+
-			'\n反應力'+od[7];
+			'\n反應力'+od[7]		
+			+'\n目前參與人數： '+player.length+'/4';
 		return rply;
   }
 	}
@@ -174,7 +176,8 @@ var od=[];
 				if(player[i][0]==id){
 					od[1]=player[i][1];
 					player.splice(i,1);
-					rply.text=name+'你的'+od[1]+'已取消參與';
+					rply.text=name+'你的'+od[1]+'已取消參與'		
+						+'\n目前參與人數： '+player.length+'/4';
 					return rply; 
 				}
 			}
@@ -245,7 +248,7 @@ var od=[];
 					}
 				}
 			}
-				rply.text=rply.text+'\n\n輪到'+player[self][1]+'的回合了'+
+				rply.text='\n\n輪到'+player[self][1]+'的回合了'+
 							'\n 可用選項：攻擊 目標'+
 							'\n 目標有';
 				for(var k=0;k<player.length;k++){
@@ -281,7 +284,8 @@ var od=[];
 			'HP '+od[2]+'/'+od[3]+
 			'\nbata粒子 '+od[4]+'/'+od[5]+
 			'\n物理適性 '+od[6]+
-			'\n反應力'+od[7];
+			'\n反應力'+od[7]		
+			+'\n目前參與人數： '+player.length+'/8';
 		return rply;
   }
 	}
@@ -292,7 +296,8 @@ var od=[];
 				if(player[i][0]==id){
 					od[1]=player[i][1];
 					player.splice(i,1);
-					rply.text=name+'你的'+od[1]+'已取消參與';
+					rply.text=name+'你的'+od[1]+'已取消參與'		
+					+'\n目前參與人數： '+player.length+'/8';
 					return rply; 
 				}
 			}
