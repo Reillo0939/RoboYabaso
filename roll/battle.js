@@ -43,7 +43,7 @@ function battles(id,name,ab) {
 		return rply;
 	}
 	if(mode==1){
-		ga(2,mainMsg,trigger);
+		ga(2,mainMsg,trigger,id,name);
 	}
 //------------------------------------------------------------------------
 	if(mode==2){
@@ -296,7 +296,7 @@ var od=[];
 //rply.text+='\n多送你一張：';
 //let rarity=rollbase.Dice(100);
 //ox.oA(ggg,ttt-frequency*100);
-function ga(aaab,mainMsg,trigger){
+function ga(aaab,mainMsg,trigger,id,name){
 if(trigger.match(/^戰鬥參與$/) != null && start==0){
 	if(player.length==aaab){
 		rply.text='已達參與上限';
