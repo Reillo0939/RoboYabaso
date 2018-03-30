@@ -44,6 +44,7 @@ function battles(id,name,ab) {
 	}
 	if(mode==1){
 		ga(2,mainMsg,trigger,id,name);
+		return rply;
 	}
 //------------------------------------------------------------------------
 	if(mode==2){
