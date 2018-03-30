@@ -6,6 +6,7 @@ var player=[];
 var start=0;
 var hit=1;
 var self=0;
+var damage;
 var rnggg;
 var mode;
 function IDCA(id,name) {
@@ -198,9 +199,10 @@ var od=[];
 					if(player[i][1]==mainMsg[1] && player[i][1]!=player[self][1]){
 						rnggg=rollbase.Dice(100);
 						if(rnggg > (20 + parseInt(player[i][7]) - parseInt(player[self][7]) ) ){
-							player[i][2]=player[i][2]-player[self][6];
+							damage=player[self][6]*(rollbase.Dice(10)+5)*0.1;
+							player[i][2]=player[i][2]-damage;
 							rply.text=player[i][1]+
-							'\nHP '+player[i][2]+'/'+player[i][3]+'(-'+player[self][6]+')'+
+							'\nHP '+player[i][2]+'/'+player[i][3]+'(-'+damage+')'+
 							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
 							'\n物理適性 '+player[i][6]+
 							'\n反應力'+player[i][7];
@@ -243,8 +245,12 @@ var od=[];
 					}
 				}
 			}
-				rply.text=player[self][1]+'的回合'+
-				'\n 可用選項：攻擊';
+				rply.text=rply.text+'\n\n輪到'+player[self][1]+'的回合了'+
+							'\n 可用選項：攻擊 目標'+
+							'\n 目標有';
+				for(var k=0;k<player.length;k++){
+					if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
+				}
 				return rply;
 		}
 	}
@@ -311,9 +317,10 @@ var od=[];
 					if(player[i][1]==mainMsg[1] && player[i][1]!=player[self][1]){
 						rnggg=rollbase.Dice(100);
 						if(rnggg > (20 + parseInt(player[i][7]) - parseInt(player[self][7]) ) ){
-							player[i][2]=player[i][2]-player[self][6];
+							damage=player[self][6]*(rollbase.Dice(10)+5)*0.1;
+							player[i][2]=player[i][2]-damage;
 							rply.text=player[i][1]+
-							'\nHP '+player[i][2]+'/'+player[i][3]+'(-'+player[self][6]+')'+
+							'\nHP '+player[i][2]+'/'+player[i][3]+'(-'+damage+')'+
 							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
 							'\n物理適性 '+player[i][6]+
 							'\n反應力'+player[i][7];
@@ -330,7 +337,7 @@ var od=[];
 								if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
 							}
 							if(player.length==1){
-								rply.text= player[0][1]+'勝利';
+								rply.text+= player[0][1]+'勝利';
 								start=0;
 								dd();
 								return rply;
@@ -356,8 +363,12 @@ var od=[];
 					}
 				}
 			}
-				rply.text=player[self][1]+'的回合'+
-				'\n 可用選項：攻擊';
+				rply.text=rply.text+'\n\n輪到'+player[self][1]+'的回合了'+
+							'\n 可用選項：攻擊 目標'+
+							'\n 目標有';
+				for(var k=0;k<player.length;k++){
+					if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
+				}
 				return rply;
 		}
 	}
