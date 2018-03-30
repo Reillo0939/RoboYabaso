@@ -35,6 +35,12 @@ function battles(id,name,ab) {
 	        rply.text='已轉為4人對戰模式';
 		return rply;
 	}
+	if(trigger.match(/^8人對戰模式$/) != null && start==0){
+		mode=2;
+		dd();
+	        rply.text='已轉為8人對戰模式';
+		return rply;
+	}
 	if(mode==1){
 if(trigger.match(/^戰鬥參與$/) != null && start==0){
 	if(player.length==2){
