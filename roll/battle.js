@@ -63,7 +63,7 @@ ga(4,mainMsg,trigger,id,name);
 		return rply;
 		}
 	if(mode==21){
-			boss01(2,mainMsg,trigger,id,name);
+			boss01(1,mainMsg,trigger,id,name);
 		return rply;
 		}
 }
