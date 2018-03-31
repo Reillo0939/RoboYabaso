@@ -263,9 +263,8 @@ var od=[];
 				var atkt;
 				for(var j=0;j<player.length;j++){
 					var atktt=player;
-					atktt.splice(0,1);
 					atktt.sort(function (a,b){return b[2]-a[2]});
-					atkt=atktt[0][1];
+					atkt=atktt[1][1];
 				}
 			rply.text+='\n\n攻擊'+atkt;
 				for(var i=0;i<player.length;i++){
