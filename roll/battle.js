@@ -262,8 +262,9 @@ var od=[];
 			if(player[0][0]=='boss01'){
 				var atkt;
 				for(var j=0;j<player.length;j++){
-					var atktt=player;
-					atktt.sort(function (a,b){return b[2]-a[2]});
+					var atktt=[];
+					    atktt=player;
+					atktt.sort(function (a,b){return a[2]-b[2]});
 					atkt=atktt[0][1];
 					if(atktt[0][1]=='boss測試')atkt=atktt[1][1];
 					
@@ -356,8 +357,9 @@ var od=[];
 				if(player[self][0]=='boss01'){
 				var atkt;
 				for(var j=0;j<player.length;j++){
-					var atktt=player;
-					atktt.sort(function (a,b){return b[2]-a[2]});
+					var atktt=[];
+					    atktt=player;
+					atktt.sort(function (a,b){return a[2]-b[2]});
 					atkt=atktt[0][1];
 					if(atktt[0][1]=='boss測試')atkt=atktt[1][1];
 					
@@ -433,8 +435,9 @@ var od=[];
 				if(player[self][0]=='boss01'){
 				var atkt;
 				for(var j=0;j<player.length;j++){
-					var atktt=player;
-					atktt.sort(function (a,b){return b[2]-a[2]});
+					var atktt=[];
+					    atktt=player;
+					atktt.sort(function (a,b){return a[2]-b[2]});
 					atkt=atktt[0][1];
 					if(atktt[0][1]=='boss測試')atkt=atktt[1][1];
 					
