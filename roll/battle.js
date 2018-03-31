@@ -258,6 +258,7 @@ var od=[];
 			for(var k=0;k<player.length;k++){
 				if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
 			}
+			
 			if(player[0][0]=='boss01'){
 				var atkt;
 				for(var j=0;j<player.length;j++){
@@ -266,9 +267,9 @@ var od=[];
 					atktt.sort(function (a,b){return b[2]-a[2]});
 					atkt=atktt[0][1];
 				}
-			rply.text+='\n攻擊'+atkt;
+			rply.text+='\n\n攻擊'+atkt;
 				for(var i=0;i<player.length;i++){
-					if(player[i][1]==atkt && player[i][1]!=player[self][1]){
+					if(player[i][1]==atkt){
 						rnggg=rollbase.Dice(100);
 						if(rnggg > (20 + parseInt(player[i][7]) - parseInt(player[self][7]) ) ){
 							damage=Math.round(player[self][6]*(rollbase.Dice(10)+5)*0.1);
