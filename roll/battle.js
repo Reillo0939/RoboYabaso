@@ -263,7 +263,7 @@ var od=[];
 				var atkt;
 				for(var j=0;j<player.length;j++){
 					var atktt= new Array();
-					    atktt=player;
+					atktt=atktt.concat(player);
 					atktt.sort(function (a,b){return a[2]-b[2]});
 					atkt=atktt[0][1];
 					if(atktt[0][1]=='boss測試')atkt=atktt[1][1];
@@ -358,7 +358,7 @@ var od=[];
 				var atkt;
 				for(var j=0;j<player.length;j++){
 					var atktt= new Array();
-					    atktt=player;
+					atktt=atktt.concat(player);
 					atktt.sort(function (a,b){return a[2]-b[2]});
 					atkt=atktt[0][1];
 					if(atktt[0][1]=='boss測試')atkt=atktt[1][1];
@@ -436,7 +436,7 @@ var od=[];
 				var atkt;
 				for(var j=0;j<player.length;j++){
 					var atktt= new Array();
-					    atktt=player;
+					atktt=atktt.concat(player);
 					atktt.sort(function (a,b){return a[2]-b[2]});
 					atkt=atktt[0][1];
 					if(atktt[0][1]=='boss測試')atkt=atktt[1][1];
