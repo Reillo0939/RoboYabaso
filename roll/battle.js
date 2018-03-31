@@ -387,7 +387,7 @@ if(player[self][0]=='boss01')bossatk();
 		}
 }
 
-Function bossatk(){
+function bossatk(){
 					var atkt;
 				for(var j=0;j<player.length;j++){
 					var atktt= new Array();
