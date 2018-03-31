@@ -42,6 +42,12 @@ function battles(id,name,ab) {
 	        rply.text='已轉為8人對戰模式';
 		return rply;
 	}
+	if(trigger.match(/^boss01/) != null && start==0){
+		mode=21;
+		dd();
+	        rply.text='已轉為test模式';
+		return rply;
+	}
 	rply.text='';
 	if(mode==1){
 		ga(2,mainMsg,trigger,id,name);
@@ -54,6 +60,10 @@ ga(4,mainMsg,trigger,id,name);
 	}
 		if(mode==3){
 			ga(8,mainMsg,trigger,id,name);
+		return rply;
+		}
+	if(mode==21){
+			boss01(2,mainMsg,trigger,id,name);
 		return rply;
 		}
 }
