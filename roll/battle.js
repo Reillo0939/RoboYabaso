@@ -42,10 +42,10 @@ function battles(id,name,ab) {
 	        rply.text='已轉為8人對戰模式';
 		return rply;
 	}
-	if(trigger.match(/^boss01/) != null && start==0){
+	if(trigger.match(/^boss/) != null && start==0){
 		mode=21;
 		dd();
-	        rply.text='已轉為boss模式';
+	        rply.text='已轉為boss模式(8人)';
 		return rply;
 	}
 	rply.text='';
