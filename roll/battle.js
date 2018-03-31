@@ -262,7 +262,7 @@ var od=[];
 			if(player[0][0]=='boss01'){
 				var atkt;
 				for(var j=0;j<player.length;j++){
-					var atktt=[];
+					var atktt= new Array();
 					    atktt=player;
 					atktt.sort(function (a,b){return a[2]-b[2]});
 					atkt=atktt[0][1];
@@ -357,7 +357,7 @@ var od=[];
 				if(player[self][0]=='boss01'){
 				var atkt;
 				for(var j=0;j<player.length;j++){
-					var atktt=[];
+					var atktt= new Array();
 					    atktt=player;
 					atktt.sort(function (a,b){return a[2]-b[2]});
 					atkt=atktt[0][1];
@@ -435,7 +435,7 @@ var od=[];
 				if(player[self][0]=='boss01'){
 				var atkt;
 				for(var j=0;j<player.length;j++){
-					var atktt=[];
+					var atktt= new Array();
 					    atktt=player;
 					atktt.sort(function (a,b){return a[2]-b[2]});
 					atkt=atktt[0][1];
