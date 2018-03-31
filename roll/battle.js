@@ -259,7 +259,7 @@ var od=[];
 				if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
 			}
 			
-if(player[self][0]=='boss01')bossatk();
+if(player[self][0]=='boss')bossatk();
 			return rply;
 		}
 		if(start==1){
@@ -293,7 +293,7 @@ if(player[self][0]=='boss01')bossatk();
 							for(var k=0;k<player.length;k++){
 								if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
 							}
-				if(player[self][0]=='boss01')bossatk();
+				if(player[self][0]=='boss')bossatk();
 							return rply;
 						}
 						else{
@@ -310,14 +310,14 @@ if(player[self][0]=='boss01')bossatk();
 							for(var k=0;k<player.length;k++){
 								if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
 							}
-				if(player[self][0]=='boss01'){
+				if(player[self][0]=='boss'){
 				var atkt;
 				for(var j=0;j<player.length;j++){
 					var atktt= new Array();
 					atktt=atktt.concat(player);
 					atktt.sort(function (a,b){return a[2]-b[2]});
 					atkt=atktt[0][1];
-					if(atktt[0][1]=='boss測試')atkt=atktt[1][1];
+					if(atktt[0][1]=='boss')atkt=atktt[1][1];
 					
 				}
 			rply.text+='\n\n攻擊'+atkt;
