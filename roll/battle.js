@@ -45,7 +45,7 @@ function battles(id,name,ab) {
 	if(trigger.match(/^boss01/) != null && start==0){
 		mode=21;
 		dd();
-	        rply.text='已轉為test模式';
+	        rply.text='已轉為boss模式';
 		return rply;
 	}
 	rply.text='';
@@ -63,7 +63,7 @@ ga(4,mainMsg,trigger,id,name);
 		return rply;
 		}
 	if(mode==21){
-			boss01(3,mainMsg,trigger,id,name);
+			boss01(8,mainMsg,trigger,id,name);
 		return rply;
 		}
 }
@@ -242,9 +242,9 @@ var od=[];
 			self=0;
 			var od=[];
 			od[0]='boss01';
-			od[1]='boss測試';
-			od[2]=1000;
-			od[3]=1000;
+			od[1]='boss';
+			od[2]=2000;
+			od[3]=2000;
 			od[4]=0;
 			od[5]=0;
 			od[6]=30;
