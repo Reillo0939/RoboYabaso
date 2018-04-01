@@ -391,9 +391,9 @@ if(player[self][0]=='boss01'){
 				}
 				return rply;
 		}
-}
 
-function bossatk(){
+
+     function bossatk(){
 					var atkt;
 				for(var j=0;j<player.length;j++){
 					var atktt= new Array();
@@ -410,12 +410,9 @@ function bossatk(){
 					if(atktt[rnggg][1]=='boss'){
 						rnggg++;
 						if((rnggg)>=player.length){rnggg=0;}
-						atkt=atktt[rnggg][1];
-					
+						atkt=atktt[rnggg][1];	
+						}
 					}
-						
-					}
-					
 				}
 			rply.text+='\n\n愚人節boss 攻擊 '+atkt;
 				for(var i=0;i<player.length;i++){
@@ -464,7 +461,6 @@ function bossatk(){
 						}
 					}
 				}
-	
 }
 function bossSkill01(){
 					var atkt;
