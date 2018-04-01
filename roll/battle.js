@@ -286,9 +286,18 @@ if(player[self][0]=='boss01'){
 										rply.text+='\n'+ player[n][1];
 									}
 									rply.text+='\n'+'勝利';
+									start=0;
+									dd();
 									return rply;
+									
 								}
 								player.splice(i,1);
+								if(player.length==1){
+								rply.text+='\n'+ player[0][1]+'勝利';
+								start=0;
+								dd();
+								return rply;
+							}
 							}
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n輪到'+player[self][1]+'的回合了'+
