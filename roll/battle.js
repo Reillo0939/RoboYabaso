@@ -414,7 +414,7 @@ if(player[self][0]=='boss01'){
 				return rply;
 			}
 		}
-
+}
 
      function bossatk(){
 					var atkt;
