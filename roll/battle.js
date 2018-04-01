@@ -262,8 +262,9 @@ var od=[];
 if(player[self][0]=='boss01'){
 	var rnggg;
 	rnggg=rollbase.Dice(2);
-	if(rnggg==1)bossatk();
-	if(rnggg==2)bossSkill01();
+	//if(rnggg==1)bossatk();
+	//if(rnggg==2)bossSkill01();
+	bossSkill01();
 }
 			return rply;
 		}
