@@ -464,7 +464,7 @@ function bossSkill01(){
 							player[i][6]=player[i][6]*-1;
 							rply.text=rply.text+'\n\n'+player[i][1]+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
-							'\n物理適性 '+player[i][6]+
+							'\n物理適性 '+player[i][6];
 							if(player[i][2]<=0){
 								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
 								player.splice(i,1);
