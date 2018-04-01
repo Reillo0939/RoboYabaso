@@ -49,9 +49,6 @@ function battles(id,name,ab) {
 	        rply.text='已轉為討伐愚人節boss模式(8人)';
 		return rply;
 	}
-	if(trigger.match(/^m$/) != null && start==1){
-		return rply;
-	}
 	rply.text='';
 	if(mode==1){
 		ga(2,mainMsg,trigger,id,name);
@@ -387,11 +384,28 @@ if(player[self][0]=='boss01'){
 			
 					if(trigger.match(/^跳過/) != null&& start==1 && (id=='U7c4779fd913aff927f26d7f6bedd87d1'||id=='Uc9b4571605aabd3e94edd7c189144278')){
 					self++;
-						if(self>=player.length)self=0;
+					if(self>=player.length)self=0;
+					rply.text='輪到'+player[self][1]+'的回合了'+
+							'\n 可用選項：攻擊 目標'+
+							'\n 目標有';
+				for(var k=0;k<player.length;k++){
+					if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
+				}
+				if(player[self][0]=='boss01'){
+				var rnggg;
+				rnggg=rollbase.Dice(3);
+				if(rnggg==1)bossatk();
+				if(rnggg==2)bossSkill01();
+				if(rnggg==3)bossSkill02();
+}
+				return rply;
 		}
 			
-			
-				rply.text='輪到'+player[self][1]+'的回合了'+
+			if(trigger.match(/^m/) != null)
+				
+			}
+			else{
+			rply.text='輪到'+player[self][1]+'的回合了'+
 							'\n 可用選項：攻擊 目標'+
 							'\n 目標有';
 				for(var k=0;k<player.length;k++){
@@ -399,7 +413,6 @@ if(player[self][0]=='boss01'){
 				}
 				return rply;
 			}
-				
 		}
 
 
