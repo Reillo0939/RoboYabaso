@@ -237,6 +237,7 @@ var od=[];
 		if(trigger.match(/^戰鬥開始$/) != null && start==0 && player.length==aaab){
 			start=1;
 			self=0;
+			f41=0;
 			var od=[];
 			od[0]='boss01';
 			od[1]='愚人節boss';
