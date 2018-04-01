@@ -138,9 +138,7 @@ var od=[];
 							player[i][2]=player[i][2]-damage;
 							rply.text=player[i][1]+
 							'\nHP '+player[i][2]+'/'+player[i][3]+'(-'+damage+')'+
-							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
-							'\n物理適性 '+player[i][6]+
-							'\n反應力'+player[i][7];
+							'\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							if(player[i][2]<=0){
 								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
 								player.splice(i,1);
@@ -168,8 +166,6 @@ var od=[];
 							rply.text=player[i][1]+'閃避成功'+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
 							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
-							'\n物理適性 '+player[i][6]+
-							'\n反應力'+player[i][7]+
 							'\n\n輪到'+player[self][1]+'的回合了'+
 							'\n 可用選項：攻擊 目標'+
 							'\n 目標有';
@@ -242,7 +238,7 @@ var od=[];
 			self=0;
 			var od=[];
 			od[0]='boss01';
-			od[1]='boss';
+			od[1]='愚人節boss';
 			od[2]=2000;
 			od[3]=2000;
 			od[4]=0;
@@ -262,9 +258,10 @@ var od=[];
 if(player[self][0]=='boss01'){
 	var rnggg;
 	rnggg=rollbase.Dice(2);
-	//if(rnggg==1)bossatk();
-	//if(rnggg==2)bossSkill01();
-	bossSkill01();
+	/*if(rnggg==1)bossatk();
+	if(rnggg==2)bossSkill01();
+	if(rnggg==3)bossSkill02();*/
+	bossSkill02();
 }
 			return rply;
 		}
@@ -278,9 +275,7 @@ if(player[self][0]=='boss01'){
 							player[i][2]=player[i][2]-damage;
 							rply.text=player[i][1]+
 							'\nHP '+player[i][2]+'/'+player[i][3]+'(-'+damage+')'+
-							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
-							'\n物理適性 '+player[i][6]+
-							'\n反應力'+player[i][7];
+							'\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							if(player[i][2]<=0){
 								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
 								player.splice(i,1);
@@ -308,8 +303,6 @@ if(player[self][0]=='boss01'){
 							rply.text=player[i][1]+'閃避成功'+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
 							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
-							'\n物理適性 '+player[i][6]+
-							'\n反應力'+player[i][7]+
 							'\n\n輪到'+player[self][1]+'的回合了'+
 							'\n 可用選項：攻擊 目標'+
 							'\n 目標有';
@@ -335,9 +328,7 @@ if(player[self][0]=='boss01'){
 							player[i][2]=player[i][2]-damage;
 							rply.text=rply.text+'\n\n'+player[i][1]+
 							'\nHP '+player[i][2]+'/'+player[i][3]+'(-'+damage+')'+
-							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
-							'\n物理適性 '+player[i][6]+
-							'\n反應力'+player[i][7];
+							'\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							if(player[i][2]<=0){
 								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
 								player.splice(i,1);
@@ -365,8 +356,6 @@ if(player[self][0]=='boss01'){
 							rply.text=rply.text+'\n\n'+player[i][1]+'閃避成功'+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
 							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
-							'\n物理適性 '+player[i][6]+
-							'\n反應力'+player[i][7]+
 							'\n\n輪到'+player[self][1]+'的回合了'+
 							'\n 可用選項：攻擊 目標'+
 							'\n 目標有';
@@ -412,9 +401,7 @@ function bossatk(){
 							player[i][2]=player[i][2]-damage;
 							rply.text=rply.text+'\n\n'+player[i][1]+
 							'\nHP '+player[i][2]+'/'+player[i][3]+'(-'+damage+')'+
-							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
-							'\n物理適性 '+player[i][6]+
-							'\n反應力'+player[i][7];
+							'\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							if(player[i][2]<=0){
 								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
 								player.splice(i,1);
@@ -442,8 +429,6 @@ function bossatk(){
 							rply.text=rply.text+'\n\n'+player[i][1]+'閃避成功'+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
 							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
-							'\n物理適性 '+player[i][6]+
-							'\n反應力'+player[i][7]+
 							'\n\n輪到'+player[self][1]+'的回合了'+
 							'\n 可用選項：攻擊 目標'+
 							'\n 目標有';
@@ -479,9 +464,70 @@ function bossSkill01(){
 							player[i][6]=player[i][6]*-1;
 							rply.text=rply.text+'\n\n'+player[i][1]+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
-							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
 							'\n物理適性 '+player[i][6]+
-							'\n反應力'+player[i][7];
+							if(player[i][2]<=0){
+								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
+								player.splice(i,1);
+							}
+							self++;
+							if(player.length==1){
+								rply.text+='\n'+ player[0][1]+'勝利';
+								start=0;
+								dd();
+								return rply;
+							}
+							if(self>=player.length)self=0;
+							rply.text=rply.text+'\n\n輪到'+player[self][1]+'的回合了'+
+							'\n 可用選項：攻擊 目標'+
+							'\n 目標有';
+							for(var k=0;k<player.length;k++){
+								if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
+							}
+							
+							return rply;
+						}
+						else{
+							self++;
+							if(self>=player.length)self=0;
+							rply.text=rply.text+'\n技能失敗'+'\n'+player[i][1]+
+							'\nHP '+player[i][2]+'/'+player[i][3]+
+							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
+							'\n\n輪到'+player[self][1]+'的回合了'+
+							'\n 可用選項：攻擊 目標'+
+							'\n 目標有';
+							for(var k=0;k<player.length;k++){
+								if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
+							}
+							return rply;
+						}
+					}
+				}
+	
+}
+
+function bossSkill02(){
+					var atkt;
+				for(var j=0;j<player.length;j++){
+					var atktt= new Array();
+					atktt=atktt.concat(player);
+					atktt.sort(function (a,b){return b[2]-a[2]});
+					atkt=atktt[0][1];
+					if(atktt[0][1]=='boss')atkt=atktt[1][1];
+				}
+			rply.text+='\n\nboss 發動技能：吸血 '+atkt;
+				for(var i=0;i<player.length;i++){
+					if(player[i][1]==atkt){
+						rnggg=rollbase.Dice(100);
+						if(rnggg > (20 + parseInt(player[i][7]) - parseInt(player[self][7]) ) ){
+							damage=Math.round(player[self][6]*(rollbase.Dice(10)+5)*0.1);
+							player[i][2]=player[i][2]-damage;
+							player[self][2]=player[self][2]+damage;
+							rply.text=rply.text+'\n\n'+player[i][1]+'(+'+damage+')'+
+							'\nHP '+player[i][2]+'/'+player[i][3]+
+							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
+							'\n'+player[self][1]+
+						'\nHP '+player[i][2]+'/'+player[i][3]+'(+'+damage+')'+
+							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
 							if(player[i][2]<=0){
 								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
 								player.splice(i,1);
@@ -523,8 +569,6 @@ function bossSkill01(){
 				}
 	
 }
-
-
 
 module.exports = {
 	battles:battles,
