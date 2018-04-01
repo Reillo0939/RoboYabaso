@@ -355,7 +355,6 @@ if(player[self][0]=='boss01'){
 						}
 					}
 				}
-			}
 				rply.text='輪到'+player[self][1]+'的回合了'+
 							'\n 可用選項：攻擊 目標'+
 							'\n 目標有';
@@ -363,6 +362,8 @@ if(player[self][0]=='boss01'){
 					if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
 				}
 				return rply;
+			}
+				
 		}
 
 
