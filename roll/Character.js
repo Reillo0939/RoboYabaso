@@ -214,7 +214,7 @@ Growing=rollbase.Dice(5)+15;
 if(Control<25){
 	Occupation='外骨骼裝備步兵';
 	HP+=50;
-	MP=MP*0.5;
+	MP=Math.round(MP*0.5);
 	ATK+=10;
 	Reaction+=10;
 	Growing=rollbase.Dice(5)+5;
