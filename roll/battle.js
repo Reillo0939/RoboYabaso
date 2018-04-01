@@ -142,7 +142,7 @@ var od=[];
 							'\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							self++;
 							if(player[i][2]<=0){
-					
+								if(i<self)self--;
 								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
 								
 								player.splice(i,1);
@@ -283,6 +283,7 @@ if(player[self][0]=='boss01'){
 
 							self++;
 							if(player[i][2]<=0){
+								if(i<self)self--;
 								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
 								if(player[i][1]=='愚人節boss'){
 									if(f41==1){
@@ -398,6 +399,7 @@ if(player[self][0]=='boss01'){
 							'\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							self++;
 							if(player[i][2]<=0){
+								if(i<self)self--;
 								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
 								player.splice(i,1);
 							}
@@ -461,6 +463,7 @@ function bossSkill01(){
 							'\n物理適性 '+player[i][6];
 							self++;
 							if(player[i][2]<=0){
+								if(i<self)self--;
 								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
 								player.splice(i,1);
 							}
@@ -525,7 +528,7 @@ function bossSkill02(){
 							'\nbata粒子 '+player[self][4]+'/'+player[self][5];
 							self++;
 							if(player[i][2]<=0){
-								
+								if(i<self)self--;
 								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
 								if(player[i][1]=='愚人節boss'){
 									player.splice(i,1);
