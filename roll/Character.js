@@ -94,9 +94,9 @@ rply.text='你幾歲了';
 return rply;	
 }
 if((age>=30)&&(age<=65)){
-Occupation='媒介使';
-HP=((rollbase.Dice(20) - 1) * 9)+20;
-MP=((rollbase.Dice(5) - 1) * 9)+20;
+Occupation='放出使';
+HP=((rollbase.Dice(200)+20;
+MP=((rollbase.Dice(150)+20;
 ATK=rollbase.Dice(70-age);
 Reaction=rollbase.Dice(70-age);
 None=rollbase.Dice(70-age);
@@ -107,19 +107,19 @@ Earth=rollbase.Dice(70-age);
 Growing=rollbase.Dice(66-age);
 }
 if((age>=14)&&(age<=29)){
-Occupation='放出使';
-HP=((rollbase.Dice(20) - 1) * 9)+20;
-MP=((rollbase.Dice(20) - 1) * 9)+20;
-ATK=rollbase.Dice(50);
-Reaction=rollbase.Dice(50);
-None=rollbase.Dice(50);
-Fire=rollbase.Dice(50);	
-Water=rollbase.Dice(50);
-Wind=rollbase.Dice(50);
-Earth=rollbase.Dice(50);
+Occupation='控能者';
+HP=((rollbase.Dice(200)+30;
+MP=((rollbase.Dice(250)+80;
+ATK=rollbase.Dice(40);
+Reaction=rollbase.Dice(45)+5;
+None=rollbase.Dice(40);
+Fire=rollbase.Dice(40);	
+Water=rollbase.Dice(40);
+Wind=rollbase.Dice(40);
+Earth=rollbase.Dice(40);
 Growing=Math.floor(((35-ATK)+(35-None)+(35-Fire)+(35-Water)+(35-Wind)+(35-Earth))*0.5);
 }
-if(Growing<=10)Growing=rollbase.Dice(5)+10;
+if(Growing<=10)Growing=rollbase.Dice(5)+15;
 rply.text=names +'\n'+
 '['+ name +']  年齡：' +age +
 '\n職業：  ' + Occupation +
@@ -194,8 +194,8 @@ return rply;
 }
 if((age>=40)&&(age<=60)){
 Occupation='外部裝甲操縱人員';
-HP=((rollbase.Dice(20) - 1) * 9)+20;
-MP=((rollbase.Dice(5) - 1) * 9)+20;
+HP=((rollbase.Dice(200)+20;
+MP=((rollbase.Dice(200)+20;
 ATK=rollbase.Dice(70-age);
 Reaction=rollbase.Dice(70-age);
 Control=rollbase.Dice(70-age);
@@ -203,15 +203,21 @@ Growing=rollbase.Dice(61-age);
 }
 if((age>=16)&&(age<=39)){
 Occupation='外部裝甲操縱人員';
-HP=((rollbase.Dice(20) - 1) * 9)+50;
-MP=((rollbase.Dice(20) - 1) * 9)+20;
-ATK=rollbase.Dice(50);
-Reaction=rollbase.Dice(50);
-Control=rollbase.Dice(50);
-Growing=Math.floor(((35-ATK)+(35-Control))*0.5);
+HP=((rollbase.Dice(250)+70;
+MP=((rollbase.Dice(250)+30;
+ATK=rollbase.Dice(45)+5;
+Reaction=rollbase.Dice(45)+5;
+Control=rollbase.Dice(45)+5;
+Growing=rollbase.Dice(5)+15;
 }
-if(Growing<=10)Growing=rollbase.Dice(5)+10;
-if((Control<10)||(MP<50))Occupation='外骨骼裝備步兵';
+if(Control<25){
+	Occupation='外骨骼裝備步兵';
+	HP+=50;
+	MP=MP*0.5;
+	ATK+=10;
+	Reaction+=10;
+	Growing=rollbase.Dice(5)+5;
+}
 rply.text=
 '['+ name +']  年齡：' +age +
 '\n職業：  ' + Occupation +
