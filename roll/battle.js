@@ -280,11 +280,17 @@ if(player[self][0]=='boss01'){
 								player.splice(i,1);
 							}
 							self++;
-							if(player.length==1){
-								rply.text+='\n'+ player[0][1]+'勝利';
-								start=0;
-								dd();
-								return rply;
+							if(player[i][2]<=0){
+								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
+								if(player[i][1]=='愚人節boss'){
+									player.splice(i,1);
+									rply.text+='\n玩家';
+									for(var n=0;n<player.length;n++){
+										rply.text+='\n'+ player[0][1];
+									}
+									rply.text+='\n'+'勝利';
+								}
+								player.splice(i,1);
 							}
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n輪到'+player[self][1]+'的回合了'+
