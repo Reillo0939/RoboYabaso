@@ -491,10 +491,18 @@ function bossSkill02(){
 							'\nHP '+player[i][2]+'/'+player[i][3]+'(-'+damage+')'+
 							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
 							'\n'+player[self][1]+
-						'\nHP '+player[i][2]+'/'+player[i][3]+'(+'+damage+')'+
-							'\nbata粒子 '+player[i][4]+'/'+player[i][5];
+						'\nHP '+player[self][2]+'/'+player[self][3]+'(+'+damage+')'+
+							'\nbata粒子 '+player[self][4]+'/'+player[self][5];
 							if(player[i][2]<=0){
 								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
+								if(player[i][1]=='愚人節boss'){
+									player.splice(i,1);
+									rply.text+='\n玩家';
+									for(var n=0;n<player.length;n++){
+										rply.text+='\n'+ player[0][1];
+									}
+									rply.text+='\n'+'勝利';
+								}
 								player.splice(i,1);
 							}
 							self++;
