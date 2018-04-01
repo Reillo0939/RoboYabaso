@@ -286,9 +286,10 @@ if(player[self][0]=='boss01'){
 									player.splice(i,1);
 									rply.text+='\n玩家';
 									for(var n=0;n<player.length;n++){
-										rply.text+='\n'+ player[0][1];
+										rply.text+='\n'+ player[n][1];
 									}
 									rply.text+='\n'+'勝利';
+									return rply;
 								}
 								player.splice(i,1);
 							}
