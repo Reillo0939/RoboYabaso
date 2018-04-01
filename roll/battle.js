@@ -401,7 +401,7 @@ if(player[self][0]=='boss01'){
 				return rply;
 		}
 			
-			if(trigger.match(/^m/) != null)
+			if(trigger.match(/^m/) != null){
 				
 			}
 			else{
