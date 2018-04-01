@@ -351,7 +351,7 @@ if(player[self][0]=='boss01'){
 						rnggg=rollbase.Dice(player.length);
 					rnggg--;
 					atkt=atktt[rnggg][1];
-					if(atktt[rnggg][1]=='boss'){
+					if(atktt[rnggg][1]=='愚人節boss'){
 						rnggg++;
 						if((rnggg)>=player.length){rnggg=0;}
 						atkt=atktt[rnggg][1];	
