@@ -140,11 +140,14 @@ var od=[];
 							rply.text=player[i][1]+
 							'\nHP '+player[i][2]+'/'+player[i][3]+'(-'+damage+')'+
 							'\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							self++;
 							if(player[i][2]<=0){
+					
 								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
+								
 								player.splice(i,1);
 							}
-							self++;
+							
 							if(player.length==1){
 								rply.text+='\n'+ player[0][1]+'勝利';
 								start=0;
@@ -393,11 +396,12 @@ if(player[self][0]=='boss01'){
 							rply.text=rply.text+'\n\n'+player[i][1]+
 							'\nHP '+player[i][2]+'/'+player[i][3]+'(-'+damage+')'+
 							'\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							self++;
 							if(player[i][2]<=0){
 								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
 								player.splice(i,1);
 							}
-							self++;
+						
 							if(player.length==1){
 								rply.text+='\n'+ player[0][1]+'勝利';
 								start=0;
@@ -455,11 +459,12 @@ function bossSkill01(){
 							rply.text=rply.text+'\n\n'+player[i][1]+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
 							'\n物理適性 '+player[i][6];
+							self++;
 							if(player[i][2]<=0){
 								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
 								player.splice(i,1);
 							}
-							self++;
+							
 							if(player.length==1){
 								rply.text+='\n'+ player[0][1]+'勝利';
 								start=0;
@@ -518,7 +523,9 @@ function bossSkill02(){
 							'\n'+player[self][1]+
 						'\nHP '+player[self][2]+'/'+player[self][3]+'(+'+damage+')'+
 							'\nbata粒子 '+player[self][4]+'/'+player[self][5];
+							self++;
 							if(player[i][2]<=0){
+								
 								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
 								if(player[i][1]=='愚人節boss'){
 									player.splice(i,1);
@@ -530,7 +537,7 @@ function bossSkill02(){
 								}
 								player.splice(i,1);
 							}
-							self++;
+							
 							if(player.length==1){
 								rply.text+='\n'+ player[0][1]+'勝利';
 								start=0;
