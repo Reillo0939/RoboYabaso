@@ -296,7 +296,7 @@ if(player[self][0]=='boss01'){
 										f41++;
 										player[i][2]=4100;
 										rply.text=rply.text+'\n'+player[i][1]+'：愚人節快樂'+
-										'\n'player[i][1]+
+										'\n'+player[i][1]+
 									'\nHP '+player[i][2]+'/'+player[i][3]+
 									'\nbata粒子 '+player[i][4]+'/'+player[i][5];
 									}
