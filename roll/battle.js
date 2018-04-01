@@ -461,10 +461,11 @@ function bossSkill01(){
 					var atktt= new Array();
 					atktt=atktt.concat(player);
 					rnggg=rollbase.Dice(player.length);
+					rnggg--;
 					atkt=atktt[rnggg][1];
 					if(atktt[rnggg][1]=='boss'){
 						rnggg++;
-						if((rnggg)==player.length){rnggg=0;}
+						if((rnggg)>=player.length){rnggg=0;}
 						atkt=atktt[rnggg][1];
 					
 					}
