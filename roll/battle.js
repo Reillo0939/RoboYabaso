@@ -275,10 +275,7 @@ if(player[self][0]=='boss01'){
 							rply.text=player[i][1]+
 							'\nHP '+player[i][2]+'/'+player[i][3]+'(-'+damage+')'+
 							'\nbata粒子 '+player[i][4]+'/'+player[i][5];
-							if(player[i][2]<=0){
-								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
-								player.splice(i,1);
-							}
+
 							self++;
 							if(player[i][2]<=0){
 								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
