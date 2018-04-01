@@ -239,12 +239,12 @@ var od=[];
 			var od=[];
 			od[0]='boss01';
 			od[1]='愚人節boss';
-			od[2]=2000;
-			od[3]=2000;
+			od[2]=4100;
+			od[3]=4100;
 			od[4]=0;
 			od[5]=0;
-			od[6]=30;
-			od[7]=30;
+			od[6]=45;
+			od[7]=40;
 			player[player.length]=od;
 			player.sort(function (a,b){return b[7]-a[7]});
 			rply.text='戰鬥展開'+
@@ -257,7 +257,7 @@ var od=[];
 			
 if(player[self][0]=='boss01'){
 	var rnggg;
-	rnggg=rollbase.Dice(2);
+	rnggg=rollbase.Dice(3);
 	if(rnggg==1)bossatk();
 	if(rnggg==2)bossSkill01();
 	if(rnggg==3)bossSkill02();
@@ -295,7 +295,7 @@ if(player[self][0]=='boss01'){
 							}
 				if(player[self][0]=='boss01'){
 	var rnggg;
-	rnggg=rollbase.Dice(2);
+	rnggg=rollbase.Dice(3);
 	if(rnggg==1)bossatk();
 	if(rnggg==2)bossSkill01();
 	if(rnggg==3)bossSkill02();
@@ -316,67 +316,11 @@ if(player[self][0]=='boss01'){
 							}
 				if(player[self][0]=='boss01'){
 				var rnggg;
-				rnggg=rollbase.Dice(2);
+				rnggg=rollbase.Dice(3);
 				if(rnggg==1)bossatk();
 				if(rnggg==2)bossSkill01();
 				if(rnggg==3)bossSkill02();
 }
-				var atkt;
-				for(var j=0;j<player.length;j++){
-					var atktt= new Array();
-					atktt=atktt.concat(player);
-					atktt.sort(function (a,b){return a[2]-b[2]});
-					atkt=atktt[0][1];
-					if(atktt[0][1]=='boss')atkt=atktt[1][1];
-					
-				}
-			rply.text+='\n\n攻擊'+atkt;
-				for(var i=0;i<player.length;i++){
-					if(player[i][1]==atkt){
-						rnggg=rollbase.Dice(100);
-						if(rnggg > (20 + parseInt(player[i][7]) - parseInt(player[self][7]) ) ){
-							damage=Math.round(player[self][6]*(rollbase.Dice(10)+5)*0.1);
-							player[i][2]=player[i][2]-damage;
-							rply.text=rply.text+'\n\n'+player[i][1]+
-							'\nHP '+player[i][2]+'/'+player[i][3]+'(-'+damage+')'+
-							'\nbata粒子 '+player[i][4]+'/'+player[i][5];
-							if(player[i][2]<=0){
-								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
-								player.splice(i,1);
-							}
-							self++;
-							if(player.length==1){
-								rply.text+='\n'+ player[0][1]+'勝利';
-								start=0;
-								dd();
-								return rply;
-							}
-							if(self>=player.length)self=0;
-							rply.text=rply.text+'\n\n輪到'+player[self][1]+'的回合了'+
-							'\n 可用選項：攻擊 目標'+
-							'\n 目標有';
-							for(var k=0;k<player.length;k++){
-								if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
-							}
-							
-							return rply;
-						}
-						else{
-							self++;
-							if(self>=player.length)self=0;
-							rply.text=rply.text+'\n\n'+player[i][1]+'閃避成功'+
-							'\nHP '+player[i][2]+'/'+player[i][3]+
-							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
-							'\n\n輪到'+player[self][1]+'的回合了'+
-							'\n 可用選項：攻擊 目標'+
-							'\n 目標有';
-							for(var k=0;k<player.length;k++){
-								if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
-							}
-							return rply;
-						}
-					}
-				}
 }
 							return rply;
 						}
@@ -402,7 +346,7 @@ if(player[self][0]=='boss01'){
 					if(rna<=3)atktt.sort(function (a,b){return a[2]-b[2]});
 					if(rna<=6 && rna>=4)atktt.sort(function (a,b){return b[6]-a[6]});
 					atkt=atktt[0][1];
-					if(atktt[0][1]=='boss')atkt=atktt[1][1];
+					if(atktt[0][1]=='愚人節boss')atkt=atktt[1][1];
 					if(rna>=7){
 						rnggg=rollbase.Dice(player.length);
 					rnggg--;
@@ -470,7 +414,7 @@ function bossSkill01(){
 					rnggg=rollbase.Dice(player.length);
 					rnggg--;
 					atkt=atktt[rnggg][1];
-					if(atktt[rnggg][1]=='boss'){
+					if(atktt[rnggg][1]=='愚人節boss'){
 						rnggg++;
 						if((rnggg)>=player.length){rnggg=0;}
 						atkt=atktt[rnggg][1];
