@@ -63,7 +63,7 @@ ga(4,mainMsg,trigger,id,name);
 		return rply;
 		}
 	if(mode==21){
-			boss01(1,mainMsg,trigger,id,name);
+			boss01(8,mainMsg,trigger,id,name);
 		return rply;
 		}
 }
@@ -259,7 +259,7 @@ var od=[];
 				if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
 			}
 			
-if(player[self][0]=='boss'){
+if(player[self][0]=='boss01'){
 	var rnggg;
 	rnggg=rollbase.Dice(2);
 	if(rnggg==1)bossatk();
@@ -298,7 +298,7 @@ if(player[self][0]=='boss'){
 							for(var k=0;k<player.length;k++){
 								if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
 							}
-				if(player[self][0]=='boss')bossatk();
+				if(player[self][0]=='boss01')bossatk();
 							return rply;
 						}
 						else{
@@ -315,7 +315,7 @@ if(player[self][0]=='boss'){
 							for(var k=0;k<player.length;k++){
 								if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
 							}
-				if(player[self][0]=='boss'){
+				if(player[self][0]=='boss01'){
 				var atkt;
 				for(var j=0;j<player.length;j++){
 					var atktt= new Array();
