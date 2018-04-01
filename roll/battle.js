@@ -258,10 +258,9 @@ var od=[];
 if(player[self][0]=='boss01'){
 	var rnggg;
 	rnggg=rollbase.Dice(2);
-	/*if(rnggg==1)bossatk();
+	if(rnggg==1)bossatk();
 	if(rnggg==2)bossSkill01();
-	if(rnggg==3)bossSkill02();*/
-	bossSkill02();
+	if(rnggg==3)bossSkill02();
 }
 			return rply;
 		}
@@ -294,7 +293,13 @@ if(player[self][0]=='boss01'){
 							for(var k=0;k<player.length;k++){
 								if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
 							}
-				if(player[self][0]=='boss01')bossatk();
+				if(player[self][0]=='boss01'){
+	var rnggg;
+	rnggg=rollbase.Dice(2);
+	if(rnggg==1)bossatk();
+	if(rnggg==2)bossSkill01();
+	if(rnggg==3)bossSkill02();
+}
 							return rply;
 						}
 						else{
@@ -310,6 +315,12 @@ if(player[self][0]=='boss01'){
 								if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
 							}
 				if(player[self][0]=='boss01'){
+				var rnggg;
+				rnggg=rollbase.Dice(2);
+				if(rnggg==1)bossatk();
+				if(rnggg==2)bossSkill01();
+				if(rnggg==3)bossSkill02();
+}
 				var atkt;
 				for(var j=0;j<player.length;j++){
 					var atktt= new Array();
@@ -386,10 +397,24 @@ function bossatk(){
 					var atkt;
 				for(var j=0;j<player.length;j++){
 					var atktt= new Array();
+					var rna=rollbase.Dice(10);
 					atktt=atktt.concat(player);
-					atktt.sort(function (a,b){return a[2]-b[2]});
+					if(rna<=3)atktt.sort(function (a,b){return a[2]-b[2]});
+					if(rna<=6 && rna>=4)atktt.sort(function (a,b){return b[6]-a[6]});
 					atkt=atktt[0][1];
 					if(atktt[0][1]=='boss')atkt=atktt[1][1];
+					if(rna>=7){
+						rnggg=rollbase.Dice(player.length);
+					rnggg--;
+					atkt=atktt[rnggg][1];
+					if(atktt[rnggg][1]=='boss'){
+						rnggg++;
+						if((rnggg)>=player.length){rnggg=0;}
+						atkt=atktt[rnggg][1];
+					
+					}
+						
+					}
 					
 				}
 			rply.text+='\n\n愚人節boss 攻擊 '+atkt;
@@ -522,8 +547,8 @@ function bossSkill02(){
 							damage=Math.round(player[self][6]*(rollbase.Dice(10)+5)*0.1);
 							player[i][2]=player[i][2]-damage;
 							player[self][2]=player[self][2]+damage;
-							rply.text=rply.text+'\n\n'+player[i][1]+'(+'+damage+')'+
-							'\nHP '+player[i][2]+'/'+player[i][3]+
+							rply.text=rply.text+'\n\n'+player[i][1]+
+							'\nHP '+player[i][2]+'/'+player[i][3]+'(-'+damage+')'+
 							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
 							'\n'+player[self][1]+
 						'\nHP '+player[i][2]+'/'+player[i][3]+'(+'+damage+')'+
