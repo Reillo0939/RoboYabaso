@@ -527,7 +527,7 @@ function bossSkill02(){
 							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
 							'\n'+player[self][1]+
 						'\nHP '+player[i][2]+'/'+player[i][3]+'(+'+damage+')'+
-							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
+							'\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							if(player[i][2]<=0){
 								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
 								player.splice(i,1);
@@ -555,8 +555,6 @@ function bossSkill02(){
 							rply.text=rply.text+'\n\n'+player[i][1]+'閃避成功'+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
 							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
-							'\n物理適性 '+player[i][6]+
-							'\n反應力'+player[i][7]+
 							'\n\n輪到'+player[self][1]+'的回合了'+
 							'\n 可用選項：攻擊 目標'+
 							'\n 目標有';
