@@ -262,6 +262,7 @@ var od=[];
 			for(var k=0;k<player.length;k++){
 				if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
 			}
+		}
 			if(trigger.match(/^戰鬥開始$/) != null && start==0 && player.length<aaab){
 			rply.text='人數不足，如果確定要以'+player.length+'的人數開始'+
 				'\n請輸入 戰鬥強制開始';
