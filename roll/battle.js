@@ -5,6 +5,7 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 var player= new Array();;
 var start=0;
 var hit=1;
+var f41=0;
 var self=0;
 var damage;
 var rnggg;
@@ -280,6 +281,7 @@ if(player[self][0]=='boss01'){
 							if(player[i][2]<=0){
 								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
 								if(player[i][1]=='愚人節boss'){
+									if(f41==1){
 									player.splice(i,1);
 									rply.text+='\n玩家';
 									for(var n=0;n<player.length;n++){
@@ -289,9 +291,18 @@ if(player[self][0]=='boss01'){
 									start=0;
 									dd();
 									return rply;
+									}
+									else{
+										f41++;
+										player[i][2]=4100;
+										rply.text=rply.text+'\n'+player[i][1]+'：愚人節快樂'+
+										'\n'player[i][1]+
+									'\nHP '+player[i][2]+'/'+player[i][3]+
+									'\nbata粒子 '+player[i][4]+'/'+player[i][5];
+									}
 									
 								}
-								player.splice(i,1);
+								if(player[i][1]!='愚人節boss')player.splice(i,1);
 								if(player.length==1){
 								rply.text+='\n'+ player[0][1]+'勝利';
 								start=0;
