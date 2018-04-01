@@ -262,7 +262,32 @@ var od=[];
 			for(var k=0;k<player.length;k++){
 				if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
 			}
-			
+			if(trigger.match(/^戰鬥開始$/) != null && start==0 && player.length<aaab){
+			rply.text='人數不足，如果確定要以'+player.length+'的人數開始'+
+				'\n請輸入 戰鬥強制開始';
+			}
+			if(trigger.match(/^戰鬥強制開始/) != null && start==0 && player.length>0){
+			start=1;
+			self=0;
+			f41=0;
+			var od=[];
+			od[0]='boss01';
+			od[1]='愚人節boss';
+			od[2]=4100;
+			od[3]=4100;
+			od[4]=0;
+			od[5]=0;
+			od[6]=45;
+			od[7]=40;
+			player[player.length]=od;
+			player.sort(function (a,b){return b[7]-a[7]});
+			rply.text='戰鬥展開'+
+			'\n'+player[self][1]+'先手'+
+			'\n 可用選項：攻擊 目標'+
+			'\n 目標有';
+			for(var k=0;k<player.length;k++){
+				if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
+			}
 if(player[self][0]=='boss01'){
 	var rnggg;
 	rnggg=rollbase.Dice(3);
@@ -358,6 +383,13 @@ if(player[self][0]=='boss01'){
 						}
 					}
 				}
+			
+					if(trigger.match(/^跳過/) != null&& start==1 && (id=='U7c4779fd913aff927f26d7f6bedd87d1'||id=='Uc9b4571605aabd3e94edd7c189144278')){
+					self++;
+						if(self>=player.length)self=0;
+		}
+			
+			
 				rply.text='輪到'+player[self][1]+'的回合了'+
 							'\n 可用選項：攻擊 目標'+
 							'\n 目標有';
