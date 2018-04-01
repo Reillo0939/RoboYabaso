@@ -392,7 +392,7 @@ function bossatk(){
 					if(atktt[0][1]=='boss')atkt=atktt[1][1];
 					
 				}
-			rply.text+='\n\nboss 攻擊 '+atkt;
+			rply.text+='\n\n愚人節boss 攻擊 '+atkt;
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==atkt){
 						rnggg=rollbase.Dice(100);
@@ -456,7 +456,7 @@ function bossSkill01(){
 					
 					}
 				}
-			rply.text+='\n\nboss 發動技能：反轉 '+atkt;
+			rply.text+='\n\n愚人節boss 發動技能：反轉 '+atkt;
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==atkt){
 						rnggg=rollbase.Dice(100);
@@ -512,9 +512,9 @@ function bossSkill02(){
 					atktt=atktt.concat(player);
 					atktt.sort(function (a,b){return b[2]-a[2]});
 					atkt=atktt[0][1];
-					if(atktt[0][1]=='boss')atkt=atktt[1][1];
+					if(atktt[0][1]=='愚人節boss')atkt=atktt[1][1];
 				}
-			rply.text+='\n\nboss 發動技能：吸血 '+atkt;
+			rply.text+='\n\n愚人節boss 發動技能：吸血 '+atkt;
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==atkt){
 						rnggg=rollbase.Dice(100);
