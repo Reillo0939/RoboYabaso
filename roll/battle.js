@@ -43,10 +43,10 @@ function battles(id,name,ab) {
 	        rply.text='已轉為8人對戰模式';
 		return rply;
 	}
-	if(trigger.match(/^boss/) != null && start==0){
+	if(trigger.match(/^愚人節boss活動/) != null && start==0){
 		mode=21;
 		dd();
-	        rply.text='已轉為boss模式(8人)';
+	        rply.text='已轉為討伐愚人節boss模式(8人)';
 		return rply;
 	}
 	rply.text='';
@@ -64,7 +64,7 @@ ga(4,mainMsg,trigger,id,name);
 		return rply;
 		}
 	if(mode==21){
-			boss01(1,mainMsg,trigger,id,name);
+			boss01(8,mainMsg,trigger,id,name);
 		return rply;
 		}
 }
