@@ -49,7 +49,7 @@ function battles(id,name,ab) {
 	        rply.text='已轉為討伐愚人節boss模式(8人)';
 		return rply;
 	}
-	if(trigger.match(/^m$/) != null && start==0){
+	if(trigger.match(/^m$/) != null && start==1){
 		return rply;
 	}
 	rply.text='';
