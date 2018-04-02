@@ -387,7 +387,7 @@ var od=[];
 				}
 			}
 			if(trigger.match(/^移動/) != null && start==1 &&  mainMsg[1] != null){
-				let xxyy = mainMsg[1].match(','); //定義輸入字串
+				let xxyy = mainMsg[1].match(,); //定義輸入字串
 				if(isNaN(xxyy[0])==0 && isNaN(xxyy[1])==0){
 					var temp =0;
 						temp = Math.ceil((Math.pow(Math.pow(xxyy[0]-player[self][16],2)+Math.pow(xxyy[1]-player[self][17],2),0.5)));
