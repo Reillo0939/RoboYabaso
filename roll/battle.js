@@ -194,7 +194,7 @@ var od=[];
 		}
 		if(trigger.match(/^我命令你死去/) != null && start==1){
 								player[self][2]=0;
-								rply.text=rply.text+'\n'+player[self][1]+'已倒地';
+								rply.text=player[self][1]+'已倒地';
 								player.splice(self,1);
 							if(player.length==1){
 								rply.text+='\n'+ player[0][1]+'勝利';
