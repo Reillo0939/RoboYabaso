@@ -46,7 +46,7 @@ function battles(id,name,ab) {
 	if(trigger.match(/^4人測試/) != null && start==0){
 		mode=99;
 		dd();
-	        rply.text='已轉為討伐愚人節boss模式(8人)';
+	        rply.text='測試';
 		return rply;
 	}
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -310,10 +310,10 @@ var od=[];
 				player[ff][17]=10;
 			rply.text='戰鬥展開'+
 			'\n'+player[self][1]+'先手'+
-			'\n位置 '+player[self][16]+','+player[self][17];
+			'\n位置 '+player[self][16]+','+player[self][17]+
 			'\n 可用選項：'+
 			'\n攻擊 目標'+
-			'\n移動 x座標,y座標'
+			'\n移動 x座標,y座標'+
 			'\n 目標有';
 			for(var k=0;k<player.length;k++){
 				if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
@@ -324,6 +324,14 @@ var od=[];
 			if(id==player[self][0] && trigger.match(/^攻擊$/) != null && mainMsg[1] != null ){
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
+						
+						var temp =0;
+						temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5));
+						if(temp>3){
+							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
+							return rply;
+						}
+						
 						rnggg=rollbase.Dice(100);
 						if(rnggg > (20 + parseInt(player[i][7]) - parseInt(player[self][7]) ) ){
 							damage=Math.round(player[self][6]*(rollbase.Dice(10)+5)*0.1);
@@ -346,8 +354,11 @@ var od=[];
 								return rply;
 							}
 							if(self>=player.length)self=0;
-							rply.text=rply.text+'\n\n輪到'+player[self][1]+'的回合了'+
-							'\n 可用選項：攻擊 目標'+
+							rply.text=rply.text+'\n\n輪到'+player[self][1]+'的回合'+
+							'\n位置 '+player[self][16]+','+player[self][17]+
+							'\n 可用選項：'+
+							'\n攻擊 目標'+
+							'\n移動 x座標,y座標'+
 							'\n 目標有';
 							for(var k=0;k<player.length;k++){
 								rply.text=rply.text+'\n'+player[k][1];
@@ -361,8 +372,11 @@ var od=[];
 							rply.text=player[i][1]+'閃避成功'+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
 							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
-							'\n\n輪到'+player[self][1]+'的回合了'+
-							'\n 可用選項：攻擊 目標'+
+							'\n\n輪到'+player[self][1]+'的回合'+
+							'\n位置 '+player[self][16]+','+player[self][17]+
+							'\n 可用選項：'+
+							'\n攻擊 目標'+
+							'\n移動 x座標,y座標'+
 							'\n 目標有';
 							for(var k=0;k<player.length;k++){
 								rply.text=rply.text+'\n'+player[k][1];
@@ -372,18 +386,53 @@ var od=[];
 					}
 				}
 			}
-			if(trigger.match(/^跳過/) != null && start==1){
+			if(trigger.match(/^移動/) != null && start==1 &&  mainMsg[1] != null){
+				let xxyy = mainMsg[1].match(','); //定義輸入字串
+				if(isNaN(xxyy[0])==0 && isNaN(xxyy[1])==0){
+					var temp =0;
+						temp = Math.ceil((Math.pow(Math.pow(xxyy[0]-player[self][16],2)+Math.pow(xxyy[1]-player[self][17],2),0.5));
+						if(temp>3){
+							rply.text='距離太遠，無法移動';
+							return rply;
+						}
+						else{
+							rply.text='已移動到 座標'+xxyy[0]+','+xxyy[1];
+							player[self][16]=xxyy[0];
+							player[self][17]=xxyy[1];
+						}
+				}
+				else{
+					rply.text='格式錯誤';
+					return rply;
+				}
 					self++;
 					if(self>=player.length)self=0;
-					rply.text='輪到'+player[self][1]+'的回合了'+
-							'\n 可用選項：攻擊 目標'+
+					rply.text='\n\n輪到'+player[self][1]+'的回合'+
+							'\n位置 '+player[self][16]+','+player[self][17]+
+							'\n 可用選項：'+
+							'\n攻擊 目標'+
+							'\n移動 x座標,y座標'+
 							'\n 目標有';
 				for(var k=0;k<player.length;k++){
 					if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
 				}
 				return rply;
 		}
-		if(trigger.match(/^我命令你死去/) != null && start==1){
+			if(trigger.match(/^跳過/) != null && start==1){
+					self++;
+					if(self>=player.length)self=0;
+					rply.text='輪到'+player[self][1]+'的回合'+
+							'\n位置 '+player[self][16]+','+player[self][17]+
+							'\n 可用選項：'+
+							'\n攻擊 目標'+
+							'\n移動 x座標,y座標'+
+							'\n 目標有';
+				for(var k=0;k<player.length;k++){
+					if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
+				}
+				return rply;
+		}
+		if(trigger.match(/^GM-消滅$/) != null && start==1){
 								player[self][2]=0;
 								rply.text=player[self][1]+'已倒地';
 								player.splice(self,1);
@@ -395,26 +444,29 @@ var od=[];
 							}
 							self++;
 					if(self>=player.length)self=0;
-					rply.text='輪到'+player[self][1]+'的回合了'+
-							'\n 可用選項：攻擊 目標'+
+							rply.text='輪到'+player[self][1]+'的回合'+
+							'\n位置 '+player[self][16]+','+player[self][17]+
+							'\n 可用選項：'+
+							'\n攻擊 目標'+
+							'\n移動 x座標,y座標'+
 							'\n 目標有';
 				for(var k=0;k<player.length;k++){
 					if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
 				}
 				return rply;
 		}
-			if(trigger.match(/^m/) != null){
-			}
-			else{
-			rply.text='輪到'+player[self][1]+'的回合了'+
-							'\n 可用選項：攻擊 目標'+
+			if(trigger.match(/^回合/) != null){
+							rply.text='是'+player[self][1]+'的回合'+
+							'\n位置 '+player[self][16]+','+player[self][17]+
+							'\n 可用選項：'+
+							'\n攻擊 目標'+
+							'\n移動 x座標,y座標'+
 							'\n 目標有';
 				for(var k=0;k<player.length;k++){
 					if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
 				}
 				return rply;
 			}
-				
 		}
 			
 }
