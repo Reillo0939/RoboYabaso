@@ -316,8 +316,8 @@ var od=[];
 			'\n移動 x座標,y座標'+
 			'\n 目標有';
 			for(var k=0;k<player.length;k++){
-				if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
-			}
+								rply.text=rply.text+'\n'+player[k][1]+' '+player[k][16]+','+player[k][17];
+							}
 			return rply;
 		}
 		if(start==1){
@@ -361,7 +361,7 @@ var od=[];
 							'\n移動 x座標,y座標'+
 							'\n 目標有';
 							for(var k=0;k<player.length;k++){
-								rply.text=rply.text+'\n'+player[k][1];
+								rply.text=rply.text+'\n'+player[k][1]+' '+player[k][16]+','+player[k][17];
 							}
 							
 							return rply;
@@ -379,7 +379,7 @@ var od=[];
 							'\n移動 x座標,y座標'+
 							'\n 目標有';
 							for(var k=0;k<player.length;k++){
-								rply.text=rply.text+'\n'+player[k][1];
+								rply.text=rply.text+'\n'+player[k][1]+' '+player[k][16]+','+player[k][17];
 							}
 							return rply;
 						}
@@ -414,8 +414,8 @@ var od=[];
 							'\n移動 x座標,y座標'+
 							'\n 目標有';
 				for(var k=0;k<player.length;k++){
-					if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
-				}
+								rply.text=rply.text+'\n'+player[k][1]+' '+player[k][16]+','+player[k][17];
+							}
 				return rply;
 		}
 			if(trigger.match(/^跳過/) != null && start==1){
@@ -428,8 +428,8 @@ var od=[];
 							'\n移動 x座標,y座標'+
 							'\n 目標有';
 				for(var k=0;k<player.length;k++){
-					if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
-				}
+								rply.text=rply.text+'\n'+player[k][1]+' '+player[k][16]+','+player[k][17];
+							}
 				return rply;
 		}
 		if(trigger.match(/^GM-消滅$/) != null && start==1){
@@ -451,8 +451,8 @@ var od=[];
 							'\n移動 x座標,y座標'+
 							'\n 目標有';
 				for(var k=0;k<player.length;k++){
-					if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
-				}
+								rply.text=rply.text+'\n'+player[k][1]+' '+player[k][16]+','+player[k][17];
+							}
 				return rply;
 		}
 			if(trigger.match(/^回合/) != null){
@@ -463,8 +463,8 @@ var od=[];
 							'\n移動 x座標,y座標'+
 							'\n 目標有';
 				for(var k=0;k<player.length;k++){
-					if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
-				}
+								rply.text=rply.text+'\n'+player[k][1]+' '+player[k][16]+','+player[k][17];
+							}
 				return rply;
 			}
 		}
