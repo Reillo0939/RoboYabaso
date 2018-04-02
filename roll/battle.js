@@ -326,7 +326,7 @@ var od=[];
 					if(player[i][1]==mainMsg[1] ){
 						
 						var temp =0;
-						temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5));
+						temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
 						if(temp>3){
 							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
 							return rply;
@@ -390,7 +390,7 @@ var od=[];
 				let xxyy = mainMsg[1].match(','); //定義輸入字串
 				if(isNaN(xxyy[0])==0 && isNaN(xxyy[1])==0){
 					var temp =0;
-						temp = Math.ceil((Math.pow(Math.pow(xxyy[0]-player[self][16],2)+Math.pow(xxyy[1]-player[self][17],2),0.5));
+						temp = Math.ceil((Math.pow(Math.pow(xxyy[0]-player[self][16],2)+Math.pow(xxyy[1]-player[self][17],2),0.5)));
 						if(temp>3){
 							rply.text='距離太遠，無法移動';
 							return rply;
