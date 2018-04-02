@@ -43,10 +43,10 @@ function battles(id,name,ab) {
 	        rply.text='已轉為討伐愚人節boss模式(8人)';
 		return rply;
 	}
-	if(trigger.match(/^4人測試/) != null && start==0){
+	if(trigger.match(/^4人棋盤模式/) != null && start==0){
 		mode=99;
 		dd();
-	        rply.text='測試';
+	        rply.text='已轉為4人棋盤模式';
 		return rply;
 	}
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -407,7 +407,7 @@ var od=[];
 				}
 					self++;
 					if(self>=player.length)self=0;
-					rply.text='\n\n輪到'+player[self][1]+'的回合'+
+					rply.text+='\n\n輪到'+player[self][1]+'的回合'+
 							'\n位置 '+player[self][16]+','+player[self][17]+
 							'\n 可用選項：'+
 							'\n攻擊 目標'+
