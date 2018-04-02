@@ -386,7 +386,7 @@ var od=[];
 					}
 				}
 			}
-			if(trigger.match(/^移動/) != null && start==1 &&  mainMsg[1] != null){
+			if(id==player[self][0] && trigger.match(/^移動/) != null && start==1 &&  mainMsg[1] != null){
 				let xxyy = mainMsg[1].split(','); //定義輸入字串
 				if(isNaN(xxyy[0])==0 && isNaN(xxyy[1])==0){
 					var temp =0;
