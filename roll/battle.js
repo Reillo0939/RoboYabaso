@@ -132,7 +132,7 @@ var od=[];
 		if(start==1){
 			if(id==player[self][0] && trigger.match(/^攻擊$/) != null && mainMsg[1] != null ){
 				for(var i=0;i<player.length;i++){
-					if(player[i][1]==mainMsg[1] && player[i][1]!=player[self][1]){
+					if(player[i][1]==mainMsg[1] ){
 						rnggg=rollbase.Dice(100);
 						if(rnggg > (20 + parseInt(player[i][7]) - parseInt(player[self][7]) ) ){
 							damage=Math.round(player[self][6]*(rollbase.Dice(10)+5)*0.1);
@@ -159,7 +159,7 @@ var od=[];
 							'\n 可用選項：攻擊 目標'+
 							'\n 目標有';
 							for(var k=0;k<player.length;k++){
-								if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
+								rply.text=rply.text+'\n'+player[k][1];
 							}
 							
 							return rply;
@@ -174,7 +174,7 @@ var od=[];
 							'\n 可用選項：攻擊 目標'+
 							'\n 目標有';
 							for(var k=0;k<player.length;k++){
-								if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
+								rply.text=rply.text+'\n'+player[k][1];
 							}
 							return rply;
 						}
@@ -321,7 +321,7 @@ var od=[];
 			'\n 可用選項：攻擊 目標'+
 			'\n 目標有';
 			for(var k=0;k<player.length;k++){
-				if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
+				rply.text=rply.text+'\n'+player[k][1];
 			}
 if(player[self][0]=='boss01'){
 	var rnggg;
@@ -335,7 +335,7 @@ if(player[self][0]=='boss01'){
 		if(start==1){
 			if(id==player[self][0] && trigger.match(/^攻擊$/) != null && mainMsg[1] != null ){
 				for(var i=0;i<player.length;i++){
-					if(player[i][1]==mainMsg[1] && player[i][1]!=player[self][1]){
+					if(player[i][1]==mainMsg[1]){
 						rnggg=rollbase.Dice(100);
 						if(rnggg > (20 + parseInt(player[i][7]) - parseInt(player[self][7]) ) ){
 							damage=Math.round(player[self][6]*(rollbase.Dice(10)+5)*0.1);
@@ -383,7 +383,7 @@ if(player[self][0]=='boss01'){
 							'\n 可用選項：攻擊 目標'+
 							'\n 目標有';
 							for(var k=0;k<player.length;k++){
-								if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
+								rply.text=rply.text+'\n'+player[k][1];
 							}
 				if(player[self][0]=='boss01'){
 	var rnggg;
@@ -404,7 +404,7 @@ if(player[self][0]=='boss01'){
 							'\n 可用選項：攻擊 目標'+
 							'\n 目標有';
 							for(var k=0;k<player.length;k++){
-								if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
+								rply.text=rply.text+'\n'+player[k][1];
 							}
 				if(player[self][0]=='boss01'){
 				var rnggg;
