@@ -94,7 +94,7 @@ rply.text='你幾歲了';
 return rply;	
 }
 if((age>=30)&&(age<=65)){
-Occupation='放出使';
+Occupation='粒子誘變操作使';
 HP=rollbase.Dice(200)+20;
 MP=rollbase.Dice(150)+20;
 ATK=rollbase.Dice(70-age);
@@ -107,17 +107,17 @@ Earth=rollbase.Dice(70-age);
 Growing=rollbase.Dice(66-age);
 }
 if((age>=14)&&(age<=29)){
-Occupation='控能者';
+Occupation='粒子誘變操作使';
 HP=rollbase.Dice(200)+30;
 MP=rollbase.Dice(250)+80;
-ATK=rollbase.Dice(40);
+ATK=rollbase.Dice(50);
 Reaction=rollbase.Dice(45)+5;
 None=rollbase.Dice(40);
 Fire=rollbase.Dice(40);	
 Water=rollbase.Dice(40);
 Wind=rollbase.Dice(40);
 Earth=rollbase.Dice(40);
-Growing=Math.floor(((35-ATK)+(35-None)+(35-Fire)+(35-Water)+(35-Wind)+(35-Earth))*0.5);
+Growing=Math.floor(((30-ATK)+(30-None)+(30-Fire)+(30-Water)+(30-Wind)+(30-Earth))*0.5);
 }
 if(Growing<=10)Growing=rollbase.Dice(5)+15;
 rply.text=names +'\n'+
@@ -194,7 +194,7 @@ return rply;
 }
 
 if((age>=40)&&(age<=60)){
-Occupation='外部裝甲操縱人員';
+Occupation='CAC系統磁懸裝甲';
 HP=rollbase.Dice(200)+20;
 MP=rollbase.Dice(200)+20;
 ATK=rollbase.Dice(70-age);
@@ -203,7 +203,7 @@ Control=rollbase.Dice(70-age);
 Growing=rollbase.Dice(61-age);
 }
 if((age>=16)&&(age<=39)){
-Occupation='外部裝甲操縱人員';
+Occupation='CAC系統磁懸裝甲';
 HP=rollbase.Dice(250)+70;
 MP=rollbase.Dice(250)+30;
 ATK=rollbase.Dice(45)+5;
@@ -212,7 +212,7 @@ Control=rollbase.Dice(45)+5;
 Growing=rollbase.Dice(5)+15;
 }
 if(Control<25){
-	Occupation='外骨骼裝備步兵';
+	Occupation='複合性火力支援裝甲';
 	HP+=50;
 	MP=Math.round(MP*0.5);
 	ATK+=10;
