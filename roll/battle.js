@@ -181,7 +181,10 @@ var od=[];
 					}
 				}
 			}
-				rply.text='輪到'+player[self][1]+'的回合了'+
+			if(trigger.match(/^跳過/) != null && start==1){
+					self++;
+					if(self>=player.length)self=0;
+					rply.text='輪到'+player[self][1]+'的回合了'+
 							'\n 可用選項：攻擊 目標'+
 							'\n 目標有';
 				for(var k=0;k<player.length;k++){
@@ -189,6 +192,40 @@ var od=[];
 				}
 				return rply;
 		}
+		if(trigger.match(/^我命令你死去/) != null && start==1){
+								player[self][2]=0;
+								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
+								player.splice(self,1);
+							if(player.length==1){
+								rply.text+='\n'+ player[0][1]+'勝利';
+								start=0;
+								dd();
+								return rply;
+							}
+							self++;
+					if(self>=player.length)self=0;
+					rply.text='輪到'+player[self][1]+'的回合了'+
+							'\n 可用選項：攻擊 目標'+
+							'\n 目標有';
+				for(var k=0;k<player.length;k++){
+					if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
+				}
+				return rply;
+		}
+			if(trigger.match(/^m/) != null){
+			}
+			else{
+			rply.text='輪到'+player[self][1]+'的回合了'+
+							'\n 可用選項：攻擊 目標'+
+							'\n 目標有';
+				for(var k=0;k<player.length;k++){
+					if(player[k][1]!=player[self][1])rply.text=rply.text+'\n'+player[k][1];
+				}
+				return rply;
+			}
+				
+		}
+			
 }
 function boss01(aaab,mainMsg,trigger,id,name){
 if(trigger.match(/^戰鬥參與$/) != null && start==0){
