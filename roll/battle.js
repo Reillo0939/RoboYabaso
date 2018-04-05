@@ -7,6 +7,7 @@ var start=0;
 var hit=1;
 var f41=0;
 var self=0;
+var ds=0;
 var damage;
 var rnggg;
 var mode;
@@ -293,6 +294,7 @@ var od=[];
 			start=1;
 			self=0;
 			player.sort(function (a,b){return b[7]-a[7]});
+			ds=1;
 			var ff=rollbase.Dice(4)-1;
 				player[ff][16]=1;
 				player[ff][17]=1;
@@ -339,7 +341,8 @@ var od=[];
 							rply.text=player[i][1]+
 							'\nHP '+player[i][2]+'/'+player[i][3]+'(-'+damage+')'+
 							'\nbata粒子 '+player[i][4]+'/'+player[i][5];
-							self++;
+							ds++
+							if(ds==2){self++;ds=1;}
 							if(player[i][2]<=0){
 								if(i<self)self--;
 								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
@@ -354,7 +357,7 @@ var od=[];
 								return rply;
 							}
 							if(self>=player.length)self=0;
-							rply.text=rply.text+'\n\n輪到'+player[self][1]+'的回合'+
+							rply.text=rply.text+'\n\n輪到'+player[self][1]+'的第'+ds+'次行動'+
 							'\n位置 '+player[self][16]+','+player[self][17]+
 							'\n 可用選項：'+
 							'\n攻擊 目標'+
@@ -367,12 +370,12 @@ var od=[];
 							return rply;
 						}
 						else{
-							self++;
+							if(ds==2){self++;ds=1;}
 							if(self>=player.length)self=0;
 							rply.text=player[i][1]+'閃避成功'+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
 							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
-							'\n\n輪到'+player[self][1]+'的回合'+
+							'\n\n輪到'+player[self][1]+'的第'+ds+'次行動'+
 							'\n位置 '+player[self][16]+','+player[self][17]+
 							'\n 可用選項：'+
 							'\n攻擊 目標'+
@@ -390,24 +393,30 @@ var od=[];
 				let xxyy = mainMsg[1].split(','); //定義輸入字串
 				if(isNaN(xxyy[0])==0 && isNaN(xxyy[1])==0){
 					var temp =0;
-						temp = Math.ceil((Math.pow(Math.pow(xxyy[0]-player[self][16],2)+Math.pow(xxyy[1]-player[self][17],2),0.5)));
+						temp = Math.ceil((Math.pow(Math.pow(Math.floor(xxyy[0])-player[self][16],2)+Math.pow(Math.floor(xxyy[1])-player[self][17],2),0.5)));
 						if(temp>3){
 							rply.text='距離太遠，無法移動';
 							return rply;
 						}
 						else{
-							rply.text='已移動到 座標'+xxyy[0]+','+xxyy[1];
-							player[self][16]=xxyy[0];
-							player[self][17]=xxyy[1];
+							if(xxyy(0)>=1 && xxyy(0)<=10 && xxyy(1)>=1 && xxyy(1)<=10){ 
+							rply.text='已移動到 座標'+Math.floor(xxyy[0])+','+Math.floor(xxyy[1]);
+							player[self][16]=Math.floor(xxyy[0]);
+							player[self][17]=Math.floor(xxyy[1]);
+							}
+							else{
+								rply.text='位置錯誤，無法移動';
+							return rply;
+							}
 						}
 				}
 				else{
 					rply.text='格式錯誤';
 					return rply;
 				}
-					self++;
+					if(ds==2){self++;ds=1;}
 					if(self>=player.length)self=0;
-					rply.text+='\n\n輪到'+player[self][1]+'的回合'+
+					rply.text+='\n\n輪到'+player[self][1]+'的第'+ds+'次行動'+
 							'\n位置 '+player[self][16]+','+player[self][17]+
 							'\n 可用選項：'+
 							'\n攻擊 目標'+
@@ -420,8 +429,9 @@ var od=[];
 		}
 			if(trigger.match(/^跳過/) != null && start==1){
 					self++;
+					ds=1;
 					if(self>=player.length)self=0;
-					rply.text='輪到'+player[self][1]+'的回合'+
+					rply.text='輪到'+player[self][1]+'的第'+ds+'次行動'+
 							'\n位置 '+player[self][16]+','+player[self][17]+
 							'\n 可用選項：'+
 							'\n攻擊 目標'+
@@ -434,7 +444,7 @@ var od=[];
 		}
 		if(trigger.match(/^GM-消滅$/) != null && start==1){
 								player[self][2]=0;
-								rply.text=player[self][1]+'已倒地';
+								rply.text=player[self][1]+'已撤退';
 								player.splice(self,1);
 							if(player.length==1){
 								rply.text+='\n'+ player[0][1]+'勝利';
@@ -443,8 +453,9 @@ var od=[];
 								return rply;
 							}
 							self++;
+							ds=1;
 					if(self>=player.length)self=0;
-							rply.text='輪到'+player[self][1]+'的回合'+
+							rply.text+='\n\n輪到'+player[self][1]+'的第'+ds+'次行動'+
 							'\n位置 '+player[self][16]+','+player[self][17]+
 							'\n 可用選項：'+
 							'\n攻擊 目標'+
@@ -456,7 +467,7 @@ var od=[];
 				return rply;
 		}
 			if(trigger.match(/^回合/) != null){
-							rply.text='是'+player[self][1]+'的回合'+
+							rply.text='現在是'+player[self][1]+'的第'+ds+'次行動'+
 							'\n位置 '+player[self][16]+','+player[self][17]+
 							'\n 可用選項：'+
 							'\n攻擊 目標'+
