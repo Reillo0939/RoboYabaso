@@ -423,7 +423,7 @@ var od=[];
 							return rply;
 						}
 						else{
-							if(xxyy(0)>=1 && xxyy(0)<=10 && xxyy(1)>=1 && xxyy(1)<=10){ 
+							if(xxyy[0]>=1 && xxyy[0]<=10 && xxyy[1]>=1 && xxyy[1]<=10){ 
 							rply.text='已移動到 座標'+Math.floor(xxyy[0])+','+Math.floor(xxyy[1]);
 							player[self][16]=Math.floor(xxyy[0]);
 							player[self][17]=Math.floor(xxyy[1]);
