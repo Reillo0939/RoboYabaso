@@ -38,14 +38,26 @@ function battles(id,name,ab) {
 	        rply.text='已轉為8人對戰模式';
 		return rply;
 	}
-	if(trigger.match(/^愚人節boss活動/) != null && start==0){
+	/*if(trigger.match(/^愚人節boss活動/) != null && start==0){
 		mode=21;
 		dd();
 	        rply.text='已轉為討伐愚人節boss模式(8人)';
 		return rply;
+	}*/
+	if(trigger.match(/^2人棋盤模式/) != null && start==0){
+		mode=12;
+		dd();
+	        rply.text='已轉為4人棋盤模式';
+		return rply;
+	}
+	if(trigger.match(/^3人棋盤模式/) != null && start==0){
+		mode=13;
+		dd();
+	        rply.text='已轉為4人棋盤模式';
+		return rply;
 	}
 	if(trigger.match(/^4人棋盤模式/) != null && start==0){
-		mode=99;
+		mode=14;
 		dd();
 	        rply.text='已轉為4人棋盤模式';
 		return rply;
@@ -68,7 +80,15 @@ ga(4,mainMsg,trigger,id,name);
 			boss01(8,mainMsg,trigger,id,name);
 		return rply;
 		}
-		if(mode==99){
+		if(mode==12){
+			cb(2,mainMsg,trigger,id,name);
+		return rply;
+		}
+		if(mode==13){
+			cb(3,mainMsg,trigger,id,name);
+		return rply;
+		}
+		if(mode==14){
 			cb(4,mainMsg,trigger,id,name);
 		return rply;
 		}
@@ -295,21 +315,25 @@ var od=[];
 			self=0;
 			player.sort(function (a,b){return b[7]-a[7]});
 			ds=1;
-			var ff=rollbase.Dice(4)-1;
+			var ff=rollbase.Dice(aaab)-1;
 				player[ff][16]=1;
 				player[ff][17]=1;
 				ff++;
-				if(ff>=4)ff=0;
+			if(ff>=aaab)ff=0;
+				player[ff][16]=10;
+				player[ff][17]=10;
+				ff++;
+			if(ff>=aaab)ff=0;
+			if(aaab>=3){
 				player[ff][16]=10;
 				player[ff][17]=1;
 				ff++;
-				if(ff>=4)ff=0;
+			}
+			if(ff>=aaab)ff=0;
+			if(aaab>=4){
 				player[ff][16]=1;
 				player[ff][17]=10;
-				ff++;
-				if(ff>=4)ff=0;
-				player[ff][16]=10;
-				player[ff][17]=10;
+			}
 			rply.text='戰鬥展開'+
 			'\n'+player[self][1]+'先手'+
 			'\n位置 '+player[self][16]+','+player[self][17]+
