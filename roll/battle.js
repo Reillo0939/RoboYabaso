@@ -366,7 +366,7 @@ var od=[];
 							'\nHP '+player[i][2]+'/'+player[i][3]+'(-'+damage+')'+
 							'\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							ds++
-							if(ds==2){self++;ds=1;}
+							if(ds==3){self++;ds=1;}
 							if(player[i][2]<=0){
 								if(i<self)self--;
 								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
@@ -394,7 +394,8 @@ var od=[];
 							return rply;
 						}
 						else{
-							if(ds==2){self++;ds=1;}
+						ds++;
+							if(ds==3){self++;ds=1;}
 							if(self>=player.length)self=0;
 							rply.text=player[i][1]+'閃避成功'+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
@@ -438,7 +439,8 @@ var od=[];
 					rply.text='格式錯誤';
 					return rply;
 				}
-					if(ds==2){self++;ds=1;}
+				ds++
+					if(ds==3){self++;ds=1;}
 					if(self>=player.length)self=0;
 					rply.text+='\n\n輪到'+player[self][1]+'的第'+ds+'次行動'+
 							'\n位置 '+player[self][16]+','+player[self][17]+
