@@ -12,7 +12,7 @@ var WMK;
 			rply.text=name+'你已有武器';
 			return rply;
 			}
-			if(Wname==''){
+			if(Wname==null){
 			rply.text=name+'武器沒有名字';
 			return rply;
 			}
