@@ -100,17 +100,20 @@ var WMK;
 			}
 			WMK=ox.oC(i,18);
 			let WV = WMK.split(','); //定義輸入字串
-			if(WV[0]==1)rply.text=name+'\n武器種類：手槍';
-			if(WV[0]==2)rply.text=name+'\n武器種類：重型手槍';
-			if(WV[0]==2)rply.text=name+'\n武器種類：衝鋒槍';
-			if(WV[0]==2)rply.text=name+'\n武器種類：短步槍';
-			if(WV[0]==2)rply.text=name+'\n武器種類：步槍';
-			if(WV[0]==2)rply.text=name+'\n武器種類：狙擊槍';
-			if(WV[0]==2)rply.text=name+'\n武器種類：大口徑狙擊槍';
-			if(WV[0]==2)rply.text=name+'\n武器種類：火炮';
-			if(WV[0]==2)rply.text=name+'\n武器種類：短近距離武器';
-			if(WV[0]==2)rply.text=name+'\n武器種類：中近距離武器';
-			if(WV[0]==2)rply.text=name+'\n武器種類：長近距離武器';
+			rply.text='';
+			rply.text=name;
+			rply.text+='\n武器名稱：'+WV[6];
+			if(WV[0]==1)rply.text+='\n武器種類：手槍';
+			if(WV[0]==2)rply.text+='\n武器種類：重型手槍';
+			if(WV[0]==2)rply.text+='\n武器種類：衝鋒槍';
+			if(WV[0]==2)rply.text+='\n武器種類：短步槍';
+			if(WV[0]==2)rply.text+='\n武器種類：步槍';
+			if(WV[0]==2)rply.text+='\n武器種類：狙擊槍';
+			if(WV[0]==2)rply.text+='\n武器種類：大口徑狙擊槍';
+			if(WV[0]==2)rply.text+='\n武器種類：火炮';
+			if(WV[0]==2)rply.text+='\n武器種類：短近距離武器';
+			if(WV[0]==2)rply.text+='\n武器種類：中近距離武器';
+			if(WV[0]==2)rply.text+='\n武器種類：長近距離武器';
 			rply.text+= '\n基礎傷害：'+WV[1]+
 						'\n子彈：'+WV[2]+
 						'\n傷害倍率：'+WV[3]+
