@@ -107,6 +107,7 @@ function parseInput(rplyToken, inputStr, id,name) {
 	
 	if (trigger.match(/武器/) != null){
 	if (trigger.match(/製作/)!= null) return exports.weapon.weapon_make(id,name,mainMsg[1],mainMsg[2]) ;
+	if (trigger.match(/查看/)!= null) return exports.weapon.weapon_view(id,name) ;
 	}
 	
 	if (trigger.match(/^角色創立說明$/) != null) return exports.help.Character() ;
