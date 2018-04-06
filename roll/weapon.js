@@ -7,7 +7,7 @@ function weapon_make(id,name,species,Wname) {
 var WMK;
   for(var i=0;i<ox.oL();i++){
 	if(ox.oC(i,0)==id){
-		if(ox.oC(i,18)!=0){
+		if(ox.oC(i,19)!=0){
 			rply.text=name+'你已有武器';
 			return rply;
 			}
@@ -94,11 +94,11 @@ function weapon_view(id,name) {
 var WMK;
   for(var i=0;i<ox.oL();i++){
 	if(ox.oC(i,0)==id){
-		if(ox.oC(i,18)==0){
+		if(ox.oC(i,19)==0){
 			rply.text=name+'你沒有武器';
 			return rply;
 			}
-			WMK=ox.oC(i,18);
+			WMK=ox.oC(i,19);
 			let WV = WMK.split(','); //定義輸入字串
 			rply.text='';
 			rply.text=name;
