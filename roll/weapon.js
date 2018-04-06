@@ -68,8 +68,7 @@ var WMK;
 
 
 module.exports = {
-	weapon_make:weapon_make,
-	dd:dd
+	weapon_make:weapon_make
 };
 
 
