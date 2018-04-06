@@ -12,6 +12,10 @@ var WMK;
 			rply.text=name+'你已有武器';
 			return rply;
 			}
+			if(Wname==''){
+			rply.text=name+'武器沒有名字';
+			return rply;
+			}
 			WMK='';
 		if(species=='手槍'){
 			WMK='1,10,15,1,3,3,'+Wname;
