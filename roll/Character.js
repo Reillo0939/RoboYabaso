@@ -505,6 +505,7 @@ module.exports = {
 	oz:oz,
 	oC:oC,
 	oA:oA,
+	WM:WM,
 	oL:oL,
 	CV:CV,
 	CI:CI,
