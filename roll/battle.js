@@ -479,52 +479,53 @@ var od=[];
 
 
 function BR(){
-	rply.text='輪到'+player[self][1]+'的第'+ds+'次行動'+
+	var rr;
+	rr='輪到'+player[self][1]+'的第'+ds+'次行動'+
 			'\n位置 '+player[self][16]+','+player[self][17];
-	if(player[self][18]<9)rply.text+='\n子彈數：'+player[self][20]+'/'+player[self][21];
-			rply.text+='\n 可用選項：'+
+	if(player[self][18]<9)rr+='\n子彈數：'+player[self][20]+'/'+player[self][21];
+			rr+='\n 可用選項：'+
 			'\n移動 x座標,y座標';
 			if(player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21]){
-				rply.text+='\n裝填子彈';
+				rr+='\n裝填子彈';
 			}
 			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>0){
-				rply.text+='\n單發射擊 目標';
+				rr+='\n單發射擊 目標';
 			}
 			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>1){
-				rply.text+='\n連發射擊 目標';
+				rr+='\n連發射擊 目標';
 			}			
 			if(player[self][18]==6 && player[self][20]>0){
-				rply.text+='\n瞄準';
+				rr+='\n瞄準';
 			}	
 			if(player[self][18]==6 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='\n射擊 目標';
+				rr+='\n射擊 目標';
 			}			
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='\n架槍';
+				rr+='\n架槍';
 			}
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='\n瞄準';
+				rr+='\n瞄準';
 			}	
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='\n射擊 目標';
+				rr+='\n射擊 目標';
 			}		
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='\n定樁';
+				rr+='\n定樁';
 			}
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='\n定位';
+				rr+='\n定位';
 			}
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='\n炮擊 目標';
+				rr+='\n炮擊 目標';
 			}			
 			if(player[self][18]>=9 && player[self][18]<=11){
-				rply.text+='\n砍擊 目標';
+				rr+='\n砍擊 目標';
 			}
-			rply.text+='\n 目標有';
+			rr+='\n 目標有';
 			for(var k=0;k<player.length;k++){
-								rply.text=rply.text+'\n'+player[k][1]+' '+player[k][16]+','+player[k][17];
+								rr=rr+'\n'+player[k][1]+' '+player[k][16]+','+player[k][17];
 							}
-			return rply;
+			return rr;
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 /*function boss01(aaab,mainMsg,trigger,id,name){
