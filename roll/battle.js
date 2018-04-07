@@ -365,40 +365,40 @@ var od=[];
 			'\n 可用選項：'+
 			'\n移動 x座標,y座標';
 			if(player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21]){
-				rply.text+='裝填子彈';
+				rply.text+='\n裝填子彈';
 			}
 			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>0){
-				rply.text+='單發射擊 目標';
+				rply.text+='\n單發射擊 目標';
 			}
 			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>1){
-				rply.text+='連發射擊 目標';
+				rply.text+='\n連發射擊 目標';
 			}			
 			if(player[self][18]==6 && player[self][20]>0){
-				rply.text+='瞄準';
+				rply.text+='\n瞄準';
 			}	
 			if(player[self][18]==6 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='射擊 目標';
+				rply.text+='\n射擊 目標';
 			}			
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='架槍';
+				rply.text+='\n架槍';
 			}
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='瞄準';
+				rply.text+='\n瞄準';
 			}	
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='射擊 目標';
+				rply.text+='\n射擊 目標';
 			}		
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='定樁';
+				rply.text+='\n定樁';
 			}
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='定位';
+				rply.text+='\n定位';
 			}
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='炮擊 目標';
+				rply.text+='\n炮擊 目標';
 			}			
 			if(player[self][18]>=9 && player[self][18]<=11){
-				rply.text+='砍擊 目標';
+				rply.text+='\n砍擊 目標';
 			}
 			rply.text+='\n 目標有';
 			for(var k=0;k<player.length;k++){
@@ -446,40 +446,40 @@ var od=[];
 			'\n 可用選項：'+
 			'\n移動 x座標,y座標';
 			if(player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21]){
-				rply.text+='裝填子彈';
+				rply.text+='\n裝填子彈';
 			}
 			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>0){
-				rply.text+='單發射擊 目標';
+				rply.text+='\n單發射擊 目標';
 			}
 			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>1){
-				rply.text+='連發射擊 目標';
+				rply.text+='\n連發射擊 目標';
 			}			
 			if(player[self][18]==6 && player[self][20]>0){
-				rply.text+='瞄準';
+				rply.text+='\n瞄準';
 			}	
 			if(player[self][18]==6 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='射擊 目標';
+				rply.text+='\n射擊 目標';
 			}			
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='架槍';
+				rply.text+='\n架槍';
 			}
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='瞄準';
+				rply.text+='\n瞄準';
 			}	
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='射擊 目標';
+				rply.text+='\n射擊 目標';
 			}		
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='定樁';
+				rply.text+='\n定樁';
 			}
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='定位';
+				rply.text+='\n定位';
 			}
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='炮擊 目標';
+				rply.text+='\n炮擊 目標';
 			}			
 			if(player[self][18]>=9 && player[self][18]<=11){
-				rply.text+='砍擊 目標';
+				rply.text+='\n砍擊 目標';
 			}
 			rply.text+='\n 目標有';
 			for(var k=0;k<player.length;k++){
@@ -499,40 +499,40 @@ var od=[];
 			'\n 可用選項：'+
 			'\n移動 x座標,y座標';
 			if(player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21]){
-				rply.text+='裝填子彈';
+				rply.text+='\n裝填子彈';
 			}
 			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>0){
-				rply.text+='單發射擊 目標';
+				rply.text+='\n單發射擊 目標';
 			}
 			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>1){
-				rply.text+='連發射擊 目標';
+				rply.text+='\n連發射擊 目標';
 			}			
 			if(player[self][18]==6 && player[self][20]>0){
-				rply.text+='瞄準';
+				rply.text+='\n瞄準';
 			}	
 			if(player[self][18]==6 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='射擊 目標';
+				rply.text+='\n射擊 目標';
 			}			
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='架槍';
+				rply.text+='\n架槍';
 			}
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='瞄準';
+				rply.text+='\n瞄準';
 			}	
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='射擊 目標';
+				rply.text+='\n射擊 目標';
 			}		
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='定樁';
+				rply.text+='\n定樁';
 			}
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='定位';
+				rply.text+='\n定位';
 			}
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='炮擊 目標';
+				rply.text+='\n炮擊 目標';
 			}			
 			if(player[self][18]>=9 && player[self][18]<=11){
-				rply.text+='砍擊 目標';
+				rply.text+='\n砍擊 目標';
 			}
 			rply.text+='\n 目標有';
 			for(var k=0;k<player.length;k++){
@@ -576,40 +576,40 @@ var od=[];
 										'\n 可用選項：'+
 			'\n移動 x座標,y座標';
 			if(player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21]){
-				rply.text+='裝填子彈';
+				rply.text+='\n裝填子彈';
 			}
 			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>0){
-				rply.text+='單發射擊 目標';
+				rply.text+='\n單發射擊 目標';
 			}
 			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>1){
-				rply.text+='連發射擊 目標';
+				rply.text+='\n連發射擊 目標';
 			}			
 			if(player[self][18]==6 && player[self][20]>0){
-				rply.text+='瞄準';
+				rply.text+='\n瞄準';
 			}	
 			if(player[self][18]==6 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='射擊 目標';
+				rply.text+='\n射擊 目標';
 			}			
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='架槍';
+				rply.text+='\n架槍';
 			}
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='瞄準';
+				rply.text+='\n瞄準';
 			}	
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='射擊 目標';
+				rply.text+='\n射擊 目標';
 			}		
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='定樁';
+				rply.text+='\n定樁';
 			}
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='定位';
+				rply.text+='\n定位';
 			}
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='炮擊 目標';
+				rply.text+='\n炮擊 目標';
 			}			
 			if(player[self][18]>=9 && player[self][18]<=11){
-				rply.text+='砍擊 目標';
+				rply.text+='\n砍擊 目標';
 			}
 			rply.text+='\n 目標有';
 			for(var k=0;k<player.length;k++){
@@ -626,40 +626,40 @@ var od=[];
 										'\n 可用選項：'+
 			'\n移動 x座標,y座標';
 			if(player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21]){
-				rply.text+='裝填子彈';
+				rply.text+='\n裝填子彈';
 			}
 			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>0){
-				rply.text+='單發射擊 目標';
+				rply.text+='\n單發射擊 目標';
 			}
 			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>1){
-				rply.text+='連發射擊 目標';
+				rply.text+='\n連發射擊 目標';
 			}			
 			if(player[self][18]==6 && player[self][20]>0){
-				rply.text+='瞄準';
+				rply.text+='\n瞄準';
 			}	
 			if(player[self][18]==6 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='射擊 目標';
+				rply.text+='\n射擊 目標';
 			}			
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='架槍';
+				rply.text+='\n架槍';
 			}
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='瞄準';
+				rply.text+='\n瞄準';
 			}	
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='射擊 目標';
+				rply.text+='\n射擊 目標';
 			}		
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='定樁';
+				rply.text+='\n定樁';
 			}
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='定位';
+				rply.text+='\n定位';
 			}
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='炮擊 目標';
+				rply.text+='\n炮擊 目標';
 			}			
 			if(player[self][18]>=9 && player[self][18]<=11){
-				rply.text+='砍擊 目標';
+				rply.text+='\n砍擊 目標';
 			}
 			rply.text+='\n 目標有';
 			for(var k=0;k<player.length;k++){
@@ -685,40 +685,40 @@ var od=[];
 										'\n 可用選項：'+
 			'\n移動 x座標,y座標';
 			if(player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21]){
-				rply.text+='裝填子彈';
+				rply.text+='\n裝填子彈';
 			}
 			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>0){
-				rply.text+='單發射擊 目標';
+				rply.text+='\n單發射擊 目標';
 			}
 			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>1){
-				rply.text+='連發射擊 目標';
+				rply.text+='\n連發射擊 目標';
 			}			
 			if(player[self][18]==6 && player[self][20]>0){
-				rply.text+='瞄準';
+				rply.text+='\n瞄準';
 			}	
 			if(player[self][18]==6 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='射擊 目標';
+				rply.text+='\n射擊 目標';
 			}			
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='架槍';
+				rply.text+='\n架槍';
 			}
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='瞄準';
+				rply.text+='\n瞄準';
 			}	
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='射擊 目標';
+				rply.text+='\n射擊 目標';
 			}		
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='定樁';
+				rply.text+='\n定樁';
 			}
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='定位';
+				rply.text+='\n定位';
 			}
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='炮擊 目標';
+				rply.text+='\n炮擊 目標';
 			}			
 			if(player[self][18]>=9 && player[self][18]<=11){
-				rply.text+='砍擊 目標';
+				rply.text+='\n砍擊 目標';
 			}
 			rply.text+='\n 目標有';
 			for(var k=0;k<player.length;k++){
@@ -733,40 +733,40 @@ var od=[];
 										'\n 可用選項：'+
 			'\n移動 x座標,y座標';
 			if(player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21]){
-				rply.text+='裝填子彈';
+				rply.text+='\n裝填子彈';
 			}
 			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>0){
-				rply.text+='單發射擊 目標';
+				rply.text+='\n單發射擊 目標';
 			}
 			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>1){
-				rply.text+='連發射擊 目標';
+				rply.text+='\n連發射擊 目標';
 			}			
 			if(player[self][18]==6 && player[self][20]>0){
-				rply.text+='瞄準';
+				rply.text+='\n瞄準';
 			}	
 			if(player[self][18]==6 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='射擊 目標';
+				rply.text+='\n射擊 目標';
 			}			
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='架槍';
+				rply.text+='\n架槍';
 			}
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='瞄準';
+				rply.text+='\n瞄準';
 			}	
 			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='射擊 目標';
+				rply.text+='\n射擊 目標';
 			}		
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='定樁';
+				rply.text+='\n定樁';
 			}
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='定位';
+				rply.text+='\n定位';
 			}
 			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='炮擊 目標';
+				rply.text+='\n炮擊 目標';
 			}			
 			if(player[self][18]>=9 && player[self][18]<=11){
-				rply.text+='砍擊 目標';
+				rply.text+='\n砍擊 目標';
 			}
 			rply.text+='\n 目標有';
 			for(var k=0;k<player.length;k++){
