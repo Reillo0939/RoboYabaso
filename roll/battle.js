@@ -316,8 +316,8 @@ var od=[];
 			if(WV[0]==9)rply.text+='\n武器種類：短近距離武器';
 			if(WV[0]==10)rply.text+='\n武器種類：中近距離武器';
 			if(WV[0]==11)rply.text+='\n武器種類：長近距離武器';
-			rply.text+='\n子彈數：'+WV[2]+'/'+WV[2]
-			+'\n目前參與人數： '+player.length+'/'+aaab;;
+			if(MV[0]<9)rply.text+='\n子彈數：'+WV[2]+'/'+WV[2];
+			rply.text+='\n目前參與人數： '+player.length+'/'+aaab;;
 		return rply;
   }
 	}
@@ -359,52 +359,8 @@ var od=[];
 				player[ff][16]=1;
 				player[ff][17]=10;
 			}
-			rply.text='戰鬥展開'+
-			'\n'+player[self][1]+'先手'+
-			'\n位置 '+player[self][16]+','+player[self][17]+
-			'\n 可用選項：'+
-			'\n移動 x座標,y座標';
-			if(player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21]){
-				rply.text+='\n裝填子彈';
-			}
-			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>0){
-				rply.text+='\n單發射擊 目標';
-			}
-			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>1){
-				rply.text+='\n連發射擊 目標';
-			}			
-			if(player[self][18]==6 && player[self][20]>0){
-				rply.text+='\n瞄準';
-			}	
-			if(player[self][18]==6 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='\n射擊 目標';
-			}			
-			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='\n架槍';
-			}
-			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='\n瞄準';
-			}	
-			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='\n射擊 目標';
-			}		
-			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='\n定樁';
-			}
-			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='\n定位';
-			}
-			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='\n炮擊 目標';
-			}			
-			if(player[self][18]>=9 && player[self][18]<=11){
-				rply.text+='\n砍擊 目標';
-			}
-			rply.text+='\n 目標有';
-			for(var k=0;k<player.length;k++){
-								rply.text=rply.text+'\n'+player[k][1]+' '+player[k][16]+','+player[k][17];
-							}
-			return rply;
+			rply.text=BR();
+			
 		}
 		if(start==1){
 			if(id==player[self][0] && trigger.match(/^攻擊$/) != null && mainMsg[1] != null ){
@@ -441,50 +397,7 @@ var od=[];
 								return rply;
 							}
 							if(self>=player.length)self=0;
-							rply.text=rply.text+'\n\n輪到'+player[self][1]+'的第'+ds+'次行動'+
-										'\n位置 '+player[self][16]+','+player[self][17]+
-			'\n 可用選項：'+
-			'\n移動 x座標,y座標';
-			if(player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21]){
-				rply.text+='\n裝填子彈';
-			}
-			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>0){
-				rply.text+='\n單發射擊 目標';
-			}
-			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>1){
-				rply.text+='\n連發射擊 目標';
-			}			
-			if(player[self][18]==6 && player[self][20]>0){
-				rply.text+='\n瞄準';
-			}	
-			if(player[self][18]==6 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='\n射擊 目標';
-			}			
-			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='\n架槍';
-			}
-			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='\n瞄準';
-			}	
-			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='\n射擊 目標';
-			}		
-			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='\n定樁';
-			}
-			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='\n定位';
-			}
-			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='\n炮擊 目標';
-			}			
-			if(player[self][18]>=9 && player[self][18]<=11){
-				rply.text+='\n砍擊 目標';
-			}
-			rply.text+='\n 目標有';
-			for(var k=0;k<player.length;k++){
-								rply.text=rply.text+'\n'+player[k][1]+' '+player[k][16]+','+player[k][17];
-							}
+							rply.text=rply.text+'\n\n'+BR();
 			return rply;
 						}
 						else{
@@ -494,50 +407,7 @@ var od=[];
 							rply.text=player[i][1]+'閃避成功'+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
 							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
-							'\n\n輪到'+player[self][1]+'的第'+ds+'次行動'+
-										'\n位置 '+player[self][16]+','+player[self][17]+
-			'\n 可用選項：'+
-			'\n移動 x座標,y座標';
-			if(player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21]){
-				rply.text+='\n裝填子彈';
-			}
-			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>0){
-				rply.text+='\n單發射擊 目標';
-			}
-			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>1){
-				rply.text+='\n連發射擊 目標';
-			}			
-			if(player[self][18]==6 && player[self][20]>0){
-				rply.text+='\n瞄準';
-			}	
-			if(player[self][18]==6 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='\n射擊 目標';
-			}			
-			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='\n架槍';
-			}
-			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='\n瞄準';
-			}	
-			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='\n射擊 目標';
-			}		
-			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='\n定樁';
-			}
-			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='\n定位';
-			}
-			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='\n炮擊 目標';
-			}			
-			if(player[self][18]>=9 && player[self][18]<=11){
-				rply.text+='\n砍擊 目標';
-			}
-			rply.text+='\n 目標有';
-			for(var k=0;k<player.length;k++){
-								rply.text=rply.text+'\n'+player[k][1]+' '+player[k][16]+','+player[k][17];
-							}
+							'\n\n'+BR();
 			return rply;
 						}
 					}
@@ -571,100 +441,14 @@ var od=[];
 				ds++
 					if(ds==3){self++;ds=1;}
 					if(self>=player.length)self=0;
-					rply.text+='\n\n輪到'+player[self][1]+'的第'+ds+'次行動'+
-							'\n位置 '+player[self][16]+','+player[self][17]+
-										'\n 可用選項：'+
-			'\n移動 x座標,y座標';
-			if(player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21]){
-				rply.text+='\n裝填子彈';
-			}
-			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>0){
-				rply.text+='\n單發射擊 目標';
-			}
-			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>1){
-				rply.text+='\n連發射擊 目標';
-			}			
-			if(player[self][18]==6 && player[self][20]>0){
-				rply.text+='\n瞄準';
-			}	
-			if(player[self][18]==6 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='\n射擊 目標';
-			}			
-			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='\n架槍';
-			}
-			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='\n瞄準';
-			}	
-			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='\n射擊 目標';
-			}		
-			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='\n定樁';
-			}
-			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='\n定位';
-			}
-			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='\n炮擊 目標';
-			}			
-			if(player[self][18]>=9 && player[self][18]<=11){
-				rply.text+='\n砍擊 目標';
-			}
-			rply.text+='\n 目標有';
-			for(var k=0;k<player.length;k++){
-								rply.text=rply.text+'\n'+player[k][1]+' '+player[k][16]+','+player[k][17];
-							}
+					rply.text+='\n\n'+BR();
 			return rply;
 		}
 			if(trigger.match(/^跳過/) != null && start==1){
 					self++;
 					ds=1;
 					if(self>=player.length)self=0;
-					rply.text='輪到'+player[self][1]+'的第'+ds+'次行動'+
-							'\n位置 '+player[self][16]+','+player[self][17]+
-										'\n 可用選項：'+
-			'\n移動 x座標,y座標';
-			if(player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21]){
-				rply.text+='\n裝填子彈';
-			}
-			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>0){
-				rply.text+='\n單發射擊 目標';
-			}
-			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>1){
-				rply.text+='\n連發射擊 目標';
-			}			
-			if(player[self][18]==6 && player[self][20]>0){
-				rply.text+='\n瞄準';
-			}	
-			if(player[self][18]==6 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='\n射擊 目標';
-			}			
-			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='\n架槍';
-			}
-			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='\n瞄準';
-			}	
-			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='\n射擊 目標';
-			}		
-			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='\n定樁';
-			}
-			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='\n定位';
-			}
-			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='\n炮擊 目標';
-			}			
-			if(player[self][18]>=9 && player[self][18]<=11){
-				rply.text+='\n砍擊 目標';
-			}
-			rply.text+='\n 目標有';
-			for(var k=0;k<player.length;k++){
-								rply.text=rply.text+'\n'+player[k][1]+' '+player[k][16]+','+player[k][17];
-							}
+					rply.text=BR();
 			return rply;
 		}
 		if(trigger.match(/^GM-消滅$/) != null && start==1){
@@ -680,57 +464,23 @@ var od=[];
 							self++;
 							ds=1;
 					if(self>=player.length)self=0;
-							rply.text+='\n\n輪到'+player[self][1]+'的第'+ds+'次行動'+
-							'\n位置 '+player[self][16]+','+player[self][17]+
-										'\n 可用選項：'+
-			'\n移動 x座標,y座標';
-			if(player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21]){
-				rply.text+='\n裝填子彈';
-			}
-			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>0){
-				rply.text+='\n單發射擊 目標';
-			}
-			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>1){
-				rply.text+='\n連發射擊 目標';
-			}			
-			if(player[self][18]==6 && player[self][20]>0){
-				rply.text+='\n瞄準';
-			}	
-			if(player[self][18]==6 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='\n射擊 目標';
-			}			
-			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='\n架槍';
-			}
-			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='\n瞄準';
-			}	
-			if(player[self][18]==7 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='\n射擊 目標';
-			}		
-			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==0){
-				rply.text+='\n定樁';
-			}
-			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==1){
-				rply.text+='\n定位';
-			}
-			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==2){
-				rply.text+='\n炮擊 目標';
-			}			
-			if(player[self][18]>=9 && player[self][18]<=11){
-				rply.text+='\n砍擊 目標';
-			}
-			rply.text+='\n 目標有';
-			for(var k=0;k<player.length;k++){
-								rply.text=rply.text+'\n'+player[k][1]+' '+player[k][16]+','+player[k][17];
-							}
-
-				return rply;
+							rply.text+='\n\n'+BR();
+			return rply;
 		}
 			if(trigger.match(/^回合/) != null){
-							rply.text='現在是'+player[self][1]+'的第'+ds+'次行動'+
-							'\n位置 '+player[self][16]+','+player[self][17]+
-										'\n 可用選項：'+
+							rply.text=BR();
+			return rply;
+			}
+		}
+			
+}
+
+
+function BR(){
+	rply.text='輪到'+player[self][1]+'的第'+ds+'次行動'+
+			'\n位置 '+player[self][16]+','+player[self][17];
+	if(player[self][18]<9)rply.text+='\n子彈數：'+player[self][20]+'/'+player[self][21];
+			rply.text+='\n 可用選項：'+
 			'\n移動 x座標,y座標';
 			if(player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21]){
 				rply.text+='\n裝填子彈';
@@ -773,9 +523,6 @@ var od=[];
 								rply.text=rply.text+'\n'+player[k][1]+' '+player[k][16]+','+player[k][17];
 							}
 			return rply;
-			}
-		}
-			
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 /*function boss01(aaab,mainMsg,trigger,id,name){
