@@ -360,8 +360,9 @@ var od=[];
 				player[ff][16]=1;
 				player[ff][17]=10;
 			}
-			rply.text=BR();
-			
+			var rt=BR();
+			rply.text=rt;
+			return rply;
 		}
 		if(start==1){
 			if(id==player[self][0] && trigger.match(/^攻擊$/) != null && mainMsg[1] != null ){
