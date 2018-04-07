@@ -20,7 +20,7 @@ function battles(id,name,ab) {
 	let mainMsg = ab.match(msgSplitor); //定義輸入字串
 	let trigger = mainMsg[0].toString()
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
-	if(trigger.match(/^2人對戰模式$/) != null && start==0){
+	/*if(trigger.match(/^2人對戰模式$/) != null && start==0){
 		mode=1;
 		dd();
 	        rply.text='已轉為2人對戰模式';
@@ -37,7 +37,7 @@ function battles(id,name,ab) {
 		dd();
 	        rply.text='已轉為8人對戰模式';
 		return rply;
-	}
+	}*/
 	/*if(trigger.match(/^愚人節boss活動/) != null && start==0){
 		mode=21;
 		dd();
@@ -47,13 +47,13 @@ function battles(id,name,ab) {
 	if(trigger.match(/^2人棋盤模式/) != null && start==0){
 		mode=12;
 		dd();
-	        rply.text='已轉為4人棋盤模式';
+	        rply.text='已轉為2人棋盤模式';
 		return rply;
 	}
 	if(trigger.match(/^3人棋盤模式/) != null && start==0){
 		mode=13;
 		dd();
-	        rply.text='已轉為4人棋盤模式';
+	        rply.text='已轉為3人棋盤模式';
 		return rply;
 	}
 	if(trigger.match(/^4人棋盤模式/) != null && start==0){
@@ -64,7 +64,7 @@ function battles(id,name,ab) {
 	}
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 	rply.text='';
-	if(mode==1){
+	/*if(mode==1){
 		ga(2,mainMsg,trigger,id,name);
 		return rply;
 	}
@@ -79,7 +79,7 @@ ga(4,mainMsg,trigger,id,name);
 	if(mode==21){
 			boss01(8,mainMsg,trigger,id,name);
 		return rply;
-		}
+		}*/
 		if(mode==12){
 			cb(2,mainMsg,trigger,id,name);
 		return rply;
@@ -94,7 +94,7 @@ ga(4,mainMsg,trigger,id,name);
 		}
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
-function ga(aaab,mainMsg,trigger,id,name){
+/*function ga(aaab,mainMsg,trigger,id,name){
 if(trigger.match(/^戰鬥參與$/) != null && start==0){
 	if(player.length==aaab){
 		rply.text='已達參與上限';
@@ -251,7 +251,7 @@ var od=[];
 				
 		}
 			
-}
+}*/
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 function cb(aaab,mainMsg,trigger,id,name){
 if(trigger.match(/^戰鬥參與$/) != null && start==0){
@@ -286,13 +286,35 @@ var od=[];
 		od[15]=ox.oC(i,17);//金幣
 		od[16]=0;//x
 		od[17]=0;//y
+		WMK=ox.oC(i,19);
+			let WV = WMK.split(','); //定義輸入字串
+		od[18]=WV[6];
+		od[17]=WV[0];
+		od[19]=WV[1];
+		od[20]=WV[2];
+		od[21]=WV[3];
+		od[22]=WV[4];
+		od[23]=WV[5];		
 		player[player.length]=od;
 		rply.text=name+'你的'+od[1]+'已參與\n'+
 			'HP '+od[2]+'/'+od[3]+
 			'\nbata粒子 '+od[4]+'/'+od[5]+
 			'\n物理適性 '+od[6]+
-			'\n反應力'+od[7]		
-			+'\n目前參與人數： '+player.length+'/'+aaab;
+			'\n反應力'+od[7]+
+			+'\n武器名稱：'+WV[6];
+			if(WV[0]==1)rply.text+='\n武器種類：手槍';
+			if(WV[0]==2)rply.text+='\n武器種類：重型手槍';
+			if(WV[0]==3)rply.text+='\n武器種類：衝鋒槍';
+			if(WV[0]==4)rply.text+='\n武器種類：短步槍';
+			if(WV[0]==5)rply.text+='\n武器種類：步槍';
+			if(WV[0]==6)rply.text+='\n武器種類：狙擊槍';
+			if(WV[0]==7)rply.text+='\n武器種類：大口徑狙擊槍';
+			if(WV[0]==8)rply.text+='\n武器種類：火炮';
+			if(WV[0]==9)rply.text+='\n武器種類：短近距離武器';
+			if(WV[0]==10)rply.text+='\n武器種類：中近距離武器';
+			if(WV[0]==11)rply.text+='\n武器種類：長近距離武器';
+			rply.text+='\n子彈數：'+WV[2]+'/'+WV[2]
+			+'\n目前參與人數： '+player.length+'/'+aaab;;
 		return rply;
   }
 	}
