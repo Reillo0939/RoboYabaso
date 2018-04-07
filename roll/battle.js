@@ -255,6 +255,8 @@ var od=[];
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 function cb(aaab,mainMsg,trigger,id,name){
 if(trigger.match(/^戰鬥參與$/) != null && start==0){
+			WMK=ox.oC(i,19);
+		var WV = WMK.split(','); //定義輸入字串
 	if(player.length==aaab){
 		rply.text='已達參與上限';
 		return rply;}
@@ -286,8 +288,7 @@ var od=[];
 		od[15]=ox.oC(i,17);//金幣
 		od[16]=0;//x
 		od[17]=0;//y
-		WMK=ox.oC(i,19);
-			let WV = WMK.split(','); //定義輸入字串
+
 		od[27]=WV[6];//武器名稱
 		od[18]=WV[0];//武器種類
 		od[19]=WV[1];//基礎傷害
