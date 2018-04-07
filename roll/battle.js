@@ -287,12 +287,9 @@ var od=[];
 		od[15]=ox.oC(i,17);//金幣
 		od[16]=0;//x
 		od[17]=0;//y
-		 console.log('幹你娘');
 		var WMK=ox.oC(i,19);
 		var WV = WMK.split(','); //定義輸入字串
-		console.log('靠杯');
 		od[27]=WV[6];//武器名稱
-				console.log('屁勒');
 		od[18]=WV[0];//武器種類
 		od[19]=WV[1];//基礎傷害
 		od[20]=WV[2];//現有子彈
@@ -320,7 +317,7 @@ var od=[];
 			if(WV[0]==9)rply.text+='\n武器種類：短近距離武器';
 			if(WV[0]==10)rply.text+='\n武器種類：中近距離武器';
 			if(WV[0]==11)rply.text+='\n武器種類：長近距離武器';
-			if(MV[0]<9)rply.text+='\n子彈數：'+WV[2]+'/'+WV[2];
+			if(WV[0]<9)rply.text+='\n子彈數：'+WV[2]+'/'+WV[2];
 			rply.text+='\n目前參與人數： '+player.length+'/'+aaab;;
 		return rply;
   }
