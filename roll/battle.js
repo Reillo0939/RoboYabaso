@@ -255,7 +255,7 @@ var od=[];
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 function cb(aaab,mainMsg,trigger,id,name){
 if(trigger.match(/^戰鬥參與$/) != null && start==0){
-			WMK=ox.oC(i,19);
+		var WMK=ox.oC(i,19);
 		var WV = WMK.split(','); //定義輸入字串
 	if(player.length==aaab){
 		rply.text='已達參與上限';
