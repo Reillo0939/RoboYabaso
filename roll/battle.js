@@ -292,6 +292,7 @@ var od=[];
 		var WV = WMK.split(','); //定義輸入字串
 		console.log('靠杯');
 		od[27]=WV[6];//武器名稱
+				console.log('屁勒');
 		od[18]=WV[0];//武器種類
 		od[19]=WV[1];//基礎傷害
 		od[20]=WV[2];//現有子彈
