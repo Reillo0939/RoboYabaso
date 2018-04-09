@@ -403,14 +403,14 @@ var od=[];
 			return rply;
 							}
 						if(rnggg > (20 + parseInt(player[i][7]) - parseInt(player[self][7]) ) ){
-							rply.text=player[i][1]+
-							'\nHP '+player[i][2]+'/'+player[i][3];
+						
 							damage=Math.round(player[self][19]*player[self][22]*(rollbase.Dice(10)+5)*0.1);
 							if(Critical>=65 && player[self][18]==9)damage=damage*1.5;
 							if(Critical>=55 && player[self][18]==10)damage=damage*1.5;
 							if(Critical>=45 && player[self][18]==11)damage=damage*1.5;
 							player[i][2]=player[i][2]-damage;
-							
+								rply.text=player[i][1]+
+							'\nHP '+player[i][2]+'/'+player[i][3];
 							rply.text+='(-'+damage+')';
 							if(Critical>=65 && player[self][18]==9)rply.text+='Critical';
 							if(Critical>=55 && player[self][18]==10)rply.text+='Critical';
@@ -563,9 +563,9 @@ var od=[];
 							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
 							return rply;
 						}
-						var bh=String(player[self][23]);
-						bh=parseInt(bh, 10);
-						if(player[self][20]<player[self][23])bh=player[self][20].tostring;
+						console.log(player[self][23]);
+						var bh=player[self][23];
+						if(player[self][20]<player[self][23])bh=player[self][20]
 						var hhiitt=[];
 						var hitd=[];
 				for(var o=0;o<bh;o++){
