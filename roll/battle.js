@@ -564,6 +564,7 @@ var od=[];
 							return rply;
 						}
 						var bh=player[self][23].tostring;
+						bh=parseInt(bh, 10);
 						if(player[self][20]<player[self][23])bh=player[self][20].tostring;
 						var hhiitt=[];
 						var hitd=[];
