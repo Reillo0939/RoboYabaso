@@ -365,24 +365,56 @@ var od=[];
 			return rply;
 		}
 		if(start==1){
-			if(id==player[self][0] && trigger.match(/^攻擊$/) != null && mainMsg[1] != null ){
+			if(id==player[self][0] && trigger.match(/^攻擊$/) != null && mainMsg[1] != null &&player[self][18]>=9 && player[self][18]<=11 ){
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
-						
 						var temp =0;
 						temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
-						if(temp>3){
+						if(temp>player[self][24]){
 							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
 							return rply;
 						}
-						
 						rnggg=rollbase.Dice(100);
+						Hit=rollbase.Dice(100);
+						Critical=rollbase.Dice(100);
+						if(Hit>100 && player[self][18]==9){
+							ds++;
+							if(ds==3){self++;ds=1;}
+							if(self>=player.length)self=0;
+							rply.text=player[i][1]+'沒有命中'+
+							'\n\n'+BR();
+			return rply;
+						}
+						if(Hit>85 && player[self][18]==10){
+							ds++;
+							if(ds==3){self++;ds=1;}
+							if(self>=player.length)self=0;
+							rply.text=player[i][1]+'沒有命中'+
+							'\n\n'+BR();
+			return rply;
+						}
+							if(Hit>70 && player[self][18]==11){
+								ds++;
+							if(ds==3){self++;ds=1;}
+							if(self>=player.length)self=0;
+							rply.text=player[i][1]+'沒有命中'+
+							'\n\n'+BR();
+			return rply;
+							}
 						if(rnggg > (20 + parseInt(player[i][7]) - parseInt(player[self][7]) ) ){
-							damage=Math.round(player[self][6]*(rollbase.Dice(10)+5)*0.1);
-							player[i][2]=player[i][2]-damage;
 							rply.text=player[i][1]+
-							'\nHP '+player[i][2]+'/'+player[i][3]+'(-'+damage+')'+
-							'\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							'\nHP '+player[i][2]+'/'+player[i][3];
+							damage=Math.round(player[self][19]*player[self][22]*(rollbase.Dice(10)+5)*0.1);
+							if(Critical>=65 && player[self][18]==9)damage=damage*1.5;
+							if(Critical>=55 && player[self][18]==10)damage=damage*1.5;
+							if(Critical>=45 && player[self][18]==11)damage=damage*1.5;
+							player[i][2]=player[i][2]-damage;
+							
+							rply.text+='(-'+damage+')';
+							if(Critical>=65 && player[self][18]==9)rply.text+='Critical'
+							if(Critical>=55 && player[self][18]==10)rply.text+='Critical'
+							if(Critical>=45 && player[self][18]==11)rply.text+='Critical'
+							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							ds++
 							if(ds==3){self++;ds=1;}
 							if(player[i][2]<=0){
@@ -415,6 +447,19 @@ var od=[];
 					}
 				}
 			}
+			
+			if(id==player[self][0] && trigger.match(/^裝填子彈$/) != null && player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21]){
+					player[self][20]=player[self][21];
+					ds++
+					if(ds==3){self++;ds=1;}
+					if(self>=player.length)self=0;
+					rply.text+='\n\n'+BR();
+			return rply;
+			}
+			
+			
+			
+			
 			if(id==player[self][0] && trigger.match(/^移動/) != null && start==1 &&  mainMsg[1] != null){
 				let xxyy = mainMsg[1].split(','); //定義輸入字串
 				if(isNaN(xxyy[0])==0 && isNaN(xxyy[1])==0){
@@ -519,7 +564,7 @@ function BR(){
 				rr+='\n炮擊 目標';
 			}			
 			if(player[self][18]>=9 && player[self][18]<=11){
-				rr+='\n砍擊 目標';
+				rr+='\n攻擊 目標';
 			}
 			rr+='\n 目標有';
 			for(var k=0;k<player.length;k++){
