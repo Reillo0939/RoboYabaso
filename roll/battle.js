@@ -563,7 +563,7 @@ var od=[];
 							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
 							return rply;
 						}
-						var bh=player[self][23].tostring;
+						var bh=player[self][23].tostring();
 						bh=parseInt(bh, 10);
 						if(player[self][20]<player[self][23])bh=player[self][20].tostring;
 						var hhiitt=[];
