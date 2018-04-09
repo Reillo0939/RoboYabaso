@@ -503,11 +503,11 @@ var od=[];
 							}
 						if(rnggg > (20 + parseInt(player[i][7]) - parseInt(player[self][7]) ) ){
 						damage=Math.round(player[self][19]*player[self][22]*(rollbase.Dice(10)+5)*0.1);
-							if(Critical>=50 && player[self][18]==1)damage=damage*1.5;
-							if(Critical>=60 && player[self][18]==2)damage=damage*1.5;
-							if(Critical>=20 && player[self][18]==3)damage=damage*1.5;
-							if(Critical>=30 && player[self][18]==4)damage=damage*1.5;
-							if(Critical>=40 && player[self][18]==5)damage=damage*1.5;
+							if(Critical>=50 && player[self][18]==1)damage=parseInt(damage*1.5);
+							if(Critical>=60 && player[self][18]==2)damage=parseInt(damage*1.5);
+							if(Critical>=20 && player[self][18]==3)damage=parseInt(damage*1.5);
+							if(Critical>=30 && player[self][18]==4)damage=parseInt(damage*1.5);
+							if(Critical>=40 && player[self][18]==5)damage=parseInt(damage*1.5);
 							player[i][2]=player[i][2]-damage;
 							rply.text=player[i][1]+
 							'\nHP '+player[i][2]+'/'+player[i][3];
@@ -563,8 +563,8 @@ var od=[];
 							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
 							return rply;
 						}
-						var bh=player[self][23];
-						if(player[self][20]<player[self][23])bh=player[self][20];
+						var bh=player[self][23].tostring;
+						if(player[self][20]<player[self][23])bh=player[self][20].tostring;
 						var hhiitt=[];
 						var hitd=[];
 				for(var o=0;o<bh;o++){
@@ -577,90 +577,90 @@ var od=[];
 							hitd[o]='miss';
 						if(Hit<=80 && player[self][18]==1){
 							hhiitt[o]=Math.round(player[self][19]*player[self][22]*(rollbase.Dice(10)+5)*0.1);
-							if(Critical>=50 && player[self][18]==1)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=60 && player[self][18]==2)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=20 && player[self][18]==3)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=30 && player[self][18]==4)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=40 && player[self][18]==5)hhiitt[o]=hhiitt[o]*1.5;
+							if(Critical>=50 && player[self][18]==1)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=60 && player[self][18]==2)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=20 && player[self][18]==3)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=30 && player[self][18]==4)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=40 && player[self][18]==5)hhiitt[o]=parseInt(hhiitt[o]*1.5);
 							hitd[o]=hhiitt[o];
 							if(Critical>=50 && player[self][18]==9)hitd[o]+='(Critical)';
 							if(Critical>=60 && player[self][18]==10)hitd[o]+='(Critical)';
 							if(Critical>=20 && player[self][18]==11)hitd[o]+='(Critical)';
 							if(Critical>=30 && player[self][18]==10)hitd[o]+='(Critical)';
 							if(Critical>=40 && player[self][18]==11)hitd[o]+='(Critical)';
-							if(rnggg >  (parseInt(player[i][7])-20)){
+							if(rnggg <  (parseInt(player[i][7])-20)){
 								hhiitt[o]=0;
 								hitd[o]='dodge';
 							}
 						}
 						if(Hit<=80 && player[self][18]==2){
 							hhiitt[o]=Math.round(player[self][19]*player[self][22]*(rollbase.Dice(10)+5)*0.1);
-							if(Critical>=50 && player[self][18]==1)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=60 && player[self][18]==2)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=20 && player[self][18]==3)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=30 && player[self][18]==4)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=40 && player[self][18]==5)hhiitt[o]=hhiitt[o]*1.5;
+							if(Critical>=50 && player[self][18]==1)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=60 && player[self][18]==2)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=20 && player[self][18]==3)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=30 && player[self][18]==4)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=40 && player[self][18]==5)hhiitt[o]=parseInt(hhiitt[o]*1.5);
 							hitd[o]=hhiitt[o];
 							if(Critical>=50 && player[self][18]==9)hitd[o]+='(Critical)';
 							if(Critical>=60 && player[self][18]==10)hitd[o]+='(Critical)';
 							if(Critical>=20 && player[self][18]==11)hitd[o]+='(Critical)';
 							if(Critical>=30 && player[self][18]==10)hitd[o]+='(Critical)';
 							if(Critical>=40 && player[self][18]==11)hitd[o]+='(Critical)';
-							if(rnggg >  (parseInt(player[i][7])-20)){
+							if(rnggg <  (parseInt(player[i][7])-20)){
 								hhiitt[o]=0;
 								hitd[o]='dodge';
 							}
 						}
 						if(Hit<=40 && player[self][18]==3){
 							hhiitt[o]=Math.round(player[self][19]*player[self][22]*(rollbase.Dice(10)+5)*0.1);
-							if(Critical>=50 && player[self][18]==1)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=60 && player[self][18]==2)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=20 && player[self][18]==3)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=30 && player[self][18]==4)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=40 && player[self][18]==5)hhiitt[o]=hhiitt[o]*1.5;
+							if(Critical>=50 && player[self][18]==1)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=60 && player[self][18]==2)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=20 && player[self][18]==3)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=30 && player[self][18]==4)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=40 && player[self][18]==5)hhiitt[o]=parseInt(hhiitt[o]*1.5);
 							hitd[o]=hhiitt[o];
 							if(Critical>=50 && player[self][18]==9)hitd[o]+='(Critical)';
 							if(Critical>=60 && player[self][18]==10)hitd[o]+='(Critical)';
 							if(Critical>=20 && player[self][18]==11)hitd[o]+='(Critical)';
 							if(Critical>=30 && player[self][18]==10)hitd[o]+='(Critical)';
 							if(Critical>=40 && player[self][18]==11)hitd[o]+='(Critical)';
-							if(rnggg >  (parseInt(player[i][7])-20)){
+							if(rnggg <  (parseInt(player[i][7])-20)){
 								hhiitt[o]=0;
 								hitd[o]='dodge';
 							}
 						}
 						if(Hit<=50 && player[self][18]==4){
 							hhiitt[o]=Math.round(player[self][19]*player[self][22]*(rollbase.Dice(10)+5)*0.1);
-							if(Critical>=50 && player[self][18]==1)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=60 && player[self][18]==2)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=20 && player[self][18]==3)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=30 && player[self][18]==4)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=40 && player[self][18]==5)hhiitt[o]=hhiitt[o]*1.5;
+							if(Critical>=50 && player[self][18]==1)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=60 && player[self][18]==2)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=20 && player[self][18]==3)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=30 && player[self][18]==4)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=40 && player[self][18]==5)hhiitt[o]=parseInt(hhiitt[o]*1.5);
 							hitd[o]=hhiitt[o];
 							if(Critical>=50 && player[self][18]==9)hitd[o]+='(Critical)';
 							if(Critical>=60 && player[self][18]==10)hitd[o]+='(Critical)';
 							if(Critical>=20 && player[self][18]==11)hitd[o]+='(Critical)';
 							if(Critical>=30 && player[self][18]==10)hitd[o]+='(Critical)';
 							if(Critical>=40 && player[self][18]==11)hitd[o]+='(Critical)';
-							if(rnggg >  (parseInt(player[i][7])-20)){
+							if(rnggg <  (parseInt(player[i][7])-20)){
 								hhiitt[o]=0;
 								hitd[o]='dodge';
 							}
 						}
 						if(Hit<=60 && player[self][18]==5){
 							hhiitt[o]=Math.round(player[self][19]*player[self][22]*(rollbase.Dice(10)+5)*0.1);
-							if(Critical>=50 && player[self][18]==1)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=60 && player[self][18]==2)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=20 && player[self][18]==3)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=30 && player[self][18]==4)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=40 && player[self][18]==5)hhiitt[o]=hhiitt[o]*1.5;
+							if(Critical>=50 && player[self][18]==1)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=60 && player[self][18]==2)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=20 && player[self][18]==3)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=30 && player[self][18]==4)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=40 && player[self][18]==5)hhiitt[o]=parseInt(hhiitt[o]*1.5);
 							hitd[o]=hhiitt[o];
 							if(Critical>=50 && player[self][18]==9)hitd[o]+='(Critical)';
 							if(Critical>=60 && player[self][18]==10)hitd[o]+='(Critical)';
 							if(Critical>=20 && player[self][18]==11)hitd[o]+='(Critical)';
 							if(Critical>=30 && player[self][18]==10)hitd[o]+='(Critical)';
 							if(Critical>=40 && player[self][18]==11)hitd[o]+='(Critical)';
-							if(rnggg >  (parseInt(player[i][7])-20)){
+							if(rnggg <  (parseInt(player[i][7])-20)){
 								hhiitt[o]=0;
 								hitd[o]='dodge';
 							}
@@ -672,90 +672,90 @@ var od=[];
 						hitd[o]='miss';
 						if(Hit<=60 && player[self][18]==1){
 							hhiitt[o]=Math.round(player[self][19]*player[self][22]*(rollbase.Dice(10)+5)*0.1);
-							if(Critical>=50 && player[self][18]==1)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=60 && player[self][18]==2)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=20 && player[self][18]==3)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=30 && player[self][18]==4)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=40 && player[self][18]==5)hhiitt[o]=hhiitt[o]*1.5;
+							if(Critical>=50 && player[self][18]==1)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=60 && player[self][18]==2)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=20 && player[self][18]==3)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=30 && player[self][18]==4)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=40 && player[self][18]==5)hhiitt[o]=parseInt(hhiitt[o]*1.5);
 							hitd[o]=hhiitt[o];
 							if(Critical>=50 && player[self][18]==9)hitd[o]+='(Critical)';
 							if(Critical>=60 && player[self][18]==10)hitd[o]+='(Critical)';
 							if(Critical>=20 && player[self][18]==11)hitd[o]+='(Critical)';
 							if(Critical>=30 && player[self][18]==10)hitd[o]+='(Critical)';
 							if(Critical>=40 && player[self][18]==11)hitd[o]+='(Critical)';
-							if(rnggg >  (parseInt(player[i][7])-20)){
+							if(rnggg <  (parseInt(player[i][7])-20)){
 								hhiitt[o]=0;
 								hitd[o]='dodge';
 							}
 						}
 						if(Hit<=60 && player[self][18]==2){
 							hhiitt[o]=Math.round(player[self][19]*player[self][22]*(rollbase.Dice(10)+5)*0.1);
-							if(Critical>=50 && player[self][18]==1)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=60 && player[self][18]==2)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=20 && player[self][18]==3)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=30 && player[self][18]==4)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=40 && player[self][18]==5)hhiitt[o]=hhiitt[o]*1.5;
+							if(Critical>=50 && player[self][18]==1)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=60 && player[self][18]==2)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=20 && player[self][18]==3)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=30 && player[self][18]==4)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=40 && player[self][18]==5)hhiitt[o]=parseInt(hhiitt[o]*1.5);
 							hitd[o]=hhiitt[o];
 							if(Critical>=50 && player[self][18]==9)hitd[o]+='(Critical)';
 							if(Critical>=60 && player[self][18]==10)hitd[o]+='(Critical)';
 							if(Critical>=20 && player[self][18]==11)hitd[o]+='(Critical)';
 							if(Critical>=30 && player[self][18]==10)hitd[o]+='(Critical)';
 							if(Critical>=40 && player[self][18]==11)hitd[o]+='(Critical)';
-							if(rnggg >  (parseInt(player[i][7])-20)){
+							if(rnggg <  (parseInt(player[i][7])-20)){
 								hhiitt[o]=0;
 								hitd[o]='dodge';
 							}
 						}
 						if(Hit<=20 && player[self][18]==3){
 							hhiitt[o]=Math.round(player[self][19]*player[self][22]*(rollbase.Dice(10)+5)*0.1);
-							if(Critical>=50 && player[self][18]==1)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=60 && player[self][18]==2)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=20 && player[self][18]==3)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=30 && player[self][18]==4)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=40 && player[self][18]==5)hhiitt[o]=hhiitt[o]*1.5;
+							if(Critical>=50 && player[self][18]==1)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=60 && player[self][18]==2)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=20 && player[self][18]==3)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=30 && player[self][18]==4)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=40 && player[self][18]==5)hhiitt[o]=parseInt(hhiitt[o]*1.5);
 							hitd[o]=hhiitt[o];
 							if(Critical>=50 && player[self][18]==9)hitd[o]+='(Critical)';
 							if(Critical>=60 && player[self][18]==10)hitd[o]+='(Critical)';
 							if(Critical>=20 && player[self][18]==11)hitd[o]+='(Critical)';
 							if(Critical>=30 && player[self][18]==10)hitd[o]+='(Critical)';
 							if(Critical>=40 && player[self][18]==11)hitd[o]+='(Critical)';
-							if(rnggg >  (parseInt(player[i][7])-20)){
+							if(rnggg <  (parseInt(player[i][7])-20)){
 								hhiitt[o]=0;
 								hitd[o]='dodge';
 							}
 						}
 						if(Hit<=30 && player[self][18]==4){
 							hhiitt[o]=Math.round(player[self][19]*player[self][22]*(rollbase.Dice(10)+5)*0.1);
-							if(Critical>=50 && player[self][18]==1)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=60 && player[self][18]==2)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=20 && player[self][18]==3)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=30 && player[self][18]==4)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=40 && player[self][18]==5)hhiitt[o]=hhiitt[o]*1.5;
+							if(Critical>=50 && player[self][18]==1)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=60 && player[self][18]==2)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=20 && player[self][18]==3)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=30 && player[self][18]==4)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=40 && player[self][18]==5)hhiitt[o]=parseInt(hhiitt[o]*1.5);
 							hitd[o]=hhiitt[o];
 							if(Critical>=50 && player[self][18]==9)hitd[o]+='(Critical)';
 							if(Critical>=60 && player[self][18]==10)hitd[o]+='(Critical)';
 							if(Critical>=20 && player[self][18]==11)hitd[o]+='(Critical)';
 							if(Critical>=30 && player[self][18]==10)hitd[o]+='(Critical)';
 							if(Critical>=40 && player[self][18]==11)hitd[o]+='(Critical)';
-							if(rnggg >  (parseInt(player[i][7])-20)){
+							if(rnggg <  (parseInt(player[i][7])-20)){
 								hhiitt[o]=0;
 								hitd[o]='dodge';
 							}
 						}
 						if(Hit<=40 && player[self][18]==5){
 							hhiitt[o]=Math.round(player[self][19]*player[self][22]*(rollbase.Dice(10)+5)*0.1);
-							if(Critical>=50 && player[self][18]==1)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=60 && player[self][18]==2)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=20 && player[self][18]==3)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=30 && player[self][18]==4)hhiitt[o]=hhiitt[o]*1.5;
-							if(Critical>=40 && player[self][18]==5)hhiitt[o]=hhiitt[o]*1.5;
+							if(Critical>=50 && player[self][18]==1)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=60 && player[self][18]==2)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=20 && player[self][18]==3)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=30 && player[self][18]==4)hhiitt[o]=parseInt(hhiitt[o]*1.5);
+							if(Critical>=40 && player[self][18]==5)hhiitt[o]=parseInt(hhiitt[o]*1.5);
 							hitd[o]=hhiitt[o];
 							if(Critical>=50 && player[self][18]==9)hitd[o]+='(Critical)';
 							if(Critical>=60 && player[self][18]==10)hitd[o]+='(Critical)';
 							if(Critical>=20 && player[self][18]==11)hitd[o]+='(Critical)';
 							if(Critical>=30 && player[self][18]==10)hitd[o]+='(Critical)';
 							if(Critical>=40 && player[self][18]==11)hitd[o]+='(Critical)';
-							if(rnggg >  (parseInt(player[i][7])-20)){
+							if(rnggg <  (parseInt(player[i][7])-20)){
 								hhiitt[o]=0;
 								hitd[o]='dodge';
 							}
@@ -780,6 +780,7 @@ var od=[];
 								if(o<(bh-1))rply.text+=','
 							}
 							}
+							rply.text+=')';
 							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							player[self][20]-=bh;
 							ds++
