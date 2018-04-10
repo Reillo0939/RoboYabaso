@@ -565,7 +565,7 @@ var od=[];
 						}
 						console.log(player[self][23]);
 						var bh=player[self][23];
-						if(bh>player[self][20])bh=player[self][20];
+						if(bh>player[self][20]){bh=player[self][20];}
 						var hhiitt=[];
 						var hitd=[];
 				for(var o=0;o<bh;o++){
