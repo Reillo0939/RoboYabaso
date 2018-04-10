@@ -564,8 +564,11 @@ var od=[];
 							return rply;
 						}
 						console.log(player[self][23]);
+												console.log(player[self][20]);
 						var bh=player[self][23];
+												console.log(bh);
 						if(bh>player[self][20]){bh=player[self][20];}
+												console.log(bh);
 						var hhiitt=[];
 						var hitd=[];
 				for(var o=0;o<bh;o++){
