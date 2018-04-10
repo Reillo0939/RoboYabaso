@@ -626,10 +626,11 @@ var od=[];
 			if(id==player[self][0] && trigger.match(/^瞄準$/) != null && player[self][18]==6 && player[self][20]>0 ){
 					player[self][25]=1;//架槍等動作
 					player[self][26]=rollbase.Dice(100);//命中(狙擊)
-					rply.text+='命中可能性：'+player[self][26]+'\n\n'+BR();
+					rply.text+='命中可能性：'+player[self][26];
 					ds++;
 					if(ds==3){self++;ds=1;}
 					if(self>=player.length)self=0;
+					rply.text+='\n\n'+BR();
 			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -828,7 +829,7 @@ var od=[];
 							player[f][2]=player[f][2]-damage;
 							rply.text+=player[f][1]+
 							'\nHP '+player[f][2]+'/'+player[f][3];
-							rply.text+='(-'+damage+')';
+							rply.text+='(-'+damage+')\n';
 							
 						}
 					}
@@ -875,7 +876,6 @@ var od=[];
 						}
 						else{
 							if(xxyy[0]>=1 && xxyy[0]<=10 && xxyy[1]>=1 && xxyy[1]<=10){ 
-							player[self][25]=0;//架槍等動作
 							rply.text='已移動到 座標'+Math.floor(xxyy[0])+','+Math.floor(xxyy[1]);
 							player[self][16]=Math.floor(xxyy[0]);
 							player[self][17]=Math.floor(xxyy[1]);
