@@ -615,7 +615,7 @@ var od=[];
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^裝填子彈$/) != null && player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21]){
 					player[self][20]=player[self][21];
-					ds++
+					ds++;
 					if(ds==3){self++;ds=1;}
 					if(self>=player.length)self=0;
 					rply.text+=BR();
@@ -626,7 +626,7 @@ var od=[];
 					player[self][25]=1;//架槍等動作
 					player[self][26]=rollbase.Dice(100);//命中(狙擊)
 					rply.text+='命中可能性：'+player[self][26]+'\n\n'+BR();
-					ds++
+					ds++;
 					if(ds==3){self++;ds=1;}
 					if(self>=player.length)self=0;
 			return rply;
@@ -667,7 +667,7 @@ var od=[];
 							if(Critical<=30 )rply.text+='Critical';
 							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							player[self][25]=0;
-							ds++
+							ds++;
 							if(ds==3){self++;ds=1;}
 							if(player[i][2]<=0){
 								if(i<self)self--;
@@ -692,7 +692,7 @@ var od=[];
 			if(id==player[self][0] && trigger.match(/^架槍$/) != null && player[self][18]==7 && player[self][25]==0){
 					player[self][25]=2;//架槍等動作
 					rply.text+='架槍完畢'+'\n\n'+BR();
-					ds++
+					ds++;
 					if(ds==3){self++;ds=1;}
 					if(self>=player.length)self=0;
 			return rply;
@@ -701,7 +701,7 @@ var od=[];
 			if(id==player[self][0] && trigger.match(/^解除架槍$/) != null && player[self][18]==7 && player[self][25]>=2){
 					player[self][25]=0;//架槍等動作
 					rply.text+='解除架槍完畢'+'\n\n'+BR();
-					ds++
+					ds++;
 					if(ds==3){self++;ds=1;}
 					if(self>=player.length)self=0;
 			return rply;
@@ -711,7 +711,7 @@ var od=[];
 					player[self][25]=3;//架槍等動作
 					player[self][26]=rollbase.Dice(100);//命中(狙擊)
 					rply.text+='命中可能性：'+player[self][26]+'\n\n'+BR();
-					ds++
+					ds++;
 					if(ds==3){self++;ds=1;}
 					if(self>=player.length)self=0;
 			return rply;
@@ -751,7 +751,7 @@ var od=[];
 							if(Critical<=10 )rply.text+='Critical';
 							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							player[self][25]=2;
-							ds++
+							ds++;
 							if(ds==3){self++;ds=1;}
 							if(player[i][2]<=0){
 								if(i<self)self--;
@@ -776,7 +776,7 @@ var od=[];
 			if(id==player[self][0] && trigger.match(/^定樁$/) != null && player[self][18]==8 && player[self][25]==0){
 					player[self][25]=2;//架槍等動作
 					rply.text+='定樁完畢'+'\n\n'+BR();
-					ds++
+					ds++;
 					if(ds==3){self++;ds=1;}
 					if(self>=player.length)self=0;
 			return rply;
@@ -785,7 +785,7 @@ var od=[];
 			if(id==player[self][0] && trigger.match(/^解除定樁$/) != null && player[self][18]==8 && player[self][25]>=2){
 					player[self][25]=0;//架槍等動作
 					rply.text+='解除定樁完畢'+'\n\n'+BR();
-					ds++
+					ds++;
 					if(ds==3){self++;ds=1;}
 					if(self>=player.length)self=0;
 					
@@ -796,7 +796,7 @@ var od=[];
 					player[self][25]=3;//架槍等動作
 					player[self][26]=rollbase.Dice(100);//命中(狙擊)
 					rply.text+='命中可能性：'+player[self][26]+'\n\n'+BR();
-					ds++
+					ds++;
 					if(ds==3){self++;ds=1;}
 					if(self>=player.length)self=0;
 			return rply;
