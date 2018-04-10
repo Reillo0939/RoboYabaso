@@ -990,7 +990,7 @@ function BR(){
 			rr+='\n 目標有';
 			for(var k=0;k<player.length;k++){
 								rr=rr+'\n'+player[k][1]+' '+player[k][16]+','+player[k][17]+'('
-								+Math.ceil((Math.pow(Math.pow(Math.floor(xxyy[0])-player[self][16],2)+Math.pow(Math.floor(xxyy[1])-player[self][17],2),0.5)))
+								+Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)))
 								+')';
 							}
 			return rr;
