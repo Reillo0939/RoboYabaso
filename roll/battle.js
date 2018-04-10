@@ -646,11 +646,13 @@ var od=[];
 						Critical=rollbase.Dice(100);
 						player[self][20]--;
 						if(Hit>player[self][26] ){
+								rply.text=player[self][1]+'沒有命中';
 							ds++;
+							
 							if(ds==3){self++;ds=1;}
 							if(self>=player.length)self=0;
-							rply.text=player[self][1]+'沒有命中'+
-							'\n\n'+BR();
+							
+								rply.text+='\n\n'+BR();
 							player[self][25]=0;
 							
 			return rply;
@@ -691,29 +693,32 @@ var od=[];
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^架槍$/) != null && player[self][18]==7 && player[self][25]==0){
 					player[self][25]=2;//架槍等動作
-					rply.text+='架槍完畢'+'\n\n'+BR();
+					rply.text+='架槍完畢'+'\n\n';
 					ds++;
 					if(ds==3){self++;ds=1;}
 					if(self>=player.length)self=0;
+					rply.text+=BR()
 			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^解除架槍$/) != null && player[self][18]==7 && player[self][25]>=2){
 					player[self][25]=0;//架槍等動作
-					rply.text+='解除架槍完畢'+'\n\n'+BR();
+					rply.text+='解除架槍完畢'+'\n\n';
 					ds++;
 					if(ds==3){self++;ds=1;}
 					if(self>=player.length)self=0;
+					rply.text+=BR()
 			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^瞄準$/) != null && player[self][18]==7 && player[self][25]>=2){
 					player[self][25]=3;//架槍等動作
 					player[self][26]=rollbase.Dice(100);//命中(狙擊)
-					rply.text+='命中可能性：'+player[self][26]+'\n\n'+BR();
+					rply.text+='命中可能性：'+player[self][26]+'\n\n';
 					ds++;
 					if(ds==3){self++;ds=1;}
 					if(self>=player.length)self=0;
+					rply.text+=BR()
 			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -731,11 +736,12 @@ var od=[];
 						Critical=rollbase.Dice(100);
 						player[self][20]--;
 						if(Hit>player[self][26] ){
+							rply.text=player[self][1]+'沒有命中';
 							ds++;
 							if(ds==3){self++;ds=1;}
 							if(self>=player.length)self=0;
-							rply.text=player[self][1]+'沒有命中'+
-							'\n\n'+BR();
+						
+							rply.text+='\n\n'+BR();
 							player[self][25]=2;
 			return rply;
 						}
@@ -775,30 +781,30 @@ var od=[];
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^定樁$/) != null && player[self][18]==8 && player[self][25]==0){
 					player[self][25]=2;//架槍等動作
-					rply.text+='定樁完畢'+'\n\n'+BR();
+					rply.text+='定樁完畢'+'\n\n';
 					ds++;
 					if(ds==3){self++;ds=1;}
 					if(self>=player.length)self=0;
+					rply.text+=BR()
 			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^解除定樁$/) != null && player[self][18]==8 && player[self][25]>=2){
 					player[self][25]=0;//架槍等動作
-					rply.text+='解除定樁完畢'+'\n\n'+BR();
+					rply.text+='解除定樁完畢'+'\n\n';
 					ds++;
 					if(ds==3){self++;ds=1;}
 					if(self>=player.length)self=0;
-					
+					rply.text+=BR()
 			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^定位$/) != null && player[self][18]==8 && player[self][25]==2){
 					player[self][25]=3;//架槍等動作
-					player[self][26]=rollbase.Dice(100);//命中(狙擊)
-					rply.text+='命中可能性：'+player[self][26]+'\n\n'+BR();
 					ds++;
 					if(ds==3){self++;ds=1;}
 					if(self>=player.length)self=0;
+					rply.text+=BR()
 			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -816,19 +822,20 @@ var od=[];
 						Critical=rollbase.Dice(100);
 						player[self][20]--;
 						if(Hit>player[self][26] ){
+							rply.text=player[self][1]+'沒有命中';
 							ds++;
 							if(ds==3){self++;ds=1;}
 							if(self>=player.length)self=0;
-							rply.text=player[self][1]+'沒有命中'+
-							'\n\n'+BR();
+							
+							rply.text+='\n\n'+BR();
 							player[self][25]=2;
 			return rply;
 						}
 					for(var f=0;f<player.length;f++){
 						if(player[i][16]==player[f][16] && player[i][17]==player[f][17]){
-							damage=Math.round(player[self][19]*player[self][22]*(rollbase.Dice(10)+5)*0.1);
+							damage=Math.round((rollbase.Dice(player[self][19])*player[self][22]*(rollbase.Dice(10)+5)*0.1));
 							player[f][2]=player[f][2]-damage;
-							rply.text=player[f][1]+
+							rply.text+=player[f][1]+
 							'\nHP '+player[f][2]+'/'+player[f][3];
 							rply.text+='(-'+damage+')';
 							
@@ -982,7 +989,9 @@ function BR(){
 			}
 			rr+='\n 目標有';
 			for(var k=0;k<player.length;k++){
-								rr=rr+'\n'+player[k][1]+' '+player[k][16]+','+player[k][17];
+								rr=rr+'\n'+player[k][1]+' '+player[k][16]+','+player[k][17]+'('
+								+Math.ceil((Math.pow(Math.pow(Math.floor(xxyy[0])-player[self][16],2)+Math.pow(Math.floor(xxyy[1])-player[self][17],2),0.5)))
+								+')';
 							}
 			return rr;
 }
