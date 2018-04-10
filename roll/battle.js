@@ -629,7 +629,7 @@ var od=[];
 			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
-			if(id==player[self][0] && trigger.match(/^射擊$/) != null && mainMsg[1] != null player[self][18]==6 && player[self][20]>0 && player[self][25]==1){
+			if(id==player[self][0] && trigger.match(/^射擊$/) != null && mainMsg[1] != null && player[self][18]==6 && player[self][20]>0 && player[self][25]==1){
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
@@ -705,7 +705,7 @@ var od=[];
 			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
-			if(id==player[self][0] && trigger.match(/^射擊$/) != null && mainMsg[1] != null player[self][18]==7 && player[self][20]>0 && player[self][25]==3){
+			if(id==player[self][0] && trigger.match(/^射擊$/) != null && mainMsg[1] != null && player[self][18]==7 && player[self][20]>0 && player[self][25]==3){
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
@@ -780,7 +780,7 @@ var od=[];
 			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
-			if(id==player[self][0] && trigger.match(/^炮擊$/) != null && mainMsg[1] != null player[self][18]==8 && player[self][20]>0 && player[self][25]==3){
+			if(id==player[self][0] && trigger.match(/^炮擊$/) != null && mainMsg[1] != null && player[self][18]==8 && player[self][20]>0 && player[self][25]==3){
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
