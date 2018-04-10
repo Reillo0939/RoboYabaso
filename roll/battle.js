@@ -238,13 +238,14 @@ var od=[];
 			return rply;
 						}
 						else{
+							rply.text=player[i][1]+'閃避成功'+
+							'\nHP '+player[i][2]+'/'+player[i][3]+
+							'\nbata粒子 '+player[i][4]+'/'+player[i][5];
 						ds++;
 							if(ds==3){self++;ds=1;}
 							if(self>=player.length)self=0;
-							rply.text=player[i][1]+'閃避成功'+
-							'\nHP '+player[i][2]+'/'+player[i][3]+
-							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
-							'\n\n'+BR();
+							
+							rply.text+='\n\n'+BR();
 			return rply;
 						}
 					}
@@ -821,16 +822,6 @@ var od=[];
 						Hit=rollbase.Dice(100);
 						Critical=rollbase.Dice(100);
 						player[self][20]--;
-						if(Hit>player[self][26] ){
-							rply.text=player[self][1]+'沒有命中';
-							ds++;
-							if(ds==3){self++;ds=1;}
-							if(self>=player.length)self=0;
-							
-							rply.text+='\n\n'+BR();
-							player[self][25]=2;
-			return rply;
-						}
 					for(var f=0;f<player.length;f++){
 						if(player[i][16]==player[f][16] && player[i][17]==player[f][17]){
 							damage=Math.round((rollbase.Dice(player[self][19])*player[self][22]*(rollbase.Dice(10)+5)*0.1));
@@ -945,7 +936,7 @@ function BR(){
 	if(player[self][18]<9)rr+='\n子彈數：'+player[self][20]+'/'+player[self][21];
 			rr+='\n 可用選項：'+
 			'\n移動 x座標,y座標';
-			if(player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21] && player[self][25]<2){
+			if(player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21]){
 				rr+='\n裝填子彈';
 			}
 			if(player[self][18]>=1 && player[self][18]<=5 && player[self][20]>0){
