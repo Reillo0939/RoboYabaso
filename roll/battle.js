@@ -626,6 +626,9 @@ var od=[];
 					player[self][25]=1;//架槍等動作
 					player[self][26]=rollbase.Dice(100);//命中(狙擊)
 					rply.text+='命中可能性：'+player[self][26]+'\n\n'+BR();
+					ds++
+					if(ds==3){self++;ds=1;}
+					if(self>=player.length)self=0;
 			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -646,7 +649,7 @@ var od=[];
 							ds++;
 							if(ds==3){self++;ds=1;}
 							if(self>=player.length)self=0;
-							rply.text=player[i][1]+'沒有命中'+
+							rply.text=player[self][1]+'沒有命中'+
 							'\n\n'+BR();
 							player[self][25]=0;
 							
@@ -689,19 +692,28 @@ var od=[];
 			if(id==player[self][0] && trigger.match(/^架槍$/) != null && player[self][18]==7 && player[self][25]==0){
 					player[self][25]=2;//架槍等動作
 					rply.text+='架槍完畢'+'\n\n'+BR();
+					ds++
+					if(ds==3){self++;ds=1;}
+					if(self>=player.length)self=0;
 			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^解除架槍$/) != null && player[self][18]==7 && player[self][25]>=2){
 					player[self][25]=0;//架槍等動作
 					rply.text+='解除架槍完畢'+'\n\n'+BR();
+					ds++
+					if(ds==3){self++;ds=1;}
+					if(self>=player.length)self=0;
 			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
-			if(id==player[self][0] && trigger.match(/^瞄準$/) != null && player[self][18]==7 && player[self][25]==2){
+			if(id==player[self][0] && trigger.match(/^瞄準$/) != null && player[self][18]==7 && player[self][25]>=2){
 					player[self][25]=3;//架槍等動作
 					player[self][26]=rollbase.Dice(100);//命中(狙擊)
 					rply.text+='命中可能性：'+player[self][26]+'\n\n'+BR();
+					ds++
+					if(ds==3){self++;ds=1;}
+					if(self>=player.length)self=0;
 			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -722,7 +734,7 @@ var od=[];
 							ds++;
 							if(ds==3){self++;ds=1;}
 							if(self>=player.length)self=0;
-							rply.text=player[i][1]+'沒有命中'+
+							rply.text=player[self][1]+'沒有命中'+
 							'\n\n'+BR();
 							player[self][25]=2;
 			return rply;
@@ -764,12 +776,19 @@ var od=[];
 			if(id==player[self][0] && trigger.match(/^定樁$/) != null && player[self][18]==8 && player[self][25]==0){
 					player[self][25]=2;//架槍等動作
 					rply.text+='定樁完畢'+'\n\n'+BR();
+					ds++
+					if(ds==3){self++;ds=1;}
+					if(self>=player.length)self=0;
 			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
-			if(id==player[self][0] && trigger.match(/^解除定樁$/) != null && player[self][18]==8 && player[self][25]==0){
+			if(id==player[self][0] && trigger.match(/^解除定樁$/) != null && player[self][18]==8 && player[self][25]>=2){
 					player[self][25]=0;//架槍等動作
 					rply.text+='解除定樁完畢'+'\n\n'+BR();
+					ds++
+					if(ds==3){self++;ds=1;}
+					if(self>=player.length)self=0;
+					
 			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -777,6 +796,9 @@ var od=[];
 					player[self][25]=3;//架槍等動作
 					player[self][26]=rollbase.Dice(100);//命中(狙擊)
 					rply.text+='命中可能性：'+player[self][26]+'\n\n'+BR();
+					ds++
+					if(ds==3){self++;ds=1;}
+					if(self>=player.length)self=0;
 			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -797,7 +819,7 @@ var od=[];
 							ds++;
 							if(ds==3){self++;ds=1;}
 							if(self>=player.length)self=0;
-							rply.text=player[i][1]+'沒有命中'+
+							rply.text=player[self][1]+'沒有命中'+
 							'\n\n'+BR();
 							player[self][25]=2;
 			return rply;
@@ -949,10 +971,10 @@ function BR(){
 			if(player[self][18]==8 && player[self][25]>=2){
 				rr+='\n解除定樁';
 			}
-			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==1){
+			if(player[self][18]==8 && player[self][20]>0 && player[self][25]>=2){
 				rr+='\n定位';
 			}
-			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==2){
+			if(player[self][18]==8 && player[self][20]>0 && player[self][25]==3){
 				rr+='\n炮擊 目標';
 			}			
 			if(player[self][18]>=9 && player[self][18]<=11){
