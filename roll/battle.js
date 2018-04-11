@@ -197,11 +197,12 @@ var od=[];
 			return rply;
 						}
 							if(Hit>70 && player[self][18]==11){
+								rply.text=player[self][1]+'沒有命中';
 								ds++;
 							if(ds==3){self++;ds=1;}
 							if(self>=player.length)self=0;
-							rply.text=player[self][1]+'沒有命中'+
-							'\n\n'+BR();
+							
+							rply.text+='\n\n'+BR();
 			return rply;
 							}
 						if(rnggg > (20 + parseInt(player[i][7]) - parseInt(player[self][7]) ) ){
@@ -658,13 +659,14 @@ var od=[];
 						player[self][20]--;
 						if(Hit>player[self][26] ){
 								rply.text=player[self][1]+'沒有命中';
+								player[self][25]=0;
 							ds++;
 							
 							if(ds==3){self++;ds=1;}
 							if(self>=player.length)self=0;
 							
 								rply.text+='\n\n'+BR();
-							player[self][25]=0;
+							
 							
 			return rply;
 						}
@@ -747,13 +749,14 @@ var od=[];
 						Critical=rollbase.Dice(100);
 						player[self][20]--;
 						if(Hit>player[self][26] ){
+							player[self][25]=2;
 							rply.text=player[self][1]+'沒有命中';
 							ds++;
 							if(ds==3){self++;ds=1;}
 							if(self>=player.length)self=0;
 						
 							rply.text+='\n\n'+BR();
-							player[self][25]=2;
+							
 			return rply;
 						}
 
