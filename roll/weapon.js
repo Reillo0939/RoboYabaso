@@ -65,19 +65,19 @@ var WMK;
 			return rply;
 		}
 		if(species=='短近距離武器'){
-			WMK='9,20,1,1,1,1,'+Wname+',0';
+			WMK='9,20,1,1,1,0.2,'+Wname+',0';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
 		}
 		if(species=='中近距離武器'){
-			WMK='10,30,1,1,1,1,'+Wname+',0';
+			WMK='10,30,1,1,1,0.5,'+Wname+',0';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
 			}
 		if(species=='長近距離武器'){
-			WMK='11,40,1,1,1,1,'+Wname+',0';
+			WMK='11,40,1,1,1,0.8,'+Wname+',0';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;

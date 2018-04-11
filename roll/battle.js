@@ -623,6 +623,15 @@ var od=[];
 			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
+			if(id==player[self][0] && trigger.match(/^能源充填$/) != null  && player[self][4]!=player[self][5]){
+					player[self][4]=player[self][5];
+					ds++;
+					if(ds==3){self++;ds=1;}
+					if(self>=player.length)self=0;
+					rply.text+=BR();
+			return rply;
+			}
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^瞄準$/) != null && player[self][18]==6 && player[self][20]>0 ){
 					player[self][25]=1;//架槍等動作
 					player[self][26]=rollbase.Dice(100);//命中(狙擊)
@@ -897,6 +906,74 @@ var od=[];
 			return rply;
 		}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
+			if(id==player[self][0] && trigger.match(/^磁懸推進/) != null && start==1 &&  mainMsg[1] != null && player[self][14]=='A.A.U.F'){
+				
+				let xxyy = mainMsg[1].split(','); //定義輸入字串
+				if(isNaN(xxyy[0])==0 && isNaN(xxyy[1])==0){
+					var temp =0;
+						temp = Math.ceil((Math.pow(Math.pow(Math.floor(xxyy[0])-player[self][16],2)+Math.pow(Math.floor(xxyy[1])-player[self][17],2),0.5)));
+						if(temp>(Math.floor(player[self][4])/10)){
+							rply.text='Bata粒子過少，無法移動';
+							return rply;
+						}
+						else{
+							if(xxyy[0]>=1 && xxyy[0]<=10 && xxyy[1]>=1 && xxyy[1]<=10){ 
+							player[self][4]-=temp*10;
+							rply.text='已移動到 座標'+Math.floor(xxyy[0])+','+Math.floor(xxyy[1]);
+							player[self][16]=Math.floor(xxyy[0]);
+							player[self][17]=Math.floor(xxyy[1]);
+							}
+							else{
+								rply.text='位置錯誤，無法移動';
+							return rply;
+							}
+						}
+				}
+				else{
+					rply.text='格式錯誤';
+					return rply;
+				}
+				ds++
+					if(ds==3){self++;ds=1;}
+					if(self>=player.length)self=0;
+					rply.text+='\n\n'+BR();
+			return rply;
+		}
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+			if(id==player[self][0] && trigger.match(/^脈衝推進/) != null && start==1 &&  mainMsg[1] != null && player[self][14]=='G.U.'){
+				
+				let xxyy = mainMsg[1].split(','); //定義輸入字串
+				if(isNaN(xxyy[0])==0 && isNaN(xxyy[1])==0){
+					var temp =0;
+						temp = Math.ceil((Math.pow(Math.pow(Math.floor(xxyy[0])-player[self][16],2)+Math.pow(Math.floor(xxyy[1])-player[self][17],2),0.5)));
+						if(temp>(Math.floor(player[self][4])/20)){
+							rply.text='Bata粒子過少，無法移動';
+							return rply;
+						}
+						else{
+							if(xxyy[0]>=1 && xxyy[0]<=10 && xxyy[1]>=1 && xxyy[1]<=10){ 
+							player[self][4]-=temp*20;
+							rply.text='已移動到 座標'+Math.floor(xxyy[0])+','+Math.floor(xxyy[1]);
+							player[self][16]=Math.floor(xxyy[0]);
+							player[self][17]=Math.floor(xxyy[1]);
+							}
+							else{
+								rply.text='位置錯誤，無法移動';
+							return rply;
+							}
+						}
+				}
+				else{
+					rply.text='格式錯誤';
+					return rply;
+				}
+				ds++
+					if(ds==3){self++;ds=1;}
+					if(self>=player.length)self=0;
+					rply.text+='\n\n'+BR();
+			return rply;
+		}
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(trigger.match(/^跳過/) != null && start==1){
 					self++;
 					ds=1;
@@ -932,10 +1009,23 @@ var od=[];
 function BR(){
 	var rr;
 	rr='輪到'+player[self][1]+'的第'+ds+'次行動'+
+			'\nHP '+player[self][2]+'/'+player[self][3]+
+			'\nbata粒子 '+player[self][4]+'/'+player[self][5]+
 			'\n位置 '+player[self][16]+','+player[self][17];
 	if(player[self][18]<9)rr+='\n子彈數：'+player[self][20]+'/'+player[self][21];
 			rr+='\n 可用選項：'+
-			'\n移動 x座標,y座標';
+			if(player[self][25]<2){
+				rr+='\n移動 x座標,y座標';
+			}
+			if(player[self][25]<2 && player[self][14]=='A.A.U.F'){
+				rr+='\n磁懸推進 x座標,y座標';
+			}
+			if(player[self][25]<2 && player[self][14]=='G.U.'){
+				rr+='\n脈衝推進 x座標,y座標';
+			}
+			if(player[self][4]!=player[self][5]){
+				rr+='\n能源充填';
+			}
 			if(player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21]){
 				rr+='\n裝填子彈';
 			}
