@@ -1013,7 +1013,7 @@ function BR(){
 			'\nbata粒子 '+player[self][4]+'/'+player[self][5]+
 			'\n位置 '+player[self][16]+','+player[self][17];
 	if(player[self][18]<9)rr+='\n子彈數：'+player[self][20]+'/'+player[self][21];
-			rr+='\n 可用選項：'+
+			rr+='\n 可用選項：';
 			if(player[self][25]<2){
 				rr+='\n移動 x座標,y座標';
 			}
