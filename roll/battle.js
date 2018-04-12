@@ -1150,6 +1150,7 @@ var od=[];
 		if(trigger.match(/^戰鬥開始$/) != null && start==0 && player.length==aaab){
 			start=1;
 			self=0;
+			ds=1;
 			player.sort(function (a,b){return b[7]-a[7]});
 			if(aaab==2){
 				if(player[0][14]=='A.A.U.F'){
@@ -1273,10 +1274,11 @@ var od=[];
 								
 								player.splice(i,1);
 							}
-							var ap=0,gp=0;
+						var ap=0,gp=0;
 							for(var g=0;g<player.length;g++){
 								if(player[g][14]=='A.A.U.F')ap++;
 								if(player[g][14]=='G.U.')gp++;
+							}
 								if(ap==0){
 								rply.text+='\nG.U勝利';
 								start=0;
@@ -1292,7 +1294,6 @@ var od=[];
 								RGU=0;
 								dd();
 								return rply;
-							}
 							}
 							
 							if(self>=player.length)self=0;
@@ -1400,6 +1401,7 @@ var od=[];
 							for(var g=0;g<player.length;g++){
 								if(player[g][14]=='A.A.U.F')ap++;
 								if(player[g][14]=='G.U.')gp++;
+							}
 								if(ap==0){
 								rply.text+='\nG.U勝利';
 								start=0;
@@ -1415,7 +1417,6 @@ var od=[];
 								RGU=0;
 								dd();
 								return rply;
-							}
 							}
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n'+BR();
@@ -1681,6 +1682,7 @@ var od=[];
 							for(var g=0;g<player.length;g++){
 								if(player[g][14]=='A.A.U.F')ap++;
 								if(player[g][14]=='G.U.')gp++;
+							}
 								if(ap==0){
 								rply.text+='\nG.U勝利';
 								start=0;
@@ -1696,7 +1698,6 @@ var od=[];
 								RGU=0;
 								dd();
 								return rply;
-							}
 							}
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n'+BR();
@@ -1786,6 +1787,7 @@ var od=[];
 							for(var g=0;g<player.length;g++){
 								if(player[g][14]=='A.A.U.F')ap++;
 								if(player[g][14]=='G.U.')gp++;
+							}
 								if(ap==0){
 								rply.text+='\nG.U勝利';
 								start=0;
@@ -1802,7 +1804,7 @@ var od=[];
 								dd();
 								return rply;
 							}
-							}
+							
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n'+BR();
 			return rply;
@@ -1890,6 +1892,7 @@ var od=[];
 							for(var g=0;g<player.length;g++){
 								if(player[g][14]=='A.A.U.F')ap++;
 								if(player[g][14]=='G.U.')gp++;
+							}
 								if(ap==0){
 								rply.text+='\nG.U勝利';
 								start=0;
@@ -1905,7 +1908,6 @@ var od=[];
 								RGU=0;
 								dd();
 								return rply;
-							}
 							}
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n'+BR();
@@ -1989,6 +1991,7 @@ var od=[];
 							for(var g=0;g<player.length;g++){
 								if(player[g][14]=='A.A.U.F')ap++;
 								if(player[g][14]=='G.U.')gp++;
+							}
 								if(ap==0){
 								rply.text+='\nG.U勝利';
 								start=0;
@@ -2004,7 +2007,6 @@ var od=[];
 								RGU=0;
 								dd();
 								return rply;
-							}
 							}
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n'+BR();
@@ -2129,6 +2131,7 @@ var od=[];
 							for(var g=0;g<player.length;g++){
 								if(player[g][14]=='A.A.U.F')ap++;
 								if(player[g][14]=='G.U.')gp++;
+							}
 								if(ap==0){
 								rply.text+='\nG.U勝利';
 								start=0;
@@ -2144,7 +2147,6 @@ var od=[];
 								RGU=0;
 								dd();
 								return rply;
-							}
 							}
 							ds=1;
 					if(self>=player.length)self=0;
