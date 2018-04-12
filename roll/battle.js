@@ -11,7 +11,7 @@ var ds=0;
 var damage;
 var rnggg;
 var mode;
-var RAAUF,RGU;
+var RAAUF=0,RGU=0;
 function dd() {
 player.length=0;
 }
@@ -1079,8 +1079,8 @@ var od=[];
 		od[12]=ox.oC(i,13);//土屬適性
 		od[13]=ox.oC(i,15);//控制能力
 		od[14]=ox.oC(i,3);//陣營
-		if(od[14]=='A.A.U.F')RAAUF++;
-		if(od[14]=='G.U.')RGU++;
+		//if(od[14]=='A.A.U.F')RAAUF++;
+		//if(od[14]=='G.U.')RGU++;
 		od[15]=ox.oC(i,17);//金幣
 		od[16]=0;//x
 		od[17]=0;//y
