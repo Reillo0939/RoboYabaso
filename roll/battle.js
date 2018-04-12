@@ -1054,11 +1054,12 @@ var od=[];
 		return rply;
 		}
 		}
-		if(RAAUF==aaab/2){
+		
+		if(RAAUF==(aaab/2)){
 			rply.text='AAUF人數已滿';
 		return rply;
 		}
-		if(RGU==aaab/2){
+		if(RGU==(aaab/2)){
 			rply.text='GU人數已滿';
 		return rply;
 		}
@@ -1098,7 +1099,7 @@ var od=[];
 		player[player.length]=od;
 		rply.text=name+'你的'+od[1]+'已參與\n'+
 			'陣營'+od[14]+
-			'HP '+od[2]+'/'+od[3]+
+			'\nHP '+od[2]+'/'+od[3]+
 			'\nbata粒子 '+od[4]+'/'+od[5]+
 			'\n物理適性 '+od[6]+
 			'\n反應力'+od[7]+
