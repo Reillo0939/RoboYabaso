@@ -11,6 +11,7 @@ var ds=0;
 var damage;
 var rnggg;
 var mode;
+var RAAUF,RGU;
 function dd() {
 player.length=0;
 }
@@ -1044,7 +1045,7 @@ if(trigger.match(/^戰鬥參與$/) != null && start==0){
 	if(player.length==aaab){
 		rply.text='已達參與上限';
 		return rply;}
-var od=[],RAAUF,RGU;
+var od=[];
   for(var i=0;i<ox.oL();i++){
 	if(ox.oC(i,0)==id){
 		for(var k=0;k<player.length;k++){
