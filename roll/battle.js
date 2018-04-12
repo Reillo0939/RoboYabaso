@@ -1141,6 +1141,64 @@ var od=[];
 			start=1;
 			self=0;
 			player.sort(function (a,b){return b[7]-a[7]});
+			if(aaab==2){
+				if(player[0][14]=='A.A.U.F'){
+					player[0][16]=13;
+					player[0][17]=13;
+					player[1][16]=13;
+					player[1][17]=38;
+				}
+				else{
+					player[0][16]=13;
+					player[0][17]=38;
+					player[1][16]=13;
+					player[1][17]=13;
+				}
+			}
+				if(aaab==4){
+					var af=1,gf=1;
+				for(var g=0;g<4;g++){
+					if(player[g][14]=='A.A.U.F'){
+					player[g][16]=1+8*af;
+					player[g][17]=10;
+					af++;
+				}
+				else{
+					player[g][16]=1+8*gf;
+					player[g][17]=41;
+					gf++;
+					}
+				}
+				}
+				if(aaab==6){
+					var af=1,gf=1;
+				for(var g=0;g<6;g++){
+					if(player[g][14]=='A.A.U.F'){
+						if(g==0){
+							player[g][16]=13;
+							player[g][17]=13;
+						}
+						else{
+							player[g][16]=1+8*af;
+							player[g][17]=6;
+						}
+					
+					af++;
+				}
+				else{
+					if(g==0){
+							player[g][16]=13;
+							player[g][17]=38;
+						}
+					else{
+						player[g][16]=1+8*gf;
+						player[g][17]=45;
+						}
+					gf++;
+					}
+				}
+				}
+			
 			ds=1;
 			var ff=rollbase.Dice(aaab)-1;
 				player[ff][16]=1;
@@ -1222,17 +1280,32 @@ var od=[];
 							if(ds==3){self++;ds=1;}
 							if(player[i][2]<=0){
 								if(i<self)self--;
-								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
+								rply.text=rply.text+'\n'+player[i][1]+'已撤退';
 								
 								player.splice(i,1);
 							}
-							
-							if(player.length==1){
-								rply.text+='\n'+ player[0][1]+'勝利';
+							var ap=0,gp=0;
+							for(var g=0;g<player.length;g++){
+								if(player[g][14]=='A.A.U.F')ap++;
+								if(player[g][14]=='G.U.')gp++;
+								if(ap==0){
+								rply.text+='\nG.U勝利';
 								start=0;
+								RAAUF=0;
+								RGU=0;
 								dd();
 								return rply;
 							}
+							if(gp==0){
+								rply.text+='\nA.A.U.F勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
+							}
+							
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n'+BR();
 			return rply;
@@ -1329,16 +1402,31 @@ var od=[];
 							if(ds==3){self++;ds=1;}
 							if(player[i][2]<=0){
 								if(i<self)self--;
-								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
+								rply.text=rply.text+'\n'+player[i][1]+'已撤退';
 								
 								player.splice(i,1);
 							}
 							
-							if(player.length==1){
-								rply.text+='\n'+ player[0][1]+'勝利';
+							var ap=0,gp=0;
+							for(var g=0;g<player.length;g++){
+								if(player[g][14]=='A.A.U.F')ap++;
+								if(player[g][14]=='G.U.')gp++;
+								if(ap==0){
+								rply.text+='\nG.U勝利';
 								start=0;
+								RAAUF=0;
+								RGU=0;
 								dd();
 								return rply;
+							}
+							if(gp==0){
+								rply.text+='\nA.A.U.F勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
 							}
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n'+BR();
@@ -1595,16 +1683,31 @@ var od=[];
 							if(ds==3){self++;ds=1;}
 							if(player[i][2]<=0){
 								if(i<self)self--;
-								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
+								rply.text=rply.text+'\n'+player[i][1]+'已徹退';
 								
 								player.splice(i,1);
 							}
 							
-							if(player.length==1){
-								rply.text+='\n'+ player[0][1]+'勝利';
+							var ap=0,gp=0;
+							for(var g=0;g<player.length;g++){
+								if(player[g][14]=='A.A.U.F')ap++;
+								if(player[g][14]=='G.U.')gp++;
+								if(ap==0){
+								rply.text+='\nG.U勝利';
 								start=0;
+								RAAUF=0;
+								RGU=0;
 								dd();
 								return rply;
+							}
+							if(gp==0){
+								rply.text+='\nA.A.U.F勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
 							}
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n'+BR();
@@ -1685,16 +1788,31 @@ var od=[];
 							if(ds==3){self++;ds=1;}
 							if(player[i][2]<=0){
 								if(i<self)self--;
-								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
+								rply.text=rply.text+'\n'+player[i][1]+'已撤退';
 								
 								player.splice(i,1);
 							}
 							
-							if(player.length==1){
-								rply.text+='\n'+ player[0][1]+'勝利';
+							var ap=0,gp=0;
+							for(var g=0;g<player.length;g++){
+								if(player[g][14]=='A.A.U.F')ap++;
+								if(player[g][14]=='G.U.')gp++;
+								if(ap==0){
+								rply.text+='\nG.U勝利';
 								start=0;
+								RAAUF=0;
+								RGU=0;
 								dd();
 								return rply;
+							}
+							if(gp==0){
+								rply.text+='\nA.A.U.F勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
 							}
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n'+BR();
@@ -1774,16 +1892,31 @@ var od=[];
 							if(ds==3){self++;ds=1;}
 							if(player[i][2]<=0){
 								if(i<self)self--;
-								rply.text=rply.text+'\n'+player[i][1]+'已倒地';
+								rply.text=rply.text+'\n'+player[i][1]+'已撤退';
 								
 								player.splice(i,1);
 							}
 							
-							if(player.length==1){
-								rply.text+='\n'+ player[0][1]+'勝利';
+							var ap=0,gp=0;
+							for(var g=0;g<player.length;g++){
+								if(player[g][14]=='A.A.U.F')ap++;
+								if(player[g][14]=='G.U.')gp++;
+								if(ap==0){
+								rply.text+='\nG.U勝利';
 								start=0;
+								RAAUF=0;
+								RGU=0;
 								dd();
 								return rply;
+							}
+							if(gp==0){
+								rply.text+='\nA.A.U.F勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
 							}
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n'+BR();
@@ -1852,21 +1985,37 @@ var od=[];
 							if(player[f][2]<=0){
 								if(f<self)self--;
 								if(f==self){self--;ds=1;}
-								rply.text=rply.text+'\n'+player[f][1]+'已倒地';
+								rply.text=rply.text+'\n'+player[f][1]+'已撤退';
 								player.splice(f,1);
 							}
 						}
-							if(player.length==1){
-								rply.text+='\n'+ player[0][1]+'勝利';
-								start=0;
-								dd();
-								return rply;
-							}
+							
 								if(player.length==0){
 								rply.text+='\n'+'沒有人勝利';
 								start=0;
 								dd();
 								return rply;
+							}
+							var ap=0,gp=0;
+							for(var g=0;g<player.length;g++){
+								if(player[g][14]=='A.A.U.F')ap++;
+								if(player[g][14]=='G.U.')gp++;
+								if(ap==0){
+								rply.text+='\nG.U勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
+							if(gp==0){
+								rply.text+='\nA.A.U.F勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
 							}
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n'+BR();
@@ -1886,7 +2035,7 @@ var od=[];
 							return rply;
 						}
 						else{
-							if(xxyy[0]>=1 && xxyy[0]<=25 && xxyy[1]>=1 && xxyy[1]<=25){ 
+							if(xxyy[0]>=1 && xxyy[0]<=25 && xxyy[1]>=1 && xxyy[1]<=50){ 
 							rply.text='已移動到 座標'+Math.floor(xxyy[0])+','+Math.floor(xxyy[1]);
 							player[self][16]=Math.floor(xxyy[0]);
 							player[self][17]=Math.floor(xxyy[1]);
@@ -1919,7 +2068,7 @@ var od=[];
 							return rply;
 						}
 						else{
-							if(xxyy[0]>=1 && xxyy[0]<=25 && xxyy[1]>=1 && xxyy[1]<=25){ 
+							if(xxyy[0]>=1 && xxyy[0]<=25 && xxyy[1]>=1 && xxyy[1]<=50){ 
 							player[self][4]-=temp*10;
 							rply.text='已移動到 座標'+Math.floor(xxyy[0])+','+Math.floor(xxyy[1]);
 							player[self][16]=Math.floor(xxyy[0]);
@@ -1953,7 +2102,7 @@ var od=[];
 							return rply;
 						}
 						else{
-							if(xxyy[0]>=1 && xxyy[0]<=25 && xxyy[1]>=1 && xxyy[1]<=25){ 
+							if(xxyy[0]>=1 && xxyy[0]<=25 && xxyy[1]>=1 && xxyy[1]<=50){ 
 							player[self][4]-=temp*20;
 							rply.text='已移動到 座標'+Math.floor(xxyy[0])+','+Math.floor(xxyy[1]);
 							player[self][16]=Math.floor(xxyy[0]);
@@ -1987,13 +2136,26 @@ var od=[];
 								player[self][2]=0;
 								rply.text=player[self][1]+'已撤退';
 								player.splice(self,1);
-							if(player.length==1){
-								rply.text+='\n'+ player[0][1]+'勝利';
+							for(var g=0;g<player.length;g++){
+								if(player[g][14]=='A.A.U.F')ap++;
+								if(player[g][14]=='G.U.')gp++;
+								if(ap==0){
+								rply.text+='\nG.U勝利';
 								start=0;
+								RAAUF=0;
+								RGU=0;
 								dd();
 								return rply;
 							}
-							self++;
+							if(gp==0){
+								rply.text+='\nA.A.U.F勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
+							}
 							ds=1;
 					if(self>=player.length)self=0;
 							rply.text+='\n\n'+BR();
@@ -2010,6 +2172,7 @@ var od=[];
 function BR(){
 	var rr;
 	rr='輪到'+player[self][1]+'的第'+ds+'次行動'+
+			'陣營'+player[self][14]+
 			'\nHP '+player[self][2]+'/'+player[self][3]+
 			'\nbata粒子 '+player[self][4]+'/'+player[self][5]+
 			'\n位置 '+player[self][16]+','+player[self][17];
