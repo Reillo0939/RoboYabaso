@@ -14,6 +14,8 @@ var mode;
 var RAAUF=0,RGU=0;
 function dd() {
 player.length=0;
+RAAUF=0;
+								RGU=0;
 }
 function battles(id,name,ab) {
 	var ggg,ttt;
