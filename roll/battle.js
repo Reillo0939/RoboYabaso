@@ -24,7 +24,7 @@ function battles(id,name,ab) {
 	let mainMsg = ab.match(msgSplitor); //定義輸入字串
 	let trigger = mainMsg[0].toString()
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
-	if (trigger.match(/武器/) != null){
+	if (trigger.match(/武器/) != null && start==0){
 	if (trigger.match(/製作/)!= null) return xweapon.weapon_make(id,name,mainMsg[1],mainMsg[2]) ;
 	if (trigger.match(/查看/)!= null) return xweapon.weapon_view(id,name) ;
 	if (trigger.match(/破壞/)!= null) return xweapon.weapon_break(id,name) ;
