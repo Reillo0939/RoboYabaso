@@ -1055,14 +1055,7 @@ var od=[];
 		}
 		}
 		  console.log(RAAUF+'  '+RGU);
-		if(RAAUF>=(aaab/2)){
-			rply.text='AAUF人數已滿';
-		return rply;
-		}
-		if(RGU>=(aaab/2)){
-			rply.text='GU人數已滿';
-		return rply;
-		}
+		
 		ggg=i;
 		od[0]=ox.oC(i,0);//ID
     	od[1]=ox.oC(i,1);//名字
@@ -1079,6 +1072,14 @@ var od=[];
 		od[12]=ox.oC(i,13);//土屬適性
 		od[13]=ox.oC(i,15);//控制能力
 		od[14]=ox.oC(i,3);//陣營
+		if(RAAUF>=(aaab/2) && od[14]=='A.A.U.F'){
+			rply.text='AAUF人數已滿';
+		return rply;
+		}
+		if(RGU>=(aaab/2) && od[14]=='G.U.'){
+			rply.text='GU人數已滿';
+		return rply;
+		}
 		if(od[14]=='A.A.U.F')RAAUF++;
 		if(od[14]=='G.U.')RGU++;
 		od[15]=ox.oC(i,17);//金幣
