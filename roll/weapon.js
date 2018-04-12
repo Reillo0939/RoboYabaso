@@ -11,10 +11,7 @@ var WMK;
 			rply.text=name+'你已有武器';
 			return rply;
 			}
-			if(Wname==null){
-			rply.text=name+'武器沒有名字';
-			return rply;
-			}
+			
 			WMK='';
 		if(species=='手槍'){
 			WMK='1,10,15,1,3,3,'+Wname+',0';
@@ -84,12 +81,33 @@ var WMK;
 		}
 		if(WMK==''){
 			rply.text=name+'沒有該種類 有'+
-			'\n手槍,重型手槍,衝鋒槍,短步槍,步槍,狙擊槍,\n大口徑狙擊槍,火炮,短近距離武器,中近距離武器,長近距離武器';
+			'\n手槍,\n重型手槍,\n衝鋒槍,\n短步槍,\n步槍,\n狙擊槍,\n大口徑狙擊槍,\n火炮,\n短近距離武器,\n中近距離武器,\n長近距離武器';
 			return rply;
 		}
+		if(Wname==null){
+			rply.text=name+'武器沒有名字';
+			return rply;
+			}
   }
 	}
 }
+function weapon_break(id,name) {
+var WMK;
+  for(var i=0;i<ox.oL();i++){
+	if(ox.oC(i,0)==id){
+		if(ox.oC(i,19)==0){
+			rply.text=name+'你沒有武器';
+			return rply;
+			}
+			WMK='0';
+			ox.WM(i,WMK);
+			rply.text=name+'已破壞完成';
+			return rply;
+		}
+
+  }
+	}
+
 function weapon_view(id,name) {
 var WMK;
   for(var i=0;i<ox.oL();i++){
@@ -100,25 +118,28 @@ var WMK;
 			}
 			WMK=ox.oC(i,19);
 			let WV = WMK.split(','); //定義輸入字串
+			var ww=1;
 			rply.text='';
 			rply.text=name;
 			rply.text+='\n武器名稱：'+WV[6];
-			if(WV[0]==1)rply.text+='\n武器種類：手槍';
-			if(WV[0]==2)rply.text+='\n武器種類：重型手槍';
-			if(WV[0]==3)rply.text+='\n武器種類：衝鋒槍';
-			if(WV[0]==4)rply.text+='\n武器種類：短步槍';
-			if(WV[0]==5)rply.text+='\n武器種類：步槍';
-			if(WV[0]==6)rply.text+='\n武器種類：狙擊槍';
-			if(WV[0]==7)rply.text+='\n武器種類：大口徑狙擊槍';
-			if(WV[0]==8)rply.text+='\n武器種類：火炮';
-			if(WV[0]==9)rply.text+='\n武器種類：短近距離武器';
-			if(WV[0]==10)rply.text+='\n武器種類：中近距離武器';
-			if(WV[0]==11)rply.text+='\n武器種類：長近距離武器';
+			if(WV[0]==1){rply.text+='\n武器種類：手槍';ww=0.04;}
+			if(WV[0]==2){rply.text+='\n武器種類：重型手槍';ww=0.1;}
+			if(WV[0]==3){rply.text+='\n武器種類：衝鋒槍';ww=0.06;}
+			if(WV[0]==4){rply.text+='\n武器種類：短步槍';ww=0.05;}
+			if(WV[0]==5){rply.text+='\n武器種類：步槍';ww=0.05;}
+			if(WV[0]==6){rply.text+='\n武器種類：狙擊槍';ww=0.13;}
+			if(WV[0]==7){rply.text+='\n武器種類：大口徑狙擊槍';ww=0.22;}
+			if(WV[0]==8){rply.text+='\n武器種類：火炮';ww=0.5;}
+			if(WV[0]==9){rply.text+='\n武器種類：短近距離武器';ww=0.15;}
+			if(WV[0]==10){rply.text+='\n武器種類：中近距離武器';ww=0.3;}
+			if(WV[0]==11){rply.text+='\n武器種類：長近距離武器';ww=0.4;}
 			rply.text+= '\n基礎傷害：'+WV[1]+
 						'\n子彈：'+WV[2]+
 						'\n傷害倍率：'+WV[3]+
 						'\n連發數：'+WV[4]+
-						'\n射程：'+WV[5];
+						'\n射程：'+WV[5]+
+						'\n武器重量：'+(WV[1]*WV[2]*ww)
+						;
 			return rply;
 
   }
@@ -126,6 +147,7 @@ var WMK;
 }
 module.exports = {
 	weapon_make:weapon_make,
+	weapon_break:weapon_break,
 	weapon_view:weapon_view
 };
 

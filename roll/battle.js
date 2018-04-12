@@ -1,6 +1,7 @@
 var rollbase = require('./rollbase.js');
 var funny = require('./funny.js');
 var ox = require('./Character.js');
+var xweapon=require('./weapon.js');
 var rply ={type : 'text'}; //type是必需的,但可以更改
 var player= new Array();;
 var start=0;
@@ -23,7 +24,11 @@ function battles(id,name,ab) {
 	let mainMsg = ab.match(msgSplitor); //定義輸入字串
 	let trigger = mainMsg[0].toString()
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
-	
+	if (trigger.match(/武器/) != null){
+	if (trigger.match(/製作/)!= null) return xweapon.weapon_make(id,name,mainMsg[1],mainMsg[2]) ;
+	if (trigger.match(/查看/)!= null) return xweapon.weapon_view(id,name) ;
+	if (trigger.match(/破壞/)!= null) return xweapon.weapon_break(id,name) ;
+	}
 	if(trigger.match(/^2人棋盤模式/) != null && start==0){
 		mode=2;
 		dd();
@@ -1057,7 +1062,10 @@ var od=[];
 		}
 		}
 		  console.log(RAAUF+'  '+RGU);
-		
+		if(ox.oC(i,19)==0){
+			rply.text=name+'你沒有武器';
+		return rply;
+		}
 		ggg=i;
 		od[0]=ox.oC(i,0);//ID
     	od[1]=ox.oC(i,1);//名字
@@ -1200,27 +1208,6 @@ var od=[];
 					}
 				}
 				}
-			
-			ds=1;
-			var ff=rollbase.Dice(aaab)-1;
-				player[ff][16]=1;
-				player[ff][17]=1;
-				ff++;
-			if(ff>=aaab)ff=0;
-				player[ff][16]=25;
-				player[ff][17]=25;
-				ff++;
-			if(ff>=aaab)ff=0;
-			if(aaab>=3){
-				player[ff][16]=25;
-				player[ff][17]=1;
-				ff++;
-			}
-			if(ff>=aaab)ff=0;
-			if(aaab>=4){
-				player[ff][16]=1;
-				player[ff][17]=25;
-			}
 			var rt=BR();
 			rply.text=rt;
 			return rply;
@@ -2138,6 +2125,7 @@ var od=[];
 								player[self][2]=0;
 								rply.text=player[self][1]+'已撤退';
 								player.splice(self,1);
+								var ap=0,gp=0;
 							for(var g=0;g<player.length;g++){
 								if(player[g][14]=='A.A.U.F')ap++;
 								if(player[g][14]=='G.U.')gp++;
@@ -2174,7 +2162,7 @@ var od=[];
 function BR(){
 	var rr;
 	rr='輪到'+player[self][1]+'的第'+ds+'次行動'+
-			'陣營'+player[self][14]+
+			'\n陣營'+player[self][14]+
 			'\nHP '+player[self][2]+'/'+player[self][3]+
 			'\nbata粒子 '+player[self][4]+'/'+player[self][5]+
 			'\n位置 '+player[self][16]+','+player[self][17];
