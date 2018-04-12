@@ -1054,12 +1054,12 @@ var od=[];
 		return rply;
 		}
 		}
-		
-		if(RAAUF==(aaab/2)){
+		  console.log(RAAUF+'  '+RGU);
+		if(RAAUF>=(aaab/2)){
 			rply.text='AAUF人數已滿';
 		return rply;
 		}
-		if(RGU==(aaab/2)){
+		if(RGU>=(aaab/2)){
 			rply.text='GU人數已滿';
 		return rply;
 		}
