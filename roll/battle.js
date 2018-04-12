@@ -40,19 +40,19 @@ function battles(id,name,ab) {
 		return rply;
 	}
 if(trigger.match(/^2人陣營模式/) != null && start==0){
-		mode=2;
+		mode=12;
 		dd();
 	        rply.text='已轉為2人陣營模式';
 		return rply;
 	}
 	if(trigger.match(/^4人陣營模式/) != null && start==0){
-		mode=3;
+		mode=13;
 		dd();
 	        rply.text='已轉為4人陣營模式';
 		return rply;
 	}
 	if(trigger.match(/^6人陣營模式/) != null && start==0){
-		mode=4;
+		mode=14;
 		dd();
 	        rply.text='已轉為6人陣營模式';
 		return rply;
@@ -1096,6 +1096,7 @@ var od=[],RAAUF,RGU;
 		od[26]=0;//命中(狙擊)
 		player[player.length]=od;
 		rply.text=name+'你的'+od[1]+'已參與\n'+
+			'陣營'+od[14]+
 			'HP '+od[2]+'/'+od[3]+
 			'\nbata粒子 '+od[4]+'/'+od[5]+
 			'\n物理適性 '+od[6]+
