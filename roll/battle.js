@@ -1230,7 +1230,7 @@ var od=[];
 				}
 			var rt=BR();
 			rply.text=rt;
-			var t=setTimeout(JP(),2000);
+			var t=setTimeout('JP()',2000);
 			return rply;
 		}
 		if(start==1){
