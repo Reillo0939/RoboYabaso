@@ -3,7 +3,7 @@ var funny = require('./funny.js');
 var ox = require('./Character.js');
 var xweapon=require('./weapon.js');
 var faf = require('../index.js');
-var AJT;
+var AJT=0;
 var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
 var channelSecret = process.env.LINE_CHANNEL_SECRET;
 var linebot = require('linebot');///030
@@ -64,7 +64,6 @@ function battles(id,name,ab) {
 		return rply;
 	}
 if(trigger.match(/^2人陣營模式/) != null && start==0){
-		bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2','@夢想實行者');
 		mode=12;
 		dd();
 	        rply.text='已轉為2人陣營模式';
@@ -2391,15 +2390,6 @@ var od=[];
 			}
 		}
 			
-}
-
-function JP(){
-	var rr='';
-	self++;
-	ds=1;
-	if(self>=player.length)self=0;
-	rr='自動跳過\n\n'+BR();
-	bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
 }
 
 function BR(){
