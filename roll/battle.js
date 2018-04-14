@@ -1081,7 +1081,7 @@ var od=[];
 		return rply;
 		}
 		}
-		  console.log(RAAUF+'  '+RGU);
+		  
 		if(ox.oC(i,19)==0){
 			rply.text=name+'你沒有武器';
 		return rply;
@@ -1112,6 +1112,7 @@ var od=[];
 		}
 		if(od[14]=='A.A.U.F')RAAUF++;
 		if(od[14]=='G.U.')RGU++;
+		console.log(RAAUF+'  '+RGU);
 		od[15]=ox.oC(i,17);//金幣
 		od[16]=0;//x
 		od[17]=0;//y
@@ -1232,6 +1233,7 @@ var od=[];
 			var rt=BR();
 			rply.text=rt;
 			 AJT = setTimeout(function(){
+				 clearTimeout(AJT);
 				var rr='';
 				self++;
 				ds=1;
@@ -1250,11 +1252,13 @@ var od=[];
 			},180000);
 			return rply;
 		}
+		
 		if(start==1){
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^攻擊$/) != null && mainMsg[1] != null &&player[self][18]>=9 && player[self][18]<=11 ){
 				clearTimeout(AJT);
 				 AJT = setTimeout(function(){
+					 clearTimeout(AJT);
 				var rr='';
 				self++;
 				ds=1;
