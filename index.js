@@ -27,13 +27,13 @@ var input='';
 var battle=0;
 var a=0;
 ox.oz();
-setInterval(function(){
+/*setInterval(function(){
     var userId = 'Ca8fea1f8ef1ef2519860ee21fb740fd2';
     var sendMsg = a.toString(10);
     bot.push(userId,sendMsg);
 	a++;
     console.log('send: '+sendMsg);
-},2000);
+},2000);*/
 bot.on('message', function(event) { if (event.message.type = 'text') { 
 var msg = '';
 let a = event.source.userId;
