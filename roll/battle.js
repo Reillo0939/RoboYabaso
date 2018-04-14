@@ -3,7 +3,7 @@ var funny = require('./funny.js');
 var ox = require('./Character.js');
 var xweapon=require('./weapon.js');
 var faf = require('../index.js');
-
+var AJT;
 var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
 var channelSecret = process.env.LINE_CHANNEL_SECRET;
 var linebot = require('linebot');///030
@@ -1232,19 +1232,46 @@ var od=[];
 				}
 			var rt=BR();
 			rply.text=rt;
-			setTimeout(function(){
-    var rr='';
-	self++;
-	ds=1;
-	if(self>=player.length)self=0;
-	rr='自動跳過\n\n'+BR();
-	bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-},2000);
+			 AJT = setTimeout(function(){
+				var rr='';
+				self++;
+				ds=1;
+				if(self>=player.length)self=0;
+				rr='自動跳過\n\n'+BR();
+				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+				 AJT = setTimeout(function(){
+					var rr='';
+					self++;
+					ds=1;
+					if(self>=player.length)self=0;
+					rr='自動跳過\n\n'+BR();
+					bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+				},180000);
+
+			},180000);
 			return rply;
 		}
 		if(start==1){
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^攻擊$/) != null && mainMsg[1] != null &&player[self][18]>=9 && player[self][18]<=11 ){
+				clearTimeout(AJT);
+				 AJT = setTimeout(function(){
+				var rr='';
+				self++;
+				ds=1;
+				if(self>=player.length)self=0;
+				rr='自動跳過\n\n'+BR();
+				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+				 AJT = setTimeout(function(){
+					var rr='';
+					self++;
+					ds=1;
+					if(self>=player.length)self=0;
+					rr='自動跳過\n\n'+BR();
+					bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+				},180000);
+
+			},180000);
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
@@ -1345,6 +1372,27 @@ var od=[];
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^單發射擊$/) != null && mainMsg[1] != null &&player[self][18]>=1 && player[self][18]<=5 && player[self][20]>0){
+				
+				clearTimeout(AJT);
+				 AJT = setTimeout(function(){
+				var rr='';
+				self++;
+				ds=1;
+				if(self>=player.length)self=0;
+				rr='自動跳過\n\n'+BR();
+				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+				 AJT = setTimeout(function(){
+					var rr='';
+					self++;
+					ds=1;
+					if(self>=player.length)self=0;
+					rr='自動跳過\n\n'+BR();
+					bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+				},180000);
+
+			},180000);
+				
+				
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
@@ -1466,6 +1514,26 @@ var od=[];
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^連發射擊$/) != null && mainMsg[1] != null &&player[self][18]>=1 && player[self][18]<=5 && player[self][20]>1){
+				
+				clearTimeout(AJT);
+				 AJT = setTimeout(function(){
+				var rr='';
+				self++;
+				ds=1;
+				if(self>=player.length)self=0;
+				rr='自動跳過\n\n'+BR();
+				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+				 AJT = setTimeout(function(){
+					var rr='';
+					self++;
+					ds=1;
+					if(self>=player.length)self=0;
+					rr='自動跳過\n\n'+BR();
+					bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+				},180000);
+
+			},180000);
+				
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
@@ -1766,6 +1834,27 @@ var od=[];
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^射擊$/) != null && mainMsg[1] != null && player[self][18]==6 && player[self][20]>0 && player[self][25]==1){
+				
+				clearTimeout(AJT);
+				 AJT = setTimeout(function(){
+				var rr='';
+				self++;
+				ds=1;
+				if(self>=player.length)self=0;
+				rr='自動跳過\n\n'+BR();
+				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+				 AJT = setTimeout(function(){
+					var rr='';
+					self++;
+					ds=1;
+					if(self>=player.length)self=0;
+					rr='自動跳過\n\n'+BR();
+					bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+				},180000);
+
+			},180000);
+				
+				
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
@@ -1852,6 +1941,7 @@ var od=[];
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^解除架槍$/) != null && player[self][18]==7 && player[self][25]>=2){
+		
 					player[self][25]=0;//架槍等動作
 					rply.text+='解除架槍完畢'+'\n\n';
 					ds++;
@@ -1862,6 +1952,8 @@ var od=[];
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^瞄準$/) != null && player[self][18]==7 && player[self][25]>=2){
+				
+	
 					player[self][25]=3;//架槍等動作
 					player[self][26]=rollbase.Dice(100);//命中(狙擊)
 					rply.text+='命中可能性：'+player[self][26]+'\n\n';
@@ -1873,6 +1965,27 @@ var od=[];
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^射擊$/) != null && mainMsg[1] != null && player[self][18]==7 && player[self][20]>0 && player[self][25]==3){
+				
+				clearTimeout(AJT);
+				 AJT = setTimeout(function(){
+				var rr='';
+				self++;
+				ds=1;
+				if(self>=player.length)self=0;
+				rr='自動跳過\n\n'+BR();
+				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+				 AJT = setTimeout(function(){
+					var rr='';
+					self++;
+					ds=1;
+					if(self>=player.length)self=0;
+					rr='自動跳過\n\n'+BR();
+					bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+				},180000);
+
+			},180000);
+				
+				
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
@@ -1946,6 +2059,10 @@ var od=[];
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^定樁$/) != null && player[self][18]==8 && player[self][25]==0){
+				
+				
+				
+				
 					player[self][25]=2;//架槍等動作
 					rply.text+='定樁完畢'+'\n\n';
 					ds++;
@@ -1956,6 +2073,10 @@ var od=[];
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^解除定樁$/) != null && player[self][18]==8 && player[self][25]>=2){
+				
+				
+
+				
 					player[self][25]=0;//架槍等動作
 					rply.text+='解除定樁完畢'+'\n\n';
 					ds++;
@@ -1966,6 +2087,8 @@ var od=[];
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^定位$/) != null && player[self][18]==8 && player[self][25]==2){
+				
+				
 					player[self][25]=3;//架槍等動作
 					ds++;
 					if(ds==3){self++;ds=1;}
@@ -1975,6 +2098,28 @@ var od=[];
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^炮擊$/) != null && mainMsg[1] != null && player[self][18]==8 && player[self][20]>0 && player[self][25]==3){
+				
+				
+				clearTimeout(AJT);
+				 AJT = setTimeout(function(){
+				var rr='';
+				self++;
+				ds=1;
+				if(self>=player.length)self=0;
+				rr='自動跳過\n\n'+BR();
+				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+				 AJT = setTimeout(function(){
+					var rr='';
+					self++;
+					ds=1;
+					if(self>=player.length)self=0;
+					rr='自動跳過\n\n'+BR();
+					bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+				},180000);
+
+			},180000);
+			
+			
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
@@ -2046,6 +2191,25 @@ var od=[];
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^移動/) != null && start==1 &&  mainMsg[1] != null && player[self][25]<2){
 				
+				clearTimeout(AJT);
+				 AJT = setTimeout(function(){
+				var rr='';
+				self++;
+				ds=1;
+				if(self>=player.length)self=0;
+				rr='自動跳過\n\n'+BR();
+				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+				 AJT = setTimeout(function(){
+					var rr='';
+					self++;
+					ds=1;
+					if(self>=player.length)self=0;
+					rr='自動跳過\n\n'+BR();
+					bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+				},180000);
+
+			},180000);
+				
 				let xxyy = mainMsg[1].split(','); //定義輸入字串
 				if(isNaN(xxyy[0])==0 && isNaN(xxyy[1])==0){
 					var temp =0;
@@ -2078,6 +2242,26 @@ var od=[];
 		}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^磁懸推進/) != null && start==1 &&  mainMsg[1] != null && player[self][14]=='A.A.U.F'){
+				
+				
+				clearTimeout(AJT);
+				 AJT = setTimeout(function(){
+				var rr='';
+				self++;
+				ds=1;
+				if(self>=player.length)self=0;
+				rr='自動跳過\n\n'+BR();
+				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+				 AJT = setTimeout(function(){
+					var rr='';
+					self++;
+					ds=1;
+					if(self>=player.length)self=0;
+					rr='自動跳過\n\n'+BR();
+					bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+				},180000);
+
+			},180000);
 				
 				let xxyy = mainMsg[1].split(','); //定義輸入字串
 				if(isNaN(xxyy[0])==0 && isNaN(xxyy[1])==0){
@@ -2112,6 +2296,25 @@ var od=[];
 		}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^脈衝推進/) != null && start==1 &&  mainMsg[1] != null && player[self][14]=='G.U.'){
+				
+				clearTimeout(AJT);
+				 AJT = setTimeout(function(){
+				var rr='';
+				self++;
+				ds=1;
+				if(self>=player.length)self=0;
+				rr='自動跳過\n\n'+BR();
+				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+				 AJT = setTimeout(function(){
+					var rr='';
+					self++;
+					ds=1;
+					if(self>=player.length)self=0;
+					rr='自動跳過\n\n'+BR();
+					bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+				},180000);
+
+			},180000);
 				
 				let xxyy = mainMsg[1].split(','); //定義輸入字串
 				if(isNaN(xxyy[0])==0 && isNaN(xxyy[1])==0){
@@ -2200,6 +2403,29 @@ function JP(){
 }
 
 function BR(){
+	
+	clearTimeout(AJT);
+				 AJT = setTimeout(function(){
+				var rr='';
+				self++;
+				ds=1;
+				if(self>=player.length)self=0;
+				rr='自動跳過\n\n'+BR();
+				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+				 AJT = setTimeout(function(){
+					var rr='';
+					self++;
+					ds=1;
+					if(self>=player.length)self=0;
+					rr='自動跳過\n\n'+BR();
+					bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+				},180000);
+
+			},180000);
+	
+	
+	
+	
 	var rr;
 	rr='輪到'+player[self][1]+'的第'+ds+'次行動'+
 			'\n陣營'+player[self][14]+
