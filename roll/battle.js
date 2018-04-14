@@ -1232,7 +1232,7 @@ var od=[];
 				}
 			var rt=BR();
 			rply.text=rt;
-			var t=setTimeout('JP()',2000);
+			setTimeout('JP()',2000);
 			return rply;
 		}
 		if(start==1){
