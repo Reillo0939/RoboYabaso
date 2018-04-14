@@ -1250,15 +1250,6 @@ var od=[];
 				if(self>=player.length)self=0;
 				rr='自動跳過\n\n'+BR();
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				 AJT = setTimeout(function(){
-					var rr='';
-					self++;
-					ds=1;
-					if(self>=player.length)self=0;
-					rr='自動跳過\n\n'+BR();
-					bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				},180000);
-
 			},180000);
 			return rply;
 		}
@@ -1268,22 +1259,12 @@ var od=[];
 			if(id==player[self][0] && trigger.match(/^攻擊$/) != null && mainMsg[1] != null &&player[self][18]>=9 && player[self][18]<=11 ){
 				clearTimeout(AJT);
 				 AJT = setTimeout(function(){
-					 clearTimeout(AJT);
 				var rr='';
 				self++;
 				ds=1;
 				if(self>=player.length)self=0;
 				rr='自動跳過\n\n'+BR();
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				 AJT = setTimeout(function(){
-					var rr='';
-					self++;
-					ds=1;
-					if(self>=player.length)self=0;
-					rr='自動跳過\n\n'+BR();
-					bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				},180000);
-
 			},180000);
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
@@ -1394,15 +1375,6 @@ var od=[];
 				if(self>=player.length)self=0;
 				rr='自動跳過\n\n'+BR();
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				 AJT = setTimeout(function(){
-					var rr='';
-					self++;
-					ds=1;
-					if(self>=player.length)self=0;
-					rr='自動跳過\n\n'+BR();
-					bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				},180000);
-
 			},180000);
 				
 				
@@ -1536,15 +1508,6 @@ var od=[];
 				if(self>=player.length)self=0;
 				rr='自動跳過\n\n'+BR();
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				 AJT = setTimeout(function(){
-					var rr='';
-					self++;
-					ds=1;
-					if(self>=player.length)self=0;
-					rr='自動跳過\n\n'+BR();
-					bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				},180000);
-
 			},180000);
 				
 				for(var i=0;i<player.length;i++){
@@ -1856,14 +1819,7 @@ var od=[];
 				if(self>=player.length)self=0;
 				rr='自動跳過\n\n'+BR();
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				 AJT = setTimeout(function(){
-					var rr='';
-					self++;
-					ds=1;
-					if(self>=player.length)self=0;
-					rr='自動跳過\n\n'+BR();
-					bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				},180000);
+				 
 
 			},180000);
 				
@@ -1987,14 +1943,7 @@ var od=[];
 				if(self>=player.length)self=0;
 				rr='自動跳過\n\n'+BR();
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				 AJT = setTimeout(function(){
-					var rr='';
-					self++;
-					ds=1;
-					if(self>=player.length)self=0;
-					rr='自動跳過\n\n'+BR();
-					bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				},180000);
+				
 
 			},180000);
 				
@@ -2121,14 +2070,7 @@ var od=[];
 				if(self>=player.length)self=0;
 				rr='自動跳過\n\n'+BR();
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				 AJT = setTimeout(function(){
-					var rr='';
-					self++;
-					ds=1;
-					if(self>=player.length)self=0;
-					rr='自動跳過\n\n'+BR();
-					bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				},180000);
+				 
 
 			},180000);
 			
@@ -2212,14 +2154,7 @@ var od=[];
 				if(self>=player.length)self=0;
 				rr='自動跳過\n\n'+BR();
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				 AJT = setTimeout(function(){
-					var rr='';
-					self++;
-					ds=1;
-					if(self>=player.length)self=0;
-					rr='自動跳過\n\n'+BR();
-					bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				},180000);
+				
 
 			},180000);
 				
@@ -2265,14 +2200,7 @@ var od=[];
 				if(self>=player.length)self=0;
 				rr='自動跳過\n\n'+BR();
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				 AJT = setTimeout(function(){
-					var rr='';
-					self++;
-					ds=1;
-					if(self>=player.length)self=0;
-					rr='自動跳過\n\n'+BR();
-					bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				},180000);
+				
 
 			},180000);
 				
@@ -2318,14 +2246,7 @@ var od=[];
 				if(self>=player.length)self=0;
 				rr='自動跳過\n\n'+BR();
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				 AJT = setTimeout(function(){
-					var rr='';
-					self++;
-					ds=1;
-					if(self>=player.length)self=0;
-					rr='自動跳過\n\n'+BR();
-					bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				},180000);
+				 
 
 			},180000);
 				
@@ -2417,20 +2338,8 @@ function BR(){
 				if(self>=player.length)self=0;
 				rr='自動跳過\n\n'+BR();
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				 AJT = setTimeout(function(){
-					var rr='';
-					self++;
-					ds=1;
-					if(self>=player.length)self=0;
-					rr='自動跳過\n\n'+BR();
-					bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				},180000);
 
 			},180000);
-	
-	
-	
-	
 	var rr;
 	rr='輪到'+player[self][1]+'的第'+ds+'次行動'+
 			'\n陣營'+player[self][14]+
