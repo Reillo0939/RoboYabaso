@@ -1232,7 +1232,14 @@ var od=[];
 				}
 			var rt=BR();
 			rply.text=rt;
-			setTimeout('JP()',2000);
+			setTimeout(function(){
+    var rr='';
+	self++;
+	ds=1;
+	if(self>=player.length)self=0;
+	rr='自動跳過\n\n'+BR();
+	bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+},2000);
 			return rply;
 		}
 		if(start==1){
