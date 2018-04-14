@@ -84,16 +84,21 @@ if(trigger.match(/^2人陣營模式/) != null && start==0){
 	if(trigger.match(/^計時/) != null && start==0){
 		AJT = setTimeout(function(){
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2','安安30秒');
+				
 			},30000);
+			console.log('AJT: '+AJT);
 	}
 	if(trigger.match(/^不要計時了/) != null && start==0){
 		clearTimeout(AJT);
+		console.log('AJT: '+AJT);
 	}
 	if(trigger.match(/^重新計時/) != null && start==0){
 		clearTimeout(AJT);
+		console.log('AJT: '+AJT);
 		AJT = setTimeout(function(){
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2','安安30秒');
 			},30000);
+			console.log('AJT: '+AJT);
 	}
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 	rply.text='';
@@ -1244,6 +1249,7 @@ var od=[];
 			rply.text=rt;
 			 AJT = setTimeout(function(){
 				 clearTimeout(AJT);
+				 console.log('AJT: '+AJT);
 				var rr='';
 				self++;
 				ds=1;
@@ -1251,6 +1257,7 @@ var od=[];
 				rr='自動跳過\n\n'+BR();
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
 			},180000);
+			console.log('AJT: '+AJT);
 			return rply;
 		}
 		
