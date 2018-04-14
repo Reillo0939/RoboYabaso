@@ -29,7 +29,7 @@ var a=0;
 ox.oz();
 setInterval(function(){
     var userId = 'Ca8fea1f8ef1ef2519860ee21fb740fd2';
-    var sendMsg = a;
+    var sendMsg = a.toString(10);
     bot.push(userId,sendMsg);
 	a++;
     console.log('send: '+sendMsg);
