@@ -2188,8 +2188,8 @@ function JP(){
 	self++;
 	ds=1;
 	if(self>=player.length)self=0;
-	rr=BR();
-	ind.tis('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+	rr='自動跳過\n\n'+BR();
+	bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
 }
 
 function BR(){
