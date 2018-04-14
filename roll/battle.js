@@ -2,6 +2,7 @@ var rollbase = require('./rollbase.js');
 var funny = require('./funny.js');
 var ox = require('./Character.js');
 var xweapon=require('./weapon.js');
+var ind = require('../index.js');
 
 var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
 var channelSecret = process.env.LINE_CHANNEL_SECRET;
@@ -2187,7 +2188,7 @@ function JP(){
 	ds=1;
 	if(self>=player.length)self=0;
 	rr=BR();
-	bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+	ind.bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
 }
 
 function BR(){
