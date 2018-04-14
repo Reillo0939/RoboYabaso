@@ -2,6 +2,21 @@ var rollbase = require('./rollbase.js');
 var funny = require('./funny.js');
 var ox = require('./Character.js');
 var xweapon=require('./weapon.js');
+
+var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
+var channelSecret = process.env.LINE_CHANNEL_SECRET;
+var linebot = require('linebot');///030
+ var channelId='1567989750';
+var bot = linebot({
+  channelId: channelId,
+  channelSecret: channelSecret,
+  channelAccessToken: channelAccessToken
+});
+
+
+
+
+
 var rply ={type : 'text'}; //type是必需的,但可以更改
 var player= new Array();;
 var start=0;
@@ -1045,6 +1060,10 @@ var od=[];
 		}
 			
 }
+
+
+
+
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 function ACV(aaab,mainMsg,trigger,id,name){
 if(trigger.match(/^戰鬥參與$/) != null && start==0){
@@ -1211,6 +1230,7 @@ var od=[];
 				}
 			var rt=BR();
 			rply.text=rt;
+			var t=setTimeout(JP(),2000);
 			return rply;
 		}
 		if(start==1){
@@ -2159,6 +2179,15 @@ var od=[];
 			}
 		}
 			
+}
+
+function JP(){
+	var rr='';
+	self++;
+	ds=1;
+	if(self>=player.length)self=0;
+	rr=BR();
+	bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
 }
 
 function BR(){
