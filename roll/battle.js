@@ -64,7 +64,7 @@ function battles(id,name,ab) {
 		return rply;
 	}
 if(trigger.match(/^2人陣營模式/) != null && start==0){
-		faf.tis('Ca8fea1f8ef1ef2519860ee21fb740fd2','test');
+		bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2','test');
 		mode=12;
 		dd();
 	        rply.text='已轉為2人陣營模式';
