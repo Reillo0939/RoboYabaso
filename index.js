@@ -259,3 +259,11 @@ sheets.spreadsheets.values.update(request, function(err, result) {
   }
 });
 }
+
+function tis(ga,gb){
+	bot.push(ga,gb);
+}
+module.exports = {
+	tis:tis
+};
+
