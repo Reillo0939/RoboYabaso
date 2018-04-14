@@ -26,6 +26,7 @@ var cat='';
 var input='';
 var battle=0;
 ox.oz();
+var tests=setTimeout(linebot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', 'test'),2000);
 bot.on('message', function(event) { if (event.message.type = 'text') { 
 var msg = '';
 let a = event.source.userId;
