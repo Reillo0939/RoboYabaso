@@ -33,6 +33,7 @@ function dd() {
 player.length=0;
 RAAUF=0;
 								RGU=0;
+								clearTimeout(AJT);
 }
 function battles(id,name,ab) {
 	var ggg,ttt;
