@@ -483,6 +483,17 @@ ccN=x;
   				authorize(JSON.parse(content), CCCN);
 				});
 }
+function GP(x,y) {
+Characters[x][18]=y;
+ccN=x;
+	fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+  				if (err) {
+    				console.log('Error loading client secret file: ' + err);
+    				return;
+  				}
+  				authorize(JSON.parse(content), CCCN);
+				});
+}
 function WM(x,y) {
 Characters[x][19]=y;
 ccN=x;
@@ -505,6 +516,7 @@ module.exports = {
 	oz:oz,
 	oC:oC,
 	oA:oA,
+	GP:GP,
 	WM:WM,
 	oL:oL,
 	CV:CV,
