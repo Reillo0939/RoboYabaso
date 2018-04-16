@@ -14,67 +14,67 @@ var WMK;
 			
 			WMK='';
 		if(species=='手槍'){
-			WMK='1,10,15,1,3,3,'+Wname+',0';
+			WMK='1,10,15,1,3,3,'+Wname+',0,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
 		}
 		if(species=='重型手槍'){
-			WMK='2,15,7,1,1,4,'+Wname+',0';
+			WMK='2,15,7,1,1,4,'+Wname+',0,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
 		}
 		if(species=='衝鋒槍'){
-			WMK='3,8,30,0.8,10,4,'+Wname+',0';
+			WMK='3,8,30,0.8,10,4,'+Wname+',0,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
 		}
 		if(species=='短步槍'){
-			WMK='4,12,30,0.8,5,5,'+Wname+',0';
+			WMK='4,12,30,0.8,5,5,'+Wname+',0,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
 		}
 		if(species=='步槍'){
-			WMK='5,15,30,1.5,3,8,'+Wname+',0';
+			WMK='5,15,30,1.5,3,8,'+Wname+',0,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
 		}
 		if(species=='狙擊槍'){
-			WMK='6,20,10,2,1,10,'+Wname+',0';
+			WMK='6,20,10,2,1,10,'+Wname+',0,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
 		}
 		if(species=='大口徑狙擊槍'){
-			WMK='7,30,5,2,1,13,'+Wname+',0';
+			WMK='7,30,5,2,1,13,'+Wname+',0,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
 		}
 		if(species=='火炮'){
-			WMK='8,100,1,1,1,20,'+Wname+',0';
+			WMK='8,100,1,1,1,20,'+Wname+',0,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
 		}
 		if(species=='短近距離武器'){
-			WMK='9,20,1,1,1,0.2,'+Wname+',0';
+			WMK='9,20,1,1,1,0.2,'+Wname+',0,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
 		}
 		if(species=='中近距離武器'){
-			WMK='10,30,1,1,1,0.5,'+Wname+',0';
+			WMK='10,30,1,1,1,0.5,'+Wname+',0,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
 			}
 		if(species=='長近距離武器'){
-			WMK='11,40,1,1,1,0.8,'+Wname+',0';
+			WMK='11,40,1,1,1,0.8,'+Wname+',0,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
@@ -138,7 +138,8 @@ var WMK;
 						'\n傷害倍率：'+WV[3]+
 						'\n連發數：'+WV[4]+
 						'\n射程：'+WV[5]+
-						'\n武器重量：'+(WV[1]*WV[2]*ww)
+						'\n武器重量：'+(WV[1]*WV[2]*ww)+
+						'\n可改造次數'+WV[8]
 						;
 			return rply;
 
