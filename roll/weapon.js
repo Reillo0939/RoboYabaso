@@ -162,6 +162,11 @@ var WMK;
 			rply.text=name;
 			rply.text+='\n武器名稱：'+WV[6];
 			amount=Number(amount);
+			WV[1]=Number(WV[1]);
+			WV[2]=Number(WV[2]);
+			WV[3]=Number(WV[3]);
+			WV[4]=Number(WV[4]);
+			WV[5]=Number(WV[5]);
 			if(species!='基礎傷害' && species!='子彈數'&& species!='傷害倍率' && species!='連發數' && species!='射程'){
 				rply.text='';
 			rply.text=name;
@@ -275,7 +280,7 @@ var WMK;
 				if(species=='連發數'){rply.text=name + ' 無法改造的類型';return rply;}
 				if(species=='子彈數'){rply.text=name + ' 無法改造的類型';return rply;}
 			}
-			WMK=WV[0]+WV[1]+WV[0]+WV[2]+WV[3]+WV[4]+WV[5]+WV[6]+WV[7]+WV[8];
+			WMK=WV[0]+','+WV[1].toString() +','+WV[2].toString() +','+WV[3].toString()+','+WV[4].toString()+','+WV[5].toString()+','+WV[6]+','+WV[7]+','+WV[8];
 			ox.WM(i,WMK);
 			rply.text+= '\n基礎傷害：'+WV[1]+
 						'\n子彈數：'+WV[2]+
