@@ -199,7 +199,7 @@ var WMK;
 				if(species=='基礎傷害'){WV[1]+=(1*amount);WV[8]-=Math.abs(1*amount);}
 				if(species=='子彈數'){WV[2]+=(1*amount);WV[8]-=Math.abs(1*amount);}
 				if(species=='傷害倍率'){WV[3]+=(0.1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='連發數'){WV[4]+=(0.5*amount);WV[8]-=(1;*amount)}
+				if(species=='連發數'){WV[4]+=(0.5*amount);WV[8]-=Math.abs((1*amount));}
 				if(species=='射程'){WV[5]+=(0.25*amount);WV[8]-=Math.abs(1*amount);}
 				}
 				
