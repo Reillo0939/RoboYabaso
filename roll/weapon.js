@@ -290,7 +290,7 @@ var WMK;
 						'\n武器重量：'+(WV[1]*WV[2]*ww)+
 						'\n可改造次數：'+WV[8]
 						;
-			if(Number(ox.oC(i,7))<Number((WV[1]*WV[2]*ww)))rply.text+='\n注意：武器過重'
+			if(Number(ox.oC(i,7))<Number((WV[1]*WV[2]*ww)))rply.text+='\n注意：武器過重';
 			return rply;
 
   }

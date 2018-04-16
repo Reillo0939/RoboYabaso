@@ -45,6 +45,12 @@ function battles(id,name,ab) {
 	if (trigger.match(/製作/)!= null) return xweapon.weapon_make(id,name,mainMsg[1],mainMsg[2]) ;
 	if (trigger.match(/查看/)!= null) return xweapon.weapon_view(id,name) ;
 	if (trigger.match(/破壞/)!= null) return xweapon.weapon_break(id,name) ;
+	if (trigger.match(/改造/)!= null) return exports.weapon.weapon_retrofit(id,name,mainMsg[1],mainMsg[2]) ;
+	}
+	if (trigger.match(/玩家/) != null && start==0){
+	if (trigger.match(/自身情報/)!= null) return exports.Character.CV(id,name) ;
+	if (trigger.match(/改名/)!= null) return exports.Character.CCN(id,name,mainMsg[1]) ;
+	if (trigger.match(/列表/)!= null) return exports.Character.CCL() ;
 	}
 	if(trigger.match(/^2人棋盤模式/) != null && start==0){
 		mode=2;
@@ -1102,6 +1108,9 @@ var od=[];
 			rply.text=name+'你沒有武器';
 		return rply;
 		}
+		var WMK=ox.oC(i,19);
+		var WV = WMK.split(','); //定義輸入字串
+		if(Number(ox.oC(i,7))<Number((WV[1]*WV[2]*ww)))rply.text=name +'你武器過重 無法參與';
 		ggg=i;
 		od[0]=ox.oC(i,0);//ID
     	od[1]=ox.oC(i,1);//名字
@@ -1132,8 +1141,7 @@ var od=[];
 		od[15]=ox.oC(i,17);//金幣
 		od[16]=0;//x
 		od[17]=0;//y
-		var WMK=ox.oC(i,19);
-		var WV = WMK.split(','); //定義輸入字串
+		
 		od[27]=WV[6];//武器名稱
 		od[18]=Number(WV[0]);//武器種類
 		od[19]=Number(WV[1]);//基礎傷害
