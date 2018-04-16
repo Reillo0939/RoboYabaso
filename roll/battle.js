@@ -1110,7 +1110,22 @@ var od=[];
 		}
 		var WMK=ox.oC(i,19);
 		var WV = WMK.split(','); //定義輸入字串
-		if(Number(ox.oC(i,7))<Number((WV[1]*WV[2]*ww)))rply.text=name +'你武器過重 無法參與';
+		var ww;
+			if(WV[0]==1)ww=0.04;
+			if(WV[0]==2)ww=0.1;
+			if(WV[0]==3)ww=0.06;
+			if(WV[0]==4)ww=0.05;
+			if(WV[0]==5)ww=0.05;
+			if(WV[0]==6)ww=0.13;
+			if(WV[0]==7)ww=0.22;
+			if(WV[0]==8)ww=0.5;
+			if(WV[0]==9)ww=0.15;
+			if(WV[0]==10)ww=0.3;
+			if(WV[0]==11)ww=0.4;
+		if(Number(ox.oC(i,7))<Number((WV[1]*WV[2]*ww))){
+			rply.text=name +'你武器過重 無法參與';
+		return rply;
+		}
 		ggg=i;
 		od[0]=ox.oC(i,0);//ID
     	od[1]=ox.oC(i,1);//名字
