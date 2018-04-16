@@ -139,8 +139,9 @@ var WMK;
 						'\n連發數：'+WV[4]+
 						'\n射程：'+WV[5]+
 						'\n武器重量：'+(WV[1]*WV[2]*ww)+
-						'\n可改造次數'+WV[8]
+						'\n可改造次數：'+WV[8]
 						;
+			if(Number(ox.oC(i,7))<Number((WV[1]*WV[2]*ww)))rply.text+='注意：武器過重'
 			return rply;
 
   }
