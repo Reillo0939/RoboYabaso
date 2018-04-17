@@ -13,7 +13,7 @@ function skill_make(id,name,position,STR) {
 		var AAA=ox.oC(i,21);
 		console.log('1');
 		console.log(AAA);
-		var Askill = AAA.split('-'); //定義輸入字串
+		var Askill = AAA.split('|'); //定義輸入字串
 		console.log('2');
 		var Par = STR.split(',');
 		console.log('3');
@@ -51,7 +51,7 @@ function skill_make(id,name,position,STR) {
 			}
 			Askill[Number(position)-1]+=','+Par[5];
 			Askill[Number(position)-1]+=','+Par[6];
-			var SMK=Askill[0]+'-'+Askill[1]+'-'+Askill[2]+'-'+Askill[3]+'-'+Askill[4];
+			var SMK=Askill[0]+'|'+Askill[1]+'|'+Askill[2]+'|'+Askill[3]+'|'+Askill[4];
 			ox.SM(i,SMK);
 			rply.text=name+'已製作完成';
 			return rply;
