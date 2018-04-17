@@ -80,7 +80,7 @@ function skill_view(id,name,position) {
 var WMK;
   for(var i=0;i<ox.oL();i++){
 	if(ox.oC(i,0)==id){
-		
+		position++;
 		var AAA=ox.oC(i,21);
 		var Askill = AAA.split('|'); //定義輸入字串
 		var par = Askill[position].split(',');
@@ -98,7 +98,7 @@ var WMK;
 						'\n傷害：'+par[2]+
 						'\n射程：'+par[3]+
 						'\n報擊率：'+par[4]+
-						'\n'+name+par[6]
+						'\n'+name+'：'+par[6]
 						;
 			return rply;
 
