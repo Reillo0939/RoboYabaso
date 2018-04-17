@@ -27,7 +27,7 @@ function skill_make(id,name,position,STR) {
 			return rply;
 		}
 		if(Par[0]=='攻擊'){
-	if(STR.length!=7){
+	if(Par.length!=7){
 			rply.text=name+' 格式錯誤';
 			return rply;
 		}
