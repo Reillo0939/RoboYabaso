@@ -10,7 +10,8 @@ function skill_make(id,name,position,STR) {
 			rply.text=name+' 此系統只開放給GU使用';
 			return rply;
 		}
-		let Askill = ox.oC(i,21).split('|'); //定義輸入字串
+		let AAA=ox.oC(i,21);
+		let Askill = AAA.split('|'); //定義輸入字串
 		let Par = STR.split(',');
 	
 		if(Number(position)>5 && Number(position)<1){
