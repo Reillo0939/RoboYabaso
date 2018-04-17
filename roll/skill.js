@@ -11,8 +11,11 @@ function skill_make(id,name,position,STR) {
 			return rply;
 		}
 		let AAA=ox.oC(i,21);
+		console.log('1');
 		let Askill = AAA.split('|'); //定義輸入字串
+		console.log('2');
 		let Par = STR.split(',');
+		console.log('3');
 	
 		if(Number(position)>5 && Number(position)<1){
 			rply.text=name+' 沒有這個技能格';
