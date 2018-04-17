@@ -4,7 +4,12 @@ var ox = require('./Character.js');
 var rply ={type : 'text'}; //type是必需的,但可以更改
 
 function skill_make(id,name,species,Wname) {
-var WMK;
+	var str='0|1|2|3|4|';
+	let te = str.split('|'); //定義輸入字串
+	rply.text=te.length;
+	return rply;
+	
+/*var WMK;
   for(var i=0;i<ox.oL();i++){
 	if(ox.oC(i,0)==id){
 		if(ox.oC(i,19)!=0){
@@ -89,7 +94,7 @@ var WMK;
 			return rply;
 			}
   }
-	}
+	}*/
 }
 function weapon_break(id,name) {
 var WMK;
