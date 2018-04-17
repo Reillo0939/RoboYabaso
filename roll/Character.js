@@ -164,6 +164,7 @@ ddd[17] = 5000 ;
 ddd[18] = 0 ;
 ddd[19] = 0 ;
 ddd[20] = 0 ;
+ddd[21] = 0 ;
 Characters[hh]=ddd;
 
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
@@ -261,6 +262,7 @@ ddd[17] = 5000 ;
 ddd[18] = 0 ;
 ddd[19] = 0 ;
 ddd[20] = 0 ;
+ddd[21] = 0 ;
 Characters[hh]=ddd;
 	
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
@@ -582,7 +584,7 @@ var leng=Characters.length;
       ,Characters[leng-1][4],Characters[leng-1][5],Characters[leng-1][6],Characters[leng-1][7]
       ,Characters[leng-1][8],Characters[leng-1][9],Characters[leng-1][10],Characters[leng-1][11]
       ,Characters[leng-1][12],Characters[leng-1][13],Characters[leng-1][14],Characters[leng-1][15],Characters[leng-1][16]
-      ,Characters[leng-1][17],Characters[leng-1][18],Characters[leng-1][19],Characters[leng-1][20],],
+      ,Characters[leng-1][17],Characters[leng-1][18],Characters[leng-1][19],Characters[leng-1][20],,Characters[leng-1][21],],
 ];
 	console.log('test OK');
 	var range='Character!A' + leng;
@@ -617,7 +619,7 @@ var leng=ccN;
       ,Characters[leng][4],Characters[leng][5],Characters[leng][6],Characters[leng][7]
       ,Characters[leng][8],Characters[leng][9],Characters[leng][10],Characters[leng][11]
       ,Characters[leng][12],Characters[leng][13],Characters[leng][14],Characters[leng][15],Characters[leng][16],Characters[leng][17],
-	  Characters[leng][18],Characters[leng][19],Characters[leng][20],],
+	  Characters[leng][18],Characters[leng][19],Characters[leng][20],Characters[leng][21]],
 ];
 	console.log('test OK');
 	var range='Character!B' + (leng+1);
