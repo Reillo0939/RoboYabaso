@@ -13,39 +13,39 @@ function skill_make(id,name,position,STR) {
 		let Askill = ox.oC(i,21).split('|'); //定義輸入字串
 		let Par = STR.split(',');
 	
-		if(Number(Par[0])>5 && Number(Par[0])<1){
+		if(Number(position)>5 && Number(position)<1){
 			rply.text=name+' 沒有這個技能格';
 			return rply;
 		}
-		if(Askill[Number(Par[0])-1]!=0){
+		if(Askill[Number(position)-1]!=0){
 			rply.text=name+' 技能格已有技能';
 			return rply;
 		}
-		if(Par[1]=='攻擊'){
-	if(STR.length!=8){
+		if(position=='攻擊'){
+	if(STR.length!=7){
 			rply.text=name+' 格式錯誤';
 			return rply;
 		}
-		Askill[Number(Par[0])-1]=Par[1];
-			if(Par[2]=='無'){Askill[Number(Par[0])-1]+=','+Par[2];}
-			if(Par[2]=='火'){Askill[Number(Par[0])-1]+=','+Par[2];}
-			if(Par[2]=='水'){Askill[Number(Par[0])-1]+=','+Par[2];}
-			if(Par[2]=='風'){Askill[Number(Par[0])-1]+=','+Par[2];}
-			if(Par[2]=='土'){Askill[Number(Par[0])-1]+=','+Par[2];}
-			if(Par[2]!='無' && Par[2]!='火' && Par[2]!='水' && Par[2]!='風' && Par[2]!='土'){
+		Askill[Number(position)-1]=Par[0];
+			if(Par[1]=='無'){Askill[Number(position)-1]+=','+Par[1];}
+			if(Par[1]=='火'){Askill[Number(position)-1]+=','+Par[1];}
+			if(Par[1]=='水'){Askill[Number(position)-1]+=','+Par[1];}
+			if(Par[1]=='風'){Askill[Number(position)-1]+=','+Par[1];}
+			if(Par[1]=='土'){Askill[Number(position)-1]+=','+Par[1];}
+			if(Par[1]!='無' && Par[1]!='火' && Par[1]!='水' && Par[1]!='風' && Par[1]!='土'){
 				rply.text=name+' 沒有這個屬性';
 			return rply;
 			}
 			
-			Askill[Number(Par[0])-1]+=','+Number(Par[3]);
-			Askill[Number(Par[0])-1]+=','+Number(Par[4]);
-			Askill[Number(Par[0])-1]+=','+Number(Par[5]);
-			if(Par[6]==null){
+			Askill[Number(position)-1]+=','+Number(Par[2]);
+			Askill[Number(position)-1]+=','+Number(Par[3]);
+			Askill[Number(position)-1]+=','+Number(Par[4]);
+			if(Par[5]==null){
 				rply.text=name+' 技能沒有名字';
 			return rply;
 			}
-			Askill[Number(Par[0])-1]+=','+Par[6];
-			Askill[Number(Par[0])-1]+=','+Par[7];
+			Askill[Number(position)-1]+=','+Par[5];
+			Askill[Number(position)-1]+=','+Par[6];
 			var SMK=Askill[0]+'|'+Askill[1]+'|'+Askill[2]+'|'+Askill[3]+'|'+Askill[4];
 			ox.SM(i,SMK);
 			rply.text=name+'已製作完成';
