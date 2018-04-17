@@ -11,12 +11,8 @@ function skill_make(id,name,position,STR) {
 			return rply;
 		}
 		var AAA=ox.oC(i,21);
-		console.log('1');
-		console.log(AAA);
 		var Askill = AAA.split('|'); //定義輸入字串
-		console.log('2');
 		var Par = STR.split(',');
-		console.log('3');
 	
 		if(Number(position)>5 && Number(position)<1){
 			rply.text=name+' 沒有這個技能格';
@@ -80,40 +76,30 @@ var WMK;
   }
 	}
 
-function weapon_view(id,name) {
+function skill_view(id,name,position) {
 var WMK;
   for(var i=0;i<ox.oL();i++){
 	if(ox.oC(i,0)==id){
-		if(ox.oC(i,19)==0){
-			rply.text=name+'你沒有武器';
+		
+		var AAA=ox.oC(i,21);
+		var Askill = AAA.split('|'); //定義輸入字串
+		var Par = Askill[position].split(',');
+		
+		if(Askill[position]==0){
+			rply.text=name+'這格沒有技能';
 			return rply;
 			}
-			WMK=ox.oC(i,19);
-			let WV = WMK.split(','); //定義輸入字串
-			var ww=1;
+			
 			rply.text='';
 			rply.text=name;
-			rply.text+='\n武器名稱：'+WV[6];
-			if(WV[0]==1){rply.text+='\n武器種類：手槍';ww=0.04;}
-			if(WV[0]==2){rply.text+='\n武器種類：重型手槍';ww=0.1;}
-			if(WV[0]==3){rply.text+='\n武器種類：衝鋒槍';ww=0.06;}
-			if(WV[0]==4){rply.text+='\n武器種類：短步槍';ww=0.05;}
-			if(WV[0]==5){rply.text+='\n武器種類：步槍';ww=0.05;}
-			if(WV[0]==6){rply.text+='\n武器種類：狙擊槍';ww=0.13;}
-			if(WV[0]==7){rply.text+='\n武器種類：大口徑狙擊槍';ww=0.22;}
-			if(WV[0]==8){rply.text+='\n武器種類：火炮';ww=0.5;}
-			if(WV[0]==9){rply.text+='\n武器種類：短近距離武器';ww=0.15;}
-			if(WV[0]==10){rply.text+='\n武器種類：中近距離武器';ww=0.3;}
-			if(WV[0]==11){rply.text+='\n武器種類：長近距離武器';ww=0.4;}
-			rply.text+= '\n基礎傷害：'+WV[1]+
-						'\n子彈數：'+WV[2]+
-						'\n傷害倍率：'+WV[3]+
-						'\n連發數：'+WV[4]+
-						'\n射程：'+WV[5]+
-						'\n武器重量：'+(WV[1]*WV[2]*ww)+
-						'\n可改造次數：'+WV[8]
+			rply.text+='\n技能名稱：'+par[5]+
+						'\n類型：'+par[0]+
+						'\n屬性：'+par[1]+
+						'\n傷害：'+par[2]+
+						'\n射程：'+par[3]+
+						'\n報擊率：'+par[4]+
+						'\n'+name+par[6]
 						;
-			if(Number(ox.oC(i,7))<Number((WV[1]*WV[2]*ww)))rply.text+='\n注意：武器過重'
 			return rply;
 
   }
@@ -269,7 +255,8 @@ var WMK;
 	}
 }
 module.exports = {
-	skill_make:skill_make
+	skill_make:skill_make,
+	skill_view:skill_view
 };
 
 
