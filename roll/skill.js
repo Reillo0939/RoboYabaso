@@ -26,7 +26,7 @@ function skill_make(id,name,position,STR) {
 			rply.text=name+' 技能格已有技能';
 			return rply;
 		}
-		if(position=='攻擊'){
+		if(Par[0]=='攻擊'){
 	if(STR.length!=7){
 			rply.text=name+' 格式錯誤';
 			return rply;
