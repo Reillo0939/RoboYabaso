@@ -3,98 +3,60 @@ var funny = require('./funny.js');
 var ox = require('./Character.js');
 var rply ={type : 'text'}; //type是必需的,但可以更改
 
-function skill_make(id,name,species,Wname) {
-	var str='0|1|2|3|4|';
-	let te = str.split('|'); //定義輸入字串
-	rply.text=te.length;
-	return rply;
-	
-/*var WMK;
+function skill_make(id,name,position,STR) {
   for(var i=0;i<ox.oL();i++){
 	if(ox.oC(i,0)==id){
-		if(ox.oC(i,19)!=0){
-			rply.text=name+'你已有武器';
+		if(ox.oC(i,3)=='A.A.U.F'){
+			rply.text=name+' 此系統只開放給GU使用';
+			return rply;
+		}
+		let Askill = ox.oC(i,21).split('|'); //定義輸入字串
+		let Par = STR.split(',');
+	
+		if(Number(Par[0])>5 && Number(Par[0])<1){
+			rply.text=name+' 沒有這個技能格';
+			return rply;
+		}
+		if(Askill[Number(Par[0])-1]!=0){
+			rply.text=name+' 技能格已有技能';
+			return rply;
+		}
+		if(Par[1]=='攻擊'){
+	if(STR.length!=8){
+			rply.text=name+' 格式錯誤';
+			return rply;
+		}
+		Askill[Number(Par[0])-1]=Par[1];
+			if(Par[2]=='無'){Askill[Number(Par[0])-1]+=','+Par[2];}
+			if(Par[2]=='火'){Askill[Number(Par[0])-1]+=','+Par[2];}
+			if(Par[2]=='水'){Askill[Number(Par[0])-1]+=','+Par[2];}
+			if(Par[2]=='風'){Askill[Number(Par[0])-1]+=','+Par[2];}
+			if(Par[2]=='土'){Askill[Number(Par[0])-1]+=','+Par[2];}
+			if(Par[2]!='無' && Par[2]!='火' && Par[2]!='水' && Par[2]!='風' && Par[2]!='土'){
+				rply.text=name+' 沒有這個屬性';
 			return rply;
 			}
 			
-			WMK='';
-		if(species=='手槍'){
-			WMK='1,10,15,1,3,3,'+Wname+',0,10';
-			ox.WM(i,WMK);
-			rply.text=name+'已製作完成';
-			return rply;
-		}
-		if(species=='重型手槍'){
-			WMK='2,15,7,1,1,4,'+Wname+',0,10';
-			ox.WM(i,WMK);
-			rply.text=name+'已製作完成';
-			return rply;
-		}
-		if(species=='衝鋒槍'){
-			WMK='3,8,30,0.8,10,4,'+Wname+',0,10';
-			ox.WM(i,WMK);
-			rply.text=name+'已製作完成';
-			return rply;
-		}
-		if(species=='短步槍'){
-			WMK='4,12,30,0.8,5,5,'+Wname+',0,10';
-			ox.WM(i,WMK);
-			rply.text=name+'已製作完成';
-			return rply;
-		}
-		if(species=='步槍'){
-			WMK='5,15,30,1.5,3,8,'+Wname+',0,10';
-			ox.WM(i,WMK);
-			rply.text=name+'已製作完成';
-			return rply;
-		}
-		if(species=='狙擊槍'){
-			WMK='6,20,10,2,1,10,'+Wname+',0,10';
-			ox.WM(i,WMK);
-			rply.text=name+'已製作完成';
-			return rply;
-		}
-		if(species=='大口徑狙擊槍'){
-			WMK='7,30,5,2,1,13,'+Wname+',0,10';
-			ox.WM(i,WMK);
-			rply.text=name+'已製作完成';
-			return rply;
-		}
-		if(species=='火炮'){
-			WMK='8,100,1,1,1,20,'+Wname+',0,10';
-			ox.WM(i,WMK);
-			rply.text=name+'已製作完成';
-			return rply;
-		}
-		if(species=='短近距離武器'){
-			WMK='9,20,1,1,1,0.2,'+Wname+',0,10';
-			ox.WM(i,WMK);
-			rply.text=name+'已製作完成';
-			return rply;
-		}
-		if(species=='中近距離武器'){
-			WMK='10,30,1,1,1,0.5,'+Wname+',0,10';
-			ox.WM(i,WMK);
-			rply.text=name+'已製作完成';
+			Askill[Number(Par[0])-1]+=','+Number(Par[3]);
+			Askill[Number(Par[0])-1]+=','+Number(Par[4]);
+			Askill[Number(Par[0])-1]+=','+Number(Par[5]);
+			if(Par[6]==null){
+				rply.text=name+' 技能沒有名字';
 			return rply;
 			}
-		if(species=='長近距離武器'){
-			WMK='11,40,1,1,1,0.8,'+Wname+',0,10';
-			ox.WM(i,WMK);
+			Askill[Number(Par[0])-1]+=','+Par[6];
+			Askill[Number(Par[0])-1]+=','+Par[7];
+			var SMK=Askill[0]+'|'+Askill[1]+'|'+Askill[2]+'|'+Askill[3]+'|'+Askill[4];
+			ox.SM(i,SMK);
 			rply.text=name+'已製作完成';
 			return rply;
 		}
-		if(WMK==''){
-			rply.text=name+'沒有該種類 有'+
-			'\n手槍,\n重型手槍,\n衝鋒槍,\n短步槍,\n步槍,\n狙擊槍,\n大口徑狙擊槍,\n火炮,\n短近距離武器,\n中近距離武器,\n長近距離武器';
+		else{
+			rply.text=name+' 沒有這個類型';
 			return rply;
 		}
-		if(Wname==null){
-			rply.text=name+'武器沒有名字';
-			return rply;
-			}
   }
-	}*/
+	}
 }
 function weapon_break(id,name) {
 var WMK;

@@ -1364,7 +1364,7 @@ var od=[];
 							}
 								if(ap==0){
 									
-								for(var uu;uu<player.length;uu++){
+								for(var uu=0;uu<player.length;uu++){
 									var GGP=1+((player.length-1)*2);
 									ox.GP(uu,ox.oC(uu,18)+GGP);
 								}
@@ -1376,7 +1376,7 @@ var od=[];
 								return rply;
 							}
 							if(gp==0){
-								for(var uu;uu<player.length;uu++){
+								for(var uu=0;uu<player.length;uu++){
 									var GGP=1+((player.length-1)*2);
 									ox.GP(uu,ox.oC(uu,18)+GGP);
 								}
@@ -1508,7 +1508,7 @@ var od=[];
 								if(player[g][14]=='G.U.')gp++;
 							}
 								if(ap==0){
-									for(var uu;uu<player.length;uu++){
+									for(var uu=0;uu<player.length;uu++){
 									var GGP=1+((player.length-1)*2);
 									ox.GP(uu,ox.oC(uu,18)+GGP);
 								}
@@ -1520,7 +1520,7 @@ var od=[];
 								return rply;
 							}
 							if(gp==0){
-								for(var uu;uu<player.length;uu++){
+								for(var uu=0;uu<player.length;uu++){
 									var GGP=1+((player.length-1)*2);
 									ox.GP(uu,ox.oC(uu,18)+GGP);
 								}
@@ -1809,7 +1809,7 @@ var od=[];
 								if(player[g][14]=='G.U.')gp++;
 							}
 								if(ap==0){
-									for(var uu;uu<player.length;uu++){
+									for(var uu=0;uu<player.length;uu++){
 									var GGP=1+((player.length-1)*2);
 									ox.GP(uu,ox.oC(uu,18)+GGP);
 								}
@@ -1821,7 +1821,7 @@ var od=[];
 								return rply;
 							}
 							if(gp==0){
-								for(var uu;uu<player.length;uu++){
+								for(var uu=0;uu<player.length;uu++){
 									var GGP=1+((player.length-1)*2);
 									ox.GP(uu,ox.oC(uu,18)+GGP);
 								}
@@ -1935,7 +1935,7 @@ var od=[];
 								if(player[g][14]=='G.U.')gp++;
 							}
 								if(ap==0){
-									for(var uu;uu<player.length;uu++){
+									for(var uu=0;uu<player.length;uu++){
 									var GGP=1+((player.length-1)*2);
 									ox.GP(uu,ox.oC(uu,18)+GGP);
 								}
@@ -1947,7 +1947,7 @@ var od=[];
 								return rply;
 							}
 							if(gp==0){
-								for(var uu;uu<player.length;uu++){
+								for(var uu=0;uu<player.length;uu++){
 									var GGP=1+((player.length-1)*2);
 									ox.GP(uu,ox.oC(uu,18)+GGP);
 								}
@@ -2064,7 +2064,7 @@ var od=[];
 								if(player[g][14]=='G.U.')gp++;
 							}
 								if(ap==0){
-									for(var uu;uu<player.length;uu++){
+									for(var uu=0;uu<player.length;uu++){
 									var GGP=1+((player.length-1)*2);
 									ox.GP(uu,ox.oC(uu,18)+GGP);
 								}
@@ -2076,7 +2076,7 @@ var od=[];
 								return rply;
 							}
 							if(gp==0){
-								for(var uu;uu<player.length;uu++){
+								for(var uu=0;uu<player.length;uu++){
 									var GGP=1+((player.length-1)*2);
 									ox.GP(uu,ox.oC(uu,18)+GGP);
 								}
@@ -2181,7 +2181,7 @@ var od=[];
 								if(player[g][14]=='G.U.')gp++;
 							}
 								if(ap==0){
-									for(var uu;uu<player.length;uu++){
+									for(var uu=0;uu<player.length;uu++){
 									var GGP=1+((player.length-1)*2);
 									ox.GP(uu,ox.oC(uu,18)+GGP);
 								}
@@ -2193,7 +2193,7 @@ var od=[];
 								return rply;
 							}
 							if(gp==0){
-								for(var uu;uu<player.length;uu++){
+								for(var uu=0;uu<player.length;uu++){
 									var GGP=1+((player.length-1)*2);
 									ox.GP(uu,ox.oC(uu,18)+GGP);
 								}
@@ -2429,7 +2429,7 @@ var od=[];
 								if(player[g][14]=='G.U.')gp++;
 							}
 								if(ap==0){
-									for(var uu;uu<player.length;uu++){
+									for(var uu=0;uu<player.length;uu++){
 									var GGP=1+((player.length-1)*2);
 									ox.GP(uu,ox.oC(uu,18)+GGP);
 								}
@@ -2441,7 +2441,7 @@ var od=[];
 								return rply;
 							}
 							if(gp==0){
-								for(var uu;uu<player.length;uu++){
+								for(var uu=0;uu<player.length;uu++){
 									var GGP=1+((player.length-1)*2);
 									ox.GP(uu,ox.oC(uu,18)+GGP);
 								}

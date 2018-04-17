@@ -262,7 +262,7 @@ ddd[17] = 5000 ;
 ddd[18] = 0 ;
 ddd[19] = 0 ;
 ddd[20] = 0 ;
-ddd[21] = 0 ;
+ddd[21] = '0|0|0|0|0' ;
 Characters[hh]=ddd;
 	
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
@@ -507,6 +507,17 @@ ccN=x;
   				authorize(JSON.parse(content), CCCN);
 				});
 }
+function SM(x,y) {
+Characters[x][21]=y;
+ccN=x;
+	fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+  				if (err) {
+    				console.log('Error loading client secret file: ' + err);
+    				return;
+  				}
+  				authorize(JSON.parse(content), CCCN);
+				});
+}
 function oL() {
 var reggg;
 reggg=Characters.length;
@@ -520,6 +531,7 @@ module.exports = {
 	oA:oA,
 	GP:GP,
 	WM:WM,
+	SM:SM,
 	oL:oL,
 	CV:CV,
 	CI:CI,
