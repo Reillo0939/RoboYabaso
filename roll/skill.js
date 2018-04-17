@@ -83,7 +83,7 @@ var WMK;
 		
 		var AAA=ox.oC(i,21);
 		var Askill = AAA.split('|'); //定義輸入字串
-		var Par = Askill[position].split(',');
+		var par = Askill[position].split(',');
 		
 		if(Askill[position]==0){
 			rply.text=name+'這格沒有技能';
