@@ -113,7 +113,7 @@ function parseInput(rplyToken, inputStr, id,name) {
 	
 	}
 	if (trigger.match(/技能/) != null){
-	if (trigger.match(/測試/)!= null) return exports.weapon.weapon_make(id,name,mainMsg[1],mainMsg[2]) ;
+	if (trigger.match(/測試/)!= null) return exports.skill.skill_make(id,name,mainMsg[1],mainMsg[2]) ;
 
 	}
 	
