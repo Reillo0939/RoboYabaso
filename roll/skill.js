@@ -31,7 +31,7 @@ function skill_make(id,name,position,STR) {
 				rply.text=name+' 技能沒有名字';
 			return rply;
 			}
-			Askill[Number(position)-1]Par[5];
+			Askill[Number(position)-1]=Par[5];
 		Askill[Number(position)-1]+=','+Par[0];
 			if(Par[1]=='無'){Askill[Number(position)-1]+=','+Par[1];}
 			if(Par[1]=='火'){Askill[Number(position)-1]+=','+Par[1];}
