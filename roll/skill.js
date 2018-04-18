@@ -27,7 +27,12 @@ function skill_make(id,name,position,STR) {
 			rply.text=name+' 格式錯誤';
 			return rply;
 		}
-		Askill[Number(position)-1]=Par[0];
+		if(Par[5]==null){
+				rply.text=name+' 技能沒有名字';
+			return rply;
+			}
+			Askill[Number(position)-1]Par[5];
+		Askill[Number(position)-1]+=','+Par[0];
 			if(Par[1]=='無'){Askill[Number(position)-1]+=','+Par[1];}
 			if(Par[1]=='火'){Askill[Number(position)-1]+=','+Par[1];}
 			if(Par[1]=='水'){Askill[Number(position)-1]+=','+Par[1];}
@@ -41,11 +46,7 @@ function skill_make(id,name,position,STR) {
 			Askill[Number(position)-1]+=','+Number(Par[2]);
 			Askill[Number(position)-1]+=','+Number(Par[3]);
 			Askill[Number(position)-1]+=','+Number(Par[4]);
-			if(Par[5]==null){
-				rply.text=name+' 技能沒有名字';
-			return rply;
-			}
-			Askill[Number(position)-1]+=','+Par[5];
+			
 			Askill[Number(position)-1]+=','+Par[6];
 			var SMK=Askill[0]+'|'+Askill[1]+'|'+Askill[2]+'|'+Askill[3]+'|'+Askill[4];
 			ox.SM(i,SMK);
@@ -92,12 +93,12 @@ var WMK;
 			
 			rply.text='';
 			rply.text=name;
-			rply.text+='\n技能名稱：'+par[5]+
-						'\n類型：'+par[0]+
-						'\n屬性：'+par[1]+
-						'\n傷害：'+par[2]+
-						'\n射程：'+par[3]+
-						'\n報擊率：'+par[4]+
+			rply.text+='\n技能名稱：'+par[0]+
+						'\n類型：'+par[1]+
+						'\n屬性：'+par[2]+
+						'\n傷害：'+par[3]+
+						'\n射程：'+par[4]+
+						'\n報擊率：'+par[5]+
 						'\n'+name+'：'+par[6]
 						;
 			return rply;
