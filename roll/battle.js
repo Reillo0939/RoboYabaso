@@ -1235,7 +1235,7 @@ var od=[];
 			
 			//-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^技能$/) != null && mainMsg[1] != null && mainMsg[2] != null ){
-				if(player[self][mainMsg[1]+27][0]==null || player[self][mainMsg[1]+27][0]==0){
+				if(player[self][Number(mainMsg[1])+27]==null || player[self][Number(mainMsg[1])+27][0]==0){
 					rply.text='沒有這個技能';
 							return rply;
 				}
