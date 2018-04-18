@@ -206,8 +206,8 @@ var od=[];
 			if(od[31][0]!=0)rply.text+='\n技能4：'+od[31][0];
 			if(od[32][0]!=0)rply.text+='\n技能5：'+od[32][0];
 			rply.text+='\n目前參與人數： \n'+
-			'AAUF'+RAAUF+'/'+(aaab/2)+
-			'\nGU'+RGU+'/'+(aaab/2);
+			'AAUF：'+RAAUF+'/'+(aaab/2)+
+			'\nGU：'+RGU+'/'+(aaab/2);
 		return rply;
   }
 	}
@@ -221,7 +221,9 @@ var od=[];
 					if(player[i][14]=='G.U.')RGU--;
 					player.splice(i,1);
 					rply.text=name+'你的'+od[1]+'已取消參與'		
-						+'\n目前參與人數： '+player.length+'/'+aaab;
+						+'\n目前參與人數： \n'+
+			'AAUF：'+RAAUF+'/'+(aaab/2)+
+			'\nGU：'+RGU+'/'+(aaab/2);
 					return rply; 
 				}
 			}
@@ -1230,6 +1232,99 @@ var od=[];
 					}
 				}
 			}
+			
+			//-----------------------------------------------------------------------------------------------------------------------------------------------------
+			if(id==player[self][0] && trigger.match(/^技能$/) != null && mainMsg[1] != null && mainMsg[2] != null ){
+				if(player[self][mainMsg[1]+27][0]==null || player[self][mainMsg[1]+27][0]==0){
+					rply.text='沒有這個技能';
+							return rply;
+				}
+				clearTimeout(AJT);
+
+				for(var i=0;i<player.length;i++){
+					if(player[i][1]==mainMsg[2] ){
+						var temp =0;
+						temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
+						if(temp>Number(player[self][Number(mainMsg[1])+27][4])){
+							 AJT = setTimeout(function(){
+				var rr='';
+				self++;
+				ds=1;
+				if(self>=player.length)self=0;
+				rr='自動跳過\n\n'+BR();
+				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+			},180000);
+							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
+							return rply;
+						}
+						rnggg=rollbase.Dice(100);
+						Critical=rollbase.Dice(100);	
+						rply.text=player[self][1]+'：\n'+player[self][Number(mainMsg[1])+27][6]+'\n';
+						if(rnggg > (20 + parseInt(player[i][7]) - parseInt(player[self][7]) ) ){
+						damage=Math.round(Number(player[self][Number(mainMsg[1])+27][3])*(rollbase.Dice(10)+5)*0.1);
+							if(Critical<=Number(player[self][Number(mainMsg[1])+27][5]))damage=parseInt(damage*1.5);
+							player[i][2]=player[i][2]-damage;
+							rply.text+=player[i][1]+
+							'\nHP '+player[i][2]+'/'+player[i][3];
+							rply.text+='(-'+damage+')';
+							if(Critical<=50 && player[self][18]==9)rply.text+='Critical';
+							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							
+							ds++
+							if(ds==3){self++;ds=1;}
+							if(player[i][2]<=0){
+								if(i<self)self--;
+								rply.text=rply.text+'\n'+player[i][1]+'已撤退';
+								
+								player.splice(i,1);
+							}
+							
+							var ap=0,gp=0;
+							for(var g=0;g<player.length;g++){
+								if(player[g][14]=='A.A.U.F')ap++;
+								if(player[g][14]=='G.U.')gp++;
+							}
+								if(ap==0){
+									for(var uu=0;uu<player.length;uu++){
+									var GGP=1+((player.length-1)*2);
+									ox.GP(uu,ox.oC(uu,18)+GGP);
+								}
+								rply.text+='\nG.U勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
+							if(gp==0){
+								for(var uu=0;uu<player.length;uu++){
+									var GGP=1+((player.length-1)*2);
+									ox.GP(uu,ox.oC(uu,18)+GGP);
+								}
+								rply.text+='\nA.A.U.F勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
+							if(self>=player.length)self=0;
+							rply.text=rply.text+'\n\n'+BR();
+			return rply;
+						}
+						else{
+						ds++;
+							if(ds==3){self++;ds=1;}
+							if(self>=player.length)self=0;
+							rply.text=player[i][1]+'閃避成功'+
+							'\nHP '+player[i][2]+'/'+player[i][3]+
+							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
+							'\n\n'+BR();
+			return rply;
+						}
+					}
+				}
+			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^移動/) != null && start==1 &&  mainMsg[1] != null && player[self][25]<2){
 				
@@ -1560,6 +1655,11 @@ function BR(){
 			if(player[self][18]>=9 && player[self][18]<=11){
 				rr+='\n攻擊 目標';
 			}
+			if(player[self][28][0]!=0)rr+='\n技能 1 目標    ('+ player[self][28][0]+')';
+			if(player[self][29][0]!=0)rr+='\n技能 2 目標    ('+ player[self][29][0]+')';
+			if(player[self][30][0]!=0)rr+='\n技能 3 目標    ('+ player[self][30][0]+')';
+			if(player[self][31][0]!=0)rr+='\n技能 4 目標    ('+ player[self][31][0]+')';
+			if(player[self][32][0]!=0)rr+='\n技能 5 目標    ('+ player[self][32][0]+')';
 			rr+='\n 目標有';
 			for(var k=0;k<player.length;k++){
 								rr=rr+'\n'+player[k][1]+' '+player[k][16]+','+player[k][17]+'('
