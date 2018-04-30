@@ -28,13 +28,30 @@ var ds=0;
 var damage;
 var rnggg;
 var mode;
+var otime;
 var RAAUF=0,RGU=0;
 function dd() {
 player.length=0;
 RAAUF=0;
-								RGU=0;
-								clearTimeout(AJT);
+RGU=0;						
 }
+
+setInterval(function(){
+	var nt = new Date();
+	if((nt - ot) / (1000 * 60) >=3 && start = 1){
+				var rr='';
+				self++;
+				ds=1;
+				if(self>=player.length)self=0;
+				rr='自動跳過\n\n'+BR();
+				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
+				var nowt = new Date();
+				ot=nowt;
+	}
+			},1000);
+
+
+
 function battles(id,name,ab) {
 	var ggg,ttt;
 	let msgSplitor = (/\S+/ig);	
@@ -298,38 +315,21 @@ var od=[];
 				}
 			var rt=BR();
 			rply.text=rt;
-			 AJT = setTimeout(function(){
-				 clearTimeout(AJT);
-				 console.log('AJT: '+AJT);
-				var rr='';
-				self++;
-				ds=1;
-				if(self>=player.length)self=0;
-				rr='自動跳過\n\n'+BR();
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-			},180000);
-			console.log('AJT: '+AJT);
+			nt=new Date();
 			return rply;
 		}
 		
 		if(start==1){
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^攻擊$/) != null && mainMsg[1] != null &&player[self][18]>=9 && player[self][18]<=11 ){
-				clearTimeout(AJT);
-				
+				nt=new Date();
+			
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
 						temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
 						if(temp>player[self][24]){
-							 AJT = setTimeout(function(){
-				var rr='';
-				self++;
-				ds=1;
-				if(self>=player.length)self=0;
-				rr='自動跳過\n\n'+BR();
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-			},180000);
+							 
 							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
 							
 							return rply;
@@ -444,7 +444,7 @@ var od=[];
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^單發射擊$/) != null && mainMsg[1] != null &&player[self][18]>=1 && player[self][18]<=5 && player[self][20]>0){
 				
-				clearTimeout(AJT);
+				nt=new Date();
 		
 				
 				
@@ -453,14 +453,7 @@ var od=[];
 						var temp =0;
 						temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
 						if(temp>player[self][24]){
-							 AJT = setTimeout(function(){
-				var rr='';
-				self++;
-				ds=1;
-				if(self>=player.length)self=0;
-				rr='自動跳過\n\n'+BR();
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-			},180000);
+							
 							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
 							return rply;
 						}
@@ -594,7 +587,7 @@ var od=[];
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^連發射擊$/) != null && mainMsg[1] != null &&player[self][18]>=1 && player[self][18]<=5 && player[self][20]>1){
 				
-				clearTimeout(AJT);
+				nt=new Date();
 
 				
 				for(var i=0;i<player.length;i++){
@@ -602,14 +595,7 @@ var od=[];
 						var temp =0;
 						temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
 						if(temp>player[self][24]){
-							 AJT = setTimeout(function(){
-				var rr='';
-				self++;
-				ds=1;
-				if(self>=player.length)self=0;
-				rr='自動跳過\n\n'+BR();
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-			},180000);
+							 
 							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
 							return rply;
 						}
@@ -922,7 +908,7 @@ var od=[];
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^射擊$/) != null && mainMsg[1] != null && player[self][18]==6 && player[self][20]>0 && player[self][25]==1){
 				
-				clearTimeout(AJT);
+				nt=new Date();
 
 				
 				
@@ -931,14 +917,7 @@ var od=[];
 						var temp =0;
 						temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
 						if(temp>player[self][24]){
-							 AJT = setTimeout(function(){
-				var rr='';
-				self++;
-				ds=1;
-				if(self>=player.length)self=0;
-				rr='自動跳過\n\n'+BR();
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-			},180000);
+							 
 							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
 							return rply;
 						}
@@ -1061,7 +1040,7 @@ var od=[];
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^射擊$/) != null && mainMsg[1] != null && player[self][18]==7 && player[self][20]>0 && player[self][25]==3){
 				
-				clearTimeout(AJT);
+				nt=new Date();
 
 				
 				
@@ -1070,14 +1049,7 @@ var od=[];
 						var temp =0;
 						temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
 						if(temp>player[self][24]){
-							 AJT = setTimeout(function(){
-				var rr='';
-				self++;
-				ds=1;
-				if(self>=player.length)self=0;
-				rr='自動跳過\n\n'+BR();
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-			},180000);
+							
 							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
 							return rply;
 						}
@@ -1191,21 +1163,12 @@ var od=[];
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^炮擊$/) != null && mainMsg[1] != null && player[self][18]==8 && player[self][20]>0 && player[self][25]==3){
-				clearTimeout(AJT);
-
+				nt=new Date();
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
 						temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
 						if(temp>player[self][24]){
-							 AJT = setTimeout(function(){
-				var rr='';
-				self++;
-				ds=1;
-				if(self>=player.length)self=0;
-				rr='自動跳過\n\n'+BR();
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-			},180000);
 							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
 							return rply;
 						}
@@ -1288,6 +1251,7 @@ var od=[];
 			
 			//-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^技能$/) != null && mainMsg[1] != null && mainMsg[2] != null ){
+				nt=new Date();
 				if(player[self][Number(mainMsg[1])+27]==null || player[self][Number(mainMsg[1])+27][0]==0){
 					rply.text='沒有這個技能';
 							return rply;
@@ -1299,14 +1263,6 @@ var od=[];
 						var temp =0;
 						temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
 						if(temp>Number(player[self][Number(mainMsg[1])+27][4])){
-							 AJT = setTimeout(function(){
-				var rr='';
-				self++;
-				ds=1;
-				if(self>=player.length)self=0;
-				rr='自動跳過\n\n'+BR();
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-			},180000);
 							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
 							return rply;
 						}
@@ -1389,7 +1345,7 @@ var od=[];
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^移動/) != null && start==1 &&  mainMsg[1] != null && player[self][25]<2){
 				
-				clearTimeout(AJT);
+				nt=new Date();
 
 				
 				let xxyy = mainMsg[1].split(','); //定義輸入字串
@@ -1397,16 +1353,7 @@ var od=[];
 					var temp =0;
 						temp = Math.ceil((Math.pow(Math.pow(Math.floor(xxyy[0])-player[self][16],2)+Math.pow(Math.floor(xxyy[1])-player[self][17],2),0.5)));
 						if(temp>3){
-											 AJT = setTimeout(function(){
-				var rr='';
-				self++;
-				ds=1;
-				if(self>=player.length)self=0;
-				rr='自動跳過\n\n'+BR();
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				
-
-			},180000);
+											 
 							rply.text='距離太遠，無法移動';
 							return rply;
 						}
@@ -1417,32 +1364,14 @@ var od=[];
 							player[self][17]=Math.floor(xxyy[1]);
 							}
 							else{
-												 AJT = setTimeout(function(){
-				var rr='';
-				self++;
-				ds=1;
-				if(self>=player.length)self=0;
-				rr='自動跳過\n\n'+BR();
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				
-
-			},180000);
+												
 								rply.text='位置錯誤，無法移動';
 							return rply;
 							}
 						}
 				}
 				else{
-									 AJT = setTimeout(function(){
-				var rr='';
-				self++;
-				ds=1;
-				if(self>=player.length)self=0;
-				rr='自動跳過\n\n'+BR();
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				
-
-			},180000);
+									 
 					rply.text='格式錯誤';
 					return rply;
 				}
@@ -1456,7 +1385,7 @@ var od=[];
 			if(id==player[self][0] && trigger.match(/^磁懸推進/) != null && start==1 &&  mainMsg[1] != null && player[self][14]=='A.A.U.F'){
 				
 				
-				clearTimeout(AJT);
+				nt=new Date();
 				
 				
 				let xxyy = mainMsg[1].split(','); //定義輸入字串
@@ -1464,16 +1393,7 @@ var od=[];
 					var temp =0;
 						temp = Math.ceil((Math.pow(Math.pow(Math.floor(xxyy[0])-player[self][16],2)+Math.pow(Math.floor(xxyy[1])-player[self][17],2),0.5)));
 						if(temp>(Math.floor(player[self][4])/10)){
-											 AJT = setTimeout(function(){
-				var rr='';
-				self++;
-				ds=1;
-				if(self>=player.length)self=0;
-				rr='自動跳過\n\n'+BR();
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				
-
-			},180000);
+											
 							rply.text='Bata粒子過少，無法移動';
 							return rply;
 						}
@@ -1485,32 +1405,14 @@ var od=[];
 							player[self][17]=Math.floor(xxyy[1]);
 							}
 							else{
-												 AJT = setTimeout(function(){
-				var rr='';
-				self++;
-				ds=1;
-				if(self>=player.length)self=0;
-				rr='自動跳過\n\n'+BR();
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				
-
-			},180000);
+										
 								rply.text='位置錯誤，無法移動';
 							return rply;
 							}
 						}
 				}
 				else{
-									 AJT = setTimeout(function(){
-				var rr='';
-				self++;
-				ds=1;
-				if(self>=player.length)self=0;
-				rr='自動跳過\n\n'+BR();
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				
-
-			},180000);
+									
 					rply.text='格式錯誤';
 					return rply;
 				}
@@ -1523,7 +1425,7 @@ var od=[];
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^脈衝推進/) != null && start==1 &&  mainMsg[1] != null && player[self][14]=='G.U.'){
 				
-				clearTimeout(AJT);
+				nt=new Date();
 
 				
 				let xxyy = mainMsg[1].split(','); //定義輸入字串
@@ -1531,16 +1433,7 @@ var od=[];
 					var temp =0;
 						temp = Math.ceil((Math.pow(Math.pow(Math.floor(xxyy[0])-player[self][16],2)+Math.pow(Math.floor(xxyy[1])-player[self][17],2),0.5)));
 						if(temp>(Math.floor(player[self][4])/20)){
-											 AJT = setTimeout(function(){
-				var rr='';
-				self++;
-				ds=1;
-				if(self>=player.length)self=0;
-				rr='自動跳過\n\n'+BR();
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				 
-
-			},180000);
+											
 							rply.text='Bata粒子過少，無法移動';
 							return rply;
 						}
@@ -1552,32 +1445,14 @@ var od=[];
 							player[self][17]=Math.floor(xxyy[1]);
 							}
 							else{
-												 AJT = setTimeout(function(){
-				var rr='';
-				self++;
-				ds=1;
-				if(self>=player.length)self=0;
-				rr='自動跳過\n\n'+BR();
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				 
-
-			},180000);
+												 
 								rply.text='位置錯誤，無法移動';
 							return rply;
 							}
 						}
 				}
 				else{
-									 AJT = setTimeout(function(){
-				var rr='';
-				self++;
-				ds=1;
-				if(self>=player.length)self=0;
-				rr='自動跳過\n\n'+BR();
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				 
-
-			},180000);
+									
 					rply.text='格式錯誤';
 					return rply;
 				}
@@ -1643,17 +1518,7 @@ var od=[];
 
 function BR(){
 	
-	clearTimeout(AJT);
-	
-	AJT = setTimeout(function(){
-				var rr='';
-				self++;
-				ds=1;
-				if(self>=player.length)self=0;
-				rr='自動跳過\n\n'+BR();
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-
-			},180000);
+	nt=new Date();
 	var rr;
 	rr='輪到'+player[self][1]+'的第'+ds+'次行動'+
 			'\n陣營'+player[self][14]+
