@@ -38,7 +38,7 @@ RGU=0;
 
 setInterval(function(){
 	var nt = new Date();
-	if((nt - ot) / (1000 * 60) >=3 && start = 1){
+	if(((nt - ot) / (1000 * 60) >=3) && start = 1){
 				var rr='';
 				self++;
 				ds=1;
