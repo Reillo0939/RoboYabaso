@@ -28,7 +28,7 @@ var ds=0;
 var damage;
 var rnggg;
 var mode;
-var ot;
+var ot= new Date();;
 var RAAUF=0,RGU=0;
 function dd() {
 player.length=0;
