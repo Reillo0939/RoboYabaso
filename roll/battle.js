@@ -317,14 +317,14 @@ var od=[];
 				}
 			var rt=BR();
 			rply.text=rt;
-			nt=new Date();
+			ot=new Date();
 			return rply;
 		}
 		
 		if(start==1){
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^攻擊$/) != null && mainMsg[1] != null &&player[self][18]>=9 && player[self][18]<=11 ){
-				nt=new Date();
+				ot=new Date();
 			
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
@@ -446,7 +446,7 @@ var od=[];
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^單發射擊$/) != null && mainMsg[1] != null &&player[self][18]>=1 && player[self][18]<=5 && player[self][20]>0){
 				
-				nt=new Date();
+				ot=new Date();
 		
 				
 				
@@ -589,7 +589,7 @@ var od=[];
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^連發射擊$/) != null && mainMsg[1] != null &&player[self][18]>=1 && player[self][18]<=5 && player[self][20]>1){
 				
-				nt=new Date();
+				ot=new Date();
 
 				
 				for(var i=0;i<player.length;i++){
@@ -910,7 +910,7 @@ var od=[];
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^射擊$/) != null && mainMsg[1] != null && player[self][18]==6 && player[self][20]>0 && player[self][25]==1){
 				
-				nt=new Date();
+				ot=new Date();
 
 				
 				
@@ -1042,7 +1042,7 @@ var od=[];
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^射擊$/) != null && mainMsg[1] != null && player[self][18]==7 && player[self][20]>0 && player[self][25]==3){
 				
-				nt=new Date();
+				ot=new Date();
 
 				
 				
@@ -1165,7 +1165,7 @@ var od=[];
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^炮擊$/) != null && mainMsg[1] != null && player[self][18]==8 && player[self][20]>0 && player[self][25]==3){
-				nt=new Date();
+				ot=new Date();
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
@@ -1253,7 +1253,7 @@ var od=[];
 			
 			//-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^技能$/) != null && mainMsg[1] != null && mainMsg[2] != null ){
-				nt=new Date();
+				ot=new Date();
 				if(player[self][Number(mainMsg[1])+27]==null || player[self][Number(mainMsg[1])+27][0]==0){
 					rply.text='沒有這個技能';
 							return rply;
@@ -1347,7 +1347,7 @@ var od=[];
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^移動/) != null && start==1 &&  mainMsg[1] != null && player[self][25]<2){
 				
-				nt=new Date();
+				ot=new Date();
 
 				
 				let xxyy = mainMsg[1].split(','); //定義輸入字串
@@ -1387,7 +1387,7 @@ var od=[];
 			if(id==player[self][0] && trigger.match(/^磁懸推進/) != null && start==1 &&  mainMsg[1] != null && player[self][14]=='A.A.U.F'){
 				
 				
-				nt=new Date();
+				ot=new Date();
 				
 				
 				let xxyy = mainMsg[1].split(','); //定義輸入字串
@@ -1427,7 +1427,7 @@ var od=[];
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^脈衝推進/) != null && start==1 &&  mainMsg[1] != null && player[self][14]=='G.U.'){
 				
-				nt=new Date();
+				ot=new Date();
 
 				
 				let xxyy = mainMsg[1].split(','); //定義輸入字串
@@ -1520,7 +1520,7 @@ var od=[];
 
 function BR(){
 	
-	nt=new Date();
+	ot=new Date();
 	var rr;
 	rr='輪到'+player[self][1]+'的第'+ds+'次行動'+
 			'\n陣營'+player[self][14]+
