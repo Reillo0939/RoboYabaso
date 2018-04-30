@@ -70,6 +70,11 @@ if(trigger.match(/^2人陣營模式/) != null && start==0){
 	        rply.text='已轉為6人陣營模式';
 		return rply;
 	}
+	if(trigger.match(/^時間/) != null && start==0){
+		var dt = new Date();
+	        rply.text=dt;
+		return rply;
+	}
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 	rply.text='';
@@ -387,8 +392,12 @@ var od=[];
 								if(ap==0){
 									
 								for(var uu=0;uu<player.length;uu++){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(uu,ox.oC(uu,18)+GGP);
+									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+										}
+									  }
 								}
 								rply.text+='\nG.U勝利';
 								start=0;
@@ -399,8 +408,12 @@ var od=[];
 							}
 							if(gp==0){
 								for(var uu=0;uu<player.length;uu++){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(uu,ox.oC(uu,18)+GGP);
+									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+										}
+									  }
 								}
 								rply.text+='\nA.A.U.F勝利';
 								start=0;
@@ -531,8 +544,12 @@ var od=[];
 							}
 								if(ap==0){
 									for(var uu=0;uu<player.length;uu++){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(uu,ox.oC(uu,18)+GGP);
+									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+										}
+									  }
 								}
 								rply.text+='\nG.U勝利';
 								start=0;
@@ -543,8 +560,12 @@ var od=[];
 							}
 							if(gp==0){
 								for(var uu=0;uu<player.length;uu++){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(uu,ox.oC(uu,18)+GGP);
+									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+										}
+									  }
 								}
 								rply.text+='\nA.A.U.F勝利';
 								start=0;
@@ -832,8 +853,12 @@ var od=[];
 							}
 								if(ap==0){
 									for(var uu=0;uu<player.length;uu++){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(uu,ox.oC(uu,18)+GGP);
+									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+										}
+									  }
 								}
 								rply.text+='\nG.U勝利';
 								start=0;
@@ -844,8 +869,12 @@ var od=[];
 							}
 							if(gp==0){
 								for(var uu=0;uu<player.length;uu++){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(uu,ox.oC(uu,18)+GGP);
+									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+										}
+									  }
 								}
 								rply.text+='\nA.A.U.F勝利';
 								start=0;
@@ -958,8 +987,12 @@ var od=[];
 							}
 								if(ap==0){
 									for(var uu=0;uu<player.length;uu++){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(uu,ox.oC(uu,18)+GGP);
+									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+										}
+									  }
 								}
 								rply.text+='\nG.U勝利';
 								start=0;
@@ -970,8 +1003,12 @@ var od=[];
 							}
 							if(gp==0){
 								for(var uu=0;uu<player.length;uu++){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(uu,ox.oC(uu,18)+GGP);
+									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+										}
+									  }
 								}
 								rply.text+='\nA.A.U.F勝利';
 								start=0;
@@ -1087,8 +1124,12 @@ var od=[];
 							}
 								if(ap==0){
 									for(var uu=0;uu<player.length;uu++){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(uu,ox.oC(uu,18)+GGP);
+									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+										}
+									  }
 								}
 								rply.text+='\nG.U勝利';
 								start=0;
@@ -1099,8 +1140,12 @@ var od=[];
 							}
 							if(gp==0){
 								for(var uu=0;uu<player.length;uu++){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(uu,ox.oC(uu,18)+GGP);
+									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+										}
+									  }
 								}
 								rply.text+='\nA.A.U.F勝利';
 								start=0;
@@ -1204,8 +1249,12 @@ var od=[];
 							}
 								if(ap==0){
 									for(var uu=0;uu<player.length;uu++){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(uu,ox.oC(uu,18)+GGP);
+									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+										}
+									  }
 								}
 								rply.text+='\nG.U勝利';
 								start=0;
@@ -1216,8 +1265,12 @@ var od=[];
 							}
 							if(gp==0){
 								for(var uu=0;uu<player.length;uu++){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(uu,ox.oC(uu,18)+GGP);
+									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+										}
+									  }
 								}
 								rply.text+='\nA.A.U.F勝利';
 								start=0;
@@ -1286,8 +1339,12 @@ var od=[];
 							}
 								if(ap==0){
 									for(var uu=0;uu<player.length;uu++){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(uu,ox.oC(uu,18)+GGP);
+									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+										}
+									  }
 								}
 								rply.text+='\nG.U勝利';
 								start=0;
@@ -1298,8 +1355,12 @@ var od=[];
 							}
 							if(gp==0){
 								for(var uu=0;uu<player.length;uu++){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(uu,ox.oC(uu,18)+GGP);
+									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+										}
+									  }
 								}
 								rply.text+='\nA.A.U.F勝利';
 								start=0;
