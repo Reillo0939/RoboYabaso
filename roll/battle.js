@@ -671,6 +671,7 @@ var od=[];
 					if(self>=player.length)self=0;
 					rply.text+='\n\n'+BR();
 			return rply;
+			break;
 					}
 						else{
 							rply.text='沒有此目標';
@@ -826,6 +827,7 @@ var od=[];
 					if(self>=player.length)self=0;
 					rply.text+=BR();
 			return rply;
+			break;
 					}
 						else{
 							rply.text='沒有此目標';
