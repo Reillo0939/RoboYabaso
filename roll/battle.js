@@ -64,7 +64,7 @@ function battles(id,name,ab) {
 	if (trigger.match(/製作/)!= null) return xweapon.weapon_make(id,name,mainMsg[1],mainMsg[2]) ;
 	if (trigger.match(/查看/)!= null) return xweapon.weapon_view(id,name) ;
 	if (trigger.match(/破壞/)!= null) return xweapon.weapon_break(id,name) ;
-	if (trigger.match(/改造/)!= null) return xweapon.weapon.weapon_retrofit(id,name,mainMsg[1],mainMsg[2]) ;
+	if (trigger.match(/改造/)!= null) return xweapon.weapon_retrofit(id,name,mainMsg[1],mainMsg[2]) ;
 	}
 	if (trigger.match(/玩家/) != null && start==0){
 	if (trigger.match(/自身情報/)!= null) return ox.CV(id,name) ;

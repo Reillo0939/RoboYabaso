@@ -11,7 +11,14 @@ var WMK;
 			rply.text='['+name+']'+'你已有武器';
 			return rply;
 			}
-			
+			if(Wname==null){
+			rply.text='['+name+']'+'武器沒有名字';
+			return rply;
+			}
+			if(Wname==undefined){
+			rply.text='['+name+']'+'武器沒有名字';
+			return rply;
+			}
 			WMK='';
 		if(species=='手槍'){
 			WMK='1,10,15,3,3,'+Wname+',50,10';
@@ -84,10 +91,7 @@ var WMK;
 			'\n手槍,\n重型手槍,\n衝鋒槍,\n突擊步槍,\n射手步槍,\n狙擊槍,\n大口徑狙擊槍,\n火炮,\n短近距離武器,\n中近距離武器,\n長近距離武器';
 			return rply;
 		}
-		if(Wname==null){
-			rply.text='['+name+']'+'武器沒有名字';
-			return rply;
-			}
+		
   }
 	}
 }
@@ -178,7 +182,7 @@ var WMK;
 			rply.text+=' 沒有該種改造類型';
 			return rply;
 			}
-			if(WV[8]<amount){
+			if(WV[7]<amount){
 			rply.text='';
 			rply.text='['+name+']';
 			rply.text+=' 改造次數不夠';
