@@ -824,7 +824,7 @@ var od=[];
 					ds++;
 					if(ds==player[self][33]+1){self++;ds=1;}
 					if(self>=player.length)self=0;
-					rply.text+=BR()
+					rply.text+=BR();
 			return rply;
 					}
 						else{
