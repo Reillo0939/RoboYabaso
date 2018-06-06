@@ -137,7 +137,7 @@ var od=[];
 		yy=15-WV[0]*5;
 		if(yy<=0)yy=0;
 			ww=Number(Number(WV[1])*0.5+Number(WV[2])*0.2+Number(WV[3])+Number(WV[4])*0.5+Number(WV[6])*0.1)-yy;
-		if(Number(ox.oC(i,7))<Number((WV[1]*WV[2]*ww))){
+		if(Number(ox.oC(i,7))<Number(ww)){
 			rply.text=name +'你武器過重 無法參與';
 		return rply;
 		}
