@@ -163,6 +163,7 @@ var WMK;
 			rply.text='';
 			rply.text=name;
 			rply.text+='\n武器名稱：'+WV[5];
+			if(amount=='')amount=0;
 			amount=Number(amount);
 			WV[1]=Number(WV[1]);
 			WV[2]=Number(WV[2]);
