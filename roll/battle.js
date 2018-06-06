@@ -551,7 +551,7 @@ var od=[];
 								if(Hit<=(od[24]*0.2))hhiitt[o]=parseInt(hhiitt[o]*2);
 								hitd[o]=hhiitt[o];
 								if(Hit<=(od[24]*0.2))hitd[o]+='(Critical)';
-								if(rnggg <(( parseInt(player[i][7]) - parseInt(player[self][7]) ) * od[34]){
+								if(rnggg <(( parseInt(player[i][7]) - parseInt(player[self][7]) ) * od[34])){
 									hhiitt[o]=0;
 									hitd[o]='dodge';
 								}
