@@ -67,9 +67,9 @@ function battles(id,name,ab) {
 	if (trigger.match(/改造/)!= null) return exports.weapon.weapon_retrofit(id,name,mainMsg[1],mainMsg[2]) ;
 	}
 	if (trigger.match(/玩家/) != null && start==0){
-	if (trigger.match(/自身情報/)!= null) return exports.Character.CV(id,name) ;
-	if (trigger.match(/改名/)!= null) return exports.Character.CCN(id,name,mainMsg[1]) ;
-	if (trigger.match(/列表/)!= null) return exports.Character.CCL() ;
+	if (trigger.match(/自身情報/)!= null) return ox.CV(id,name) ;
+	if (trigger.match(/改名/)!= null) return ox.CCN(id,name,mainMsg[1]) ;
+	if (trigger.match(/列表/)!= null) return ox.CCL() ;
 	}
 if(trigger.match(/^2人陣營模式/) != null && start==0){
 		mode=12;
@@ -209,7 +209,7 @@ var od=[];
 			'\nbata粒子 '+od[4]+'/'+od[5]+
 			'\n物理適性 '+od[6]+
 			'\n反應力'+od[7]+
-			'\n武器名稱：'+WV[6];
+			'\n武器名稱：'+WV[5];
 			if(WV[0]==1)rply.text+='\n武器種類：手槍';
 			if(WV[0]==2)rply.text+='\n武器種類：重型手槍';
 			if(WV[0]==3)rply.text+='\n武器種類：衝鋒槍';
