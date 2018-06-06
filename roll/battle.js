@@ -93,7 +93,7 @@ if(trigger.match(/^2人陣營模式/) != null && start==0){
 		var time = new Date();
 		var atxu=0;
 		atxu=time+28800000
-		var dt = new Date(a);
+		var dt = new Date(atxu);
 	        rply.text=dt.getFullYear() +'年' +(dt.getMonth()+1)+'月'+dt.getDate()+'日'+(dt.getHours())+'點'+dt.getMinutes()+'分' ;
 		return rply;
 	}
