@@ -14,67 +14,67 @@ var WMK;
 			
 			WMK='';
 		if(species=='手槍'){
-			WMK='1,10,15,1,3,3,'+Wname+',0,10';
+			WMK='1,10,15,3,3,'+Wname+',50,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
 		}
 		if(species=='重型手槍'){
-			WMK='2,15,7,1,1,4,'+Wname+',0,10';
+			WMK='2,20,7,1,4,'+Wname+',70,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
 		}
 		if(species=='衝鋒槍'){
-			WMK='3,8,30,0.8,10,4,'+Wname+',0,10';
+			WMK='3,8,30,10,4,'+Wname+',20,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
 		}
-		if(species=='短步槍'){
-			WMK='4,12,30,0.8,5,5,'+Wname+',0,10';
+		if(species=='突擊步槍'){
+			WMK='4,16,30,5,5,'+Wname+',40,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
 		}
-		if(species=='步槍'){
-			WMK='5,15,30,1.5,3,8,'+Wname+',0,10';
+		if(species=='射手步槍'){
+			WMK='5,12,30,3,8,'+Wname+',70,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
 		}
 		if(species=='狙擊槍'){
-			WMK='6,20,10,2,1,10,'+Wname+',0,10';
+			WMK='6,35,10,1,10,'+Wname+',50,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
 		}
 		if(species=='大口徑狙擊槍'){
-			WMK='7,30,5,2,1,13,'+Wname+',0,10';
+			WMK='7,50,5,1,13,'+Wname+',50,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
 		}
 		if(species=='火炮'){
-			WMK='8,100,1,1,1,20,'+Wname+',0,10';
+			WMK='8,100,1,1,20,'+Wname+',50,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
 		}
 		if(species=='短近距離武器'){
-			WMK='9,20,1,1,1,0.2,'+Wname+',0,10';
+			WMK='9,20,1,1,0.2,'+Wname+',100,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
 		}
 		if(species=='中近距離武器'){
-			WMK='10,30,1,1,1,0.5,'+Wname+',0,10';
+			WMK='10,30,1,1,0.5,'+Wname+',85,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
 			}
 		if(species=='長近距離武器'){
-			WMK='11,40,1,1,1,0.8,'+Wname+',0,10';
+			WMK='11,40,1,1,0.8,'+Wname+',70,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
@@ -119,29 +119,19 @@ var WMK;
 			WMK=ox.oC(i,19);
 			let WV = WMK.split(','); //定義輸入字串
 			var ww=1;
+			ww=Number(Number(WV[1])*0.5+Number(WV[2])*0.2+Number(WV[3])+Number(WV[4])*0.5+Number(WV[6])*0.1);
 			rply.text='';
 			rply.text=name;
-			rply.text+='\n武器名稱：'+WV[6];
-			if(WV[0]==1){rply.text+='\n武器種類：手槍';ww=0.04;}
-			if(WV[0]==2){rply.text+='\n武器種類：重型手槍';ww=0.1;}
-			if(WV[0]==3){rply.text+='\n武器種類：衝鋒槍';ww=0.06;}
-			if(WV[0]==4){rply.text+='\n武器種類：短步槍';ww=0.05;}
-			if(WV[0]==5){rply.text+='\n武器種類：步槍';ww=0.05;}
-			if(WV[0]==6){rply.text+='\n武器種類：狙擊槍';ww=0.13;}
-			if(WV[0]==7){rply.text+='\n武器種類：大口徑狙擊槍';ww=0.22;}
-			if(WV[0]==8){rply.text+='\n武器種類：火炮';ww=0.5;}
-			if(WV[0]==9){rply.text+='\n武器種類：短近距離武器';ww=0.15;}
-			if(WV[0]==10){rply.text+='\n武器種類：中近距離武器';ww=0.3;}
-			if(WV[0]==11){rply.text+='\n武器種類：長近距離武器';ww=0.4;}
+			rply.text+='\n武器名稱：'+WV[5];
 			rply.text+= '\n基礎傷害：'+WV[1]+
 						'\n子彈數：'+WV[2]+
-						'\n傷害倍率：'+WV[3]+
-						'\n連發數：'+WV[4]+
-						'\n射程：'+WV[5]+
-						'\n武器重量：'+(WV[1]*WV[2]*ww)+
-						'\n可改造次數：'+WV[8]
+						'\n連發數：'+WV[3]+
+						'\n射程：'+WV[4]+
+						'\n精準度：'+WV[6]+
+						'\n武器重量：'+ww+
+						'\n可改造次數：'+WV[7]
 						;
-			if(Number(ox.oC(i,7))<Number((WV[1]*WV[2]*ww)))rply.text+='\n注意：武器過重'
+			if(Number(ox.oC(i,7))<ww)rply.text+='\n注意：武器過重'
 			return rply;
 
   }
