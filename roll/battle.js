@@ -376,7 +376,7 @@ var od=[];
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
 										}
 									  }
 								}
@@ -392,7 +392,7 @@ var od=[];
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
 										}
 									  }
 								}
@@ -480,7 +480,7 @@ var od=[];
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
 										}
 									  }
 								}
@@ -496,7 +496,7 @@ var od=[];
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
 										}
 									  }
 								}
@@ -602,7 +602,7 @@ var od=[];
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
 										}
 									  }
 								}
@@ -618,7 +618,7 @@ var od=[];
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
 										}
 									  }
 								}
@@ -752,7 +752,7 @@ var od=[];
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
 										}
 									  }
 								}
@@ -768,7 +768,7 @@ var od=[];
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
 										}
 									  }
 								}
@@ -907,7 +907,7 @@ var od=[];
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
 										}
 									  }
 								}
@@ -923,7 +923,7 @@ var od=[];
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
 										}
 									  }
 								}
@@ -1036,7 +1036,7 @@ var od=[];
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
 										}
 									  }
 								}
@@ -1052,7 +1052,7 @@ var od=[];
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
 										}
 									  }
 								}
@@ -1125,7 +1125,7 @@ var od=[];
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
 										}
 									  }
 								}
@@ -1141,7 +1141,7 @@ var od=[];
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
 										}
 									  }
 								}
@@ -1311,7 +1311,7 @@ var od=[];
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
 										}
 									  }
 								}
@@ -1327,7 +1327,7 @@ var od=[];
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,ox.oC(fgg,18)+GGP);
+									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
 										}
 									  }
 								}
