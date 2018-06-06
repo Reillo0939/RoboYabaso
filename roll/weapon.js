@@ -44,13 +44,13 @@ var WMK;
 			return rply;
 		}
 		if(species=='狙擊槍'){
-			WMK='6,35,10,1,10,'+Wname+',50,10';
+			WMK='6,35,10,1,10,'+Wname+',70,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
 		}
 		if(species=='大口徑狙擊槍'){
-			WMK='7,50,5,1,13,'+Wname+',50,10';
+			WMK='7,50,5,1,13,'+Wname+',70,10';
 			ox.WM(i,WMK);
 			rply.text=name+'已製作完成';
 			return rply;
@@ -81,7 +81,7 @@ var WMK;
 		}
 		if(WMK==''){
 			rply.text=name+'沒有該種類 有'+
-			'\n手槍,\n重型手槍,\n衝鋒槍,\n短步槍,\n步槍,\n狙擊槍,\n大口徑狙擊槍,\n火炮,\n短近距離武器,\n中近距離武器,\n長近距離武器';
+			'\n手槍,\n重型手槍,\n衝鋒槍,\n突擊步槍,\n射手步槍,\n狙擊槍,\n大口徑狙擊槍,\n火炮,\n短近距離武器,\n中近距離武器,\n長近距離武器';
 			return rply;
 		}
 		if(Wname==null){
@@ -118,11 +118,24 @@ var WMK;
 			}
 			WMK=ox.oC(i,19);
 			let WV = WMK.split(','); //定義輸入字串
-			var ww=1;
-			ww=Number(Number(WV[1])*0.5+Number(WV[2])*0.2+Number(WV[3])+Number(WV[4])*0.5+Number(WV[6])*0.1);
+			var ww=1,yy=0;
+			yy=15-MV[0]*5;
+			if(yy<=0)yy=0;
+			ww=Number(Number(WV[1])*0.5+Number(WV[2])*0.2+Number(WV[3])+Number(WV[4])*0.5+Number(WV[6])*0.1)-yy;
 			rply.text='';
 			rply.text=name;
 			rply.text+='\n武器名稱：'+WV[5];
+			if(WV[0]==1)rply.text+='\n武器種類：手槍';
+			if(WV[0]==2)rply.text+='\n武器種類：重型手槍';
+			if(WV[0]==3)rply.text+='\n武器種類：衝鋒槍';
+			if(WV[0]==4)rply.text+='\n武器種類：突擊步槍';
+			if(WV[0]==5)rply.text+='\n武器種類：射手步槍';
+			if(WV[0]==6)rply.text+='\n武器種類：狙擊槍';
+			if(WV[0]==7)rply.text+='\n武器種類：大口徑狙擊槍';
+			if(WV[0]==8)rply.text+='\n武器種類：火炮';
+			if(WV[0]==9)rply.text+='\n武器種類：短近距離武器';
+			if(WV[0]==10)rply.text+='\n武器種類：中近距離武器';
+			if(WV[0]==11)rply.text+='\n武器種類：長近距離武器';
 			rply.text+= '\n基礎傷害：'+WV[1]+
 						'\n子彈數：'+WV[2]+
 						'\n連發數：'+WV[3]+
