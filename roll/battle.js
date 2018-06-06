@@ -64,7 +64,7 @@ function battles(id,name,ab) {
 	if (trigger.match(/製作/)!= null) return xweapon.weapon_make(id,name,mainMsg[1],mainMsg[2]) ;
 	if (trigger.match(/查看/)!= null) return xweapon.weapon_view(id,name) ;
 	if (trigger.match(/破壞/)!= null) return xweapon.weapon_break(id,name) ;
-	if (trigger.match(/改造/)!= null) return exports.weapon.weapon_retrofit(id,name,mainMsg[1],mainMsg[2]) ;
+	if (trigger.match(/改造/)!= null) return xweapon.weapon.weapon_retrofit(id,name,mainMsg[1],mainMsg[2]) ;
 	}
 	if (trigger.match(/玩家/) != null && start==0){
 	if (trigger.match(/自身情報/)!= null) return ox.CV(id,name) ;
@@ -584,7 +584,7 @@ var od=[];
 							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							player[self][20]-=bh;
 							ds++;
-							if(ds==player[i][33]+1){self++;ds=1;}
+							if(ds==player[self][33]+1){self++;ds=1;}
 							if(player[i][2]<=0){
 								if(i<self)self--;
 								rply.text=rply.text+'\n'+player[i][1]+'已撤退';
@@ -663,14 +663,7 @@ var od=[];
 					if(player[i][1]==mainMsg[1] ){
 						player[self][35]=mainMsg[1];
 						rply.text='已瞄準['+mainMsg[1]+']';
-					}
-						else{
-							rply.text='沒有此目標';
-						return rply;	
-						}
-						
-					}
-					player[self][25]=1;//架槍等動作
+						player[self][25]=1;//架槍等動作
 					player[self][26]=rollbase.Dice(61)-31+player[self][24];//命中(狙擊)
 					rply.text+='命中可能性：'+player[self][26];
 					ds++;
@@ -678,6 +671,14 @@ var od=[];
 					if(self>=player.length)self=0;
 					rply.text+='\n\n'+BR();
 			return rply;
+					}
+						else{
+							rply.text='沒有此目標';
+						return rply;	
+						}
+						
+					}
+					
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^射擊$/) != null && mainMsg[1] != null && player[self][18]==6 && player[self][20]>0 && player[self][25]==1){
@@ -817,6 +818,14 @@ var od=[];
 					if(player[i][1]==mainMsg[1] ){
 						player[self][35]=mainMsg[1];
 						rply.text='已瞄準['+mainMsg[1]+']';
+						player[self][25]=3;//架槍等動作
+					player[self][26]=rollbase.Dice(61)-31+player[self][24];//命中(狙擊)
+					rply.text+='命中可能性：'+player[self][26]+'\n\n';
+					ds++;
+					if(ds==player[self][33]+1){self++;ds=1;}
+					if(self>=player.length)self=0;
+					rply.text+=BR()
+			return rply;
 					}
 						else{
 							rply.text='沒有此目標';
@@ -825,14 +834,7 @@ var od=[];
 						
 					}
 					
-					player[self][25]=3;//架槍等動作
-					player[self][26]=rollbase.Dice(61)-31+player[self][24];//命中(狙擊)
-					rply.text+='命中可能性：'+player[self][26]+'\n\n';
-					ds++;
-					if(ds==player[self][33]+1){self++;ds=1;}
-					if(self>=player.length)self=0;
-					rply.text+=BR()
-			return rply;
+					
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^射擊$/) != null && mainMsg[1] != null && player[self][18]==7 && player[self][20]>0 && player[self][25]==3){
