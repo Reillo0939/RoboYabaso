@@ -90,8 +90,8 @@ if(trigger.match(/^2人陣營模式/) != null && start==0){
 		return rply;
 	}
 	if(trigger.match(/^時間/) != null && start==0){
-		var dt = new Date();
-		dt+=480000;
+		var time = new Date();
+		var dt = new Date(time+28800000);
 	        rply.text=dt.getFullYear() +'年' +(dt.getMonth()+1)+'月'+dt.getDate()+'日'+(dt.getHours())+'點'+dt.getMinutes()+'分' ;
 		return rply;
 	}
