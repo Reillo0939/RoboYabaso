@@ -160,17 +160,16 @@ var WMK;
 			}
 			WMK=ox.oC(i,19);
 			let WV = WMK.split(','); //定義輸入字串
-			var ww=1;
 			rply.text='';
 			rply.text=name;
-			rply.text+='\n武器名稱：'+WV[6];
+			rply.text+='\n武器名稱：'+WV[5];
 			amount=Number(amount);
 			WV[1]=Number(WV[1]);
 			WV[2]=Number(WV[2]);
 			WV[3]=Number(WV[3]);
 			WV[4]=Number(WV[4]);
-			WV[5]=Number(WV[5]);
-			if(species!='基礎傷害' && species!='子彈數'&& species!='傷害倍率' && species!='連發數' && species!='射程'){
+			WV[6]=Number(WV[6]);
+			if(species!='基礎傷害' && species!='子彈數'&&  species!='連發數' && species!='射程'&& species!='精準度'){
 				rply.text='';
 			rply.text=name;
 			rply.text+=' 沒有該種改造類型';
@@ -185,115 +184,109 @@ var WMK;
 			
 			if(WV[0]==1){
 				rply.text+='\n武器種類：手槍';
-			ww=0.04;
-				if(species=='基礎傷害'){WV[1]+=(1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='子彈數'){WV[2]+=(1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='傷害倍率'){WV[3]+=(0.15*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='連發數'){WV[4]+=(0.5*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='射程'){WV[5]+=(0.5*amount);WV[8]-=Math.abs(1*amount);}
+				if(species=='基礎傷害'){WV[1]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='子彈數'){WV[2]+=(1*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='連發數'){WV[3]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='射程'){WV[4]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='精準度'){WV[6]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
 			}
 			if(WV[0]==2){
 				rply.text+='\n武器種類：重型手槍';
-				ww=0.1;
-				if(species=='基礎傷害'){WV[1]+=(1.5*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='子彈數'){WV[2]+=(1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='傷害倍率'){WV[3]+=(0.2*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='連發數'){WV[4]+=(0.5*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='射程'){WV[5]+=(0.5*amount);WV[8]-=Math.abs(1*amount);}
+				if(species=='基礎傷害'){WV[1]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='子彈數'){WV[2]+=(1*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='連發數'){WV[3]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='射程'){WV[4]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='精準度'){WV[6]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
 			}
 			if(WV[0]==3){
 				rply.text+='\n武器種類：衝鋒槍';
-				ww=0.06;
-				if(species=='基礎傷害'){WV[1]+=(1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='子彈數'){WV[2]+=(1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='傷害倍率'){WV[3]+=(0.1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='連發數'){WV[4]+=(0.5*amount);WV[8]-=Math.abs((1*amount));}
-				if(species=='射程'){WV[5]+=(0.25*amount);WV[8]-=Math.abs(1*amount);}
+				if(species=='基礎傷害'){WV[1]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='子彈數'){WV[2]+=(1*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='連發數'){WV[3]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='射程'){WV[4]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='精準度'){WV[6]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
 				}
 				
 			if(WV[0]==4){
-				rply.text+='\n武器種類：短步槍';
-				ww=0.05;
-				if(species=='基礎傷害'){WV[1]+=(1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='子彈數'){WV[2]+=(1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='傷害倍率'){WV[3]+=(0.15*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='連發數'){WV[4]+=(0.5*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='射程'){WV[5]+=(0.5*amount);WV[8]-=Math.abs(1*amount);}
+				rply.text+='\n武器種類：突擊步槍';
+				if(species=='基礎傷害'){WV[1]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='子彈數'){WV[2]+=(1*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='連發數'){WV[3]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='射程'){WV[4]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='精準度'){WV[6]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
 			}
 			if(WV[0]==5){
-				rply.text+='\n武器種類：步槍';
-				ww=0.05;
-				if(species=='基礎傷害'){WV[1]+=(1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='子彈數'){WV[2]+=(1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='傷害倍率'){WV[3]+=(0.15*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='連發數'){WV[4]+=(0.5*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='射程'){WV[5]+=(0.5*amount);WV[8]-=Math.abs(1*amount);}
+				rply.text+='\n武器種類：射手步槍';
+				if(species=='基礎傷害'){WV[1]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='子彈數'){WV[2]+=(1*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='連發數'){WV[3]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='射程'){WV[4]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='精準度'){WV[6]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
 			}
 			if(WV[0]==6){
 				rply.text+='\n武器種類：狙擊槍';
-				ww=0.13;
-				if(species=='基礎傷害'){WV[1]+=(1.1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='子彈數'){WV[2]+=(1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='傷害倍率'){WV[3]+=(0.12*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='射程'){WV[5]+=(0.75*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='連發數'){rply.text=name + ' 無法改造的類型';return rply;}
+				if(species=='基礎傷害'){WV[1]+=(1*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='子彈數'){WV[2]+=(1*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='連發數'){rply.text='['+name+']' + + ' 無法改造的類型';return rply;}
+				if(species=='射程'){WV[4]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='精準度'){WV[6]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
 			}
 			if(WV[0]==7){
 				rply.text+='\n武器種類：大口徑狙擊槍';
-				ww=0.22;
-				if(species=='基礎傷害'){WV[1]+=(1.2*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='子彈數'){WV[2]+=(1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='傷害倍率'){WV[3]+=(0.15*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='射程'){WV[5]+=(1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='連發數'){rply.text=name + ' 無法改造的類型';return rply;}
+				if(species=='基礎傷害'){WV[1]+=(1*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='子彈數'){WV[2]+=(1*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='連發數'){rply.text='['+name+']' + + ' 無法改造的類型';return rply;}
+				if(species=='射程'){WV[4]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='精準度'){WV[6]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
 			}
 			if(WV[0]==8){
 				rply.text+='\n武器種類：火炮';
-				ww=0.5;
-				if(species=='基礎傷害'){WV[1]+=(1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='子彈數'){WV[2]+=(1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='傷害倍率'){WV[3]+=(0.02*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='射程'){WV[5]+=(1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='連發數'){rply.text=name + ' 無法改造的類型';return rply;}
+				if(species=='基礎傷害'){WV[1]+=(1*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='子彈數'){rply.text='['+name+']' + + ' 無法改造的類型';return rply;}
+				if(species=='連發數'){rply.text='['+name+']' + + ' 無法改造的類型';return rply;}
+				if(species=='射程'){WV[4]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='精準度'){WV[6]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
 			}
 			if(WV[0]==9){
 				rply.text+='\n武器種類：短近距離武器';
-				ww=0.15;
-				if(species=='基礎傷害'){WV[1]+=(1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='傷害倍率'){WV[3]+=(0.1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='射程'){WV[5]+=(0.1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='連發數'){rply.text=name + ' 無法改造的類型';return rply;}
-				if(species=='子彈數'){rply.text=name + ' 無法改造的類型';return rply;}
+				if(species=='基礎傷害'){WV[1]+=(1*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='射程'){rply.text='['+name+']' + ' 無法改造的類型';return rply;}
+				if(species=='連發數'){rply.text='['+name+']' + ' 無法改造的類型';return rply;}
+				if(species=='子彈數'){rply.text='['+name+']' + ' 無法改造的類型';return rply;}
+				if(species=='精準度'){rply.text='['+name+']' + ' 無法改造的類型';return rply;}
 			}
 			if(WV[0]==10){
 				rply.text+='\n武器種類：中近距離武器';
-				ww=0.3;
-				if(species=='基礎傷害'){WV[1]+=(1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='傷害倍率'){WV[3]+=(0.1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='射程'){WV[5]+=(0.1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='連發數'){rply.text=name + ' 無法改造的類型';return rply;}
-				if(species=='子彈數'){rply.text=name + ' 無法改造的類型';return rply;}
+				if(species=='基礎傷害'){WV[1]+=(1*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='射程'){rply.text='['+name+']' + ' 無法改造的類型';return rply;}
+				if(species=='連發數'){rply.text='['+name+']' + ' 無法改造的類型';return rply;}
+				if(species=='子彈數'){rply.text='['+name+']' + ' 無法改造的類型';return rply;}
+				if(species=='精準度'){WV[6]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
 			}
 			if(WV[0]==11){
 				rply.text+='\n武器種類：長近距離武器';
-				ww=0.4;
-				if(species=='基礎傷害'){WV[1]+=(1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='傷害倍率'){WV[3]+=(0.1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='射程'){WV[5]+=(0.1*amount);WV[8]-=Math.abs(1*amount);}
-				if(species=='連發數'){rply.text=name + ' 無法改造的類型';return rply;}
-				if(species=='子彈數'){rply.text=name + ' 無法改造的類型';return rply;}
+				if(species=='基礎傷害'){WV[1]+=(1*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='射程'){rply.text='['+name+']' + ' 無法改造的類型';return rply;}
+				if(species=='連發數'){rply.text='['+name+']' + ' 無法改造的類型';return rply;}
+				if(species=='子彈數'){rply.text='['+name+']' + ' 無法改造的類型';return rply;}
+				if(species=='精準度'){WV[6]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
 			}
-			WMK=WV[0]+','+WV[1].toString() +','+WV[2].toString() +','+WV[3].toString()+','+WV[4].toString()+','+WV[5].toString()+','+WV[6]+','+WV[7]+','+WV[8];
+			
+			WMK=WV[0]+','+WV[1].toString() +','+WV[2].toString() +','+WV[3].toString()+','+WV[4].toString()+','+WV[5].toString()+','+WV[6].toString()+','+WV[7].toString();
 			ox.WM(i,WMK);
+			var ww=1,yy=0;
+			yy=15-WV[0]*5;
+			if(yy<=0)yy=0;
+			ww=Number(Number(WV[1])*0.5+Number(WV[2])*0.2+Number(WV[3])+Number(WV[4])*0.5+Number(WV[6])*0.1)-yy;
 			rply.text+= '\n基礎傷害：'+WV[1]+
 						'\n子彈數：'+WV[2]+
-						'\n傷害倍率：'+WV[3]+
-						'\n連發數：'+WV[4]+
-						'\n射程：'+WV[5]+
-						'\n武器重量：'+(WV[1]*WV[2]*ww)+
-						'\n可改造次數：'+WV[8]
+						'\n連發數：'+WV[3]+
+						'\n射程：'+WV[4]+
+						'\n精準度：'+WV[6]+
+						'\n武器重量：'+ww+
+						'\n可改造次數：'+WV[7]
 						;
-			if(Number(ox.oC(i,7))<Number((WV[1]*WV[2]*ww)))rply.text+='\n注意：武器過重';
+			if(Number(ox.oC(i,7))<Number(ww)rply.text+='\n注意：武器過重';
 			return rply;
 
   }
