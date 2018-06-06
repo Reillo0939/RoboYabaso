@@ -119,7 +119,7 @@ var WMK;
 			WMK=ox.oC(i,19);
 			let WV = WMK.split(','); //定義輸入字串
 			var ww=1,yy=0;
-			yy=15-MV[0]*5;
+			yy=15-WV[0]*5;
 			if(yy<=0)yy=0;
 			ww=Number(Number(WV[1])*0.5+Number(WV[2])*0.2+Number(WV[3])+Number(WV[4])*0.5+Number(WV[6])*0.1)-yy;
 			rply.text='';
