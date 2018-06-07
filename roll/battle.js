@@ -71,6 +71,24 @@ function battles(id,name,ab) {
 	if (trigger.match(/改名/)!= null) return ox.CCN(id,name,mainMsg[1]) ;
 	if (trigger.match(/列表/)!= null) return ox.CCL() ;
 	}
+	if(trigger.match(/^2人混戰模式/) != null && start==0){
+		mode=1;
+		dd();
+	        rply.text='已轉為2人陣營模式';
+		return rply;
+	}
+	if(trigger.match(/^3人混戰模式/) != null && start==0){
+		mode=2;
+		dd();
+	        rply.text='已轉為4人陣營模式';
+		return rply;
+	}
+	if(trigger.match(/^4人混戰模式/) != null && start==0){
+		mode=3;
+		dd();
+	        rply.text='已轉為6人陣營模式';
+		return rply;
+	}
 if(trigger.match(/^2人陣營模式/) != null && start==0){
 		mode=12;
 		dd();
@@ -100,21 +118,33 @@ if(trigger.match(/^2人陣營模式/) != null && start==0){
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 	rply.text='';
+		if(mode==1){
+			ACV(2,mainMsg,trigger,id,name,2);
+		return rply;
+		}
+		if(mode==2){
+			ACV(3,mainMsg,trigger,id,name,2);
+		return rply;
+		}
+		if(mode==3){
+			ACV(4,mainMsg,trigger,id,name,2);
+		return rply;
+		}
 		if(mode==12){
-			ACV(2,mainMsg,trigger,id,name);
+			ACV(2,mainMsg,trigger,id,name,1);
 		return rply;
 		}
 		if(mode==13){
-			ACV(4,mainMsg,trigger,id,name);
+			ACV(4,mainMsg,trigger,id,name,1);
 		return rply;
 		}
 		if(mode==14){
-			ACV(6,mainMsg,trigger,id,name);
+			ACV(6,mainMsg,trigger,id,name,1);
 		return rply;
 		}
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
-function ACV(aaab,mainMsg,trigger,id,name){
+function ACV(aaab,mainMsg,trigger,id,name,mmode){
 if(trigger.match(/^戰鬥參與$/) != null && start==0){
 
 	if(player.length==aaab){
@@ -373,6 +403,8 @@ var od=[];
 								
 								player.splice(i,1);
 							}
+							//----------------------------------------------
+							if(mmode==1){
 						var ap=0,gp=0;
 							for(var g=0;g<player.length;g++){
 								if(player[g][14]=='A.A.U.F')ap++;
@@ -411,6 +443,27 @@ var od=[];
 								dd();
 								return rply;
 							}
+							}
+							
+							if(mmode==2){
+						
+								if(player.length==1){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[0][0]){
+									var GGP=100;
+									ox.GP(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+										}
+								}
+								rply.text+='\n'+player[0][1]+'獲得最後勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
+							
+							}
+							//------------------------------------------------------------------
 							
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n'+BR();
@@ -478,13 +531,16 @@ var od=[];
 								player.splice(i,1);
 							}
 							
-							var ap=0,gp=0;
+							//----------------------------------------------
+							if(mmode==1){
+						var ap=0,gp=0;
 							for(var g=0;g<player.length;g++){
 								if(player[g][14]=='A.A.U.F')ap++;
 								if(player[g][14]=='G.U.')gp++;
 							}
 								if(ap==0){
-									for(var uu=0;uu<player.length;uu++){
+									
+								for(var uu=0;uu<player.length;uu++){
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
@@ -515,6 +571,27 @@ var od=[];
 								dd();
 								return rply;
 							}
+							}
+							
+							if(mmode==2){
+						
+								if(player.length==1){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[0][0]){
+									var GGP=100;
+									ox.GP(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+										}
+								}
+								rply.text+='\n'+player[0][1]+'獲得最後勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
+							
+							}
+							//------------------------------------------------------------------
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n'+BR();
 			return rply;
@@ -600,13 +677,16 @@ var od=[];
 								player.splice(i,1);
 							}
 							
-							var ap=0,gp=0;
+							//----------------------------------------------
+							if(mmode==1){
+						var ap=0,gp=0;
 							for(var g=0;g<player.length;g++){
 								if(player[g][14]=='A.A.U.F')ap++;
 								if(player[g][14]=='G.U.')gp++;
 							}
 								if(ap==0){
-									for(var uu=0;uu<player.length;uu++){
+									
+								for(var uu=0;uu<player.length;uu++){
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
@@ -637,6 +717,27 @@ var od=[];
 								dd();
 								return rply;
 							}
+							}
+							
+							if(mmode==2){
+						
+								if(player.length==1){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[0][0]){
+									var GGP=100;
+									ox.GP(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+										}
+								}
+								rply.text+='\n'+player[0][1]+'獲得最後勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
+							
+							}
+							//------------------------------------------------------------------
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n'+BR();
 			return rply;
@@ -756,13 +857,16 @@ var od=[];
 								player.splice(i,1);
 							}
 							
-							var ap=0,gp=0;
+							//----------------------------------------------
+							if(mmode==1){
+						var ap=0,gp=0;
 							for(var g=0;g<player.length;g++){
 								if(player[g][14]=='A.A.U.F')ap++;
 								if(player[g][14]=='G.U.')gp++;
 							}
 								if(ap==0){
-									for(var uu=0;uu<player.length;uu++){
+									
+								for(var uu=0;uu<player.length;uu++){
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
@@ -793,6 +897,27 @@ var od=[];
 								dd();
 								return rply;
 							}
+							}
+							
+							if(mmode==2){
+						
+								if(player.length==1){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[0][0]){
+									var GGP=100;
+									ox.GP(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+										}
+								}
+								rply.text+='\n'+player[0][1]+'獲得最後勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
+							
+							}
+							//------------------------------------------------------------------
 							
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n'+BR();
@@ -925,13 +1050,16 @@ var od=[];
 								player.splice(i,1);
 							}
 							
-							var ap=0,gp=0;
+							//----------------------------------------------
+							if(mmode==1){
+						var ap=0,gp=0;
 							for(var g=0;g<player.length;g++){
 								if(player[g][14]=='A.A.U.F')ap++;
 								if(player[g][14]=='G.U.')gp++;
 							}
 								if(ap==0){
-									for(var uu=0;uu<player.length;uu++){
+									
+								for(var uu=0;uu<player.length;uu++){
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
@@ -962,6 +1090,27 @@ var od=[];
 								dd();
 								return rply;
 							}
+							}
+							
+							if(mmode==2){
+						
+								if(player.length==1){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[0][0]){
+									var GGP=100;
+									ox.GP(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+										}
+								}
+								rply.text+='\n'+player[0][1]+'獲得最後勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
+							
+							}
+							//------------------------------------------------------------------
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n'+BR();
 			return rply;
@@ -1054,13 +1203,16 @@ var od=[];
 								dd();
 								return rply;
 							}
-							var ap=0,gp=0;
+							//----------------------------------------------
+							if(mmode==1){
+						var ap=0,gp=0;
 							for(var g=0;g<player.length;g++){
 								if(player[g][14]=='A.A.U.F')ap++;
 								if(player[g][14]=='G.U.')gp++;
 							}
 								if(ap==0){
-									for(var uu=0;uu<player.length;uu++){
+									
+								for(var uu=0;uu<player.length;uu++){
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
@@ -1091,6 +1243,27 @@ var od=[];
 								dd();
 								return rply;
 							}
+							}
+							
+							if(mmode==2){
+						
+								if(player.length==1){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[0][0]){
+									var GGP=100;
+									ox.GP(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+										}
+								}
+								rply.text+='\n'+player[0][1]+'獲得最後勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
+							
+							}
+							//------------------------------------------------------------------
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n'+BR();
 			return rply;
@@ -1143,13 +1316,16 @@ var od=[];
 								player.splice(i,1);
 							}
 							
-							var ap=0,gp=0;
+							//----------------------------------------------
+							if(mmode==1){
+						var ap=0,gp=0;
 							for(var g=0;g<player.length;g++){
 								if(player[g][14]=='A.A.U.F')ap++;
 								if(player[g][14]=='G.U.')gp++;
 							}
 								if(ap==0){
-									for(var uu=0;uu<player.length;uu++){
+									
+								for(var uu=0;uu<player.length;uu++){
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
@@ -1180,6 +1356,27 @@ var od=[];
 								dd();
 								return rply;
 							}
+							}
+							
+							if(mmode==2){
+						
+								if(player.length==1){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[0][0]){
+									var GGP=100;
+									ox.GP(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+										}
+								}
+								rply.text+='\n'+player[0][1]+'獲得最後勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
+							
+							}
+							//------------------------------------------------------------------
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n'+BR();
 			return rply;
@@ -1371,13 +1568,16 @@ var od=[];
 								player.splice(i,1);
 							}
 							
-							var ap=0,gp=0;
+							//----------------------------------------------
+							if(mmode==1){
+						var ap=0,gp=0;
 							for(var g=0;g<player.length;g++){
 								if(player[g][14]=='A.A.U.F')ap++;
 								if(player[g][14]=='G.U.')gp++;
 							}
 								if(ap==0){
-									for(var uu=0;uu<player.length;uu++){
+									
+								for(var uu=0;uu<player.length;uu++){
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
@@ -1408,6 +1608,27 @@ var od=[];
 								dd();
 								return rply;
 							}
+							}
+							
+							if(mmode==2){
+						
+								if(player.length==1){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[0][0]){
+									var GGP=100;
+									ox.GP(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+										}
+								}
+								rply.text+='\n'+player[0][1]+'獲得最後勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
+							
+							}
+							//------------------------------------------------------------------
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n'+BR();
 			return rply;
@@ -1513,6 +1734,8 @@ var od=[];
 								
 								player.splice(i,1);
 							}
+						//----------------------------------------------
+							if(mmode==1){
 						var ap=0,gp=0;
 							for(var g=0;g<player.length;g++){
 								if(player[g][14]=='A.A.U.F')ap++;
@@ -1551,6 +1774,27 @@ var od=[];
 								dd();
 								return rply;
 							}
+							}
+							
+							if(mmode==2){
+						
+								if(player.length==1){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[0][0]){
+									var GGP=100;
+									ox.GP(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+										}
+								}
+								rply.text+='\n'+player[0][1]+'獲得最後勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
+							
+							}
+							//------------------------------------------------------------------
 							
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n'+BR();
@@ -1582,13 +1826,16 @@ var od=[];
 								player[self][2]=0;
 								rply.text=player[self][1]+'已撤退';
 								player.splice(self,1);
-								var ap=0,gp=0;
+								//----------------------------------------------
+							if(mmode==1){
+						var ap=0,gp=0;
 							for(var g=0;g<player.length;g++){
 								if(player[g][14]=='A.A.U.F')ap++;
 								if(player[g][14]=='G.U.')gp++;
 							}
 								if(ap==0){
-									for(var uu=0;uu<player.length;uu++){
+									
+								for(var uu=0;uu<player.length;uu++){
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[uu][0]){
 									var GGP=1+((player.length-1)*2);
@@ -1619,6 +1866,27 @@ var od=[];
 								dd();
 								return rply;
 							}
+							}
+							
+							if(mmode==2){
+						
+								if(player.length==1){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[0][0]){
+									var GGP=100;
+									ox.GP(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+										}
+								}
+								rply.text+='\n'+player[0][1]+'獲得最後勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
+							
+							}
+							//------------------------------------------------------------------
 							ds=1;
 					if(self>=player.length)self=0;
 							rply.text+='\n\n'+BR();
