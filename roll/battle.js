@@ -434,8 +434,6 @@ var od=[];
 				
 				ot=new Date();
 		
-				
-				
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
 						var temp,ones =0;
@@ -1200,7 +1198,7 @@ var od=[];
 				}
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
-			if(id==player[self][0] && trigger.match(/^移動/) != null && start==1 &&  mainMsg[1] != null && player[self][25]<2){
+			if(id==player[self][0] && trigger.match(/^移動$/) != null && start==1 &&  mainMsg[1] != null && player[self][25]<2){
 				
 				ot=new Date();
 
@@ -1240,7 +1238,7 @@ var od=[];
 			return rply;
 		}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
-			if(id==player[self][0] && trigger.match(/^磁懸推進/) != null && start==1 &&  mainMsg[1] != null && player[self][14]=='A.A.U.F'){
+			if(id==player[self][0] && trigger.match(/^磁懸推進$/) != null && start==1 &&  mainMsg[1] != null && player[self][14]=='A.A.U.F'){
 				
 				
 				ot=new Date();
@@ -1281,7 +1279,7 @@ var od=[];
 			return rply;
 		}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
-			if(id==player[self][0] && trigger.match(/^脈衝推進/) != null && start==1 &&  mainMsg[1] != null && player[self][14]=='G.U.'){
+			if(id==player[self][0] && trigger.match(/^脈衝推進$/) != null && start==1 &&  mainMsg[1] != null && player[self][14]=='G.U.'){
 				
 				ot=new Date();
 
@@ -1480,6 +1478,8 @@ var od=[];
 							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
 							return rply;
 						}
+						player[self][16]=player[i][16];
+						player[self][17]=player[i][17];
 						rnggg=rollbase.Dice(100);
 						Hit=rollbase.Dice(100);
 						Critical=rollbase.Dice(100);
@@ -1562,7 +1562,7 @@ var od=[];
 							rply.text=player[i][1]+'閃避成功'+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
 							'\nbata粒子 '+player[i][4]+'/'+player[i][5];
-						ds++;
+						ds+=2;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(self>=player.length)self=0;
 							
