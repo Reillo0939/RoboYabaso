@@ -160,11 +160,11 @@ ddd[13] = Earth ;
 ddd[14] = Growing ;
 ddd[15] = 0 ;
 ddd[16] = '訓練兵' ;
-ddd[17] = 5000 ;
+ddd[17] = 10000 ;
 ddd[18] = 0 ;
 ddd[19] = 0 ;
 ddd[20] = 0 ;
-ddd[21] = 0 ;
+ddd[21] = '0|0|0|0|0' ;
 Characters[hh]=ddd;
 
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
@@ -258,7 +258,7 @@ ddd[13] = 0 ;
 ddd[14] = Growing ;
 ddd[15] = Control ;
 ddd[16] = '訓練兵' ;
-ddd[17] = 5000 ;
+ddd[17] = 10000 ;
 ddd[18] = 0 ;
 ddd[19] = 0 ;
 ddd[20] = 0 ;
@@ -596,7 +596,7 @@ var leng=Characters.length;
       ,Characters[leng-1][4],Characters[leng-1][5],Characters[leng-1][6],Characters[leng-1][7]
       ,Characters[leng-1][8],Characters[leng-1][9],Characters[leng-1][10],Characters[leng-1][11]
       ,Characters[leng-1][12],Characters[leng-1][13],Characters[leng-1][14],Characters[leng-1][15],Characters[leng-1][16]
-      ,Characters[leng-1][17],Characters[leng-1][18],Characters[leng-1][19],Characters[leng-1][20],,Characters[leng-1][21],],
+      ,Characters[leng-1][17],Characters[leng-1][18],Characters[leng-1][19],Characters[leng-1][20],Characters[leng-1][21],],
 ];
 	console.log('test OK');
 	var range='Character!A' + leng;

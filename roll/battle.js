@@ -345,11 +345,12 @@ var od=[];
 						Hit=rollbase.Dice(100);
 						Critical=rollbase.Dice(100);
 						if(Hit>player[self][24]){
-							ds++;
-							if(ds==player[i][33]+1){self++;ds=1;}
-							if(self>=player.length)self=0;
 							rply.text=player[self][1]+'沒有命中'+
 							'\n\n'+BR();
+							ds++;
+							if(ds==player[self][33]+1){self++;ds=1;}
+							if(self>=player.length)self=0;
+							
 			return rply;
 						}
 						
@@ -675,11 +676,6 @@ var od=[];
 						player[self][34]=0.6;
 					player[self][26]=rollbase.Dice(61)-31+player[self][24];//命中(狙擊)
 					rply.text+='命中可能性：'+player[self][26];
-					ds++;
-					if(ds==player[self][33]+1){self++;ds=1;}
-					if(self>=player.length)self=0;
-					rply.text+='\n\n'+BR();
-			return rply;
 			break;
 					}
 						else{
@@ -688,7 +684,11 @@ var od=[];
 						}
 						
 					}
-					
+					ds++;
+					if(ds==player[self][33]+1){self++;ds=1;}
+					if(self>=player.length)self=0;
+					rply.text+='\n\n'+BR();
+			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^射擊$/) != null && mainMsg[1] != null && player[self][18]==6 && player[self][20]>0 && player[self][25]==1){
@@ -848,12 +848,7 @@ var od=[];
 						player[self][25]=3;//架槍等動作
 					player[self][26]=rollbase.Dice(61)-31+player[self][24];//命中(狙擊)
 					rply.text+='命中可能性：'+player[self][26]+'\n\n';
-					ds++;
-					if(ds==player[self][33]+1){self++;ds=1;}
-					if(self>=player.length)self=0;
-					rply.text+=BR();
-			return rply;
-			break;
+					break;
 					}
 						else{
 							rply.text='沒有此目標';
@@ -861,7 +856,11 @@ var od=[];
 						}
 						
 					}
-					
+					ds++;
+					if(ds==player[self][33]+1){self++;ds=1;}
+					if(self>=player.length)self=0;
+					rply.text+=BR();
+			return rply;
 					
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
