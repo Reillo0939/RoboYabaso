@@ -1469,7 +1469,7 @@ var od=[];
 				}
 			}
 			//-----------------------------------------------------------------------------------------------------------------------------------------------------
-			if(id==player[self][0] && trigger.match(/^移動突擊$/) != null && mainMsg[1] != null	player[self][18]==11 && ds==1 ){
+			if(id==player[self][0] && trigger.match(/^移動突擊$/) != null && mainMsg[1] != null	&& player[self][18]==11 && ds==1 ){
 				ot=new Date();
 			
 				for(var i=0;i<player.length;i++){
