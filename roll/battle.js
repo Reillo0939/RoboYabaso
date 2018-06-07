@@ -1426,12 +1426,10 @@ var od=[];
 				}
 			}
 			//-----------------------------------------------------------------------------------------------------------------------------------------------------
-			if(id==player[self][0] && trigger.match(/^戰術治療$/) != null && mainMsg[1] != null &&player[self][18]==4  && player[self][20]>0){
+			if(id==player[self][0] && trigger.match(/^戰術治療$/) != null && mainMsg[1] != null && player[self][18]==4){
 				
 				ot=new Date();
 		
-				
-				
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
@@ -1452,7 +1450,7 @@ var od=[];
 							if(player[i][2]+damage>player[i][3]){
 								damage=player[i][3]-player[i][2];
 							}
-							player[i][2]=player[i][2]+damage;
+							player[i][2]+=damage;
 							rply.text=player[i][1]+
 							'\nHP '+player[i][2]+'/'+player[i][3];
 							rply.text+='(+'+damage+')';
