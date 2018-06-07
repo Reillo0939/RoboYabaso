@@ -1685,7 +1685,7 @@ function BR(){
 				rr+='\n架槍';
 			}
 			if(player[self][18]==7 && player[self][25]==0 && player[self][4]>=(player[self][5]*0.6)){
-				rr+='\n高速架槍 (-Bata粒子60%,-0行動)'';
+				rr+='\n高速架槍 (-Bata粒子60%,-0行動)';
 			}
 			if(player[self][18]==7 && player[self][25]>=2){
 				rr+='\n解除架槍';
