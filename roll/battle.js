@@ -29,7 +29,7 @@ var damage;
 var rnggg;
 var mode;
 var ot= new Date();;
-var RAAUF=0,RGU=0;
+var RAAUF=0,RGU=0,HM=0;
 function dd() {
 player.length=0;
 RAAUF=0;
@@ -74,19 +74,19 @@ function battles(id,name,ab) {
 	if(trigger.match(/^2人混戰模式/) != null && start==0){
 		mode=1;
 		dd();
-	        rply.text='已轉為2人陣營模式';
+	        rply.text='已轉為2人混戰模式';
 		return rply;
 	}
 	if(trigger.match(/^3人混戰模式/) != null && start==0){
 		mode=2;
 		dd();
-	        rply.text='已轉為4人陣營模式';
+	        rply.text='已轉為3人混戰模式';
 		return rply;
 	}
 	if(trigger.match(/^4人混戰模式/) != null && start==0){
 		mode=3;
 		dd();
-	        rply.text='已轉為6人陣營模式';
+	        rply.text='已轉為4人混戰模式';
 		return rply;
 	}
 if(trigger.match(/^2人陣營模式/) != null && start==0){
@@ -192,6 +192,7 @@ var od=[];
 		od[12]=Number(ox.oC(i,13));//土屬適性
 		od[13]=Number(ox.oC(i,15));//控制能力
 		od[14]=ox.oC(i,3);//陣營
+		if(mmode==1){
 		if(RAAUF>=(aaab/2) && od[14]=='A.A.U.F'){
 			rply.text='AAUF人數已滿';
 		return rply;
@@ -203,6 +204,14 @@ var od=[];
 		if(od[14]=='A.A.U.F')RAAUF++;
 		if(od[14]=='G.U.')RGU++;
 		console.log(RAAUF+'  '+RGU);
+		}
+		if(mmode==2){
+			if(HM>=aaab ){
+			rply.text='人數已滿';
+		return rply;
+		}
+			HM++;
+		}
 		od[15]=ox.oC(i,17);//金幣
 		od[16]=0;//x
 		od[17]=0;//y
@@ -264,9 +273,15 @@ var od=[];
 			if(od[30][0]!=0)rply.text+='\n技能3：'+od[30][0];
 			if(od[31][0]!=0)rply.text+='\n技能4：'+od[31][0];
 			if(od[32][0]!=0)rply.text+='\n技能5：'+od[32][0];
+			if(mmode==1){
 			rply.text+='\n目前參與人數： \n'+
 			'AAUF：'+RAAUF+'/'+(aaab/2)+
 			'\nGU：'+RGU+'/'+(aaab/2);
+			}
+			if(mmode==2){
+			rply.text+='\n目前參與人數： \n'+
+			HM+'/'+aaab;
+			}
 		return rply;
   }
 	}
@@ -276,6 +291,7 @@ var od=[];
 			for(var i=0;i<player.length;i++){
 				if(player[i][0]==id){
 					od[1]=player[i][1];
+					if(mmode==1){
 					if(player[i][14]=='A.A.U.F')RAAUF--;
 					if(player[i][14]=='G.U.')RGU--;
 					player.splice(i,1);
@@ -284,6 +300,14 @@ var od=[];
 			'AAUF：'+RAAUF+'/'+(aaab/2)+
 			'\nGU：'+RGU+'/'+(aaab/2);
 					return rply; 
+					}
+					if(mmode==2){
+						HM--;
+						player.splice(i,1);
+						rply.text=name+'你的'+od[1]+'已取消參與'+
+						'\n目前參與人數： \n'+HM+'/'+aaab;
+						return rply; 
+					}
 				}
 			}
 			
@@ -293,6 +317,7 @@ var od=[];
 			self=0;
 			ds=1;
 			player.sort(function (a,b){return b[7]-a[7]});
+		if(mmode==1){
 			if(aaab==2){
 				if(player[0][14]=='A.A.U.F'){
 					player[0][16]=13;
@@ -350,6 +375,38 @@ var od=[];
 					}
 				}
 				}
+		}
+if(mmode==2){
+			if(aaab==2){
+					player[0][16]=13;
+					player[0][17]=13;
+					player[1][16]=38;
+					player[1][17]=38;
+			}
+				if(aaab==3){
+					player[0][16]=13;
+					player[0][17]=13;
+					
+					player[1][16]=38;
+					player[1][17]=38;
+					
+					player[2][16]=26;
+					player[2][17]=26;
+					
+				}
+				if(aaab==4){
+					player[0][16]=13;
+					player[0][17]=13;
+					player[1][16]=38;
+					player[1][17]=38;
+					
+					player[2][16]=13;
+					player[2][17]=38;
+					player[3][16]=38;
+					player[3][17]=13;
+				}
+				
+		}
 			var rt=BR();
 			rply.text=rt;
 			ot=new Date();
