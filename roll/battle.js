@@ -320,15 +320,15 @@ var od=[];
 		if(mmode==1){
 			if(aaab==2){
 				if(player[0][14]=='A.A.U.F'){
-					player[0][16]=13;
+					player[0][16]=26;
 					player[0][17]=13;
-					player[1][16]=13;
-					player[1][17]=38;
+					player[1][16]=26;
+					player[1][17]=39;
 				}
 				else{
-					player[0][16]=13;
-					player[0][17]=38;
-					player[1][16]=13;
+					player[0][16]=26;
+					player[0][17]=39;
+					player[1][16]=26;
 					player[1][17]=13;
 				}
 			}
@@ -336,12 +336,12 @@ var od=[];
 					var af=1,gf=1;
 				for(var g=0;g<4;g++){
 					if(player[g][14]=='A.A.U.F'){
-					player[g][16]=1+8*af;
-					player[g][17]=10;
+					player[g][16]=1+17*af;
+					player[g][17]=11;
 					af++;
 				}
 				else{
-					player[g][16]=1+8*gf;
+					player[g][16]=1+17*gf;
 					player[g][17]=41;
 					gf++;
 					}
@@ -352,26 +352,26 @@ var od=[];
 				for(var g=0;g<6;g++){
 					if(player[g][14]=='A.A.U.F'){
 						if(g==0){
-							player[g][16]=13;
+							player[g][16]=26;
 							player[g][17]=13;
 						}
 						else{
-							player[g][16]=1+8*af;
+							player[g][16]=13*af;
 							player[g][17]=6;
 						}
 					
-					af++;
+					af+=2;
 				}
 				else{
 					if(g==0){
-							player[g][16]=13;
-							player[g][17]=38;
+							player[g][16]=26;
+							player[g][17]=39;
 						}
 					else{
-						player[g][16]=1+8*gf;
-						player[g][17]=45;
+						player[g][16]=13*gf;
+						player[g][17]=46;
 						}
-					gf++;
+					gf+=2;
 					}
 				}
 				}
@@ -380,15 +380,15 @@ if(mmode==2){
 			if(aaab==2){
 					player[0][16]=13;
 					player[0][17]=13;
-					player[1][16]=38;
-					player[1][17]=38;
+					player[1][16]=39;
+					player[1][17]=39;
 			}
 				if(aaab==3){
 					player[0][16]=13;
 					player[0][17]=13;
 					
-					player[1][16]=38;
-					player[1][17]=38;
+					player[1][16]=39;
+					player[1][17]=39;
 					
 					player[2][16]=26;
 					player[2][17]=26;
@@ -397,12 +397,12 @@ if(mmode==2){
 				if(aaab==4){
 					player[0][16]=13;
 					player[0][17]=13;
-					player[1][16]=38;
-					player[1][17]=38;
+					player[1][16]=39;
+					player[1][17]=39;
 					
 					player[2][16]=13;
-					player[2][17]=38;
-					player[3][16]=38;
+					player[2][17]=39;
+					player[3][16]=39;
 					player[3][17]=13;
 				}
 				
@@ -508,7 +508,7 @@ if(mmode==2){
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[0][0]){
 									var GGP=100;
-									ox.GP(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
 										}
 								}
 								rply.text+='\n'+player[0][1]+'獲得最後勝利';
@@ -636,7 +636,7 @@ if(mmode==2){
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[0][0]){
 									var GGP=100;
-									ox.GP(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
 										}
 								}
 								rply.text+='\n'+player[0][1]+'獲得最後勝利';
@@ -782,7 +782,7 @@ if(mmode==2){
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[0][0]){
 									var GGP=100;
-									ox.GP(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
 										}
 								}
 								rply.text+='\n'+player[0][1]+'獲得最後勝利';
@@ -962,7 +962,7 @@ if(mmode==2){
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[0][0]){
 									var GGP=100;
-									ox.GP(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
 										}
 								}
 								rply.text+='\n'+player[0][1]+'獲得最後勝利';
@@ -1155,7 +1155,7 @@ if(mmode==2){
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[0][0]){
 									var GGP=100;
-									ox.GP(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
 										}
 								}
 								rply.text+='\n'+player[0][1]+'獲得最後勝利';
@@ -1308,7 +1308,7 @@ if(mmode==2){
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[0][0]){
 									var GGP=100;
-									ox.GP(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
 										}
 								}
 								rply.text+='\n'+player[0][1]+'獲得最後勝利';
@@ -1421,7 +1421,7 @@ if(mmode==2){
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[0][0]){
 									var GGP=100;
-									ox.GP(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
 										}
 								}
 								rply.text+='\n'+player[0][1]+'獲得最後勝利';
@@ -1467,7 +1467,7 @@ if(mmode==2){
 							return rply;
 						}
 						else{
-							if(xxyy[0]>=1 && xxyy[0]<=25 && xxyy[1]>=1 && xxyy[1]<=50){ 
+							if(xxyy[0]>=1 && xxyy[0]<=51 && xxyy[1]>=1 && xxyy[1]<=51){ 
 							rply.text='已移動到 座標'+Math.floor(xxyy[0])+','+Math.floor(xxyy[1]);
 							player[self][16]=Math.floor(xxyy[0]);
 							player[self][17]=Math.floor(xxyy[1]);
@@ -1508,7 +1508,7 @@ if(mmode==2){
 							return rply;
 						}
 						else{
-							if(xxyy[0]>=1 && xxyy[0]<=25 && xxyy[1]>=1 && xxyy[1]<=50){ 
+							if(xxyy[0]>=1 && xxyy[0]<=51 && xxyy[1]>=1 && xxyy[1]<=51){ 
 							player[self][4]-=temp*10;
 							rply.text='已移動到 座標'+Math.floor(xxyy[0])+','+Math.floor(xxyy[1]);
 							player[self][16]=Math.floor(xxyy[0]);
@@ -1548,7 +1548,7 @@ if(mmode==2){
 							return rply;
 						}
 						else{
-							if(xxyy[0]>=1 && xxyy[0]<=25 && xxyy[1]>=1 && xxyy[1]<=50){ 
+							if(xxyy[0]>=1 && xxyy[0]<=51 && xxyy[1]>=1 && xxyy[1]<=51){ 
 							player[self][4]-=temp*20;
 							rply.text='已移動到 座標'+Math.floor(xxyy[0])+','+Math.floor(xxyy[1]);
 							player[self][16]=Math.floor(xxyy[0]);
@@ -1673,7 +1673,7 @@ if(mmode==2){
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[0][0]){
 									var GGP=100;
-									ox.GP(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
 										}
 								}
 								rply.text+='\n'+player[0][1]+'獲得最後勝利';
@@ -1839,7 +1839,7 @@ if(mmode==2){
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[0][0]){
 									var GGP=100;
-									ox.GP(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
 										}
 								}
 								rply.text+='\n'+player[0][1]+'獲得最後勝利';
@@ -1931,7 +1931,7 @@ if(mmode==2){
 									  for(var fgg=0;fgg<ox.oL();fgg++){
 										if(ox.oC(fgg,0)==player[0][0]){
 									var GGP=100;
-									ox.GP(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
 										}
 								}
 								rply.text+='\n'+player[0][1]+'獲得最後勝利';
