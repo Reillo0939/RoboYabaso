@@ -125,6 +125,8 @@ var WMK;
 			var ww=1,yy=0;
 			yy=15-WV[0]*5;
 			if(yy<=0)yy=0;
+			if(WV[0]==9)yy=10;
+			if(WV[0]==11)yy=-10;
 			ww=Number(Number(WV[1])*0.5+Number(WV[2])*0.2+Number(WV[3])+Number(WV[4])*0.5+Number(WV[6])*0.1)-yy;
 			rply.text='';
 			rply.text='['+name+']';
@@ -268,7 +270,7 @@ var WMK;
 				if(species=='射程'){rply.text='['+name+']' + ' 無法改造的類型';return rply;}
 				if(species=='連發數'){rply.text='['+name+']' + ' 無法改造的類型';return rply;}
 				if(species=='子彈數'){rply.text='['+name+']' + ' 無法改造的類型';return rply;}
-				if(species=='精準度'){WV[6]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='精準度'){rply.text='['+name+']' + ' 無法改造的類型';return rply;}
 			}
 			if(WV[0]==11){
 				rply.text+='\n武器種類：長近距離武器';
@@ -276,7 +278,7 @@ var WMK;
 				if(species=='射程'){rply.text='['+name+']' + ' 無法改造的類型';return rply;}
 				if(species=='連發數'){rply.text='['+name+']' + ' 無法改造的類型';return rply;}
 				if(species=='子彈數'){rply.text='['+name+']' + ' 無法改造的類型';return rply;}
-				if(species=='精準度'){WV[6]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='精準度'){rply.text='['+name+']' + ' 無法改造的類型';return rply;}
 			}
 			
 			WMK=WV[0]+','+WV[1].toString() +','+WV[2].toString() +','+WV[3].toString()+','+WV[4].toString()+','+WV[5].toString()+','+WV[6].toString()+','+WV[7].toString();
@@ -284,6 +286,8 @@ var WMK;
 			var ww=1,yy=0;
 			yy=15-WV[0]*5;
 			if(yy<=0)yy=0;
+			if(WV[0]==9)yy=10;
+			if(WV[0]==11)yy=-10;
 			ww=Number(Number(WV[1])*0.5+Number(WV[2])*0.2+Number(WV[3])+Number(WV[4])*0.5+Number(WV[6])*0.1)-yy;
 			rply.text+= '\n基礎傷害：'+WV[1]+
 						'\n子彈數：'+WV[2]+
