@@ -886,7 +886,7 @@ var od=[];
 						player[self][20]--;
 						if(Hit>player[self][26] && player[self][35]==mainMsg[1]){
 								rply.text=player[self][1]+'沒有命中';
-								player[self][25]=0;
+								player[self][25]=2;
 								player[self][35]='';
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
@@ -897,7 +897,7 @@ var od=[];
 						}
 					if(Hit>player[self][26]-50 && player[self][35]!=mainMsg[1] ){
 								rply.text=player[self][1]+'沒有命中';
-								player[self][25]=0;
+								player[self][25]=2;
 								player[self][35]='';
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
