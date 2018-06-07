@@ -819,7 +819,7 @@ var od=[];
 							rply.text='Bata粒子過少，無法架槍';
 							return rply;
 						}
-						player[self][4]-=float(player[self][5]*0.6)
+						player[self][4]-=float(player[self][5]*0.6);
 					player[self][25]=2;//架槍等動作
 					player[self][34]=0;//閃避倍率
 					rply.text+='架槍完畢'+'\n\n';
