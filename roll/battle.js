@@ -204,9 +204,9 @@ var od=[];
 		od[33]=2;//可行動次數
 		od[34]=1;//閃避倍率
 		od[36]=3;//移動距離
-		if(WV[0]==6){player[self][34]=1.2;od[36]=4;}
-		if(WV[0]==7)player[self][34]=0.5;
-		if(WV[0]==8)player[self][34]=0.25;
+		if(WV[0]==6){od[34]=1.2;od[36]=4;}
+		if(WV[0]==7)od[34]=0.5;
+		if(WV[0]==8)od[34]=0.25;
 		if(WV[0]==1 || WV[0]==9)od[33]=3;
 		if(WV[0]==10)od[36]=5;
 		player[player.length]=od;
