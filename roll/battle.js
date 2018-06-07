@@ -1443,7 +1443,7 @@ var od=[];
 							rply.text='距離'+player[i][1]+'太遠，無法治療';
 							return rply;
 						}
-						player[self][4]-=float(player[self][5]*0.6);
+						player[self][4]-=Math.floor(player[self][5]*0.6);
 						
 						
 						damage=Math.floor(player[i][3]*0.1+20);
