@@ -676,18 +676,19 @@ var od=[];
 						player[self][34]=0.6;
 					player[self][26]=rollbase.Dice(61)-31+player[self][24];//命中(狙擊)
 					rply.text+='命中可能性：'+player[self][26];
-			break;
-					}
-						else{
-							rply.text='沒有此目標';
-						return rply;	
-						}
-						
-					}
 					ds++;
 					if(ds==player[self][33]+1){self++;ds=1;}
 					if(self>=player.length)self=0;
 					rply.text+='\n\n'+BR();
+					
+			break;
+					}
+						else{
+							rply.text='沒有此目標';	
+						}
+						
+					}
+					
 			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -848,18 +849,18 @@ var od=[];
 						player[self][25]=3;//架槍等動作
 					player[self][26]=rollbase.Dice(61)-31+player[self][24];//命中(狙擊)
 					rply.text+='命中可能性：'+player[self][26]+'\n\n';
-					break;
-					}
-						else{
-							rply.text='沒有此目標';
-						return rply;	
-						}
-						
-					}
 					ds++;
 					if(ds==player[self][33]+1){self++;ds=1;}
 					if(self>=player.length)self=0;
 					rply.text+=BR();
+					break;
+					}
+						else{
+							rply.text='沒有此目標';
+						}
+						
+					}
+					
 			return rply;
 					
 			}
