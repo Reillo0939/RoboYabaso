@@ -1217,7 +1217,7 @@ var od=[];
 							rply.text='已移動到 座標'+Math.floor(xxyy[0])+','+Math.floor(xxyy[1]);
 							player[self][16]=Math.floor(xxyy[0]);
 							player[self][17]=Math.floor(xxyy[1]);
-							if(player[self][20]==0 && player[self][18]==3)player[self][20]==player[self][21];
+							if(player[self][20]==0 && player[self][18]==3)player[self][20]=player[self][21];
 							}
 							else{
 												
@@ -1426,7 +1426,7 @@ var od=[];
 				}
 			}
 			//-----------------------------------------------------------------------------------------------------------------------------------------------------
-			if(id==player[self][0] && trigger.match(/^戰術治療$/) != null && mainMsg[1] != null &&player[self][18]==2  && player[self][20]>0){
+			if(id==player[self][0] && trigger.match(/^戰術治療$/) != null && mainMsg[1] != null &&player[self][18]==4  && player[self][20]>0){
 				
 				ot=new Date();
 		
