@@ -39,7 +39,7 @@ RGU=0;
 setInterval(function(){
 	var nt = new Date();
 	if(start==1)console.log('debug'+(((nt.getTime() - ot.getTime()) / (1000 * 60))));
-	if((((nt.getTime() - ot.getTime()) / (1000 * 60)) >=3) && start == 1){
+	if((((nt.getTime() - ot.getTime()) / (1000 * 60)) >=1) && start == 1){
 		console.log('debug'+(((nt.getTime() - ot.getTime()) / (1000 * 60))));
 				var rr='';
 				self++;
