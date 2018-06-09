@@ -31,6 +31,7 @@ var mode;
 var ot= new Date();;
 var RAAUF=0,RGU=0,HM=0;
 function dd() {
+HM=0;
 player.length=0;
 RAAUF=0;
 RGU=0;						
