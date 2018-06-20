@@ -458,8 +458,13 @@ if(mmode==2){
 						}
 						
 						if(rnggg > ( parseInt(player[i][7]) - parseInt(player[self][7]) ) * player[i][34] ){
-						
-							damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)*0.001);
+							if(player[self][37][1]==1){
+								damage=Math.round(player[self][19]*(rollbase.Dice(2001)-1)*0.001);
+							}
+							else{
+								damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)*0.001);
+							}
+							
 							if(Hit<=(player[self][24]*0.2))damage=parseInt(damage*2);
 
 							player[i][2]=player[i][2]-damage;
@@ -1365,18 +1370,22 @@ if(mmode==2){
 							rply.text='Bata粒子過少，無法發動';
 							return rply;
 						}
-						console.log('test001');
 						if(player[self][Number(mainMsg[1])+27][2]==1){
-							console.log('test002');
-							player[self][4]-=(player[self][5]*player[self][Number(mainMsg[1])+27][3]*0.01)
+							player[self][4]-=Math.floor(player[self][5]*player[self][Number(mainMsg[1])+27][3]*0.01)
+							if(player[self][37][1]==1){
+								player[self][37][1]=0;
+								rply.text='已關閉狂暴化\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							}
+							else{
 							player[self][37][1]=1;
-							rply.text='\nbata粒子 '+player[i][4]+'/'+player[i][5];
-								
+							rply.text='已開啟狂暴化\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							}
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(self>=player.length)self=0;
 							return rply;
 						}
+						
 						}
 						
 						
