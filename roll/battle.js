@@ -1365,10 +1365,12 @@ if(mmode==2){
 							rply.text='Bata粒子過少，無法發動';
 							return rply;
 						}
+						console.log('test001');
 						if(player[self][Number(mainMsg[1])+27][2]==1){
+							console.log('test002');
 							player[self][4]-=(player[self][5]*player[self][Number(mainMsg[1])+27][3]*0.01)
 							player[self][37][1]=1;
-							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							rply.text='\nbata粒子 '+player[i][4]+'/'+player[i][5];
 								
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
