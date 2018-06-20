@@ -1374,18 +1374,51 @@ if(mmode==2){
 							player[self][4]-=Math.floor(player[self][5]*player[self][Number(mainMsg[1])+27][3]*0.01)
 							if(player[self][37][1]==1){
 								player[self][37][1]=0;
-								rply.text='已關閉狂暴化\nbata粒子 '+player[i][4]+'/'+player[i][5];
+								rply.text='已關閉狂暴插件\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							}
 							else{
 							player[self][37][1]=1;
-							rply.text='已開啟狂暴化\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							rply.text='已開啟狂暴插件\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							}
+							rply.text='\n'+BR();
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(self>=player.length)self=0;
 							return rply;
 						}
-						
+						if(player[self][Number(mainMsg[1])+27][2]==2){
+							player[self][4]-=Math.floor(player[self][5]*player[self][Number(mainMsg[1])+27][3]*0.01)
+							if(player[self][37][2]==1){
+								player[self][36]--;
+								player[self][37][2]=0;
+								rply.text='已關閉加速插件\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							}
+							else{
+								player[self][36]++;
+							player[self][37][2]=1;
+							rply.text='已開啟加速插件\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							}
+							rply.text='\n'+BR();
+							ds++;
+							if(ds==player[self][33]+1){self++;ds=1;}
+							if(self>=player.length)self=0;
+							return rply;
+						}
+						if(player[self][Number(mainMsg[1])+27][2]==3){
+							player[self][4]-=Math.floor(player[self][5]*player[self][Number(mainMsg[1])+27][3]*0.01)
+							if(player[self][37][3]==1){
+								player[self][33]--;
+								player[self][37][3]=0;
+								rply.text='已關閉過載插件\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							}
+							else{
+								player[self][33]++;
+							player[self][37][3]=1;
+							rply.text='已開啟過載插件\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							}
+							rply.text='\n'+BR();
+							return rply;
+						}
 						}
 						
 						
@@ -1821,8 +1854,13 @@ if(mmode==2){
 						}
 						
 						if(rnggg > ( parseInt(player[i][7]) - parseInt(player[self][7]) ) * player[i][34] ){
-						
+						if(player[self][37][1]==1){
+							damage=Math.round(player[self][19]*(rollbase.Dice(2001)-1)*0.001*addda);
+						}
+						else{
 							damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)*0.001*addda);
+						}
+							
 							if(Hit<=((player[self][24]-addga)*0.2))damage=parseInt(damage*2);
 
 							player[i][2]=player[i][2]-damage;
@@ -1998,18 +2036,27 @@ if(mmode==2){
 			return rply;
 		}
 			if(trigger.match(/^回合/) != null){
-							rply.text=BR();
+							rply.text=BR(1);
 			return rply;
 			}
 		}
 			
 }
 
-function BR(){
-	
+function BR(nb){
+	var ff='';
+	if(nb!=1 && player[self][37][3]==1 && ds==1){
+		player[self][2]-=Math.floor(player[self][3]*0.1);
+		if(player[self][2]<=0){
+			ff.text='\n'+player[self][1]+'無法負荷過載而撤退\n';
+								
+								player.splice(self,1);
+								if(self>=player.length)self=0;
+		}
+	}
 	ot=new Date();
 	var rr;
-	rr='輪到'+player[self][1]+'的第'+ds+'次行動'+
+	rr=ff+'輪到'+player[self][1]+'的第'+ds+'次行動'+
 			'\n陣營'+player[self][14]+
 			'\nHP '+player[self][2]+'/'+player[self][3]+
 			'\nbata粒子 '+player[self][4]+'/'+player[self][5]+
