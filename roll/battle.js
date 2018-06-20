@@ -1350,7 +1350,7 @@ if(mmode==2){
 			}
 			
 			//-----------------------------------------------------------------------------------------------------------------------------------------------------
-			if(id==player[self][0] && trigger.match(/^技能$/) != null && mainMsg[1] != null && mainMsg[2] != null ){
+			if(id==player[self][0] && trigger.match(/^技能$/) != null && mainMsg[1] != null ){
 				ot=new Date();
 				if(player[self][Number(mainMsg[1])+27]==null || player[self][Number(mainMsg[1])+27][0]==0){
 					rply.text='沒有這個技能';
@@ -1377,7 +1377,7 @@ if(mmode==2){
 						}
 						
 						
-						if(player[self][Number(mainMsg[1])+27][1]=='攻擊'){
+						if(player[self][Number(mainMsg[1])+27][1]=='攻擊' && mainMsg[2] != null){
 							var temp =0;
 							temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
 							if(temp>Number(player[self][Number(mainMsg[1])+27][4])){
