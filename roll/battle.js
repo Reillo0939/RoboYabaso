@@ -72,6 +72,12 @@ function battles(id,name,ab) {
 	if (trigger.match(/改名/)!= null) return ox.CCN(id,name,mainMsg[1]) ;
 	if (trigger.match(/列表/)!= null) return ox.CCL() ;
 	}
+	if(trigger.match(/^test_mode/) != null && start==0){
+		mode=99;
+		dd();
+	        rply.text='已轉為2人混戰模式';
+		return rply;
+	}
 	if(trigger.match(/^2人混戰模式/) != null && start==0){
 		mode=1;
 		dd();
@@ -119,6 +125,10 @@ if(trigger.match(/^2人陣營模式/) != null && start==0){
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 	rply.text='';
+	if(mode==99){
+			ACV(1,mainMsg,trigger,id,name,3);
+		return rply;
+		}
 		if(mode==1){
 			ACV(2,mainMsg,trigger,id,name,2);
 		return rply;
@@ -206,7 +216,7 @@ var od=[];
 		if(od[14]=='G.U.')RGU++;
 		console.log(RAAUF+'  '+RGU);
 		}
-		if(mmode==2){
+		if(mmode>=2){
 			if(HM>=aaab ){
 			rply.text='人數已滿';
 		return rply;
@@ -280,7 +290,7 @@ var od=[];
 			'AAUF：'+RAAUF+'/'+(aaab/2)+
 			'\nGU：'+RGU+'/'+(aaab/2);
 			}
-			if(mmode==2){
+			if(mmode>=2){
 			rply.text+='\n目前參與人數： \n'+
 			HM+'/'+aaab;
 			}
@@ -303,7 +313,7 @@ var od=[];
 			'\nGU：'+RGU+'/'+(aaab/2);
 					return rply; 
 					}
-					if(mmode==2){
+					if(mmode>=2){
 						HM--;
 						player.splice(i,1);
 						rply.text=name+'你的'+od[1]+'已取消參與'+
@@ -408,6 +418,10 @@ if(mmode==2){
 					player[3][17]=13;
 				}
 				
+		}
+		if(mmode==3){
+			player[0][16]=25;
+					player[0][17]=25;
 		}
 			var rt=BR();
 			rply.text=rt;
