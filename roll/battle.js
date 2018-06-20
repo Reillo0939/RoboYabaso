@@ -1359,7 +1359,7 @@ if(mmode==2){
 				clearTimeout(AJT);
 
 				for(var i=0;i<player.length;i++){
-					if(player[i][1]==mainMsg[2] ){
+					
 						if(player[self][Number(mainMsg[1])+27][1]=='被動'){
 							if(player[self][4]<(player[self][5]*player[self][Number(mainMsg[1])+27][3]*0.01)){
 							rply.text='Bata粒子過少，無法發動';
@@ -1381,6 +1381,7 @@ if(mmode==2){
 						
 						
 						if(player[self][Number(mainMsg[1])+27][1]=='攻擊' && mainMsg[2] != null){
+							if(player[i][1]==mainMsg[2] ){
 							var temp =0;
 							temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
 							if(temp>Number(player[self][Number(mainMsg[1])+27][4])){
