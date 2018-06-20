@@ -2036,11 +2036,11 @@ function BR(){
 			if(player[self][18]>=9 && player[self][18]<=11){
 				rr+='\n近戰攻擊 目標';
 			}
-			if(player[self][28][0]!=0)rr+='\n技能 1 目標    ('+ player[self][28][0]+')';
-			if(player[self][29][0]!=0)rr+='\n技能 2 目標    ('+ player[self][29][0]+')';
-			if(player[self][30][0]!=0)rr+='\n技能 3 目標    ('+ player[self][30][0]+')';
-			if(player[self][31][0]!=0)rr+='\n技能 4 目標    ('+ player[self][31][0]+')';
-			if(player[self][32][0]!=0)rr+='\n技能 5 目標    ('+ player[self][32][0]+')';
+			for(kkkk=1;kkkk<=5;kkkk++;){
+			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="攻擊")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+')';
+			
+			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="被動")rr+='\n技能 '+kkkk+' ('+ player[self][27+kkkk][0]+' -'+player[self][27+kkkk][3]+'%)';
+			}
 			rr+='\n 目標有';
 			for(var k=0;k<player.length;k++){
 								rr=rr+'\n'+player[k][1]+' '+player[k][16]+','+player[k][17]+'('
