@@ -1346,109 +1346,122 @@ if(mmode==2){
 
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[2] ){
-						var temp =0;
-						temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
-						if(temp>Number(player[self][Number(mainMsg[1])+27][4])){
-							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
+						if(player[self][Number(mainMsg[1])+27][1]=='被動'){
+							if(player[self][4]<(player[self][5]*player[self][Number(mainMsg[1])+27][3]*0.01)){
+							rply.text='Bata粒子過少，無法發動';
 							return rply;
 						}
-						rnggg=rollbase.Dice(100);
-						Critical=rollbase.Dice(100);	
-						rply.text=player[self][1]+'：\n'+player[self][Number(mainMsg[1])+27][6]+'\n';
-						if(rnggg > (20 + parseInt(player[i][7]) - parseInt(player[self][7]) ) ){
-						damage=Math.round(Number(player[self][Number(mainMsg[1])+27][3])*(rollbase.Dice(10)+5)*0.1);
-							if(Critical<=Number(player[self][Number(mainMsg[1])+27][5]))damage=parseInt(damage*1.5);
-							player[i][2]=player[i][2]-damage;
-							rply.text+=player[i][1]+
-							'\nHP '+player[i][2]+'/'+player[i][3];
-							rply.text+='(-'+damage+')';
-							if(Critical<=50 && player[self][18]==9)rply.text+='Critical';
-							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
-							
-							ds++;
-							if(ds==player[self][33]+1){self++;ds=1;}
-							if(self>=player.length)self=0;
-							if(player[i][2]<=0){
-								if(i<self)self--;
-								rply.text=rply.text+'\n'+player[i][1]+'已撤退';
-								
-								player.splice(i,1);
-							}
-							
-							//----------------------------------------------
-							if(mmode==1){
-						var ap=0,gp=0;
-							for(var g=0;g<player.length;g++){
-								if(player[g][14]=='A.A.U.F')ap++;
-								if(player[g][14]=='G.U.')gp++;
-							}
-								if(ap==0){
-									
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+='\nG.U勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							if(gp==0){
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+='\nA.A.U.F勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							}
-							
-							if(mmode==2){
-						
-								if(player.length==1){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[0][0]){
-									var GGP=100;
-									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
-										}
-								}
-								rply.text+='\n'+player[0][1]+'獲得最後勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							
-							}
-							//------------------------------------------------------------------
-							if(self>=player.length)self=0;
-							rply.text=rply.text+'\n\n'+BR();
-			return rply;
+						if(player[self][Number(mainMsg[1])+27][2]=='1'){
+							player[self][37][1]=1;
 						}
-						else{
-						ds++;
-							if(ds==player[self][33]+1){self++;ds=1;}
-							if(self>=player.length)self=0;
-							rply.text=player[i][1]+'閃避成功'+
-							'\nHP '+player[i][2]+'/'+player[i][3]+
-							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
-							'\n\n'+BR();
-			return rply;
+						}
+						
+						
+						if(player[self][Number(mainMsg[1])+27][1]=='攻擊'){
+							var temp =0;
+							temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
+							if(temp>Number(player[self][Number(mainMsg[1])+27][4])){
+								rply.text='距離'+player[i][1]+'太遠，無法攻擊';
+								return rply;
+							}
+							rnggg=rollbase.Dice(100);
+							Critical=rollbase.Dice(100);	
+							rply.text=player[self][1]+'：\n'+player[self][Number(mainMsg[1])+27][6]+'\n';
+							if(rnggg > (20 + parseInt(player[i][7]) - parseInt(player[self][7]) ) ){
+							damage=Math.round(Number(player[self][Number(mainMsg[1])+27][3])*(rollbase.Dice(10)+5)*0.1);
+								if(Critical<=Number(player[self][Number(mainMsg[1])+27][5]))damage=parseInt(damage*1.5);
+								player[i][2]=player[i][2]-damage;
+								rply.text+=player[i][1]+
+								'\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								if(Critical<=50 && player[self][18]==9)rply.text+='Critical';
+								rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
+								
+								ds++;
+								if(ds==player[self][33]+1){self++;ds=1;}
+								if(self>=player.length)self=0;
+								if(player[i][2]<=0){
+									if(i<self)self--;
+									rply.text=rply.text+'\n'+player[i][1]+'已撤退';
+									
+									player.splice(i,1);
+								}
+								
+								//----------------------------------------------
+								if(mmode==1){
+							var ap=0,gp=0;
+								for(var g=0;g<player.length;g++){
+									if(player[g][14]=='A.A.U.F')ap++;
+									if(player[g][14]=='G.U.')gp++;
+								}
+									if(ap==0){
+										
+									for(var uu=0;uu<player.length;uu++){
+										  for(var fgg=0;fgg<ox.oL();fgg++){
+											if(ox.oC(fgg,0)==player[uu][0]){
+										var GGP=1+((player.length-1)*2);
+										ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
+											}
+										  }
+									}
+									rply.text+='\nG.U勝利';
+									start=0;
+									RAAUF=0;
+									RGU=0;
+									dd();
+									return rply;
+								}
+								if(gp==0){
+									for(var uu=0;uu<player.length;uu++){
+										  for(var fgg=0;fgg<ox.oL();fgg++){
+											if(ox.oC(fgg,0)==player[uu][0]){
+										var GGP=1+((player.length-1)*2);
+										ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
+											}
+										  }
+									}
+									rply.text+='\nA.A.U.F勝利';
+									start=0;
+									RAAUF=0;
+									RGU=0;
+									dd();
+									return rply;
+								}
+								}
+								
+								if(mmode==2){
+							
+									if(player.length==1){
+										  for(var fgg=0;fgg<ox.oL();fgg++){
+											if(ox.oC(fgg,0)==player[0][0]){
+										var GGP=100;
+										ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+											}
+									}
+									rply.text+='\n'+player[0][1]+'獲得最後勝利';
+									start=0;
+									RAAUF=0;
+									RGU=0;
+									dd();
+									return rply;
+								}
+								
+								}
+								//------------------------------------------------------------------
+								if(self>=player.length)self=0;
+								rply.text=rply.text+'\n\n'+BR();
+				return rply;
+							}
+							else{
+							ds++;
+								if(ds==player[self][33]+1){self++;ds=1;}
+								if(self>=player.length)self=0;
+								rply.text=player[i][1]+'閃避成功'+
+								'\nHP '+player[i][2]+'/'+player[i][3]+
+								'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
+								'\n\n'+BR();
+				return rply;
+							}
 						}
 					}
 				}
