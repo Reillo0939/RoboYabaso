@@ -1380,7 +1380,7 @@ if(mmode==2){
 							player[self][37][1]=1;
 							rply.text='已開啟狂暴插件\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							}
-							rply.text='\n'+BR();
+							rply.text+='\n'+BR();
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(self>=player.length)self=0;
@@ -1398,7 +1398,7 @@ if(mmode==2){
 							player[self][37][2]=1;
 							rply.text='已開啟加速插件\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							}
-							rply.text='\n'+BR();
+							rply.text+='\n'+BR();
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(self>=player.length)self=0;
@@ -1416,7 +1416,7 @@ if(mmode==2){
 							player[self][37][3]=1;
 							rply.text='已開啟過載插件\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							}
-							rply.text='\n'+BR();
+							rply.text+='\n'+BR(1);
 							return rply;
 						}
 						}
