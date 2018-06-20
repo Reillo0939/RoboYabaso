@@ -2036,7 +2036,7 @@ function BR(){
 			if(player[self][18]>=9 && player[self][18]<=11){
 				rr+='\n近戰攻擊 目標';
 			}
-			for(kkkk=1;kkkk<=5;kkkk++;){
+			for(kkkk=1;kkkk<=5;kkkk++){
 			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="攻擊")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+')';
 			
 			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="被動")rr+='\n技能 '+kkkk+' ('+ player[self][27+kkkk][0]+' -'+player[self][27+kkkk][3]+'%)';
