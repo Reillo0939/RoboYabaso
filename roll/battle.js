@@ -1365,7 +1365,7 @@ if(mmode==2){
 							rply.text='Bata粒子過少，無法發動';
 							return rply;
 						}
-						if(player[self][Number(mainMsg[1])+27][2]=='1'){
+						if(player[self][Number(mainMsg[1])+27][2]==1){
 							player[self][4]-=(player[self][5]*player[self][Number(mainMsg[1])+27][3]*0.01)
 							player[self][37][1]=1;
 							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
