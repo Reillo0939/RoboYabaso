@@ -1824,7 +1824,7 @@ if(mmode==2){
 				}
 			}
 			//-----------------------------------------------------------------------------------------------------------------------------------------------------
-			if(id==player[self][0] && trigger.match(/^移動突擊$/) != null && mainMsg[1] != null	&& player[self][18]==11 && ds==1 ){
+			if(id==player[self][0] && trigger.match(/^移動突擊$/) != null && mainMsg[1] != null	&& player[self][18]==11 && player[self][33]+1-ds>=2 ){
 				ot=new Date();
 			
 				for(var i=0;i<player.length;i++){
@@ -2060,8 +2060,13 @@ function BR(nb){
 			'\n陣營'+player[self][14]+
 			'\nHP '+player[self][2]+'/'+player[self][3]+
 			'\nbata粒子 '+player[self][4]+'/'+player[self][5]+
-			'\n位置 '+player[self][16]+','+player[self][17];
+			'\n位置 '+player[self][16]+','+player[self][17]+
+			'\n可移動距離 '+player[self][36];
 	if(player[self][18]<9)rr+='\n子彈數：'+player[self][20]+'/'+player[self][21];
+	
+	if(player[self][37][1]==1)rr+='\n狂暴插件啟動中';
+	if(player[self][37][2]==1)rr+='\n加速插件啟動中';
+	if(player[self][37][3]==1)rr+='\n過載插件啟動中';
 			rr+='\n 可用選項：';
 			if(player[self][25]<2){
 				rr+='\n移動 x座標,y座標';
@@ -2090,7 +2095,7 @@ function BR(nb){
 			if(player[self][18]==4 && player[self][4]>=(player[self][5]*0.6)){
 				rr+='\n戰術治療 目標 (-Bata粒子60%,+HP10%,+HP20,射程<1)';
 			}	
-			if(player[self][18]==11 && ds==1){
+			if(player[self][18]==11 && player[self][33]+1-ds>=2){
 				rr+='\n移動突擊 目標 (-2行動,射程+3,依距離增傷(最多2倍)與減少精準,攻擊後移動)';
 			}			
 			if(player[self][18]==6 && player[self][20]>0){
