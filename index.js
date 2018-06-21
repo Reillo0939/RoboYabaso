@@ -61,7 +61,7 @@ if(event.message.text=='戰鬥模式啟動'){
 //if(a=='U7c4779fd913aff927f26d7f6bedd87d1'||a=='Uc9b4571605aabd3e94edd7c189144278'){
 battle=1;
 	ba.dd();
-event.reply({ type: 'text', text: '已啟動戰鬥模式' });	
+event.reply({ type: 'text', text: '已啟動戰鬥模式\n模式有:\n2人混戰模式\n3人混戰模式\n4人混戰模式\n2人陣營模式\n4人陣營模式\n6人陣營模式' });	
 //}
 //else{
 //event.reply({type: 'text', text: 'GM才能使用' });	
@@ -74,7 +74,7 @@ event.reply([{
   originalContentUrl: 'https://2.bp.blogspot.com/-b7JvOc_z2SU/WqfgwGgmylI/AAAAAAAADJI/k1rhP5ERtycFl6D4OqCEip1ShubvAbedgCLcBGAs/s1600/AAUF.jpg',
   previewImageUrl: 'https://2.bp.blogspot.com/-b7JvOc_z2SU/WqfgwGgmylI/AAAAAAAADJI/k1rhP5ERtycFl6D4OqCEip1ShubvAbedgCLcBGAs/s1600/AAUF.jpg'
 },
-  { type: 'text', text: '擁武裝裝甲聯合戰線是β粒子公諸於世後由數個高發展高技術的國家為基礎，並以人才技術互通協約為基底所產生的武裝研究機關。此研究機關原本是將粒子的能源替代性發揮到最大，並以此為基礎將已經近乎停滯的科技水平再次提高，然而此研究因為假想敵的魔術系統實驗成功而轉向粒子與外骨骼裝甲結合的新世代步兵武裝研究。在擁有近乎無限可能的新型能源下，研究的進展相當快速，操作員的篩選和培訓也非常樂觀，最終，結合粒子糾纏現象和AI輔助演算的具現化系統也成功運行，武裝裝甲聯合戰線也在具現化武裝發表的那一天，正式成立。' }]);
+  { type: 'text', text: '武裝裝甲聯合戰線是β粒子公諸於世後由數個高發展高技術的國家為基礎，並以人才技術互通協約為基底所產生的武裝研究機關。此研究機關原本是將粒子的能源替代性發揮到最大，並以此為基礎將已經近乎停滯的科技水平再次提高，然而此研究因為假想敵的魔術系統實驗成功而轉向粒子與外骨骼裝甲結合的新世代步兵武裝研究。在擁有近乎無限可能的新型能源下，研究的進展相當快速，操作員的篩選和培訓也非常樂觀，最終，結合粒子糾纏現象和AI輔助演算的具現化系統也成功運行，武裝裝甲聯合戰線也在具現化武裝發表的那一天，正式成立。' }]);
 }
 if(event.message.text=='蓋爾奇亞聯合'){
 event.reply([{
