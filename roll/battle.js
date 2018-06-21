@@ -2048,10 +2048,69 @@ function BR(nb){
 	if(nb!=1 && player[self][37][3]==1 && ds==1){
 		player[self][2]-=Math.floor(player[self][3]*0.1);
 		if(player[self][2]<=0){
-			ff.text='\n'+player[self][1]+'無法負荷過載而撤退\n';
+			ff='\n'+player[self][1]+'無法負荷過載而撤退\n';
 								
 								player.splice(self,1);
 								if(self>=player.length)self=0;
+								if(mmode==1){
+						var ap=0,gp=0;
+							for(var g=0;g<player.length;g++){
+								if(player[g][14]=='A.A.U.F')ap++;
+								if(player[g][14]=='G.U.')gp++;
+							}
+								if(ap==0){
+									
+								for(var uu=0;uu<player.length;uu++){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[uu][0]){
+									var GGP=1+((player.length-1)*2);
+									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
+										}
+									  }
+								}
+								rply.text+=ff+'\nG.U勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
+							if(gp==0){
+								for(var uu=0;uu<player.length;uu++){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[uu][0]){
+									var GGP=1+((player.length-1)*2);
+									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
+										}
+									  }
+								}
+								rply.text+=ff+'\nA.A.U.F勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
+							}
+							
+							if(mmode==2){
+						
+								if(player.length==1){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[0][0]){
+									var GGP=100;
+									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+										}
+								}
+								rply.text+=ff+'\n'+player[0][1]+'獲得最後勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
+							
+							}
 		}
 	}
 	ot=new Date();
