@@ -21,7 +21,7 @@ function parseInput(rplyToken, inputStr, id,name) {
 	; //指定啟動詞在第一個詞&把大階強制轉成細階
 
 	//在下面位置開始分析trigger
-
+/*
 	//普通ROLL擲骰判定在此	
 	if (inputStr.match(/\w/)!=null && inputStr.toLowerCase().match(/\d+d+\d/)!=null) return exports.rollbase.nomalDiceRoller(inputStr,mainMsg[0],mainMsg[1],mainMsg[2]);
 	
@@ -82,19 +82,20 @@ function parseInput(rplyToken, inputStr, id,name) {
 	
 	//FLAG指令開始於此
 	if (trigger.match(/立flag|死亡flag/) != null) return exports.funny.BStyleFlagSCRIPTS() ;	
+	*/
 	//87
 	if (trigger.match(/87/) != null) return exports.funny.bsMo() ;
-	if (trigger.match(/^"g.u"抽卡/) != null) return exports.card.MCard(1,id,name) ;//"G.U"抽卡
-	if (trigger.match(/^"g.u"10連抽/) != null) return exports.card.MCard(10,id,name) ;//"G.U"10連抽
+	if (trigger.match(/^gu抽卡/) != null) return exports.card.MCard(1,id,name) ;//"G.U"抽卡
+	if (trigger.match(/^gu10連抽/) != null) return exports.card.MCard(10,id,name) ;//"G.U"10連抽
 	
-	if (trigger.match(/^"a.a.u.f"抽卡/) != null) return exports.card.TCard(1,id,name) ;//"A.A.U.F"抽卡
-	if (trigger.match(/^"a.a.u.f"10連抽/) != null) return exports.card.TCard(10,id,name) ;//"A.A.U.F"10連抽
+	if (trigger.match(/^aauf抽卡/) != null) return exports.card.TCard(1,id,name) ;//"A.A.U.F"抽卡
+	if (trigger.match(/^aauf10連抽/) != null) return exports.card.TCard(10,id,name) ;//"A.A.U.F"10連抽
 	if (trigger.match(/^卡片查詢$/) != null) return exports.card_help.CardH(mainMsg[1]) ;
 	if (trigger.match(/^卡池資訊$/) != null) return exports.card.ICard() ;
 	
 	if (trigger.match(/(^玩家權限$|^玩家權限$)/) != null) return exports.card.IDCA(id,name) ;
-	if (trigger.match(/^g.u角色創立$/) != null) return exports.Character.CM(mainMsg[1],mainMsg[2],id,name) ;
-	if (trigger.match(/^a.a.u.f角色創立$/) != null) return exports.Character.CT(mainMsg[1],mainMsg[2],id,name) ;
+	if (trigger.match(/^gu角色創立$/) != null) return exports.Character.CM(mainMsg[1],mainMsg[2],id,name) ;
+	if (trigger.match(/^aauf角色創立$/) != null) return exports.Character.CT(mainMsg[1],mainMsg[2],id,name) ;
 	
 	
 	if (trigger.match(/玩家/) != null){
@@ -118,14 +119,14 @@ function parseInput(rplyToken, inputStr, id,name) {
 	}*/
 	
 	if (trigger.match(/^角色創立說明$/) != null) return exports.help.Character() ;
-	
+	/*
 	if (trigger.match(/bot距離/) != null) return exports.advroll.xyxy(mainMsg[1],mainMsg[2],mainMsg[3],mainMsg[4],mainMsg[5]) ;
 	
 	if (trigger.match(/傷害計算/) != null) return exports.advroll.Damage(mainMsg[1],mainMsg[2],mainMsg[3],mainMsg[4],name) ;
-	
+	*/
 	
 	//鴨霸獸指令開始於此
-	if (trigger.match(/鴨霸獸|巴獸/) != null) return exports.funny.randomReply() ;	
+	//if (trigger.match(/鴨霸獸|巴獸/) != null) return exports.funny.randomReply() ;	
 	if (trigger.match(/運氣|運勢/) != null) return exports.funny.randomLuck(mainMsg) ; //占卜運氣		
 	
 	/*tarot 指令
