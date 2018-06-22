@@ -2028,7 +2028,7 @@ od[0]='dummy';//1D
 					rply.text=BR();
 			return rply;
 		}
-		if(trigger.match(/^GM-消滅$/) != null && start==1){
+		if(trigger.match(/^GM-消滅$/) != null && start==1 && xmode!=4){
 								player[self][2]=0;
 								rply.text=player[self][1]+'已撤退';
 								player.splice(self,1);
@@ -2096,6 +2096,16 @@ od[0]='dummy';//1D
 							ds=1;
 					if(self>=player.length)self=0;
 							rply.text+='\n\n'+BR();
+			return rply;
+		}
+		if(trigger.match(/^關閉測傷$/) != null && start==1 && mmode==4){
+
+								rply.text='已關閉測傷';
+								player.splice(1,1);
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
 			return rply;
 		}
 			if(trigger.match(/^回合/) != null){
@@ -2202,6 +2212,9 @@ function BR(nb){
 	if(player[self][37][2]==1)rr+='\n加速插件啟動中';
 	if(player[self][37][3]==1)rr+='\n過載插件啟動中';
 			rr+='\n 可用選項：';
+			if(xmode==4){
+				rr+='\n關閉測傷';
+			}
 			if(player[self][25]<2){
 				rr+='\n移動 x座標,y座標';
 			}
