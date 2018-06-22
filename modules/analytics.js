@@ -49,10 +49,10 @@ function parseInput(rplyToken, inputStr, id,name) {
 	if (trigger.match(/(^cc6版創角$|^cc六版創角$)/) != null && mainMsg[1] != NaN )	return exports.coc.build6char(mainMsg[1]);
 	
 	if (trigger.match(/^coc7角色背景$/)!= null ) return exports.coc.PcBG();
-  
+  */
 	if (trigger.match(/^help$/)!= null ) return exports.help.Help();
 	
-	
+	/*
 	//nc指令開始於此 來自Rainsting/TarotLineBot 
 	if (trigger.match(/^[1-4]n[c|a][+|-][1-99]$|^[1-4]n[c|a]$/)!= null ) return exports.nc.nechronica(trigger,mainMsg[1]);
 
