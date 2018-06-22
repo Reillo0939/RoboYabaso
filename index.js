@@ -74,7 +74,7 @@ event.reply([{
   originalContentUrl: 'https://2.bp.blogspot.com/-b7JvOc_z2SU/WqfgwGgmylI/AAAAAAAADJI/k1rhP5ERtycFl6D4OqCEip1ShubvAbedgCLcBGAs/s1600/AAUF.jpg',
   previewImageUrl: 'https://2.bp.blogspot.com/-b7JvOc_z2SU/WqfgwGgmylI/AAAAAAAADJI/k1rhP5ERtycFl6D4OqCEip1ShubvAbedgCLcBGAs/s1600/AAUF.jpg'
 },
-  { type: 'text', text: '武裝裝甲聯合戰線是β粒子公諸於世後由數個高發展高技術的國家為基礎，並以人才技術互通協約為基底所產生的武裝研究機關。此研究機關原本是將粒子的能源替代性發揮到最大，並以此為基礎將已經近乎停滯的科技水平再次提高，然而此研究因為假想敵的魔術系統實驗成功而轉向粒子與外骨骼裝甲結合的新世代步兵武裝研究。在擁有近乎無限可能的新型能源下，研究的進展相當快速，操作員的篩選和培訓也非常樂觀，最終，結合粒子糾纏現象和AI輔助演算的具現化系統也成功運行，武裝裝甲聯合戰線也在具現化武裝發表的那一天，正式成立。' }]);
+  { type: 'text', text: '武裝裝甲聯合戰線是由數個高發展高技術的國家，\n以人才技術互通協約所產生的武裝研究機關。\n原本目標是將粒子的能源替代性發揮到最大，\n以此將近乎停滯的科技水平再次提高，\n在擁有近乎無限可能的新型能源下，\n研究的進展相當快速，\n操作員的篩選和培訓也非常樂觀，\n最終，\n結合粒子糾纏現象和AI輔助演算的具現化系統也成功運行，\n武裝裝甲聯合戰線也在CAC系統發表的那一天，\n正式成立。' }]);
 }
 if(event.message.text=='蓋爾奇亞聯合'){
 event.reply([{
@@ -82,7 +82,7 @@ event.reply([{
   originalContentUrl: 'https://1.bp.blogspot.com/-esavyLGBQ8I/WqfgwIWh0XI/AAAAAAAADJM/ZYR8ZXdjkzgOzGc_VEetoGgtHPEvSbzUwCLcBGAs/s1600/GU.jpg',
   previewImageUrl: 'https://1.bp.blogspot.com/-esavyLGBQ8I/WqfgwIWh0XI/AAAAAAAADJM/ZYR8ZXdjkzgOzGc_VEetoGgtHPEvSbzUwCLcBGAs/s1600/GU.jpg'
 },
-  { type: 'text', text: '蓋爾奇亞聯合是最初發現β粒子的聯合陣營，在發現之後進行了將近十年的非公開研究，這十年間，β粒子成為了新的能源，科技水平大幅的提升，使得聯合外的部分國家互相簽定了人才技術互通協約。然而在研究的第十年，第十一實驗設施發生了粒子洩漏事故，並在該區域產生了非自然性的環境改變，此計畫才不得不公諸於世。雖然粒子的存在被眾人所知，但研究也有了新的突破，β粒子不再局限於能源，研究團隊在洩漏事故所產生的環境異變中了解到了其改變既有事物的能力，並嘗試以人來控制局部事像的改變，經歷了許多次的失敗和犧牲，建構出了現今的魔術系統。' }]
+  { type: 'text', text: '蓋爾奇亞聯合是研究β粒子的聯合陣營，\n研究成果是，\nβ粒子成為了新的能源，\n科技水平大幅的提升，\n使得聯合外的部分國家互相簽定了人才技術互通協約。\n後來研究也有了新的突破，\nβ粒子不再局限於能源，\n研究團隊瞭解到了其擁有改變4維空間的能力，\n並嘗試以人為控制來改變3維空間，\n經歷了許多次的失敗，\n建構出了現今的魔術系統。' }]
 	   );
 }
 		 event.reply(msg);
