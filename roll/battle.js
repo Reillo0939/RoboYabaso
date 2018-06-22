@@ -27,7 +27,7 @@ var self=0;
 var ds=0;
 var damage;
 var rnggg;
-var mode;
+var mode,xmode;
 var ot= new Date();;
 var RAAUF=0,RGU=0,HM=0;
 function dd() {
@@ -117,7 +117,7 @@ if(trigger.match(/^2人陣營模式/) != null && start==0){
 	if(trigger.match(/^傷害測試模式/) != null && start==0){
 		mode=100;
 		dd();
-	        rply.text='已轉為6人陣營模式';
+	        rply.text='已轉為傷害測試模式';
 		return rply;
 	}
 	if(trigger.match(/^時間/) != null && start==0){
@@ -166,6 +166,7 @@ if(trigger.match(/^2人陣營模式/) != null && start==0){
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 function ACV(aaab,mainMsg,trigger,id,name,mmode){
+	xmode=mmode;
 if(trigger.match(/^戰鬥參與$/) != null && start==0){
 
 	if(player.length==aaab){
@@ -2114,7 +2115,7 @@ od[0]=ox.oC(1,0);//1D
 
 function BR(nb){
 	var ff='';
-	if(mmode==4){
+	if(xmode==4){
 		player[self][2]=player[self][3];
 		player[self][4]=player[self][5];
 		if(player[self][0]=='dummy'){
@@ -2132,7 +2133,7 @@ function BR(nb){
 								
 								player.splice(self,1);
 								if(self>=player.length)self=0;
-								if(mmode==1){
+								if(xmode==1){
 						var ap=0,gp=0;
 							for(var g=0;g<player.length;g++){
 								if(player[g][14]=='A.A.U.F')ap++;
