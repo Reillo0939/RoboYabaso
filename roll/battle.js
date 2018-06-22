@@ -440,8 +440,8 @@ if(mmode==2){
 			var od=[];
 od[0]='dummy';//1D
     	od[1]='測傷用';//名字
-    	od[2]=99999;//生命值
-		od[3]=99999;//生命值
+    	od[2]=999;//生命值
+		od[3]=999;//生命值
 		od[4]=0;//Bata粒子適性
 		od[5]=0;//Bata粒子適性
 		od[6]=0;//物理適性
@@ -2107,6 +2107,8 @@ od[0]='dummy';//1D
 }
 
 function BR(nb){
+	ot=new Date();
+	var rr;
 	var ff='';
 	if(xmode==4){
 		player[self][2]=player[self][3];
@@ -2115,8 +2117,8 @@ function BR(nb){
 			self++;
 					ds=1;
 					if(self>=player.length)self=0;
-					rply.text=BR();
-			return rply;
+					rr=BR();
+			return rr;
 		}
 	}
 	if(nb!=1 && player[self][37][3]==1 && ds==1){
@@ -2187,8 +2189,7 @@ function BR(nb){
 							}
 		}
 	}
-	ot=new Date();
-	var rr;
+	
 	rr=ff+'輪到'+player[self][1]+'的第'+ds+'次行動'+
 			'\n陣營'+player[self][14]+
 			'\nHP '+player[self][2]+'/'+player[self][3]+
