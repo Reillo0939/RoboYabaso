@@ -438,9 +438,7 @@ if(mmode==2){
 		if(mmode==4){
 			console.log('debug01');
 			var od=[];
-var WMK=ox.oC(1,19);
-		var WV = WMK.spl1t(','); //定義輸入字串
-od[0]=ox.oC(1,0);//1D
+od[0]='dummy';//1D
     	od[1]='測傷用';//名字
     	od[2]=99999;//生命值
 		od[3]=99999;//生命值
