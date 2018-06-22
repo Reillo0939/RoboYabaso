@@ -61,16 +61,16 @@ function battles(id,name,ab) {
 	let mainMsg = ab.match(msgSplitor); //定義輸入字串
 	let trigger = mainMsg[0].toString()
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
-	if (trigger.match(/武器/) != null && start==0){
-	if (trigger.match(/製作/)!= null) return xweapon.weapon_make(id,name,mainMsg[1],mainMsg[2]) ;
+	if (trigger.match(/武器/) != null ){
+	if (trigger.match(/製作/)!= null && start==0) return xweapon.weapon_make(id,name,mainMsg[1],mainMsg[2]) ;
 	if (trigger.match(/查看/)!= null) return xweapon.weapon_view(id,name) ;
-	if (trigger.match(/破壞/)!= null) return xweapon.weapon_break(id,name) ;
-	if (trigger.match(/改造/)!= null) return xweapon.weapon_retrofit(id,name,mainMsg[1],mainMsg[2]) ;
+	if (trigger.match(/破壞/)!= null && start==0) return xweapon.weapon_break(id,name) ;
+	if (trigger.match(/改造/)!= null && start==0) return xweapon.weapon_retrofit(id,name,mainMsg[1],mainMsg[2]) ;
 	}
-	if (trigger.match(/玩家/) != null && start==0){
+	if (trigger.match(/玩家/) != null){
 	if (trigger.match(/自身情報/)!= null) return ox.CV(id,name) ;
-	if (trigger.match(/改名/)!= null) return ox.CCN(id,name,mainMsg[1]) ;
-	if (trigger.match(/列表/)!= null) return ox.CCL() ;
+	if (trigger.match(/改名/)!= null && start==0) return ox.CCN(id,name,mainMsg[1]) ;
+	if (trigger.match(/列表/)!= null && start==0) return ox.CCL() ;
 	}
 	if(trigger.match(/^test_mode/) != null && start==0){
 		mode=99;
@@ -114,6 +114,12 @@ if(trigger.match(/^2人陣營模式/) != null && start==0){
 	        rply.text='已轉為6人陣營模式';
 		return rply;
 	}
+	if(trigger.match(/^傷害測試模式/) != null && start==0){
+		mode=100;
+		dd();
+	        rply.text='已轉為6人陣營模式';
+		return rply;
+	}
 	if(trigger.match(/^時間/) != null && start==0){
 		var time = new Date();
 		var atxu=0;
@@ -151,6 +157,10 @@ if(trigger.match(/^2人陣營模式/) != null && start==0){
 		}
 		if(mode==14){
 			ACV(6,mainMsg,trigger,id,name,1);
+		return rply;
+		}
+		if(mode==100){
+			ACV(1,mainMsg,trigger,id,name,4);
 		return rply;
 		}
 }
@@ -325,6 +335,7 @@ var od=[];
 			
 		}
 		if(trigger.match(/^戰鬥開始$/) != null && start==0 && player.length==aaab){
+			
 			start=1;
 			self=0;
 			ds=1;
@@ -422,6 +433,62 @@ if(mmode==2){
 		if(mmode==3){
 			player[0][16]=25;
 					player[0][17]=25;
+		}
+		if(mmode==4){
+			var od=[];
+var WMK=ox.oC(1,19);
+		var WV = WMK.spl1t(','); //定義輸入字串
+od[0]=ox.oC(1,0);//1D
+    	od[1]=ox.oC(1,1);//名字
+    	od[2]=Number(ox.oC(1,5));//生命值
+		od[3]=Number(ox.oC(1,5));//生命值
+		od[4]=Number(ox.oC(1,6));//Bata粒子適性
+		od[5]=Number(ox.oC(1,6));//Bata粒子適性
+		od[6]=Number(ox.oC(1,7));//物理適性
+		od[7]=Number(ox.oC(1,8));//反應力
+		od[8]=Number(ox.oC(1,9));//放出適性
+		od[9]=Number(ox.oC(1,10));//火屬適性
+		od[10]=Number(ox.oC(1,11));//水屬適性
+		od[11]=Number(ox.oC(1,12));//風屬適性
+		od[12]=Number(ox.oC(1,13));//土屬適性
+		od[13]=Number(ox.oC(1,15));//控制能力
+		od[14]=ox.oC(1,3);//陣營
+		od[15]=ox.oC(1,17);//金幣
+		od[16]=0;//x
+		od[17]=0;//y
+		
+		od[27]=WV[5];//武器名稱
+		od[18]=Number(WV[0]);//武器種類
+		od[19]=Number(WV[1]);//基礎傷害
+		od[20]=Number(WV[2]);//現有子彈
+		od[21]=Number(WV[2]);//總子彈
+		od[22]=Number(WV[3]);//連發數
+		od[23]=Number(WV[4]);//射程
+		od[24]=Number(WV[6]);//精準
+		od[25]=0;//架槍等動作
+		od[26]=0;//命中(狙擊)
+		od[35]='';//狙擊對象
+		var AAA=ox.oC(1,21);
+		var Ask1ll = AAA.spl1t('|'); //定義輸入字串
+		var par = Ask1ll[0].spl1t(',');
+		od[28]=par;
+		par = Ask1ll[1].spl1t(',');
+		od[29]=par;
+		par = Ask1ll[2].spl1t(',');
+		od[30]=par;
+		par = Ask1ll[3].spl1t(',');
+		od[31]=par;
+		par = Ask1ll[4].spl1t(',');
+		od[32]=par;
+		od[33]=2;//可行動次數
+		od[34]=1;//閃避倍率
+		od[36]=3;//移動距離
+		od[37]=[];
+		player[player.length]=od;
+			player[0][16]=25;
+					player[0][17]=25;
+					player[1][16]=25;
+					player[1][17]=25;
 		}
 			var rt=BR();
 			rply.text=rt;
@@ -2047,6 +2114,17 @@ if(mmode==2){
 
 function BR(nb){
 	var ff='';
+	if(mmode==4){
+		player[self][2]=player[self][3];
+		player[self][4]=player[self][5];
+		if(player[self][0]=='dummy'){
+			self++;
+					ds=1;
+					if(self>=player.length)self=0;
+					rply.text=BR();
+			return rply;
+		}
+	}
 	if(nb!=1 && player[self][37][3]==1 && ds==1){
 		player[self][2]-=Math.floor(player[self][3]*0.1);
 		if(player[self][2]<=0){
