@@ -436,6 +436,7 @@ if(mmode==2){
 					player[0][17]=25;
 		}
 		if(mmode==4){
+			console.log('debug01');
 			var od=[];
 var WMK=ox.oC(1,19);
 		var WV = WMK.spl1t(','); //定義輸入字串
@@ -486,7 +487,8 @@ od[0]=ox.oC(1,0);//1D
 		od[36]=3;//移動距離
 		od[37]=[];
 		player[player.length]=od;
-			player[0][16]=25;
+		console.log('debug02');
+					player[0][16]=25;
 					player[0][17]=25;
 					player[1][16]=25;
 					player[1][17]=25;
