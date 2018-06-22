@@ -19,10 +19,10 @@ function MCard(frequency,id,name) {
 		ggg=i;
 		ttt=ox.oC(ggg,17);}
 	}
-	if(ttt<frequency*100){
+	/*if(ttt<frequency*100){
 		rply.text=name+'金錢不足：';
 		return rply;
-	}
+	}*/
 rply.text=name+'抽到了：';
 if(id==''){
 for(i=1;i<=frequency;i++){
@@ -32,20 +32,20 @@ for(i=1;i<=frequency;i++){
 else{
 for(i=1;i<=frequency;i++){
 let rarity=rollbase.Dice(100);
-if(rarity==100)MSSR();
-if((rarity>=89) && (rarity<100))MSR();
- if((rarity>=58) && (rarity<89))MR();
- if(rarity<58)MN();
+if(rarity>=51)MSSR();
+if((rarity>=21) && (rarity<=50))MSR();
+ if((rarity>=11) && (rarity<=20))MR();
+ if(rarity<=10)MN();
 }
 
 if(frequency==10){
 rply.text+='\n多送你一張：';
 let rarity=rollbase.Dice(100);
-if(rarity>=96)MSSR();
-if(rarity<96)MSR();
+if(rarity>=21)MSSR();
+if(rarity<=20)MSR();
 }
 }
-ox.oA(ggg,ttt-frequency*100);
+//ox.oA(ggg,ttt-frequency*100);
 return rply;
 }
 function MN() {
@@ -134,10 +134,10 @@ function TCard(frequency,id,name) {
 		ggg=i;
 		ttt=ox.oC(ggg,17);}
 	}
-	if(ttt<frequency*100){
+	/*if(ttt<frequency*100){
 		rply.text=name+'金錢不足：';
 		return rply;
-	}
+	}*/
 rply.text=name+'抽到了：';
 if(id==''){
 for(i=1;i<=frequency;i++){
@@ -147,20 +147,20 @@ for(i=1;i<=frequency;i++){
 else{
 for(i=1;i<=frequency;i++){
 let rarity=rollbase.Dice(100);
-if(rarity==100)TSSR();
-if((rarity>=89) && (rarity<100))TSR();
- if((rarity>=58) && (rarity<89))TR();
- if(rarity<58)TN();
+if(rarity>=51)TSSR();
+if((rarity>=21) && (rarity<=50))TSR();
+ if((rarity>=11) && (rarity<=20))TR();
+ if(rarity<=10)TN();
 }
 
 if(frequency==10){
 rply.text+='\n多送你一張：';
 let rarity=rollbase.Dice(100);
-if(rarity>=96)TSSR();
-if(rarity<96)TSR();
+if(rarity>=21)TSSR();
+if(rarity<=20)TSR();
 }
 }
-	ox.oA(ggg,ttt-frequency*100);
+	//ox.oA(ggg,ttt-frequency*100);
 return rply;
 }
 
@@ -218,22 +218,22 @@ rply.text =
 	'十連抽：卡池名稱10連抽\n'+
 	'本周卡池\n'+
 	'===GU:===\n'+
-	' -[SSR]機率1% \n'+
-	' -[SR]機率10% \n'+
-	' -[R]機率30% \n'+
-	' -[N]機率59% \n'+
+	' -[SSR]機率50% \n'+
+	' -[SR]機率30% \n'+
+	' -[R]機率10% \n'+
+	' -[N]機率10% \n'+
 	'===10連抽保底SR機率：===\n'+
-	' -[SSR]機率5% \n'+
-	' -[SR]機率95% \n'+
+	' -[SSR]機率80% \n'+
+	' -[SR]機率20% \n'+
 	'--------------------------\n'+
 	'===AAUF:===\n'+
-	' -[SSR]機率1% \n'+
-	' -[SR]機率10% \n'+
-	' -[R]機率30% \n'+
-	' -[N]機率59% \n'+
+	' -[SSR]機率50% \n'+
+	' -[SR]機率30% \n'+
+	' -[R]機率10% \n'+
+	' -[N]機率10% \n'+
 	'===10連抽保底SR機率：===\n'+
-	' -[SSR]機率5% \n'+
-	' -[SR]機率95%'
+	' -[SSR]機率80% \n'+
+	' -[SR]機率20%'
 	;
 return rply;	
 }
