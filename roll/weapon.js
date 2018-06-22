@@ -195,16 +195,16 @@ var WMK;
 				rply.text+='\n武器種類：手槍';
 				if(species=='基礎傷害'){WV[1]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
 				if(species=='子彈數'){WV[2]+=(1*amount);WV[7]-=Math.abs(1*amount);}
-				if(species=='連發數'){WV[3]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
-				if(species=='射程'){WV[4]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='連發數'){WV[3]+=(0.25*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='射程'){WV[4]+=(0.1*amount);WV[7]-=Math.abs(1*amount);}
 				if(species=='精準度'){WV[6]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
 			}
 			if(WV[0]==2){
 				rply.text+='\n武器種類：重型手槍';
 				if(species=='基礎傷害'){WV[1]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
 				if(species=='子彈數'){WV[2]+=(1*amount);WV[7]-=Math.abs(1*amount);}
-				if(species=='連發數'){WV[3]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
-				if(species=='射程'){WV[4]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='連發數'){WV[3]+=(0.25*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='射程'){WV[4]+=(0.2*amount);WV[7]-=Math.abs(1*amount);}
 				if(species=='精準度'){WV[6]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
 			}
 			if(WV[0]==3){
@@ -212,7 +212,7 @@ var WMK;
 				if(species=='基礎傷害'){WV[1]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
 				if(species=='子彈數'){WV[2]+=(1*amount);WV[7]-=Math.abs(1*amount);}
 				if(species=='連發數'){WV[3]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
-				if(species=='射程'){WV[4]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='射程'){WV[4]+=(0.25*amount);WV[7]-=Math.abs(1*amount);}
 				if(species=='精準度'){WV[6]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
 				}
 				
@@ -237,7 +237,7 @@ var WMK;
 				if(species=='基礎傷害'){WV[1]+=(1*amount);WV[7]-=Math.abs(1*amount);}
 				if(species=='子彈數'){WV[2]+=(1*amount);WV[7]-=Math.abs(1*amount);}
 				if(species=='連發數'){rply.text='['+name+']' + + ' 無法改造的類型';return rply;}
-				if(species=='射程'){WV[4]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='射程'){WV[4]+=(0.25*amount);WV[7]-=Math.abs(1*amount);}
 				if(species=='精準度'){WV[6]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
 			}
 			if(WV[0]==7){
@@ -245,7 +245,7 @@ var WMK;
 				if(species=='基礎傷害'){WV[1]+=(1*amount);WV[7]-=Math.abs(1*amount);}
 				if(species=='子彈數'){WV[2]+=(1*amount);WV[7]-=Math.abs(1*amount);}
 				if(species=='連發數'){rply.text='['+name+']' + + ' 無法改造的類型';return rply;}
-				if(species=='射程'){WV[4]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='射程'){WV[4]+=(0.25*amount);WV[7]-=Math.abs(1*amount);}
 				if(species=='精準度'){WV[6]+=(0.5*amount);WV[7]-=Math.abs(1*amount);}
 			}
 			if(WV[0]==8){
