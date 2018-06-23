@@ -112,7 +112,7 @@ return rply;
 }
 function MSSR() {
 let rplyArr = [
-'\[SSR] 過載插件'
+'\[SSR] 過載插件',
 '\[SSR] 無人擊敗-愚人節boss',
 '\[SSR] β粒子研究報告',
 '\[SSR] 具現化研究者-洛斯塔克',
