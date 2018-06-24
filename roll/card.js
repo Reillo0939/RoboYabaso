@@ -33,19 +33,19 @@ for(i=1;i<=frequency;i++){
 else{*/
 for(i=1;i<=frequency;i++){
 let rarity=rollbase.Dice(1000);
-if(rarity>=1000)MUR();
-if((rarity>=990) && (rarity<=999))MSSR();
- if((rarity>=891) && (rarity<=990))MSR();
-  if((rarity>=591) && (rarity<=890))MR();
- if(rarity<=590)MN();
+if(rarity>=999)MUR();
+if((rarity>=989) && (rarity<=998))MSSR();
+ if((rarity>=889) && (rarity<=988))MSR();
+  if((rarity>=589) && (rarity<=888))MR();
+ if(rarity<=588)MN();
 }
 
 if(frequency==9){
 rply.text+='\n保底：';
-let rarity=rollbase.Dice(1000);
-if(rarity>=996)MUR();
-if((rarity>=966) && (rarity<=995))MSSR();
-if(rarity<=965)MSR();
+let rarity=rollbase.Dice(100);
+if(rarity>=100)MUR();
+if((rarity>=96) && (rarity<=99))MSSR();
+if(rarity<=95)MSR();
 }
 //}
 //ox.oA(ggg,ttt-frequency*100);
@@ -85,6 +85,7 @@ let rplyArr = [
 '\[R] 武器-霰射炸藥', 
 '\[R] 武器-FrostGiant', 
 '\[R] 武器-我不知道能不能用', 
+'\[R] 武器-Caliburn', 
 '\[R] 武器-3HIT'
 ];
 rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
@@ -105,7 +106,8 @@ let rplyArr = [
 '\[SR] 測試人員-Guni',
 '\[SR] 測試人員-赤靈',
 '\[SR] 聖戰發起者-lee',
-'\[SR] 迷之表情-(´・ω・`)'
+'\[SR] 迷之表情-(´・ω・`)',
+'\[SR] 迷之少年-Arthur'
 ];
 rply.text = rply.text +'\n' + rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;	
@@ -122,6 +124,14 @@ let rplyArr = [
 '\[SSR] 協力者-謝諾亞',
 '\[SSR] 隔壁的bot-上原空音',
 '\[SSR] 悲劇之人-製杖',
+'\[SSR] 神器-Excalibur',
+'\[SSR] 神器-高周波刀',
+'\[SSR] 妖刀-村正',
+'\[SSR] 妖刀-村雨',
+'\[SSR] 神劍-莫邪',
+'\[SSR] 神劍-干將',
+'\[SSR] 魔劍-提爾鋒',
+'\[SSR] 神槍-岡格尼爾',
 '\[SSR] 程式設計師-夜月'
 ];
 rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
@@ -130,6 +140,7 @@ return rply;
 
 function MUR() {
 let rplyArr = [
+'\[UR] β粒子凝聚體-賢者之石',
 '\[UR] β粒子研究者-雷洛',
 '\[UR] β粒子發現者-鼠'
 ];
@@ -144,15 +155,15 @@ rply.text =
 	'十連抽："卡池名稱"10連抽\n'+
 	'本周卡池\n'+
 	'===粒子研究紀錄===\n'+
-	' -[UR]機率0.1% \n'+
+	' -[UR]機率0.2% \n'+
 	' -[SSR]機率1% \n'+
 	' -[SR]機率10% \n'+
 	' -[R]機率30% \n'+
-	' -[N]機率58.9% \n'+
+	' -[N]機率58.8% \n'+
 	'===10連抽保底SR機率：===\n'+
-	' -[UR]機率0.5% \n'+
-	' -[SSR]機率3% \n'+
-	' -[SR]機率96.5% \n'
+	' -[UR]機率1% \n'+
+	' -[SSR]機率4% \n'+
+	' -[SR]機率95% \n'
 	
 	;
 return rply;	
