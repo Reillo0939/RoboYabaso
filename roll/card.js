@@ -140,6 +140,7 @@ return rply;
 
 function MUR() {
 let rplyArr = [
+'\[UR] 課金獎勵-普利珠',
 '\[UR] β粒子凝聚體-賢者之石',
 '\[UR] β粒子研究者-雷洛',
 '\[UR] β粒子發現者-鼠'
