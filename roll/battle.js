@@ -247,7 +247,7 @@ var od=[];
 		od[23]=Number(WV[4]);//射程
 		od[24]=Number(WV[6]);//精準
 		od[25]=0;//架槍等動作
-		od[26]=0;//命中(狙擊)
+		od[26]=0;//命中(狙擊),能量倍率
 		od[35]='';//狙擊對象
 		
 		var AAA=ox.oC(i,21);
@@ -290,6 +290,7 @@ var od=[];
 			if(WV[0]==9)rply.text+='\n武器種類：短近距離武器';
 			if(WV[0]==10)rply.text+='\n武器種類：中近距離武器';
 			if(WV[0]==11)rply.text+='\n武器種類：長近距離武器';
+			if(WV[0]==12)rply.text+='\n武器種類：能量放出槍';
 			if(WV[0]<9)rply.text+='\n子彈數：'+WV[2]+'/'+WV[2];
 			if(od[28][0]!=0)rply.text+='\n技能1：'+od[28][0];
 			if(od[29][0]!=0)rply.text+='\n技能2：'+od[29][0];
@@ -2020,6 +2021,128 @@ od[0]='dummy';//1D
 					}
 				}
 			}
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------
+			if(id==player[self][0] && trigger.match(/^能量放出$/) != null && mainMsg[1] != null &&player[self][18]==12 && player[self][4]>=(player[self][5]*0.1)){
+				
+				ot=new Date();
+		
+				
+				
+				for(var i=0;i<player.length;i++){
+					if(player[i][1]==mainMsg[1] ){
+						var temp =0;
+						if(player[self][4]<(player[self][5]*0.1)){
+							rply.text='Bata粒子過少，無法攻擊';
+							return rply;
+						}
+						temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
+						if(temp>(player[self][23]+3)){
+							
+							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
+							return rply;
+						}
+						player[self][4]-=Math.floor((player[self][5]*0.1));
+						rnggg=rollbase.Dice(100);
+						player[self][20]--;
+							
+							damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)*0.001*(100+player[self][26]*50)*0.01);
+							player[self][26]=0;
+							player[i][2]=player[i][2]-damage;
+							rply.text=player[i][1]+
+							'\nHP '+player[i][2]+'/'+player[i][3];
+							rply.text+='(-'+damage+')';
+							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							
+							ds++
+							if(ds==player[self][33]+1){self++;ds=1;}
+							if(player[i][2]<=0){
+								if(i<self)self--;
+								rply.text=rply.text+'\n'+player[i][1]+'已撤退';
+								
+								player.splice(i,1);
+							}
+							
+							//----------------------------------------------
+							if(mmode==1){
+						var ap=0,gp=0;
+							for(var g=0;g<player.length;g++){
+								if(player[g][14]=='A.A.U.F')ap++;
+								if(player[g][14]=='G.U.')gp++;
+							}
+								if(ap==0){
+									
+								for(var uu=0;uu<player.length;uu++){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[uu][0]){
+									var GGP=1+((player.length-1)*2);
+									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
+										}
+									  }
+								}
+								rply.text+='\nG.U勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
+							if(gp==0){
+								for(var uu=0;uu<player.length;uu++){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[uu][0]){
+									var GGP=1+((player.length-1)*2);
+									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
+										}
+									  }
+								}
+								rply.text+='\nA.A.U.F勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
+							}
+							
+							if(mmode==2){
+						
+								if(player.length==1){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[0][0]){
+									var GGP=100;
+									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+										}
+								}
+								rply.text+='\n'+player[0][1]+'獲得最後勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return rply;
+							}
+							
+							}
+							//------------------------------------------------------------------
+							if(self>=player.length)self=0;
+							rply.text=rply.text+'\n\n'+BR();
+			return rply;
+						
+					}
+				}
+			}
+	//-----------------------------------------------------------------------------------------------------------------------------------------------------
+			if(id==player[self][0] && trigger.match(/^聚能$/) != null && mainMsg[1] != null &&player[self][18]==12 && player[self][4]>=(player[self][5]*0.2)){
+					ot=new Date();
+					if(player[self][4]<(player[self][5]*0.2)){
+							rply.text='Bata粒子過少，聚能失敗';
+							return rply;
+						}
+						player[self][4]-=Math.floor(player[self][5]*0.2);
+						player[self][26]++;
+					rply.text+='已聚能'+player[self][26]+'次\n\n';
+					rply.text+=BR()
+			return rply;
+			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(trigger.match(/^跳過/) != null && start==1){
 					self++;
@@ -2242,9 +2365,7 @@ function BR(nb){
 			if(player[self][18]==4 && player[self][4]>=(player[self][5]*0.6)){
 				rr+='\n戰術治療 目標 (-Bata粒子60%,+HP10%,+HP20,射程<1)';
 			}	
-			if(player[self][18]==11 && player[self][33]+1-ds>=2){
-				rr+='\n移動突擊 目標 (-2行動,射程+3,依距離增傷(最多2倍)與減少精準,攻擊後移動)';
-			}			
+			
 			if(player[self][18]==6 && player[self][20]>0){
 				rr+='\n瞄準 目標';
 			}	
@@ -2281,6 +2402,15 @@ function BR(nb){
 			if(player[self][18]>=9 && player[self][18]<=11){
 				rr+='\n近戰攻擊 目標';
 			}
+			if(player[self][18]==11 && player[self][33]+1-ds>=2){
+				rr+='\n移動突擊 目標 (-2行動,射程+3,依距離增傷(最多2倍)與減少精準,攻擊後移動)';
+			}		
+			if(player[self][18]==12 && player[self][4]>=(player[self][5]*0.1)){
+				rr+='\n能量放出 目標 (-Bata粒子10%)';
+			}
+			if(player[self][18]==12 && player[self][4]>=(player[self][5]*0.2)){
+				rr+='\n聚能 (-Bata粒子20%,每使用一次能讓下次能量放出+50%的傷害)';
+			}			
 			for(kkkk=1;kkkk<=5;kkkk++){
 			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="攻擊")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+')';
 			
