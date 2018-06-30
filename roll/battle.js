@@ -2045,7 +2045,7 @@ od[0]='dummy';//1D
 						rnggg=rollbase.Dice(100);
 						player[self][20]--;
 							
-							damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)*0.001*(100+player[self][26]*50)*0.01);
+							damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)*0.001*(100+player[self][26]*100)*0.01);
 							player[self][26]=0;
 							player[i][2]=player[i][2]-damage;
 							rply.text=player[i][1]+
@@ -2409,7 +2409,7 @@ function BR(nb){
 				rr+='\n能量放出 目標 (-Bata粒子10%)';
 			}
 			if(player[self][18]==12 && player[self][4]>=(player[self][5]*0.2)){
-				rr+='\n聚能 (-Bata粒子20%,每使用一次能讓下次能量放出+50%的傷害)';
+				rr+='\n聚能 (-Bata粒子20%,每使用一次能讓下次能量放出+100%的傷害)';
 			}			
 			for(kkkk=1;kkkk<=5;kkkk++){
 			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="攻擊")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+')';
