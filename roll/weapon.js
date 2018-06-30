@@ -69,26 +69,32 @@ var WMK;
 			return rply;
 		}
 		if(species=='短近距離武器'){
-			WMK='9,20,1,1,0.2,'+Wname+',100,10';
+			WMK='9,20,0,1,0.2,'+Wname+',100,5';
 			ox.WM(i,WMK);
 			rply.text='['+name+']'+'已製作完成';
 			return rply;
 		}
 		if(species=='中近距離武器'){
-			WMK='10,30,1,1,0.5,'+Wname+',85,10';
+			WMK='10,30,0,1,0.5,'+Wname+',85,5';
 			ox.WM(i,WMK);
 			rply.text='['+name+']'+'已製作完成';
 			return rply;
 			}
 		if(species=='長近距離武器'){
-			WMK='11,40,1,1,0.8,'+Wname+',70,10';
+			WMK='11,40,0,1,0.8,'+Wname+',70,5';
+			ox.WM(i,WMK);
+			rply.text='['+name+']'+'已製作完成';
+			return rply;
+		}
+		if(species=='能量放出槍'){
+			WMK='12,20,0,1,10,'+Wname+',100,5';
 			ox.WM(i,WMK);
 			rply.text='['+name+']'+'已製作完成';
 			return rply;
 		}
 		if(WMK==''){
 			rply.text='['+name+']'+'沒有該種類 有'+
-			'\n手槍,\n重型手槍,\n衝鋒槍,\n突擊步槍,\n射手步槍,\n狙擊槍,\n大口徑狙擊槍,\n火炮,\n短近距離武器,\n中近距離武器,\n長近距離武器';
+			'\n手槍,\n重型手槍,\n衝鋒槍,\n突擊步槍,\n射手步槍,\n狙擊槍,\n大口徑狙擊槍,\n火炮,\n短近距離武器,\n中近距離武器,\n長近距離武器,\n能量放出槍';
 			return rply;
 		}
 		
@@ -142,10 +148,11 @@ var WMK;
 			if(WV[0]==9)rply.text+='\n武器種類：短近距離武器';
 			if(WV[0]==10)rply.text+='\n武器種類：中近距離武器';
 			if(WV[0]==11)rply.text+='\n武器種類：長近距離武器';
-			rply.text+= '\n基礎傷害：'+WV[1]+
-						'\n子彈數：'+WV[2]+
-						'\n連發數：'+WV[3]+
-						'\n射程：'+WV[4]+
+			if(WV[0]==12)rply.text+='\n武器種類：能量放出槍';
+			rply.text+= '\n基礎傷害：'+WV[1];
+			if(MV[0]<=8)rply.text+='\n子彈數：'+WV[2]+
+			'\n連發數：'+WV[3];
+			rply.text+=	'\n射程：'+WV[4]+
 						'\n精準度：'+WV[6]+
 						'\n武器重量：'+ww+
 						'\n可改造次數：'+WV[7]
@@ -280,6 +287,14 @@ var WMK;
 				if(species=='子彈數'){rply.text='['+name+']' + ' 無法改造的類型';return rply;}
 				if(species=='精準度'){rply.text='['+name+']' + ' 無法改造的類型';return rply;}
 			}
+			if(WV[0]==12){
+				rply.text+='\n武器種類：能量放出槍';
+				if(species=='基礎傷害'){WV[1]+=(1*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='射程'){WV[4]+=(0.1*amount);WV[7]-=Math.abs(1*amount);}
+				if(species=='連發數'){rply.text='['+name+']' + ' 無法改造的類型';return rply;}
+				if(species=='子彈數'){rply.text='['+name+']' + ' 無法改造的類型';return rply;}
+				if(species=='精準度'){rply.text='['+name+']' + ' 無法改造的類型';return rply;}
+			}
 			
 			WMK=WV[0]+','+WV[1].toString() +','+WV[2].toString() +','+WV[3].toString()+','+WV[4].toString()+','+WV[5].toString()+','+WV[6].toString()+','+WV[7].toString();
 			ox.WM(i,WMK);
@@ -289,10 +304,10 @@ var WMK;
 			if(WV[0]==9)yy=10;
 			if(WV[0]==11)yy=-10;
 			ww=Number(Number(WV[1])*0.5+Number(WV[2])*0.2+Number(WV[3])+Number(WV[4])*0.5+Number(WV[6])*0.1)-yy;
-			rply.text+= '\n基礎傷害：'+WV[1]+
-						'\n子彈數：'+WV[2]+
-						'\n連發數：'+WV[3]+
-						'\n射程：'+WV[4]+
+			rply.text+= '\n基礎傷害：'+WV[1];
+			if(MV[0]<=8)rply.text+='\n子彈數：'+WV[2]+
+			'\n連發數：'+WV[3];
+			rply.text+=	'\n射程：'+WV[4]+
 						'\n精準度：'+WV[6]+
 						'\n武器重量：'+ww+
 						'\n可改造次數：'+WV[7]
