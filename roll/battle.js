@@ -1266,7 +1266,7 @@ od[0]='dummy';//1D
 					ds++;
 					if(ds==player[self][33]+1){self++;ds=1;}
 					if(self>=player.length)self=0;
-					rply.text+=BR()
+					rply.text+=BR();
 			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2140,7 +2140,10 @@ od[0]='dummy';//1D
 						player[self][4]-=Math.floor(player[self][5]*0.2);
 						player[self][26]++;
 					rply.text+='已聚能'+player[self][26]+'次\n\n';
-					rply.text+=BR()
+					ds++;
+					if(ds==player[self][33]+1){self++;ds=1;}
+					if(self>=player.length)self=0;
+					rply.text+=BR();
 			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
