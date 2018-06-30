@@ -2131,7 +2131,7 @@ od[0]='dummy';//1D
 				}
 			}
 	//-----------------------------------------------------------------------------------------------------------------------------------------------------
-			if(id==player[self][0] && trigger.match(/^聚能$/) != null && mainMsg[1] != null &&player[self][18]==12 && player[self][4]>=(player[self][5]*0.2)){
+			if(id==player[self][0] && trigger.match(/^聚能$/) != null &&player[self][18]==12 && player[self][4]>=(player[self][5]*0.2)){
 					ot=new Date();
 					if(player[self][4]<(player[self][5]*0.2)){
 							rply.text='Bata粒子過少，聚能失敗';
