@@ -499,7 +499,7 @@ od[0]='dummy';//1D
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
-						temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
+						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
 						if(temp>player[self][23]){
 							 
 							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
@@ -526,7 +526,8 @@ od[0]='dummy';//1D
 							else{
 								damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)/100)/10;
 							}
-							
+							player[self][16]=player[i][16];
+						player[self][17]=player[i][17];
 							if(Hit<=(player[self][24]*0.2))damage=parseInt(damage*2);
 
 							player[i][2]=player[i][2]-damage;
@@ -576,7 +577,7 @@ od[0]='dummy';//1D
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
 						var temp,ones =0;
-						temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
+						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
 						ones=player[self][23];
 						if(player[self][18]==5)ones+=5;
 						if(temp>ones){
@@ -648,7 +649,7 @@ od[0]='dummy';//1D
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
-						temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
+						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
 						if(temp>player[self][23]){
 							 
 							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
@@ -724,21 +725,25 @@ od[0]='dummy';//1D
 			if(id==player[self][0] && trigger.match(/^裝填子彈$/) != null && player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21]){
 					ot=new Date();
 					player[self][20]=player[self][21];
+					rply.text='子彈數：'+player[self][20]+'/'+player[self][21];
 					ds++;
 					if(ds==player[self][33]+1){self++;ds=1;}
 					if(self>=player.length)self=0;
-					rply.text+=BR();
+					rply.text=rply.text+'\n\n'+BR();
 			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^能源充填$/) != null  && player[self][4]!=player[self][5]){
 					ot=new Date();
-					player[self][4]+=Math.floor(player[self][5]*0.2+20);
+					player[self][4]+=player[self][5]*0.2+20;
 					if(player[self][4]>player[self][5])player[self][4]=player[self][5];
+					rply.text=player[i][1]+
+							'\nHP '+player[i][2]+'/'+player[i][3];
+							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5]+'(+'+(player[self][5]*0.2+20)+')';
 					ds++;
 					if(ds==player[self][33]+1){self++;ds=1;}
 					if(self>=player.length)self=0;
-					rply.text+=BR();
+					rply.text=rply.text+'\n\n'+BR();
 			return rply;
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -777,7 +782,7 @@ od[0]='dummy';//1D
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
-						temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
+						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
 						if(temp>player[self][23]){
 							 
 							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
@@ -919,7 +924,7 @@ od[0]='dummy';//1D
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
-						temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
+						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
 						if(temp>player[self][24]){
 							
 							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
@@ -1011,7 +1016,7 @@ od[0]='dummy';//1D
 				ot=new Date();
 				let xxyy = mainMsg[1].split(','); //定義輸入字串
 				if(isNaN(xxyy[0])==0 && isNaN(xxyy[1])==0){
-					temp = Math.ceil((Math.pow(Math.pow(xxyy[0]-player[self][16],2)+Math.pow(xxyy[1]-player[self][17],2),0.5)));
+					temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
 						if(temp>player[self][24]){
 							rply.text='距離'+player[i][1]+'太遠，無法定位';
 							return rply;
@@ -1098,17 +1103,18 @@ od[0]='dummy';//1D
 				for(var i=0;i<player.length;i++){
 					
 						if(player[self][Number(mainMsg[1])+27][1]=='被動'){
-							if(player[self][4]<(player[self][5]*player[self][Number(mainMsg[1])+27][3]*0.01)){
+							if(player[self][4]<(player[self][5]*player[self][Number(mainMsg[1])+27][3]/100)){
 							rply.text='Bata粒子過少，無法發動';
 							return rply;
 						}
+						
 						if(player[self][Number(mainMsg[1])+27][2]==1){
-							player[self][4]-=Math.floor(player[self][5]*player[self][Number(mainMsg[1])+27][3]*0.01)
 							if(player[self][37][1]==1){
 								player[self][37][1]=0;
 								rply.text='已關閉狂暴插件\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							}
 							else{
+							player[self][4]-=player[self][5]*player[self][Number(mainMsg[1])+27][3]/100;
 							player[self][37][1]=1;
 							rply.text='已開啟狂暴插件\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							}
@@ -1119,14 +1125,15 @@ od[0]='dummy';//1D
 							
 							return rply;
 						}
+						
 						if(player[self][Number(mainMsg[1])+27][2]==2){
-							player[self][4]-=Math.floor(player[self][5]*player[self][Number(mainMsg[1])+27][3]*0.01)
 							if(player[self][37][2]==1){
 								player[self][36]--;
 								player[self][37][2]=0;
 								rply.text='已關閉加速插件\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							}
 							else{
+								player[self][4]-=player[self][5]*player[self][Number(mainMsg[1])+27][3]/100;
 								player[self][36]++;
 							player[self][37][2]=1;
 							rply.text='已開啟加速插件\nbata粒子 '+player[i][4]+'/'+player[i][5];
@@ -1139,14 +1146,14 @@ od[0]='dummy';//1D
 							return rply;
 						}
 						if(player[self][Number(mainMsg[1])+27][2]==3){
-							player[self][4]-=Math.floor(player[self][5]*player[self][Number(mainMsg[1])+27][3]*0.01)
 							if(player[self][37][3]==1){
 								player[self][33]--;
 								player[self][37][3]=0;
 								rply.text='已關閉過載插件\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							}
 							else{
-								player[self][33]++;
+							player[self][4]-=player[self][5]*player[self][Number(mainMsg[1])+27][3]/100;
+							player[self][33]++;
 							player[self][37][3]=1;
 							rply.text='已開啟過載插件\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							}
@@ -1159,7 +1166,7 @@ od[0]='dummy';//1D
 						if(player[self][Number(mainMsg[1])+27][1]=='攻擊' && mainMsg[2] != null){
 							if(player[i][1]==mainMsg[2] ){
 							var temp =0;
-							temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
+							temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
 							if(temp>Number(player[self][Number(mainMsg[1])+27][4])){
 								rply.text='距離'+player[i][1]+'太遠，無法攻擊';
 								return rply;
@@ -1220,7 +1227,7 @@ od[0]='dummy';//1D
 				let xxyy = mainMsg[1].split(','); //定義輸入字串
 				if(isNaN(xxyy[0])==0 && isNaN(xxyy[1])==0){
 					var temp =0;
-						temp = Math.ceil((Math.pow(Math.pow(Math.floor(xxyy[0])-player[self][16],2)+Math.pow(Math.floor(xxyy[1])-player[self][17],2),0.5)));
+						temp = Math.ceil(Math.pow(Math.pow(Math.floor(xxyy[0])-player[self][16],2)+Math.pow(Math.floor(xxyy[1])-player[self][17],2),0.5)*10)/10;
 						if(temp>player[self][36]){
 											 
 							rply.text='距離太遠，無法移動';
@@ -1228,9 +1235,10 @@ od[0]='dummy';//1D
 						}
 						else{
 							if(xxyy[0]>=1 && xxyy[0]<=51 && xxyy[1]>=1 && xxyy[1]<=51){ 
-							rply.text='已移動到 座標'+Math.floor(xxyy[0])+','+Math.floor(xxyy[1]);
-							player[self][16]=Math.floor(xxyy[0]);
-							player[self][17]=Math.floor(xxyy[1]);
+							
+							rply.text='已移動到 座標'+Math.floor(xxyy[0]*10)/10+','+Math.floor(xxyy[1]*10)/10;
+							player[self][16]=Math.floor(xxyy[0]*10)/10;
+							player[self][17]=Math.floor(xxyy[1]*10)/10;
 							if(player[self][20]==0 && player[self][18]==3)player[self][20]=player[self][21];
 							}
 							else{
@@ -1261,8 +1269,8 @@ od[0]='dummy';//1D
 				let xxyy = mainMsg[1].split(','); //定義輸入字串
 				if(isNaN(xxyy[0])==0 && isNaN(xxyy[1])==0){
 					var temp =0;
-						temp = Math.ceil((Math.pow(Math.pow(Math.floor(xxyy[0])-player[self][16],2)+Math.pow(Math.floor(xxyy[1])-player[self][17],2),0.5)));
-						if(temp>(Math.floor(player[self][4])/10)){
+						temp = Math.ceil(Math.pow(Math.pow(Math.floor(xxyy[0])-player[self][16],2)+Math.pow(Math.floor(xxyy[1])-player[self][17],2),0.5)*10)/10;
+						if(temp>player[self][4]/10){
 											
 							rply.text='Bata粒子過少，無法移動';
 							return rply;
@@ -1270,9 +1278,9 @@ od[0]='dummy';//1D
 						else{
 							if(xxyy[0]>=1 && xxyy[0]<=51 && xxyy[1]>=1 && xxyy[1]<=51){ 
 							player[self][4]-=temp*10;
-							rply.text='已移動到 座標'+Math.floor(xxyy[0])+','+Math.floor(xxyy[1]);
-							player[self][16]=Math.floor(xxyy[0]);
-							player[self][17]=Math.floor(xxyy[1]);
+							rply.text='已移動到 座標'+Math.floor(xxyy[0]*10)/10+','+Math.floor(xxyy[1]*10)/10;
+							player[self][16]=Math.floor(xxyy[0]*10)/10;
+							player[self][17]=Math.floor(xxyy[1]*10)/10;
 							}
 							else{
 										
@@ -1301,8 +1309,8 @@ od[0]='dummy';//1D
 				let xxyy = mainMsg[1].split(','); //定義輸入字串
 				if(isNaN(xxyy[0])==0 && isNaN(xxyy[1])==0){
 					var temp =0;
-						temp = Math.ceil((Math.pow(Math.pow(Math.floor(xxyy[0])-player[self][16],2)+Math.pow(Math.floor(xxyy[1])-player[self][17],2),0.5)));
-						if(temp>(Math.floor(player[self][4])/20)){
+						temp = Math.ceil(Math.pow(Math.pow(Math.floor(xxyy[0])-player[self][16],2)+Math.pow(Math.floor(xxyy[1])-player[self][17],2),0.5)*10)/10;
+						if(temp>player[self][4]/20){
 											
 							rply.text='Bata粒子過少，無法移動';
 							return rply;
@@ -1310,9 +1318,9 @@ od[0]='dummy';//1D
 						else{
 							if(xxyy[0]>=1 && xxyy[0]<=51 && xxyy[1]>=1 && xxyy[1]<=51){ 
 							player[self][4]-=temp*20;
-							rply.text='已移動到 座標'+Math.floor(xxyy[0])+','+Math.floor(xxyy[1]);
-							player[self][16]=Math.floor(xxyy[0]);
-							player[self][17]=Math.floor(xxyy[1]);
+							rply.text='已移動到 座標'+Math.floor(xxyy[0]*10)/10+','+Math.floor(xxyy[1]*10)/10;
+							player[self][16]=Math.floor(xxyy[0]*10)/10;
+							player[self][17]=Math.floor(xxyy[1]*10)/10;
 							}
 							else{
 												 
@@ -1346,13 +1354,13 @@ od[0]='dummy';//1D
 							rply.text='Bata粒子過少，無法攻擊';
 							return rply;
 						}
-						temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
+						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
 						if(temp>(player[self][23]+3)){
 							
 							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
 							return rply;
 						}
-						player[self][4]-=Math.floor((player[self][5]*0.5));
+						player[self][4]-=player[self][5]*0.5;
 						rnggg=rollbase.Dice(100);
 						Hit=rollbase.Dice(100);
 						player[self][20]--;
@@ -1420,17 +1428,16 @@ od[0]='dummy';//1D
 							rply.text='Bata粒子過少，無法治療';
 							return rply;
 						}
-						temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
+						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
 						if(temp>(1)){
 							
 							rply.text='距離'+player[i][1]+'太遠，無法治療';
 							return rply;
 						}
-						player[self][4]-=Math.floor(player[self][5]*0.6);
+						player[self][4]-=player[self][5]*0.6;
 						
 						
 						damage=player[i][3]*0.1+20;
-						damage=damage.toFixed(1)
 							if(player[i][2]+damage>player[i][3]){
 								damage=player[i][3]-player[i][2];
 							}
@@ -1455,7 +1462,7 @@ od[0]='dummy';//1D
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
-						temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
+						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
 						if(temp>player[self][23]+3){
 							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
 							return rply;
@@ -1541,13 +1548,13 @@ od[0]='dummy';//1D
 							rply.text='Bata粒子過少，無法攻擊';
 							return rply;
 						}
-						temp = Math.ceil((Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)));
+						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
 						if(temp>(player[self][23]+3)){
 							
 							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
 							return rply;
 						}
-						player[self][4]-=Math.floor((player[self][5]*0.1));
+						player[self][4]-=(player[self][5]*0.1);
 						rnggg=rollbase.Dice(100);
 						player[self][20]--;
 							
@@ -1588,7 +1595,7 @@ od[0]='dummy';//1D
 							rply.text='Bata粒子過少，聚能失敗';
 							return rply;
 						}
-						player[self][4]-=Math.floor(player[self][5]*0.2);
+						player[self][4]-=player[self][5]*0.2;
 						player[self][26]++;
 					rply.text+='已聚能'+player[self][26]+'次\n\n';
 					if(player[self][26]%2==0){
