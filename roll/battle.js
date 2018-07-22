@@ -521,10 +521,10 @@ od[0]='dummy';//1D
 						
 						if(rnggg > ( parseInt(player[i][7]) - parseInt(player[self][7]) ) * player[i][34] ){
 							if(player[self][37][1]==1){
-								damage=Math.round(player[self][19]*(rollbase.Dice(2001)-1)*0.001);
+								damage=Math.round(player[self][19]*(rollbase.Dice(2001)-1)/100)/10;
 							}
 							else{
-								damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)*0.001);
+								damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)/100)/10;
 							}
 							
 							if(Hit<=(player[self][24]*0.2))damage=parseInt(damage*2);
@@ -544,64 +544,9 @@ od[0]='dummy';//1D
 								player.splice(i,1);
 							}
 							//----------------------------------------------
-							if(mmode==1){
-						var ap=0,gp=0;
-							for(var g=0;g<player.length;g++){
-								if(player[g][14]=='A.A.U.F')ap++;
-								if(player[g][14]=='G.U.')gp++;
-							}
-								if(ap==0){
-									
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+='\nG.U勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
+							if(winner(mmode)!='no winner'){
+								rply.text=winner(mmode);
 								return rply;
-							}
-							if(gp==0){
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+='\nA.A.U.F勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							}
-							
-							if(mmode==2){
-						
-								if(player.length==1){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[0][0]){
-									var GGP=100;
-									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
-										}
-								}
-								rply.text+='\n'+player[0][1]+'獲得最後勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							
 							}
 							//------------------------------------------------------------------
 							
@@ -652,7 +597,7 @@ od[0]='dummy';//1D
 						}
 						
 						if(rnggg > ( parseInt(player[i][7]) - parseInt(player[self][7]) ) * player[i][34] ){
-							damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)*0.001);
+							damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)/100)/10;
 							if(Hit<=(player[self][24]*0.2))damage=parseInt(damage*2);
 							player[i][2]=player[i][2]-damage;
 							rply.text=player[i][1]+
@@ -672,64 +617,9 @@ od[0]='dummy';//1D
 							}
 							
 							//----------------------------------------------
-							if(mmode==1){
-						var ap=0,gp=0;
-							for(var g=0;g<player.length;g++){
-								if(player[g][14]=='A.A.U.F')ap++;
-								if(player[g][14]=='G.U.')gp++;
-							}
-								if(ap==0){
-									
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+='\nG.U勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
+							if(winner(mmode)!='no winner'){
+								rply.text=winner(mmode);
 								return rply;
-							}
-							if(gp==0){
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+='\nA.A.U.F勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							}
-							
-							if(mmode==2){
-						
-								if(player.length==1){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[0][0]){
-									var GGP=100;
-									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
-										}
-								}
-								rply.text+='\n'+player[0][1]+'獲得最後勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							
 							}
 							//------------------------------------------------------------------
 							if(self>=player.length)self=0;
@@ -775,7 +665,7 @@ od[0]='dummy';//1D
 							hhiitt[o]=0;
 							hitd[o]='miss';
 							if(Hit<=player[self][24]){
-								hhiitt[o]=Math.round(player[self][19]*(rollbase.Dice(401)+799)*0.001);
+								hhiitt[o]=Math.round(player[self][19]*(rollbase.Dice(401)+799)/100)/10;
 								if(Hit<=(player[self][24]*0.2))hhiitt[o]=parseInt(hhiitt[o]*2);
 								hitd[o]=hhiitt[o];
 								if(Hit<=(player[self][24]*0.2))hitd[o]+='(Critical)';
@@ -818,64 +708,9 @@ od[0]='dummy';//1D
 							}
 							
 							//----------------------------------------------
-							if(mmode==1){
-						var ap=0,gp=0;
-							for(var g=0;g<player.length;g++){
-								if(player[g][14]=='A.A.U.F')ap++;
-								if(player[g][14]=='G.U.')gp++;
-							}
-								if(ap==0){
-									
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+='\nG.U勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
+							if(winner(mmode)!='no winner'){
+								rply.text=winner(mmode);
 								return rply;
-							}
-							if(gp==0){
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+='\nA.A.U.F勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							}
-							
-							if(mmode==2){
-						
-								if(player.length==1){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[0][0]){
-									var GGP=100;
-									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
-										}
-								}
-								rply.text+='\n'+player[0][1]+'獲得最後勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							
 							}
 							//------------------------------------------------------------------
 							if(self>=player.length)self=0;
@@ -976,7 +811,7 @@ od[0]='dummy';//1D
 							return rply;
 						}						
 							player[self][35]='';
-								damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)*0.001);
+								damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)/100)/10;
 								if(Hit<=(player[self][24]*0.2))damage=damage*2;
 							player[i][2]=player[i][2]-damage;
 							rply.text=player[i][1]+
@@ -998,64 +833,9 @@ od[0]='dummy';//1D
 							}
 							
 							//----------------------------------------------
-							if(mmode==1){
-						var ap=0,gp=0;
-							for(var g=0;g<player.length;g++){
-								if(player[g][14]=='A.A.U.F')ap++;
-								if(player[g][14]=='G.U.')gp++;
-							}
-								if(ap==0){
-									
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+='\nG.U勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
+							if(winner(mmode)!='no winner'){
+								rply.text=winner(mmode);
 								return rply;
-							}
-							if(gp==0){
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+='\nA.A.U.F勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							}
-							
-							if(mmode==2){
-						
-								if(player.length==1){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[0][0]){
-									var GGP=100;
-									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
-										}
-								}
-								rply.text+='\n'+player[0][1]+'獲得最後勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							
 							}
 							//------------------------------------------------------------------
 							
@@ -1172,7 +952,7 @@ od[0]='dummy';//1D
 							return rply;
 						}						
 						player[self][35]='';
-						damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)*0.001);
+						damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)/100)/10;
 							if(Hit<=(player[self][24]*0.2))damage=damage*2;
 							player[i][2]=player[i][2]-damage;
 							rply.text=player[i][1]+
@@ -1191,64 +971,9 @@ od[0]='dummy';//1D
 							}
 							
 							//----------------------------------------------
-							if(mmode==1){
-						var ap=0,gp=0;
-							for(var g=0;g<player.length;g++){
-								if(player[g][14]=='A.A.U.F')ap++;
-								if(player[g][14]=='G.U.')gp++;
-							}
-								if(ap==0){
-									
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+='\nG.U勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
+							if(winner(mmode)!='no winner'){
+								rply.text=winner(mmode);
 								return rply;
-							}
-							if(gp==0){
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+='\nA.A.U.F勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							}
-							
-							if(mmode==2){
-						
-								if(player.length==1){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[0][0]){
-									var GGP=100;
-									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
-										}
-								}
-								rply.text+='\n'+player[0][1]+'獲得最後勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							
 							}
 							//------------------------------------------------------------------
 							if(self>=player.length)self=0;
@@ -1316,7 +1041,7 @@ od[0]='dummy';//1D
 						player[self][20]--;
 					for(var f=0;f<player.length;f++){
 						if(xxyy[0]==player[f][16] && xxyy[1]==player[f][17]){
-							damage=Math.round(player[self][19]*(rollbase.Dice(100)+player[self][24])*0.01);
+							damage=Math.round(player[self][19]*(rollbase.Dice(100)+player[self][24])/10)/10;
 							player[f][2]=player[f][2]-damage;
 							rply.text+=player[f][1]+
 							'\nHP '+player[f][2]+'/'+player[f][3];
@@ -1344,64 +1069,9 @@ od[0]='dummy';//1D
 								return rply;
 							}
 							//----------------------------------------------
-							if(mmode==1){
-						var ap=0,gp=0;
-							for(var g=0;g<player.length;g++){
-								if(player[g][14]=='A.A.U.F')ap++;
-								if(player[g][14]=='G.U.')gp++;
-							}
-								if(ap==0){
-									
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+='\nG.U勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
+							if(winner(mmode)!='no winner'){
+								rply.text=winner(mmode);
 								return rply;
-							}
-							if(gp==0){
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+='\nA.A.U.F勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							}
-							
-							if(mmode==2){
-						
-								if(player.length==1){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[0][0]){
-									var GGP=100;
-									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
-										}
-								}
-								rply.text+='\n'+player[0][1]+'獲得最後勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							
 							}
 							//------------------------------------------------------------------
 							if(self>=player.length)self=0;
@@ -1518,66 +1188,11 @@ od[0]='dummy';//1D
 								}
 								
 								//----------------------------------------------
-								if(mmode==1){
-							var ap=0,gp=0;
-								for(var g=0;g<player.length;g++){
-									if(player[g][14]=='A.A.U.F')ap++;
-									if(player[g][14]=='G.U.')gp++;
-								}
-									if(ap==0){
-										
-									for(var uu=0;uu<player.length;uu++){
-										  for(var fgg=0;fgg<ox.oL();fgg++){
-											if(ox.oC(fgg,0)==player[uu][0]){
-										var GGP=1+((player.length-1)*2);
-										ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-											}
-										  }
-									}
-									rply.text+='\nG.U勝利';
-									start=0;
-									RAAUF=0;
-									RGU=0;
-									dd();
-									return rply;
-								}
-								if(gp==0){
-									for(var uu=0;uu<player.length;uu++){
-										  for(var fgg=0;fgg<ox.oL();fgg++){
-											if(ox.oC(fgg,0)==player[uu][0]){
-										var GGP=1+((player.length-1)*2);
-										ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-											}
-										  }
-									}
-									rply.text+='\nA.A.U.F勝利';
-									start=0;
-									RAAUF=0;
-									RGU=0;
-									dd();
-									return rply;
-								}
-								}
-								
-								if(mmode==2){
-							
-									if(player.length==1){
-										  for(var fgg=0;fgg<ox.oL();fgg++){
-											if(ox.oC(fgg,0)==player[0][0]){
-										var GGP=100;
-										ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
-											}
-									}
-									rply.text+='\n'+player[0][1]+'獲得最後勝利';
-									start=0;
-									RAAUF=0;
-									RGU=0;
-									dd();
-									return rply;
-								}
-								
-								}
-								//------------------------------------------------------------------
+							if(winner(mmode)!='no winner'){
+								rply.text=winner(mmode);
+								return rply;
+							}
+							//------------------------------------------------------------------
 								if(self>=player.length)self=0;
 								rply.text=rply.text+'\n\n'+BR();
 				return rply;
@@ -1751,7 +1366,7 @@ od[0]='dummy';//1D
 						}
 						
 						if(rnggg > ( parseInt(player[i][7]) - parseInt(player[self][7]) ) * player[i][34] ){
-							damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)*0.001*1.5);
+							damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)*1.5/100)/10;
 							if(Hit<=(player[self][24]*0.2))damage=parseInt(damage*2);
 							player[i][2]=player[i][2]-damage;
 							rply.text=player[i][1]+
@@ -1771,64 +1386,9 @@ od[0]='dummy';//1D
 							}
 							
 							//----------------------------------------------
-							if(mmode==1){
-						var ap=0,gp=0;
-							for(var g=0;g<player.length;g++){
-								if(player[g][14]=='A.A.U.F')ap++;
-								if(player[g][14]=='G.U.')gp++;
-							}
-								if(ap==0){
-									
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+='\nG.U勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
+							if(winner(mmode)!='no winner'){
+								rply.text=winner(mmode);
 								return rply;
-							}
-							if(gp==0){
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+='\nA.A.U.F勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							}
-							
-							if(mmode==2){
-						
-								if(player.length==1){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[0][0]){
-									var GGP=100;
-									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
-										}
-								}
-								rply.text+='\n'+player[0][1]+'獲得最後勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							
 							}
 							//------------------------------------------------------------------
 							if(self>=player.length)self=0;
@@ -1869,7 +1429,8 @@ od[0]='dummy';//1D
 						player[self][4]-=Math.floor(player[self][5]*0.6);
 						
 						
-						damage=Math.floor(player[i][3]*0.1+20);
+						damage=player[i][3]*0.1+20;
+						damage=damage.toFixed(1)
 							if(player[i][2]+damage>player[i][3]){
 								damage=player[i][3]-player[i][2];
 							}
@@ -1919,10 +1480,10 @@ od[0]='dummy';//1D
 						
 						if(rnggg > ( parseInt(player[i][7]) - parseInt(player[self][7]) ) * player[i][34] ){
 						if(player[self][37][1]==1){
-							damage=Math.round(player[self][19]*(rollbase.Dice(2001)-1)*0.001*addda);
+							damage=Math.round(player[self][19]*(rollbase.Dice(2001)-1)*addda/100)/10;
 						}
 						else{
-							damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)*0.001*addda);
+							damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)*addda/100)/10;
 						}
 							
 							if(Hit<=((player[self][24]-addga)*0.2))damage=parseInt(damage*2);
@@ -1942,64 +1503,9 @@ od[0]='dummy';//1D
 								player.splice(i,1);
 							}
 						//----------------------------------------------
-							if(mmode==1){
-						var ap=0,gp=0;
-							for(var g=0;g<player.length;g++){
-								if(player[g][14]=='A.A.U.F')ap++;
-								if(player[g][14]=='G.U.')gp++;
-							}
-								if(ap==0){
-									
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+='\nG.U勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
+							if(winner(mmode)!='no winner'){
+								rply.text=winner(mmode);
 								return rply;
-							}
-							if(gp==0){
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+='\nA.A.U.F勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							}
-							
-							if(mmode==2){
-						
-								if(player.length==1){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[0][0]){
-									var GGP=100;
-									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
-										}
-								}
-								rply.text+='\n'+player[0][1]+'獲得最後勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							
 							}
 							//------------------------------------------------------------------
 							
@@ -2045,7 +1551,7 @@ od[0]='dummy';//1D
 						rnggg=rollbase.Dice(100);
 						player[self][20]--;
 							
-							damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)*0.001*(100+player[self][26]*100)*0.01);
+							damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)*(100+player[self][26]*100)*0.01/100)/10;
 							player[self][26]=0;
 							player[i][2]=player[i][2]-damage;
 							rply.text=player[i][1]+
@@ -2063,69 +1569,14 @@ od[0]='dummy';//1D
 							}
 							
 							//----------------------------------------------
-							if(mmode==1){
-						var ap=0,gp=0;
-							for(var g=0;g<player.length;g++){
-								if(player[g][14]=='A.A.U.F')ap++;
-								if(player[g][14]=='G.U.')gp++;
-							}
-								if(ap==0){
-									
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+='\nG.U勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
+							if(winner(mmode)!='no winner'){
+								rply.text=winner(mmode);
 								return rply;
-							}
-							if(gp==0){
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+='\nA.A.U.F勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							}
-							
-							if(mmode==2){
-						
-								if(player.length==1){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[0][0]){
-									var GGP=100;
-									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
-										}
-								}
-								rply.text+='\n'+player[0][1]+'獲得最後勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							
 							}
 							//------------------------------------------------------------------
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n'+BR();
-			return rply;
+							return rply;
 						
 					}
 				}
@@ -2161,64 +1612,9 @@ od[0]='dummy';//1D
 								rply.text=player[self][1]+'已撤退';
 								player.splice(self,1);
 								//----------------------------------------------
-							if(mmode==1){
-						var ap=0,gp=0;
-							for(var g=0;g<player.length;g++){
-								if(player[g][14]=='A.A.U.F')ap++;
-								if(player[g][14]=='G.U.')gp++;
-							}
-								if(ap==0){
-									
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+='\nG.U勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
+							if(winner(mmode)!='no winner'){
+								rply.text=winner(mmode);
 								return rply;
-							}
-							if(gp==0){
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+='\nA.A.U.F勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							}
-							
-							if(mmode==2){
-						
-								if(player.length==1){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[0][0]){
-									var GGP=100;
-									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
-										}
-								}
-								rply.text+='\n'+player[0][1]+'獲得最後勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							
 							}
 							//------------------------------------------------------------------
 							ds=1;
@@ -2266,65 +1662,13 @@ function BR(nb){
 								
 								player.splice(self,1);
 								if(self>=player.length)self=0;
-								if(xmode==1){
-						var ap=0,gp=0;
-							for(var g=0;g<player.length;g++){
-								if(player[g][14]=='A.A.U.F')ap++;
-								if(player[g][14]=='G.U.')gp++;
-							}
-								if(ap==0){
-									
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+=ff+'\nG.U勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
+								
+								//----------------------------------------------
+							if(winner(xmode)!='no winner'){
+								rply.text=winner(xmode);
 								return rply;
 							}
-							if(gp==0){
-								for(var uu=0;uu<player.length;uu++){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[uu][0]){
-									var GGP=1+((player.length-1)*2);
-									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
-										}
-									  }
-								}
-								rply.text+=ff+'\nA.A.U.F勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							}
-							
-							if(mmode==2){
-						
-								if(player.length==1){
-									  for(var fgg=0;fgg<ox.oL();fgg++){
-										if(ox.oC(fgg,0)==player[0][0]){
-									var GGP=100;
-									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
-										}
-								}
-								rply.text+=ff+'\n'+player[0][1]+'獲得最後勝利';
-								start=0;
-								RAAUF=0;
-								RGU=0;
-								dd();
-								return rply;
-							}
-							
-							}
+							//------------------------------------------------------------------
 		}
 	}
 	
@@ -2430,6 +1774,68 @@ function BR(nb){
 			return rr;
 }
 
+function winner(mmodes){
+	if(mmodes==1){
+						var ap=0,gp=0,re;
+							for(var g=0;g<player.length;g++){
+								if(player[g][14]=='A.A.U.F')ap++;
+								if(player[g][14]=='G.U.')gp++;
+							}
+								if(ap==0){
+									
+								for(var uu=0;uu<player.length;uu++){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[uu][0]){
+									var GGP=1+((player.length-1)*2);
+									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
+										}
+									  }
+								}
+								re+='\nG.U勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return re;
+							}
+							if(gp==0){
+								for(var uu=0;uu<player.length;uu++){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[uu][0]){
+									var GGP=1+((player.length-1)*2);
+									ox.GP(fgg,Number(ox.oC(fgg,18))+Number(GGP));
+										}
+									  }
+								}
+								re+='\nA.A.U.F勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return re;
+							}
+							}
+							
+							if(mmodes==2){
+						
+								if(player.length==1){
+									  for(var fgg=0;fgg<ox.oL();fgg++){
+										if(ox.oC(fgg,0)==player[0][0]){
+									var GGP=100;
+									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
+										}
+								}
+								re+='\n'+player[0][1]+'獲得最後勝利';
+								start=0;
+								RAAUF=0;
+								RGU=0;
+								dd();
+								return re;
+							}
+							
+							}
+							re='no winner';
+}
 
 module.exports = {
 	battles:battles,
