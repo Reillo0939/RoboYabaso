@@ -1843,6 +1843,7 @@ function winner(mmodes){
 							
 							}
 							re='no winner';
+							return re;
 }
 
 module.exports = {
