@@ -546,6 +546,7 @@ od[0]='dummy';//1D
 							}
 							//----------------------------------------------
 							if(winner(mmode)!='no winner'){
+								console.log('no winner');
 								rply.text=winner(mmode);
 								return rply;
 							}
