@@ -75,49 +75,49 @@ function battles(id,name,ab) {
 	if(trigger.match(/^test_mode/) != null && start==0){
 		mode=99;
 		dd();
-	        rply.text='已轉為2人混戰模式';
+	        rply.text='已轉為2人混戰模式\n使用 戰鬥參與 來加入';
 		return rply;
 	}
 	if(trigger.match(/^2人混戰模式/) != null && start==0){
 		mode=1;
 		dd();
-	        rply.text='已轉為2人混戰模式';
+	        rply.text='已轉為2人混戰模式\n使用 戰鬥參與 來加入';
 		return rply;
 	}
 	if(trigger.match(/^3人混戰模式/) != null && start==0){
 		mode=2;
 		dd();
-	        rply.text='已轉為3人混戰模式';
+	        rply.text='已轉為3人混戰模式\n使用 戰鬥參與 來加入';
 		return rply;
 	}
 	if(trigger.match(/^4人混戰模式/) != null && start==0){
 		mode=3;
 		dd();
-	        rply.text='已轉為4人混戰模式';
+	        rply.text='已轉為4人混戰模式\n使用 戰鬥參與 來加入';
 		return rply;
 	}
 if(trigger.match(/^2人陣營模式/) != null && start==0){
 		mode=12;
 		dd();
-	        rply.text='已轉為2人陣營模式';
+	        rply.text='已轉為2人陣營模式\n使用 戰鬥參與 來加入';
 		return rply;
 	}
 	if(trigger.match(/^4人陣營模式/) != null && start==0){
 		mode=13;
 		dd();
-	        rply.text='已轉為4人陣營模式';
+	        rply.text='已轉為4人陣營模式\n使用 戰鬥參與 來加入';
 		return rply;
 	}
 	if(trigger.match(/^6人陣營模式/) != null && start==0){
 		mode=14;
 		dd();
-	        rply.text='已轉為6人陣營模式';
+	        rply.text='已轉為6人陣營模式\n使用 戰鬥參與 來加入';
 		return rply;
 	}
 	if(trigger.match(/^傷害測試模式/) != null && start==0){
 		mode=100;
 		dd();
-	        rply.text='已轉為傷害測試模式';
+	        rply.text='已轉為傷害測試模式\n使用 戰鬥參與 來加入';
 		return rply;
 	}
 	if(trigger.match(/^時間/) != null && start==0){
@@ -306,6 +306,7 @@ var od=[];
 			rply.text+='\n目前參與人數： \n'+
 			HM+'/'+aaab;
 			}
+			rply.text+='\n可用指令 \n取消參與';
 		return rply;
   }
 	}
@@ -336,6 +337,7 @@ var od=[];
 			}
 			
 		}
+		
 		if(trigger.match(/^戰鬥開始$/) != null && start==0 && player.length==aaab){
 			
 			start=1;
