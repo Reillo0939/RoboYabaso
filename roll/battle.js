@@ -201,8 +201,14 @@ var od=[];
 		ggg=i;
 		od[0]=ox.oC(i,0);//ID
     	od[1]=ox.oC(i,1);//名字
-    	od[2]=Number(ox.oC(i,5));//生命值
-		od[3]=Number(ox.oC(i,5));//生命值
+		
+		var HPA=ox.oC(i,5);
+		var HPD = HPA.split(','); //定義輸入字串
+    	od[2]=HPD[0];//生命值
+		od[3]=HPD[0];//生命值
+		od[38]=HPD[1];//護甲與現有護盾
+		od[39]=HPD[1];//護盾上限
+		
 		od[4]=Number(ox.oC(i,6));//Bata粒子適性
 		od[5]=Number(ox.oC(i,6));//Bata粒子適性
 		od[6]=Number(ox.oC(i,7));//物理適性
@@ -272,10 +278,13 @@ var od=[];
 		if(WV[0]==1 || WV[0]==9)od[33]=3;
 		if(WV[0]==10)od[36]=5;
 		player[player.length]=od;
+		
 		rply.text=name+'你的'+od[1]+'已參與\n'+
 			'陣營'+od[14]+
-			'\nHP '+od[2]+'/'+od[3]+
-			'\nbata粒子 '+od[4]+'/'+od[5]+
+			'\nHP '+od[2]+'/'+od[3];
+		if(od[14]=='A.A.U.F')rply.text+='\n護甲 '+od[38];
+		if(od[14]=='G.U.')rply.text+='\n護盾 '+od[38]+'/'+od[39];
+		rply.text+='\nbata粒子 '+od[4]+'/'+od[5]+
 			'\n物理適性 '+od[6]+
 			'\n反應力'+od[7]+
 			'\n武器名稱：'+WV[5];
@@ -480,6 +489,7 @@ od[0]='dummy';//1D
 		od[34]=0;//閃避倍率
 		od[36]=0;//移動距離
 		od[37]=[];
+		od[38]=0;
 		player[player.length]=od;
 		console.log('debug02');
 					player[0][16]=25;
@@ -532,11 +542,37 @@ od[0]='dummy';//1D
 						player[self][17]=player[i][17];
 							if(Hit<=(player[self][24]*0.2))damage=parseInt(damage*2);
 
-							player[i][2]=player[i][2]-damage;
+							if(player[i][14]=='G.U.' && player[i][38]>0){
+								player[i][38]=player[i][38]-damage;
+								if(player[i][38]<=0)player[i][38]=0;
 								rply.text=player[i][1]+
-							'\nHP '+player[i][2]+'/'+player[i][3];
-							rply.text+='(-'+damage+')';
-							if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+							}
+							if(player[i][14]=='G.U.' && player[i][38]<=0){
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+							}
+							if(player[i][14]=='A.A.U.F'){
+								var RI=1-(player[i][38]/(player[i][38]+150));
+								RI=RI.toFixed(3);
+								damage=damage*RI;
+								
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+								rply.text+='\n護甲 '+player[i][38];
+							}
+							
+							
 							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
@@ -603,12 +639,37 @@ od[0]='dummy';//1D
 						if(rnggg > ( parseInt(player[i][7]) - parseInt(player[self][7]) ) * player[i][34] ){
 							damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)/100)/10;
 							if(Hit<=(player[self][24]*0.2))damage=parseInt(damage*2);
-							player[i][2]=player[i][2]-damage;
-							rply.text=player[i][1]+
-							'\nHP '+player[i][2]+'/'+player[i][3];
-
-							rply.text+='(-'+damage+')';
-							if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+							
+						if(player[i][14]=='G.U.' && player[i][38]>0){
+								player[i][38]=player[i][38]-damage;
+								if(player[i][38]<=0)player[i][38]=0;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+							}
+							if(player[i][14]=='G.U.' && player[i][38]<=0){
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+							}
+							if(player[i][14]=='A.A.U.F'){
+								var RI=1-(player[i][38]/(player[i][38]+150));
+								RI=RI.toFixed(3);
+								damage=damage*RI;
+								
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+								rply.text+='\n護甲 '+player[i][38];
+							}
+							
 							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							
 							ds++
@@ -680,15 +741,61 @@ od[0]='dummy';//1D
 							}
 					}
 					
-				
-					damage=0;
-						for(var o=0;o<bh;o++){
-							damage+=hhiitt[o];
-						}
-						player[i][2]=player[i][2]-damage;
+							damage=0;
+							damagR=0;
+							DC=0;
+						
+							
+							if(player[i][14]=='G.U.' && player[i][38]>0){
+								for(var o=0;o<bh;o++){
+									if(damage<player[i][38])damage+=hhiitt[o];
+									if(damage>=player[i][38]{
+										if(DC==0)DC=o;
+										damagR+=hhiitt[o];
+									}
+									}
+								
+							player[i][38]=player[i][38]-damage;
+							if(player[i][38]<=0)player[i][38]=0;
+							player[i][2]=player[i][2]-damagR;
 							rply.text=player[i][1]+
 							'\nHP '+player[i][2]+'/'+player[i][3];
+							
+							if(DC!=0){
+							
 							rply.text+='('
+							for(var o=DC;o<bh;o++){
+							if(hhiitt[o]==0){
+								rply.text+=hitd[o];
+								if(o<(bh-1))rply.text+=','
+							}
+							else{
+								rply.text+='-'+hitd[o];
+								if(o<(bh-1))rply.text+=','
+							}
+							}
+							rply.text+=')';
+							}
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+								rply.text+='('
+							for(var o=0;o<DC;o++){
+							if(hhiitt[o]==0){
+								rply.text+=hitd[o];
+								if(o<(DC-1))rply.text+=','
+							}
+							else{
+								rply.text+='-'+hitd[o];
+								if(o<(DC-1))rply.text+=','
+							}
+							}
+							rply.text+=')';
+							}
+							
+							if(player[i][14]=='G.U.' && player[i][38]<=0){
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='('
 							for(var o=0;o<bh;o++){
 							if(hhiitt[o]==0){
 								rply.text+=hitd[o];
@@ -700,6 +807,36 @@ od[0]='dummy';//1D
 							}
 							}
 							rply.text+=')';
+								
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+							}
+							if(player[i][14]=='A.A.U.F'){
+								var RI=1-(player[i][38]/(player[i][38]+150));
+								RI=RI.toFixed(3);
+								damage=damage*RI;
+								
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='('
+							for(var o=0;o<bh;o++){
+							if(hhiitt[o]==0){
+								rply.text+=hitd[o];
+								if(o<(bh-1))rply.text+=','
+							}
+							else{
+								rply.text+='-'+hitd[o];
+								if(o<(bh-1))rply.text+=','
+							}
+							}
+							rply.text+=')';
+								rply.text+='\n護甲 '+player[i][38];
+							}
+							
+					
+						
+						
+							
 							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							player[self][20]-=bh;
 							ds++;
@@ -821,13 +958,35 @@ od[0]='dummy';//1D
 							player[self][35]='';
 								damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)/100)/10;
 								if(Hit<=(player[self][24]*0.2))damage=damage*2;
-							player[i][2]=player[i][2]-damage;
-							rply.text=player[i][1]+
-							'\nHP '+player[i][2]+'/'+player[i][3];
-
-							
-							rply.text+='(-'+damage+')';
-							if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+							if(player[i][14]=='G.U.' && player[i][38]>0){
+								player[i][38]=player[i][38]-damage;
+								if(player[i][38]<=0)player[i][38]=0;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+							}
+							if(player[i][14]=='G.U.' && player[i][38]<=0){
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+							}
+							if(player[i][14]=='A.A.U.F'){
+								var RI=1-(player[i][38]/(player[i][38]+150));
+								RI=RI.toFixed(3);
+								damage=damage*RI;
+								
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+								rply.text+='\n護甲 '+player[i][38];
+							}
 							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							player[self][25]=0;
 							player[self][34]=1.2;
@@ -962,11 +1121,35 @@ od[0]='dummy';//1D
 						player[self][35]='';
 						damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)/100)/10;
 							if(Hit<=(player[self][24]*0.2))damage=damage*2;
-							player[i][2]=player[i][2]-damage;
-							rply.text=player[i][1]+
-							'\nHP '+player[i][2]+'/'+player[i][3];
-							rply.text+='(-'+damage+')';
-							if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+							if(player[i][14]=='G.U.' && player[i][38]>0){
+								player[i][38]=player[i][38]-damage;
+								if(player[i][38]<=0)player[i][38]=0;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+							}
+							if(player[i][14]=='G.U.' && player[i][38]<=0){
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+							}
+							if(player[i][14]=='A.A.U.F'){
+								var RI=1-(player[i][38]/(player[i][38]+150));
+								RI=RI.toFixed(3);
+								damage=damage*RI;
+								
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+								rply.text+='\n護甲 '+player[i][38];
+							}
 							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							player[self][25]=2;
 							ds++;
@@ -1379,12 +1562,35 @@ od[0]='dummy';//1D
 						if(rnggg > ( parseInt(player[i][7]) - parseInt(player[self][7]) ) * player[i][34] ){
 							damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)*1.5/100)/10;
 							if(Hit<=(player[self][24]*0.2))damage=parseInt(damage*2);
-							player[i][2]=player[i][2]-damage;
-							rply.text=player[i][1]+
-							'\nHP '+player[i][2]+'/'+player[i][3];
-
-							rply.text+='(-'+damage+')';
-							if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+							if(player[i][14]=='G.U.' && player[i][38]>0){
+								player[i][38]=player[i][38]-damage;
+								if(player[i][38]<=0)player[i][38]=0;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+							}
+							if(player[i][14]=='G.U.' && player[i][38]<=0){
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+							}
+							if(player[i][14]=='A.A.U.F'){
+								var RI=1-(player[i][38]/(player[i][38]+150));
+								RI=RI.toFixed(3);
+								damage=damage*RI;
+								
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+								rply.text+='\n護甲 '+player[i][38];
+							}
 							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							
 							ds++
@@ -1448,6 +1654,8 @@ od[0]='dummy';//1D
 							rply.text=player[i][1]+
 							'\nHP '+player[i][2]+'/'+player[i][3];
 							rply.text+='(+'+damage+')';
+							if(player[i][14]=='G.U.')rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+							if(player[i][14]=='A.A.U.F')rply.text+='\n護甲 '+player[i][38];
 							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
@@ -1498,11 +1706,35 @@ od[0]='dummy';//1D
 							
 							if(Hit<=((player[self][24]-addga)*0.2))damage=parseInt(damage*2);
 
-							player[i][2]=player[i][2]-damage;
+							if(player[i][14]=='G.U.' && player[i][38]>0){
+								player[i][38]=player[i][38]-damage;
+								if(player[i][38]<=0)player[i][38]=0;
 								rply.text=player[i][1]+
-							'\nHP '+player[i][2]+'/'+player[i][3];
-							rply.text+='(-'+damage+')';
-							if(Hit<=((player[self][24]-addga)*0.2))rply.text+='Critical';
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+							}
+							if(player[i][14]=='G.U.' && player[i][38]<=0){
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+							}
+							if(player[i][14]=='A.A.U.F'){
+								var RI=1-(player[i][38]/(player[i][38]+150));
+								RI=RI.toFixed(3);
+								damage=damage*RI;
+								
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+								rply.text+='\n護甲 '+player[i][38];
+							}
 							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							ds+=2;
 							if(ds==player[self][33]+1){self++;ds=1;}
@@ -1563,10 +1795,35 @@ od[0]='dummy';//1D
 							
 							damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)*(100+player[self][26]*100)*0.01/100)/10;
 							player[self][26]=0;
-							player[i][2]=player[i][2]-damage;
-							rply.text=player[i][1]+
-							'\nHP '+player[i][2]+'/'+player[i][3];
-							rply.text+='(-'+damage+')';
+							if(player[i][14]=='G.U.' && player[i][38]>0){
+								player[i][38]=player[i][38]-damage;
+								if(player[i][38]<=0)player[i][38]=0;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+							}
+							if(player[i][14]=='G.U.' && player[i][38]<=0){
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+							}
+							if(player[i][14]=='A.A.U.F'){
+								var RI=1-(player[i][38]/(player[i][38]+150));
+								RI=RI.toFixed(3);
+								damage=damage*RI;
+								
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+								rply.text+='\n護甲 '+player[i][38];
+							}
 							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
 							
 							ds++
