@@ -1940,7 +1940,7 @@ function BR(nb){
 	}
 	
 	rr=ff+'輪到'+player[self][1]+'的第'+ds+'次行動'+
-			'\n陣營'+player[self][14];
+			'\n陣營'+player[self][14]+
 			'\nHP '+player[self][2]+'/'+player[self][3];
 			if(player[self][14]=='G.U.')rr+='\n護盾 '+player[self][38]+'/'+player[self][39];
 			if(player[self][14]=='A.A.U.F')rr+='\n護甲 '+player[self][38];
