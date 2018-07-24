@@ -108,8 +108,8 @@ Growing=rollbase.Dice(66-age);
 }
 if((age>=14)&&(age<=29)){
 Occupation='粒子誘變操作使';
-HP=rollbase.Dice(200)+30;
-MP=rollbase.Dice(250)+80;
+HP='100,50';
+MP=150;
 ATK=rollbase.Dice(50);
 Reaction=rollbase.Dice(45)+5;
 None=rollbase.Dice(40);
@@ -124,7 +124,8 @@ rply.text=names +'\n'+
 '['+ name +']  年齡：' +age +
 '\n職業：  ' + Occupation +
 '\n軍階： '+  '訓練兵'+
-'\n生命值： '+ HP +
+'\n生命值： '+ '100' +
+'\n護盾： '+ '50' +
 '\nBata粒子適性： '+ MP +
 '\n物理適性： '+ ATK +
 '\n反應力： '+ Reaction +
@@ -199,8 +200,8 @@ return rply;
 
 if((age>=40)&&(age<=60)){
 Occupation='CAC系統磁懸裝甲';
-HP=rollbase.Dice(200)+20;
-MP=rollbase.Dice(200)+20;
+HP='100,80';
+MP=100;
 ATK=rollbase.Dice(70-age);
 Reaction=rollbase.Dice(70-age);
 Control=rollbase.Dice(70-age);
@@ -208,8 +209,8 @@ Growing=rollbase.Dice(61-age);
 }
 if((age>=16)&&(age<=39)){
 Occupation='CAC系統磁懸裝甲';
-HP=rollbase.Dice(250)+70;
-MP=rollbase.Dice(250)+30;
+HP='100,80';
+MP=100;
 ATK=rollbase.Dice(45)+5;
 Reaction=rollbase.Dice(45)+5;
 Control=rollbase.Dice(45)+5;
@@ -217,8 +218,8 @@ Growing=rollbase.Dice(5)+15;
 }
 if(Control<25){
 	Occupation='複合性火力支援裝甲';
-	HP+=50;
-	MP=Math.round(MP*0.5);
+	HP='100,100';
+	MP=50;
 	ATK+=10;
 	Reaction+=10;
 	Growing=rollbase.Dice(5)+5;
@@ -227,8 +228,10 @@ rply.text=
 '['+ name +']  年齡：' +age +
 '\n職業：  ' + Occupation +
 '\n軍階： '+  '訓練兵'+
-'\n生命值： '+ HP +
-'\nBata粒子適性： '+ MP +
+'\n生命值： '+ '100' ;
+if(Occupation=='CAC系統磁懸裝甲')rply.text+='\n護甲：80';
+if(Occupation=='複合性火力支援裝甲')rply.text+='\n護甲：100';
+rply.text+='\nBata粒子適性： '+ MP +
 '\n物理適性： '+ ATK +
 '\n控制能力： '+ Control +
 '\n反應力： '+ Reaction +
@@ -280,19 +283,22 @@ function CV(id,name) {
 for(var fd=0;fd<Characters.length;fd++){
 if(Characters[fd][0]==id){
 	 console.log('IN');
+	 var HPA=Characters[fd][5];
+		var HPD = HPA.split(','); //定義輸入字串
 	if(Characters[fd][3]=='A.A.U.F'){
+		
 		rply.text=
 name +' 的角色'+
 '\n['+ Characters[fd][1] +']  年齡：' +Characters[fd][2] +
-'\n職業：  ' + Characters[fd][4] +
-'\n軍階： '+  Characters[fd][16]	+
+'\n職業：' + Characters[fd][4] +
+'\n軍階：'+  Characters[fd][16]	+
 '\n榮譽值：'+Characters[fd][18]+
-'\n生命值： '+ Characters[fd][5] +
-'\nBata粒子適性： '+ Characters[fd][6] +
-'\n物理適性： '+ Characters[fd][7] +
-'\n控制能力： '+ Characters[fd][15] +
-'\n反應力： '+ Characters[fd][8] +
-'\n未分配的成長點： '+  Characters[fd][14]	+
+'\n生命值：'+ HPD[0] +
+'\n護甲：'+ HPD[1] +
+'\nBata粒子適性：'+ Characters[fd][6] +
+'\n物理適性：'+ Characters[fd][7] +
+'\n控制能力：'+ Characters[fd][15] +
+'\n反應力：'+ Characters[fd][8] +
 '\n持有金幣： '+  Characters[fd][17]	
 ;
 	}
@@ -300,19 +306,19 @@ name +' 的角色'+
 	rply.text=
 name +' 的角色'+
 '\n['+ Characters[fd][1] +']  年齡：' +Characters[fd][2] +
-'\n職業：  ' + Characters[fd][4] +
-'\n軍階： '+  Characters[fd][16]	+
+'\n職業：' + Characters[fd][4] +
+'\n軍階：'+  Characters[fd][16]	+
 '\n榮譽值：'+Characters[fd][18]+
-'\n生命值： '+ Characters[fd][5] +
-'\nBata粒子適性： '+ Characters[fd][6] +
-'\n物理適性： '+ Characters[fd][7] +
-'\n反應力： '+ Characters[fd][8] +
-'\n放出適性： '+ Characters[fd][9] +
-'\n火屬適性： '+ Characters[fd][10] +
-'\n水屬適性： '+ Characters[fd][11] +
-'\n風屬適性： '+ Characters[fd][12] +
-'\n土屬適性： '+ Characters[fd][13] +
-'\n未分配的成長點： '+  Characters[fd][14]	+
+'\n生命值：'+ HPD[0] +
+'\n護盾：'+ HPD[1] +
+'\nBata粒子適性：'+ Characters[fd][6] +
+'\n物理適性：'+ Characters[fd][7] +
+'\n反應力：'+ Characters[fd][8] +
+'\n放出適性：'+ Characters[fd][9] +
+'\n火屬適性：'+ Characters[fd][10] +
+'\n水屬適性：'+ Characters[fd][11] +
+'\n風屬適性：'+ Characters[fd][12] +
+'\n土屬適性：'+ Characters[fd][13] +
 '\n持有金幣： '+  Characters[fd][17]	
 ;
 	}
@@ -325,34 +331,38 @@ function CI(name,names) {
 for(var fd=0;fd<Characters.length;fd++){
 if(Characters[fd][1]==names){
 	 console.log('IN');
+	 	 var HPA=Characters[fd][5];
+		var HPD = HPA.split(','); //定義輸入字串
 	if(Characters[fd][3]=='A.A.U.F'){
 		rply.text=
 name +' 我找到的角色是'+
 '\n['+ Characters[fd][1] +']  年齡：' +Characters[fd][2] +
-'\n職業：  ' + Characters[fd][4] +
-'\n軍階： '+  Characters[fd][16]	+
-'\n生命值： '+ Characters[fd][5] +
-'\nBata粒子適性： '+ Characters[fd][6] +
-'\n物理適性： '+ Characters[fd][7] +
-'\n控制能力： '+ Characters[fd][15] +
-'\n反應力： '+ Characters[fd][8] 
+'\n職業：' + Characters[fd][4] +
+'\n軍階：'+  Characters[fd][16]	+
+'\n生命值：'+ HPD[0] +
+'\n護甲：'+ HPD[1] +
+'\nBata粒子適性：'+ Characters[fd][6] +
+'\n物理適性：'+ Characters[fd][7] +
+'\n控制能力：'+ Characters[fd][15] +
+'\n反應力：'+ Characters[fd][8] 
 ;
 	}
 	if(Characters[fd][3]=='G.U.'){
 	rply.text=
 name +' 我找到的角色是'+
 '\n['+ Characters[fd][1] +']  年齡：' +Characters[fd][2] +
-'\n職業：  ' + Characters[fd][4] +
-'\n軍階： '+  Characters[fd][16]	+
-'\n生命值： '+ Characters[fd][5] +
-'\nBata粒子適性： '+ Characters[fd][6] +
-'\n物理適性： '+ Characters[fd][7] +
-'\n反應力： '+ Characters[fd][8] +
-'\n放出適性： '+ Characters[fd][9] +
-'\n火屬適性： '+ Characters[fd][10] +
-'\n水屬適性： '+ Characters[fd][11] +
-'\n風屬適性： '+ Characters[fd][12] +
-'\n土屬適性： '+ Characters[fd][13] 
+'\n職業：' + Characters[fd][4] +
+'\n軍階：'+  Characters[fd][16]	+
+'\n生命值：'+ HPD[0] +
+'\n護盾：'+ HPD[1] +
+'\nBata粒子適性：'+ Characters[fd][6] +
+'\n物理適性：'+ Characters[fd][7] +
+'\n反應力：'+ Characters[fd][8] +
+'\n放出適性：'+ Characters[fd][9] +
+'\n火屬適性：'+ Characters[fd][10] +
+'\n水屬適性：'+ Characters[fd][11] +
+'\n風屬適性：'+ Characters[fd][12] +
+'\n土屬適性：'+ Characters[fd][13] 
 ;
 	}
 }
@@ -381,7 +391,7 @@ function CCN(id,name,Cname) {
 	return rply;	
 }
 
-function CSG(id,name,select,Points) {
+/*function CSG(id,name,select,Points) {
 	rply.text= name+' 你沒有角色，如果有遺失請與GM聯絡';
 for(var fd=0;fd<Characters.length;fd++){
 if(Characters[fd][0]==id){
@@ -456,7 +466,7 @@ if(Characters[fd][0]==id){
 }
 }
 return rply;	
-}
+}*/
 
 function CCL() {
 	rply.text='目前的玩家有\n';
@@ -536,8 +546,8 @@ module.exports = {
 	CV:CV,
 	CI:CI,
 	CCN:CCN,
-	CCL:CCL,
-	CSG:CSG
+	CCL:CCL
+	//CSG:CSG
 };
 
 function oz() {
