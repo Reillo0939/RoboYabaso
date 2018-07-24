@@ -1940,9 +1940,11 @@ function BR(nb){
 	}
 	
 	rr=ff+'輪到'+player[self][1]+'的第'+ds+'次行動'+
-			'\n陣營'+player[self][14]+
-			'\nHP '+player[self][2]+'/'+player[self][3]+
-			'\nbata粒子 '+player[self][4]+'/'+player[self][5]+
+			'\n陣營'+player[self][14];
+			'\nHP '+player[self][2]+'/'+player[self][3];
+			if(player[i][14]=='G.U.')rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+			if(player[i][14]=='A.A.U.F')rply.text+='\n護甲 '+player[i][38];
+			rr+='\nbata粒子 '+player[self][4]+'/'+player[self][5]+
 			'\n位置 '+player[self][16]+','+player[self][17]+
 			'\n可移動距離 '+player[self][36];
 	if(player[self][18]<9)rr+='\n子彈數：'+player[self][20]+'/'+player[self][21];
