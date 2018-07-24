@@ -150,7 +150,7 @@ var WMK;
 			if(WV[0]==11)rply.text+='\n武器種類：長近距離武器';
 			if(WV[0]==12)rply.text+='\n武器種類：能量放出槍';
 			rply.text+= '\n基礎傷害：'+WV[1];
-			if(MV[0]<=8)rply.text+='\n子彈數：'+WV[2]+
+			if(WV[0]<=8)rply.text+='\n子彈數：'+WV[2]+
 			'\n連發數：'+WV[3];
 			rply.text+=	'\n射程：'+WV[4]+
 						'\n精準度：'+WV[6]+
