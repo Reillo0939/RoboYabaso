@@ -749,7 +749,7 @@ od[0]='dummy';//1D
 							if(player[i][14]=='G.U.' && player[i][38]>0){
 								for(var o=0;o<bh;o++){
 									if(damage<player[i][38])damage+=hhiitt[o];
-									if(damage>=player[i][38]{
+									if(damage>=player[i][38]){
 										if(DC==0)DC=o;
 										damagR+=hhiitt[o];
 									}
