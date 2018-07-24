@@ -127,7 +127,7 @@ var WMK;
 			return rply;
 			}
 			WMK=ox.oC(i,19);
-			let WV = WMK.split(','); //定義輸入字串
+			var WV = WMK.split(','); //定義輸入字串
 			var ww=1,yy=0;
 			yy=15-WV[0]*5;
 			if(yy<=0)yy=0;
