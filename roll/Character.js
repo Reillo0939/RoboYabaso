@@ -605,13 +605,14 @@ if(SKILLS[fd][0]==num){
 	rply.text=
 '['+name +']'+'編號['+num+']'+'的技能為\n'+
 SKILLS[fd][1]+'\n'+
-'說明 '+SKILLS[fd][9]+'\n'+
+'說明 '+SKILLS[fd][10]+'\n'+
 '類型 '+SKILLS[fd][2]+'\n'+
 '距離 '+SKILLS[fd][3]+'\n'+
 '傷害/回復 '+SKILLS[fd][4]+'\n'+
 '命中率/成功率 '+SKILLS[fd][5]+'\n'+
 'CE消耗量 '+SKILLS[fd][6]+'\n'+
 '屬性 '+SKILLS[fd][7]+'\n';
+'適性增幅 '+SKILLS[fd][8]+'\n';
 	return rply;	
 }
 }
