@@ -27,6 +27,7 @@ var input='';
 var battle=0;
 var a=0;
 ox.oz();
+ox.CK();
 /*setInterval(function(){
     var userId = 'Ca8fea1f8ef1ef2519860ee21fb740fd2';
     var sendMsg = a.toString(10);
@@ -90,6 +91,7 @@ event.reply([{
 if(event.message.text=='重新載入'){
 if(a=='U7c4779fd913aff927f26d7f6bedd87d1'||a=='Uc9b4571605aabd3e94edd7c189144278'){
 ox.oz();
+ox.CK();
 event.reply({ type: 'text', text: '重新載入，請稍後片刻' });	
 }
 else{
