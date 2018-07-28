@@ -1294,13 +1294,13 @@ od[0]='dummy';//1D
 							rply.text='CE過少，無法發動';
 							return rply;
 						}
-						if(player[self][Number(mainMsg[1])+27][9]==1){
+						if(player[self][Number(mainMsg[1])+27][8]==1){
 							if(player[self][37][1]==1){
 								player[self][37][1]=0;
 								rply.text='已關閉狂暴插件\nCE '+player[i][4]+'/'+player[i][5];
 							}
 						else{
-							player[self][4]-=player[self][Number(mainMsg[1])+27][6];
+							player[self][4]-=player[self][Number(mainMsg[1])+27][5];
 							player[self][37][1]=1;
 							rply.text='已開啟狂暴插件\nCE '+player[i][4]+'/'+player[i][5];
 							}
@@ -1312,14 +1312,14 @@ od[0]='dummy';//1D
 							return rply;
 						}
 						
-						if(player[self][Number(mainMsg[1])+27][9]==2){
+						if(player[self][Number(mainMsg[1])+27][8]==2){
 							if(player[self][37][2]==1){
 								player[self][36]--;
 								player[self][37][2]=0;
 								rply.text='已關閉加速插件\nCE '+player[i][4]+'/'+player[i][5];
 							}
 							else{
-								player[self][4]-=player[self][Number(mainMsg[1])+27][6];
+								player[self][4]-=player[self][Number(mainMsg[1])+27][5];
 								player[self][36]++;
 							player[self][37][2]=1;
 							rply.text='已開啟加速插件\nCE '+player[i][4]+'/'+player[i][5];
@@ -1331,14 +1331,14 @@ od[0]='dummy';//1D
 							
 							return rply;
 						}
-						if(player[self][Number(mainMsg[1])+27][9]==3){
+						if(player[self][Number(mainMsg[1])+27][8]==3){
 							if(player[self][37][3]==1){
 								player[self][33]--;
 								player[self][37][3]=0;
 								rply.text='已關閉過載插件\nCE '+player[i][4]+'/'+player[i][5];
 							}
 							else{
-							player[self][4]-=player[self][Number(mainMsg[1])+27][6];
+							player[self][4]-=player[self][Number(mainMsg[1])+27][5];
 							player[self][33]++;
 							player[self][37][3]=1;
 							rply.text='已開啟過載插件\nCE '+player[i][4]+'/'+player[i][5];
@@ -1349,9 +1349,9 @@ od[0]='dummy';//1D
 						}
 						
 						
-						if(player[self][Number(mainMsg[1])+27][2]=='攻擊' && mainMsg[2] != null){
+						if(player[self][Number(mainMsg[1])+27][1]=='攻擊' && mainMsg[2] != null){
 						if(player[i][1]==mainMsg[2] ){
-							if(player[self][4]<player[self][Number(mainMsg[1])+27][6]){
+							if(player[self][4]<player[self][Number(mainMsg[1])+27][5]){
 							rply.text='CE過少，無法發動';
 							return rply;
 						}
@@ -1363,11 +1363,11 @@ od[0]='dummy';//1D
 							rply.text='距離'+player[i][1]+'太遠，無法命中';
 							return rply;
 						}
-						player[self][4]-=player[self][Number(mainMsg[1])+27][6];
+						player[self][4]-=player[self][Number(mainMsg[1])+27][5];
 						rnggg=rollbase.Dice(100);
 						Hit=rollbase.Dice(100);
 						player[self][20]--;
-						if(Hit>player[self][Number(mainMsg[1])+27][5]){
+						if(Hit>player[self][Number(mainMsg[1])+27][4]){
 							rply.text=player[self][1]+'沒有命中'+
 							'\n\n'+BR();
 							ds++;
@@ -1378,7 +1378,7 @@ od[0]='dummy';//1D
 						}
 						
 						if(rnggg > ( parseInt(player[i][7]) - parseInt(player[self][7]) ) * player[i][34] ){
-							damage=Math.round(player[self][Number(mainMsg[1])+27][4]*(rollbase.Dice(401)+799)/100)/10;
+							damage=Math.round(player[self][Number(mainMsg[1])+27][3]*(rollbase.Dice(401)+799)/100)/10;
 						if(player[i][14]=='G.U.' && player[i][38]>0){
 								player[i][38]=player[i][38]-damage;
 								if(player[i][38]<=0)player[i][38]=0;
@@ -1441,22 +1441,22 @@ od[0]='dummy';//1D
 					}
 					
 					
-					if(player[self][Number(mainMsg[1])+27][2]=='回復' && mainMsg[2] != null){
+					if(player[self][Number(mainMsg[1])+27][1]=='回復' && mainMsg[2] != null){
 						if(player[i][1]==mainMsg[2] ){
 						var temp =0;
-						if(player[self][4]<player[self][Number(mainMsg[1])+27][6]){
+						if(player[self][4]<player[self][Number(mainMsg[1])+27][5]){
 							rply.text='CE過少，無法治療';
 							return rply;
 						}
 						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
-						if(temp>(player[self][Number(mainMsg[1])+27][3])){
+						if(temp>(player[self][Number(mainMsg[1])+27][2])){
 							
 							rply.text='距離'+player[i][1]+'太遠，無法治療';
 							return rply;
 						}
-						player[self][4]-=player[self][Number(mainMsg[1])+27][6];
+						player[self][4]-=player[self][Number(mainMsg[1])+27][5];
 						
-						damage=player[self][Number(mainMsg[1])+27][4];
+						damage=player[self][Number(mainMsg[1])+27][3];
 							if(player[i][2]+damage>player[i][3]){
 								damage=player[i][3]-player[i][2];
 							}
@@ -1476,22 +1476,22 @@ od[0]='dummy';//1D
 					}
 					}
 					
-					if(player[self][Number(mainMsg[1])+27][2]=='妨害' && mainMsg[2] != null){
+					if(player[self][Number(mainMsg[1])+27][1]=='妨害' && mainMsg[2] != null){
 						if(player[i][1]==mainMsg[2] ){
 						var temp =0;
-						if(player[self][4]<player[self][Number(mainMsg[1])+27][6]){
+						if(player[self][4]<player[self][Number(mainMsg[1])+27][5]){
 							rply.text='CE過少，無法發動';
 							return rply;
 						}
 						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
-						if(temp>(player[self][Number(mainMsg[1])+27][3])){
+						if(temp>(player[self][Number(mainMsg[1])+27][2])){
 							
 							rply.text='距離'+player[i][1]+'太遠，無法發動';
 							return rply;
 						}
 						rnggg=rollbase.Dice(100);
 						Hit=rollbase.Dice(100);
-						if(Hit>player[self][Number(mainMsg[1])+27][5]){
+						if(Hit>player[self][Number(mainMsg[1])+27][4]){
 							rply.text=player[self][1]+'沒有命中'+
 							'\n\n'+BR();
 							ds++;
@@ -1501,13 +1501,13 @@ od[0]='dummy';//1D
 						}
 
 						if(rnggg > ( parseInt(player[i][7]) - parseInt(player[self][7]) ) * player[i][34] ){
-							if(player[self][Number(mainMsg[1])+27][9]==4){
+							if(player[self][Number(mainMsg[1])+27][8]==4){
 							if(player[i][37][4]==1){
 								rply.text='該敵人已被凍結';
 								return rply;
 							}
 						else{
-							player[self][4]-=player[self][Number(mainMsg[1])+27][6];
+							player[self][4]-=player[self][Number(mainMsg[1])+27][5];
 							player[self][36]--;
 							player[i][37][4]=1;
 							rply.text='已凍結敵人 ';
@@ -2178,10 +2178,10 @@ function BR(nb){
 				rr+='\n聚能 (-CE20%,每使用一次能讓下次能量放出+100%的傷害)';
 			}			
 			for(kkkk=1;kkkk<=5;kkkk++){
-			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][2]=="攻擊")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][1]+' -CE'+player[self][27+kkkk][8]+')';
-			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][2]=="妨害")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][1]+' -CE'+player[self][27+kkkk][8]+')';
-			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][2]=="回復")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][1]+' -CE'+player[self][27+kkkk][8]+')';
-			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][2]=="被動")rr+='\n技能 '+kkkk+' ('+ player[self][27+kkkk][1]+' -CE'+player[self][27+kkkk][8]+')';
+			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="攻擊")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+' -CE'+player[self][27+kkkk][5]+')';
+			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="妨害")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+' -CE'+player[self][27+kkkk][5]+')';
+			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="回復")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+' -CE'+player[self][27+kkkk][5]+')';
+			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="被動")rr+='\n技能 '+kkkk+' ('+ player[self][27+kkkk][0]+' -CE'+player[self][27+kkkk][5]+')';
 			}
 			rr+='\n 目標有';
 			for(var k=0;k<player.length;k++){
