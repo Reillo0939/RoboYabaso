@@ -540,6 +540,7 @@ module.exports = {
 	oz:oz,
 	CK:CK,
 	CKV:CKV,
+	CKR:CKR,
 	oC:oC,
 	oA:oA,
 	GP:GP,
@@ -616,10 +617,23 @@ SKILLS[fd][1]+'\n'+
 	return rply;	
 }
 }
-rply.text='不好意思'+'['+name+']'+'找不到編號為'+num+'的技能'
+rply.text='不好意思'+'['+name+']'+'找不到編號為'+num+'的技能';
 return rply;	
 }
 
+function CKR(num) {
+	
+for(var fd=0;fd<SKILLS.length;fd++){
+if(SKILLS[fd][0]==num){
+	rply.text=
+SKILLS[fd][1]+','+SKILLS[fd][2]+','+SKILLS[fd][3]+','+SKILLS[fd][4]+','+SKILLS[fd][5]+','+
+SKILLS[fd][6]+','+SKILLS[fd][7]+','+SKILLS[fd][8]+','+SKILLS[fd][9]+','+SKILLS[fd][10];
+	return rply;	
+}
+}
+rply.text='0';
+return rply;	
+}
 
 function CK() {
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {

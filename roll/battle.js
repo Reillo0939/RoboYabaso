@@ -209,8 +209,8 @@ var od=[];
 		od[38]=HPD[1];//護甲與現有護盾
 		od[39]=HPD[1];//護盾上限
 		
-		od[4]=Number(ox.oC(i,6));//Bata粒子適性
-		od[5]=Number(ox.oC(i,6));//Bata粒子適性
+		od[4]=Number(ox.oC(i,6));//CE適性
+		od[5]=Number(ox.oC(i,6));//CE適性
 		od[6]=Number(ox.oC(i,7));//物理適性
 		od[7]=Number(ox.oC(i,8));//反應力
 		od[8]=Number(ox.oC(i,9));//放出適性
@@ -257,16 +257,16 @@ var od=[];
 		od[35]='';//狙擊對象
 		
 		var AAA=ox.oC(i,21);
-		var Askill = AAA.split('|'); //定義輸入字串
-		var par = Askill[0].split(',');
+		var Askill = AAA.split(','); //定義輸入字串
+		var par = ox.CKR(Askill[0]).split(',');
 		od[28]=par;
-		par = Askill[1].split(',');
+		par = ox.CKR(Askill[1]).split(',');
 		od[29]=par;
-		par = Askill[2].split(',');
+		par = ox.CKR(Askill[2]).split(',');
 		od[30]=par;
-		par = Askill[3].split(',');
+		par = ox.CKR(Askill[3]).split(',');
 		od[31]=par;
-		par = Askill[4].split(',');
+		par = ox.CKR(Askill[4]).split(',');
 		od[32]=par;
 		od[33]=2;//可行動次數
 		od[34]=1;//閃避倍率
@@ -284,7 +284,7 @@ var od=[];
 			'\nHP '+od[2]+'/'+od[3];
 		if(od[14]=='A.A.U.F')rply.text+='\n護甲 '+od[38];
 		if(od[14]=='G.U.')rply.text+='\n護盾 '+od[38]+'/'+od[39];
-		rply.text+='\nbata粒子 '+od[4]+'/'+od[5]+
+		rply.text+='\nCE '+od[4]+'/'+od[5]+
 			'\n物理適性 '+od[6]+
 			'\n反應力'+od[7]+
 			'\n武器名稱：'+WV[5];
@@ -454,8 +454,8 @@ od[0]='dummy';//1D
     	od[1]='測傷用';//名字
     	od[2]=999;//生命值
 		od[3]=999;//生命值
-		od[4]=0;//Bata粒子適性
-		od[5]=0;//Bata粒子適性
+		od[4]=0;//CE適性
+		od[5]=0;//CE適性
 		od[6]=0;//物理適性
 		od[7]=0;//反應力
 		od[8]=0;//放出適性
@@ -573,7 +573,7 @@ od[0]='dummy';//1D
 							}
 							
 							
-							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(player[i][2]<=0){
@@ -597,7 +597,7 @@ od[0]='dummy';//1D
 						else{
 							rply.text=player[i][1]+'閃避成功'+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
-							'\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							'\nCE '+player[i][4]+'/'+player[i][5];
 						ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(self>=player.length)self=0;
@@ -670,7 +670,7 @@ od[0]='dummy';//1D
 								rply.text+='\n護甲 '+player[i][38];
 							}
 							
-							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
 							
 							ds++
 							if(ds==player[self][33]+1){self++;ds=1;}
@@ -697,7 +697,7 @@ od[0]='dummy';//1D
 							if(self>=player.length)self=0;
 							rply.text=player[i][1]+'閃避成功'+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
-							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
+							'\nCE '+player[i][4]+'/'+player[i][5]+
 							'\n\n'+BR();
 			return rply;
 						}
@@ -837,7 +837,7 @@ od[0]='dummy';//1D
 						
 						
 							
-							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
 							player[self][20]-=bh;
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
@@ -879,7 +879,7 @@ od[0]='dummy';//1D
 					if(player[self][4]>player[self][5])player[self][4]=player[self][5];
 					rply.text=player[i][1]+
 							'\nHP '+player[i][2]+'/'+player[i][3];
-							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5]+'(+'+(player[self][5]*0.2+20)+')';
+							rply.text+='\nCE '+player[i][4]+'/'+player[i][5]+'(+'+(player[self][5]*0.2+20)+')';
 					ds++;
 					if(ds==player[self][33]+1){self++;ds=1;}
 					if(self>=player.length)self=0;
@@ -987,7 +987,7 @@ od[0]='dummy';//1D
 								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
 								rply.text+='\n護甲 '+player[i][38];
 							}
-							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
 							player[self][25]=0;
 							player[self][34]=1.2;
 							ds++;
@@ -1029,7 +1029,7 @@ od[0]='dummy';//1D
 			if(id==player[self][0] && trigger.match(/^高速架槍$/) != null && player[self][18]==7 && player[self][25]==0 && player[self][4]>=(player[self][5]*0.6)){
 					ot=new Date();
 					if(player[self][4]<(player[self][5]*0.6)){
-							rply.text='Bata粒子過少，無法架槍';
+							rply.text='CE過少，無法架槍';
 							return rply;
 						}
 						player[self][4]-=Math.floor(player[self][5]*0.6);
@@ -1150,7 +1150,7 @@ od[0]='dummy';//1D
 								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
 								rply.text+='\n護甲 '+player[i][38];
 							}
-							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
 							player[self][25]=2;
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
@@ -1289,20 +1289,19 @@ od[0]='dummy';//1D
 				for(var i=0;i<player.length;i++){
 					
 						if(player[self][Number(mainMsg[1])+27][1]=='被動'){
-							if(player[self][4]<(player[self][5]*player[self][Number(mainMsg[1])+27][3]/100)){
-							rply.text='Bata粒子過少，無法發動';
+							if(player[self][4]<player[self][Number(mainMsg[1])+27][6]){
+							rply.text='CE過少，無法發動';
 							return rply;
 						}
-						
-						if(player[self][Number(mainMsg[1])+27][2]==1){
+						if(player[self][Number(mainMsg[1])+27][9]==1){
 							if(player[self][37][1]==1){
 								player[self][37][1]=0;
-								rply.text='已關閉狂暴插件\nbata粒子 '+player[i][4]+'/'+player[i][5];
+								rply.text='已關閉狂暴插件\nCE '+player[i][4]+'/'+player[i][5];
 							}
-							else{
-							player[self][4]-=player[self][5]*player[self][Number(mainMsg[1])+27][3]/100;
+						else{
+							player[self][4]-=player[self][Number(mainMsg[1])+27][6];
 							player[self][37][1]=1;
-							rply.text='已開啟狂暴插件\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							rply.text='已開啟狂暴插件\nCE '+player[i][4]+'/'+player[i][5];
 							}
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
@@ -1312,17 +1311,17 @@ od[0]='dummy';//1D
 							return rply;
 						}
 						
-						if(player[self][Number(mainMsg[1])+27][2]==2){
+						if(player[self][Number(mainMsg[1])+27][9]==2){
 							if(player[self][37][2]==1){
 								player[self][36]--;
 								player[self][37][2]=0;
-								rply.text='已關閉加速插件\nbata粒子 '+player[i][4]+'/'+player[i][5];
+								rply.text='已關閉加速插件\nCE '+player[i][4]+'/'+player[i][5];
 							}
 							else{
-								player[self][4]-=player[self][5]*player[self][Number(mainMsg[1])+27][3]/100;
+								player[self][4]-=player[self][Number(mainMsg[1])+27][6];
 								player[self][36]++;
 							player[self][37][2]=1;
-							rply.text='已開啟加速插件\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							rply.text='已開啟加速插件\nCE '+player[i][4]+'/'+player[i][5];
 							}
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
@@ -1331,17 +1330,17 @@ od[0]='dummy';//1D
 							
 							return rply;
 						}
-						if(player[self][Number(mainMsg[1])+27][2]==3){
+						if(player[self][Number(mainMsg[1])+27][9]==3){
 							if(player[self][37][3]==1){
 								player[self][33]--;
 								player[self][37][3]=0;
-								rply.text='已關閉過載插件\nbata粒子 '+player[i][4]+'/'+player[i][5];
+								rply.text='已關閉過載插件\nCE '+player[i][4]+'/'+player[i][5];
 							}
 							else{
-							player[self][4]-=player[self][5]*player[self][Number(mainMsg[1])+27][3]/100;
+							player[self][4]-=player[self][Number(mainMsg[1])+27][6];
 							player[self][33]++;
 							player[self][37][3]=1;
-							rply.text='已開啟過載插件\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							rply.text='已開啟過載插件\nCE '+player[i][4]+'/'+player[i][5];
 							}
 							rply.text+='\n'+BR(1);
 							return rply;
@@ -1349,59 +1348,206 @@ od[0]='dummy';//1D
 						}
 						
 						
-						if(player[self][Number(mainMsg[1])+27][1]=='攻擊' && mainMsg[2] != null){
-							if(player[i][1]==mainMsg[2] ){
-							var temp =0;
-							temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
-							if(temp>Number(player[self][Number(mainMsg[1])+27][4])){
-								rply.text='距離'+player[i][1]+'太遠，無法攻擊';
-								return rply;
-							}
-							rnggg=rollbase.Dice(100);
-							Critical=rollbase.Dice(100);	
-							rply.text=player[self][1]+'：\n'+player[self][Number(mainMsg[1])+27][6]+'\n';
-							if(rnggg > (20 + parseInt(player[i][7]) - parseInt(player[self][7]) ) ){
-							damage=Math.round(Number(player[self][Number(mainMsg[1])+27][3])*(rollbase.Dice(10)+5)*0.1);
-								if(Critical<=Number(player[self][Number(mainMsg[1])+27][5]))damage=parseInt(damage*1.5);
-								player[i][2]=player[i][2]-damage;
-								rply.text+=player[i][1]+
-								'\nHP '+player[i][2]+'/'+player[i][3];
+						if(player[self][Number(mainMsg[1])+27][2]=='攻擊' && mainMsg[2] != null){
+						if(player[i][1]==mainMsg[2] ){
+							if(player[self][4]<player[self][Number(mainMsg[1])+27][6]){
+							rply.text='CE過少，無法發動';
+							return rply;
+						}
+						var temp;
+						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
+						
+						if(temp>player[self][Number(mainMsg[1])+27][2]){
+							
+							rply.text='距離'+player[i][1]+'太遠，無法命中';
+							return rply;
+						}
+						player[self][4]-=player[self][Number(mainMsg[1])+27][6];
+						rnggg=rollbase.Dice(100);
+						Hit=rollbase.Dice(100);
+						player[self][20]--;
+						if(Hit>player[self][Number(mainMsg[1])+27][5]){
+							rply.text=player[self][1]+'沒有命中'+
+							'\n\n'+BR();
+							ds++;
+							if(ds==player[self][33]+1){self++;ds=1;}
+							if(self>=player.length)self=0;
+							
+			return rply;
+						}
+						
+						if(rnggg > ( parseInt(player[i][7]) - parseInt(player[self][7]) ) * player[i][34] ){
+							damage=Math.round(player[self][Number(mainMsg[1])+27][4]*(rollbase.Dice(401)+799)/100)/10;
+						if(player[i][14]=='G.U.' && player[i][38]>0){
+								player[i][38]=player[i][38]-damage;
+								if(player[i][38]<=0)player[i][38]=0;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
 								rply.text+='(-'+damage+')';
-								if(Critical<=50 && player[self][18]==9)rply.text+='Critical';
-								rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							}
+							if(player[i][14]=='G.U.' && player[i][38]<=0){
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+							}
+							if(player[i][14]=='A.A.U.F'){
+								var RI=1-(player[i][38]/(player[i][38]+150));
+								RI=RI.toFixed(3);
+								damage=damage*RI;
 								
-								ds++;
-								if(ds==player[self][33]+1){self++;ds=1;}
-								if(self>=player.length)self=0;
-								if(player[i][2]<=0){
-									if(i<self)self--;
-									rply.text=rply.text+'\n'+player[i][1]+'已撤退';
-									
-									player.splice(i,1);
-								}
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								rply.text+='\n護甲 '+player[i][38];
+							}
+							
+							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
+							
+							ds++
+							if(ds==player[self][33]+1){self++;ds=1;}
+							if(player[i][2]<=0){
+								if(i<self)self--;
+								rply.text=rply.text+'\n'+player[i][1]+'已撤退';
 								
-								//----------------------------------------------
+								player.splice(i,1);
+							}
+							
+							//----------------------------------------------
 							if(winner(mmode)!='no winner'){
 								rply.text=winner(mmode);
 								return rply;
 							}
 							//------------------------------------------------------------------
-								if(self>=player.length)self=0;
-								rply.text=rply.text+'\n\n'+BR();
-				return rply;
-							}
-							else{
-							ds++;
-								if(ds==player[self][33]+1){self++;ds=1;}
-								if(self>=player.length)self=0;
-								rply.text=player[i][1]+'閃避成功'+
-								'\nHP '+player[i][2]+'/'+player[i][3]+
-								'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
-								'\n\n'+BR();
-				return rply;
-							}
+							if(self>=player.length)self=0;
+							rply.text=rply.text+'\n\n'+BR();
+			return rply;
+						}
+						else{
+						ds++;
+							if(ds==player[self][33]+1){self++;ds=1;}
+							if(self>=player.length)self=0;
+							rply.text=player[i][1]+'閃避成功'+
+							'\nHP '+player[i][2]+'/'+player[i][3]+
+							'\nCE '+player[i][4]+'/'+player[i][5]+
+							'\n\n'+BR();
+			return rply;
+						}
 						}
 					}
+					
+					
+					if(player[self][Number(mainMsg[1])+27][2]=='回復' && mainMsg[2] != null){
+						if(player[i][1]==mainMsg[2] ){
+						var temp =0;
+						if(player[self][4]<player[self][Number(mainMsg[1])+27][6]){
+							rply.text='CE過少，無法治療';
+							return rply;
+						}
+						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
+						if(temp>(player[self][Number(mainMsg[1])+27][3])){
+							
+							rply.text='距離'+player[i][1]+'太遠，無法治療';
+							return rply;
+						}
+						player[self][4]-=player[self][Number(mainMsg[1])+27][6];
+						
+						damage=player[self][Number(mainMsg[1])+27][4];
+							if(player[i][2]+damage>player[i][3]){
+								damage=player[i][3]-player[i][2];
+							}
+							player[i][2]+=damage;
+							rply.text=player[i][1]+
+							'\nHP '+player[i][2]+'/'+player[i][3];
+							rply.text+='(+'+damage+')';
+							if(player[i][14]=='G.U.')rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+							if(player[i][14]=='A.A.U.F')rply.text+='\n護甲 '+player[i][38];
+							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
+							ds++;
+							if(ds==player[self][33]+1){self++;ds=1;}
+							if(self>=player.length)self=0;
+							rply.text=rply.text+'\n\n'+BR();
+			return rply;
+						
+					}
+					}
+					
+					if(player[self][Number(mainMsg[1])+27][2]=='妨害' && mainMsg[2] != null){
+						if(player[i][1]==mainMsg[2] ){
+						var temp =0;
+						if(player[self][4]<player[self][Number(mainMsg[1])+27][6]){
+							rply.text='CE過少，無法發動';
+							return rply;
+						}
+						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
+						if(temp>(player[self][Number(mainMsg[1])+27][3])){
+							
+							rply.text='距離'+player[i][1]+'太遠，無法發動';
+							return rply;
+						}
+						rnggg=rollbase.Dice(100);
+						Hit=rollbase.Dice(100);
+						if(Hit>player[self][Number(mainMsg[1])+27][5]){
+							rply.text=player[self][1]+'沒有命中'+
+							'\n\n'+BR();
+							ds++;
+							if(ds==player[self][33]+1){self++;ds=1;}
+							if(self>=player.length)self=0;
+							return rply;
+						}
+
+						if(rnggg > ( parseInt(player[i][7]) - parseInt(player[self][7]) ) * player[i][34] ){
+							if(player[self][Number(mainMsg[1])+27][9]==4){
+							if(player[i][37][4]==1){
+								rply.text='該敵人已被凍結';
+								return rply;
+							}
+						else{
+							player[self][4]-=player[self][Number(mainMsg[1])+27][6];
+							player[self][36]--;
+							player[i][37][4]=1;
+							rply.text='已凍結敵人 ';
+							
+							}
+							ds++;
+							if(ds==player[self][33]+1){self++;ds=1;}
+							if(self>=player.length)self=0;
+							rply.text+='\n'+BR();
+							
+							return rply;
+						}
+						}
+						else{
+						ds++;
+							if(ds==player[self][33]+1){self++;ds=1;}
+							if(self>=player.length)self=0;
+							rply.text=player[i][1]+'閃避成功'+
+							'\nHP '+player[i][2]+'/'+player[i][3]+
+							'\nCE '+player[i][4]+'/'+player[i][5]+
+							'\n\n'+BR();
+			return rply;
+						}
+						
+						
+							
+							rply.text=player[i][1]+
+							'\nHP '+player[i][2]+'/'+player[i][3];
+							rply.text+='(+'+damage+')';
+							if(player[i][14]=='G.U.')rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+							if(player[i][14]=='A.A.U.F')rply.text+='\n護甲 '+player[i][38];
+							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
+							ds++;
+							if(ds==player[self][33]+1){self++;ds=1;}
+							if(self>=player.length)self=0;
+							rply.text=rply.text+'\n\n'+BR();
+			return rply;
+						
+					}
+					}
+					
 				}
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1458,7 +1604,7 @@ od[0]='dummy';//1D
 						temp = Math.ceil(Math.pow(Math.pow(Math.floor(xxyy[0])-player[self][16],2)+Math.pow(Math.floor(xxyy[1])-player[self][17],2),0.5)*10)/10;
 						if(temp>player[self][4]/10){
 											
-							rply.text='Bata粒子過少，無法移動';
+							rply.text='CE過少，無法移動';
 							return rply;
 						}
 						else{
@@ -1498,7 +1644,7 @@ od[0]='dummy';//1D
 						temp = Math.ceil(Math.pow(Math.pow(Math.floor(xxyy[0])-player[self][16],2)+Math.pow(Math.floor(xxyy[1])-player[self][17],2),0.5)*10)/10;
 						if(temp>player[self][4]/20){
 											
-							rply.text='Bata粒子過少，無法移動';
+							rply.text='CE過少，無法移動';
 							return rply;
 						}
 						else{
@@ -1537,7 +1683,7 @@ od[0]='dummy';//1D
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
 						if(player[self][4]<(player[self][5]*0.5)){
-							rply.text='Bata粒子過少，無法攻擊';
+							rply.text='CE過少，無法攻擊';
 							return rply;
 						}
 						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
@@ -1591,7 +1737,7 @@ od[0]='dummy';//1D
 								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
 								rply.text+='\n護甲 '+player[i][38];
 							}
-							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
 							
 							ds++
 							if(ds==player[self][33]+1){self++;ds=1;}
@@ -1618,7 +1764,7 @@ od[0]='dummy';//1D
 							if(self>=player.length)self=0;
 							rply.text=player[i][1]+'閃避成功'+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
-							'\nbata粒子 '+player[i][4]+'/'+player[i][5]+
+							'\nCE '+player[i][4]+'/'+player[i][5]+
 							'\n\n'+BR();
 			return rply;
 						}
@@ -1634,7 +1780,7 @@ od[0]='dummy';//1D
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
 						if(player[self][4]<(player[self][5]*0.6)){
-							rply.text='Bata粒子過少，無法治療';
+							rply.text='CE過少，無法治療';
 							return rply;
 						}
 						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
@@ -1656,7 +1802,7 @@ od[0]='dummy';//1D
 							rply.text+='(+'+damage+')';
 							if(player[i][14]=='G.U.')rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
 							if(player[i][14]=='A.A.U.F')rply.text+='\n護甲 '+player[i][38];
-							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(self>=player.length)self=0;
@@ -1735,7 +1881,7 @@ od[0]='dummy';//1D
 								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
 								rply.text+='\n護甲 '+player[i][38];
 							}
-							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
 							ds+=2;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(player[i][2]<=0){
@@ -1758,7 +1904,7 @@ od[0]='dummy';//1D
 						else{
 							rply.text=player[i][1]+'閃避成功'+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
-							'\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							'\nCE '+player[i][4]+'/'+player[i][5];
 						ds+=2;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(self>=player.length)self=0;
@@ -1780,7 +1926,7 @@ od[0]='dummy';//1D
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
 						if(player[self][4]<(player[self][5]*0.1)){
-							rply.text='Bata粒子過少，無法攻擊';
+							rply.text='CE過少，無法攻擊';
 							return rply;
 						}
 						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
@@ -1824,7 +1970,7 @@ od[0]='dummy';//1D
 								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
 								rply.text+='\n護甲 '+player[i][38];
 							}
-							rply.text+='\nbata粒子 '+player[i][4]+'/'+player[i][5];
+							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
 							
 							ds++
 							if(ds==player[self][33]+1){self++;ds=1;}
@@ -1852,7 +1998,7 @@ od[0]='dummy';//1D
 			if(id==player[self][0] && trigger.match(/^聚能$/) != null &&player[self][18]==12 && player[self][4]>=(player[self][5]*0.2)){
 					ot=new Date();
 					if(player[self][4]<(player[self][5]*0.2)){
-							rply.text='Bata粒子過少，聚能失敗';
+							rply.text='CE過少，聚能失敗';
 							return rply;
 						}
 						player[self][4]-=player[self][5]*0.2;
@@ -1944,7 +2090,7 @@ function BR(nb){
 			'\nHP '+player[self][2]+'/'+player[self][3];
 			if(player[self][14]=='G.U.')rr+='\n護盾 '+player[self][38]+'/'+player[self][39];
 			if(player[self][14]=='A.A.U.F')rr+='\n護甲 '+player[self][38];
-			rr+='\nbata粒子 '+player[self][4]+'/'+player[self][5]+
+			rr+='\nCE '+player[self][4]+'/'+player[self][5]+
 			'\n位置 '+player[self][16]+','+player[self][17]+
 			'\n可移動距離 '+player[self][36];
 	if(player[self][18]<9)rr+='\n子彈數：'+player[self][20]+'/'+player[self][21];
@@ -1952,6 +2098,7 @@ function BR(nb){
 	if(player[self][37][1]==1)rr+='\n狂暴插件啟動中';
 	if(player[self][37][2]==1)rr+='\n加速插件啟動中';
 	if(player[self][37][3]==1)rr+='\n過載插件啟動中';
+	if(player[self][37][4]==1)rr+='\n被凍結中';
 			rr+='\n 可用選項：';
 			if(xmode==4){
 				rr+='\n關閉測傷';
@@ -1966,7 +2113,7 @@ function BR(nb){
 				rr+='\n脈衝推進 x座標,y座標';
 			}
 			if(player[self][4]!=player[self][5]){
-				rr+='\n能源充填 (+Bata粒子20%,+Bata粒子20)';
+				rr+='\n能源充填 (+CE20%,+CE20)';
 			}
 			if(player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21]){
 				rr+='\n裝填子彈';
@@ -1978,10 +2125,10 @@ function BR(nb){
 				rr+='\n連發射擊 目標';
 			}		
 			if(player[self][18]==2 && player[self][4]>=(player[self][5]*0.5)){
-				rr+='\n強力射擊 目標 (-Bata粒子50%,攻擊1.5倍,射程+3,精準+20)';
+				rr+='\n強力射擊 目標 (-CE50%,攻擊1.5倍,射程+3,精準+20)';
 			}			
 			if(player[self][18]==4 && player[self][4]>=(player[self][5]*0.6)){
-				rr+='\n戰術治療 目標 (-Bata粒子60%,+HP10%,+HP20,射程<1)';
+				rr+='\n戰術治療 目標 (-CE60%,+HP10%,+HP20,射程<1)';
 			}	
 			
 			if(player[self][18]==6 && player[self][20]>0){
@@ -1994,7 +2141,7 @@ function BR(nb){
 				rr+='\n架槍';
 			}
 			if(player[self][18]==7 && player[self][25]==0 && player[self][4]>=(player[self][5]*0.6)){
-				rr+='\n高速架槍 (-Bata粒子60%,-0行動)';
+				rr+='\n高速架槍 (-CE60%,-0行動)';
 			}
 			if(player[self][18]==7 && player[self][25]>=2){
 				rr+='\n解除架槍';
@@ -2024,15 +2171,16 @@ function BR(nb){
 				rr+='\n移動突擊 目標 (-2行動,射程+3,依距離增傷(最多2倍)與減少精準,攻擊後移動)';
 			}		
 			if(player[self][18]==12 && player[self][4]>=(player[self][5]*0.1)){
-				rr+='\n能量放出 目標 (-Bata粒子10%)';
+				rr+='\n能量放出 目標 (-CE10%)';
 			}
 			if(player[self][18]==12 && player[self][4]>=(player[self][5]*0.2)){
-				rr+='\n聚能 (-Bata粒子20%,每使用一次能讓下次能量放出+100%的傷害)';
+				rr+='\n聚能 (-CE20%,每使用一次能讓下次能量放出+100%的傷害)';
 			}			
 			for(kkkk=1;kkkk<=5;kkkk++){
-			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="攻擊")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+')';
-			
-			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="被動")rr+='\n技能 '+kkkk+' ('+ player[self][27+kkkk][0]+' -'+player[self][27+kkkk][3]+'%)';
+			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][2]=="攻擊")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][1]+' -CE'+player[self][27+kkkk][8]+')';
+			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][2]=="妨害")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][1]+' -CE'+player[self][27+kkkk][8]+')';
+			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][2]=="回復")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][1]+' -CE'+player[self][27+kkkk][8]+')';
+			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][2]=="被動")rr+='\n技能 '+kkkk+' ('+ player[self][27+kkkk][1]+' -CE'+player[self][27+kkkk][8]+')';
 			}
 			rr+='\n 目標有';
 			for(var k=0;k<player.length;k++){
