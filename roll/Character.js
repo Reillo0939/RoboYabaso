@@ -71,6 +71,7 @@ function storeToken(token) {
 //-------------------------------------------------------------------------------------------------------------------------------
 var rply ={type : 'text'}; //type是必需的,但可以更改
 var Characters = [];
+var SKILLS = [];
 var cat,re,ccN;
 function CM(name,age,id,names) {
 	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation,Growing;
@@ -537,6 +538,8 @@ module.exports = {
 	CM:CM,
 	CT:CT,
 	oz:oz,
+	CK:CK,
+	CKV:CKV,
 	oC:oC,
 	oA:oA,
 	GP:GP,
@@ -561,9 +564,6 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
 
 
 }
-
-
-
 function tests(auth) {
  sheets.spreadsheets.values.get({
     auth: auth,
@@ -598,6 +598,72 @@ function tests(auth) {
 
 }
 
+function CKV(name,num) {
+	
+for(var fd=0;fd<SKILLS.length;fd++){
+if(SKILLS[fd][0]==num){
+	rply.text=
+'['+name +']'+'編號['+num+']'+'的技能為\n'+
+SKILLS[fd][1]+'\n'+
+'說明'+SKILLS[fd][9]+'\n'+
+'類型'+SKILLS[fd][2]+'\n'+
+'距離'+SKILLS[fd][3]+'\n'+
+'傷害/回復'+SKILLS[fd][4]+'\n'+
+'命中率/成功率'+SKILLS[fd][5]+'\n'+
+'CE消耗量'+SKILLS[fd][6]+'\n'+
+'屬性'+SKILLS[fd][7]+'\n';
+	return rply;	
+}
+}
+rply.text='不好意思'+'['+name+']'+'找不到編號為'+num+'的技能'
+return rply;	
+}
+
+
+function CK() {
+fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+  if (err) {
+    console.log('Error loading client secret file: ' + err);
+    return;
+  }
+  authorize(JSON.parse(content), CKS);
+});
+
+
+}
+function CKS(auth) {
+ sheets.spreadsheets.values.get({
+    auth: auth,
+    spreadsheetId: mySheetId,
+    range: 'skill',
+  }, function(err, response) {
+    if (err) {
+      console.log('The API returned an error: ' + err);
+      return;
+    }
+    var rows = response.values;
+    if (rows.length == 0) {
+      console.log('No data found.');
+    } else {
+	    SKILLS.splice(0,100);
+	    cat=rows.length;
+	    for (var i = 0; i < rows.length; i++) {
+	     var row = rows[i];
+	     var Cha=[];
+		for(var j = 0 ; j < 10;j++){
+			if(row[j]!= null){
+	    			Cha[j]=row[j];
+			}
+			else{
+				Cha[j]='0';
+			}
+		}
+		    SKILLS[i]=Cha;
+	    }
+	    
+    }})
+
+}
 
 function gotgpt(auth) {
 var leng=Characters.length;
