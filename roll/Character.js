@@ -650,7 +650,7 @@ function CKS(auth) {
 	    for (var i = 0; i < rows.length; i++) {
 	     var row = rows[i];
 	     var Cha=[];
-		for(var j = 0 ; j < 10;j++){
+		for(var j = 0 ; j < 11;j++){
 			if(row[j]!= null){
 	    			Cha[j]=row[j];
 			}
