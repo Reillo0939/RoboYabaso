@@ -625,11 +625,11 @@ function CKR(num) {
 	
 for(var fd=0;fd<SKILLS.length;fd++){
 if(SKILLS[fd][0]==num){
-	rply.text=
+	Var x=
 SKILLS[fd][1]+','+SKILLS[fd][2]+','+SKILLS[fd][3]+','+SKILLS[fd][4]+','+SKILLS[fd][5]+','+
 SKILLS[fd][6]+','+SKILLS[fd][7]+','+SKILLS[fd][8]+','+SKILLS[fd][9]+','+SKILLS[fd][10];
-console.log(rply.text);
-	return rply;	
+console.log(x);
+	return x;	
 }
 }
 rply.text='0';
