@@ -1346,6 +1346,21 @@ od[0]='dummy';//1D
 							rply.text+='\n'+BR(1);
 							return rply;
 						}
+						if(player[self][Number(mainMsg[1])+27][8]==5){
+							if(player[self][37][5]==1){
+								player[self][33]--;
+								player[self][37][5]=0;
+								rply.text='已關閉神經瞬動\nCE '+player[i][4]+'/'+player[i][5];
+							}
+							else{
+							player[self][4]-=player[self][Number(mainMsg[1])+27][5];
+							player[self][33]++;
+							player[self][37][5]=1;
+							rply.text='已開啟神經瞬動\nCE '+player[i][4]+'/'+player[i][5];
+							}
+							rply.text+='\n'+BR(1);
+							return rply;
+						}
 						}
 						
 						
@@ -2100,6 +2115,7 @@ function BR(nb){
 	if(player[self][37][2]==1)rr+='\n加速插件啟動中';
 	if(player[self][37][3]==1)rr+='\n過載插件啟動中';
 	if(player[self][37][4]==1)rr+='\n被凍結中';
+	if(player[self][37][5]==1)rr+='\n神經瞬動';
 			rr+='\n 可用選項：';
 			if(xmode==4){
 				rr+='\n關閉測傷';
