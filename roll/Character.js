@@ -613,7 +613,7 @@ SKILLS[fd][1]+'\n'+
 '命中率/成功率 '+SKILLS[fd][5]+'\n'+
 'CE消耗量 '+SKILLS[fd][6]+'\n'+
 '屬性 '+SKILLS[fd][7]+'\n'+
-'適性增幅 '+SKILLS[fd][8]+'\n';
+'適性增幅 '+SKILLS[fd][8];
 	return rply;	
 }
 }
