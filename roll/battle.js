@@ -1459,7 +1459,7 @@ od[0]='dummy';//1D
 						if(player[i][1]==mainMsg[2] ){
 						var temp =0;
 						if(player[self][4]<player[self][Number(mainMsg[1])+27][5]){
-							rply.text='CE剩餘量過少，無法治療';
+							rply.text='CE剩餘量過少，無法支援';
 							return rply;
 						}
 						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
@@ -2213,7 +2213,7 @@ function BR(nb){
 			for(kkkk=1;kkkk<=5;kkkk++){
 			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="攻擊")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+' -CE剩餘量'+player[self][27+kkkk][5]+')';
 			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="妨害")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+' -CE剩餘量'+player[self][27+kkkk][5]+')';
-			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="回復")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+' -CE剩餘量'+player[self][27+kkkk][5]+')';
+			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="支援")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+' -CE剩餘量'+player[self][27+kkkk][5]+')';
 			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="被動")rr+='\n技能 '+kkkk+' ('+ player[self][27+kkkk][0]+' -CE剩餘量'+player[self][27+kkkk][5]+')';
 			}
 			rr+='\n 目標有';
