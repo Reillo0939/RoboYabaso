@@ -255,24 +255,19 @@ var od=[];
 		od[25]=0;//架槍等動作
 		od[26]=0;//命中(狙擊),能量倍率
 		od[35]='';//狙擊對象
-		od[28]=0;
-		od[29]=0;
-		od[30]=0;
-		od[31]=0;
-		od[32]=0;
 		var AAA=ox.oC(i,21);
 		var Askill = AAA.split(','); //定義輸入字串
 		var par='';
 		par = ox.CKR(Askill[0]);
-		if(par!='0')od[28]=par.split(',');
+		od[28]=par.split(',');
 		par = ox.CKR(Askill[1]);
-		if(par!='0')od[29]=par.split(',');
+		od[29]=par.split(',');
 		par = ox.CKR(Askill[2]);
-		if(par!='0')od[30]=par.split(',');
+		od[30]=par.split(',');
 		par = ox.CKR(Askill[3]);
-		if(par!='0')od[31]=par.split(',');
+		od[31]=par.split(',');
 		par = ox.CKR(Askill[4]);
-		if(par!='0')od[32]=par.split(',');
+		od[32]=par.split(',');
 		od[33]=2;//可行動次數
 		od[34]=1;//閃避倍率
 		od[36]=3;//移動距離
