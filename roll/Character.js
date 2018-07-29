@@ -134,22 +134,22 @@ Water=10;
 Thunder=10;
 Ice=10;
 
-if(race=='火炎操作使'){
+if(Occupation=='火炎操作使'){
 	Fire=20;
 	Water=0;
 	None=None-5;
 }
-if(race=='流水支援使'){
+if(Occupation=='流水支援使'){
 	Water=20;
 	Thunder=0;
 	None=None-5;
 }
-if(race=='電能突擊使'){
+if(Occupation=='電能突擊使'){
 	Thunder=20;
 	Ice=0;
 	None=None-5;
 }
-if(race=='寒冰干擾使'){
+if(Occupation=='寒冰干擾使'){
 	Ice=20;
 	Fire=0;
 	None=None-5;
