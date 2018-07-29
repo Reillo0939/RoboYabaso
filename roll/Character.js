@@ -631,8 +631,8 @@ SKILLS[fd][6]+','+SKILLS[fd][7]+','+SKILLS[fd][8]+','+SKILLS[fd][9]+','+SKILLS[f
 	return x;	
 }
 }
-rply.text='0';
-return rply;	
+x='0';
+return x;	
 }
 
 function CK() {
