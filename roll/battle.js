@@ -260,15 +260,15 @@ var od=[];
 		var Askill = AAA.split(','); //定義輸入字串
 		var par='';
 		par = ox.CKR(Askill[0]);
-		od[28]=par.split(',');
+		if(par!=0)od[28]=par.split(',');
 		par = ox.CKR(Askill[1]);
-		od[29]=par.split(',');
+		if(par!=0)od[29]=par.split(',');
 		par = ox.CKR(Askill[2]);
-		od[30]=par.split(',');
+		if(par!=0)od[30]=par.split(',');
 		par = ox.CKR(Askill[3]);
-		od[31]=par.split(',');
+		if(par!=0)od[31]=par.split(',');
 		par = ox.CKR(Askill[4]);
-		od[32]=par.split(',');
+		if(par!=0)od[32]=par.split(',');
 		od[33]=2;//可行動次數
 		od[34]=1;//閃避倍率
 		od[36]=3;//移動距離
