@@ -43,7 +43,7 @@ function getNewToken(oauth2Client, callback) {
     input: process.stdin,
     output: process.stdout
   });
-  rl.question('Enter the code from that page here: ', function(code) {
+  rl.question('Enter the code from that prace here: ', function(code) {
     rl.close();
     oauth2Client.getToken(code, function(err, token) {
       if (err) {
@@ -73,8 +73,8 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 var Characters = [];
 var SKILLS = [];
 var cat,re,ccN;
-function CM(name,age,id,names) {
-	var HP,MP,ATK,None,Fire,Water,Wind,Earth,Reaction,Occupation,Growing;
+function CM(name,race,Occupation,id,names) {
+	var HP,MP,ATK,None,Fire,Water,Thunder,Ice,Reaction;
 
 for(var tt=0;tt<Characters.length;tt++){
 if(Characters[tt][0]==id){
@@ -82,72 +82,114 @@ rply.text=names +' 你已有角色，若要修改請找GM';
 return rply;	
 }
 }
-if(name==null && age==null){
-rply.text='請詳細閱讀創角說明';
+if(name==null && race==null && Occupation==null){
+rply.text='缺少名稱 種族 兵種'+
+		  '\n種族有 純人種 貓科種 犬科種 兔科種'+
+		  '\n兵種有 基礎放出使 火炎操作使 流水支援使 電能突擊使 寒冰干擾使';
 return rply;	
 }
-if(name==null){
-rply.text='你的名字呢';
+if(race==null && Occupation==null){
+rply.text='缺少 種族 兵種'+
+		  '\n種族有 純人種 貓科種 犬科種 兔科種'+
+		  '\n兵種有 基礎放出使 火炎操作使 流水支援使 電能突擊使 寒冰干擾使';
 return rply;	
 }
-if(isNaN(age)){
-rply.text='你幾歲了';
+if(race!='純人種' && race!='貓科種' && race!='犬科種' && race!='兔科種'){
+	rply.text='種族錯誤'+
+		  '\n種族有 純人種 貓科種 犬科種 兔科種';
 return rply;	
 }
-if((age>=30)&&(age<=65)){
-Occupation='粒子誘變操作使';
-HP=rollbase.Dice(200)+20;
-MP=rollbase.Dice(150)+20;
-ATK=rollbase.Dice(70-age);
-Reaction=rollbase.Dice(70-age);
-None=rollbase.Dice(70-age);
-Fire=rollbase.Dice(70-age);	
-Water=rollbase.Dice(70-age);
-Wind=rollbase.Dice(70-age);
-Earth=rollbase.Dice(70-age);
-Growing=rollbase.Dice(66-age);
+if(Occupation==null){
+rply.text='缺少 兵種'+
+		  '\n兵種有 基礎放出使 火炎操作使 流水支援使 電能突擊使 寒冰干擾使';
+return rply;	
 }
-if((age>=14)&&(age<=29)){
-Occupation='粒子誘變操作使';
+if(Occupation!='基礎放出使' && Occupation!='火炎操作使' && Occupation!='流水支援使' && Occupation!='電能突擊使' && Occupation!='寒冰干擾使' ){
+	rply.text='兵種錯誤'+
+		  '\n兵種有 基礎放出使 火炎操作使 流水支援使 電能突擊使 寒冰干擾使';
+return rply;	
+}
 HP='100,50';
 MP=150;
-ATK=rollbase.Dice(50);
-Reaction=rollbase.Dice(45)+5;
-None=rollbase.Dice(40);
-Fire=rollbase.Dice(40);	
-Water=rollbase.Dice(40);
-Wind=rollbase.Dice(40);
-Earth=rollbase.Dice(40);
-Growing=Math.floor(((30-ATK)+(30-None)+(30-Fire)+(30-Water)+(30-Wind)+(30-Earth))*0.5);
+
+ATK=5;
+Reaction=5;
+None=15;
+
+if(race=='貓科種'){
+	Reaction=10;
+	None=None-10;
 }
-if(Growing<=10)Growing=rollbase.Dice(5)+15;
+if(race=='犬科種'){
+	ATK=10;
+	Reaction=0;
+}
+if(race=='兔科種'){
+	None=None+10;
+	ATK=0;
+}
+
+Fire=10;	
+Water=10;
+Thunder=10;
+Ice=10;
+
+if(race=='火炎操作使'){
+	Fire=20;
+	Water=0;
+	None=None-5;
+}
+if(race=='流水支援使'){
+	Water=20;
+	Thunder=0;
+	None=None-5;
+}
+if(race=='電能突擊使'){
+	Thunder=20;
+	Ice=0;
+	None=None-5;
+}
+if(race=='寒冰干擾使'){
+	Ice=20;
+	Fire=0;
+	None=None-5;
+}
+for(var i=0;i<=50;i++){
+	var x = rollbase.Dice(2);
+	if(x==1)ATK++;
+	if(x==2)Reaction++;
+}
+for(var i=0;i<=100;i++){
+	var x = rollbase.Dice(5);
+	if(x==1)None++;
+	if(x==2)Fire++;
+	if(x==3)Water++;
+	if(x==4)Thunder++;
+	if(x==5)Ice++;
+}
+
 rply.text=names +'\n'+
-'['+ name +']  年齡：' +age +
-'\n職業：  ' + Occupation +
-'\n軍階： '+  '訓練兵'+
-'\n生命值： '+ '100' +
-'\n護盾： '+ '50' +
-'\nBata粒子適性： '+ MP +
-'\n物理適性： '+ ATK +
-'\n反應力： '+ Reaction +
-'\n放出適性： '+ None +
-'\n火屬適性： '+ Fire +
-'\n水屬適性： '+ Water +
-'\n風屬適性： '+ Wind +
-'\n土屬適性： '+ Earth +
-'\n成長點： '+  Growing	
+'['+ name +']  種族:' +race +
+'\n兵種: ' + Occupation +
+'\n軍階: '+  '訓練兵'+
+'\n生命值: '+ '100' +
+'\n護盾: '+ '50' +
+'\nCE儲存量: '+ MP +
+'\n耐重量: '+ ATK +
+'\n反應力: '+ Reaction +
+'\n放出適性: '+ None +
+'\n火屬適性: '+ Fire +
+'\n水屬適性: '+ Water +
+'\n雷屬適性: '+ Thunder +
+'\n冰屬適性: '+ Ice
 ;
-if((age<14)||(age>65)){
-rply.text='這年齡不適合戰鬥請重新創角';
-return rply;
-}
 	console.log('test OK 1');
 var hh=Characters.length;
 var ddd=[];
 console.log('test OK 2');
 ddd[0] = id ;
 ddd[1] = name ;
-ddd[2] = age ;
+ddd[2] = race ;
 ddd[3] = 'G.U.' ;
 ddd[4] = Occupation ;
 ddd[5] = HP ;
@@ -157,16 +199,16 @@ ddd[8] = Reaction ;
 ddd[9]  = None ;
 ddd[10] = Fire ;
 ddd[11] = Water ;
-ddd[12] = Wind ;
-ddd[13] = Earth ;
-ddd[14] = Growing ;
+ddd[12] = Thunder ;
+ddd[13] = Ice ;
+ddd[14] = 0 ;
 ddd[15] = 0 ;
 ddd[16] = '訓練兵' ;
 ddd[17] = 10000 ;
 ddd[18] = 0 ;
 ddd[19] = 0 ;
 ddd[20] = 0 ;
-ddd[21] = '0|0|0|0|0' ;
+ddd[21] = '1,2,3,4,5' ;
 Characters[hh]=ddd;
 
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
@@ -178,7 +220,7 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
 });
 return rply;	
 }
-function CT(name,age,id,names) {
+function CT(name,race,id,names) {
 	var HP,MP,ATK,Reaction,Occupation,Control,Growing;
 for(var tt=0;tt<Characters.length;tt++){
 if(Characters[tt][0]==id){
@@ -186,7 +228,7 @@ rply.text=names +' 你已有角色，若要修改請找GM';
 return rply;	
 }
 }
-if(name==null && age==null){
+if(name==null && race==null){
 rply.text='請詳細閱讀創角說明';
 return rply;	
 }
@@ -194,21 +236,21 @@ if(name==null){
 rply.text='你的名字呢';
 return rply;	
 }
-if(isNaN(age)){
+if(isNaN(race)){
 rply.text='你幾歲了';
 return rply;	
 }
 
-if((age>=40)&&(age<=60)){
+if((race>=40)&&(race<=60)){
 Occupation='CAC系統磁懸裝甲';
 HP='100,80';
 MP=100;
-ATK=rollbase.Dice(70-age);
-Reaction=rollbase.Dice(70-age);
-Control=rollbase.Dice(70-age);
-Growing=rollbase.Dice(61-age);
+ATK=rollbase.Dice(70-race);
+Reaction=rollbase.Dice(70-race);
+Control=rollbase.Dice(70-race);
+Growing=rollbase.Dice(61-race);
 }
-if((age>=16)&&(age<=39)){
+if((race>=16)&&(race<=39)){
 Occupation='CAC系統磁懸裝甲';
 HP='100,80';
 MP=100;
@@ -226,19 +268,19 @@ if(Control<25){
 	Growing=rollbase.Dice(5)+5;
 }
 rply.text=
-'['+ name +']  年齡：' +age +
-'\n職業：  ' + Occupation +
-'\n軍階： '+  '訓練兵'+
-'\n生命值： '+ '100' ;
-if(Occupation=='CAC系統磁懸裝甲')rply.text+='\n護甲：80';
-if(Occupation=='複合性火力支援裝甲')rply.text+='\n護甲：100';
-rply.text+='\nBata粒子適性： '+ MP +
-'\n物理適性： '+ ATK +
-'\n控制能力： '+ Control +
-'\n反應力： '+ Reaction +
-'\n成長點： '+  Growing;
+'['+ name +']  年齡:' +race +
+'\n職業:  ' + Occupation +
+'\n軍階: '+  '訓練兵'+
+'\n生命值: '+ '100' ;
+if(Occupation=='CAC系統磁懸裝甲')rply.text+='\n護甲:80';
+if(Occupation=='複合性火力支援裝甲')rply.text+='\n護甲:100';
+rply.text+='\nBata粒子適性: '+ MP +
+'\n物理適性: '+ ATK +
+'\n控制能力: '+ Control +
+'\n反應力: '+ Reaction +
+'\n成長點: '+  Growing;
 
-if((age<16)||(age>60)){
+if((race<16)||(race>60)){
 rply.text='這年齡不適合戰鬥請重新創角';
 return rply;
 }
@@ -247,7 +289,7 @@ var ddd=[];
 console.log('test OK 2');
 ddd[0] = id ;
 ddd[1] = name ;
-ddd[2] = age ;
+ddd[2] = race ;
 ddd[3] = 'A.A.U.F' ;
 ddd[4] = Occupation ;
 ddd[5] = HP ;
@@ -259,14 +301,14 @@ ddd[10] = 0 ;
 ddd[11] = 0 ;
 ddd[12] = 0 ;
 ddd[13] = 0 ;
-ddd[14] = Growing ;
-ddd[15] = Control ;
+ddd[14] = Control ;
+ddd[15] = 0 ;
 ddd[16] = '訓練兵' ;
 ddd[17] = 10000 ;
 ddd[18] = 0 ;
 ddd[19] = 0 ;
 ddd[20] = 0 ;
-ddd[21] = '0|0|0|0|0' ;
+ddd[21] = '0,0,0,0,0' ;
 Characters[hh]=ddd;
 	
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
@@ -290,37 +332,37 @@ if(Characters[fd][0]==id){
 		
 		rply.text=
 name +' 的角色'+
-'\n['+ Characters[fd][1] +']  年齡：' +Characters[fd][2] +
-'\n職業：' + Characters[fd][4] +
-'\n軍階：'+  Characters[fd][16]	+
-'\n榮譽值：'+Characters[fd][18]+
-'\n生命值：'+ HPD[0] +
-'\n護甲：'+ HPD[1] +
-'\nBata粒子適性：'+ Characters[fd][6] +
-'\n物理適性：'+ Characters[fd][7] +
-'\n控制能力：'+ Characters[fd][15] +
-'\n反應力：'+ Characters[fd][8] +
-'\n持有金幣： '+  Characters[fd][17]	
+'\n['+ Characters[fd][1] +']  年齡:' +Characters[fd][2] +
+'\n職業:' + Characters[fd][4] +
+'\n軍階:'+  Characters[fd][16]	+
+'\n榮譽值:'+Characters[fd][18]+
+'\n生命值:'+ HPD[0] +
+'\n護甲:'+ HPD[1] +
+'\nBata粒子適性:'+ Characters[fd][6] +
+'\n物理適性:'+ Characters[fd][7] +
+'\n控制能力:'+ Characters[fd][14] +
+'\n反應力:'+ Characters[fd][8] +
+'\n持有金幣: '+  Characters[fd][17]	
 ;
 	}
 	if(Characters[fd][3]=='G.U.'){
 	rply.text=
 name +' 的角色'+
-'\n['+ Characters[fd][1] +']  年齡：' +Characters[fd][2] +
-'\n職業：' + Characters[fd][4] +
-'\n軍階：'+  Characters[fd][16]	+
-'\n榮譽值：'+Characters[fd][18]+
-'\n生命值：'+ HPD[0] +
-'\n護盾：'+ HPD[1] +
-'\nBata粒子適性：'+ Characters[fd][6] +
-'\n物理適性：'+ Characters[fd][7] +
-'\n反應力：'+ Characters[fd][8] +
-'\n放出適性：'+ Characters[fd][9] +
-'\n火屬適性：'+ Characters[fd][10] +
-'\n水屬適性：'+ Characters[fd][11] +
-'\n風屬適性：'+ Characters[fd][12] +
-'\n土屬適性：'+ Characters[fd][13] +
-'\n持有金幣： '+  Characters[fd][17]	
+'\n['+ Characters[fd][1] +']  年齡:' +Characters[fd][2] +
+'\n職業:' + Characters[fd][4] +
+'\n軍階:'+  Characters[fd][16]	+
+'\n榮譽值:'+Characters[fd][18]+
+'\n生命值:'+ HPD[0] +
+'\n護盾:'+ HPD[1] +
+'\nBata粒子適性:'+ Characters[fd][6] +
+'\n物理適性:'+ Characters[fd][7] +
+'\n反應力:'+ Characters[fd][8] +
+'\n放出適性:'+ Characters[fd][9] +
+'\n火屬適性:'+ Characters[fd][10] +
+'\n水屬適性:'+ Characters[fd][11] +
+'\n風屬適性:'+ Characters[fd][12] +
+'\n土屬適性:'+ Characters[fd][13] +
+'\n持有金幣: '+  Characters[fd][17]	
 ;
 	}
 }
@@ -337,33 +379,33 @@ if(Characters[fd][1]==names){
 	if(Characters[fd][3]=='A.A.U.F'){
 		rply.text=
 name +' 我找到的角色是'+
-'\n['+ Characters[fd][1] +']  年齡：' +Characters[fd][2] +
-'\n職業：' + Characters[fd][4] +
-'\n軍階：'+  Characters[fd][16]	+
-'\n生命值：'+ HPD[0] +
-'\n護甲：'+ HPD[1] +
-'\nBata粒子適性：'+ Characters[fd][6] +
-'\n物理適性：'+ Characters[fd][7] +
-'\n控制能力：'+ Characters[fd][15] +
-'\n反應力：'+ Characters[fd][8] 
+'\n['+ Characters[fd][1] +']  年齡:' +Characters[fd][2] +
+'\n職業:' + Characters[fd][4] +
+'\n軍階:'+  Characters[fd][16]	+
+'\n生命值:'+ HPD[0] +
+'\n護甲:'+ HPD[1] +
+'\nBata粒子適性:'+ Characters[fd][6] +
+'\n物理適性:'+ Characters[fd][7] +
+'\n控制能力:'+ Characters[fd][14] +
+'\n反應力:'+ Characters[fd][8] 
 ;
 	}
 	if(Characters[fd][3]=='G.U.'){
 	rply.text=
 name +' 我找到的角色是'+
-'\n['+ Characters[fd][1] +']  年齡：' +Characters[fd][2] +
-'\n職業：' + Characters[fd][4] +
-'\n軍階：'+  Characters[fd][16]	+
-'\n生命值：'+ HPD[0] +
-'\n護盾：'+ HPD[1] +
-'\nBata粒子適性：'+ Characters[fd][6] +
-'\n物理適性：'+ Characters[fd][7] +
-'\n反應力：'+ Characters[fd][8] +
-'\n放出適性：'+ Characters[fd][9] +
-'\n火屬適性：'+ Characters[fd][10] +
-'\n水屬適性：'+ Characters[fd][11] +
-'\n風屬適性：'+ Characters[fd][12] +
-'\n土屬適性：'+ Characters[fd][13] 
+'\n['+ Characters[fd][1] +']  年齡:' +Characters[fd][2] +
+'\n職業:' + Characters[fd][4] +
+'\n軍階:'+  Characters[fd][16]	+
+'\n生命值:'+ HPD[0] +
+'\n護盾:'+ HPD[1] +
+'\nBata粒子適性:'+ Characters[fd][6] +
+'\n物理適性:'+ Characters[fd][7] +
+'\n反應力:'+ Characters[fd][8] +
+'\n放出適性:'+ Characters[fd][9] +
+'\n火屬適性:'+ Characters[fd][10] +
+'\n水屬適性:'+ Characters[fd][11] +
+'\n風屬適性:'+ Characters[fd][12] +
+'\n土屬適性:'+ Characters[fd][13] 
 ;
 	}
 }
@@ -392,87 +434,10 @@ function CCN(id,name,Cname) {
 	return rply;	
 }
 
-/*function CSG(id,name,select,Points) {
-	rply.text= name+' 你沒有角色，如果有遺失請與GM聯絡';
-for(var fd=0;fd<Characters.length;fd++){
-if(Characters[fd][0]==id){
-	ccN=fd;
-	if(Characters[fd][3]=='A.A.U.F'){
-		if(select=='物理適性'||select=='控制能力'){
-			if(Points!=null && isNaN(Points)==0 && parseInt(Characters[fd][14],10)>=parseInt(Points,10) && parseInt(Points,10)>=0){
-				console.log('成長點'+Characters[fd][14]);
-				if(select=='物理適性' ){
-					Characters[fd][7]=parseInt(Characters[fd][7],10)+parseInt(Points, 10);
-					Characters[fd][14]=parseInt(Characters[fd][14],10)-parseInt(Points,10);
-					rply.text='配置成功';				}
-				else if(select=='控制能力'){
-					Characters[fd][15]=parseInt(Characters[fd][15],10)+parseInt(Points, 10);
-					Characters[fd][14]=parseInt(Characters[fd][14],10)-parseInt(Points,10);
-					rply.text='配置成功';				}
-				else{rply.text='點數不足';}
-				fs.readFile('client_secret.json', function processClientSecrets(err, content) {
-  				if (err) {
-    				console.log('Error loading client secret file: ' + err);
-    				return;
-  				}
-  				authorize(JSON.parse(content), CCCN);
-				});
-			}
-			else{rply.text=name +'你未輸入數值或是數值錯誤';}
-		}
-		else{rply.text=name +'你可分配\n-物理適性\n-控制能力';}
-	}
-	if(Characters[fd][3]=='G.U.'){
-	if(select=='物理適性'||select=='放出適性'||select=='火屬適性'||select=='水屬適性'||select=='風屬適性'||select=='土屬適性'){
-			if(Points!=null && isNaN(Points)==0 && parseInt(Characters[fd][14],10)>=parseInt(Points,10) && parseInt(Points,10)>=0){
-				console.log('成長點'+Characters[fd][14]);
-				if(select=='物理適性' ){
-					Characters[fd][7]=parseInt(Characters[fd][7],10)+parseInt(Points, 10);
-					Characters[fd][14]=parseInt(Characters[fd][14],10)-parseInt(Points,10);
-					rply.text='配置成功';				}
-				else if(select=='放出適性'){
-					Characters[fd][9]=parseInt(Characters[fd][9],10)+parseInt(Points, 10);
-					Characters[fd][14]=parseInt(Characters[fd][14],10)-parseInt(Points,10);
-					rply.text='配置成功';				}
-				else if(select=='火屬適性'){
-					Characters[fd][10]=parseInt(Characters[fd][10],10)+parseInt(Points, 10);
-					Characters[fd][14]=parseInt(Characters[fd][14],10)-parseInt(Points,10);
-					rply.text='配置成功';				}
-				else if(select=='水屬適性'){
-					Characters[fd][11]=parseInt(Characters[fd][11],10)+parseInt(Points, 10);
-					Characters[fd][14]=parseInt(Characters[fd][14],10)-parseInt(Points,10);
-					rply.text='配置成功';				}
-				else if(select=='風屬適性'){
-					Characters[fd][12]=parseInt(Characters[fd][12],10)+parseInt(Points, 10);
-					Characters[fd][14]=parseInt(Characters[fd][14],10)-parseInt(Points,10);
-					rply.text='配置成功';				}
-				else if(select=='土屬適性'){
-					Characters[fd][13]=parseInt(Characters[fd][13],10)+parseInt(Points, 10);
-					Characters[fd][14]=parseInt(Characters[fd][14],10)-parseInt(Points,10);
-					rply.text='配置成功';				}
-				else{rply.text='點數不足';
-				    }
-				fs.readFile('client_secret.json', function processClientSecrets(err, content) {
-  				if (err) {
-    				console.log('Error loading client secret file: ' + err);
-    				return;
-  				}
-  				authorize(JSON.parse(content), CCCN);
-				});
-			}
-			else{rply.text=name +'你未輸入數值或是數值錯誤';}
-		}
-		else{rply.text=name +'你可分配\n-物理適性\n-放出適性\n-火屬適性\n-水屬適性\n-風屬適性\n-土屬適性';}
-	}
-}
-}
-return rply;	
-}*/
-
 function CCL() {
 	rply.text='目前的玩家有\n';
 for(var fd=1;fd<Characters.length;fd++){
-	rply.text+='陣營： '+ Characters[fd][3] + '  名稱： '+Characters[fd][1] +'\n';
+	rply.text+='陣營: '+ Characters[fd][3] + '  名稱: '+Characters[fd][1] +'\n';
 }
 	rply.text+='這些';
 return rply;	
@@ -613,7 +578,7 @@ SKILLS[fd][1]+'\n'+
 '命中率/成功率 '+SKILLS[fd][5]+'\n'+
 'CE消耗量 '+SKILLS[fd][6]+'\n'+
 '屬性 '+SKILLS[fd][7]+'\n'+
-'適性增幅 '+SKILLS[fd][8];
+'適性增幅 '+SKILLS[fd][8]+'\n';
 	return rply;	
 }
 }

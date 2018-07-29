@@ -218,7 +218,7 @@ var od=[];
 		od[10]=Number(ox.oC(i,11));//水屬適性
 		od[11]=Number(ox.oC(i,12));//風屬適性
 		od[12]=Number(ox.oC(i,13));//土屬適性
-		od[13]=Number(ox.oC(i,15));//控制能力
+		od[13]=Number(ox.oC(i,14));//控制能力
 		od[14]=ox.oC(i,3);//陣營
 		if(mmode==1){
 		if(RAAUF>=(aaab/2) && od[14]=='A.A.U.F'){
