@@ -4,7 +4,7 @@ var ox = require('./Character.js');
 var xweapon=require('./weapon.js');
 var faf = require('../index.js');
 var AJT=0;
-var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
+var channelAccessToken = process.env.LINE_CHANNEL_ACCE剩餘量SSTOKEN;
 var channelSecret = process.env.LINE_CHANNEL_SECRET;
 var linebot = require('linebot');///030
  var channelId='1567989750';
@@ -209,9 +209,9 @@ var od=[];
 		od[38]=HPD[1];//護甲與現有護盾
 		od[39]=HPD[1];//護盾上限
 		
-		od[4]=Number(ox.oC(i,6));//CE適性
-		od[5]=Number(ox.oC(i,6));//CE適性
-		od[6]=Number(ox.oC(i,7));//物理適性
+		od[4]=Number(ox.oC(i,6));//CE剩餘量
+		od[5]=Number(ox.oC(i,6));//CE剩餘量
+		od[6]=Number(ox.oC(i,7));//耐重量
 		od[7]=Number(ox.oC(i,8));//反應力
 		od[8]=Number(ox.oC(i,9));//放出適性
 		od[9]=Number(ox.oC(i,10));//火屬適性
@@ -285,8 +285,8 @@ var od=[];
 			'\nHP '+od[2]+'/'+od[3];
 		if(od[14]=='A.A.U.F')rply.text+='\n護甲 '+od[38];
 		if(od[14]=='G.U.')rply.text+='\n護盾 '+od[38]+'/'+od[39];
-		rply.text+='\nCE '+od[4]+'/'+od[5]+
-			'\n物理適性 '+od[6]+
+		rply.text+='\nCE儲存量 '+od[4]+'/'+od[5]+
+			'\n耐重量 '+od[6]+
 			'\n反應力'+od[7]+
 			'\n武器名稱：'+WV[5];
 			if(WV[0]==1)rply.text+='\n武器種類：手槍';
@@ -455,9 +455,9 @@ od[0]='dummy';//1D
     	od[1]='測傷用';//名字
     	od[2]=999;//生命值
 		od[3]=999;//生命值
-		od[4]=0;//CE適性
-		od[5]=0;//CE適性
-		od[6]=0;//物理適性
+		od[4]=0;//CE剩餘量適性
+		od[5]=0;//CE剩餘量適性
+		od[6]=0;//耐重量
 		od[7]=0;//反應力
 		od[8]=0;//放出適性
 		od[9]=0;//火屬適性
@@ -574,7 +574,7 @@ od[0]='dummy';//1D
 							}
 							
 							
-							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
+							rply.text+='\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(player[i][2]<=0){
@@ -598,7 +598,7 @@ od[0]='dummy';//1D
 						else{
 							rply.text=player[i][1]+'閃避成功'+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
-							'\nCE '+player[i][4]+'/'+player[i][5];
+							'\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
 						ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(self>=player.length)self=0;
@@ -671,7 +671,7 @@ od[0]='dummy';//1D
 								rply.text+='\n護甲 '+player[i][38];
 							}
 							
-							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
+							rply.text+='\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
 							
 							ds++
 							if(ds==player[self][33]+1){self++;ds=1;}
@@ -698,7 +698,7 @@ od[0]='dummy';//1D
 							if(self>=player.length)self=0;
 							rply.text=player[i][1]+'閃避成功'+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
-							'\nCE '+player[i][4]+'/'+player[i][5]+
+							'\nCE剩餘量 '+player[i][4]+'/'+player[i][5]+
 							'\n\n'+BR();
 			return rply;
 						}
@@ -838,7 +838,7 @@ od[0]='dummy';//1D
 						
 						
 							
-							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
+							rply.text+='\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
 							player[self][20]-=bh;
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
@@ -880,7 +880,7 @@ od[0]='dummy';//1D
 					if(player[self][4]>player[self][5])player[self][4]=player[self][5];
 					rply.text=player[i][1]+
 							'\nHP '+player[i][2]+'/'+player[i][3];
-							rply.text+='\nCE '+player[i][4]+'/'+player[i][5]+'(+'+(player[self][5]*0.2+20)+')';
+							rply.text+='\nCE剩餘量 '+player[i][4]+'/'+player[i][5]+'(+'+(player[self][5]*0.2+20)+')';
 					ds++;
 					if(ds==player[self][33]+1){self++;ds=1;}
 					if(self>=player.length)self=0;
@@ -988,7 +988,7 @@ od[0]='dummy';//1D
 								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
 								rply.text+='\n護甲 '+player[i][38];
 							}
-							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
+							rply.text+='\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
 							player[self][25]=0;
 							player[self][34]=1.2;
 							ds++;
@@ -1030,7 +1030,7 @@ od[0]='dummy';//1D
 			if(id==player[self][0] && trigger.match(/^高速架槍$/) != null && player[self][18]==7 && player[self][25]==0 && player[self][4]>=(player[self][5]*0.6)){
 					ot=new Date();
 					if(player[self][4]<(player[self][5]*0.6)){
-							rply.text='CE過少，無法架槍';
+							rply.text='CE剩餘量過少，無法架槍';
 							return rply;
 						}
 						player[self][4]-=Math.floor(player[self][5]*0.6);
@@ -1151,7 +1151,7 @@ od[0]='dummy';//1D
 								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
 								rply.text+='\n護甲 '+player[i][38];
 							}
-							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
+							rply.text+='\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
 							player[self][25]=2;
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
@@ -1291,18 +1291,18 @@ od[0]='dummy';//1D
 					
 						if(player[self][Number(mainMsg[1])+27][1]=='被動'){
 							if(player[self][4]<player[self][Number(mainMsg[1])+27][6]){
-							rply.text='CE過少，無法發動';
+							rply.text='CE剩餘量過少，無法發動';
 							return rply;
 						}
 						if(player[self][Number(mainMsg[1])+27][8]==1){
 							if(player[self][37][1]==1){
 								player[self][37][1]=0;
-								rply.text='已關閉狂暴插件\nCE '+player[i][4]+'/'+player[i][5];
+								rply.text='已關閉狂暴插件\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
 							}
 						else{
 							player[self][4]-=player[self][Number(mainMsg[1])+27][5];
 							player[self][37][1]=1;
-							rply.text='已開啟狂暴插件\nCE '+player[i][4]+'/'+player[i][5];
+							rply.text='已開啟狂暴插件\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
 							}
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
@@ -1316,13 +1316,13 @@ od[0]='dummy';//1D
 							if(player[self][37][2]==1){
 								player[self][36]--;
 								player[self][37][2]=0;
-								rply.text='已關閉加速插件\nCE '+player[i][4]+'/'+player[i][5];
+								rply.text='已關閉加速插件\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
 							}
 							else{
 								player[self][4]-=player[self][Number(mainMsg[1])+27][5];
 								player[self][36]++;
 							player[self][37][2]=1;
-							rply.text='已開啟加速插件\nCE '+player[i][4]+'/'+player[i][5];
+							rply.text='已開啟加速插件\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
 							}
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
@@ -1335,13 +1335,13 @@ od[0]='dummy';//1D
 							if(player[self][37][3]==1){
 								player[self][33]--;
 								player[self][37][3]=0;
-								rply.text='已關閉過載插件\nCE '+player[i][4]+'/'+player[i][5];
+								rply.text='已關閉過載插件\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
 							}
 							else{
 							player[self][4]-=player[self][Number(mainMsg[1])+27][5];
 							player[self][33]++;
 							player[self][37][3]=1;
-							rply.text='已開啟過載插件\nCE '+player[i][4]+'/'+player[i][5];
+							rply.text='已開啟過載插件\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
 							}
 							rply.text+='\n'+BR(1);
 							return rply;
@@ -1350,13 +1350,13 @@ od[0]='dummy';//1D
 							if(player[self][37][5]==1){
 								player[self][33]--;
 								player[self][37][5]=0;
-								rply.text='已關閉神經瞬動\nCE '+player[i][4]+'/'+player[i][5];
+								rply.text='已關閉神經瞬動\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
 							}
 							else{
 							player[self][4]-=player[self][Number(mainMsg[1])+27][5];
 							player[self][33]++;
 							player[self][37][5]=1;
-							rply.text='已開啟神經瞬動\nCE '+player[i][4]+'/'+player[i][5];
+							rply.text='已開啟神經瞬動\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
 							}
 							rply.text+='\n'+BR(1);
 							return rply;
@@ -1367,7 +1367,7 @@ od[0]='dummy';//1D
 						if(player[self][Number(mainMsg[1])+27][1]=='攻擊' && mainMsg[2] != null){
 						if(player[i][1]==mainMsg[2] ){
 							if(player[self][4]<player[self][Number(mainMsg[1])+27][5]){
-							rply.text='CE過少，無法發動';
+							rply.text='CE剩餘量過少，無法發動';
 							return rply;
 						}
 						var temp;
@@ -1421,7 +1421,7 @@ od[0]='dummy';//1D
 								rply.text+='\n護甲 '+player[i][38];
 							}
 							
-							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
+							rply.text+='\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
 							
 							ds++
 							if(ds==player[self][33]+1){self++;ds=1;}
@@ -1448,7 +1448,7 @@ od[0]='dummy';//1D
 							if(self>=player.length)self=0;
 							rply.text=player[i][1]+'閃避成功'+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
-							'\nCE '+player[i][4]+'/'+player[i][5]+
+							'\nCE剩餘量 '+player[i][4]+'/'+player[i][5]+
 							'\n\n'+BR();
 			return rply;
 						}
@@ -1456,21 +1456,22 @@ od[0]='dummy';//1D
 					}
 					
 					
-					if(player[self][Number(mainMsg[1])+27][1]=='回復' && mainMsg[2] != null){
+					if(player[self][Number(mainMsg[1])+27][1]=='支援' && mainMsg[2] != null){
 						if(player[i][1]==mainMsg[2] ){
 						var temp =0;
 						if(player[self][4]<player[self][Number(mainMsg[1])+27][5]){
-							rply.text='CE過少，無法治療';
+							rply.text='CE剩餘量過少，無法治療';
 							return rply;
 						}
 						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
 						if(temp>(player[self][Number(mainMsg[1])+27][2])){
 							
-							rply.text='距離'+player[i][1]+'太遠，無法治療';
+							rply.text='距離'+player[i][1]+'太遠，無法支援';
 							return rply;
 						}
 						player[self][4]-=player[self][Number(mainMsg[1])+27][5];
 						
+						if(player[self][Number(mainMsg[1])+27][8]='HP'){
 						damage=player[self][Number(mainMsg[1])+27][3];
 							if(player[i][2]+damage>player[i][3]){
 								damage=player[i][3]-player[i][2];
@@ -1481,13 +1482,30 @@ od[0]='dummy';//1D
 							rply.text+='(+'+damage+')';
 							if(player[i][14]=='G.U.')rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
 							if(player[i][14]=='A.A.U.F')rply.text+='\n護甲 '+player[i][38];
-							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
+							rply.text+='\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(self>=player.length)self=0;
 							rply.text=rply.text+'\n\n'+BR();
 			return rply;
-						
+						}
+						if(player[self][Number(mainMsg[1])+27][8]='MP'){				
+						damage=player[self][Number(mainMsg[1])+27][3];
+							if(player[i][4]+damage>player[i][5]){
+								damage=player[i][4]-player[i][5];
+							}
+							player[i][4]+=damage;
+							rply.text=player[i][1]+
+							'\nHP '+player[i][2]+'/'+player[i][3];
+							if(player[i][14]=='G.U.')rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+							if(player[i][14]=='A.A.U.F')rply.text+='\n護甲 '+player[i][38];
+							rply.text+='\nCE剩餘量 '+player[i][4]+'/'+player[i][5]+'(+'+damage+')';
+							ds++;
+							if(ds==player[self][33]+1){self++;ds=1;}
+							if(self>=player.length)self=0;
+							rply.text=rply.text+'\n\n'+BR();
+			return rply;
+						}
 					}
 					}
 					
@@ -1495,7 +1513,7 @@ od[0]='dummy';//1D
 						if(player[i][1]==mainMsg[2] ){
 						var temp =0;
 						if(player[self][4]<player[self][Number(mainMsg[1])+27][5]){
-							rply.text='CE過少，無法發動';
+							rply.text='CE剩餘量過少，無法發動';
 							return rply;
 						}
 						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
@@ -1542,7 +1560,7 @@ od[0]='dummy';//1D
 							if(self>=player.length)self=0;
 							rply.text=player[i][1]+'閃避成功'+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
-							'\nCE '+player[i][4]+'/'+player[i][5]+
+							'\nCE剩餘量 '+player[i][4]+'/'+player[i][5]+
 							'\n\n'+BR();
 			return rply;
 						}
@@ -1554,7 +1572,7 @@ od[0]='dummy';//1D
 							rply.text+='(+'+damage+')';
 							if(player[i][14]=='G.U.')rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
 							if(player[i][14]=='A.A.U.F')rply.text+='\n護甲 '+player[i][38];
-							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
+							rply.text+='\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(self>=player.length)self=0;
@@ -1620,7 +1638,7 @@ od[0]='dummy';//1D
 						temp = Math.ceil(Math.pow(Math.pow(Math.floor(xxyy[0])-player[self][16],2)+Math.pow(Math.floor(xxyy[1])-player[self][17],2),0.5)*10)/10;
 						if(temp>player[self][4]/10){
 											
-							rply.text='CE過少，無法移動';
+							rply.text='CE剩餘量過少，無法移動';
 							return rply;
 						}
 						else{
@@ -1660,7 +1678,7 @@ od[0]='dummy';//1D
 						temp = Math.ceil(Math.pow(Math.pow(Math.floor(xxyy[0])-player[self][16],2)+Math.pow(Math.floor(xxyy[1])-player[self][17],2),0.5)*10)/10;
 						if(temp>player[self][4]/20){
 											
-							rply.text='CE過少，無法移動';
+							rply.text='CE剩餘量過少，無法移動';
 							return rply;
 						}
 						else{
@@ -1699,7 +1717,7 @@ od[0]='dummy';//1D
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
 						if(player[self][4]<(player[self][5]*0.5)){
-							rply.text='CE過少，無法攻擊';
+							rply.text='CE剩餘量過少，無法攻擊';
 							return rply;
 						}
 						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
@@ -1753,7 +1771,7 @@ od[0]='dummy';//1D
 								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
 								rply.text+='\n護甲 '+player[i][38];
 							}
-							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
+							rply.text+='\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
 							
 							ds++
 							if(ds==player[self][33]+1){self++;ds=1;}
@@ -1780,7 +1798,7 @@ od[0]='dummy';//1D
 							if(self>=player.length)self=0;
 							rply.text=player[i][1]+'閃避成功'+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
-							'\nCE '+player[i][4]+'/'+player[i][5]+
+							'\nCE剩餘量 '+player[i][4]+'/'+player[i][5]+
 							'\n\n'+BR();
 			return rply;
 						}
@@ -1796,7 +1814,7 @@ od[0]='dummy';//1D
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
 						if(player[self][4]<(player[self][5]*0.6)){
-							rply.text='CE過少，無法治療';
+							rply.text='CE剩餘量過少，無法治療';
 							return rply;
 						}
 						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
@@ -1818,7 +1836,7 @@ od[0]='dummy';//1D
 							rply.text+='(+'+damage+')';
 							if(player[i][14]=='G.U.')rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
 							if(player[i][14]=='A.A.U.F')rply.text+='\n護甲 '+player[i][38];
-							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
+							rply.text+='\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(self>=player.length)self=0;
@@ -1897,7 +1915,7 @@ od[0]='dummy';//1D
 								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
 								rply.text+='\n護甲 '+player[i][38];
 							}
-							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
+							rply.text+='\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
 							ds+=2;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(player[i][2]<=0){
@@ -1920,7 +1938,7 @@ od[0]='dummy';//1D
 						else{
 							rply.text=player[i][1]+'閃避成功'+
 							'\nHP '+player[i][2]+'/'+player[i][3]+
-							'\nCE '+player[i][4]+'/'+player[i][5];
+							'\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
 						ds+=2;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(self>=player.length)self=0;
@@ -1942,7 +1960,7 @@ od[0]='dummy';//1D
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
 						if(player[self][4]<(player[self][5]*0.1)){
-							rply.text='CE過少，無法攻擊';
+							rply.text='CE剩餘量過少，無法攻擊';
 							return rply;
 						}
 						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
@@ -1986,7 +2004,7 @@ od[0]='dummy';//1D
 								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
 								rply.text+='\n護甲 '+player[i][38];
 							}
-							rply.text+='\nCE '+player[i][4]+'/'+player[i][5];
+							rply.text+='\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
 							
 							ds++
 							if(ds==player[self][33]+1){self++;ds=1;}
@@ -2014,7 +2032,7 @@ od[0]='dummy';//1D
 			if(id==player[self][0] && trigger.match(/^聚能$/) != null &&player[self][18]==12 && player[self][4]>=(player[self][5]*0.2)){
 					ot=new Date();
 					if(player[self][4]<(player[self][5]*0.2)){
-							rply.text='CE過少，聚能失敗';
+							rply.text='CE剩餘量過少，聚能失敗';
 							return rply;
 						}
 						player[self][4]-=player[self][5]*0.2;
@@ -2106,7 +2124,7 @@ function BR(nb){
 			'\nHP '+player[self][2]+'/'+player[self][3];
 			if(player[self][14]=='G.U.')rr+='\n護盾 '+player[self][38]+'/'+player[self][39];
 			if(player[self][14]=='A.A.U.F')rr+='\n護甲 '+player[self][38];
-			rr+='\nCE '+player[self][4]+'/'+player[self][5]+
+			rr+='\nCE剩餘量 '+player[self][4]+'/'+player[self][5]+
 			'\n位置 '+player[self][16]+','+player[self][17]+
 			'\n可移動距離 '+player[self][36];
 	if(player[self][18]<9)rr+='\n子彈數：'+player[self][20]+'/'+player[self][21];
@@ -2130,7 +2148,7 @@ function BR(nb){
 				rr+='\n脈衝推進 x座標,y座標';
 			}
 			if(player[self][4]!=player[self][5]){
-				rr+='\n能源充填 (+CE20%,+CE20)';
+				rr+='\n能源充填 (+CE剩餘量20%,+CE剩餘量20)';
 			}
 			if(player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21]){
 				rr+='\n裝填子彈';
@@ -2142,10 +2160,10 @@ function BR(nb){
 				rr+='\n連發射擊 目標';
 			}		
 			if(player[self][18]==2 && player[self][4]>=(player[self][5]*0.5)){
-				rr+='\n強力射擊 目標 (-CE50%,攻擊1.5倍,射程+3,精準+20)';
+				rr+='\n強力射擊 目標 (-CE剩餘量50%,攻擊1.5倍,射程+3,精準+20)';
 			}			
 			if(player[self][18]==4 && player[self][4]>=(player[self][5]*0.6)){
-				rr+='\n戰術治療 目標 (-CE60%,+HP10%,+HP20,射程<1)';
+				rr+='\n戰術治療 目標 (-CE剩餘量60%,+HP10%,+HP20,射程<1)';
 			}	
 			
 			if(player[self][18]==6 && player[self][20]>0){
@@ -2158,7 +2176,7 @@ function BR(nb){
 				rr+='\n架槍';
 			}
 			if(player[self][18]==7 && player[self][25]==0 && player[self][4]>=(player[self][5]*0.6)){
-				rr+='\n高速架槍 (-CE60%,-0行動)';
+				rr+='\n高速架槍 (-CE剩餘量60%,-0行動)';
 			}
 			if(player[self][18]==7 && player[self][25]>=2){
 				rr+='\n解除架槍';
@@ -2188,16 +2206,16 @@ function BR(nb){
 				rr+='\n移動突擊 目標 (-2行動,射程+3,依距離增傷(最多2倍)與減少精準,攻擊後移動)';
 			}		
 			if(player[self][18]==12 && player[self][4]>=(player[self][5]*0.1)){
-				rr+='\n能量放出 目標 (-CE10%)';
+				rr+='\n能量放出 目標 (-CE剩餘量10%)';
 			}
 			if(player[self][18]==12 && player[self][4]>=(player[self][5]*0.2)){
-				rr+='\n聚能 (-CE20%,每使用一次能讓下次能量放出+100%的傷害)';
+				rr+='\n聚能 (-CE剩餘量20%,每使用一次能讓下次能量放出+100%的傷害)';
 			}			
 			for(kkkk=1;kkkk<=5;kkkk++){
-			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="攻擊")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+' -CE'+player[self][27+kkkk][5]+')';
-			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="妨害")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+' -CE'+player[self][27+kkkk][5]+')';
-			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="回復")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+' -CE'+player[self][27+kkkk][5]+')';
-			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="被動")rr+='\n技能 '+kkkk+' ('+ player[self][27+kkkk][0]+' -CE'+player[self][27+kkkk][5]+')';
+			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="攻擊")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+' -CE剩餘量'+player[self][27+kkkk][5]+')';
+			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="妨害")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+' -CE剩餘量'+player[self][27+kkkk][5]+')';
+			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="回復")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+' -CE剩餘量'+player[self][27+kkkk][5]+')';
+			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="被動")rr+='\n技能 '+kkkk+' ('+ player[self][27+kkkk][0]+' -CE剩餘量'+player[self][27+kkkk][5]+')';
 			}
 			rr+='\n 目標有';
 			for(var k=0;k<player.length;k++){
