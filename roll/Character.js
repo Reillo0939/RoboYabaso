@@ -343,7 +343,7 @@ ddd[17] = 10000 ;
 ddd[18] = 0 ;
 ddd[19] = 0 ;
 ddd[20] = 0 ;
-ddd[21] = '0,0,0,0,0' ;
+ddd[21] = skills ;
 Characters[hh]=ddd;
 	
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
