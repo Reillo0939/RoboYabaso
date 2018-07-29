@@ -74,7 +74,6 @@ var Characters = [];
 var SKILLS = [];
 var cat,re,ccN;
 function CM(name,race,Occupation,id,names) {
-	oz();
 	var HP,MP,ATK,None,Fire,Water,Thunder,Ice,Reaction;
 
 for(var tt=0;tt<Characters.length;tt++){
@@ -222,69 +221,104 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
 return rply;	
 }
 function CT(name,race,id,names) {
-	var HP,MP,ATK,Reaction,Occupation,Control,Growing;
+	var HP,MP,ATK,Control,Reaction,skills;
 for(var tt=0;tt<Characters.length;tt++){
 if(Characters[tt][0]==id){
 rply.text=names +' 你已有角色，若要修改請找GM';
 return rply;	
 }
 }
-if(name==null && race==null){
-rply.text='請詳細閱讀創角說明';
+
+if(name==null && race==null && Occupation==null){
+rply.text='缺少名稱 種族 兵種'+
+		  '\n種族有 純人種 貓科種 犬科種 兔科種'+
+		  '\n兵種有 CAC系統磁懸裝甲 複合性火力支援裝甲 輔助性戰鬥支援裝甲';
 return rply;	
 }
-if(name==null){
-rply.text='你的名字呢';
+if(race==null && Occupation==null){
+rply.text='缺少 種族 兵種'+
+		  '\n種族有 純人種 貓科種 犬科種 兔科種'+
+			'\n兵種有 CAC系統磁懸裝甲 複合性火力支援裝甲 輔助性戰鬥支援裝甲';
 return rply;	
 }
-if(isNaN(race)){
-rply.text='你幾歲了';
+if(race!='純人種' && race!='貓科種' && race!='犬科種' && race!='兔科種'){
+	rply.text='種族錯誤'+
+		  '\n種族有 純人種 貓科種 犬科種 兔科種';
+return rply;	
+}
+if(Occupation==null){
+rply.text='缺少 兵種'+
+		 '\n兵種有 CAC系統磁懸裝甲 複合性火力支援裝甲 輔助性戰鬥支援裝甲';
+return rply;	
+}
+if(Occupation!='CAC系統磁懸裝甲' && Occupation!='複合性火力支援裝甲' && Occupation!='輔助性戰鬥支援裝甲' ){
+	rply.text='兵種錯誤'+
+		 '\n兵種有 CAC系統磁懸裝甲 複合性火力支援裝甲 輔助性戰鬥支援裝甲';
 return rply;	
 }
 
-if((race>=40)&&(race<=60)){
-Occupation='CAC系統磁懸裝甲';
-HP='100,80';
-MP=100;
-ATK=rollbase.Dice(70-race);
-Reaction=rollbase.Dice(70-race);
-Control=rollbase.Dice(70-race);
-Growing=rollbase.Dice(61-race);
+
+ATK=5;
+Reaction=5;
+Control=15;
+
+if(race=='貓科種'){
+	Reaction=10;
+	Control=Control-10;
 }
-if((race>=16)&&(race<=39)){
-Occupation='CAC系統磁懸裝甲';
-HP='100,80';
-MP=100;
-ATK=rollbase.Dice(45)+5;
-Reaction=rollbase.Dice(45)+5;
-Control=rollbase.Dice(45)+5;
-Growing=rollbase.Dice(5)+15;
+if(race=='犬科種'){
+	ATK=10;
+	Reaction=0;
 }
-if(Control<25){
-	Occupation='複合性火力支援裝甲';
+if(race=='兔科種'){
+	Control=Control+10;
+	ATK=0;
+}
+
+if(Occupation=='CAC系統磁懸裝甲'){
+	HP='100,80';
+	MP=100;
+	skills='11,12,13,0,0'
+}
+if(Occupation=='複合性火力支援裝甲'){
 	HP='100,100';
 	MP=50;
-	ATK+=10;
-	Reaction+=10;
-	Growing=rollbase.Dice(5)+5;
+	ATK=ATK+10;
+	skills='6,7,8,0,0'
 }
+if(Occupation=='輔助性戰鬥支援裝甲'){
+	HP='100,60';
+	MP=200;
+	ATK=ATK-10;
+	skills='9,10,0,0,0'
+}
+
+for(var i=0;i<=65;i++){
+	var x = rollbase.Dice(3);
+	if(x==1)ATK++;
+	if(x==2)Reaction++;
+	if(x==3)Control++;
+}
+
+
+
+
+
+
+
 rply.text=
-'['+ name +']  年齡:' +race +
-'\n職業:  ' + Occupation +
+'['+ name +']  種族:' +race +
+'\n兵種:  ' + Occupation +
 '\n軍階: '+  '訓練兵'+
 '\n生命值: '+ '100' ;
 if(Occupation=='CAC系統磁懸裝甲')rply.text+='\n護甲:80';
 if(Occupation=='複合性火力支援裝甲')rply.text+='\n護甲:100';
-rply.text+='\nBata粒子適性: '+ MP +
-'\n物理適性: '+ ATK +
+if(Occupation=='輔助性戰鬥支援裝甲')rply.text+='\n護甲:60';
+rply.text+='\nCE儲存量: '+ MP +
+'\n耐重量: '+ ATK +
 '\n控制能力: '+ Control +
-'\n反應力: '+ Reaction +
-'\n成長點: '+  Growing;
+'\n反應力: '+ Reaction ;
 
-if((race<16)||(race>60)){
-rply.text='這年齡不適合戰鬥請重新創角';
-return rply;
-}
 var hh=Characters.length;
 var ddd=[];
 console.log('test OK 2');
@@ -333,14 +367,14 @@ if(Characters[fd][0]==id){
 		
 		rply.text=
 name +' 的角色'+
-'\n['+ Characters[fd][1] +']  年齡:' +Characters[fd][2] +
+'\n['+ Characters[fd][1] +']  種族:' +Characters[fd][2] +
 '\n職業:' + Characters[fd][4] +
 '\n軍階:'+  Characters[fd][16]	+
 '\n榮譽值:'+Characters[fd][18]+
 '\n生命值:'+ HPD[0] +
 '\n護甲:'+ HPD[1] +
-'\nBata粒子適性:'+ Characters[fd][6] +
-'\n物理適性:'+ Characters[fd][7] +
+'\nCE儲存量:'+ Characters[fd][6] +
+'\n耐重量:'+ Characters[fd][7] +
 '\n控制能力:'+ Characters[fd][14] +
 '\n反應力:'+ Characters[fd][8] +
 '\n持有金幣: '+  Characters[fd][17]	
@@ -349,20 +383,20 @@ name +' 的角色'+
 	if(Characters[fd][3]=='G.U.'){
 	rply.text=
 name +' 的角色'+
-'\n['+ Characters[fd][1] +']  年齡:' +Characters[fd][2] +
+'\n['+ Characters[fd][1] +']  種族:' +Characters[fd][2] +
 '\n職業:' + Characters[fd][4] +
 '\n軍階:'+  Characters[fd][16]	+
 '\n榮譽值:'+Characters[fd][18]+
 '\n生命值:'+ HPD[0] +
 '\n護盾:'+ HPD[1] +
-'\nBata粒子適性:'+ Characters[fd][6] +
-'\n物理適性:'+ Characters[fd][7] +
+'\nCE儲存量:'+ Characters[fd][6] +
+'\n耐重量:'+ Characters[fd][7] +
 '\n反應力:'+ Characters[fd][8] +
 '\n放出適性:'+ Characters[fd][9] +
 '\n火屬適性:'+ Characters[fd][10] +
 '\n水屬適性:'+ Characters[fd][11] +
-'\n風屬適性:'+ Characters[fd][12] +
-'\n土屬適性:'+ Characters[fd][13] +
+'\n雷屬適性:'+ Characters[fd][12] +
+'\n冰屬適性:'+ Characters[fd][13] +
 '\n持有金幣: '+  Characters[fd][17]	
 ;
 	}
@@ -380,13 +414,13 @@ if(Characters[fd][1]==names){
 	if(Characters[fd][3]=='A.A.U.F'){
 		rply.text=
 name +' 我找到的角色是'+
-'\n['+ Characters[fd][1] +']  年齡:' +Characters[fd][2] +
+'\n['+ Characters[fd][1] +']  種族:' +Characters[fd][2] +
 '\n職業:' + Characters[fd][4] +
 '\n軍階:'+  Characters[fd][16]	+
 '\n生命值:'+ HPD[0] +
 '\n護甲:'+ HPD[1] +
-'\nBata粒子適性:'+ Characters[fd][6] +
-'\n物理適性:'+ Characters[fd][7] +
+'\nCE儲存量:'+ Characters[fd][6] +
+'\n耐重量:'+ Characters[fd][7] +
 '\n控制能力:'+ Characters[fd][14] +
 '\n反應力:'+ Characters[fd][8] 
 ;
@@ -394,19 +428,19 @@ name +' 我找到的角色是'+
 	if(Characters[fd][3]=='G.U.'){
 	rply.text=
 name +' 我找到的角色是'+
-'\n['+ Characters[fd][1] +']  年齡:' +Characters[fd][2] +
+'\n['+ Characters[fd][1] +']  種族:' +Characters[fd][2] +
 '\n職業:' + Characters[fd][4] +
 '\n軍階:'+  Characters[fd][16]	+
 '\n生命值:'+ HPD[0] +
 '\n護盾:'+ HPD[1] +
-'\nBata粒子適性:'+ Characters[fd][6] +
-'\n物理適性:'+ Characters[fd][7] +
+'\nCE儲存量:'+ Characters[fd][6] +
+'\n耐重量:'+ Characters[fd][7] +
 '\n反應力:'+ Characters[fd][8] +
 '\n放出適性:'+ Characters[fd][9] +
 '\n火屬適性:'+ Characters[fd][10] +
 '\n水屬適性:'+ Characters[fd][11] +
-'\n風屬適性:'+ Characters[fd][12] +
-'\n土屬適性:'+ Characters[fd][13] 
+'\n雷屬適性:'+ Characters[fd][12] +
+'\n冰屬適性:'+ Characters[fd][13] 
 ;
 	}
 }
