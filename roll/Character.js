@@ -220,7 +220,7 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
 });
 return rply;	
 }
-function CT(name,race,id,names) {
+function CT(name,race,Occupation,id,names) {
 	var HP,MP,ATK,Control,Reaction,skills;
 for(var tt=0;tt<Characters.length;tt++){
 if(Characters[tt][0]==id){
