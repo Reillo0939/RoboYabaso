@@ -74,6 +74,7 @@ var Characters = [];
 var SKILLS = [];
 var cat,re,ccN;
 function CM(name,race,Occupation,id,names) {
+	oz();
 	var HP,MP,ATK,None,Fire,Water,Thunder,Ice,Reaction;
 
 for(var tt=0;tt<Characters.length;tt++){
