@@ -489,7 +489,7 @@ od[0]='dummy';//1D
 		od[34]=0;//閃避倍率
 		od[36]=0;//移動距離
 		od[37]=[];
-		od[38]=0;
+		od[38]=9999;
 		player[player.length]=od;
 		console.log('debug02');
 					player[0][16]=25;
@@ -541,6 +541,14 @@ od[0]='dummy';//1D
 							player[self][16]=player[i][16];
 						player[self][17]=player[i][17];
 							if(Hit<=(player[self][24]*0.2))damage=parseInt(damage*2);
+                            if(player[i][14]=='G.U.' && player[i][38]<=0){
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+							}
 
 							if(player[i][14]=='G.U.' && player[i][38]>0){
 								player[i][38]=player[i][38]-damage;
@@ -551,18 +559,14 @@ od[0]='dummy';//1D
 								rply.text+='(-'+damage+')';
 								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
 							}
-							if(player[i][14]=='G.U.' && player[i][38]<=0){
-								player[i][2]=player[i][2]-damage;
-								rply.text=player[i][1]+
-							    '\nHP '+player[i][2]+'/'+player[i][3];
-								rply.text+='(-'+damage+')';
-								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
-								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
-							}
+							
 							if(player[i][14]=='A.A.U.F'){
 								var RI=1-(player[i][38]/(player[i][38]+150));
+								console.log('Damaga test1 ' + RI);
 								RI=RI.toFixed(3);
+								console.log('Damaga test2 ' + RI);
 								damage=damage*RI;
+								console.log('Damaga test3 ' + damage);
 								
 								player[i][2]=player[i][2]-damage;
 								rply.text=player[i][1]+
