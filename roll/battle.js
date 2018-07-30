@@ -2086,7 +2086,7 @@ od[0]='dummy';//1D
 			return rply;
 			}
 			//-----------------------------------------------------------------------------------------------------------------------------------------------------
-			if(id=='Uc9b4571605aabd3e94edd7c189144278' && trigger.match(/^設定位置$/) != null && start==1 &&  mainMsg[1] != null && player[self][25]<2){
+			if(id=='U7c4779fd913aff927f26d7f6bedd87d1' && trigger.match(/^設定位置$/) != null && start==1 &&  mainMsg[1] != null && player[self][25]<2){
 				
 				ot=new Date();
 
