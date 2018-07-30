@@ -561,6 +561,7 @@ od[0]='dummy';//1D
 							
 							if(player[i][14]=='A.A.U.F'){
 								var RI=1-(player[i][38]/(player[i][38]+150));
+								console.log('減傷%' + (player[i][38]/(player[i][38]+150)));
 								console.log('減傷數值 ' + RI);
 								RI=RI.toFixed(3);
 								console.log('改造 ' + RI);
