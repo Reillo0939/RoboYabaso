@@ -561,12 +561,13 @@ od[0]='dummy';//1D
 							
 							if(player[i][14]=='A.A.U.F'){
 								var RI=1-(player[i][38]/(player[i][38]+150));
-								console.log('Damaga test1 ' + RI);
+								console.log('減傷數值 ' + RI);
 								RI=RI.toFixed(3);
-								console.log('Damaga test2 ' + RI);
+								console.log('改造 ' + RI);
+								console.log('原傷害 ' + damage);
 								damage=damage*RI;
-								console.log('Damaga test3 ' + damage);
-								console.log('Damaga test4 ' + damage*RI);
+								console.log('減傷後 ' + damage);
+								console.log('計算 ' + (damage*RI));
 								player[i][2]=player[i][2]-damage;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
