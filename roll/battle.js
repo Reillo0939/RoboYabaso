@@ -39,9 +39,8 @@ RGU=0;
 
 setInterval(function(){
 	var nt = new Date();
-	if(start==1)console.log('debug'+(((nt.getTime() - ot.getTime()) / (1000 * 60))));
 	if((((nt.getTime() - ot.getTime()) / (1000 * 60)) >=1) && start == 1){
-		console.log('debug'+(((nt.getTime() - ot.getTime()) / (1000 * 60))));
+		//console.log('debug'+(((nt.getTime() - ot.getTime()) / (1000 * 60))));
 				var rr='';
 				self++;
 				ds=1;
@@ -567,7 +566,7 @@ od[0]='dummy';//1D
 								console.log('Damaga test2 ' + RI);
 								damage=damage*RI;
 								console.log('Damaga test3 ' + damage);
-								
+								console.log('Damaga test4 ' + damage*RI);
 								player[i][2]=player[i][2]-damage;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -2086,6 +2085,39 @@ od[0]='dummy';//1D
 							rply.text=BR(1);
 			return rply;
 			}
+			/-----------------------------------------------------------------------------------------------------------------------------------------------------
+			if(id=='Uc9b4571605aabd3e94edd7c189144278' && trigger.match(/^設定位置$/) != null && start==1 &&  mainMsg[1] != null && player[self][25]<2){
+				
+				ot=new Date();
+
+				
+				let xxyy = mainMsg[1].split(','); //定義輸入字串
+				if(isNaN(xxyy[0])==0 && isNaN(xxyy[1])==0){
+					
+							if(xxyy[0]>=1 && xxyy[0]<=51 && xxyy[1]>=1 && xxyy[1]<=51){ 
+							
+							rply.text='已移動到 座標'+Math.floor(xxyy[0]*10)/10+','+Math.floor(xxyy[1]*10)/10;
+							player[self][16]=Math.floor(xxyy[0]*10)/10;
+							player[self][17]=Math.floor(xxyy[1]*10)/10;
+							}
+							else{
+												
+								rply.text='位置錯誤，無法移動';
+							return rply;
+							}
+						
+				}
+				else{
+									 
+					rply.text='格式錯誤';
+					return rply;
+				}
+				ds++;
+							if(ds==player[self][33]+1){self++;ds=1;}
+							if(self>=player.length)self=0;
+					rply.text+='\n\n'+BR();
+			return rply;
+		}
 		}
 			
 }
