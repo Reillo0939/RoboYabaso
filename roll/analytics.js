@@ -1,10 +1,10 @@
 //  i.e., `User.js` will become `exports['User']` or `exports.User`
-require('fs').readdirSync('./roll/').forEach(function(file) {
+/*require('fs').readdirSync('./roll/').forEach(function(file) {
 	if (file.match(/\.js$/) !== null && file !== 'index.js') {
 	  var name = file.replace('.js', '');
 	  exports[name] = require('../roll/' + file);
 	}
-  });
+  });*/
 
   var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
 var channelSecret = process.env.LINE_CHANNEL_SECRET;
