@@ -57,7 +57,7 @@ function parseInput(rplyToken, inputStr, id,name) {
 
 	if (trigger.match(/運氣|運勢/) != null) return exports.funny.randomLuck(mainMsg) ; //占卜運氣		
 	
-
+	if (trigger.match(/^廣播$/) != null) bot.push(mainMsg[1],mainMsg[2]);
   
 }
 
