@@ -107,13 +107,13 @@ event.reply({type: 'text', text: 'GM才能使用' });
 });
   } });
  
-/*require('fs').readdirSync(__dirname + '/modules/').forEach(function(file) {
+require('fs').readdirSync(__dirname + '/modules/').forEach(function(file) {
   if (file.match(/\.js$/) !== null && file !== 'index.js') {
     var name = file.replace('.js', '');
     exports[name] = require('./modules/' + file);
    
   }
-});*/
+});
 app.set('port', (process.env.PORT || 5000));
 // views is directory for all template files
 app.get('/', function(req, res) {
