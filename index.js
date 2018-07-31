@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var app = express();//262
 var ox = require('./roll/Character.js');
 var ba = require('./roll/battle.js');
+var re = require('./roll/analytics.js');
 var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
 var channelSecret = process.env.LINE_CHANNEL_SECRET;
 var linebot = require('linebot');///030
@@ -68,7 +69,8 @@ event.reply({ type: 'text', text: '已啟動戰鬥模式\n模式有:\n2人混戰
 //event.reply({type: 'text', text: 'GM才能使用' });	
 //}
 }
-		msg =exports.analytics.parseInput(event.rplyToken, event.message.text,a,b);
+		msg =re.parseInput(event.rplyToken, event.message.text,a,b);
+		
 if(event.message.text=='武裝裝甲聯合戰線'){
 event.reply([{
   type: 'image',
@@ -105,13 +107,13 @@ event.reply({type: 'text', text: 'GM才能使用' });
 });
   } });
  
-require('fs').readdirSync(__dirname + '/modules/').forEach(function(file) {
+/*require('fs').readdirSync(__dirname + '/modules/').forEach(function(file) {
   if (file.match(/\.js$/) !== null && file !== 'index.js') {
     var name = file.replace('.js', '');
     exports[name] = require('./modules/' + file);
    
   }
-});
+});*/
 app.set('port', (process.env.PORT || 5000));
 // views is directory for all template files
 app.get('/', function(req, res) {
