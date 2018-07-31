@@ -586,7 +586,7 @@ od[0]='dummy';//1D
 							//----------------------------------------------
 							var win=winner(mmode);
 							if(win!='no winner'){
-								rply.text=win;
+								rply.text+=win;
 								return rply;
 							}
 							//------------------------------------------------------------------
@@ -686,7 +686,7 @@ od[0]='dummy';//1D
 							//----------------------------------------------
 							var win=winner(mmode);
 							if(win!='no winner'){
-								rply.text=win;
+								rply.text+=win;
 								return rply;
 							}
 							//------------------------------------------------------------------
@@ -746,15 +746,12 @@ od[0]='dummy';//1D
 					
 							damage=0;
 							damagR=0;
-							DC=0;
+							DC=bh;
 						
 							if(player[i][14]=='G.U.' && player[i][38]<=0){
 								
 								for(var o=0;o<bh;o++)damage+=hitd[o];
-						
-							
-								
-								
+	
 								player[i][2]=player[i][2]-damage;
 								
 								rply.text=player[i][1]+
@@ -779,7 +776,7 @@ od[0]='dummy';//1D
 								for(var o=0;o<bh;o++){
 									if(damage<player[i][38])damage+=hhiitt[o];
 									if(damage>=player[i][38]){
-										if(DC==0)DC=o;
+										if(DC==bh)DC=o;
 										damagR+=hhiitt[o];
 									}
 									}
@@ -805,6 +802,7 @@ od[0]='dummy';//1D
 							}
 							rply.text+=')';
 							}
+							
 								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
 								rply.text+='('
 							for(var o=0;o<DC;o++){
@@ -864,7 +862,7 @@ od[0]='dummy';//1D
 							//----------------------------------------------
 							var win=winner(mmode);
 							if(win!='no winner'){
-								rply.text=win;
+								rply.text+=win;
 								return rply;
 							}
 							//------------------------------------------------------------------
@@ -893,7 +891,7 @@ od[0]='dummy';//1D
 					if(player[self][4]>player[self][5])player[self][4]=player[self][5];
 					rply.text=player[self][1]+
 							'\nHP '+player[self][2]+'/'+player[self][3];
-							rply.text+='\nCE剩餘量 '+player[self][4]+'/'+player[self][5]+'(+'+(player[self][5]+50)+')';
+							rply.text+='\nCE剩餘量 '+player[self][4]+'/'+player[self][5]+'(+50)';
 					ds++;
 					if(ds==player[self][33]+1){self++;ds=1;}
 					if(self>=player.length)self=0;
@@ -1018,7 +1016,7 @@ od[0]='dummy';//1D
 							//----------------------------------------------
 							var win=winner(mmode);
 							if(win!='no winner'){
-								rply.text=win;
+								rply.text+=win;
 								return rply;
 							}
 							//------------------------------------------------------------------
@@ -1183,7 +1181,7 @@ od[0]='dummy';//1D
 							//----------------------------------------------
 							var win=winner(mmode);
 							if(win!='no winner'){
-								rply.text=win;
+								rply.text+=win;
 								return rply;
 							}
 							//------------------------------------------------------------------
@@ -1282,7 +1280,7 @@ od[0]='dummy';//1D
 							//----------------------------------------------
 						var win=winner(mmode);
 							if(win!='no winner'){
-								rply.text=win;
+								rply.text+=win;
 								return rply;
 							}
 							//------------------------------------------------------------------
@@ -1460,7 +1458,7 @@ od[0]='dummy';//1D
 							//----------------------------------------------
 							var win=winner(mmode);
 							if(win!='no winner'){
-								rply.text=win;
+								rply.text+=win;
 								return rply;
 							}
 							//------------------------------------------------------------------
@@ -1813,7 +1811,7 @@ od[0]='dummy';//1D
 							//----------------------------------------------
 							var win=winner(mmode);
 							if(win!='no winner'){
-								rply.text=win;
+								rply.text+=win;
 								return rply;
 							}
 							//------------------------------------------------------------------
@@ -1958,7 +1956,7 @@ od[0]='dummy';//1D
 						//----------------------------------------------
 							var win=winner(mmode);
 							if(win!='no winner'){
-								rply.text=win;
+								rply.text+=win;
 								return rply;
 							}
 							//------------------------------------------------------------------
@@ -2052,7 +2050,7 @@ od[0]='dummy';//1D
 							//----------------------------------------------
 							var win=winner(mmode);
 							if(win!='no winner'){
-								rply.text=win;
+								rply.text+=win;
 								return rply;
 							}
 							//------------------------------------------------------------------
@@ -2096,7 +2094,7 @@ od[0]='dummy';//1D
 								//----------------------------------------------
 							var win=winner(mmode);
 							if(win!='no winner'){
-								rply.text=win;
+								rply.text+=win;
 								return rply;
 							}
 							//------------------------------------------------------------------
