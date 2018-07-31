@@ -775,11 +775,12 @@ od[0]='dummy';//1D
 							
 							if(player[i][14]=='G.U.' && player[i][38]>0){
 								for(var o=0;o<bh;o++){
-									if(damage<player[i][38])damage+=hhiitt[o];
 									if(damage>=player[i][38]){
 										if(DC==bh)DC=o;
 										damagR+=hhiitt[o];
 									}
+									if(damage<player[i][38])damage+=hhiitt[o];
+									
 									}
 								
 							player[i][38]=player[i][38]-damage;
@@ -2119,7 +2120,7 @@ od[0]='dummy';//1D
 			return rply;
 			}
 			//-----------------------------------------------------------------------------------------------------------------------------------------------------
-			if(id=='U7c4779fd913aff927f26d7f6bedd87d1' && trigger.match(/^設定位置$/) != null && start==1 &&  mainMsg[1] != null && player[self][25]<2){
+			if(id=='U7c4779fd913aff927f26d7f6bedd87d1' && trigger.match(/^位置設定$/) != null && start==1 &&  mainMsg[1] != null && player[self][25]<2){
 				
 				ot=new Date();
 
@@ -2135,7 +2136,7 @@ od[0]='dummy';//1D
 							}
 							else{
 												
-								rply.text='位置錯誤，無法移動';
+								rply.text='位置錯誤，無法設定';
 							return rply;
 							}
 						
@@ -2145,9 +2146,6 @@ od[0]='dummy';//1D
 					rply.text='格式錯誤';
 					return rply;
 				}
-				ds++;
-							if(ds==player[self][33]+1){self++;ds=1;}
-							if(self>=player.length)self=0;
 					rply.text+='\n\n'+BR();
 			return rply;
 		}
