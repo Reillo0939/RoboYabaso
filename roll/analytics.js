@@ -1,4 +1,4 @@
-var ea = require('.');
+var ea = require('/');
 
   var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
 var channelSecret = process.env.LINE_CHANNEL_SECRET;
