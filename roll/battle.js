@@ -203,10 +203,10 @@ var od=[];
 		
 		var HPA=ox.oC(i,5);
 		var HPD = HPA.split(','); //定義輸入字串
-    	od[2]=HPD[0];//生命值
-		od[3]=HPD[0];//生命值
-		od[38]=HPD[1];//護甲與現有護盾
-		od[39]=HPD[1];//護盾上限
+    	od[2]=Number(HPD[0]);//生命值
+		od[3]=Number(HPD[0]);//生命值
+		od[38]=Number(HPD[1]);//護甲與現有護盾
+		od[39]=Number(HPD[1]);//護盾上限
 		
 		od[4]=Number(ox.oC(i,6));//CE剩餘量
 		od[5]=Number(ox.oC(i,6));//CE剩餘量
@@ -561,6 +561,7 @@ od[0]='dummy';//1D
 							
 							if(player[i][14]=='A.A.U.F'){
 								var RI=1-(player[i][38]/(player[i][38]+150));
+							
 								console.log('減傷%' + (player[i][38]/(player[i][38]+150)));
 								console.log('減傷數值 ' + RI);
 								RI=RI.toFixed(3);
@@ -2058,7 +2059,7 @@ od[0]='dummy';//1D
 					rply.text=BR();
 			return rply;
 		}
-		if(trigger.match(/^GM-消滅$/) != null && start==1 && xmode!=4){
+		if(trigger.match(/^kill$/) != null && start==1 && xmode!=4){
 								player[self][2]=0;
 								rply.text=player[self][1]+'已撤退';
 								player.splice(self,1);
