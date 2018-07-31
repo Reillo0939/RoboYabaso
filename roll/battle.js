@@ -4,7 +4,8 @@ var ox = require('./Character.js');
 var xweapon=require('./weapon.js');
 var faf = require('../index.js');
 var AJT=0;
-var channelAccessToken = process.env.LINE_CHANNEL_ACCE剩餘量SSTOKEN;
+
+var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
 var channelSecret = process.env.LINE_CHANNEL_SECRET;
 var linebot = require('linebot');///030
  var channelId='1567989750';
@@ -13,9 +14,6 @@ var bot = linebot({
   channelSecret: channelSecret,
   channelAccessToken: channelAccessToken
 });
-
-
-
 
 
 var rply ={type : 'text'}; //type是必需的,但可以更改
@@ -70,6 +68,9 @@ function battles(id,name,ab) {
 	if (trigger.match(/自身情報/)!= null) return ox.CV(id,name) ;
 	if (trigger.match(/改名/)!= null && start==0) return ox.CCN(id,name,mainMsg[1]) ;
 	if (trigger.match(/列表/)!= null && start==0) return ox.CCL() ;
+	}
+	if (trigger.match(/技能/) != null){
+		if (trigger.match(/查看/)!= null) return ox.CKV(name,mainMsg[1]) ;
 	}
 	if(trigger.match(/^test_mode/) != null && start==0){
 		mode=99;
@@ -560,16 +561,9 @@ od[0]='dummy';//1D
 							}
 							
 							if(player[i][14]=='A.A.U.F'){
-								var RI=1-(player[i][38]/(player[i][38]+150));
-							
-								console.log('減傷%' + (player[i][38]/(player[i][38]+150)));
-								console.log('減傷數值 ' + RI);
+								var RI=1-(player[i][38]/(player[i][38]+150));	
 								RI=RI.toFixed(3);
-								console.log('改造 ' + RI);
-								console.log('原傷害 ' + damage);
 								damage=damage*RI;
-								console.log('減傷後 ' + damage);
-								console.log('計算 ' + (damage*RI));
 								player[i][2]=player[i][2]-damage;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -589,9 +583,9 @@ od[0]='dummy';//1D
 								player.splice(i,1);
 							}
 							//----------------------------------------------
-							if(winner(mmode)!='no winner'){
-								console.log('no winner');
-								rply.text=winner(mmode);
+							var win=winner(mmode);
+							if(win!='no winner'){
+								rply.text=win;
 								return rply;
 							}
 							//------------------------------------------------------------------
@@ -646,7 +640,15 @@ od[0]='dummy';//1D
 							damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)/100)/10;
 							if(Hit<=(player[self][24]*0.2))damage=parseInt(damage*2);
 							
-						if(player[i][14]=='G.U.' && player[i][38]>0){
+						if(player[i][14]=='G.U.' && player[i][38]<=0){
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+							}
+							if(player[i][14]=='G.U.' && player[i][38]>0){
 								player[i][38]=player[i][38]-damage;
 								if(player[i][38]<=0)player[i][38]=0;
 								rply.text=player[i][1]+
@@ -655,19 +657,11 @@ od[0]='dummy';//1D
 								rply.text+='(-'+damage+')';
 								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
 							}
-							if(player[i][14]=='G.U.' && player[i][38]<=0){
-								player[i][2]=player[i][2]-damage;
-								rply.text=player[i][1]+
-							    '\nHP '+player[i][2]+'/'+player[i][3];
-								rply.text+='(-'+damage+')';
-								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
-								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
-							}
+							
 							if(player[i][14]=='A.A.U.F'){
-								var RI=1-(player[i][38]/(player[i][38]+150));
+								var RI=1-(player[i][38]/(player[i][38]+150));	
 								RI=RI.toFixed(3);
 								damage=damage*RI;
-								
 								player[i][2]=player[i][2]-damage;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -688,8 +682,9 @@ od[0]='dummy';//1D
 							}
 							
 							//----------------------------------------------
-							if(winner(mmode)!='no winner'){
-								rply.text=winner(mmode);
+							var win=winner(mmode);
+							if(win!='no winner'){
+								rply.text=win;
 								return rply;
 							}
 							//------------------------------------------------------------------
@@ -855,8 +850,9 @@ od[0]='dummy';//1D
 							}
 							
 							//----------------------------------------------
-							if(winner(mmode)!='no winner'){
-								rply.text=winner(mmode);
+							var win=winner(mmode);
+							if(win!='no winner'){
+								rply.text=win;
 								return rply;
 							}
 							//------------------------------------------------------------------
@@ -964,6 +960,15 @@ od[0]='dummy';//1D
 							player[self][35]='';
 								damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)/100)/10;
 								if(Hit<=(player[self][24]*0.2))damage=damage*2;
+							if(player[i][14]=='G.U.' && player[i][38]<=0){
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+							}
+
 							if(player[i][14]=='G.U.' && player[i][38]>0){
 								player[i][38]=player[i][38]-damage;
 								if(player[i][38]<=0)player[i][38]=0;
@@ -973,19 +978,11 @@ od[0]='dummy';//1D
 								rply.text+='(-'+damage+')';
 								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
 							}
-							if(player[i][14]=='G.U.' && player[i][38]<=0){
-								player[i][2]=player[i][2]-damage;
-								rply.text=player[i][1]+
-							    '\nHP '+player[i][2]+'/'+player[i][3];
-								rply.text+='(-'+damage+')';
-								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
-								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
-							}
+							
 							if(player[i][14]=='A.A.U.F'){
-								var RI=1-(player[i][38]/(player[i][38]+150));
+								var RI=1-(player[i][38]/(player[i][38]+150));	
 								RI=RI.toFixed(3);
 								damage=damage*RI;
-								
 								player[i][2]=player[i][2]-damage;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -1006,8 +1003,9 @@ od[0]='dummy';//1D
 							}
 							
 							//----------------------------------------------
-							if(winner(mmode)!='no winner'){
-								rply.text=winner(mmode);
+							var win=winner(mmode);
+							if(win!='no winner'){
+								rply.text=win;
 								return rply;
 							}
 							//------------------------------------------------------------------
@@ -1127,6 +1125,15 @@ od[0]='dummy';//1D
 						player[self][35]='';
 						damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)/100)/10;
 							if(Hit<=(player[self][24]*0.2))damage=damage*2;
+							if(player[i][14]=='G.U.' && player[i][38]<=0){
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+							}
+
 							if(player[i][14]=='G.U.' && player[i][38]>0){
 								player[i][38]=player[i][38]-damage;
 								if(player[i][38]<=0)player[i][38]=0;
@@ -1136,19 +1143,11 @@ od[0]='dummy';//1D
 								rply.text+='(-'+damage+')';
 								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
 							}
-							if(player[i][14]=='G.U.' && player[i][38]<=0){
-								player[i][2]=player[i][2]-damage;
-								rply.text=player[i][1]+
-							    '\nHP '+player[i][2]+'/'+player[i][3];
-								rply.text+='(-'+damage+')';
-								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
-								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
-							}
+							
 							if(player[i][14]=='A.A.U.F'){
-								var RI=1-(player[i][38]/(player[i][38]+150));
+								var RI=1-(player[i][38]/(player[i][38]+150));	
 								RI=RI.toFixed(3);
 								damage=damage*RI;
-								
 								player[i][2]=player[i][2]-damage;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -1168,8 +1167,9 @@ od[0]='dummy';//1D
 							}
 							
 							//----------------------------------------------
-							if(winner(mmode)!='no winner'){
-								rply.text=winner(mmode);
+							var win=winner(mmode);
+							if(win!='no winner'){
+								rply.text=win;
 								return rply;
 							}
 							//------------------------------------------------------------------
@@ -1266,8 +1266,9 @@ od[0]='dummy';//1D
 								return rply;
 							}
 							//----------------------------------------------
-							if(winner(mmode)!='no winner'){
-								rply.text=winner(mmode);
+						var win=winner(mmode);
+							if(win!='no winner'){
+								rply.text=win;
 								return rply;
 							}
 							//------------------------------------------------------------------
@@ -1386,7 +1387,6 @@ od[0]='dummy';//1D
 						player[self][4]-=player[self][Number(mainMsg[1])+27][5];
 						rnggg=rollbase.Dice(100);
 						Hit=rollbase.Dice(100);
-						player[self][20]--;
 						if(Hit>player[self][Number(mainMsg[1])+27][4]){
 							rply.text=player[self][1]+'沒有命中'+
 							'\n\n'+BR();
@@ -1399,30 +1399,35 @@ od[0]='dummy';//1D
 						
 						if(rnggg > ( parseInt(player[i][7]) - parseInt(player[self][7]) ) * player[i][34] ){
 							damage=Math.round(player[self][Number(mainMsg[1])+27][3]*(rollbase.Dice(401)+799)/100)/10;
-						if(player[i][14]=='G.U.' && player[i][38]>0){
+							
+						if(player[i][14]=='G.U.' && player[i][38]<=0){
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+							}
+
+							if(player[i][14]=='G.U.' && player[i][38]>0){
 								player[i][38]=player[i][38]-damage;
 								if(player[i][38]<=0)player[i][38]=0;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
 								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
 								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
 							}
-							if(player[i][14]=='G.U.' && player[i][38]<=0){
-								player[i][2]=player[i][2]-damage;
-								rply.text=player[i][1]+
-							    '\nHP '+player[i][2]+'/'+player[i][3];
-								rply.text+='(-'+damage+')';
-								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
-							}
+							
 							if(player[i][14]=='A.A.U.F'){
-								var RI=1-(player[i][38]/(player[i][38]+150));
+								var RI=1-(player[i][38]/(player[i][38]+150));	
 								RI=RI.toFixed(3);
 								damage=damage*RI;
-								
 								player[i][2]=player[i][2]-damage;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
 								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
 								rply.text+='\n護甲 '+player[i][38];
 							}
 							
@@ -1438,8 +1443,9 @@ od[0]='dummy';//1D
 							}
 							
 							//----------------------------------------------
-							if(winner(mmode)!='no winner'){
-								rply.text=winner(mmode);
+							var win=winner(mmode);
+							if(win!='no winner'){
+								rply.text=win;
 								return rply;
 							}
 							//------------------------------------------------------------------
@@ -1747,6 +1753,15 @@ od[0]='dummy';//1D
 						if(rnggg > ( parseInt(player[i][7]) - parseInt(player[self][7]) ) * player[i][34] ){
 							damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)*1.5/100)/10;
 							if(Hit<=(player[self][24]*0.2))damage=parseInt(damage*2);
+							if(player[i][14]=='G.U.' && player[i][38]<=0){
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+							}
+
 							if(player[i][14]=='G.U.' && player[i][38]>0){
 								player[i][38]=player[i][38]-damage;
 								if(player[i][38]<=0)player[i][38]=0;
@@ -1756,19 +1771,11 @@ od[0]='dummy';//1D
 								rply.text+='(-'+damage+')';
 								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
 							}
-							if(player[i][14]=='G.U.' && player[i][38]<=0){
-								player[i][2]=player[i][2]-damage;
-								rply.text=player[i][1]+
-							    '\nHP '+player[i][2]+'/'+player[i][3];
-								rply.text+='(-'+damage+')';
-								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
-								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
-							}
+							
 							if(player[i][14]=='A.A.U.F'){
-								var RI=1-(player[i][38]/(player[i][38]+150));
+								var RI=1-(player[i][38]/(player[i][38]+150));	
 								RI=RI.toFixed(3);
 								damage=damage*RI;
-								
 								player[i][2]=player[i][2]-damage;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -1788,8 +1795,9 @@ od[0]='dummy';//1D
 							}
 							
 							//----------------------------------------------
-							if(winner(mmode)!='no winner'){
-								rply.text=winner(mmode);
+							var win=winner(mmode);
+							if(win!='no winner'){
+								rply.text=win;
 								return rply;
 							}
 							//------------------------------------------------------------------
@@ -1891,6 +1899,15 @@ od[0]='dummy';//1D
 							
 							if(Hit<=((player[self][24]-addga)*0.2))damage=parseInt(damage*2);
 
+							if(player[i][14]=='G.U.' && player[i][38]<=0){
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+							}
+
 							if(player[i][14]=='G.U.' && player[i][38]>0){
 								player[i][38]=player[i][38]-damage;
 								if(player[i][38]<=0)player[i][38]=0;
@@ -1900,19 +1917,11 @@ od[0]='dummy';//1D
 								rply.text+='(-'+damage+')';
 								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
 							}
-							if(player[i][14]=='G.U.' && player[i][38]<=0){
-								player[i][2]=player[i][2]-damage;
-								rply.text=player[i][1]+
-							    '\nHP '+player[i][2]+'/'+player[i][3];
-								rply.text+='(-'+damage+')';
-								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
-								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
-							}
+							
 							if(player[i][14]=='A.A.U.F'){
-								var RI=1-(player[i][38]/(player[i][38]+150));
+								var RI=1-(player[i][38]/(player[i][38]+150));	
 								RI=RI.toFixed(3);
 								damage=damage*RI;
-								
 								player[i][2]=player[i][2]-damage;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -1930,8 +1939,9 @@ od[0]='dummy';//1D
 								player.splice(i,1);
 							}
 						//----------------------------------------------
-							if(winner(mmode)!='no winner'){
-								rply.text=winner(mmode);
+							var win=winner(mmode);
+							if(win!='no winner'){
+								rply.text=win;
 								return rply;
 							}
 							//------------------------------------------------------------------
@@ -1980,6 +1990,15 @@ od[0]='dummy';//1D
 							
 							damage=Math.round(player[self][19]*(rollbase.Dice(401)+799)*(100+player[self][26]*100)*0.01/100)/10;
 							player[self][26]=0;
+							if(player[i][14]=='G.U.' && player[i][38]<=0){
+								player[i][2]=player[i][2]-damage;
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='(-'+damage+')';
+								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+							}
+
 							if(player[i][14]=='G.U.' && player[i][38]>0){
 								player[i][38]=player[i][38]-damage;
 								if(player[i][38]<=0)player[i][38]=0;
@@ -1989,19 +2008,11 @@ od[0]='dummy';//1D
 								rply.text+='(-'+damage+')';
 								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
 							}
-							if(player[i][14]=='G.U.' && player[i][38]<=0){
-								player[i][2]=player[i][2]-damage;
-								rply.text=player[i][1]+
-							    '\nHP '+player[i][2]+'/'+player[i][3];
-								rply.text+='(-'+damage+')';
-								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
-								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
-							}
+							
 							if(player[i][14]=='A.A.U.F'){
-								var RI=1-(player[i][38]/(player[i][38]+150));
+								var RI=1-(player[i][38]/(player[i][38]+150));	
 								RI=RI.toFixed(3);
 								damage=damage*RI;
-								
 								player[i][2]=player[i][2]-damage;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -2021,8 +2032,9 @@ od[0]='dummy';//1D
 							}
 							
 							//----------------------------------------------
-							if(winner(mmode)!='no winner'){
-								rply.text=winner(mmode);
+							var win=winner(mmode);
+							if(win!='no winner'){
+								rply.text=win;
 								return rply;
 							}
 							//------------------------------------------------------------------
@@ -2064,8 +2076,9 @@ od[0]='dummy';//1D
 								rply.text=player[self][1]+'已撤退';
 								player.splice(self,1);
 								//----------------------------------------------
-							if(winner(mmode)!='no winner'){
-								rply.text=winner(mmode);
+							var win=winner(mmode);
+							if(win!='no winner'){
+								rply.text=win;
 								return rply;
 							}
 							//------------------------------------------------------------------
