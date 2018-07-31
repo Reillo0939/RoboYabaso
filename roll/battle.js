@@ -489,7 +489,7 @@ od[0]='dummy';//1D
 		od[34]=0;//閃避倍率
 		od[36]=0;//移動距離
 		od[37]=[];
-		od[38]=9999;
+		od[38]=0;
 		player[player.length]=od;
 		console.log('debug02');
 					player[0][16]=25;
@@ -564,6 +564,7 @@ od[0]='dummy';//1D
 								var RI=1-(player[i][38]/(player[i][38]+150));	
 								RI=RI.toFixed(3);
 								damage=damage*RI;
+								damage=damage.toFixed(1);
 								player[i][2]=player[i][2]-damage;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -662,6 +663,7 @@ od[0]='dummy';//1D
 								var RI=1-(player[i][38]/(player[i][38]+150));	
 								RI=RI.toFixed(3);
 								damage=damage*RI;
+								damage=damage.toFixed(1);
 								player[i][2]=player[i][2]-damage;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -746,6 +748,32 @@ od[0]='dummy';//1D
 							damagR=0;
 							DC=0;
 						
+							if(player[i][14]=='G.U.' && player[i][38]<=0){
+								
+								for(var o=0;o<bh;o++)damage+=hitd[o];
+						
+							
+								
+								
+								player[i][2]=player[i][2]-damage;
+								
+								rply.text=player[i][1]+
+							    '\nHP '+player[i][2]+'/'+player[i][3];
+								rply.text+='('
+							for(var o=0;o<bh;o++){
+							if(hhiitt[o]==0){
+								rply.text+=hitd[o];
+								if(o<(bh-1))rply.text+=','
+							}
+							else{
+								rply.text+='-'+hitd[o];
+								if(o<(bh-1))rply.text+=','
+							}
+							}
+							rply.text+=')';
+								
+								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
+							}
 							
 							if(player[i][14]=='G.U.' && player[i][38]>0){
 								for(var o=0;o<bh;o++){
@@ -792,30 +820,14 @@ od[0]='dummy';//1D
 							rply.text+=')';
 							}
 							
-							if(player[i][14]=='G.U.' && player[i][38]<=0){
-								player[i][2]=player[i][2]-damage;
-								rply.text=player[i][1]+
-							    '\nHP '+player[i][2]+'/'+player[i][3];
-								rply.text+='('
-							for(var o=0;o<bh;o++){
-							if(hhiitt[o]==0){
-								rply.text+=hitd[o];
-								if(o<(bh-1))rply.text+=','
-							}
-							else{
-								rply.text+='-'+hitd[o];
-								if(o<(bh-1))rply.text+=','
-							}
-							}
-							rply.text+=')';
-								
-								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
-							}
+							
 							if(player[i][14]=='A.A.U.F'){
+								for(var o=0;o<bh;o++)damage+=hitd[o];
+								
 								var RI=1-(player[i][38]/(player[i][38]+150));
 								RI=RI.toFixed(3);
 								damage=damage*RI;
-								
+								damage=damage.toFixed(1);
 								player[i][2]=player[i][2]-damage;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -877,11 +889,11 @@ od[0]='dummy';//1D
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 			if(id==player[self][0] && trigger.match(/^能源充填$/) != null  && player[self][4]!=player[self][5]){
 					ot=new Date();
-					player[self][4]+=player[self][5]*0.2+20;
+					player[self][4]+=50;
 					if(player[self][4]>player[self][5])player[self][4]=player[self][5];
-					rply.text=player[i][1]+
-							'\nHP '+player[i][2]+'/'+player[i][3];
-							rply.text+='\nCE剩餘量 '+player[i][4]+'/'+player[i][5]+'(+'+(player[self][5]*0.2+20)+')';
+					rply.text=player[self][1]+
+							'\nHP '+player[self][2]+'/'+player[self][3];
+							rply.text+='\nCE剩餘量 '+player[self][4]+'/'+player[self][5]+'(+'+(player[self][5]+50)+')';
 					ds++;
 					if(ds==player[self][33]+1){self++;ds=1;}
 					if(self>=player.length)self=0;
@@ -983,6 +995,7 @@ od[0]='dummy';//1D
 								var RI=1-(player[i][38]/(player[i][38]+150));	
 								RI=RI.toFixed(3);
 								damage=damage*RI;
+								damage=damage.toFixed(1);
 								player[i][2]=player[i][2]-damage;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -1148,6 +1161,7 @@ od[0]='dummy';//1D
 								var RI=1-(player[i][38]/(player[i][38]+150));	
 								RI=RI.toFixed(3);
 								damage=damage*RI;
+								damage=damage.toFixed(1);
 								player[i][2]=player[i][2]-damage;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -1423,6 +1437,7 @@ od[0]='dummy';//1D
 								var RI=1-(player[i][38]/(player[i][38]+150));	
 								RI=RI.toFixed(3);
 								damage=damage*RI;
+								damage=damage.toFixed(1);
 								player[i][2]=player[i][2]-damage;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -1687,14 +1702,14 @@ od[0]='dummy';//1D
 				if(isNaN(xxyy[0])==0 && isNaN(xxyy[1])==0){
 					var temp =0;
 						temp = Math.ceil(Math.pow(Math.pow(Math.floor(xxyy[0])-player[self][16],2)+Math.pow(Math.floor(xxyy[1])-player[self][17],2),0.5)*10)/10;
-						if(temp>player[self][4]/20){
+						if(temp>player[self][4]/10){
 											
 							rply.text='CE剩餘量過少，無法移動';
 							return rply;
 						}
 						else{
 							if(xxyy[0]>=1 && xxyy[0]<=51 && xxyy[1]>=1 && xxyy[1]<=51){ 
-							player[self][4]-=temp*20;
+							player[self][4]-=temp*10;
 							rply.text='已移動到 座標'+Math.floor(xxyy[0]*10)/10+','+Math.floor(xxyy[1]*10)/10;
 							player[self][16]=Math.floor(xxyy[0]*10)/10;
 							player[self][17]=Math.floor(xxyy[1]*10)/10;
@@ -1776,6 +1791,7 @@ od[0]='dummy';//1D
 								var RI=1-(player[i][38]/(player[i][38]+150));	
 								RI=RI.toFixed(3);
 								damage=damage*RI;
+								damage=damage.toFixed(1);
 								player[i][2]=player[i][2]-damage;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -1922,6 +1938,7 @@ od[0]='dummy';//1D
 								var RI=1-(player[i][38]/(player[i][38]+150));	
 								RI=RI.toFixed(3);
 								damage=damage*RI;
+								damage=damage.toFixed(1);
 								player[i][2]=player[i][2]-damage;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -2013,6 +2030,7 @@ od[0]='dummy';//1D
 								var RI=1-(player[i][38]/(player[i][38]+150));	
 								RI=RI.toFixed(3);
 								damage=damage*RI;
+								damage=damage.toFixed(1);
 								player[i][2]=player[i][2]-damage;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -2279,7 +2297,7 @@ function BR(nb){
 
 function winner(mmodes){
 	if(mmodes==1){
-						var ap=0,gp=0,re;
+						var ap=0,gp=0,re='';
 							for(var g=0;g<player.length;g++){
 								if(player[g][14]=='A.A.U.F')ap++;
 								if(player[g][14]=='G.U.')gp++;
