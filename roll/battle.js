@@ -629,11 +629,12 @@ od[0]='dummy';//1D
 						Hit=rollbase.Dice(100);
 						player[self][20]--;
 						if(Hit>player[self][24]){
+							rply.text=player[self][1]+'沒有命中'+
+							'\n\n'+BR();
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(self>=player.length)self=0;
-							rply.text=player[self][1]+'沒有命中'+
-							'\n\n'+BR();
+							
 			return rply;
 						}
 						
@@ -750,7 +751,7 @@ od[0]='dummy';//1D
 						
 							if(player[i][14]=='G.U.' && player[i][38]<=0){
 								
-								for(var o=0;o<bh;o++)damage+=hitd[o];
+								for(var o=0;o<bh;o++)damage+=hhiitt[o];
 	
 								player[i][2]=player[i][2]-damage;
 								
@@ -787,7 +788,7 @@ od[0]='dummy';//1D
 							rply.text=player[i][1]+
 							'\nHP '+player[i][2]+'/'+player[i][3];
 							
-							if(DC!=0){
+							if(DC!=bh){
 							
 							rply.text+='('
 							for(var o=DC;o<bh;o++){
@@ -820,7 +821,7 @@ od[0]='dummy';//1D
 							
 							
 							if(player[i][14]=='A.A.U.F'){
-								for(var o=0;o<bh;o++)damage+=hitd[o];
+								for(var o=0;o<bh;o++)damage+=hhiitt[o];
 								
 								var RI=1-(player[i][38]/(player[i][38]+150));
 								RI=RI.toFixed(3);
@@ -1278,7 +1279,7 @@ od[0]='dummy';//1D
 								return rply;
 							}
 							//----------------------------------------------
-						var win=winner(mmode);
+							var win=winner(mmode);
 							if(win!='no winner'){
 								rply.text+=win;
 								return rply;
@@ -2178,8 +2179,9 @@ function BR(nb){
 								if(self>=player.length)self=0;
 								
 								//----------------------------------------------
-							if(winner(xmode)!='no winner'){
-								rply.text=winner(xmode);
+							var win=winner(mmode);
+							if(win!='no winner'){
+								rply.text+=win;
 								return rply;
 							}
 							//------------------------------------------------------------------
@@ -2310,7 +2312,7 @@ function winner(mmodes){
 										}
 									  }
 								}
-								re+='\nG.U勝利';
+								re='\nG.U勝利';
 								start=0;
 								RAAUF=0;
 								RGU=0;
@@ -2326,7 +2328,7 @@ function winner(mmodes){
 										}
 									  }
 								}
-								re+='\nA.A.U.F勝利';
+								re='\nA.A.U.F勝利';
 								start=0;
 								RAAUF=0;
 								RGU=0;
@@ -2344,7 +2346,7 @@ function winner(mmodes){
 									ox.oA(fgg,Number(ox.oC(fgg,17))+Number(GGP));
 										}
 								}
-								re+='\n'+player[0][1]+'獲得最後勝利';
+								re='\n'+player[0][1]+'獲得最後勝利';
 								start=0;
 								RAAUF=0;
 								RGU=0;
