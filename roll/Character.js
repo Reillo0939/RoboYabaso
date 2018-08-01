@@ -634,13 +634,8 @@ function CKSV(id,name) {
 			console.log('5 '+Askill[4]);
 			var CSkill=[];
 			for(var i=0;i<5;i++){
-				for(var aa=0;fd<SKILLS.length;aa++){
-					
-					if(SKILLS[aa][0]==Askill[i]){
-						
-					CSkill=SKILLS[fd][1];
-					
-					}
+				for(var aa=0;aa<SKILLS.length;aa++){
+					if(SKILLS[aa][0]==Askill[i])CSkill=SKILLS[aa][1];
 				}
 			}
 		
