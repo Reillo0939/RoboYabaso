@@ -2024,7 +2024,6 @@ od[0]='dummy';//1D
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
 								rply.text+='(-'+damage+')';
-								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
 								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
 							}
 
@@ -2036,7 +2035,6 @@ od[0]='dummy';//1D
 							    '\nHP '+player[i][2]+'/'+player[i][3];
 								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
 								rply.text+='(-'+damage+')';
-								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
 							}
 							
 							if(player[i][14]=='A.A.U.F'){
@@ -2049,7 +2047,6 @@ od[0]='dummy';//1D
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
 								rply.text+='(-'+damage+')';
-								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
 								rply.text+='\n護甲 '+player[i][38];
 							}
 							rply.text+='\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
