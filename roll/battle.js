@@ -541,8 +541,10 @@ od[0]='dummy';//1D
 							player[self][16]=player[i][16];
 						player[self][17]=player[i][17];
 							if(Hit<=(player[self][24]*0.2))damage=parseInt(damage*2);
+							
                             if(player[i][14]=='G.U.' && player[i][38]<=0){
 								player[i][2]=player[i][2]-damage;
+								player[i][2]=player[i][2].toFixed(1);
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
 								rply.text+='(-'+damage+')';
@@ -552,6 +554,7 @@ od[0]='dummy';//1D
 
 							if(player[i][14]=='G.U.' && player[i][38]>0){
 								player[i][38]=player[i][38]-damage;
+								player[i][38]=player[i][38].toFixed(1);
 								if(player[i][38]<=0)player[i][38]=0;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -566,6 +569,7 @@ od[0]='dummy';//1D
 								damage=damage*RI;
 								damage=damage.toFixed(1);
 								player[i][2]=player[i][2]-damage;
+								player[i][2]=player[i][2].toFixed(1);
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
 								rply.text+='(-'+damage+')';
@@ -644,14 +648,17 @@ od[0]='dummy';//1D
 							
 						if(player[i][14]=='G.U.' && player[i][38]<=0){
 								player[i][2]=player[i][2]-damage;
+								player[i][2]=player[i][2].toFixed(1);
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
 								rply.text+='(-'+damage+')';
 								if(Hit<=(player[self][24]*0.2))rply.text+='Critical';
 								rply.text+='\n護盾 '+player[i][38]+'/'+player[i][39];
 							}
+
 							if(player[i][14]=='G.U.' && player[i][38]>0){
 								player[i][38]=player[i][38]-damage;
+								player[i][38]=player[i][38].toFixed(1);
 								if(player[i][38]<=0)player[i][38]=0;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -666,6 +673,7 @@ od[0]='dummy';//1D
 								damage=damage*RI;
 								damage=damage.toFixed(1);
 								player[i][2]=player[i][2]-damage;
+								player[i][2]=player[i][2].toFixed(1);
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
 								rply.text+='(-'+damage+')';
@@ -974,6 +982,7 @@ od[0]='dummy';//1D
 								if(Hit<=(player[self][24]*0.2))damage=damage*2;
 							if(player[i][14]=='G.U.' && player[i][38]<=0){
 								player[i][2]=player[i][2]-damage;
+								player[i][2]=player[i][2].toFixed(1);
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
 								rply.text+='(-'+damage+')';
@@ -983,6 +992,7 @@ od[0]='dummy';//1D
 
 							if(player[i][14]=='G.U.' && player[i][38]>0){
 								player[i][38]=player[i][38]-damage;
+								player[i][38]=player[i][38].toFixed(1);
 								if(player[i][38]<=0)player[i][38]=0;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -997,6 +1007,7 @@ od[0]='dummy';//1D
 								damage=damage*RI;
 								damage=damage.toFixed(1);
 								player[i][2]=player[i][2]-damage;
+								player[i][2]=player[i][2].toFixed(1);
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
 								rply.text+='(-'+damage+')';
@@ -1140,6 +1151,7 @@ od[0]='dummy';//1D
 							if(Hit<=(player[self][24]*0.2))damage=damage*2;
 							if(player[i][14]=='G.U.' && player[i][38]<=0){
 								player[i][2]=player[i][2]-damage;
+								player[i][2]=player[i][2].toFixed(1);
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
 								rply.text+='(-'+damage+')';
@@ -1149,6 +1161,7 @@ od[0]='dummy';//1D
 
 							if(player[i][14]=='G.U.' && player[i][38]>0){
 								player[i][38]=player[i][38]-damage;
+								player[i][38]=player[i][38].toFixed(1);
 								if(player[i][38]<=0)player[i][38]=0;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -1163,6 +1176,7 @@ od[0]='dummy';//1D
 								damage=damage*RI;
 								damage=damage.toFixed(1);
 								player[i][2]=player[i][2]-damage;
+								player[i][2]=player[i][2].toFixed(1);
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
 								rply.text+='(-'+damage+')';
@@ -1416,6 +1430,7 @@ od[0]='dummy';//1D
 							
 						if(player[i][14]=='G.U.' && player[i][38]<=0){
 								player[i][2]=player[i][2]-damage;
+								player[i][2]=player[i][2].toFixed(1);
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
 								rply.text+='(-'+damage+')';
@@ -1425,6 +1440,7 @@ od[0]='dummy';//1D
 
 							if(player[i][14]=='G.U.' && player[i][38]>0){
 								player[i][38]=player[i][38]-damage;
+								player[i][38]=player[i][38].toFixed(1);
 								if(player[i][38]<=0)player[i][38]=0;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -1439,6 +1455,7 @@ od[0]='dummy';//1D
 								damage=damage*RI;
 								damage=damage.toFixed(1);
 								player[i][2]=player[i][2]-damage;
+								player[i][2]=player[i][2].toFixed(1);
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
 								rply.text+='(-'+damage+')';
@@ -1733,7 +1750,7 @@ od[0]='dummy';//1D
 			return rply;
 		}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
-			if(id==player[self][0] && trigger.match(/^強力射擊$/) != null && mainMsg[1] != null &&player[self][18]==2  && player[self][20]>0){
+			if(id==player[self][0] && trigger.match(/^強力射擊$/) != null && mainMsg[1] != null &&player[self][18]==2  && player[self][20]>=10){
 				
 				ot=new Date();
 		
@@ -1742,17 +1759,13 @@ od[0]='dummy';//1D
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
-						if(player[self][4]<(player[self][5]*0.5)){
-							rply.text='CE剩餘量過少，無法攻擊';
-							return rply;
-						}
 						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
 						if(temp>(player[self][23]+3)){
 							
 							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
 							return rply;
 						}
-						player[self][4]-=player[self][5]*0.5;
+						player[self][4]-=10;
 						rnggg=rollbase.Dice(100);
 						Hit=rollbase.Dice(100);
 						player[self][20]--;
@@ -1770,6 +1783,7 @@ od[0]='dummy';//1D
 							if(Hit<=(player[self][24]*0.2))damage=parseInt(damage*2);
 							if(player[i][14]=='G.U.' && player[i][38]<=0){
 								player[i][2]=player[i][2]-damage;
+								player[i][2]=player[i][2].toFixed(1);
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
 								rply.text+='(-'+damage+')';
@@ -1779,6 +1793,7 @@ od[0]='dummy';//1D
 
 							if(player[i][14]=='G.U.' && player[i][38]>0){
 								player[i][38]=player[i][38]-damage;
+								player[i][38]=player[i][38].toFixed(1);
 								if(player[i][38]<=0)player[i][38]=0;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -1793,6 +1808,7 @@ od[0]='dummy';//1D
 								damage=damage*RI;
 								damage=damage.toFixed(1);
 								player[i][2]=player[i][2]-damage;
+								player[i][2]=player[i][2].toFixed(1);
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
 								rply.text+='(-'+damage+')';
@@ -1835,27 +1851,23 @@ od[0]='dummy';//1D
 				}
 			}
 			//-----------------------------------------------------------------------------------------------------------------------------------------------------
-			if(id==player[self][0] && trigger.match(/^戰術治療$/) != null && mainMsg[1] != null && player[self][18]==4){
+			if(id==player[self][0] && trigger.match(/^戰術治療$/) != null && mainMsg[1] != null && player[self][18]==4 && player[self][20]>=20){
 				
 				ot=new Date();
 		
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
-						if(player[self][4]<(player[self][5]*0.6)){
-							rply.text='CE剩餘量過少，無法治療';
-							return rply;
-						}
 						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
 						if(temp>(1)){
 							
 							rply.text='距離'+player[i][1]+'太遠，無法治療';
 							return rply;
 						}
-						player[self][4]-=player[self][5]*0.6;
+						player[self][4]-=20;
 						
 						
-						damage=player[i][3]*0.1+20;
+						damage=25;
 							if(player[i][2]+damage>player[i][3]){
 								damage=player[i][3]-player[i][2];
 							}
@@ -1917,6 +1929,7 @@ od[0]='dummy';//1D
 
 							if(player[i][14]=='G.U.' && player[i][38]<=0){
 								player[i][2]=player[i][2]-damage;
+								player[i][2]=player[i][2].toFixed(1);
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
 								rply.text+='(-'+damage+')';
@@ -1926,6 +1939,7 @@ od[0]='dummy';//1D
 
 							if(player[i][14]=='G.U.' && player[i][38]>0){
 								player[i][38]=player[i][38]-damage;
+								player[i][38]=player[i][38].toFixed(1);
 								if(player[i][38]<=0)player[i][38]=0;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -1940,6 +1954,7 @@ od[0]='dummy';//1D
 								damage=damage*RI;
 								damage=damage.toFixed(1);
 								player[i][2]=player[i][2]-damage;
+								player[i][2]=player[i][2].toFixed(1);
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
 								rply.text+='(-'+damage+')';
@@ -1982,7 +1997,7 @@ od[0]='dummy';//1D
 				}
 			}
 		//-----------------------------------------------------------------------------------------------------------------------------------------------------
-			if(id==player[self][0] && trigger.match(/^能量放出$/) != null && mainMsg[1] != null &&player[self][18]==12 && player[self][4]>=(player[self][5]*0.1)){
+			if(id==player[self][0] && trigger.match(/^能量放出$/) != null && mainMsg[1] != null &&player[self][18]==12 && player[self][4]>=10){
 				
 				ot=new Date();
 		
@@ -1991,17 +2006,13 @@ od[0]='dummy';//1D
 				for(var i=0;i<player.length;i++){
 					if(player[i][1]==mainMsg[1] ){
 						var temp =0;
-						if(player[self][4]<(player[self][5]*0.1)){
-							rply.text='CE剩餘量過少，無法攻擊';
-							return rply;
-						}
 						temp = Math.ceil(Math.pow(Math.pow(player[i][16]-player[self][16],2)+Math.pow(player[i][17]-player[self][17],2),0.5)*10)/10;
 						if(temp>(player[self][23]+3)){
 							
 							rply.text='距離'+player[i][1]+'太遠，無法攻擊';
 							return rply;
 						}
-						player[self][4]-=(player[self][5]*0.1);
+						player[self][4]-=10;
 						rnggg=rollbase.Dice(100);
 						player[self][20]--;
 							
@@ -2009,6 +2020,7 @@ od[0]='dummy';//1D
 							player[self][26]=0;
 							if(player[i][14]=='G.U.' && player[i][38]<=0){
 								player[i][2]=player[i][2]-damage;
+								player[i][2]=player[i][2].toFixed(1);
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
 								rply.text+='(-'+damage+')';
@@ -2018,6 +2030,7 @@ od[0]='dummy';//1D
 
 							if(player[i][14]=='G.U.' && player[i][38]>0){
 								player[i][38]=player[i][38]-damage;
+								player[i][38]=player[i][38].toFixed(1);
 								if(player[i][38]<=0)player[i][38]=0;
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
@@ -2032,6 +2045,7 @@ od[0]='dummy';//1D
 								damage=damage*RI;
 								damage=damage.toFixed(1);
 								player[i][2]=player[i][2]-damage;
+								player[i][2]=player[i][2].toFixed(1);
 								rply.text=player[i][1]+
 							    '\nHP '+player[i][2]+'/'+player[i][3];
 								rply.text+='(-'+damage+')';
@@ -2064,13 +2078,10 @@ od[0]='dummy';//1D
 				}
 			}
 	//-----------------------------------------------------------------------------------------------------------------------------------------------------
-			if(id==player[self][0] && trigger.match(/^聚能$/) != null &&player[self][18]==12 && player[self][4]>=(player[self][5]*0.2)){
+			if(id==player[self][0] && trigger.match(/^聚能$/) != null &&player[self][18]==12 && player[self][4]>=10){
 					ot=new Date();
-					if(player[self][4]<(player[self][5]*0.2)){
-							rply.text='CE剩餘量過少，聚能失敗';
-							return rply;
-						}
-						player[self][4]-=player[self][5]*0.2;
+				
+						player[self][4]-=10;
 						player[self][26]++;
 					rply.text+='已聚能'+player[self][26]+'次\n\n';
 					if(player[self][26]%2==0){
@@ -2215,7 +2226,7 @@ function BR(nb){
 				rr+='\n脈衝推進 x座標,y座標';
 			}
 			if(player[self][4]!=player[self][5]){
-				rr+='\n能源充填 (+CE剩餘量20%,+CE剩餘量20)';
+				rr+='\n能源充填 (CE剩餘量+50)';
 			}
 			if(player[self][18]>=1 && player[self][18]<=8 && player[self][20]!=player[self][21]){
 				rr+='\n裝填子彈';
@@ -2227,10 +2238,10 @@ function BR(nb){
 				rr+='\n連發射擊 目標';
 			}		
 			if(player[self][18]==2 && player[self][4]>=(player[self][5]*0.5)){
-				rr+='\n強力射擊 目標 (-CE剩餘量50%,攻擊1.5倍,射程+3,精準+20)';
+				rr+='\n強力射擊 目標 (CE剩餘量-10,攻擊1.5倍,射程+3,精準+20)';
 			}			
 			if(player[self][18]==4 && player[self][4]>=(player[self][5]*0.6)){
-				rr+='\n戰術治療 目標 (-CE剩餘量60%,+HP10%,+HP20,射程<1)';
+				rr+='\n戰術治療 目標 (CE剩餘量-20,+HP25,射程<1)';
 			}	
 			
 			if(player[self][18]==6 && player[self][20]>0){
@@ -2243,7 +2254,7 @@ function BR(nb){
 				rr+='\n架槍';
 			}
 			if(player[self][18]==7 && player[self][25]==0 && player[self][4]>=(player[self][5]*0.6)){
-				rr+='\n高速架槍 (-CE剩餘量60%,-0行動)';
+				rr+='\n高速架槍 (CE剩餘量-50,-0行動)';
 			}
 			if(player[self][18]==7 && player[self][25]>=2){
 				rr+='\n解除架槍';
@@ -2273,16 +2284,16 @@ function BR(nb){
 				rr+='\n移動突擊 目標 (-2行動,射程+3,依距離增傷(最多2倍)與減少精準,攻擊後移動)';
 			}		
 			if(player[self][18]==12 && player[self][4]>=(player[self][5]*0.1)){
-				rr+='\n能量放出 目標 (-CE剩餘量10%)';
+				rr+='\n能量放出 目標 (CE剩餘量-10)';
 			}
 			if(player[self][18]==12 && player[self][4]>=(player[self][5]*0.2)){
-				rr+='\n聚能 (-CE剩餘量20%,每使用一次能讓下次能量放出+100%的傷害)';
+				rr+='\n聚能 (CE剩餘量-10,每使用一次能讓下次能量放出+100%的傷害)';
 			}			
 			for(kkkk=1;kkkk<=5;kkkk++){
-			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="攻擊")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+' -CE剩餘量'+player[self][27+kkkk][5]+')';
-			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="妨害")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+' -CE剩餘量'+player[self][27+kkkk][5]+')';
-			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="支援")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+' -CE剩餘量'+player[self][27+kkkk][5]+')';
-			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="被動")rr+='\n技能 '+kkkk+' ('+ player[self][27+kkkk][0]+' -CE剩餘量'+player[self][27+kkkk][5]+')';
+			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="攻擊")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+' CE剩餘量-'+player[self][27+kkkk][5]+')';
+			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="妨害")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+' CE剩餘量-'+player[self][27+kkkk][5]+')';
+			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="支援")rr+='\n技能 '+kkkk+' 目標('+ player[self][27+kkkk][0]+' CE剩餘量-'+player[self][27+kkkk][5]+')';
+			if(player[self][27+kkkk][0]!=0 && player[self][27+kkkk][1]=="被動")rr+='\n技能 '+kkkk+' ('+ player[self][27+kkkk][0]+' CE剩餘量-'+player[self][27+kkkk][5]+')';
 			}
 			rr+='\n 目標有';
 			for(var k=0;k<player.length;k++){
