@@ -1448,7 +1448,7 @@ od[0]='dummy';//1D
 							
 							rply.text+='\nCE剩餘量 '+player[i][4]+'/'+player[i][5];
 							
-							ds++:
+							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(player[i][2]<=0){
 								if(i<self)self--;
