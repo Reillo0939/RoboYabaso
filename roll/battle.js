@@ -258,16 +258,11 @@ var od=[];
 		var AAA=ox.oC(i,21);
 		var Askill = AAA.split(','); //定義輸入字串
 		var par='';
-		par = ox.CKR(Askill[0]);
-		od[28]=par.split(',');
-		par = ox.CKR(Askill[1]);
-		od[29]=par.split(',');
-		par = ox.CKR(Askill[2]);
-		od[30]=par.split(',');
-		par = ox.CKR(Askill[3]);
-		od[31]=par.split(',');
-		par = ox.CKR(Askill[4]);
-		od[32]=par.split(',');
+		for(var rrr=0;rrr<5;rrr++){
+		par = ox.CKR(Askill[rrr]);
+		od[28+rrr]=par.split(',');
+		}
+		
 		od[33]=2;//可行動次數
 		od[34]=1;//閃避倍率
 		od[36]=3;//移動距離
@@ -1452,6 +1447,8 @@ od[0]='dummy';//1D
 							
 							if(player[i][14]=='A.A.U.F'){
 								var RI=1-(player[i][38]/(player[i][38]+150));	
+								if(player[self][Number(mainMsg[1])+27][6]=='火')RI=1-(1-RI)/2;
+								
 								RI=RI.toFixed(3);
 								damage=damage*RI;
 								damage=damage.toFixed(1);
