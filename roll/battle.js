@@ -522,12 +522,12 @@ od[0]='dummy';//1D
 						Hit=rollbase.Dice(100);
 						Critical=rollbase.Dice(100);
 						if(Hit>player[self][24]){
-							rply.text=player[self][1]+'沒有命中'+
-							'\n\n'+BR();
+							
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(self>=player.length)self=0;
-							
+							rply.text='沒有命中'+player[i][1]+
+							'\n\n'+BR();
 			return rply;
 						}
 						
@@ -633,12 +633,12 @@ od[0]='dummy';//1D
 						Hit=rollbase.Dice(100);
 						player[self][20]--;
 						if(Hit>player[self][24]){
-							rply.text=player[self][1]+'沒有命中'+
-							'\n\n'+BR();
+							
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(self>=player.length)self=0;
-							
+							rply.text='沒有命中'+player[self][1]+
+							'\n\n'+BR();
 			return rply;
 						}
 						
@@ -954,7 +954,7 @@ od[0]='dummy';//1D
 						Hit=rollbase.Dice(100);
 						player[self][20]--;
 						if(Hit>player[self][26] && player[self][35]==mainMsg[1]){
-								rply.text=player[self][1]+'沒有命中';
+								rply.text='沒有命中'+player[i][1];
 								player[self][25]=0;
 								player[self][34]=1.2;
 								player[self][35]='';
@@ -966,7 +966,7 @@ od[0]='dummy';//1D
 							return rply;
 						}
 					if(Hit>player[self][26]-50 && player[self][35]!=mainMsg[1] ){
-								rply.text=player[self][1]+'沒有命中';
+								rply.text='沒有命中'+player[i][1];
 								player[self][25]=0;
 								player[self][34]=1.2;
 								player[self][35]='';
@@ -1125,7 +1125,7 @@ od[0]='dummy';//1D
 						Critical=rollbase.Dice(100);
 						player[self][20]--;
 						if(Hit>player[self][26] && player[self][35]==mainMsg[1]){
-								rply.text=player[self][1]+'沒有命中';
+								rply.text='沒有命中'+player[i][1];
 								player[self][25]=2;
 								player[self][35]='';
 							ds++;
@@ -1136,7 +1136,7 @@ od[0]='dummy';//1D
 							return rply;
 						}
 					if(Hit>player[self][26]-50 && player[self][35]!=mainMsg[1] ){
-								rply.text=player[self][1]+'沒有命中';
+								rply.text='沒有命中'+player[i][1];
 								player[self][25]=2;
 								player[self][35]='';
 							ds++;
@@ -1416,11 +1416,12 @@ od[0]='dummy';//1D
 						rnggg=rollbase.Dice(100);
 						Hit=rollbase.Dice(100);
 						if(Hit>player[self][Number(mainMsg[1])+27][4]){
-							rply.text=player[self][1]+'沒有命中'+
-							'\n\n'+BR();
+							
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(self>=player.length)self=0;
+							rply.text='沒有命中'+player[i][1]+
+							'\n\n'+BR();
 							
 			return rply;
 						}
@@ -1568,11 +1569,12 @@ od[0]='dummy';//1D
 						rnggg=rollbase.Dice(100);
 						Hit=rollbase.Dice(100);
 						if(Hit>player[self][Number(mainMsg[1])+27][4]){
-							rply.text=player[self][1]+'沒有命中'+
-							'\n\n'+BR();
+							
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(self>=player.length)self=0;
+							rply.text='沒有命中'+player[i][1]+
+							'\n\n'+BR();
 							return rply;
 						}
 
@@ -1773,7 +1775,7 @@ od[0]='dummy';//1D
 							ds++;
 							if(ds==player[self][33]+1){self++;ds=1;}
 							if(self>=player.length)self=0;
-							rply.text=player[self][1]+'沒有命中'+
+							rply.text='沒有命中'+player[i][1]+
 							'\n\n'+BR();
 			return rply;
 						}
@@ -1910,9 +1912,9 @@ od[0]='dummy';//1D
 						if(temp>=3){addda=2;addga=15;}
 						if(Hit>(player[self][24]-addga)){
 							ds+=2;
-							if(ds==player[i][33]+1){self++;ds=1;}
+							if(ds==player[self][33]+1){self++;ds=1;}
 							if(self>=player.length)self=0;
-							rply.text=player[self][1]+'沒有命中'+
+							rply.text+='沒有命中'+player[i][1]+
 							'\n\n'+BR();
 			return rply;
 						}
