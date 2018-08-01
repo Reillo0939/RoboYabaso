@@ -625,13 +625,7 @@ return rply;
 function CKSV(id,name) {
 	for(var fd=0;fd<Characters.length;fd++){
 		if(Characters[fd][0]==id){
-			
 			var Askill = Characters[fd][21].split(','); //定義輸入字串
-			console.log('1 '+Askill[0]);
-			console.log('2 '+Askill[1]);
-			console.log('3 '+Askill[2]);
-			console.log('4 '+Askill[3]);
-			console.log('5 '+Askill[4]);
 			var CSkill=[];
 			for(var i=0;i<5;i++){
 				for(var aa=0;aa<SKILLS.length;aa++){
