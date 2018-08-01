@@ -647,10 +647,11 @@ if(Askill[1]!=0)rply.text+='\n技能2: ['+Askill[1]+']'+CSkill[1];
 if(Askill[2]!=0)rply.text+='\n技能3: ['+Askill[2]+']'+CSkill[2];
 if(Askill[3]!=0)rply.text+='\n技能4: ['+Askill[3]+']'+CSkill[3];
 if(Askill[4]!=0)rply.text+='\n技能5: ['+Askill[4]+']'+CSkill[4];
+return rply;	
 }
 }
 	
-	
+
 }
 
 function CKR(num) {
