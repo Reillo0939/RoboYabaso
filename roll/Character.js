@@ -540,6 +540,7 @@ module.exports = {
 	oz:oz,
 	CK:CK,
 	CKV:CKV,
+	CKSV:CKSV,
 	CKR:CKR,
 	oC:oC,
 	oA:oA,
@@ -619,6 +620,34 @@ SKILLS[fd][1]+'\n'+
 }
 rply.text='不好意思'+'['+name+']'+'找不到編號為'+num+'的技能';
 return rply;	
+}
+
+function CKSV(id,name) {
+	for(var fd=0;fd<Characters.length;fd++){
+		if(Characters[fd][0]==id){
+			var Askill = Characters[fd][21].split(','); //定義輸入字串
+			var CSkill=[];
+			for(var i=0;i<5;i++){
+				for(var aa=0;fd<SKILLS.length;aa++){
+					if(SKILLS[aa][0]==Askill[i]){
+					CSkill=SKILLS[fd][1];
+					}
+				}
+			}
+		
+		rply.text=
+name +' 的角色'+
+'\n['+ Characters[fd][1] +']裝備的技能';
+if(Askill[0]==0)rply.text+='\n沒有裝備任何技能';
+if(Askill[0]!=0)rply.text+='\n技能1: ['+Askill[0]+']'+CSkill[0];
+if(Askill[1]!=0)rply.text+='\n技能2: ['+Askill[1]+']'+CSkill[1];
+if(Askill[2]!=0)rply.text+='\n技能3: ['+Askill[2]+']'+CSkill[2];
+if(Askill[3]!=0)rply.text+='\n技能4: ['+Askill[3]+']'+CSkill[3];
+if(Askill[4]!=0)rply.text+='\n技能5: ['+Askill[4]+']'+CSkill[4];
+}
+}
+	
+	
 }
 
 function CKR(num) {

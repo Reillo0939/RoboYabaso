@@ -49,18 +49,18 @@ function parseInput(rplyToken, inputStr, id,name) {
 	if (trigger.match(/查詢/)!= null) return exports.Character.CI(name,mainMsg[1]) ;
 	if (trigger.match(/改名/)!= null) return exports.Character.CCN(id,name,mainMsg[1]) ;
 	if (trigger.match(/列表/)!= null) return exports.Character.CCL() ;
-	//if (trigger.match(/成長點配置/)!= null) return exports.Character.CSG(id,name,mainMsg[1],mainMsg[2]) ;
+	if (trigger.match(/技能/)!= null) return exports.Character.CKSV(id,name) ;
 	}
 	
 	if (trigger.match(/武器/) != null){
 	if (trigger.match(/製作/)!= null) return exports.weapon.weapon_make(id,name,mainMsg[1],mainMsg[2]) ;
 	if (trigger.match(/查看/)!= null) return exports.weapon.weapon_view(id,name) ;
 	if (trigger.match(/破壞/)!= null) return exports.weapon.weapon_break(id,name) ;
-	//if (trigger.match(/改造/)!= null) return exports.weapon.weapon_retrofit(id,name,mainMsg[1],mainMsg[2]) ;
 	
 	}
 	if (trigger.match(/技能/) != null){
 		if (trigger.match(/查看/)!= null) return exports.Character.CKV(name,mainMsg[1]) ;
+		
 	}
 	
 	if (trigger.match(/^角色創立說明$/) != null) return exports.help.Character() ;
@@ -68,7 +68,7 @@ function parseInput(rplyToken, inputStr, id,name) {
 	if (trigger.match(/運氣|運勢/) != null) return exports.funny.randomLuck(mainMsg) ; //占卜運氣		
 	
 	if (trigger.match(/^廣播$/) != null) bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',mainMsg[1]);
-  
+	
 }
 
 
