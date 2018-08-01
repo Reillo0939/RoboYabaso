@@ -635,7 +635,7 @@ function CKSV(id,name) {
 			var CSkill=[];
 			for(var i=0;i<5;i++){
 				for(var aa=0;aa<SKILLS.length;aa++){
-					if(SKILLS[aa][0]==Askill[i])CSkill=SKILLS[aa][1];
+					if(SKILLS[aa][0]==Askill[i])CSkill[i]=SKILLS[aa][1];
 				}
 			}
 		
