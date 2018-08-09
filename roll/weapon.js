@@ -11,6 +11,11 @@ var WMK;
 			rply.text='['+name+']'+'你已有武器';
 			return rply;
 			}
+		if(Wname=='test'){
+			rply.text=species;
+			return rply;
+		}
+			
 			
 			if(species==null && Wname==null){
 				rply.text='缺少 武器種類 武器名稱'+
