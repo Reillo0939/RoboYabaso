@@ -20,7 +20,7 @@ var WMK;
 			return rply;
 			}
 			
-			if(species!='手槍'||species!='重型手槍' ||species!='衝鋒槍' ||species!='突擊步槍' ||species!='射手步槍' ||species!='狙擊槍' ||species!='大口徑狙擊槍' ||species!='火炮' ||species!='短近距離武器' ||species!='中近距離武器' ||species!='長近距離武器' ||species!='能量放出槍'){
+			if((species!='手槍')||(species!='重型手槍') ||(species!='衝鋒槍') ||(species!='突擊步槍') ||(species!='射手步槍') ||(species!='狙擊槍') ||(species!='大口徑狙擊槍') ||(species!='火炮') ||(species!='短近距離武器') ||(species!='中近距離武器') ||(species!='長近距離武器') ||(species!='能量放出槍')){
 			rply.text='['+name+']'+'種類錯誤\n種類有'+
 			'\n手槍,\n重型手槍,\n衝鋒槍,\n突擊步槍,\n射手步槍,\n狙擊槍,\n大口徑狙擊槍,\n火炮,\n短近距離武器,\n中近距離武器,\n長近距離武器,\n能量放出槍';
 			return rply;
