@@ -11,13 +11,9 @@ var WMK;
 			rply.text='['+name+']'+'你已有武器';
 			return rply;
 			}
-		if(Wname=='test'){
-			rply.text=species;
-			return rply;
-		}
 			
 			
-			if(species==null && Wname==null){
+			if(species==undefined && Wname==undefined){
 				rply.text='缺少 武器種類 武器名稱'+
 			'\n種類有'+
 			'\n手槍,\n重型手槍,\n衝鋒槍,\n突擊步槍,\n射手步槍,\n狙擊槍,\n大口徑狙擊槍,\n火炮,\n短近距離武器,\n中近距離武器,\n長近距離武器,\n能量放出槍';
