@@ -1513,7 +1513,7 @@ od[0]='dummy';//1D
 						player[self][4]-=player[self][Number(mainMsg[1])+27][5];
 						
 						if(player[self][Number(mainMsg[1])+27][8]='HP'){
-						damage=player[self][Number(mainMsg[1])+27][3];
+						damage=Number(player[self][Number(mainMsg[1])+27][3]);
 							if(player[i][2]+damage>player[i][3]){
 								damage=player[i][3]-player[i][2];
 							}
