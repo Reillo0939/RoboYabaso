@@ -60,7 +60,7 @@ var myLineTemplate = {
 bot.on('postback', function (event) {
     var myResult = event.postback.data;
     if (myResult != '') {
-        event.reply(myResult * myResult);
+        event.reply('C8763');
     }
 });
 
