@@ -57,7 +57,12 @@ var myLineTemplate = {
     }
 };
 
-
+bot.on('postback', function (event) {
+    var myResult = event.postback.data;
+    if (myResult != '') {
+        event.reply(myResult * myResult);
+    }
+});
 
 
 /*setInterval(function(){
