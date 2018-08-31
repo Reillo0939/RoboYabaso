@@ -39,28 +39,34 @@ var myLineTemplate = {
         text: '測試',
         actions: [{
             type: 'postback',
-            label: '1',
-            data: '1'
+            label: '玩家自身情報',
+            data: '玩家自身情報'
         }, {
             type: 'postback',
-            label: '2',
-            data: '2'
+                label: '武器查看',
+                data: '武器查看'
         }, {
             type: 'postback',
-            label: '3',
-            data: '3'
+                label: '技能查看',
+                data: '技能查看'
         }, {
             type: 'postback',
-            label: '4',
-            data: '4'
+                label: '粒子研究紀錄抽卡',
+                data: '粒子研究紀錄抽卡'
         }]
     }
 };
 
 bot.on('postback', function (event) {
+    let a = event.source.userId;
+    let b = '';
+    event.source.profile().then(function (profile) {
+        b = profile.displayName;
+    });
     var myResult = event.postback.data;
     if (myResult != '') {
-        event.reply('C8763');
+        var msg = re.parseInput(event.rplyToken, myResult, a, b);
+        event.reply(msg);
     }
 });
 
@@ -79,7 +85,7 @@ let a = event.source.userId;
 	
 	
 event.source.profile().then(function (profile) {
-b=profile.displayName;
+    b = profile.displayName;
 //Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
 if(battle==1){
 if(event.message.text=='戰鬥模式關閉'){
