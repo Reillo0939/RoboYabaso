@@ -59,15 +59,18 @@ var myLineTemplate = {
 
 bot.on('postback', function (event) {
     let a = event.source.userId;
-    let b = '';
+    var b = '';
     event.source.profile().then(function (profile) {
         b = profile.displayName;
-    });
-    var myResult = event.postback.data;
+ var myResult = event.postback.data;
     if (myResult != '') {
         var msg = re.parseInput(event.rplyToken, myResult, a, b);
         event.reply(msg);
-    }
+}
+
+    });
+   
+    
 });
 
 
