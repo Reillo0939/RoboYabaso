@@ -6,7 +6,7 @@ var ba = require('./roll/battle.js');
 var re = require('./roll/analytics.js');
 var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
 var channelSecret = process.env.LINE_CHANNEL_SECRET;
-var linebot = require('linebot');///030
+var linebot = require('linebot');
  var channelId='1567989750';
 var bot = linebot({
   channelId: channelId,
@@ -29,6 +29,37 @@ var battle=0;
 var a=0;
 ox.oz();
 ox.CK();
+
+
+var myLineTemplate = {
+    type: 'template',
+    altText: '測試',
+    template: {
+        type: 'buttons',
+        text: '測試',
+        actions: [{
+            type: 'postback',
+            label: '1',
+            data: '1'
+        }, {
+            type: 'postback',
+            label: '2',
+            data: '2'
+        }, {
+            type: 'postback',
+            label: '3',
+            data: '3'
+        }, {
+            type: 'postback',
+            label: '4',
+            data: '4'
+        }]
+    }
+};
+
+
+
+
 /*setInterval(function(){
     var userId = 'Ca8fea1f8ef1ef2519860ee21fb740fd2';
     var sendMsg = a.toString(10);
@@ -88,6 +119,10 @@ event.reply([{
   { type: 'text', text: '蓋爾奇亞聯合是研究β粒子的聯合陣營，\n研究成果是，\nβ粒子成為了新的能源，\n科技水平大幅的提升，\n使得聯合外的部分國家互相簽定了人才技術互通協約。\n後來研究也有了新的突破，\nβ粒子不再局限於能源，\n研究團隊瞭解到了其擁有改變4維空間的能力，\n並嘗試以人為控制來改變3維空間，\n經歷了許多次的失敗，\n建構出了現今的魔術系統。' }]
 	   );
 }
+    if (event.message.text == '???') {
+        msg = myLineTemplate;
+    }
+
 		 event.reply(msg);
 	}
 if(event.message.text=='重新載入'){
