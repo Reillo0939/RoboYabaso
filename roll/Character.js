@@ -75,6 +75,14 @@ var testaa;
 var end = [];
 var SKILLS = [];
 var cat, re, ccN;
+function loadsst(kk) {
+    var xas = Characters[14][0];
+    var abg = JSON.parse(xas);
+    testaa = JSON.stringify(abg[kk]);
+    
+    rply.text = testaa;
+    return rply;
+}
 function test(id,kk) {
 
     for (var tt = 1; tt < Characters.length; tt++) {
@@ -129,7 +137,7 @@ function test(id,kk) {
             save.Skills[2] = Askill[2];
             save.Skills[3] = Askill[3];
             save.Skills[4] = Askill[4];
-        end[tt] = save;
+        end[tt-1] = save;
         
     }
     fs.readFile('client_secret.json', function processClientSecrets(err, content) {
@@ -654,7 +662,8 @@ module.exports = {
 	CV:CV,
 	CI:CI,
 	CCN:CCN,
-	CCL:CCL
+    CCL: CCL,
+    loadsst:loadsst
 	//CSG:CSG
 };
 
