@@ -99,6 +99,7 @@ function test(id) {
             save.Ice = Number(Characters[tt][13]);
             save.Control = Number(Characters[tt][14]);
             rply.text = JSON.stringify(save);
+            return rply;
         }
     }
 
