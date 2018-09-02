@@ -77,9 +77,8 @@ var SKILLS = [];
 var cat, re, ccN;
 function loadsst(kk) {
     var abg = Characters[14][0];
-    testaa = JSON.stringify(abg[kk]);
     console.log(abg);
-    rply.text = abg;
+    rply.text = abg[kk];
     return rply;
 }
 function test(id,kk) {
