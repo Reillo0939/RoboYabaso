@@ -147,7 +147,7 @@ function test(id,kk) {
 function gar(auth) {
     var leng = 15;
     var values = [
-        testaa],
+        testaa
     ];
     console.log('test OK');
     var range = 'Character!A' + leng;
