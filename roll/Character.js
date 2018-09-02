@@ -73,7 +73,7 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 var Characters = [];
 var SKILLS = [];
 var cat, re, ccN;
-function test(id) {
+function test(id,kk) {
  var end = [];
     for (var tt = 0; tt < Characters.length; tt++) {
         var save = {};
@@ -130,7 +130,7 @@ function test(id) {
         end[tt] = save;
         
     }
-    rply.text = JSON.stringify(end);
+    rply.text = JSON.stringify(end[kk]);
     return rply;
 
 
