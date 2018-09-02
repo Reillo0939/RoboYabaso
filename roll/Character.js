@@ -78,8 +78,8 @@ var cat, re, ccN;
 function loadsst(kk) {
     var abg = Characters[14][0];
     testaa = JSON.stringify(abg[kk]);
-    
-    rply.text = testaa;
+    console.log(abg);
+    rply.text = abg;
     return rply;
 }
 function test(id,kk) {
