@@ -85,7 +85,7 @@ function loadsst(kk) {
 }
 function test(id,kk) {
 
-    for (var tt = 1; tt < 10; tt++) {
+    for (var tt = 1; tt < 8; tt++) {
         var save = {};
             save.ID = Characters[tt][0];
             save.Name = Characters[tt][1];
@@ -140,6 +140,10 @@ function test(id,kk) {
         end[tt-1] = save;
         
     }
+    testaa = JSON.stringify(end);
+    testaa = testaa.replace(/"([^"]*)"/g, "'$1'");
+    rply.text = testaa;
+    return rply;
     fs.readFile('client_secret.json', function processClientSecrets(err, content) {
         if (err) {
             console.log('Error loading client secret file: ' + err);
@@ -147,10 +151,7 @@ function test(id,kk) {
         }
         authorize(JSON.parse(content), gar);
     });
-     testaa = JSON.stringify(end);
-    testaa = testaa.replace(/"([^"]*)"/g, "'$1'");
-    rply.text = testaa;
-    return rply;
+     
 }
 function gar(auth) {
     var leng = 15;
