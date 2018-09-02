@@ -98,7 +98,7 @@ function test(id) {
             save.Thunder = Number(Characters[tt][12]);
             save.Ice = Number(Characters[tt][13]);
             save.Control = Number(Characters[tt][14]);
-            var WMK = Number(Characters[tt][19]);
+            var WMK = Characters[tt][19];
             var WV = WMK.split(','); 
             save.Weaponry.Name = WV[5];//武器名稱
             if (WV[0] == 1) save.Weaponry.Type = '手槍';
