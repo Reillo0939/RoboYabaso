@@ -76,7 +76,8 @@ var end = [];
 var SKILLS = [];
 var cat, re, ccN;
 function loadsst(kk) {
-    var abg = Characters[14][0];
+    var abg = [];
+   abg = Characters[14][0];
     console.log(abg);
     rply.text = abg[kk];
     return rply;
