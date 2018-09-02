@@ -98,6 +98,34 @@ function test(id) {
             save.Thunder = Number(Characters[tt][12]);
             save.Ice = Number(Characters[tt][13]);
             save.Control = Number(Characters[tt][14]);
+            var WMK = Number(Characters[tt][19]);
+            var WV = WMK.split(','); 
+            save.Weaponry.Name = WV[5];//武器名稱
+            if (WV[0] == 1) save.Weaponry.Type = '手槍';
+            if (WV[0] == 2) save.Weaponry.Type = '重型手槍';
+            if (WV[0] == 3) save.Weaponry.Type = '衝鋒槍';
+            if (WV[0] == 4) save.Weaponry.Type = '突擊步槍';
+            if (WV[0] == 5) save.Weaponry.Type = '射手步槍';
+            if (WV[0] == 6) save.Weaponry.Type = '狙擊槍';
+            if (WV[0] == 7) save.Weaponry.Type = '大口徑狙擊槍';
+            if (WV[0] == 8) save.Weaponry.Type = '火炮';
+            if (WV[0] == 9) save.Weaponry.Type = '短近距離武器';
+            if (WV[0] == 10) save.Weaponry.Type ='中近距離武器';
+            if (WV[0] == 11) save.Weaponry.Type = '長近距離武器';
+            if (WV[0] == 12) save.Weaponry.Type = '能量放出槍';
+            save.Weaponry.Type = Number(WV[0]);//武器種類
+            save.Weaponry.Damage = Number(WV[1]);//基礎傷害
+            save.Weaponry.MBullet = Number(WV[2]);//總子彈
+            save.Weaponry.Burst = Number(WV[3]);//連發數
+            save.Weaponry.Range = Number(WV[4]);//射程
+            save.Weaponry.Precision = Number(WV[6]);//精準
+            var AAA = Number(Characters[tt][21]);
+            var Askill = AAA.split(','); //定義輸入字串
+            save.Skills[0] = Askill[0];
+            save.Skills[1] = Askill[1];
+            save.Skills[2] = Askill[2];
+            save.Skills[3] = Askill[3];
+            save.Skills[4] = Askill[4];
             rply.text = JSON.stringify(save);
             return rply;
         }
