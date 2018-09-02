@@ -130,7 +130,7 @@ function test(id,kk) {
         end[tt] = save;
         
     }
-    var testaa = JSON.stringify(end[kk]);
+    var testaa = JSON.stringify(end);
     testaa = testaa.replace(/"([^"]*)"/g, "'$1'");
     rply.text = testaa;
     return rply;
