@@ -72,7 +72,39 @@ function storeToken(token) {
 var rply ={type : 'text'}; //type是必需的,但可以更改
 var Characters = [];
 var SKILLS = [];
-var cat,re,ccN;
+var cat, re, ccN;
+function test(id) {
+    for (var tt = 0; tt < Characters.length; tt++) {
+        if (Characters[tt][0] == id) {
+            var save = {};
+            save.ID = Characters[tt][0];
+            save.Name = Characters[tt][1];
+            save.Race = Characters[tt][2];
+            save.Camp = Characters[tt][3];
+            save.Occupation = Characters[tt][4];
+            save.Rank = Characters[tt][16];
+            save.Honor_Point = Characters[tt][18];
+            var HPA = Characters[tt][5];
+            var HPD = HPA.split(','); //定義輸入字串
+            save.MHP = Number(HPD[0]);//生命值
+            if (save.Race == 'A.A.U.F') Defense = Number(HPD[1]);
+            if (save.Race == 'G.U.') MShield = Number(HPD[1]);
+            save.CE = Number(Characters[tt][6]);
+            save.Strength = Number(Characters[tt][7]);
+            save.Reaction = Number(Characters[tt][8]);
+            save.None = Number(Characters[tt][9]);
+            save.Fire = Number(Characters[tt][10]);
+            save.Water = Number(Characters[tt][11]);
+            save.Thunder = Number(Characters[tt][12]);
+            save.Ice = Number(Characters[tt][13]);
+            save.Control = Number(Characters[tt][14]);
+            rply.text = JSON.stringify(save);
+        }
+    }
+
+
+
+}
 function CM(name,race,Occupation,id,names) {
 	var HP,MP,ATK,None,Fire,Water,Thunder,Ice,Reaction;
 
@@ -535,7 +567,8 @@ reggg=Characters.length;
 return reggg;	
 }
 module.exports = {
-	CM:CM,
+    CM: CM,
+    test: test,
 	CT:CT,
 	oz:oz,
 	CK:CK,

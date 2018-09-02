@@ -49,7 +49,8 @@ function parseInput(rplyToken, inputStr, id,name) {
 	if (trigger.match(/查詢/)!= null) return exports.Character.CI(name,mainMsg[1]) ;
 	if (trigger.match(/改名/)!= null) return exports.Character.CCN(id,name,mainMsg[1]) ;
 	if (trigger.match(/列表/)!= null) return exports.Character.CCL() ;
-	if (trigger.match(/技能/)!= null) return exports.Character.CKSV(id,name) ;
+        if (trigger.match(/技能/) != null) return exports.Character.CKSV(id, name);
+        if (trigger.match(/轉換/) != null) return exports.Character.test(id);
 	}
 	
 	if (trigger.match(/武器/) != null){
