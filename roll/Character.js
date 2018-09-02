@@ -71,10 +71,12 @@ function storeToken(token) {
 //-------------------------------------------------------------------------------------------------------------------------------
 var rply ={type : 'text'}; //type是必需的,但可以更改
 var Characters = [];
+var testaa;
+var end = [];
 var SKILLS = [];
 var cat, re, ccN;
 function test(id,kk) {
- var end = [];
+
     for (var tt = 1; tt < Characters.length; tt++) {
         var save = {};
             save.ID = Characters[tt][0];
@@ -130,13 +132,49 @@ function test(id,kk) {
         end[tt] = save;
         
     }
-    var testaa = JSON.stringify(end);
+    fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+        if (err) {
+            console.log('Error loading client secret file: ' + err);
+            return;
+        }
+        authorize(JSON.parse(content), gar);
+    });
+     testaa = JSON.stringify(end);
     testaa = testaa.replace(/"([^"]*)"/g, "'$1'");
     rply.text = testaa;
     return rply;
-
-
 }
+function gar(auth) {
+    var leng = 15;
+    var values = [
+        testaa],
+    ];
+    console.log('test OK');
+    var range = 'Character!A' + leng;
+    var body = {
+        values: values
+    };
+    var request = {
+        spreadsheetId: mySheetId,
+        range: range,
+        valueInputOption: 'RAW',
+        resource: {
+            values: values
+        },
+
+        auth: auth,
+    };
+
+    sheets.spreadsheets.values.update(request, function (err, result) {
+        if (err) {
+            // Handle error
+            console.log(err);
+        } else {
+            console.log('%d cells updated.', result.updatedCells);
+        }
+    });
+}
+
 function CM(name,race,Occupation,id,names) {
 	var HP,MP,ATK,None,Fire,Water,Thunder,Ice,Reaction;
 
