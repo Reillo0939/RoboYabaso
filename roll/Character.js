@@ -76,8 +76,7 @@ var end = [];
 var SKILLS = [];
 var cat, re, ccN;
 function loadsst(kk) {
-    var xas = Characters[14][0];
-    var abg = JSON.parse(xas);
+    var abg = Characters[14][0];
     testaa = JSON.stringify(abg[kk]);
     
     rply.text = testaa;
@@ -85,7 +84,7 @@ function loadsst(kk) {
 }
 function test(id,kk) {
 
-    for (var tt = 1; tt < 8; tt++) {
+    for (var tt = 1; tt < 9; tt++) {
         var save = {};
             save.ID = Characters[tt][0];
             save.Name = Characters[tt][1];
