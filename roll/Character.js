@@ -77,7 +77,6 @@ var SKILLS = [];
 var cat, re, ccN;
 function loadsst(kk) {
     var abg = Characters[14][0];
-    abg = abg.replace(/'([^']*)'/g, '"$1"');
     testaa = JSON.stringify(abg[kk]);
     
     rply.text = testaa;
@@ -141,7 +140,7 @@ function test(id,kk) {
         
     }
     testaa = JSON.stringify(end);
-    testaa = testaa.replace(/"([^"]*)"/g, "'$1'");
+    //testaa = testaa.replace(/"([^"]*)"/g, "'$1'");
     fs.readFile('client_secret.json', function processClientSecrets(err, content) {
         if (err) {
             console.log('Error loading client secret file: ' + err);
