@@ -77,7 +77,7 @@ var SKILLS = [];
 var cat, re, ccN;
 function loadsst(kk) {
     var abg = Characters[14][0];
-    abg = JSON.parse(abg.toString());
+    abg = abg.replace(/'([^']*)'/g, '"$1"');
     testaa = JSON.stringify(abg[kk]);
     
     rply.text = testaa;
