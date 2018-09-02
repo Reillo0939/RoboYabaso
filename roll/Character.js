@@ -142,8 +142,6 @@ function test(id,kk) {
     }
     testaa = JSON.stringify(end);
     testaa = testaa.replace(/"([^"]*)"/g, "'$1'");
-    rply.text = testaa;
-    return rply;
     fs.readFile('client_secret.json', function processClientSecrets(err, content) {
         if (err) {
             console.log('Error loading client secret file: ' + err);
