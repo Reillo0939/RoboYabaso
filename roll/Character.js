@@ -74,9 +74,9 @@ var Characters = [];
 var SKILLS = [];
 var cat, re, ccN;
 function test(id) {
+ var end = [];
     for (var tt = 0; tt < Characters.length; tt++) {
-        if (Characters[tt][0] == id) {
-            var save = {};
+        save = {};
             save.ID = Characters[tt][0];
             save.Name = Characters[tt][1];
             save.Race = Characters[tt][2];
@@ -114,7 +114,6 @@ function test(id) {
             if (WV[0] == 10) save.Weaponry.Type ='中近距離武器';
             if (WV[0] == 11) save.Weaponry.Type = '長近距離武器';
             if (WV[0] == 12) save.Weaponry.Type = '能量放出槍';
-            save.Weaponry.Type = Number(WV[0]);//武器種類
             save.Weaponry.Damage = Number(WV[1]);//基礎傷害
             save.Weaponry.MBullet = Number(WV[2]);//總子彈
             save.Weaponry.Burst = Number(WV[3]);//連發數
@@ -128,11 +127,11 @@ function test(id) {
             save.Skills[2] = Askill[2];
             save.Skills[3] = Askill[3];
             save.Skills[4] = Askill[4];
-            rply.text = JSON.stringify(save);
-            return rply;
-        }
+        end[tt] = save;
+        
     }
-
+    rply.text = JSON.stringify(end);
+    return rply;
 
 
 }
