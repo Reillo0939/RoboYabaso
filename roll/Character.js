@@ -100,6 +100,7 @@ function test(id) {
             save.Control = Number(Characters[tt][14]);
             var WMK = Characters[tt][19];
             var WV = WMK.split(','); 
+            save.Weaponry = {};
             save.Weaponry.Name = WV[5];//武器名稱
             if (WV[0] == 1) save.Weaponry.Type = '手槍';
             if (WV[0] == 2) save.Weaponry.Type = '重型手槍';
@@ -121,6 +122,7 @@ function test(id) {
             save.Weaponry.Precision = Number(WV[6]);//精準
             var AAA = Number(Characters[tt][21]);
             var Askill = AAA.split(','); //定義輸入字串
+            save.Skills = [];
             save.Skills[0] = Askill[0];
             save.Skills[1] = Askill[1];
             save.Skills[2] = Askill[2];
