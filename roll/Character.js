@@ -120,7 +120,7 @@ function test(id) {
             save.Weaponry.Burst = Number(WV[3]);//連發數
             save.Weaponry.Range = Number(WV[4]);//射程
             save.Weaponry.Precision = Number(WV[6]);//精準
-            var AAA = Number(Characters[tt][21]);
+            var AAA = Characters[tt][21];
             var Askill = AAA.split(','); //定義輸入字串
             save.Skills = [];
             save.Skills[0] = Askill[0];
