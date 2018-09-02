@@ -76,7 +76,7 @@ var cat, re, ccN;
 function test(id) {
  var end = [];
     for (var tt = 0; tt < Characters.length; tt++) {
-        save = {};
+        var save = {};
             save.ID = Characters[tt][0];
             save.Name = Characters[tt][1];
             save.Race = Characters[tt][2];
