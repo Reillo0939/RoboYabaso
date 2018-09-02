@@ -75,7 +75,7 @@ var SKILLS = [];
 var cat, re, ccN;
 function test(id,kk) {
  var end = [];
-    for (var tt = 0; tt < Characters.length; tt++) {
+    for (var tt = 1; tt < Characters.length; tt++) {
         var save = {};
             save.ID = Characters[tt][0];
             save.Name = Characters[tt][1];
@@ -130,7 +130,7 @@ function test(id,kk) {
         end[tt] = save;
         
     }
-    rply.text = JSON.stringify(end[kk]);
+    rply.text = JSON.stringify(end[kk].replace(/"([^"]*)"/g, "'$1'"););
     return rply;
 
 
