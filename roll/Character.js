@@ -85,7 +85,7 @@ function loadsst(kk) {
 }
 function test(id,kk) {
 
-    for (var tt = 1; tt < Characters.length; tt++) {
+    for (var tt = 1; tt < 10; tt++) {
         var save = {};
             save.ID = Characters[tt][0];
             save.Name = Characters[tt][1];
