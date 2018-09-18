@@ -3,9 +3,7 @@ var funny = require('./funny.js');
 var rply ={type : 'text'}; //type是必需的,但可以更改
 
 function Help() {
-rply.text ='【夢之領域BOT】v0.9.0' +
-'\n 輸入87'+
-'\n  -效果不明 '+
+rply.text ='【夢之領域BOT】v0.9.7.1' +
 '\n 卡池資訊'+
 '\n  -查看本周卡池的資訊與抽卡方式'+
 '\n 卡片查詢 卡片id  '+
