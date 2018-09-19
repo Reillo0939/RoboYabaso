@@ -27,7 +27,7 @@ var cat='';
 var input='';
 var battle=0;
 var a=0;
-ox.oz();
+//ox.oz();
 ox.CK();
 
 
