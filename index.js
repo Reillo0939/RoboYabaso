@@ -122,7 +122,7 @@ event.reply([{
   originalContentUrl: 'https://2.bp.blogspot.com/-b7JvOc_z2SU/WqfgwGgmylI/AAAAAAAADJI/k1rhP5ERtycFl6D4OqCEip1ShubvAbedgCLcBGAs/s1600/AAUF.jpg',
   previewImageUrl: 'https://2.bp.blogspot.com/-b7JvOc_z2SU/WqfgwGgmylI/AAAAAAAADJI/k1rhP5ERtycFl6D4OqCEip1ShubvAbedgCLcBGAs/s1600/AAUF.jpg'
 },
-  { type: 'text', text: '武裝裝甲聯合戰線是由數個高發展高技術的國家，\n以人才技術互通協約所產生的武裝研究機關。\n原本目標是將粒子的能源替代性發揮到最大，\n以此將近乎停滯的科技水平再次提高，\n在擁有近乎無限可能的新型能源下，\n研究的進展相當快速，\n操作員的篩選和培訓也非常樂觀，\n最終，\n結合粒子糾纏現象和AI輔助演算的具現化系統也成功運行，\n武裝裝甲聯合戰線也在CAC系統發表的那一天，\n正式成立。' }]);
+  { type: 'text', text: '武裝裝甲聯合戰線是由數個高發展高技術的國家，\n以人才技術互通協約所產生的武裝研究機關。' }]);
 }
 if(event.message.text=='蓋爾奇亞聯合'){
 event.reply([{
@@ -130,10 +130,10 @@ event.reply([{
   originalContentUrl: 'https://1.bp.blogspot.com/-esavyLGBQ8I/WqfgwIWh0XI/AAAAAAAADJM/ZYR8ZXdjkzgOzGc_VEetoGgtHPEvSbzUwCLcBGAs/s1600/GU.jpg',
   previewImageUrl: 'https://1.bp.blogspot.com/-esavyLGBQ8I/WqfgwIWh0XI/AAAAAAAADJM/ZYR8ZXdjkzgOzGc_VEetoGgtHPEvSbzUwCLcBGAs/s1600/GU.jpg'
 },
-  { type: 'text', text: '蓋爾奇亞聯合是研究β粒子的聯合陣營，\n研究成果是，\nβ粒子成為了新的能源，\n科技水平大幅的提升，\n使得聯合外的部分國家互相簽定了人才技術互通協約。\n後來研究也有了新的突破，\nβ粒子不再局限於能源，\n研究團隊瞭解到了其擁有改變4維空間的能力，\n並嘗試以人為控制來改變3維空間，\n經歷了許多次的失敗，\n建構出了現今的魔術系統。' }]
+  { type: 'text', text: '蓋爾奇亞聯合是研究水晶能量的聯合陣營，與聯合外的部分國家互相簽定了人才技術互通協約。' }]
 	   );
 }
-    if (event.message.text == 'test') {
+    if (event.message.text == '選單') {
         msg = myLineTemplate;
     }
 
