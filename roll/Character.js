@@ -464,7 +464,7 @@ function player_View(id,name) {
 
 function player_Inquire(name,names) {
     for(var fd=0;fd<player.length;fd++){
-        if(Characters[fd].Name==names){
+        if(player[fd].Name==names){
             if (player[fd].Camp == 'A.A.U.F') {
 		        rply.text=
                     '[' + name + ']你所查詢的角色為'+
