@@ -50,7 +50,7 @@ function parseInput(rplyToken, inputStr, id,name) {
 	//if (trigger.match(/改名/)!= null) return exports.Character.CCN(id,name,mainMsg[1]) ;
         if (trigger.match(/技能/) != null) return exports.Character.CKSV(id, name);
         //if (trigger.match(/轉換/) != null) return exports.Character.test(id, mainMsg[1]);
-        if (trigger.match(/測試/) != null) return exports.Character.load_player_info();
+        if (trigger.match(/測試/) != null) return exports.Character.load_player_data();
 	}
 	
 	if (trigger.match(/武器/) != null){

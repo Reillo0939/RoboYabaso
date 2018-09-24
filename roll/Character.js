@@ -71,10 +71,7 @@ function storeToken(token) {
 //-------------------------------------------------------------------------------------------------------------------------------
 var rply ={type : 'text'}; //type是必需的,但可以更改
 var Characters = [];
-
 var player=[];
-
-var testaa;
 var end = [];
 var SKILLS = [];
 var cat, re, ccN;
@@ -88,7 +85,6 @@ function load_player_data() {
         authorize(JSON.parse(content), data_load);
     });
 }
-
 function data_load(auth) {
     sheets.spreadsheets.values.get({
         auth: auth,
@@ -108,7 +104,6 @@ function data_load(auth) {
             
         }
     })
-
 }
 
 function updata_player_data(id,kk) {
