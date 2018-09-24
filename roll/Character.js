@@ -524,9 +524,9 @@ return rply;
 }
 
 function CKSV(id,name) {
-	for(var fd=0;fd<Characters.length;fd++){
-		if(Characters[fd][0]==id){
-			var Askill = Characters[fd][21].split(','); //定義輸入字串
+	for(var fd=0;fd<player.length;fd++){
+		if(player[fd].id==id){
+			var Askill = player[fd].Skills.split(','); //定義輸入字串
 			var CSkill=[];
 			for(var i=0;i<5;i++){
 				for(var aa=0;aa<SKILLS.length;aa++){
@@ -534,8 +534,8 @@ function CKSV(id,name) {
 				}
 			}
 		
-		rply.text=name +' 的角色'+
-'\n['+ Characters[fd][1] +']裝備的技能';
+		rply.text='['+name +']的角色'+
+'\n['+ player[fd].Name +']裝備的技能';
 if(Askill[0]==0)rply.text+='\n沒有裝備任何技能';
 if(Askill[0]!=0)rply.text+='\n技能1: ['+Askill[0]+']'+CSkill[0];
 if(Askill[1]!=0)rply.text+='\n技能2: ['+Askill[1]+']'+CSkill[1];
