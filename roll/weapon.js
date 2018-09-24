@@ -126,8 +126,11 @@ var WMK;
   }
 	}
 
-function weapon_view(id,name) {
-    for (var i = 0; i < Character.player.length;i++){
+function weapon_view(id, name) {
+    console.log(Character.player.length);
+    console.log(Character.player[0].Weaponry.Name);
+    for (var i = 0; i < Character.player.length; i++){
+        
         if (Character.player[i].ID == id) {
             console.log(Character.player[i].ID);
             rply.text = '[' + name + ']';
