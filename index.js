@@ -27,7 +27,7 @@ var cat='';
 var input='';
 var battle=0;
 var a=0;
-Character.load_player_info();
+Character.load_player_data();
 Character.CK();
 
 
