@@ -127,9 +127,9 @@ var WMK;
 	}
 
 function weapon_view(id,name) {
-var WMK;
     for (var i = 0; i < Character.player.length;i++){
-        if (Character.player[i].ID==id){
+        if (Character.player[i].ID == id) {
+            console.log(Character.player[i].ID);
             rply.text = '[' + name + ']';
             rply.text += '\n武器名稱：' + Character.player[i].Weaponry.Name;
             rply.text += '\n武器種類：' + Character.player[i].Weaponry.Type;
