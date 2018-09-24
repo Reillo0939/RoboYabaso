@@ -47,8 +47,8 @@ var myLineTemplate = {
                 data: '武器查看'
         }, {
             type: 'postback',
-                label: '技能查看',
-                data: '技能查看'
+                label: '角色創立說明',
+                data: '角色創立說明'
         }, {
             type: 'postback',
                 label: '粒子研究紀錄抽卡',
@@ -133,7 +133,7 @@ event.reply([{
   { type: 'text', text: '蓋爾奇亞聯合是研究β粒子的聯合陣營，\n研究成果是，\nβ粒子成為了新的能源，\n科技水平大幅的提升，\n使得聯合外的部分國家互相簽定了人才技術互通協約。\n後來研究也有了新的突破，\nβ粒子不再局限於能源，\n研究團隊瞭解到了其擁有改變4維空間的能力，\n並嘗試以人為控制來改變3維空間，\n經歷了許多次的失敗，\n建構出了現今的魔術系統。' }]
 	   );
 }
-    if (event.message.text == '???') {
+    if (event.message.text == 'test') {
         msg = myLineTemplate;
     }
 
