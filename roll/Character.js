@@ -479,7 +479,7 @@ function player_Inquire(name,names) {
                     '\n控制能力:' + player[fd].Control +
                     '\n反應力:' + player[fd].Reaction;
 	        }
-	        if(Characters[fd][3]=='G.U.'){
+            if (player[fd].Camp=='G.U.'){
 	            rply.text=
                     '[' + name + ']你所查詢的角色為' +
                     '\n[' + player[fd].Name + ']  種族:' + player[fd].Race +
