@@ -524,29 +524,24 @@ return rply;
 }
 
 function CKSV(id,name) {
-	for(var fd=0;fd<player.length;fd++){
-		if(player[fd].ID==id){
-			var Askill = player[fd].Skills.split(','); //定義輸入字串
-			var CSkill=[];
-			for(var i=0;i<5;i++){
-				for(var aa=0;aa<SKILLS.length;aa++){
-					if(SKILLS[aa][0]==Askill[i])CSkill[i]=SKILLS[aa][1];
-				}
-			}
-		
-		rply.text='['+name +']的角色'+
-'\n['+ player[fd].Name +']裝備的技能';
-if(Askill[0]==0)rply.text+='\n沒有裝備任何技能';
-if(Askill[0]!=0)rply.text+='\n技能1: ['+Askill[0]+']'+CSkill[0];
-if(Askill[1]!=0)rply.text+='\n技能2: ['+Askill[1]+']'+CSkill[1];
-if(Askill[2]!=0)rply.text+='\n技能3: ['+Askill[2]+']'+CSkill[2];
-if(Askill[3]!=0)rply.text+='\n技能4: ['+Askill[3]+']'+CSkill[3];
-if(Askill[4]!=0)rply.text+='\n技能5: ['+Askill[4]+']'+CSkill[4];
-return rply;	
-}
-}
-	
-
+    for (var fd = 0; fd < player.length; fd++) {
+        if (player[fd].ID == id) {
+            var CSkill = [];
+            for (var i = 0; i < 5; i++) {
+                for (var aa = 0; aa < SKILLS.length; aa++) {
+                    if (SKILLS[aa][0] == player[fd].Skills[i]) CSkill[i] = SKILLS[aa][1];
+                }
+            }
+            rply.text = '[' + name + ']的角色\n[' + player[fd].Name + ']裝備的技能';
+            if (player[fd].Skills[0] == 0) rply.text += '\n沒有裝備任何技能';
+            if (player[fd].Skills[0] != 0) rply.text += '\n[' + player[fd].Skills[0] + ']' + CSkill[0];
+            if (player[fd].Skills[1] != 0) rply.text += '\n[' + player[fd].Skills[1] + ']' + CSkill[1];
+            if (player[fd].Skills[2] != 0) rply.text += '\n[' + player[fd].Skills[2] + ']' + CSkill[2];
+            if (player[fd].Skills[3] != 0) rply.text += '\n[' + player[fd].Skills[3] + ']' + CSkill[3];
+            if (player[fd].Skills[4] != 0) rply.text += '\n[' + player[fd].Skills[4] + ']' + CSkill[4];
+            return rply;
+        }
+    }
 }
 
 function CKR(num) {
