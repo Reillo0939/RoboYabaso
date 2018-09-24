@@ -71,9 +71,9 @@ function storeToken(token) {
 var rply ={type : 'text'}; //type是必需的,但可以更改
 var Characters = [];
 var player=[];
-var end = [];
 var SKILLS = [];
-var cat, re, ccN;
+function get_player_data() { return player; }
+function save_player_data(data) { player = data;}
 //-------------------------------------------------讀取資料-------------------------------------------------
 function load_player_data() {
     fs.readFile('client_secret.json', function processClientSecrets(err, content) {
@@ -608,7 +608,8 @@ function CKS(auth) {
 }
 
 module.exports = {
-    player:player,
+    get_player_data: get_player_data,
+    save_player_data: save_player_data,
     CM: CM,
     updata_player_data: updata_player_data,
     CT: CT,

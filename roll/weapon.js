@@ -127,20 +127,19 @@ var WMK;
 	}
 
 function weapon_view(id, name) {
-    console.log(Character.player.length);
-    console.log(Character.player[0].Weaponry.Name);
-    for (var i = 0; i < Character.player.length; i++){
+    var player = Character.get_player_data();
+    for (var i = 0; i < player.length; i++){
         
-        if (Character.player[i].ID == id) {
-            console.log(Character.player[i].ID);
+        if (player[i].ID == id) {
+            console.log(player[i].ID);
             rply.text = '[' + name + ']';
-            rply.text += '\n武器名稱：' + Character.player[i].Weaponry.Name;
-            rply.text += '\n武器種類：' + Character.player[i].Weaponry.Type;
-            rply.text += '\n基礎傷害：' + Character.player[i].Weaponry.Damage;
-            rply.text += '\n子彈數：' + Character.player[i].Weaponry.MBullet+
-                '\n連發數：' + Character.player[i].Weaponry.Burst;
-            rply.text += '\n射程：' + Character.player[i].Weaponry.Range+
-                '\n精準度：' + Character.player[i].Weaponry.Precision
+            rply.text += '\n武器名稱：' + player[i].Weaponry.Name;
+            rply.text += '\n武器種類：' + player[i].Weaponry.Type;
+            rply.text += '\n基礎傷害：' + player[i].Weaponry.Damage;
+            rply.text += '\n子彈數：' + player[i].Weaponry.MBullet+
+                '\n連發數：' + player[i].Weaponry.Burst;
+            rply.text += '\n射程：' + player[i].Weaponry.Range+
+                '\n精準度：' + player[i].Weaponry.Precision
 						;
 			return rply;
 
