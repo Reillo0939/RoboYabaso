@@ -47,12 +47,12 @@ var myLineTemplate = {
                 data: '武器查看'
         }, {
             type: 'postback',
-                label: '角色創立說明',
-                data: '角色創立說明'
-        }, {
-            type: 'postback',
                 label: '粒子研究紀錄抽卡',
                 data: '粒子研究紀錄抽卡'
+        }, {
+            type: 'postback',
+                label: '粒子研究紀錄10連抽',
+                data: '粒子研究紀錄10連抽'
         }]
     }
 };
