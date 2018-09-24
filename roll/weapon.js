@@ -1,6 +1,4 @@
-var rollbase = require('./rollbase.js');
-var funny = require('./funny.js');
-var ox = require('./Character.js');
+var Character = require('./Character.js');
 var rply ={type : 'text'}; //type是必需的,但可以更改
 
 function weapon_make(id,name,species,Wname) {
@@ -130,43 +128,17 @@ var WMK;
 
 function weapon_view(id,name) {
 var WMK;
-  for(var i=0;i<ox.oL();i++){
-	if(ox.oC(i,0)==id){
-		if(ox.oC(i,19)==0){
-			rply.text='['+name+']'+'你沒有武器';
-			return rply;
-			}
-			WMK=ox.oC(i,19);
-			var WV = WMK.split(','); //定義輸入字串
-			var ww=1,yy=0;
-			yy=15-WV[0]*5;
-			if(yy<=0)yy=0;
-			if(WV[0]==9)yy=10;
-			if(WV[0]==11)yy=-10;
-			ww=Number(Number(WV[1])*0.5+Number(WV[2])*0.2+Number(WV[3])+Number(WV[4])*0.5+Number(WV[6])*0.1)-yy;
-			rply.text='';
-			rply.text='['+name+']';
-			rply.text+='\n武器名稱：'+WV[5];
-			if(WV[0]==1)rply.text+='\n武器種類：手槍';
-			if(WV[0]==2)rply.text+='\n武器種類：重型手槍';
-			if(WV[0]==3)rply.text+='\n武器種類：衝鋒槍';
-			if(WV[0]==4)rply.text+='\n武器種類：突擊步槍';
-			if(WV[0]==5)rply.text+='\n武器種類：射手步槍';
-			if(WV[0]==6)rply.text+='\n武器種類：狙擊槍';
-			if(WV[0]==7)rply.text+='\n武器種類：大口徑狙擊槍';
-			if(WV[0]==8)rply.text+='\n武器種類：火炮';
-			if(WV[0]==9)rply.text+='\n武器種類：短近距離武器';
-			if(WV[0]==10)rply.text+='\n武器種類：中近距離武器';
-			if(WV[0]==11)rply.text+='\n武器種類：長近距離武器';
-			if(WV[0]==12)rply.text+='\n武器種類：能量放出槍';
-			rply.text+= '\n基礎傷害：'+WV[1];
-			if(WV[0]<=8)rply.text+='\n子彈數：'+WV[2]+
-			'\n連發數：'+WV[3];
-			rply.text+=	'\n射程：'+WV[4]+
-						'\n精準度：'+WV[6]+
-						'\n武器重量：'+ww
+    for (var i = 0; i < Character.player.length;i++){
+        if (Character.player[i].ID==id){
+            rply.text = '[' + name + ']';
+            rply.text += '\n武器名稱：' + Character.player[i].Weaponry.Name;
+            rply.text += '\n武器種類：' + Character.player[i].Weaponry.Type;
+            rply.text += '\n基礎傷害：' + Character.player[i].Weaponry.Damage;
+            rply.text += '\n子彈數：' + Character.player[i].Weaponry.MBullet+
+                '\n連發數：' + Character.player[i].Weaponry.Burst;
+            rply.text += '\n射程：' + Character.player[i].Weaponry.Range+
+                '\n精準度：' + Character.player[i].Weaponry.Precision
 						;
-			if(Number(ox.oC(i,7))<ww)rply.text+='\n注意：武器過重'
 			return rply;
 
   }

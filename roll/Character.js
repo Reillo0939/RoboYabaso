@@ -32,7 +32,6 @@ function authorize(credentials, callback) {
     }
   });
 }
-
 function getNewToken(oauth2Client, callback) {
   var authUrl = oauth2Client.generateAuthUrl({
     access_type: 'offline',
@@ -75,7 +74,7 @@ var player=[];
 var end = [];
 var SKILLS = [];
 var cat, re, ccN;
-
+//-------------------------------------------------讀取資料-------------------------------------------------
 function load_player_data() {
     fs.readFile('client_secret.json', function processClientSecrets(err, content) {
         if (err) {
@@ -105,8 +104,8 @@ function data_load(auth) {
         }
     })
 }
-
-function updata_player_data(id,kk) {
+//-------------------------------------------------更新資料-------------------------------------------------
+function updata_player_data() {
     fs.readFile('client_secret.json', function processClientSecrets(err, content) {
         if (err) {
             console.log('Error loading client secret file: ' + err);
@@ -116,12 +115,11 @@ function updata_player_data(id,kk) {
     });
 }
 function player_updata(auth) {
-    var leng = 1;
     var values = [
         [player]
     ];
     console.log('test OK');
-    var range = 'Character!A' + leng;
+    var range = 'Character!A1';
     var body = {
         values: values
     };
@@ -143,7 +141,7 @@ function player_updata(auth) {
         }
     });
 }
-
+//-------------------------------------------------GU創角-------------------------------------------------
 function CM(name,race,Occupation,id,names) {
 	var HP,MP,ATK,None,Fire,Water,Thunder,Ice,Reaction;
 
@@ -291,6 +289,7 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
 });
 return rply;	
 }
+//-------------------------------------------------AAUF創角-------------------------------------------------
 function CT(name,race,Occupation,id,names) {
 	var HP,MP,ATK,Control,Reaction,skills;
 for(var tt=0;tt<Characters.length;tt++){
@@ -421,6 +420,7 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
 
 return rply;	
 }
+//-------------------------------------------------玩家自身情報-------------------------------------------------
 function player_View(id,name) {
 	rply.text= name+' 你沒有角色，如果有遺失請與GM聯絡';
     for(var fd=0;fd<player.length;fd++){
@@ -461,7 +461,7 @@ function player_View(id,name) {
     }
     return rply;	
 }
-
+//-------------------------------------------------玩家查詢-------------------------------------------------
 function player_Inquire(name,names) {
     for(var fd=0;fd<player.length;fd++){
         if(player[fd].Name==names){
@@ -501,22 +501,8 @@ function player_Inquire(name,names) {
     }
     return rply;	
 }
-
-module.exports = {
-    CM: CM,
-    updata_player_data: updata_player_data,
-	CT:CT,
-	CK:CK,
-    Skill_View: Skill_View,
-	CKSV:CKSV,
-	CKR:CKR,
-	player_Inquire:player_Inquire,
-    player_View: player_View,
-    load_player_data: load_player_data
-};
-
+//-------------------------------------------------技能查詢-------------------------------------------------
 function Skill_View(name,num) {
-	
 for(var fd=0;fd<SKILLS.length;fd++){
 if(SKILLS[fd][0]==num){
 	rply.text=
@@ -621,72 +607,15 @@ function CKS(auth) {
 
 }
 
-function gotgpt(auth) {
-var leng=Characters.length;
-	var values = [
-      [Characters[leng-1][0] ,Characters[leng-1][1],Characters[leng-1][2],Characters[leng-1][3]
-      ,Characters[leng-1][4],Characters[leng-1][5],Characters[leng-1][6],Characters[leng-1][7]
-      ,Characters[leng-1][8],Characters[leng-1][9],Characters[leng-1][10],Characters[leng-1][11]
-      ,Characters[leng-1][12],Characters[leng-1][13],Characters[leng-1][14],Characters[leng-1][15],Characters[leng-1][16]
-      ,Characters[leng-1][17],Characters[leng-1][18],Characters[leng-1][19],Characters[leng-1][20],Characters[leng-1][21],],
-];
-	console.log('test OK');
-	var range='Character!A' + leng;
-var body = {
-  values: values
+module.exports = {
+    CM: CM,
+    updata_player_data: updata_player_data,
+    CT: CT,
+    CK: CK,
+    Skill_View: Skill_View,
+    CKSV: CKSV,
+    CKR: CKR,
+    player_Inquire: player_Inquire,
+    player_View: player_View,
+    load_player_data: load_player_data
 };
-	var request = {
-    spreadsheetId: mySheetId,
-        range: range,
-      valueInputOption: 'RAW',
-        resource: {
-      values: values
-    },
-
-    auth: auth,
-  };
-	
-sheets.spreadsheets.values.update(request, function(err, result) {
-  if(err) {
-    // Handle error
-    console.log(err);
-  } else {
-    console.log('%d cells updated.', result.updatedCells);
-  }
-});
-}
-
-function CCCN(auth) {
-var leng=ccN;
-	var values = [
-      [Characters[leng][1],Characters[leng][2],Characters[leng][3]
-      ,Characters[leng][4],Characters[leng][5],Characters[leng][6],Characters[leng][7]
-      ,Characters[leng][8],Characters[leng][9],Characters[leng][10],Characters[leng][11]
-      ,Characters[leng][12],Characters[leng][13],Characters[leng][14],Characters[leng][15],Characters[leng][16],Characters[leng][17],
-	  Characters[leng][18],Characters[leng][19],Characters[leng][20],Characters[leng][21]],
-];
-	console.log('test OK');
-	var range='Character!B' + (leng+1);
-var body = {
-  values: values
-};
-	var request = {
-    spreadsheetId: mySheetId,
-        range: range,
-      valueInputOption: 'RAW',
-        resource: {
-      values: values
-    },
-
-    auth: auth,
-  };
-	
-sheets.spreadsheets.values.update(request, function(err, result) {
-  if(err) {
-    // Handle error
-    console.log(err);
-  } else {
-    console.log('%d cells updated.', result.updatedCells);
-  }
-});
-}
