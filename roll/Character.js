@@ -525,7 +525,7 @@ return rply;
 
 function CKSV(id,name) {
 	for(var fd=0;fd<player.length;fd++){
-		if(player[fd].id==id){
+		if(player[fd].ID==id){
 			var Askill = player[fd].Skills.split(','); //定義輸入字串
 			var CSkill=[];
 			for(var i=0;i<5;i++){
