@@ -1,8 +1,5 @@
 var rollbase = require('./rollbase.js');
-var funny = require('./funny.js');
-var ox = require('./Character.js');
 var rply ={type : 'text'}; //type是必需的,但可以更改
-
 
 function IDCA(id,name) {
 rply.text=name+'為測試人員';//U7c4779fd913aff927f26d7f6bedd87d1  雷洛Uc9b4571605aabd3e94edd7c189144278屬
@@ -12,25 +9,8 @@ return rply;
 }
 
 function MCard(frequency,id,name) {
-	var ggg,ttt;
-	console.log(ox.oL());
-	/*for(var i=0;i<ox.oL();i++){
-		
-	if(ox.oC(i,0)==id){
-		ggg=i;
-		ttt=ox.oC(ggg,17);}
-	}*/
-	/*if(ttt<frequency*100){
-		rply.text=name+'金錢不足：';
-		return rply;
-	}*/
+
 rply.text=name+'抽到了：';
-/*if(id==''){
-for(i=1;i<=frequency;i++){
- SSR();
-}
-}
-else{*/
 for(i=1;i<=frequency;i++){
 let rarity=rollbase.Dice(1000);
 if(rarity>=999)MUR();
@@ -47,8 +27,6 @@ if(rarity>=100)MUR();
 if((rarity>=96) && (rarity<=99))MSSR();
 if(rarity<=95)MSR();
 }
-//}
-//ox.oA(ggg,ttt-frequency*100);
 return rply;
 }
 function MN() {
