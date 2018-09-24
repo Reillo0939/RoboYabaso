@@ -608,6 +608,7 @@ function CKS(auth) {
 }
 
 module.exports = {
+    player:player,
     CM: CM,
     updata_player_data: updata_player_data,
     CT: CT,
