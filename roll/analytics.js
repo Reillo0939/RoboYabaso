@@ -22,7 +22,7 @@ function parseInput(rplyToken, inputStr, id,name) {
 	//console.log('InputStr: ' + inputStr);
 	_isNaN = function(obj) 	{
 	return isNaN(parseInt(obj));  
-	}
+    }
 	
 	let msgSplitor = (/\S+/ig);	
 	let mainMsg = inputStr.match(msgSplitor); //定義輸入字串
@@ -35,7 +35,8 @@ function parseInput(rplyToken, inputStr, id,name) {
 	//if (trigger.match(/87/) != null) return exports.funny.bsMo() ;
 	if (trigger.match(/^粒子研究紀錄抽卡/) != null) return exports.card.MCard(1,id,name) ;//"G.U"抽卡
 	if (trigger.match(/^粒子研究紀錄10連抽/) != null) return exports.card.MCard(9,id,name) ;//"G.U"10連抽
-	
+
+
 	//if (trigger.match(/^卡片查詢$/) != null) return exports.card_help.CardH(mainMsg[1]) ;
 	if (trigger.match(/^卡池資訊$/) != null) return exports.card.ICard() ;
 	
@@ -51,7 +52,7 @@ function parseInput(rplyToken, inputStr, id,name) {
 	if (trigger.match(/列表/)!= null) return exports.Character.CCL() ;
         if (trigger.match(/技能/) != null) return exports.Character.CKSV(id, name);
         //if (trigger.match(/轉換/) != null) return exports.Character.test(id, mainMsg[1]);
-        //if (trigger.match(/測試/) != null) return exports.Character.loadsst(mainMsg[1]);
+        if (trigger.match(/測試/) != null) return exports.Character.load_player_info();
 	}
 	
 	if (trigger.match(/武器/) != null){

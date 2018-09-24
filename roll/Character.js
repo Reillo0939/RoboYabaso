@@ -71,16 +71,47 @@ function storeToken(token) {
 //-------------------------------------------------------------------------------------------------------------------------------
 var rply ={type : 'text'}; //type是必需的,但可以更改
 var Characters = [];
+
+var player=[];
+
 var testaa;
 var end = [];
 var SKILLS = [];
 var cat, re, ccN;
-function loadsst(kk) {
-    var abg = Characters[14][0];
-    abg = JSON.parse(abg);
-    rply.text = JSON.stringify(abg[kk]);
-    return rply;
+
+function load_player_info() {
+    fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+        if (err) {
+            console.log('Error loading client secret file: ' + err);
+            return;
+        }
+        authorize(JSON.parse(content), player_load);
+    });
 }
+
+function player_load(auth) {
+    sheets.spreadsheets.values.get({
+        auth: auth,
+        spreadsheetId: mySheetId,
+        range: 'Character',
+    }, function (err, response) {
+        if (err) {
+            console.log('The API returned an error: ' + err);
+            return;
+        }
+        var rows = response.values;
+        if (rows.length == 0) {
+            console.log('No data found.');
+        } else {
+            player = JSON.parse(rows[0][0]);
+            console.log(JSON.stringify(player));
+            
+        }
+    })
+
+}
+
+
 function test(id,kk) {
 
     for (var tt = 1; tt < 9; tt++) {
@@ -645,7 +676,6 @@ module.exports = {
     CM: CM,
     test: test,
 	CT:CT,
-	oz:oz,
 	CK:CK,
 	CKV:CKV,
 	CKSV:CKSV,
@@ -660,54 +690,11 @@ module.exports = {
 	CI:CI,
 	CCN:CCN,
     CCL: CCL,
-    loadsst:loadsst
+    load_player_info: load_player_info
 	//CSG:CSG
 };
 
-function oz() {
-fs.readFile('client_secret.json', function processClientSecrets(err, content) {
-  if (err) {
-    console.log('Error loading client secret file: ' + err);
-    return;
-  }
-  authorize(JSON.parse(content), tests);
-});
 
-
-}
-function tests(auth) {
- sheets.spreadsheets.values.get({
-    auth: auth,
-    spreadsheetId: mySheetId,
-    range: 'Character',
-  }, function(err, response) {
-    if (err) {
-      console.log('The API returned an error: ' + err);
-      return;
-    }
-    var rows = response.values;
-    if (rows.length == 0) {
-      console.log('No data found.');
-    } else {
-	    Characters.splice(0,100);
-	    cat=rows.length;
-	    for (var i = 0; i < rows.length; i++) {
-	     var row = rows[i];
-	     var Cha=[];
-		for(var j = 0 ; j < 22;j++){
-			if(row[j]!= null){
-	    			Cha[j]=row[j];
-			}
-			else{
-				Cha[j]='0';
-			}
-		}
-		    Characters[i]=Cha;
-	    }
-	    
-    }})
-
-}
 
 function CKV(name,num) {
 	
