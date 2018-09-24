@@ -104,7 +104,7 @@ function player_load(auth) {
             console.log('No data found.');
         } else {
             player = JSON.parse(rows[0][0]);
-            console.log(JSON.stringify(player));
+           // console.log(JSON.stringify(player));
             
         }
     })
@@ -496,46 +496,41 @@ return rply;
 }
 function CV(id,name) {
 	rply.text= name+' 你沒有角色，如果有遺失請與GM聯絡';
-for(var fd=0;fd<Characters.length;fd++){
-if(Characters[fd][0]==id){
-	 console.log('IN');
-	 var HPA=Characters[fd][5];
-		var HPD = HPA.split(','); //定義輸入字串
-	if(Characters[fd][3]=='A.A.U.F'){
+for(var fd=0;fd<player.length;fd++){
+if(player[fd].ID==id){
+	if(player[fd].Camp=='A.A.U.F'){
 		
 		rply.text=
-name +' 的角色'+
-'\n['+ Characters[fd][1] +']  種族:' +Characters[fd][2] +
-'\n職業:' + Characters[fd][4] +
-'\n軍階:'+  Characters[fd][16]	+
-'\n榮譽值:'+Characters[fd][18]+
-'\n生命值:'+ HPD[0] +
-'\n護甲:'+ HPD[1] +
-'\nCE儲存量:'+ Characters[fd][6] +
-'\n耐重量:'+ Characters[fd][7] +
-'\n控制能力:'+ Characters[fd][14] +
-'\n反應力:'+ Characters[fd][8] +
-'\n持有金幣: '+  Characters[fd][17]	
+    '['+name+']的角色'+
+    '\n['+ player[fd].Name +']  種族:' +player[fd].Race +
+    '\n職業:' + player[fd].Occupation +
+    '\n軍階:'+  player[fd].Rank	+
+    '\n榮譽值:' + player[fd].Honor_Point+
+    '\n生命值:' + player[fd].MHP +
+    '\n護甲:' + player[fd].Defense +
+    '\nCE儲存量:'+ player[fd].CE +
+    '\n耐重量:' + player[fd].Strength +
+    '\n控制能力:' + player[fd].Control +
+    '\n反應力:' + player[fd].Reaction 
 ;
 	}
-	if(Characters[fd][3]=='G.U.'){
+    if (player[fd].Camp =='G.U.'){
 	rply.text=
-name +' 的角色'+
-'\n['+ Characters[fd][1] +']  種族:' +Characters[fd][2] +
-'\n職業:' + Characters[fd][4] +
-'\n軍階:'+  Characters[fd][16]	+
-'\n榮譽值:'+Characters[fd][18]+
-'\n生命值:'+ HPD[0] +
-'\n護盾:'+ HPD[1] +
-'\nCE儲存量:'+ Characters[fd][6] +
-'\n耐重量:'+ Characters[fd][7] +
-'\n反應力:'+ Characters[fd][8] +
-'\n放出適性:'+ Characters[fd][9] +
-'\n火屬適性:'+ Characters[fd][10] +
-'\n水屬適性:'+ Characters[fd][11] +
-'\n雷屬適性:'+ Characters[fd][12] +
-'\n冰屬適性:'+ Characters[fd][13] +
-'\n持有金幣: '+  Characters[fd][17]	
+    '[' + name + ']的角色' +
+    '\n[' + player[fd].Name + ']  種族:' + player[fd].Race +
+    '\n職業:' + player[fd].Occupation +
+    '\n軍階:' + player[fd].Rank +
+    '\n榮譽值:' + player[fd].Honor_Point +
+    '\n生命值:' + player[fd].MHP +
+    '\n護盾:' + player[fd].MShield +
+     '\nCE儲存量:' + player[fd].CE +
+    '\n耐重量:' + player[fd].Strength +
+    '\n反應力:' + player[fd].Reaction +
+    '\n放出適性:' + player[fd].None +
+    '\n火屬適性:' + player[fd].Fire +
+    '\n水屬適性:' + player[fd].Water +
+    '\n雷屬適性:' + player[fd].Thunder +
+    '\n冰屬適性:' + player[fd].Ice	
 ;
 	}
 }
