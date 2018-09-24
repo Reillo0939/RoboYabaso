@@ -79,17 +79,17 @@ var end = [];
 var SKILLS = [];
 var cat, re, ccN;
 
-function load_player_info() {
+function load_player_data() {
     fs.readFile('client_secret.json', function processClientSecrets(err, content) {
         if (err) {
             console.log('Error loading client secret file: ' + err);
             return;
         }
-        authorize(JSON.parse(content), player_load);
+        authorize(JSON.parse(content), data_load);
     });
 }
 
-function player_load(auth) {
+function data_load(auth) {
     sheets.spreadsheets.values.get({
         auth: auth,
         spreadsheetId: mySheetId,
@@ -111,79 +111,19 @@ function player_load(auth) {
 
 }
 
-
-function test(id,kk) {
-
-    for (var tt = 1; tt < 9; tt++) {
-        var save = {};
-            save.ID = Characters[tt][0];
-            save.Name = Characters[tt][1];
-            save.Race = Characters[tt][2];
-            save.Camp = Characters[tt][3];
-            save.Occupation = Characters[tt][4];
-            save.Rank = Characters[tt][16];
-            save.Honor_Point = Characters[tt][18];
-            var HPA = Characters[tt][5];
-            var HPD = HPA.split(','); //定義輸入字串
-            save.MHP = Number(HPD[0]);//生命值
-            if (save.Race == 'A.A.U.F') Defense = Number(HPD[1]);
-            if (save.Race == 'G.U.') MShield = Number(HPD[1]);
-            save.CE = Number(Characters[tt][6]);
-            save.Strength = Number(Characters[tt][7]);
-            save.Reaction = Number(Characters[tt][8]);
-            save.None = Number(Characters[tt][9]);
-            save.Fire = Number(Characters[tt][10]);
-            save.Water = Number(Characters[tt][11]);
-            save.Thunder = Number(Characters[tt][12]);
-            save.Ice = Number(Characters[tt][13]);
-            save.Control = Number(Characters[tt][14]);
-            var WMK = Characters[tt][19];
-            var WV = WMK.split(','); 
-            save.Weaponry = {};
-            save.Weaponry.Name = WV[5];//武器名稱
-            if (WV[0] == 1) save.Weaponry.Type = '手槍';
-            if (WV[0] == 2) save.Weaponry.Type = '重型手槍';
-            if (WV[0] == 3) save.Weaponry.Type = '衝鋒槍';
-            if (WV[0] == 4) save.Weaponry.Type = '突擊步槍';
-            if (WV[0] == 5) save.Weaponry.Type = '射手步槍';
-            if (WV[0] == 6) save.Weaponry.Type = '狙擊槍';
-            if (WV[0] == 7) save.Weaponry.Type = '大口徑狙擊槍';
-            if (WV[0] == 8) save.Weaponry.Type = '火炮';
-            if (WV[0] == 9) save.Weaponry.Type = '短近距離武器';
-            if (WV[0] == 10) save.Weaponry.Type ='中近距離武器';
-            if (WV[0] == 11) save.Weaponry.Type = '長近距離武器';
-            if (WV[0] == 12) save.Weaponry.Type = '能量放出槍';
-            save.Weaponry.Damage = Number(WV[1]);//基礎傷害
-            save.Weaponry.MBullet = Number(WV[2]);//總子彈
-            save.Weaponry.Burst = Number(WV[3]);//連發數
-            save.Weaponry.Range = Number(WV[4]);//射程
-            save.Weaponry.Precision = Number(WV[6]);//精準
-            var AAA = Characters[tt][21];
-            var Askill = AAA.split(','); //定義輸入字串
-            save.Skills = [];
-            save.Skills[0] = Askill[0];
-            save.Skills[1] = Askill[1];
-            save.Skills[2] = Askill[2];
-            save.Skills[3] = Askill[3];
-            save.Skills[4] = Askill[4];
-        end[tt-1] = save;
-        
-    }
-    testaa = JSON.stringify(end);
-    //testaa = testaa.replace(/"([^"]*)"/g, "'$1'");
+function updata_player_data(id,kk) {
     fs.readFile('client_secret.json', function processClientSecrets(err, content) {
         if (err) {
             console.log('Error loading client secret file: ' + err);
             return;
         }
-        authorize(JSON.parse(content), gar);
+        authorize(JSON.parse(content), player_updata);
     });
-     
 }
-function gar(auth) {
-    var leng = 15;
+function player_updata(auth) {
+    var leng = 1;
     var values = [
-        [testaa]
+        [player]
     ];
     console.log('test OK');
     var range = 'Character!A' + leng;
@@ -197,10 +137,8 @@ function gar(auth) {
         resource: {
             values: values
         },
-
         auth: auth,
-    };
-
+    }
     sheets.spreadsheets.values.update(request, function (err, result) {
         if (err) {
             // Handle error
@@ -438,12 +376,6 @@ for(var i=0;i<=65;i++){
 	if(x==3)Control++;
 }
 
-
-
-
-
-
-
 rply.text=
 '['+ name +']  種族:' +race +
 '\n兵種:  ' + Occupation +
@@ -494,204 +426,101 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
 
 return rply;	
 }
-function CV(id,name) {
+function player_View(id,name) {
 	rply.text= name+' 你沒有角色，如果有遺失請與GM聯絡';
-for(var fd=0;fd<player.length;fd++){
-if(player[fd].ID==id){
-	if(player[fd].Camp=='A.A.U.F'){
-		
-		rply.text=
-    '['+name+']的角色'+
-    '\n['+ player[fd].Name +']  種族:' +player[fd].Race +
-    '\n職業:' + player[fd].Occupation +
-    '\n軍階:'+  player[fd].Rank	+
-    '\n榮譽值:' + player[fd].Honor_Point+
-    '\n生命值:' + player[fd].MHP +
-    '\n護甲:' + player[fd].Defense +
-    '\nCE儲存量:'+ player[fd].CE +
-    '\n耐重量:' + player[fd].Strength +
-    '\n控制能力:' + player[fd].Control +
-    '\n反應力:' + player[fd].Reaction 
-;
-	}
-    if (player[fd].Camp =='G.U.'){
-	rply.text=
-    '[' + name + ']的角色' +
-    '\n[' + player[fd].Name + ']  種族:' + player[fd].Race +
-    '\n職業:' + player[fd].Occupation +
-    '\n軍階:' + player[fd].Rank +
-    '\n榮譽值:' + player[fd].Honor_Point +
-    '\n生命值:' + player[fd].MHP +
-    '\n護盾:' + player[fd].MShield +
-     '\nCE儲存量:' + player[fd].CE +
-    '\n耐重量:' + player[fd].Strength +
-    '\n反應力:' + player[fd].Reaction +
-    '\n放出適性:' + player[fd].None +
-    '\n火屬適性:' + player[fd].Fire +
-    '\n水屬適性:' + player[fd].Water +
-    '\n雷屬適性:' + player[fd].Thunder +
-    '\n冰屬適性:' + player[fd].Ice	
-;
-	}
-}
-}
-return rply;	
-}
-function CI(name,names) {
-	
-for(var fd=0;fd<Characters.length;fd++){
-if(Characters[fd][1]==names){
-	 console.log('IN');
-	 	 var HPA=Characters[fd][5];
-		var HPD = HPA.split(','); //定義輸入字串
-	if(Characters[fd][3]=='A.A.U.F'){
-		rply.text=
-name +' 我找到的角色是'+
-'\n['+ Characters[fd][1] +']  種族:' +Characters[fd][2] +
-'\n職業:' + Characters[fd][4] +
-'\n軍階:'+  Characters[fd][16]	+
-'\n生命值:'+ HPD[0] +
-'\n護甲:'+ HPD[1] +
-'\nCE儲存量:'+ Characters[fd][6] +
-'\n耐重量:'+ Characters[fd][7] +
-'\n控制能力:'+ Characters[fd][14] +
-'\n反應力:'+ Characters[fd][8] 
-;
-	}
-	if(Characters[fd][3]=='G.U.'){
-	rply.text=
-name +' 我找到的角色是'+
-'\n['+ Characters[fd][1] +']  種族:' +Characters[fd][2] +
-'\n職業:' + Characters[fd][4] +
-'\n軍階:'+  Characters[fd][16]	+
-'\n生命值:'+ HPD[0] +
-'\n護盾:'+ HPD[1] +
-'\nCE儲存量:'+ Characters[fd][6] +
-'\n耐重量:'+ Characters[fd][7] +
-'\n反應力:'+ Characters[fd][8] +
-'\n放出適性:'+ Characters[fd][9] +
-'\n火屬適性:'+ Characters[fd][10] +
-'\n水屬適性:'+ Characters[fd][11] +
-'\n雷屬適性:'+ Characters[fd][12] +
-'\n冰屬適性:'+ Characters[fd][13] 
-;
-	}
-}
-}
-return rply;	
+    for(var fd=0;fd<player.length;fd++){
+        if(player[fd].ID==id){
+	        if(player[fd].Camp=='A.A.U.F'){
+		         rply.text=
+                    '['+name+']的角色'+
+                    '\n['+ player[fd].Name +']  種族:' +player[fd].Race +
+                    '\n職業:' + player[fd].Occupation +
+                    '\n軍階:'+  player[fd].Rank	+
+                    '\n榮譽值:' + player[fd].Honor_Point+
+                    '\n生命值:' + player[fd].MHP +
+                    '\n護甲:' + player[fd].Defense +
+                    '\nCE儲存量:'+ player[fd].CE +
+                    '\n耐重量:' + player[fd].Strength +
+                    '\n控制能力:' + player[fd].Control +
+                    '\n反應力:' + player[fd].Reaction ;
+	        }
+            if (player[fd].Camp =='G.U.'){
+	            rply.text=
+                    '[' + name + ']的角色' +
+                    '\n[' + player[fd].Name + ']  種族:' + player[fd].Race +
+                    '\n職業:' + player[fd].Occupation +
+                    '\n軍階:' + player[fd].Rank +
+                    '\n榮譽值:' + player[fd].Honor_Point +
+                    '\n生命值:' + player[fd].MHP +
+                    '\n護盾:' + player[fd].MShield +
+                        '\nCE儲存量:' + player[fd].CE +
+                    '\n耐重量:' + player[fd].Strength +
+                    '\n反應力:' + player[fd].Reaction +
+                    '\n放出適性:' + player[fd].None +
+                    '\n火屬適性:' + player[fd].Fire +
+                    '\n水屬適性:' + player[fd].Water +
+                    '\n雷屬適性:' + player[fd].Thunder +
+                    '\n冰屬適性:' + player[fd].Ice;
+	        }
+        }
+    }
+    return rply;	
 }
 
-function CCN(id,name,Cname) {
-	rply.text= name+' 你沒有角色，如果有遺失請與GM聯絡';
-	for(var fd=0;fd<Characters.length;fd++){
-		if(Characters[fd][0]==id){
-			ccN=fd;
-	 		console.log('IN');
-			Characters[fd][1]=Cname;
-			rply.text=name +' 改名成功';
-			fs.readFile('client_secret.json', function processClientSecrets(err, content) {
-  			if (err) {
-   			 console.log('Error loading client secret file: ' + err);
-    			return;
-  			}
-  			authorize(JSON.parse(content), CCCN);
-			});
-		}
-	}
-	
-	return rply;	
+function player_Inquire(name,names) {
+    for(var fd=0;fd<player.length;fd++){
+        if(Characters[fd].Name==names){
+            if (player[fd].Camp == 'A.A.U.F') {
+		        rply.text=
+                    '[' + name + ']你所查詢的角色為'+
+                    '\n[' + player[fd].Name + ']  種族:' + player[fd].Race +
+                    '\n職業:' + player[fd].Occupation +
+                    '\n軍階:' + player[fd].Rank +
+                    '\n榮譽值:' + player[fd].Honor_Point +
+                    '\n生命值:' + player[fd].MHP +
+                    '\n護甲:' + player[fd].Defense +
+                    '\nCE儲存量:' + player[fd].CE +
+                    '\n耐重量:' + player[fd].Strength +
+                    '\n控制能力:' + player[fd].Control +
+                    '\n反應力:' + player[fd].Reaction;
+	        }
+	        if(Characters[fd][3]=='G.U.'){
+	            rply.text=
+                    '[' + name + ']你所查詢的角色為' +
+                    '\n[' + player[fd].Name + ']  種族:' + player[fd].Race +
+                    '\n職業:' + player[fd].Occupation +
+                    '\n軍階:' + player[fd].Rank +
+                    '\n榮譽值:' + player[fd].Honor_Point +
+                    '\n生命值:' + player[fd].MHP +
+                    '\n護盾:' + player[fd].MShield +
+                    '\nCE儲存量:' + player[fd].CE +
+                    '\n耐重量:' + player[fd].Strength +
+                    '\n反應力:' + player[fd].Reaction +
+                    '\n放出適性:' + player[fd].None +
+                    '\n火屬適性:' + player[fd].Fire +
+                    '\n水屬適性:' + player[fd].Water +
+                    '\n雷屬適性:' + player[fd].Thunder +
+                    '\n冰屬適性:' + player[fd].Ice;
+	        }
+        }
+    }
+    return rply;	
 }
 
-function CCL() {
-	rply.text='目前的玩家有\n';
-for(var fd=1;fd<Characters.length;fd++){
-	rply.text+='陣營: '+ Characters[fd][3] + '  名稱: '+Characters[fd][1] +'\n';
-}
-	rply.text+='這些';
-return rply;	
-}
-
-function oC(x,y) {
-var reggg;
-reggg=Characters[x][y];
-return reggg;	
-
-}
-
-function oA(x,y) {
-Characters[x][17]=y;
-ccN=x;
-	fs.readFile('client_secret.json', function processClientSecrets(err, content) {
-  				if (err) {
-    				console.log('Error loading client secret file: ' + err);
-    				return;
-  				}
-  				authorize(JSON.parse(content), CCCN);
-				});
-}
-function GP(x,y) {
-Characters[x][18]=y;
-ccN=x;
-	fs.readFile('client_secret.json', function processClientSecrets(err, content) {
-  				if (err) {
-    				console.log('Error loading client secret file: ' + err);
-    				return;
-  				}
-  				authorize(JSON.parse(content), CCCN);
-				});
-}
-function WM(x,y) {
-Characters[x][19]=y;
-ccN=x;
-	fs.readFile('client_secret.json', function processClientSecrets(err, content) {
-  				if (err) {
-    				console.log('Error loading client secret file: ' + err);
-    				return;
-  				}
-  				authorize(JSON.parse(content), CCCN);
-				});
-}
-function SM(x,y) {
-Characters[x][21]=y;
-ccN=x;
-	fs.readFile('client_secret.json', function processClientSecrets(err, content) {
-  				if (err) {
-    				console.log('Error loading client secret file: ' + err);
-    				return;
-  				}
-  				authorize(JSON.parse(content), CCCN);
-				});
-}
-function oL() {
-var reggg;
-reggg=Characters.length;
-return reggg;	
-}
 module.exports = {
     CM: CM,
-    test: test,
+    updata_player_data: updata_player_data,
 	CT:CT,
 	CK:CK,
-	CKV:CKV,
+    Skill_View: Skill_View,
 	CKSV:CKSV,
 	CKR:CKR,
-	oC:oC,
-	oA:oA,
-	GP:GP,
-	WM:WM,
-	SM:SM,
-	oL:oL,
-	CV:CV,
-	CI:CI,
-	CCN:CCN,
-    CCL: CCL,
-    load_player_info: load_player_info
-	//CSG:CSG
+	player_Inquire:player_Inquire,
+    player_View: player_View,
+    load_player_data: load_player_data
 };
 
-
-
-function CKV(name,num) {
+function Skill_View(name,num) {
 	
 for(var fd=0;fd<SKILLS.length;fd++){
 if(SKILLS[fd][0]==num){
