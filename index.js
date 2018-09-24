@@ -1,7 +1,7 @@
 var express = require('express');//
 var bodyParser = require('body-parser');
 var app = express();//262
-var ox = require('./roll/Character.js');
+var Character = require('./roll/Character.js');
 var ba = require('./roll/battle.js');
 var re = require('./roll/analytics.js');
 var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
@@ -27,8 +27,8 @@ var cat='';
 var input='';
 var battle=0;
 var a=0;
-//ox.oz();
-ox.CK();
+Character.load_player_info();
+Character.CK();
 
 
 var myLineTemplate = {
