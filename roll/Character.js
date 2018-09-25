@@ -348,13 +348,6 @@ return rply;
         player[player_now].Skills[3] = '0';
         player[player_now].Skills[4] = '0';
 }
-
-for(var i=0;i<=65;i++){
-	var x = rollbase.Dice(3);
-	if(x==1)ATK++;
-	if(x==2)Reaction++;
-	if(x==3)Control++;
-}
     rply.text =
         '[' + name + ']的角色' +
         '\n[' + player[fd].Name + ']  種族:' + player[fd].Race +
