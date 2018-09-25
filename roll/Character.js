@@ -1,5 +1,4 @@
 var rollbase = require('./rollbase.js');
-var funny = require('./funny.js');
 var fs = require('fs');
 var readline = require('readline');
 var google = require('googleapis');
@@ -177,6 +176,7 @@ if(Occupation!='基礎放出使' && Occupation!='火炎操作使' && Occupation!
 return rply;	
     }
     var player_now = player.length;
+    player[player_now] = {};
     player[player_now].ID = id;
     player[player_now].Name = player_names;
     player[player_now].Race = race;
