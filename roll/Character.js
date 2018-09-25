@@ -264,7 +264,7 @@ rply.text=names +' 你已有角色，若要修改請找GM';
 return rply;	
 }
 }
-if(name==null && race==null && Occupation==null){
+    if (player_name==null && race==null && Occupation==null){
 rply.text='缺少名稱 種族 兵種'+
 		  '\n種族有 純人種 貓科種 犬科種 兔科種'+
 		  '\n兵種有 CAC系統磁懸裝甲 複合性火力支援裝甲 輔助性戰鬥支援裝甲';
