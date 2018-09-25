@@ -185,6 +185,7 @@ return rply;
     player[player_now] = {};
     player[player_now].ID = id;
     player[player_now].Name = player_name;
+    player[player_now].Camp = 'G.U.';
     player[player_now].Race = race;
     player[player_now].Occupation = Occupation;
     player[player_now].Honor_Point = 0;
@@ -264,7 +265,6 @@ rply.text=names +' 你已有角色，若要修改請找GM';
 return rply;	
 }
 }
-
 if(name==null && race==null && Occupation==null){
 rply.text='缺少名稱 種族 兵種'+
 		  '\n種族有 純人種 貓科種 犬科種 兔科種'+
@@ -292,41 +292,62 @@ if(Occupation!='CAC系統磁懸裝甲' && Occupation!='複合性火力支援裝�
 		 '\n兵種有 CAC系統磁懸裝甲 複合性火力支援裝甲 輔助性戰鬥支援裝甲';
 return rply;	
 }
+   for (var fd = 0; fd < player.length; fd++) {
+        if (player[fd].Name == player_name) {
+            rply.text = names + '名字重複嘍';
+            return rply;
+        }
+    }
+    var player_now = player.length;
+    player[player_now] = {};
+    player[player_now].ID = id;
+    player[player_now].Name = player_name;
+    player[player_now].Camp = 'A.A.U.F';
+    player[player_now].Race = race;
+    player[player_now].Occupation = Occupation;
+    player[player_now].Honor_Point = 0;
+    player[player_now].Rank = '訓練兵';
+    player[player_now].Skills = [];
 
+    player[player_now].Fighting = rollbase.Dice(5) + 10;
+    player[player_now].Shooting = rollbase.Dice(5) + 10;
+    player[player_now].Reaction = rollbase.Dice(100);
+    player[player_now].Control = rollbase.Dice(5) + 10;
 
-ATK=5;
-Reaction=5;
-Control=15;
+    if (race == '純人種') player[player_now].None = Math.round(player[player_now].Control * 1.5);
+    if (race == '貓科種') player[player_now].Reaction = Math.round(player[player_now].Reaction * 1.3);
+    if (race == '犬科種') player[player_now].Fighting = Math.round(player[player_now].Fighting * 1.5);
+    if (race == '兔科種') player[player_now].Shooting = Math.round(player[player_now].Shooting * 1.5);
 
-if(race=='貓科種'){
-	Reaction=10;
-	Control=Control-10;
+    if (Occupation == 'CAC系統磁懸裝甲') {
+        player[player_now].MHP = 100;
+        player[player_now].Defense = 80;
+        player[player_now].CE = 100;
+        player[player_now].Skills[0] = '11';
+        player[player_now].Skills[1] = '12';
+        player[player_now].Skills[2] = '13';
+        player[player_now].Skills[3] = '0';
+        player[player_now].Skills[4] = '0';
 }
-if(race=='犬科種'){
-	ATK=10;
-	Reaction=0;
+    if (Occupation == '複合性火力支援裝甲') {
+        player[player_now].MHP = 100;
+        player[player_now].Defense = 100;
+        player[player_now].CE = 50;
+        player[player_now].Skills[0] = '6';
+        player[player_now].Skills[1] = '7';
+        player[player_now].Skills[2] = '8';
+        player[player_now].Skills[3] = '0';
+        player[player_now].Skills[4] = '0';
 }
-if(race=='兔科種'){
-	Control=Control+10;
-	ATK=0;
-}
-
-if(Occupation=='CAC系統磁懸裝甲'){
-	HP='100,80';
-	MP=100;
-	skills='11,12,13,0,0'
-}
-if(Occupation=='複合性火力支援裝甲'){
-	HP='100,100';
-	MP=50;
-	ATK=ATK+10;
-	skills='6,7,8,0,0'
-}
-if(Occupation=='輔助性戰鬥支援裝甲'){
-	HP='100,60';
-	MP=200;
-	ATK=ATK-10;
-	skills='9,10,0,0,0'
+    if (Occupation == '輔助性戰鬥支援裝甲') {
+        layer[player_now].MHP = 100;
+        player[player_now].Defense = 60;
+        player[player_now].CE = 200;
+        player[player_now].Skills[0] = '9';
+        player[player_now].Skills[1] = '10';
+        player[player_now].Skills[2] = '0';
+        player[player_now].Skills[3] = '0';
+        player[player_now].Skills[4] = '0';
 }
 
 for(var i=0;i<=65;i++){
@@ -335,55 +356,20 @@ for(var i=0;i<=65;i++){
 	if(x==2)Reaction++;
 	if(x==3)Control++;
 }
-
-rply.text=
-'['+ name +']  種族:' +race +
-'\n兵種:  ' + Occupation +
-'\n軍階: '+  '訓練兵'+
-'\n生命值: '+ '100' ;
-if(Occupation=='CAC系統磁懸裝甲')rply.text+='\n護甲:80';
-if(Occupation=='複合性火力支援裝甲')rply.text+='\n護甲:100';
-if(Occupation=='輔助性戰鬥支援裝甲')rply.text+='\n護甲:60';
-rply.text+='\nCE儲存量: '+ MP +
-'\n耐重量: '+ ATK +
-'\n控制能力: '+ Control +
-'\n反應力: '+ Reaction ;
-
-var hh=Characters.length;
-var ddd=[];
-console.log('test OK 2');
-ddd[0] = id ;
-ddd[1] = name ;
-ddd[2] = race ;
-ddd[3] = 'A.A.U.F' ;
-ddd[4] = Occupation ;
-ddd[5] = HP ;
-ddd[6] = MP ;
-ddd[7] = ATK ;
-ddd[8] = Reaction ;
-ddd[9]  = 0 ;
-ddd[10] = 0 ;
-ddd[11] = 0 ;
-ddd[12] = 0 ;
-ddd[13] = 0 ;
-ddd[14] = Control ;
-ddd[15] = 0 ;
-ddd[16] = '訓練兵' ;
-ddd[17] = 10000 ;
-ddd[18] = 0 ;
-ddd[19] = 0 ;
-ddd[20] = 0 ;
-ddd[21] = skills ;
-Characters[hh]=ddd;
-	
-fs.readFile('client_secret.json', function processClientSecrets(err, content) {
-  if (err) {
-    console.log('Error loading client secret file: ' + err);
-    return;
-  }
-  authorize(JSON.parse(content), gotgpt);
-});
-
+    rply.text =
+        '[' + name + ']的角色' +
+        '\n[' + player[fd].Name + ']  種族:' + player[fd].Race +
+        '\n職業:' + player[fd].Occupation +
+        '\n軍階:' + player[fd].Rank +
+        '\n榮譽值:' + player[fd].Honor_Point +
+        '\n生命值:' + player[fd].MHP +
+        '\n護甲:' + player[fd].Defense +
+        '\nCE儲存量:' + player[fd].CE +
+        '\n格鬥能力:' + player[fd].Fighting +
+        '\n射擊能力:' + player[fd].Shooting +
+        '\n控制能力:' + player[fd].Control +
+        '\n反應力:' + player[fd].Reaction;
+    updata_player_data();
 return rply;	
 }
 //-------------------------------------------------玩家自身情報-------------------------------------------------
@@ -401,7 +387,8 @@ function player_View(id,name) {
                     '\n生命值:' + player[fd].MHP +
                     '\n護甲:' + player[fd].Defense +
                     '\nCE儲存量:'+ player[fd].CE +
-                    '\n耐重量:' + player[fd].Strength +
+                 '\n格鬥能力:' + player[fd].Fighting +
+                 '\n射擊能力:' + player[fd].Shooting +
                     '\n控制能力:' + player[fd].Control +
                     '\n反應力:' + player[fd].Reaction ;
 	        }
