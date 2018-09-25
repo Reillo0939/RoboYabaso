@@ -313,7 +313,7 @@ return rply;
     player[player_now].Reaction = rollbase.Dice(100);
     player[player_now].Control = rollbase.Dice(5) + 10;
 
-    if (race == '純人種') player[player_now].None = Math.round(player[player_now].Control * 1.5);
+    if (race == '純人種') player[player_now].Control = Math.round(player[player_now].Control * 1.5);
     if (race == '貓科種') player[player_now].Reaction = Math.round(player[player_now].Reaction * 1.3);
     if (race == '犬科種') player[player_now].Fighting = Math.round(player[player_now].Fighting * 1.5);
     if (race == '兔科種') player[player_now].Shooting = Math.round(player[player_now].Shooting * 1.5);
@@ -349,7 +349,7 @@ return rply;
         player[player_now].Skills[4] = '0';
 }
     rply.text =
-        '[' + name + ']的角色' +
+        '[' + names + ']的角色' +
         '\n[' + player[fd].Name + ']  種族:' + player[fd].Race +
         '\n職業:' + player[fd].Occupation +
         '\n軍階:' + player[fd].Rank +
