@@ -175,6 +175,12 @@ if(Occupation!='基礎放出使' && Occupation!='火炎操作使' && Occupation!
 		  '\n兵種有 基礎放出使 火炎操作使 流水支援使 電能突擊使 寒冰干擾使';
 return rply;	
     }
+    for (var fd = 0; fd < player.length; fd++) {
+        if (player[fd].Name == player_name) {
+            rply.text = names + '名字重複嘍';
+            return rply;
+        }
+    }
     var player_now = player.length;
     player[player_now] = {};
     player[player_now].ID = id;
@@ -203,7 +209,7 @@ return rply;
     player[player_now].Thunder = rollbase.Dice(5) + 10;
     player[player_now].Ice = rollbase.Dice(5) + 10;
 
-    if (race == '純人種') player[player_now].Shooting = Math.round(player[player_now].None * 1.5);
+    if (race == '純人種') player[player_now].None = Math.round(player[player_now].None * 1.5);
     if (race == '貓科種') player[player_now].Reaction = Math.round(player[player_now].Reaction * 1.3);
     if (race == '犬科種') player[player_now].Fighting = Math.round(player[player_now].Fighting * 1.5);
     if (race == '兔科種') player[player_now].Shooting = Math.round(player[player_now].Shooting * 1.5);
