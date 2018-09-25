@@ -33,27 +33,42 @@ Character.CK();
 
 var myLineTemplate = {
     type: 'template',
-    altText: '測試',
+    altText: '選單',
     template: {
         type: 'buttons',
-        text: '測試',
-        actions: [{
+        text: '選單',
+        actions: [
+		{
             type: 'postback',
             label: '玩家自身情報',
             data: '玩家自身情報'
-        }, {
+        }, 
+		  {
             type: 'postback',
                 label: '武器查看',
                 data: '武器查看'
-        }, {
+        }, 
+		  {
+            type: 'postback',
+                label: '玩家權限',
+                data: '玩家權限'
+        }, 
+		 {
+            type: 'postback',
+                label: '角色創立說明',
+                data: '角色創立說明'
+        }, 
+		  {
             type: 'postback',
                 label: '粒子研究紀錄抽卡',
                 data: '粒子研究紀錄抽卡'
-        }, {
+        },
+		{
             type: 'postback',
                 label: '粒子研究紀錄10連抽',
                 data: '粒子研究紀錄10連抽'
-        }]
+        }
+		 ]
     }
 };
 
