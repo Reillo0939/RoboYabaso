@@ -142,16 +142,30 @@ function player_updata(auth) {
     });
 }
 //-------------------------------------------------GU創角-------------------------------------------------
-function CM(name,race,Occupation,id,names) {
-	var HP,MP,ATK,None,Fire,Water,Thunder,Ice,Reaction;
-
-for(var tt=0;tt<Characters.length;tt++){
-if(Characters[tt][0]==id){
+function CM(player_name,race,Occupation,id,names) {
+    
+            if (player[fd].Camp == 'A.A.U.F') {
+                rply.text =
+                    '[' + name + ']的角色' +
+                    '\n[' + player[fd].Name + ']  種族:' + player[fd].Race +
+                    '\n職業:' + player[fd].Occupation +
+                    '\n軍階:' + player[fd].Rank +
+                    '\n榮譽值:' + player[fd].Honor_Point +
+                    '\n生命值:' + player[fd].MHP +
+                    '\n護甲:' + player[fd].Defense +
+                    '\nCE儲存量:' + player[fd].CE +
+                    '\n耐重量:' + player[fd].Strength +
+                    '\n控制能力:' + player[fd].Control +
+                    '\n反應力:' + player[fd].Reaction;
+            }
+            
+for (var fd = 0; fd < player.length; fd++) {
+    if (player[fd].ID == id) {
 rply.text=names +' 你已有角色，若要修改請找GM';
 return rply;	
 }
 }
-if(name==null && race==null && Occupation==null){
+    if (player_name==null && race==null && Occupation==null){
 rply.text='缺少名稱 種族 兵種'+
 		  '\n種族有 純人種 貓科種 犬科種 兔科種'+
 		  '\n兵種有 基礎放出使 火炎操作使 流水支援使 電能突擊使 寒冰干擾使';
@@ -177,116 +191,78 @@ if(Occupation!='基礎放出使' && Occupation!='火炎操作使' && Occupation!
 	rply.text='兵種錯誤'+
 		  '\n兵種有 基礎放出使 火炎操作使 流水支援使 電能突擊使 寒冰干擾使';
 return rply;	
-}
-HP='100,50';
-MP=150;
+    }
+    var player_now = player.length;
+    player[player_now].ID = id;
+    player[player_now].Name = player_names;
+    player[player_now].Race = race;
+    player[player_now].Occupation = Occupation;
+    player[player_now].Honor_Point = 0;
+    player[player_now].Rank = '訓練兵';
+    player[player_now].Skills = [];
+    player[player_now].Skills[0] = '1';
+    player[player_now].Skills[1] = '2';
+    player[player_now].Skills[2] = '3';
+    player[player_now].Skills[3] = '4';
+    player[player_now].Skills[4] = '5';
 
-ATK=5;
-Reaction=5;
-None=15;
+    player[player_now].MHP = 100;
+    player[player_now].MShield = 50;
+    player[player_now].CE = 150;
 
-if(race=='貓科種'){
-	Reaction=10;
-	None=None-10;
-}
-if(race=='犬科種'){
-	ATK=10;
-	Reaction=0;
-}
-if(race=='兔科種'){
-	None=None+10;
-	ATK=0;
-}
+    player[player_now].Fighting = rollbase.Dice(5) + 10;
+    player[player_now].Shooting = rollbase.Dice(5) + 10;
+    player[player_now].Reaction = rollbase.Dice(100);
+    player[player_now].None = rollbase.Dice(5)+10;
+    player[player_now].Fire = rollbase.Dice(5) + 10;
+    player[player_now].Water = rollbase.Dice(5) + 10;
+    player[player_now].Thunder = rollbase.Dice(5) + 10;
+    player[player_now].Ice = rollbase.Dice(5) + 10;
 
-Fire=10;	
-Water=10;
-Thunder=10;
-Ice=10;
+    if (race == '純人種') player[player_now].Shooting = Math.round(player[player_now].None * 1.5);
+    if (race == '貓科種') player[player_now].Reaction = Math.round(player[player_now].Reaction * 1.3);
+    if (race == '犬科種') player[player_now].Fighting = Math.round(player[player_now].Fighting * 1.5);
+    if (race == '兔科種') player[player_now].Shooting = Math.round(player[player_now].Shooting * 1.5);
 
-if(Occupation=='火炎操作使'){
-	Fire=20;
-	Water=0;
-	None=None-5;
-}
-if(Occupation=='流水支援使'){
-	Water=20;
-	Thunder=0;
-	None=None-5;
-}
-if(Occupation=='電能突擊使'){
-	Thunder=20;
-	Ice=0;
-	None=None-5;
-}
-if(Occupation=='寒冰干擾使'){
-	Ice=20;
-	Fire=0;
-	None=None-5;
-}
-for(var i=0;i<=50;i++){
-	var x = rollbase.Dice(2);
-	if(x==1)ATK++;
-	if(x==2)Reaction++;
-}
-for(var i=0;i<=100;i++){
-	var x = rollbase.Dice(5);
-	if(x==1)None++;
-	if(x==2)Fire++;
-	if(x==3)Water++;
-	if(x==4)Thunder++;
-	if(x==5)Ice++;
-}
+    if (Occupation == '火炎操作使') {
+        var temporarily = Math.round(player[player_now].Water * 0.75);
+        player[player_now].Fire = player[player_now].Fire + temporarily;
+        player[player_now].Water = player[player_now].Water - temporarily;
+    }
+    if(Occupation=='流水支援使'){
+        var temporarily = Math.round(player[player_now].Thunder * 0.75);
+        player[player_now].Water = player[player_now].Water + temporarily;
+        player[player_now].Thunder = player[player_now].Thunder - temporarily;
+    }
+    if(Occupation=='電能突擊使'){
+        var temporarily = Math.round(player[player_now].Ice * 0.75);
+        player[player_now].Thunder = player[player_now].Thunder + temporarily;
+        player[player_now].Ice = player[player_now].Ice - temporarily;
+    }
+    if(Occupation=='寒冰干擾使'){
+        var temporarily = Math.round(player[player_now].Fire * 0.75);
+        player[player_now].Ice = player[player_now].Ice + temporarily;
+        player[player_now].Fire = player[player_now].Fire - temporarily;
+    }
 
-rply.text=names +'\n'+
-'['+ name +']  種族:' +race +
-'\n兵種: ' + Occupation +
-'\n軍階: '+  '訓練兵'+
-'\n生命值: '+ '100' +
-'\n護盾: '+ '50' +
-'\nCE儲存量: '+ MP +
-'\n耐重量: '+ ATK +
-'\n反應力: '+ Reaction +
-'\n放出適性: '+ None +
-'\n火屬適性: '+ Fire +
-'\n水屬適性: '+ Water +
-'\n雷屬適性: '+ Thunder +
-'\n冰屬適性: '+ Ice
-;
-	console.log('test OK 1');
-var hh=Characters.length;
-var ddd=[];
-console.log('test OK 2');
-ddd[0] = id ;
-ddd[1] = name ;
-ddd[2] = race ;
-ddd[3] = 'G.U.' ;
-ddd[4] = Occupation ;
-ddd[5] = HP ;
-ddd[6] = MP ;
-ddd[7] = ATK ;
-ddd[8] = Reaction ;
-ddd[9]  = None ;
-ddd[10] = Fire ;
-ddd[11] = Water ;
-ddd[12] = Thunder ;
-ddd[13] = Ice ;
-ddd[14] = 0 ;
-ddd[15] = 0 ;
-ddd[16] = '訓練兵' ;
-ddd[17] = 10000 ;
-ddd[18] = 0 ;
-ddd[19] = 0 ;
-ddd[20] = 0 ;
-ddd[21] = '1,2,3,4,5' ;
-Characters[hh]=ddd;
-
-fs.readFile('client_secret.json', function processClientSecrets(err, content) {
-  if (err) {
-    console.log('Error loading client secret file: ' + err);
-    return;
-  }
-  authorize(JSON.parse(content), gotgpt);
-});
+        rply.text=
+    '[' + names + ']的角色' +
+        '\n[' + player[player_now].Name + ']  種族:' + player[player_now].Race +
+        '\n職業:' + player[player_now].Occupation +
+        '\n軍階:' + player[player_now].Rank +
+        '\n榮譽值:' + player[player_now].Honor_Point +
+        '\n生命值:' + player[player_now].MHP +
+        '\n護盾:' + player[player_now].MShield +
+        '\nCE儲存量:' + player[player_now].CE +
+        '\n格鬥能力:' + player[player_now].Fighting +
+        '\n射擊能力:' + player[player_now].Shooting +
+        '\n反應力:' + player[player_now].Reaction +
+        '\n放出適性:' + player[player_now].None +
+        '\n火屬適性:' + player[player_now].Fire +
+        '\n水屬適性:' + player[player_now].Water +
+        '\n雷屬適性:' + player[player_now].Thunder +
+        '\n冰屬適性:' + player[player_now].Ice;
+    updata_player_data();
 return rply;	
 }
 //-------------------------------------------------AAUF創角-------------------------------------------------
@@ -449,7 +425,8 @@ function player_View(id,name) {
                     '\n生命值:' + player[fd].MHP +
                     '\n護盾:' + player[fd].MShield +
                         '\nCE儲存量:' + player[fd].CE +
-                    '\n耐重量:' + player[fd].Strength +
+                '\n格鬥能力:' + player[fd].Fighting +
+                '\n射擊能力:' + player[fd].Shooting +
                     '\n反應力:' + player[fd].Reaction +
                     '\n放出適性:' + player[fd].None +
                     '\n火屬適性:' + player[fd].Fire +
