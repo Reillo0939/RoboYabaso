@@ -115,7 +115,7 @@ function updata_player_data() {
 }
 function player_updata(auth) {
     var values = [
-        [player]
+        [JSON.stringify(player)]
     ];
     console.log('test OK');
     var range = 'Character!A1';
