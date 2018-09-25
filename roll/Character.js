@@ -142,23 +142,7 @@ function player_updata(auth) {
     });
 }
 //-------------------------------------------------GU創角-------------------------------------------------
-function CM(player_name,race,Occupation,id,names) {
-    
-            if (player[fd].Camp == 'A.A.U.F') {
-                rply.text =
-                    '[' + name + ']的角色' +
-                    '\n[' + player[fd].Name + ']  種族:' + player[fd].Race +
-                    '\n職業:' + player[fd].Occupation +
-                    '\n軍階:' + player[fd].Rank +
-                    '\n榮譽值:' + player[fd].Honor_Point +
-                    '\n生命值:' + player[fd].MHP +
-                    '\n護甲:' + player[fd].Defense +
-                    '\nCE儲存量:' + player[fd].CE +
-                    '\n耐重量:' + player[fd].Strength +
-                    '\n控制能力:' + player[fd].Control +
-                    '\n反應力:' + player[fd].Reaction;
-            }
-            
+function CM(player_name,race,Occupation,id,names) {          
 for (var fd = 0; fd < player.length; fd++) {
     if (player[fd].ID == id) {
 rply.text=names +' 你已有角色，若要修改請找GM';
