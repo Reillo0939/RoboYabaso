@@ -178,7 +178,7 @@ return rply;
     var player_now = player.length;
     player[player_now] = {};
     player[player_now].ID = id;
-    player[player_now].Name = player_names;
+    player[player_now].Name = player_name;
     player[player_now].Race = race;
     player[player_now].Occupation = Occupation;
     player[player_now].Honor_Point = 0;
