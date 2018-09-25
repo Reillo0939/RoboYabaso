@@ -50,16 +50,6 @@ var myLineTemplate = {
         }, 
 		  {
             type: 'postback',
-                label: '玩家權限',
-                data: '玩家權限'
-        }, 
-		 {
-            type: 'postback',
-                label: '角色創立說明',
-                data: '角色創立說明'
-        }, 
-		  {
-            type: 'postback',
                 label: '粒子研究紀錄抽卡',
                 data: '粒子研究紀錄抽卡'
         },
