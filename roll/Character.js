@@ -257,8 +257,7 @@ return rply;
 return rply;	
 }
 //-------------------------------------------------AAUF創角-------------------------------------------------
-function CT(name,race,Occupation,id,names) {
-	var HP,MP,ATK,Control,Reaction,skills;
+function CT(player_name,race,Occupation,id,names) {
 for(var tt=0;tt<Characters.length;tt++){
 if(Characters[tt][0]==id){
 rply.text=names +' 你已有角色，若要修改請找GM';
