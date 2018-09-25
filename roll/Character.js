@@ -104,8 +104,6 @@ function data_load(auth) {
     })
 }
 //-------------------------------------------------更新資料-------------------------------------------------
-
-
 function updata_player_data() {
     fs.readFile('client_secret.json', function processClientSecrets(err, content) {
         if (err) {
