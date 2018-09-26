@@ -20,6 +20,10 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
                 return rply;
             }
             if (main_or_secondary == '主武器') {
+                if(player[i].Weaponry.main.Type != undefined){
+                    rply.text = '[' + name + ']已有主武器';
+                    return rply;
+                }
                 if (Weaponry_Type != '槍械' && Weaponry_Type != '近距離武器' && Weaponry_Type != '複合武器') {
                     rply.text = '[' + name + ']缺少武器類型 武器類型有\n槍械, 近距離武器, 複合武器';
                     return rply;
@@ -126,6 +130,7 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
                         rply.text = '[' + name + ']缺少槍械模組 槍械模組有\n手槍, 步槍, 狙擊槍, 能量放出槍';
                         return rply;
                     }
+                    player[i].Weaponry.secondary = {};
                     player[i].Weaponry.main.Type = '複合武器';
                     player[i].Weaponry.main.Name = Weaponry_Name;
                     if (Weaponry_mode == '拳') {
@@ -202,6 +207,10 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
                 }
             }
             if (main_or_secondary == '副武器' && player[i].Weaponry.main.Type != '複合武器') {
+                if (player[i].Weaponry.secondary.Type != undefined) {
+                    rply.text = '[' + name + ']已有副武器';
+                    return rply;
+                }
                 if (Weaponry_Type != '槍械' && Weaponry_Type != '近距離武器') {
                     rply.text = '[' + name + ']缺少武器類型 武器類型有\n槍械, 近距離武器';
                     return rply;
@@ -290,40 +299,85 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
     }
 
 }
-function weapon_break(id,name) {
-var WMK;
-  for(var i=0;i<ox.oL();i++){
-	if(ox.oC(i,0)==id){
-		if(ox.oC(i,19)==0){
-			rply.text='['+name+']'+'你沒有武器';
-			return rply;
-			}
-			WMK='0';
-			ox.WM(i,WMK);
-			rply.text='['+name+']'+'已破壞完成';
-			return rply;
-		}
+function weapon_break(id, name, main_or_secondary) {
+    var player = Character.get_player_data();
+    for (var i = 0; i < player.length; i++) {
+        if (player[i].ID == id) {
+            if (main_or_secondary == '主武器')player[i].Weaponry.main = {};
+            if (main_or_secondary == '副武器') player[i].Weaponry.secondary = {};
+            Character.save_player_data(player);
+            Character.updata_player_data();
+            rply.text = '已破壞';
+            return rply;
 
-  }
+        }
+    }
 	}
 
 function weapon_view(id, name) {
     var player = Character.get_player_data();
     for (var i = 0; i < player.length; i++){
-        
         if (player[i].ID == id) {
-            console.log(player[i].ID);
-            rply.text = '[' + name + ']';
-            rply.text += '\n武器名稱:' + player[i].Weaponry.Name;
-            rply.text += '\n武器種類:' + player[i].Weaponry.Type;
-            rply.text += '\n基礎傷害:' + player[i].Weaponry.Damage;
-            rply.text += '\n子彈數:' + player[i].Weaponry.MBullet+
-                '\n連發數:' + player[i].Weaponry.Burst;
-            rply.text += '\n射程:' + player[i].Weaponry.Range+
-                '\n精準度:' + player[i].Weaponry.Precision
-						;
-			return rply;
-
+            if (player[i].Weaponry.main.Type == undefined) rply.text = '[' + name + ']的主武器\n無';
+            if (player[i].Weaponry.main.Type == '槍械') {
+                rply.text = '[' + name + ']的主武器' +
+                    '\n武器名稱: ' + player[i].Weaponry.main.Name +
+                    '\n武器種類: ' + player[i].Weaponry.main.Type +
+                    '\n武器模組: ' + player[i].Weaponry.main.mode +
+                    '\n基礎傷害: ' + player[i].Weaponry.main.Damage +
+                    '\n子彈數: ' + player[i].Weaponry.main.MBullet +
+                    '\n最大連發數: ' + player[i].Weaponry.main.Burst +
+                    '\n標準射程: ' + player[i].Weaponry.main.Range +
+                    '\n標準精準度: ' + player[i].Weaponry.main.Precision;
+            }
+            if (player[i].Weaponry.main.Type == '近距離武器') {
+                rply.text = '[' + name + ']的主武器' +
+                '\n武器名稱: ' + player[i].Weaponry.main.Name +
+                '\n武器種類: ' + player[i].Weaponry.main.Type +
+                    '\n武器模組: ' + player[i].Weaponry.main.mode +
+                    '\n基礎傷害: ' + player[i].Weaponry.main.Damage +
+                    '\n連擊數: ' + player[i].Weaponry.main.max_combo;
+                if (player[i].Weaponry.main.mode == '盾') rply.text += '\n格擋率: ' + player[i].Weaponry.main.Defense;
+            }
+            if (player[i].Weaponry.main.Type == '複合武器') {
+                rply.text = '[' + name + ']' +
+                    '\n武器名稱: ' + player[i].Weaponry.main.Name +
+                    '\n武器種類: ' + player[i].Weaponry.main.Type +
+                    '\n近距離模組: ' + player[i].Weaponry.main.Fighting_mode +
+                    '\n近距離傷害: ' + player[i].Weaponry.main.Fighting_Damage +
+                    '\n近距離連擊數: ' + player[i].Weaponry.main.Fighting_max_combo;
+                if (player[i].Weaponry.main.mode == '盾') rply.text += '\n格擋率: ' + player[i].Weaponry.main.Fighting_Defense;
+                rply.text +=
+                    '\n槍械模組: ' + player[i].Weaponry.main.Fire_mode +
+                    '\n槍械傷害: ' + player[i].Weaponry.main.Fire_Damage +
+                    '\n槍械子彈數: ' + player[i].Weaponry.main.Fire_MBullet +
+                    '\n槍械最大連發數: ' + player[i].Weaponry.main.Fire_Burst +
+                    '\n槍械標準射程: ' + player[i].Weaponry.main.Fire_Range +
+                    '\n槍械標準精準度: ' + player[i].Weaponry.main.Fire_Precision;
+            }
+            if (player[i].Weaponry.secondary.Type == undefined) rply.text += '副武器\n無';
+            if (player[i].Weaponry.secondary.Type == '槍械') {
+                rply.text += '副武器' +
+                    '\n武器名稱: ' + player[i].Weaponry.secondary.Name +
+                    '\n武器種類: ' + player[i].Weaponry.secondary.Type +
+                    '\n武器模組: ' + player[i].Weaponry.secondary.mode +
+                    '\n基礎傷害: ' + player[i].Weaponry.secondary.Damage +
+                    '\n子彈數: ' + player[i].Weaponry.secondary.MBullet +
+                    '\n最大連發數: ' + player[i].Weaponry.secondary.Burst +
+                    '\n標準射程: ' + player[i].Weaponry.secondary.Range +
+                    '\n標準精準度: ' + player[i].Weaponry.secondary.Precision;
+            }
+            if (player[i].Weaponry.main.Type == '近距離武器') {
+                rply.text += '副武器' +
+                    '\n武器名稱: ' + player[i].Weaponry.secondary.Name +
+                    '\n武器種類: ' + player[i].Weaponry.secondary.Type +
+                    '\n武器模組: ' + player[i].Weaponry.secondary.mode +
+                    '\n基礎傷害: ' + player[i].Weaponry.secondary.Damage +
+                    '\n連擊數: ' + player[i].Weaponry.secondary.max_combo;
+                if (player[i].Weaponry.main.mode == '盾') rply.text += '\n格擋率: ' + player[i].Weaponry.secondary.Defense;
+                
+            }
+            return rply;
   }
 	}
 }
