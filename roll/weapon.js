@@ -367,7 +367,7 @@ function weapon_view(id, name) {
                     '\n標準射程: ' + player[i].Weaponry.secondary.Range +
                     '\n標準精準度: ' + player[i].Weaponry.secondary.Precision;
             }
-            if (player[i].Weaponry.main.Type == '近距離武器') {
+            if (player[i].Weaponry.secondary.Type == '近距離武器') {
                 rply.text += '\n副武器' +
                     '\n武器名稱: ' + player[i].Weaponry.secondary.Name +
                     '\n武器種類: ' + player[i].Weaponry.secondary.Type +
