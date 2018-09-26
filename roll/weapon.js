@@ -355,7 +355,7 @@ function weapon_view(id, name) {
                     '\n槍械標準射程: ' + player[i].Weaponry.main.Fire_Range +
                     '\n槍械標準精準度: ' + player[i].Weaponry.main.Fire_Precision;
             }
-            if (player[i].Weaponry.secondary.Type == undefined) rply.text += '副武器\n無';
+            if (player[i].Weaponry.secondary.Type == undefined && player[i].Weaponry.main.Type != '複合武器') rply.text += '\n副武器\n無';
             if (player[i].Weaponry.secondary.Type == '槍械') {
                 rply.text += '\n副武器' +
                     '\n武器名稱: ' + player[i].Weaponry.secondary.Name +
