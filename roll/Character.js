@@ -339,7 +339,7 @@ return rply;
         player[player_now].Skills[4] = '0';
 }
     if (Occupation == '輔助性戰鬥支援裝甲') {
-        layer[player_now].MHP = 100;
+        player[player_now].MHP = 100;
         player[player_now].Defense = 60;
         player[player_now].CE = 200;
         player[player_now].Skills[0] = '9';
@@ -409,6 +409,7 @@ function player_View(id,name) {
 }
 //-------------------------------------------------玩家查詢-------------------------------------------------
 function player_Inquire(name,names) {
+	rply.text='查無此人';
     for(var fd=0;fd<player.length;fd++){
         if(player[fd].Name==names){
             if (player[fd].Camp == 'A.A.U.F') {
@@ -421,7 +422,8 @@ function player_Inquire(name,names) {
                     '\n生命值:' + player[fd].MHP +
                     '\n護甲:' + player[fd].Defense +
                     '\nCE儲存量:' + player[fd].CE +
-                    '\n耐重量:' + player[fd].Strength +
+                    '\n格鬥能力:' + player[fd].Fighting +
+                '\n射擊能力:' + player[fd].Shooting +
                     '\n控制能力:' + player[fd].Control +
                     '\n反應力:' + player[fd].Reaction;
 	        }
@@ -435,7 +437,8 @@ function player_Inquire(name,names) {
                     '\n生命值:' + player[fd].MHP +
                     '\n護盾:' + player[fd].MShield +
                     '\nCE儲存量:' + player[fd].CE +
-                    '\n耐重量:' + player[fd].Strength +
+               '\n格鬥能力:' + player[fd].Fighting +
+                '\n射擊能力:' + player[fd].Shooting +
                     '\n反應力:' + player[fd].Reaction +
                     '\n放出適性:' + player[fd].None +
                     '\n火屬適性:' + player[fd].Fire +
