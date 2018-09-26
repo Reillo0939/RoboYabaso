@@ -83,7 +83,7 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
 
                 if (Weaponry_Type == '近距離武器') {
                     if (Weaponry_mode != '拳' && Weaponry_mode != '刀' && Weaponry_mode != '長槍' && Weaponry_mode != '盾') {
-                        rply.text = '[' + name + ']缺少武器模組 武器模組有\n拳, 刀, 槍, 盾';
+                        rply.text = '[' + name + ']缺少武器模組 武器模組有\n拳, 刀, 長槍, 盾';
                         return rply;
                     }
                     player[i].Weaponry.main.Type = '近距離武器';
@@ -123,7 +123,7 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
 
                 if (Weaponry_Type == '複合武器') {
                     if (Weaponry_mode != '拳' && Weaponry_mode != '刀' && Weaponry_mode != '長槍' && Weaponry_mode != '盾') {
-                        rply.text = '[' + name + ']缺少近距離模組 近距離模組有\n拳, 刀, 槍, 盾';
+                        rply.text = '[' + name + ']缺少近距離模組 近距離模組有\n拳, 刀, 長槍, 盾';
                         return rply;
                     }
                     if ( Weaponry_complex != '手槍' && Weaponry_complex != '步槍' && Weaponry_complex != '狙擊槍' && Weaponry_complex != '能量放出槍') {
@@ -254,7 +254,7 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
 
                 if (Weaponry_Type == '近距離武器') {
                     if (Weaponry_mode != '拳' && Weaponry_mode != '刀' && Weaponry_mode != '長槍' && Weaponry_mode != '盾') {
-                        rply.text = '[' + name + ']缺少武器模組 武器模組有\n拳, 刀, 槍, 盾';
+                        rply.text = '[' + name + ']缺少武器模組 武器模組有\n拳, 刀, 長槍, 盾';
                         Character.save_player_data(player);
                         return rply;
                     }
