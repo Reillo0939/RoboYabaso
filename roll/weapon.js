@@ -16,6 +16,7 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
                 player[i].Weaponry.main = {};
                 player[i].Weaponry.secondary = {};
             }
+            console.log(main_or_secondary != '主武器' || main_or_secondary != '副武器');
             if (main_or_secondary != '主武器' || main_or_secondary != '副武器') {
                 rply.text = '[' + name + ']缺少主/副武器';
                 return rply;
