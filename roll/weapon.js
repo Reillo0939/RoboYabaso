@@ -3,11 +3,6 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 
 function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, Weaponry_mode, Weaponry_complex) {
     rply.text = '';
-    console.log(main_or_secondary);
-    console.log(Weaponry_Name);
-    console.log(Weaponry_Type);
-    console.log(Weaponry_mode);
-    console.log(Weaponry_complex);
     var player = Character.get_player_data();
     for (var i = 0; i < player.length; i++) {
         if (player[i].ID == id) {
@@ -16,8 +11,7 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
                 player[i].Weaponry.main = {};
                 player[i].Weaponry.secondary = {};
             }
-            console.log(main_or_secondary != '主武器' || main_or_secondary != '副武器');
-            if (main_or_secondary != '主武器' || main_or_secondary != '副武器') {
+            if (main_or_secondary != '主武器' && main_or_secondary != '副武器') {
                 rply.text = '[' + name + ']缺少主/副武器';
                 return rply;
             }
@@ -26,12 +20,12 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
                 return rply;
             }
             if (main_or_secondary = '主武器') {
-                if (Weaponry_Type != '槍械' || Weaponry_Type != '近距離武器' || Weaponry_Type != '複合武器') {
+                if (Weaponry_Type != '槍械' && Weaponry_Type != '近距離武器' && Weaponry_Type != '複合武器') {
                     rply.text = '[' + name + ']缺少武器類型 武器類型有\n槍械, 近距離武器, 複合武器';
                     return rply;
                 }
                 if (Weaponry_Type = '槍械') {
-                    if (Weaponry_mode != '手槍' || Weaponry_mode != '步槍' || Weaponry_mode != '狙擊槍' || Weaponry_mode!='能量放出槍') {
+                    if (Weaponry_mode != '手槍' && Weaponry_mode != '步槍' && Weaponry_mode != '狙擊槍' && Weaponry_mode!='能量放出槍') {
                         rply.text = '[' + name + ']缺少武器模組 武器模組有\n手槍, 步槍, 狙擊槍, 能量放出槍';
                         return rply;
                     }
@@ -81,7 +75,7 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
                 }
 
                 if (Weaponry_Type = '近距離武器') {
-                    if (Weaponry_mode != '拳' || Weaponry_mode != '刀' || Weaponry_mode != '長槍' || Weaponry_mode != '盾') {
+                    if (Weaponry_mode != '拳' && Weaponry_mode != '刀' && Weaponry_mode != '長槍' && Weaponry_mode != '盾') {
                         rply.text = '[' + name + ']缺少武器模組 武器模組有\n拳, 刀, 槍, 盾';
                         return rply;
                     }
@@ -118,11 +112,11 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
                 }
 
                 if (Weaponry_Type = '複合武器') {
-                    if (Weaponry_mode != '拳' || Weaponry_mode != '刀' || Weaponry_mode != '長槍' || Weaponry_mode != '盾') {
+                    if (Weaponry_mode != '拳' && Weaponry_mode != '刀' && Weaponry_mode != '長槍' && Weaponry_mode != '盾') {
                         rply.text = '[' + name + ']缺少近距離模組 近距離模組有\n拳, 刀, 槍, 盾';
                         return rply;
                     }
-                    if ( Weaponry_complex != '手槍' || Weaponry_complex != '步槍' || Weaponry_complex != '狙擊槍' || Weaponry_complex != '能量放出槍') {
+                    if ( Weaponry_complex != '手槍' && Weaponry_complex != '步槍' && Weaponry_complex != '狙擊槍' && Weaponry_complex != '能量放出槍') {
                         rply.text = '[' + name + ']缺少槍械模組 槍械模組有\n手槍, 步槍, 狙擊槍, 能量放出槍';
                         return rply;
                     }
@@ -199,12 +193,12 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
                 }
             }
             if (main_or_secondary = '副武器') {
-                if (Weaponry_Type != '槍械' || Weaponry_Type != '近距離武器') {
+                if (Weaponry_Type != '槍械' && Weaponry_Type != '近距離武器') {
                     rply.text = '[' + name + ']缺少武器類型 武器類型有\n槍械, 近距離武器';
                     return rply;
                 }
                 if (Weaponry_Type = '槍械') {
-                    if (Weaponry_mode != '手槍' || Weaponry_mode != '能量放出槍') {
+                    if (Weaponry_mode != '手槍' && Weaponry_mode != '能量放出槍') {
                         rply.text = '[' + name + ']缺少武器模組 武器模組有\n手槍, 能量放出槍';
                         return rply;
                     }
@@ -238,7 +232,7 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
                 }
 
                 if (Weaponry_Type = '近距離武器') {
-                    if (Weaponry_mode != '拳' || Weaponry_mode != '刀' || Weaponry_mode != '長槍' || Weaponry_mode != '盾') {
+                    if (Weaponry_mode != '拳' && Weaponry_mode != '刀' && Weaponry_mode != '長槍' && Weaponry_mode != '盾') {
                         rply.text = '[' + name + ']缺少武器模組 武器模組有\n拳, 刀, 槍, 盾';
                         return rply;
                     }
