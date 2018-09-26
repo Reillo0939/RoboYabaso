@@ -3,6 +3,11 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 
 function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, Weaponry_mode, Weaponry_complex) {
     rply.text = '';
+    console.log(main_or_secondary);
+    console.log(Weaponry_Name);
+    console.log(Weaponry_Type);
+    console.log(Weaponry_mode);
+    console.log(Weaponry_complex);
     var player = Character.get_player_data();
     for (var i = 0; i < player.length; i++) {
         if (player[i].ID == id) {
