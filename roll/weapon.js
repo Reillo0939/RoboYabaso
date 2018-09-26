@@ -19,12 +19,12 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
                 rply.text = '[' + name + ']缺少武器名稱';
                 return rply;
             }
-            if (main_or_secondary = '主武器') {
+            if (main_or_secondary == '主武器') {
                 if (Weaponry_Type != '槍械' && Weaponry_Type != '近距離武器' && Weaponry_Type != '複合武器') {
                     rply.text = '[' + name + ']缺少武器類型 武器類型有\n槍械, 近距離武器, 複合武器';
                     return rply;
                 }
-                if (Weaponry_Type = '槍械') {
+                if (Weaponry_Type == '槍械') {
                     if (Weaponry_mode != '手槍' && Weaponry_mode != '步槍' && Weaponry_mode != '狙擊槍' && Weaponry_mode!='能量放出槍') {
                         rply.text = '[' + name + ']缺少武器模組 武器模組有\n手槍, 步槍, 狙擊槍, 能量放出槍';
                         return rply;
@@ -74,7 +74,7 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
                         '\n標準精準度: ' + player[i].Weaponry.main.Precision;
                 }
 
-                if (Weaponry_Type = '近距離武器') {
+                if (Weaponry_Type == '近距離武器') {
                     if (Weaponry_mode != '拳' && Weaponry_mode != '刀' && Weaponry_mode != '長槍' && Weaponry_mode != '盾') {
                         rply.text = '[' + name + ']缺少武器模組 武器模組有\n拳, 刀, 槍, 盾';
                         return rply;
@@ -111,7 +111,7 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
                     if (player[i].Weaponry.main.mode == '盾') rply.text += '\n格擋率: ' + player[i].Weaponry.main.Defense;
                 }
 
-                if (Weaponry_Type = '複合武器') {
+                if (Weaponry_Type == '複合武器') {
                     if (Weaponry_mode != '拳' && Weaponry_mode != '刀' && Weaponry_mode != '長槍' && Weaponry_mode != '盾') {
                         rply.text = '[' + name + ']缺少近距離模組 近距離模組有\n拳, 刀, 槍, 盾';
                         return rply;
@@ -192,12 +192,12 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
                         '\n槍械標準精準度: ' + player[i].Weaponry.main.Fire_Precision;
                 }
             }
-            if (main_or_secondary = '副武器') {
+            if (main_or_secondary == '副武器') {
                 if (Weaponry_Type != '槍械' && Weaponry_Type != '近距離武器') {
                     rply.text = '[' + name + ']缺少武器類型 武器類型有\n槍械, 近距離武器';
                     return rply;
                 }
-                if (Weaponry_Type = '槍械') {
+                if (Weaponry_Type == '槍械') {
                     if (Weaponry_mode != '手槍' && Weaponry_mode != '能量放出槍') {
                         rply.text = '[' + name + ']缺少武器模組 武器模組有\n手槍, 能量放出槍';
                         return rply;
@@ -231,7 +231,7 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
                         '\n標準精準度: ' + player[i].Weaponry.secondary.Precision;
                 }
 
-                if (Weaponry_Type = '近距離武器') {
+                if (Weaponry_Type == '近距離武器') {
                     if (Weaponry_mode != '拳' && Weaponry_mode != '刀' && Weaponry_mode != '長槍' && Weaponry_mode != '盾') {
                         rply.text = '[' + name + ']缺少武器模組 武器模組有\n拳, 刀, 槍, 盾';
                         return rply;
