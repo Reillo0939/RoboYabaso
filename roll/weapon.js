@@ -72,6 +72,8 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
                         '\n最大連發數: ' + player[i].Weaponry.main.Burst +
                         '\n標準射程: ' + player[i].Weaponry.main.Range +
                         '\n標準精準度: ' + player[i].Weaponry.main.Precision;
+                    updata_player_data();
+                    return rply;
                 }
 
                 if (Weaponry_Type == '近距離武器') {
@@ -109,6 +111,8 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
                         '\n基礎傷害: ' + player[i].Weaponry.main.Damage +
                         '\n連擊數: ' + player[i].Weaponry.main.max_combo;
                     if (player[i].Weaponry.main.mode == '盾') rply.text += '\n格擋率: ' + player[i].Weaponry.main.Defense;
+                    updata_player_data();
+                    return rply;
                 }
 
                 if (Weaponry_Type == '複合武器') {
@@ -190,9 +194,11 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
                         '\n槍械最大連發數: ' + player[i].Weaponry.main.Fire_Burst +
                         '\n槍械標準射程: ' + player[i].Weaponry.main.Fire_Range +
                         '\n槍械標準精準度: ' + player[i].Weaponry.main.Fire_Precision;
+                    updata_player_data();
+                    return rply;
                 }
             }
-            if (main_or_secondary == '副武器') {
+            if (main_or_secondary == '副武器' && player[i].Weaponry.main.Type != '複合武器') {
                 if (Weaponry_Type != '槍械' && Weaponry_Type != '近距離武器') {
                     rply.text = '[' + name + ']缺少武器類型 武器類型有\n槍械, 近距離武器';
                     return rply;
@@ -229,11 +235,14 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
                         '\n最大連發數: ' + player[i].Weaponry.secondary.Burst +
                         '\n標準射程: ' + player[i].Weaponry.secondary.Range +
                         '\n標準精準度: ' + player[i].Weaponry.secondary.Precision;
+                    updata_player_data();
+                    return rply;
                 }
 
                 if (Weaponry_Type == '近距離武器') {
                     if (Weaponry_mode != '拳' && Weaponry_mode != '刀' && Weaponry_mode != '長槍' && Weaponry_mode != '盾') {
                         rply.text = '[' + name + ']缺少武器模組 武器模組有\n拳, 刀, 槍, 盾';
+                        updata_player_data();
                         return rply;
                     }
                     player[i].Weaponry.secondary.Type = '近距離武器';
@@ -265,10 +274,12 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
                         '\n武器模組: ' + player[i].Weaponry.secondary.mode +
                         '\n基礎傷害: ' + player[i].Weaponry.secondary.Damage +
                         '\n連擊數: ' + player[i].Weaponry.secondary.max_combo;
-                    if (player[i].Weaponry.secondary.mode == '盾') rply.text +='\n格擋率: ' + player[i].Weaponry.secondary.Defense;
+                    if (player[i].Weaponry.secondary.mode == '盾') rply.text += '\n格擋率: ' + player[i].Weaponry.secondary.Defense;
+                    updata_player_data();
+                    return rply;
                 }
                 
-                return rply;
+                
             }
         }
     }
