@@ -181,7 +181,7 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
                         '\n武器種類: ' + player[i].Weaponry.main.Type +
                         '\n近距離模組: ' + player[i].Weaponry.main.Fighting_mode +
                         '\n近距離傷害: ' + player[i].Weaponry.main.Fighting_Damage +
-                        '\n近距離連擊數: ' + player[i].Weaponry.main.Fighting_max_combo +
+                        '\n近距離連擊數: ' + player[i].Weaponry.main.Fighting_max_combo;
                     if (player[i].Weaponry.main.mode == '盾') rply.text += '\n格擋率: ' + player[i].Weaponry.main.Fighting_Defense;
                     rply.text +=
                         '\n槍械模組: ' + player[i].Weaponry.main.Fire_mode +
