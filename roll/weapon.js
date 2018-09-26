@@ -5,7 +5,12 @@ function weapon_make(id,name,species,Wname) {
     var player = Character.get_player_data();
     for (var i = 0; i < player.length; i++) {
         if (player[i].ID == id) {
-            
+            console.log(player[i].Weaponry.main);
+            if (player[i].Weaponry.main == undefined) {
+                player[i].Weaponry = {};
+                player[i].Weaponry.main = {};
+                player[i].Weaponry.secondary = {};
+            }
             rply.text = '[' + name + ']';
             rply.text += '\n武器名稱：' + player[i].Weaponry.Name;
             rply.text += '\n武器種類：' + player[i].Weaponry.Type;
