@@ -357,7 +357,7 @@ function weapon_view(id, name) {
             }
             if (player[i].Weaponry.secondary.Type == undefined) rply.text += '副武器\n無';
             if (player[i].Weaponry.secondary.Type == '槍械') {
-                rply.text += '副武器' +
+                rply.text += '\n副武器' +
                     '\n武器名稱: ' + player[i].Weaponry.secondary.Name +
                     '\n武器種類: ' + player[i].Weaponry.secondary.Type +
                     '\n武器模組: ' + player[i].Weaponry.secondary.mode +
@@ -368,7 +368,7 @@ function weapon_view(id, name) {
                     '\n標準精準度: ' + player[i].Weaponry.secondary.Precision;
             }
             if (player[i].Weaponry.main.Type == '近距離武器') {
-                rply.text += '副武器' +
+                rply.text += '\n副武器' +
                     '\n武器名稱: ' + player[i].Weaponry.secondary.Name +
                     '\n武器種類: ' + player[i].Weaponry.secondary.Type +
                     '\n武器模組: ' + player[i].Weaponry.secondary.mode +
