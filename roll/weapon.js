@@ -5,8 +5,8 @@ function weapon_make(id,name,species,Wname) {
     var player = Character.get_player_data();
     for (var i = 0; i < player.length; i++) {
         if (player[i].ID == id) {
-            console.log(player[i].Weaponry.main);
-            if (player[i].Weaponry.main == undefined) {
+            console.log(player[i].Weaponry);
+            if (player[i].Weaponry == undefined) {
                 player[i].Weaponry = {};
                 player[i].Weaponry.main = {};
                 player[i].Weaponry.secondary = {};
