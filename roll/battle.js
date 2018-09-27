@@ -156,7 +156,34 @@ function Melee(id, name, limit, trigger, mainMsg) {
         }
     }
     if (start == 1) {
-        
+        if (trigger.match(/^移動$/) != null && id == player[Designation].ID && mainMsg[1] != null ) {
+            let xxyy = mainMsg[1].split(','); //定義輸入字串
+            if (isNaN(xxyy[0]) == 0 && isNaN(xxyy[1]) == 0) {
+                var temp = 0;
+                temp = Math.ceil(Math.pow(Math.pow(Math.floor(xxyy[0]) - player[Designation].Position.x, 2) + Math.pow(Math.floor(xxyy[1]) - player[Designation].Position.y, 2), 0.5) * 10) / 10;
+                if (temp > player[Designation].MovingDistance) {
+
+                    rply.text = '距離太遠，無法移動';
+                    return rply;
+                }
+                else {
+                    if (xxyy[0] >= 1 && xxyy[0] <= 25 && xxyy[1] >= 1 && xxyy[1] <= 25) {
+
+                        rply.text = '已移動到 座標' + xxyy[0] + ',' + xxyy[1] ;
+                        player[Designation].Position.x = xxyy[0] ;
+                        player[Designation].Position.y = xxyy[1] ;
+                    }
+                    else {
+                        rply.text = '位置錯誤，無法移動';
+                        return rply;
+                    }
+                }
+            }
+            else {
+                rply.text = '格式錯誤';
+                return rply;
+            }
+        }
         if (trigger.match(/^跳過$/) != null) {
             player[Designation].Round++;
             player[Designation].Action = 0;
@@ -177,7 +204,8 @@ function Melee(id, name, limit, trigger, mainMsg) {
                             if (player[fd].Reaction == turn) {
 
                                 Designation = fd;
-                                rply.text = '回合' + BattleRound + '----' + player[Designation].Name + '的回合';
+                                rply.text = '[回合' + BattleRound + ']\n' + player[Designation].Name + '的回合第' + player[Designation].Action+'次行動'+
+                                    '\n位置 x:' + player[Designation].Position.x + ' y:' + player[Designation].Position.y;
                                 return rply;
                             }
                         }
