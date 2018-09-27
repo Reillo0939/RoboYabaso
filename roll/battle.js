@@ -56,6 +56,7 @@ function battles(id,name,in_text) {
         if (trigger.match(/查看/) != null) return Character.CKV(name,mainMsg[1]) ;
     }
 
+    if (mainMsg[0] == '模式1') mode = 1;
 
 
 
