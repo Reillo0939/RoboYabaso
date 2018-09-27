@@ -150,7 +150,6 @@ function Melee(id, name, limit, trigger, mainMsg) {
     }
     if (start == 1) {
         if (Designation = null) {
-            while (1) {
                 for (var turn = 150; turn >= 0; turn--) {
                     for (var fd = 0; fd < player.length; fd++) {
                         if (player[fd].Reaction == turn && player[fd].Round == BattleRound && player[fd].participate == 1 && player[fd].Alive == 1) {
@@ -161,7 +160,6 @@ function Melee(id, name, limit, trigger, mainMsg) {
                     }
                 }
                 BattleRound++;
-            }
         }
         if (trigger.match(/^跳過$/) != null) {
             player[Designation].Round++;
