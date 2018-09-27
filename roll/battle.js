@@ -160,7 +160,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
             let xxyy = mainMsg[1].split(','); //定義輸入字串
             if (isNaN(xxyy[0]) == 0 && isNaN(xxyy[1]) == 0) {
                 var temp = 0;
-                temp = Math.ceil(Math.pow(Math.pow(Math.floor(xxyy[0]) - player[Designation].Position.x, 2) + Math.pow(Math.floor(xxyy[1]) - player[Designation].Position.y, 2), 0.5);
+                temp = Math.pow(Math.pow(Math.floor(xxyy[0]) - player[Designation].Position.x, 2) + Math.pow(Math.floor(xxyy[1]) - player[Designation].Position.y, 2), 0.5);
                 if (temp > player[Designation].MovingDistance) {
 
                     rply.text = '距離太遠，無法移動';
