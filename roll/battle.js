@@ -16,13 +16,36 @@ var bot = linebot({
 var rply ={type : 'text'}; //type是必需的,但可以更改
 var player = [];
 var mode = 0;
+var BattleRound = 0;
+var Designation = null;
 var start=0;
 var ot= new Date();;
 function Reset() {
+    BattleRound = 0;
+    Designation = null;
     player = Character.get_player_data();
+    for (var fd = 0; fd < player.length; fd++) {
+        player[fd].participate = 0; 
+        player[fd].HP = player[fd].MHP; 
+        player[fd].CE = player[fd].MCE; 
+        player[fd].Alive = 1;
+        player[fd].Action = 0;
+        player[fd].MaxAction = 2;
+        if (player[fd].Reaction >= 100) player[fd].MaxAction++;
+        player[fd].MovingDistance = 3;
+        player[fd].Status = {};
+        player[fd].Round = 0;
+        player[fd].Position = {};
+        player[fd].Position.x = 0;
+        player[fd].Position.y = 0;
+        if (player[fd].Camp = 'G.U.') player[fd].Shield = player[fd].MShield; 
+        if (player[fd].Weaponry.main.Type = '槍械') player[fd].Weaponry.main.Bullet = player[fd].Weaponry.main.MBullet;
+        if (player[fd].Weaponry.secondary.Type = '槍械') player[fd].Weaponry.secondary.Bullet = player[fd].Weaponry.secondary.MBullet;
+        if (player[fd].Weaponry.main.Type = '複合武器') player[fd].Weaponry.main.Fire_Bullet = player[fd].Weaponry.main.Fire_MBullet;
+    }
 }
 
-setInterval(function(){
+/*setInterval(function(){
 	var nt = new Date();
 	if((((nt.getTime() - ot.getTime()) / (1000 * 60)) >=1) && start == 1){
 		//console.log('debug'+(((nt.getTime() - ot.getTime()) / (1000 * 60))));
@@ -35,7 +58,7 @@ setInterval(function(){
 				var nowt = new Date();
 				ot=nowt;
 	}
-			},1000);
+			},1000);*/
 
 
 
@@ -58,39 +81,33 @@ function battles(id,name,in_text) {
 
     if (trigger.match(/^測試模式$/) != null) mode = 1;
 
-    
-
     if (mode == 1) {
-        if (trigger.match(/^戰鬥參與$/) != null && start == 0) {
-            var participate_player=0;
+        Melee(id, name, 2, trigger, mainMsg);
+        return rply;
+    }
+}
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
+function Melee(id, name, limit, trigger, mainMsg) {
+    if (start == 0) {
+        if (trigger.match(/^戰鬥參與$/) != null) {
+            var participate_player = 0;
             for (var fd = 0; fd < player.length; fd++) {
                 if (player[fd].participate == 1) participate_player++;
             }
-            if (participate_player >= 2) {
+            if (participate_player >= limit) {
                 rply.text = '人數已滿';
-                return rply;	
+                return rply;
             }
             for (var fd = 0; fd < player.length; fd++) {
                 if (player[fd].ID == id) {
                     if (player[fd].Camp == 'A.A.U.F') {
                         player[fd].participate = 1;
-                         participate_player = 0;
+                        participate_player = 0;
                         for (var i = 0; i < player.length; i++) {
                             if (player[i].participate == 1) participate_player++;
                         }
                         rply.text =
-                            '[' + name + ']的角色已參與 (' + participate_player+'/2)'+
-                            '\n[' + player[fd].Name + ']  種族:' + player[fd].Race +
-                            '\n職業:' + player[fd].Occupation +
-                            '\n軍階:' + player[fd].Rank +
-                            '\n榮譽值:' + player[fd].Honor_Point +
-                            '\n生命值:' + player[fd].MHP +
-                            '\n護甲:' + player[fd].Defense +
-                            '\nCE儲存量:' + player[fd].CE +
-                            '\n格鬥能力:' + player[fd].Fighting +
-                            '\n射擊能力:' + player[fd].Shooting +
-                            '\n控制能力:' + player[fd].Control +
-                            '\n反應力:' + player[fd].Reaction;
+                            '[' + name + ']的角色[' + player[fd].Name + ']已參與 (' + participate_player + '/' + limit + ')';
                     }
                     if (player[fd].Camp == 'G.U.') {
                         player[fd].participate = 1;
@@ -99,28 +116,13 @@ function battles(id,name,in_text) {
                             if (player[i].participate == 1) participate_player++;
                         }
                         rply.text =
-                            '[' + name + ']的角色已參與(' + participate_player + '/2)' +
-                            '\n[' + player[fd].Name + ']  種族:' + player[fd].Race +
-                            '\n職業:' + player[fd].Occupation +
-                            '\n軍階:' + player[fd].Rank +
-                            '\n榮譽值:' + player[fd].Honor_Point +
-                            '\n生命值:' + player[fd].MHP +
-                            '\n護盾:' + player[fd].MShield +
-                            '\nCE儲存量:' + player[fd].CE +
-                            '\n格鬥能力:' + player[fd].Fighting +
-                            '\n射擊能力:' + player[fd].Shooting +
-                            '\n反應力:' + player[fd].Reaction +
-                            '\n放出適性:' + player[fd].None +
-                            '\n火屬適性:' + player[fd].Fire +
-                            '\n水屬適性:' + player[fd].Water +
-                            '\n雷屬適性:' + player[fd].Thunder +
-                            '\n冰屬適性:' + player[fd].Ice;
+                            '[' + name + ']的角色[' + player[fd].Name + ']已參與 (' + participate_player + '/' + limit + ')';
                     }
-                    return rply;	
+                    return rply;
                 }
             }
         }
-        if (trigger.match(/^取消參與$/) != null && start == 0) {
+        if (trigger.match(/^取消參與$/) != null) {
             for (var fd = 0; fd < player.length; fd++) {
                 if (player[fd].ID == id) {
                     if (player[fd].participate == 1) {
@@ -130,16 +132,45 @@ function battles(id,name,in_text) {
                             if (player[fd].participate == 1) participate_player++;
                         }
                         rply.text =
-                            '[' + name + ']的角色已取消參與(' + participate_player + '/2)' ;
+                            '[' + name + ']的角色[' + player[fd].Name + ']已取消參與(' + participate_player + '/' + limit + ')';
                     }
                     return rply;
                 }
             }
         }
+        if (trigger.match(/^戰鬥開始$/) != null) {
+            start = 1;
+            for (var fd = 0; fd < player.length; fd++) {
+                player[fd].Position.x = rollbase.Dice(25);
+                player[fd].Position.y = rollbase.Dice(25);
+            }
+        }
+    }
+    if (start == 1) {
+        if (Designation = null) {
+            while (1) {
+                for (var turn = 150; turn >= 0; turn--) {
+                    for (var fd = 0; fd < player.length; fd++) {
+                        if (player[fd].Reaction == turn && player[fd].Round == BattleRound && player[fd].participate == 1 && player[fd].Alive == 1) {
+                            Designation = fd;
+                            rply.text = '回合' + BattleRound + '----' + player[fd].Name + '的回合';
+                            return rply;
+                        }
+                    }
+                }
+                BattleRound++;
+            }
+        }
+        if (trigger.match(/^跳過$/) != null) {
+            player[Designation].Round++;
+            player[Designation].Action = 0;
+            Designation = null;
+        }
+        if (trigger.match(/^重置$/) != null) {
+            Reset();
+        }
     }
 }
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 module.exports = {
 	battles:battles,
     Reset: Reset
