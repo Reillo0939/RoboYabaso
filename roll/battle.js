@@ -93,6 +93,7 @@ function battles(id,name,in_text) {
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 function Melee(id, name, limit, trigger, mainMsg) {
+    rply.text = '';
     if (start == 0) {
         if (trigger.match(/^戰鬥參與$/) != null) {
             var participate_player = 0;
