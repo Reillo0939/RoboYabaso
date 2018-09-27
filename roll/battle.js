@@ -144,11 +144,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
             }
         }
         if (trigger.match(/^戰鬥開始$/) != null) {
-           // start = 1;
-    
-            if (player[0].Round == BattleRound) console.log(fd + 'test2');
-            if (player[0].participate == 1) console.log(fd + 'test3');
-            if (player[0].Alive == 1) console.log(fd + 'test4');
+            start = 1;
             for (var fd = 0; fd < player.length; fd++) {
                 if (player[fd].participate == 1) {
                     player[fd].Position.x = rollbase.Dice(25);
@@ -158,23 +154,15 @@ function Melee(id, name, limit, trigger, mainMsg) {
         }
     }
     if (start == 1) {
-        if (Designation = null) {
+        /*if (Designation = null) {
                 for (var turn = 150; turn >= 0; turn--) {
                     for (var fd = 0; fd < player.length; fd++) {
-                        //if (player[fd].Reaction == turn && player[fd].Round == BattleRound && player[fd].participate == 1 && player[fd].Alive == 1) {
-                        rply.text ='測4';
-                        if (player[fd].Reaction == turn) console.log(fd+'test1');
-                        if (player[fd].Round == BattleRound) console.log(fd +'test2');
-                        if (player[fd].participate == 1) console.log(fd +'test3');
-                        if (player[fd].Alive == 1) console.log(fd +'test4');
-                        rply.text =
-                            '測4';
-                    
-                    return rply;
-                          /*  Designation = fd;
+                        if (player[fd].Reaction == turn && player[fd].Round == BattleRound && player[fd].participate == 1 && player[fd].Alive == 1) {
+                      
+                            Designation = fd;
                             rply.text = '回合' + BattleRound + '----' + player[fd].Name + '的回合';
-                            return rply;*/
-                        //}
+                            return rply;
+                        }
                     }
                 }
                 BattleRound++;
@@ -187,7 +175,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
         if (trigger.match(/^重置$/) != null) {
             Reset();
         }
-    }
+    }*/
 }
 module.exports = {
 	battles:battles,
