@@ -174,10 +174,12 @@ function Melee(id, name, limit, trigger, mainMsg) {
                             Designation = fd;
                             rply.text = '回合' + BattleRound + '----' + player[Designation].Name + '的回合';
                             return rply;
+                            break;
                         }
                     }
+                    if (turn == 0) BattleRound++;
                 }
-                BattleRound++;
+                
         }
        
     }
