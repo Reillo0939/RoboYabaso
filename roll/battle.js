@@ -19,7 +19,7 @@ var mode = 0;
 var start=0;
 var ot= new Date();;
 function Reset() {
-    player = Character.get_player_data;
+    player = Character.get_player_data();
 }
 
 setInterval(function(){
@@ -66,15 +66,12 @@ function battles(id,name,in_text) {
             for (var fd = 0; fd < player.length; fd++) {
                 if (player[fd].participate == 1) participate_player++;
             }
-           
             if (participate_player >= 2) {
                 rply.text = '人數已滿';
                 return rply;	
             }
             for (var fd = 0; fd < player.length; fd++) {
                 if (player[fd].ID == id) {
-
-                    console.log(1);
                     if (player[fd].Camp == 'A.A.U.F') {
                         player[fd].participate = 1;
                          participate_player = 0;
