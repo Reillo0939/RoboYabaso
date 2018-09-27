@@ -17,12 +17,12 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 var player = [];
 var mode = 0;
 var BattleRound = 0;
-var Designation = null;
+var Designation = 9999;
 var start=0;
 var ot= new Date();;
 function Reset() {
     BattleRound = 0;
-    Designation = null;
+    Designation = 9999;
     player = Character.get_player_data();
     for (var fd = 0; fd < player.length; fd++) {
         player[fd].participate = 0; 
@@ -155,7 +155,17 @@ function Melee(id, name, limit, trigger, mainMsg) {
         }
     }
     if (start == 1) {
-        if (Designation == null) {
+        if (trigger.match(/^跳過$/) != null) {
+            player[Designation].Round++;
+            player[Designation].Action = 0;
+            Designation = 9999;
+        }
+        if (trigger.match(/^重置$/) != null) {
+            Reset();
+            rply.text = '重置';
+            return rply;
+        }
+        if (Designation == 9999) {
                 for (var turn = 150; turn >= 0; turn--) {
                     for (var fd = 0; fd < player.length; fd++) {
                         if (player[fd].Reaction == turn && player[fd].Round == BattleRound && player[fd].participate == 1 && player[fd].Alive == 1) {
@@ -168,16 +178,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
                 }
                 BattleRound++;
         }
-        if (trigger.match(/^跳過$/) != null) {
-            player[Designation].Round++;
-            player[Designation].Action = 0;
-            Designation = null;
-        }
-        if (trigger.match(/^重置$/) != null) {
-            Reset();
-            rply.text = '重置';
-            return rply;
-        }
+       
     }
 }
 module.exports = {
