@@ -169,7 +169,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
                 else {
                     if (xxyy[0] >= 1 && xxyy[0] <= 25 && xxyy[1] >= 1 && xxyy[1] <= 25) {
 
-                        rply.text = '已移動到 座標' + xxyy[0] + ',' + xxyy[1] ;
+                        rply.text = '已移動到 座標' + xxyy[0] + ',' + xxyy[1] +'\n';
                         player[Designation].Position.x = xxyy[0] ;
                         player[Designation].Position.y = xxyy[1];
                         player[Designation].Action++;
