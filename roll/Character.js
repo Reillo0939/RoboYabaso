@@ -199,7 +199,7 @@ return rply;
 
     player[player_now].MHP = 100;
     player[player_now].MShield = 50;
-    player[player_now].CE = 150;
+    player[player_now].MCE = 150;
 
     player[player_now].Fighting = rollbase.Dice(5) + 10;
     player[player_now].Shooting = rollbase.Dice(5) + 10;
@@ -244,7 +244,7 @@ return rply;
         '\n榮譽值:' + player[player_now].Honor_Point +
         '\n生命值:' + player[player_now].MHP +
         '\n護盾:' + player[player_now].MShield +
-        '\nCE儲存量:' + player[player_now].CE +
+        '\nCE儲存量:' + player[player_now].MCE +
         '\n格鬥能力:' + player[player_now].Fighting +
         '\n射擊能力:' + player[player_now].Shooting +
         '\n反應力:' + player[player_now].Reaction +
@@ -321,7 +321,7 @@ return rply;
     if (Occupation == 'CAC系統磁懸裝甲') {
         player[player_now].MHP = 100;
         player[player_now].Defense = 80;
-        player[player_now].CE = 100;
+        player[player_now].MCE = 100;
         player[player_now].Skills[0] = '11';
         player[player_now].Skills[1] = '12';
         player[player_now].Skills[2] = '13';
@@ -331,7 +331,7 @@ return rply;
     if (Occupation == '複合性火力支援裝甲') {
         player[player_now].MHP = 100;
         player[player_now].Defense = 100;
-        player[player_now].CE = 50;
+        player[player_now].MCE = 50;
         player[player_now].Skills[0] = '6';
         player[player_now].Skills[1] = '7';
         player[player_now].Skills[2] = '8';
@@ -341,7 +341,7 @@ return rply;
     if (Occupation == '輔助性戰鬥支援裝甲') {
         player[player_now].MHP = 100;
         player[player_now].Defense = 60;
-        player[player_now].CE = 200;
+        player[player_now].MCE = 200;
         player[player_now].Skills[0] = '9';
         player[player_now].Skills[1] = '10';
         player[player_now].Skills[2] = '0';
@@ -356,7 +356,7 @@ return rply;
         '\n榮譽值:' + player[fd].Honor_Point +
         '\n生命值:' + player[fd].MHP +
         '\n護甲:' + player[fd].Defense +
-        '\nCE儲存量:' + player[fd].CE +
+        '\nCE儲存量:' + player[fd].MCE +
         '\n格鬥能力:' + player[fd].Fighting +
         '\n射擊能力:' + player[fd].Shooting +
         '\n控制能力:' + player[fd].Control +
@@ -378,7 +378,7 @@ function player_View(id,name) {
                     '\n榮譽值:' + player[fd].Honor_Point+
                     '\n生命值:' + player[fd].MHP +
                     '\n護甲:' + player[fd].Defense +
-                    '\nCE儲存量:'+ player[fd].CE +
+                    '\nCE儲存量:'+ player[fd].MCE +
                  '\n格鬥能力:' + player[fd].Fighting +
                  '\n射擊能力:' + player[fd].Shooting +
                     '\n控制能力:' + player[fd].Control +
@@ -393,7 +393,7 @@ function player_View(id,name) {
                     '\n榮譽值:' + player[fd].Honor_Point +
                     '\n生命值:' + player[fd].MHP +
                     '\n護盾:' + player[fd].MShield +
-                        '\nCE儲存量:' + player[fd].CE +
+                        '\nCE儲存量:' + player[fd].MCE +
                 '\n格鬥能力:' + player[fd].Fighting +
                 '\n射擊能力:' + player[fd].Shooting +
                     '\n反應力:' + player[fd].Reaction +
