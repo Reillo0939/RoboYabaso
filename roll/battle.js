@@ -171,7 +171,13 @@ function Melee(id, name, limit, trigger, mainMsg) {
 
                         rply.text = '已移動到 座標' + xxyy[0] + ',' + xxyy[1] ;
                         player[Designation].Position.x = xxyy[0] ;
-                        player[Designation].Position.y = xxyy[1] ;
+                        player[Designation].Position.y = xxyy[1];
+                        player[Designation].Action++;
+                        if (player[Designation].Action == player[Designation].MaxAction) {
+                            player[Designation].Action = 0;
+                            player[Designation].Round++;
+                        }
+                        Designation == 9999;
                     }
                     else {
                         rply.text = '位置錯誤，無法移動';
