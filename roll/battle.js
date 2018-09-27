@@ -133,8 +133,8 @@ function Melee(id, name, limit, trigger, mainMsg) {
                     if (player[fd].participate == 1) {
                         player[fd].participate = 0;
                         var participate_player = 0;
-                        for (var fd = 0; fd < player.length; fd++) {
-                            if (player[fd].participate == 1) participate_player++;
+                        for (var i = 0; i < player.length; i++) {
+                            if (player[i].participate == 1) participate_player++;
                         }
                         rply.text =
                             '[' + name + ']的角色[' + player[fd].Name + ']已取消參與(' + participate_player + '/' + limit + ')';
