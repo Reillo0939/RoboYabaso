@@ -156,10 +156,15 @@ function Melee(id, name, limit, trigger, mainMsg) {
         }
     }
     if (start == 1) {
+        if (trigger.match(/^淦$/) != null) {
+            rply.text = 'Designation' + Designation + '-' + 'BattleRound' + BattleRound ;
+            return rply;
+        }
         if (trigger.match(/^跳過$/) != null) {
             player[Designation].Round++;
             player[Designation].Action = 0;
             Designation = 9999;
+           
         }
         if (trigger.match(/^重置$/) != null) {
             Reset();
