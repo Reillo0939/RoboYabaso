@@ -21,6 +21,7 @@ var Designation = 9999;
 var start=0;
 var ot= new Date();;
 function Reset() {
+    start = 0;
     BattleRound = 0;
     Designation = 9999;
     player = Character.get_player_data();
@@ -171,7 +172,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
                         if (player[fd].Reaction == turn && player[fd].Round == BattleRound && player[fd].participate == 1 && player[fd].Alive == 1) {
                       
                             Designation = fd;
-                            rply.text = '回合' + BattleRound + '----' + player[fd].Name + '的回合';
+                            rply.text = '回合' + BattleRound + '----' + player[Designation].Name + '的回合';
                             return rply;
                         }
                     }
