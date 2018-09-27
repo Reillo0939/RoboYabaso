@@ -20,6 +20,7 @@ var start=0;
 var ot= new Date();;
 function Reset() {
     player = Character.get_player_data;
+    start = 0;
 }
 
 setInterval(function(){
@@ -61,7 +62,7 @@ function battles(id,name,in_text) {
     
 
     if (mode == 0) {
-        if (trigger.match(/^戰鬥參與$/) != null && start == 0) {
+        if (trigger.match(/^戰鬥參與$/) != null ) {
             console.log(id);
             var participate_player=0;
             for (var fd = 0; fd < player.length; fd++) {
@@ -76,8 +77,8 @@ function battles(id,name,in_text) {
                     if (player[fd].Camp == 'A.A.U.F') {
                         player[fd].participate = 1;
                         var participate_player = 0;
-                        for (var fd = 0; fd < player.length; fd++) {
-                            if (player[fd].participate == 1) participate_player++;
+                        for (var i = 0; i < player.length; i++) {
+                            if (player[i].participate == 1) participate_player++;
                         }
                         rply.text =
                             '[' + name + ']的角色已參與 (' + participate_player+'/2)'+
