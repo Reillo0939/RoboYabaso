@@ -160,6 +160,13 @@ function Melee(id, name, limit, trigger, mainMsg) {
             rply.text = 'Designation' + Designation + '-' + 'BattleRound' + BattleRound + '-' + 'player[0].Round' + player[0].Round + '-' + 'player[0].participate' + player[0].participate + '-' + 'player[0].Alive' + player[0].Alive ;
             return rply;
         }
+        if (trigger.match(/^靠杯$/) != null) {
+            for (var fd = 0; fd < player.length; fd++) {
+
+                rply.text = player[fd].Reaction+',';
+                return rply;
+            }
+        }
         if (trigger.match(/^跳過$/) != null) {
             player[Designation].Round++;
             player[Designation].Action = 0;
@@ -178,6 +185,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
                         if (player[fd].Round == BattleRound && player[fd].participate == 1 && player[fd].Alive == 1) {
                             AddRound++;
                             if (player[fd].Reaction == turn) {
+
                                 Designation = fd;
                                 rply.text = '回合' + BattleRound + '----' + player[Designation].Name + '的回合';
                                 return rply;
