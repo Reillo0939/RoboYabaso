@@ -62,23 +62,24 @@ function battles(id,name,in_text) {
 
     if (mode == 1) {
         if (trigger.match(/^戰鬥參與$/) != null && start == 0) {
-            console.log(id);
             var participate_player=0;
             for (var fd = 0; fd < player.length; fd++) {
                 if (player[fd].participate == 1) participate_player++;
             }
-            console.log(1);
+           
             if (participate_player >= 2) {
                 rply.text = '人數已滿';
                 return rply;	
             }
             for (var fd = 0; fd < player.length; fd++) {
                 if (player[fd].ID == id) {
+
+                    console.log(1);
                     if (player[fd].Camp == 'A.A.U.F') {
                         player[fd].participate = 1;
-                        var participate_player = 0;
-                        for (var fd = 0; fd < player.length; fd++) {
-                            if (player[fd].participate == 1) participate_player++;
+                         participate_player = 0;
+                        for (var i = 0; i < player.length; i++) {
+                            if (player[i].participate == 1) participate_player++;
                         }
                         rply.text =
                             '[' + name + ']的角色已參與 (' + participate_player+'/2)'+
@@ -96,6 +97,10 @@ function battles(id,name,in_text) {
                     }
                     if (player[fd].Camp == 'G.U.') {
                         player[fd].participate = 1;
+                        participate_player = 0;
+                        for (var i = 0; i < player.length; i++) {
+                            if (player[i].participate == 1) participate_player++;
+                        }
                         rply.text =
                             '[' + name + ']的角色已參與(' + participate_player + '/2)' +
                             '\n[' + player[fd].Name + ']  種族:' + player[fd].Race +
