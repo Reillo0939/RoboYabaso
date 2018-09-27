@@ -62,6 +62,7 @@ function battles(id,name,in_text) {
 
     if (mode == 1) {
         if (mainMsg[0] == '戰鬥參與') {
+            console.log(id);
             var participate_player=0;
             for (var fd = 0; fd < player.length; fd++) {
                 if (player[fd].participate == 1) participate_player++;
