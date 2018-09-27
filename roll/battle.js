@@ -155,7 +155,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
         }
     }
     if (start == 1) {
-        /*if (Designation = null) {
+        if (Designation = null) {
                 for (var turn = 150; turn >= 0; turn--) {
                     for (var fd = 0; fd < player.length; fd++) {
                         if (player[fd].Reaction == turn && player[fd].Round == BattleRound && player[fd].participate == 1 && player[fd].Alive == 1) {
@@ -175,7 +175,9 @@ function Melee(id, name, limit, trigger, mainMsg) {
         }
         if (trigger.match(/^重置$/) != null) {
             Reset();
-        }*/
+            rply.text = '重置';
+            return rply;
+        }
     }
 }
 module.exports = {
