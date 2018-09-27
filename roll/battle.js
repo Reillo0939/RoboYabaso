@@ -60,7 +60,7 @@ function battles(id,name,in_text) {
 
     
 
-    if (mode == 1) {
+    if (mode == 0) {
         if (trigger.match(/^戰鬥參與$/) != null && start == 0) {
             console.log(id);
             var participate_player=0;
