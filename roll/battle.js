@@ -141,8 +141,10 @@ function Melee(id, name, limit, trigger, mainMsg) {
         if (trigger.match(/^戰鬥開始$/) != null) {
             start = 1;
             for (var fd = 0; fd < player.length; fd++) {
-                player[fd].Position.x = rollbase.Dice(25);
-                player[fd].Position.y = rollbase.Dice(25);
+                if (player[fd].participate == 1) {
+                    player[fd].Position.x = rollbase.Dice(25);
+                    player[fd].Position.y = rollbase.Dice(25);
+                }
             }
         }
     }
