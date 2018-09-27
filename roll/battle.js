@@ -156,17 +156,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
         }
     }
     if (start == 1) {
-        if (trigger.match(/^淦$/) != null) {
-            rply.text = 'Designation' + Designation + '-' + 'BattleRound' + BattleRound + '-' + 'player[0].Round' + player[0].Round + '-' + 'player[0].participate' + player[0].participate + '-' + 'player[0].Alive' + player[0].Alive ;
-            return rply;
-        }
-        if (trigger.match(/^靠杯$/) != null) {
-            for (var fd = 0; fd < player.length; fd++) {
-
-                rply.text = player[fd].Reaction+',';
-                return rply;
-            }
-        }
+        
         if (trigger.match(/^跳過$/) != null) {
             player[Designation].Round++;
             player[Designation].Action = 0;
