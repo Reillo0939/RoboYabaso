@@ -167,17 +167,19 @@ function Melee(id, name, limit, trigger, mainMsg) {
             return rply;
         }
         if (Designation == 9999) {
-                for (var turn = 150; turn >= 0; turn--) {
+            for (var turn = 150; turn >= 0; turn--) {
+                var AddRound = 0;
                     for (var fd = 0; fd < player.length; fd++) {
-                        if (player[fd].Reaction == turn && player[fd].Round == BattleRound && player[fd].participate == 1 && player[fd].Alive == 1) {
-                      
-                            Designation = fd;
-                            rply.text = '回合' + BattleRound + '----' + player[Designation].Name + '的回合';
-                            return rply;
-                            break;
+                        if (player[fd].Round == BattleRound && player[fd].participate == 1 && player[fd].Alive == 1) {
+                            AddRound++;
+                            if (player[fd].Reaction == turn) {
+                                Designation = fd;
+                                rply.text = '回合' + BattleRound + '----' + player[Designation].Name + '的回合';
+                                return rply;
+                            }
                         }
                     }
-                    if (turn == 0) BattleRound++;
+                if (AddRound == limit) BattleRound++;
                 }
                 
         }
