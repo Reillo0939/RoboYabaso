@@ -24,6 +24,7 @@ function Reset() {
     BattleRound = 0;
     Designation = null;
     player = Character.get_player_data();
+    console.log(player);
     for (var fd = 0; fd < player.length; fd++) {
         player[fd].participate = 0; 
         player[fd].HP = player[fd].MHP; 
@@ -39,6 +40,11 @@ function Reset() {
         player[fd].Position.x = 0;
         player[fd].Position.y = 0;
         if (player[fd].Camp = 'G.U.') player[fd].Shield = player[fd].MShield; 
+        if (player[i].Weaponry == undefined) {
+            player[i].Weaponry = {};
+            player[i].Weaponry.main = {};
+            player[i].Weaponry.secondary = {};
+        }
         if (player[fd].Weaponry.main.Type = '槍械') player[fd].Weaponry.main.Bullet = player[fd].Weaponry.main.MBullet;
         if (player[fd].Weaponry.secondary.Type = '槍械') player[fd].Weaponry.secondary.Bullet = player[fd].Weaponry.secondary.MBullet;
         if (player[fd].Weaponry.main.Type = '複合武器') player[fd].Weaponry.main.Fire_Bullet = player[fd].Weaponry.main.Fire_MBullet;
