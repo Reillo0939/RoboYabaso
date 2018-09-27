@@ -179,7 +179,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
                             }
                         }
                     }
-                if (AddRound == limit) BattleRound++;
+                if (AddRound == 0) BattleRound++;
                 }
                 
         }
