@@ -174,8 +174,8 @@ function Melee(id, name, limit, trigger, mainMsg) {
         }
         if (trigger.match(/^重置$/) != null) {
             Reset();
-        }
-    }*/
+        }*/
+    }
 }
 module.exports = {
 	battles:battles,
