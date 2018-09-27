@@ -56,12 +56,12 @@ function battles(id,name,in_text) {
         if (trigger.match(/查看/) != null) return Character.CKV(name,mainMsg[1]) ;
     }
 
-    if (mainMsg[0] == '模式1') mode = 1;
+    if (trigger.match(/模式1/) != null) mode = 1;
 
-
+    
 
     if (mode == 1) {
-        if (mainMsg[0] == '戰鬥參與') {
+        if (trigger.match(/^戰鬥參與$/) != null && start == 0) {
             console.log(id);
             var participate_player=0;
             for (var fd = 0; fd < player.length; fd++) {
@@ -117,7 +117,7 @@ function battles(id,name,in_text) {
                 }
             }
         }
-        if (mainMsg[0] == '取消參與') {
+        if (trigger.match(/^取消參與$/) != null && start == 0) {
             for (var fd = 0; fd < player.length; fd++) {
                 if (player[fd].ID == id) {
                     if (player[fd].participate == 1) {
