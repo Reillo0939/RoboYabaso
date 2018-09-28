@@ -245,10 +245,13 @@ function Melee(id, name, limit, trigger, mainMsg) {
                                 }
                             }
                         }
+                        console.log('test3 ' + Damage[i].Damage);
+                        console.log('test4 ' + Damage[i].Status);
                     }
                     if (player[target].Camp == 'A.A.U.F') {
                         for (i = 0; i < Damage.length; i++) {
                             Damage[i] = Math.round(Damage[i].Damage * (1 - (player[target].Defense / (player[target].Defense + 150))));
+                            console.log('test5 ' + Damage[i].Damage);
                             player[target].HP -= Damage[i].Damage;
                         }
                     }
@@ -256,8 +259,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
                         for (i = 0; i < Damage.length; i++)player[target].HP -= Damage[i].Damage;
                     }
                     rply.text = player[target].Name + 'HP' + player[target].HP + '/' + player[target].MHP +'\n(';
-                    for (i = 0; i < Damage.length; i++) {
-                        console.log('test3 ' + Damage[i].Status);
+                    for (i = 0; i < Damage.length; i++) {       
                         if (Damage[i].Damage == 0) rply.text +=Damage[i].Status;
                         if (Damage[i].Damage > 0) rply.text += '-' + Damage[i].Damage;
                         if (Damage[i].Status == 'Critical') rply.text += '[' + Damage[i].Status + ']';
