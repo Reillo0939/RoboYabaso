@@ -45,9 +45,9 @@ function Reset() {
             player[fd].Weaponry.main = {};
             player[fd].Weaponry.secondary = {};
         }
-        if (player[fd].Weaponry.main.Type = '槍械') player[fd].Weaponry.main.Bullet = player[fd].Weaponry.main.MBullet;
-        if (player[fd].Weaponry.secondary.Type = '槍械') player[fd].Weaponry.secondary.Bullet = player[fd].Weaponry.secondary.MBullet;
-        if (player[fd].Weaponry.main.Type = '複合武器') player[fd].Weaponry.main.Fire_Bullet = player[fd].Weaponry.main.Fire_MBullet;
+        if (player[fd].Weaponry.main.Type == '槍械') player[fd].Weaponry.main.Bullet = player[fd].Weaponry.main.MBullet;
+        if (player[fd].Weaponry.secondary.Type == '槍械') player[fd].Weaponry.secondary.Bullet = player[fd].Weaponry.secondary.MBullet;
+        if (player[fd].Weaponry.main.Type == '複合武器') player[fd].Weaponry.main.Fire_Bullet = player[fd].Weaponry.main.Fire_MBullet;
     }
 }
 
