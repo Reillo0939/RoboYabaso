@@ -50,13 +50,13 @@ var myLineTemplate = {
         }, 
 		  {
             type: 'postback',
-                label: '粒子研究紀錄抽卡',
-                data: '粒子研究紀錄抽卡'
+              label: '水晶時代抽卡',
+              data: '水晶時代抽卡'
         },
 		{
             type: 'postback',
-                label: '粒子研究紀錄10連抽',
-                data: '粒子研究紀錄10連抽'
+            label: '水晶時代10連抽',
+            data: '水晶時代10連抽'
         }
 		 ]
     }
