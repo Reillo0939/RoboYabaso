@@ -374,7 +374,7 @@ function weapon_view(id, name) {
                     '\n武器模組: ' + player[i].Weaponry.secondary.mode +
                     '\n基礎傷害: ' + player[i].Weaponry.secondary.Damage +
                     '\n連擊數: ' + player[i].Weaponry.secondary.max_combo;
-                if (player[i].Weaponry.main.mode == '盾') rply.text += '\n格擋率: ' + player[i].Weaponry.secondary.Defense;
+                if (player[i].Weaponry.secondary.mode == '盾') rply.text += '\n格擋率: ' + player[i].Weaponry.secondary.Defense;
                 
             }
             return rply;
