@@ -74,9 +74,9 @@ function battles(id,name,in_text) {
 	let trigger = mainMsg[0].toString()
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 	if (trigger.match(/武器/) != null ){
-	if (trigger.match(/製作/)!= null && start==0) return xweapon.weapon_make(id,name,mainMsg[1],mainMsg[2]) ;
-	if (trigger.match(/查看/)!= null) return xweapon.weapon_view(id,name) ;
-	if (trigger.match(/破壞/)!= null && start==0) return xweapon.weapon_break(id,name) ;
+        if (trigger.match(/製作/) != null) return exports.weapon.weapon_make(id, name, mainMsg[1], mainMsg[2], mainMsg[3], mainMsg[4], mainMsg[5]);
+        if (trigger.match(/查看/) != null) return exports.weapon.weapon_view(id, name);
+        if (trigger.match(/破壞/) != null) return exports.weapon.weapon_break(id, name, mainMsg[1]);
 	}
 	if (trigger.match(/玩家/) != null){
         if (trigger.match(/自身情報/) != null) return Character.CV(id,name) ;
@@ -174,16 +174,16 @@ function Melee(id, name, limit, trigger, mainMsg) {
                     var Damage = [];
                     if (player[Designation].Weaponry.main.Type == '近距離武器') {
                         for (i = 0; i < player[Designation].Weaponry.main.max_combo; i++) {
-                            console.log('test1');
-                            var addition = Math.floor((player[Designation].Fighting - 10) / 10)*0.1+1;
+                            var addition = Math.floor((player[Designation].Fighting - 10) / 10) * 0.1 + 1;
+                            console.log('test1 '+Damage[0].Damage);
                             Damage[i] = {};
                             Damage[i].Damage = Math.round(player[Designation].Weaponry.main.Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
                         }
                         var x = Damage.length;
                         if (player[Designation].Weaponry.main.mode == player[Designation].Weaponry.secondary.mode) {
-                            var addition = Math.floor((player[Designation].Fighting - 10) / 10) * 0.1 + 1;
-                            console.log('test2');
-                            for (i = x; i <= player[Designation].Weaponry.secondary.max_combo+x; i++) {
+                            var addition = Math.floor((player[Designation].Fighting - 10) / 10) * 0.1 + 1;  
+                            for (i = x; i <= player[Designation].Weaponry.secondary.max_combo + x; i++) {
+                                console.log('test2');
                                 Damage[i].Damage = Math.round(player[Designation].Weaponry.secondary.Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
                             }
                         }
