@@ -174,30 +174,29 @@ function Melee(id, name, limit, trigger, mainMsg) {
                     var Damage = [];
                     if (player[Designation].Weaponry.main.Type == '近距離武器') {
                         for (i = 0; i < player[Designation].Weaponry.main.max_combo; i++) {
-                            var x = Damage.length;
+                            
                             var addition = math.floor((player[Designation].Fighting - 10) / 10)*0.1+1;
-                            Damage[x] = {};
-                            Damage[x].Damage = Math.round(player[Designation].Weaponry.main.Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
+                            Damage[i] = {};
+                            Damage[i].Damage = Math.round(player[Designation].Weaponry.main.Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
                         }
+                        var x = Damage.length;
                         if (player[fd].Weaponry.main.mode == player[fdi].Weaponry.secondary.mode) {
-                            for (i = 0; i < player[Designation].Weaponry.secondary.max_combo; i++) {
-                                var x = Damage.length;
-                                Damage[x].Damage = Math.round(player[Designation].Weaponry.secondary.Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
+                            for (i = x; i < player[Designation].Weaponry.secondary.max_combo; i++) {
+                                Damage[i].Damage = Math.round(player[Designation].Weaponry.secondary.Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
                             }
                         }
                     }
                     if (player[Designation].Weaponry.main.Type != '近距離武器' && player[Designation].Weaponry.secondary.Type == '近距離武器') {
                         for (i = 0; i < player[Designation].Weaponry.secondary.max_combo; i++) {
-                            var x = Damage.length;
-                                Damage[x] = {};
-                            Damage[x].Damage = Math.round(player[Designation].Weaponry.secondary.Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
+                                Damage[i] = {};
+                            Damage[i].Damage = Math.round(player[Designation].Weaponry.secondary.Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
                             } 
                     }
                     if (player[Designation].Weaponry.main.Type == '複合武器') {
                         for (i = 0; i < player[Designation].Weaponry.main.Fighting_max_combo; i++) {
                             var x = Damage.length;
-                            Damage[x] = {};
-                            Damage[x].Damage = Math.round(player[Designation].Weaponry.main.Fighting_Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
+                            Damage[i] = {};
+                            Damage[i].Damage = Math.round(player[Designation].Weaponry.main.Fighting_Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
                         }
                     }
                     var Avoid = (player[target].Fighting - player[Designation].Fighting) *2 + 50;
