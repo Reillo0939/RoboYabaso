@@ -175,9 +175,10 @@ function Melee(id, name, limit, trigger, mainMsg) {
                     if (player[Designation].Weaponry.main.Type == '近距離武器') {
                         for (i = 0; i < player[Designation].Weaponry.main.max_combo; i++) {
                             var addition = Math.floor((player[Designation].Fighting - 10) / 10) * 0.1 + 1;
-                            console.log('test1 '+Damage[0].Damage);
+                           
                             Damage[i] = {};
                             Damage[i].Damage = Math.round(player[Designation].Weaponry.main.Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
+                            console.log('test1 ' + Damage[i].Damage);
                         }
                         var x = Damage.length;
                         if (player[Designation].Weaponry.main.mode == player[Designation].Weaponry.secondary.mode) {
