@@ -218,7 +218,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
                             Probability = rollbase.Dice(100);
                             if (Probability <= Critical) {
                                 Damage[i].status = 'Critical';
-                                Damage[i].Damage = math.Round(Damage[i].Damage*1.5);
+                                Damage[i].Damage = Math.Round(Damage[i].Damage*1.5);
                             }
                             if (player[target].Weaponry.main.mode == '盾' && player[target].Weaponry.main.Type == '近距離武器') {               
                                 Probability = rollbase.Dice(100);
@@ -245,7 +245,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
                     }
                     if (player[target].Camp == 'A.A.U.F') {
                         for (i = 0; i < Damage.length; i++) {
-                            Damage[i] = math.Round(Damage[i].Damage * (1 - (player[target].Defense / (player[target].Defense + 150))));
+                            Damage[i] = Math.Round(Damage[i].Damage * (1 - (player[target].Defense / (player[target].Defense + 150))));
                             player[target].HP -= Damage[i].Damage;
                         }
                     }
