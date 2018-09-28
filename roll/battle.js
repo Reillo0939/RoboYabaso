@@ -317,7 +317,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
         if (Designation == 9999) {
             for (var fd = 0; fd < player.length; fd++) {
                 if (player[fd].participate == 1 && player[fd].Alive == 1 && player[fd].HP <= 0) {
-                    player[fd].Alive == 0;
+                    player[fd].Alive = 0;
                     rply.text += player[fd].Name + '撤退\n';
                     var count = 0;
                     for (var i = 0; i < player.length; i++) {
