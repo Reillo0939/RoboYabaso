@@ -302,7 +302,7 @@ function weapon_make(id, name, main_or_secondary, Weaponry_Name, Weaponry_Type, 
 function weapon_break(id, name, main_or_secondary) {
     var player = Character.get_player_data();
     for (var i = 0; i < player.length; i++) {
-        if (player[i].ID == id) {
+        if (player[i].ID == id && (main_or_secondary == '主武器' || main_or_secondary == '副武器')) {
             if (main_or_secondary == '主武器')player[i].Weaponry.main = {};
             if (main_or_secondary == '副武器') player[i].Weaponry.secondary = {};
             Character.save_player_data(player);
