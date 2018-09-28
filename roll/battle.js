@@ -181,7 +181,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
                         }
                         var x = Damage.length;
                         if (player[fd].Weaponry.main.mode == player[fdi].Weaponry.secondary.mode) {
-                            for (i = x; i < player[Designation].Weaponry.secondary.max_combo; i++) {
+                            for (i = x; i < player[Designation].Weaponry.secondary.max_combo+x; i++) {
                                 Damage[i].Damage = Math.round(player[Designation].Weaponry.secondary.Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
                             }
                         }
@@ -238,12 +238,12 @@ function Melee(id, name, limit, trigger, mainMsg) {
                     }
                     if (player[target].Camp == 'A.A.U.F') {
                         for (i = 0; i < Damage.length; i++) {
-                            damage[i] = math.Round(damage[i] * (1 - (player[target].Defense / (player[target].Defense + 150))));
-                            player[target].HP -= damage[i];
+                            Damage[i] = math.Round(Damage[i] * (1 - (player[target].Defense / (player[target].Defense + 150))));
+                            player[target].HP -= Damage[i];
                         }
                     }
                     if (player[target].Camp == 'G.U.') {
-                        for (i = 0; i < Damage.length; i++)player[target].HP -= damage[i];
+                        for (i = 0; i < Damage.length; i++)player[target].HP -= Damage[i];
                     }
                     rply.text = player[target].Name + 'HP' + player[target].HP + '/' + player[target].MHP +'\n(';
                     for (i = 0; i < Damage.length; i++) {
