@@ -323,8 +323,13 @@ function Melee(id, name, limit, trigger, mainMsg) {
                             if (player[fd].Reaction == turn) {
 
                                 Designation = fd;
-                                rply.text += '[回合' + BattleRound + ']\n' + player[Designation].Name + '的回合第' + (player[Designation].Action+1)+'次行動'+
-                                    '\n位置 x:' + player[Designation].Position.x + ' y:' + player[Designation].Position.y;
+                                rply.text += '[回合' + BattleRound + ']\n' + player[Designation].Name + ' 的回合第' + (player[Designation].Action + 1) + '次行動';
+                                for (var i = 0; i < player.length; i++) {
+                                    if (player[i].participate == 1 && player[i].Alive == 1) {
+                                        rply.text += player[i].Name + ' HP:' + player[i].HP + '/' + player[i].MHP + ' CE:' + player[i].CE + '/' + player[i].MCE +
+                                            ' x:' + player[i].Position.x + ' y:' + player[i].Position.y ;
+                                    }
+                                }
                                 return rply;
                             }
                         }
