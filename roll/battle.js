@@ -326,7 +326,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
                     if (count == 1) {
                         for (var i = 0; i < player.length; i++) {
                             if (player[i].participate == 1 && player[i].Alive == 1) {
-                                rply.text += player[Designation].Name + '取得勝利';
+                                rply.text += player[i].Name + '取得勝利';
                                 return rply;
                                 Reset();
                             }
