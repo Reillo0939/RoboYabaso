@@ -174,13 +174,14 @@ function Melee(id, name, limit, trigger, mainMsg) {
                     var Damage = [];
                     if (player[Designation].Weaponry.main.Type == '近距離武器') {
                         for (i = 0; i < player[Designation].Weaponry.main.max_combo; i++) {
-                            
+                            console.log('test1');
                             var addition = math.floor((player[Designation].Fighting - 10) / 10)*0.1+1;
                             Damage[i] = {};
                             Damage[i].Damage = Math.round(player[Designation].Weaponry.main.Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
                         }
                         var x = Damage.length;
                         if (player[fd].Weaponry.main.mode == player[fdi].Weaponry.secondary.mode) {
+                            console.log('test2');
                             for (i = x; i < player[Designation].Weaponry.secondary.max_combo+x; i++) {
                                 Damage[i].Damage = Math.round(player[Designation].Weaponry.secondary.Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
                             }
@@ -198,7 +199,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
                             Damage[i] = {};
                             
                             Damage[i].Damage = Math.round(player[Designation].Weaponry.main.Fighting_Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
-                            console.log(Damage[i].Damage);
+                            
                         }
                     }
                     var Avoid = (player[target].Fighting - player[Designation].Fighting) *2 + 50;

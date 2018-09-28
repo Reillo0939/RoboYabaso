@@ -37,16 +37,14 @@ let rplyArr = [
 '\[N] 替身',
 '\[N] 替身使者',
 '\[N] 手槍',
-'\[N] 重型手槍',
-'\[N] 衝鋒槍',
-'\[N] 突擊步槍',
-'\[N] 射手步槍',
+'\[N] 步槍',
+'\[N] 拳',
 '\[N] 狙擊槍',
 '\[N] 大口徑狙擊槍',
-'\[N] 火炮',
-'\[N] 短近距離武器',
-'\[N] 中近距離武器',
-'\[N] 長近距離武器',
+'\[N] 刀',
+'\[N] 長槍',
+    '\[N] 盾',
+    '\[UR] 你以為是UR，其實是我DIO噠',
 '\[N] 路邊的石頭'
 ];
 rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
@@ -63,7 +61,8 @@ let rplyArr = [
 '\[R] 武器-霰射炸藥', 
 '\[R] 武器-FrostGiant', 
 '\[R] 武器-我不知道能不能用', 
-'\[R] 武器-Caliburn', 
+    '\[R] 武器-Caliburn', 
+    '\[UR] 給你UR聽起來不錯，但是我拒絕',
 '\[R] 武器-3HIT'
 ];
 rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
@@ -84,44 +83,48 @@ let rplyArr = [
 '\[SR] 測試人員-Guni',
 '\[SR] 測試人員-赤靈',
 '\[SR] 聖戰發起者-lee',
-'\[SR] 迷之表情-(´・ω・`)',
+    '\[SR] 迷之表情-(´・ω・`)', 
+    '\[SR] 來自異界的魔龍眼少年路卡', 
 '\[SR] 迷之少年-Arthur'
 ];
 rply.text = rply.text +'\n' + rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;	
 }
 function MSSR() {
-let rplyArr = [
-'\[SSR] 過載插件',
-'\[SSR] 無人擊敗-愚人節boss',
-'\[SSR] β粒子研究報告',
-'\[SSR] 具現化研究者-洛斯塔克',
-'\[SSR] 雙生者-夜玥',
-'\[SSR] AAUF王牌-咲',
-'\[SSR] GU王牌-夢',
-'\[SSR] 協力者-謝諾亞',
-'\[SSR] 隔壁的bot-上原空音',
-'\[SSR] 悲劇之人-製杖',
-'\[SSR] 神器-Excalibur',
-'\[SSR] 神器-高周波刀',
-'\[SSR] 妖刀-村正',
-'\[SSR] 妖刀-村雨',
-'\[SSR] 神劍-莫邪',
-'\[SSR] 神劍-干將',
-'\[SSR] 魔劍-提爾鋒',
-'\[SSR] 神槍-岡格尼爾',
-'\[SSR] 程式設計師-夜月'
-];
+    let rplyArr = [
+        '\[SSR] 輪迴眼',
+    '\[SSR] 過載插件',
+    '\[SSR] 無人擊敗-愚人節boss',
+    '\[SSR] β粒子研究報告',
+    '\[SSR] 具現化研究者-洛斯塔克',
+    '\[SSR] 雙生者-夜玥',
+    '\[SSR] AAUF王牌-咲',
+    '\[SSR] GU王牌-夢',
+    '\[SSR] 協力者-謝諾亞',
+    '\[SSR] 隔壁的bot-上原空音',
+    '\[SSR] 悲劇之人-製杖',
+    '\[SSR] 神器-Excalibur',
+    '\[SSR] 神器-高周波刀',
+    '\[SSR] 妖刀-村正',
+    '\[SSR] 妖刀-村雨',
+    '\[SSR] 神劍-莫邪',
+    '\[SSR] 神劍-干將',
+    '\[SSR] 魔劍-提爾鋒',
+    '\[SSR] 神槍-岡格尼爾',
+     '\[SSR] 程式設計師-夜月',
+    '\[SSR] 獸娘蘿莉充氣娃娃(?'
+    ];
 rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;	
 }
 
 function MUR() {
 let rplyArr = [
-'\[UR] 課金獎勵-普利珠',
-'\[UR] β粒子凝聚體-賢者之石',
-'\[UR] β粒子研究者-雷洛',
-'\[UR] β粒子發現者-鼠'
+    '\[UR] 課金獎勵-普利珠',
+    '\[UR] https://www.youtube.com/watch?v=h-mUGj41hWA&index=18&list=PLP3hF47qMk4JiEo8SHISpQc9sePDbzLFm&t=0s',
+'\[UR] 賢者之石',
+'\[UR] 水晶研究者-雷洛',
+'\[UR] 研究主導者-鼠'
 ];
 rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 return rply;	
@@ -133,7 +136,7 @@ rply.text =
 	'單抽："卡池名稱"抽卡\n'+
 	'十連抽："卡池名稱"10連抽\n'+
 	'本周卡池\n'+
-	'===粒子研究紀錄===\n'+
+	'===水晶時代===\n'+
 	' -[UR]機率0.2% \n'+
 	' -[SSR]機率1% \n'+
 	' -[SR]機率10% \n'+
