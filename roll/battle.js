@@ -156,7 +156,19 @@ function Melee(id, name, limit, trigger, mainMsg) {
         }
     }
     if (start == 1) {
-        if (trigger.match(/^近戰攻擊$/) != null && id == player[Designation].ID && mainMsg[1] != null && player[Designation].Weaponry.main.Type == '近距離武器' && player[Designation].Weaponry.main.Type == '複合武器' && player[Designation].Weaponry.secondary.Type == '近距離武器') {
+        if (trigger.match(/^測試移動$/) != null) {
+
+                       
+            for (var fd = 0; fd < player.length; fd++) {
+                if (player[fd].participate == 1) {
+                    player[fd].Position.x = 12;
+                    player[fd].Position.y = 12;
+                }
+            }
+            Designation = 9999;
+                      
+        }
+        if (trigger.match(/^近戰攻擊$/) != null && id == player[Designation].ID && mainMsg[1] != null && (player[Designation].Weaponry.main.Type == '近距離武器' || player[Designation].Weaponry.main.Type == '複合武器' || player[Designation].Weaponry.secondary.Type == '近距離武器')) {
             for (var target = 0; target < player.length; target++) {
                 if (player[target].Name == mainMsg[1] && player[Designation].Position.x == player[target].Position.x && player[Designation].Position.y == player[target].Position.y) {
                     var Damage = [];
