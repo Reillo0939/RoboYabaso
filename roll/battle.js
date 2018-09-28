@@ -245,9 +245,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
                     }
                     if (player[target].Camp == 'A.A.U.F') {
                         for (i = 0; i < Damage.length; i++) {
-                            Damage[i] = Math.round(Damage[i].Damage * (1 - (player[target].Defense / (player[target].Defense + 150))));
-                            console.log('test ' + Damage[i].Damage * (1 - (player[target].Defense / (player[target].Defense + 150))));
-                            console.log('test2 ' + Math.round(Damage[i].Damage * (1 - (player[target].Defense / (player[target].Defense + 150)))));
+                            Damage[i].Damage = Math.round(Damage[i].Damage * (1 - (player[target].Defense / (player[target].Defense + 150))));
                             player[target].HP -= Damage[i].Damage;
                         }
                     }
