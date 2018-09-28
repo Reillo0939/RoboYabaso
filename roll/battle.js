@@ -156,6 +156,101 @@ function Melee(id, name, limit, trigger, mainMsg) {
         }
     }
     if (start == 1) {
+        if (trigger.match(/^近戰攻擊$/) != null && id == player[Designation].ID && mainMsg[1] != null && player[Designation].Weaponry.main.Type == '近距離武器' && player[Designation].Weaponry.main.Type == '複合武器' && player[Designation].Weaponry.secondary.Type == '近距離武器') {
+            for (var target = 0; target < player.length; target++) {
+                if (player[target].Name == mainMsg[1] && player[Designation].Position.x == player[target].Position.x && player[Designation].Position.y == player[target].Position.y) {
+                    var Damage = [];
+                    if (player[Designation].Weaponry.main.Type == '近距離武器') {
+                        for (i = 0; i < player[Designation].Weaponry.main.max_combo; i++) {
+                            var x = Damage.length;
+                            var addition = math.floor((player[Designation].Fighting - 10) / 10)*0.1+1;
+                            Damage[x] = {};
+                            Damage[x].Damage = Math.round(player[Designation].Weaponry.main.Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
+                        }
+                        if (player[fd].Weaponry.main.mode == player[fdi].Weaponry.secondary.mode) {
+                            for (i = 0; i < player[Designation].Weaponry.secondary.max_combo; i++) {
+                                var x = Damage.length;
+                                Damage[x].Damage = Math.round(player[Designation].Weaponry.secondary.Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
+                            }
+                        }
+                    }
+                    if (player[Designation].Weaponry.main.Type != '近距離武器' && player[Designation].Weaponry.secondary.Type == '近距離武器') {
+                        for (i = 0; i < player[Designation].Weaponry.secondary.max_combo; i++) {
+                            var x = Damage.length;
+                                Damage[x] = {};
+                            Damage[x].Damage = Math.round(player[Designation].Weaponry.secondary.Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
+                            } 
+                    }
+                    if (player[Designation].Weaponry.main.Type == '複合武器') {
+                        for (i = 0; i < player[Designation].Weaponry.main.Fighting_max_combo; i++) {
+                            var x = Damage.length;
+                            Damage[x] = {};
+                            Damage[x].Damage = Math.round(player[Designation].Weaponry.main.Fighting_Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
+                        }
+                    }
+                    var Avoid = (player[target].Fighting - player[Designation].Fighting) *2 + 50;
+                    var Critical = (player[Designation].Fighting - player[target].Fighting) + 20;
+                    for (i = 0; i < Damage.length; i++) {
+                        var Probability = rollbase.Dice(100);
+                        if (Probability <= Avoid) {
+                            Damage[i].status = 'Avoid';
+                            Damage[i].Damage = 0;
+                        }
+                        else {
+                            Probability = rollbase.Dice(100);
+                            if (Probability <= Critical) {
+                                Damage[i].status = 'Critical';
+                                Damage[i].Damage = math.Round(Damage[i].Damage*1.5);
+                            }
+                            if (player[target].Weaponry.main.mode == '盾' && player[target].Weaponry.main.Type == '近距離武器') {               
+                                Probability = rollbase.Dice(100);
+                                if (Probability <= player[target].Weaponry.main.Defense) {
+                                    Damage[i].status = 'Hinder';
+                                    Damage[i].Damage = 0;
+                                }
+                            }
+                            if (player[target].Weaponry.main.mode == '盾' && player[target].Weaponry.secondary.Type == '近距離武器') {
+                                Probability = rollbase.Dice(100);
+                                if (Probability <= player[target].Weaponry.secondary.Defense) {
+                                    Damage[i].status = 'Hinder';
+                                    Damage[i].Damage = 0;
+                                }
+                            }
+                            if (player[target].Weaponry.main.Fighting_mode == '盾' && player[target].Weaponry.main.Type == '複合武器') {
+                                Probability = rollbase.Dice(100);
+                                if (Probability <= player[target].Weaponry.main.Fighting_Defense) {
+                                    Damage[i].status = 'Hinder';
+                                    Damage[i].Damage = 0;
+                                }
+                            }
+                        }
+                    }
+                    if (player[target].Camp == 'A.A.U.F') {
+                        for (i = 0; i < Damage.length; i++) {
+                            damage[i] = math.Round(damage[i] * (1 - (player[target].Defense / (player[target].Defense + 150))));
+                            player[target].HP -= damage[i];
+                        }
+                    }
+                    if (player[target].Camp == 'G.U.') {
+                        for (i = 0; i < Damage.length; i++)player[target].HP -= damage[i];
+                    }
+                    rply.text = player[target].Name + 'HP' + player[target].HP + '/' + player[target].MHP +'\n(';
+                    for (i = 0; i < Damage.length; i++) {
+                        if (Damage[i].Damage == 0) rply.text +=Damage[i].Status;
+                        if (Damage[i].Damage > 0) rply.text += '-' + Damage[i].Damage;
+                        if (Damage[i].Status == 'Critical') rply.text += '[' + Damage[i].Status + ']';
+                        if (i != Damage.length - 1) rply.text += ',';
+                    }
+                    rply.text += ')\n';
+                    player[Designation].Action++;
+                    if (player[Designation].Action == player[Designation].MaxAction) {
+                        player[Designation].Action = 0;
+                        player[Designation].Round++;
+                    }
+                    Designation = 9999;
+                }
+            }
+        }
         if (trigger.match(/^移動$/) != null && id == player[Designation].ID && mainMsg[1] != null ) {
             let xxyy = mainMsg[1].split(','); //定義輸入字串
             if (isNaN(xxyy[0]) == 0 && isNaN(xxyy[1]) == 0) {
