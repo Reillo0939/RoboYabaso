@@ -178,7 +178,6 @@ function Melee(id, name, limit, trigger, mainMsg) {
                            
                             Damage[i] = {};
                             Damage[i].Damage = Math.round(player[Designation].Weaponry.main.Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
-                            console.log('test1 ' + Damage[i].Damage);
                         }
                         var x = Damage.length;
                         if (player[Designation].Weaponry.main.mode == player[Designation].Weaponry.secondary.mode) {
@@ -187,9 +186,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
                                 
                                 Damage[i] = {};
                                 Damage[i].Damage = Math.round(player[Designation].Weaponry.secondary.Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
-                                console.log('test2 ' + Damage[i].Damage);
                             }
-                            console.log('test3');
                         }
                     }
                     if (player[Designation].Weaponry.main.Type != '近距離武器' && player[Designation].Weaponry.secondary.Type == '近距離武器') {
@@ -245,13 +242,12 @@ function Melee(id, name, limit, trigger, mainMsg) {
                                 }
                             }
                         }
-                        console.log('test3 ' + Damage[i].Damage);
-                        console.log('test4 ' + Damage[i].Status);
                     }
                     if (player[target].Camp == 'A.A.U.F') {
                         for (i = 0; i < Damage.length; i++) {
                             Damage[i] = Math.round(Damage[i].Damage * (1 - (player[target].Defense / (player[target].Defense + 150))));
-                            console.log('test5 ' + Damage[i].Damage);
+                            console.log('test ' + (1 - (player[target].Defense / (player[target].Defense + 150))));
+                            console.log('test2 ' + player[target].Defense);
                             player[target].HP -= Damage[i].Damage;
                         }
                     }
@@ -260,9 +256,9 @@ function Melee(id, name, limit, trigger, mainMsg) {
                     }
                     rply.text = player[target].Name + 'HP' + player[target].HP + '/' + player[target].MHP +'\n(';
                     for (i = 0; i < Damage.length; i++) {       
-                        if (Damage[i].Damage == 0) rply.text +=Damage[i].Status;
+                        if (Damage[i].Damage == 0) rply.text += Damage[i].status;
                         if (Damage[i].Damage > 0) rply.text += '-' + Damage[i].Damage;
-                        if (Damage[i].Status == 'Critical') rply.text += '[' + Damage[i].Status + ']';
+                        if (Damage[i].status == 'Critical') rply.text += '[' + Damage[i].status + ']';
                         if (i != Damage.length - 1) rply.text += ',';
                     }
                     rply.text += ')\n';
