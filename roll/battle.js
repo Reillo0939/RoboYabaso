@@ -315,6 +315,25 @@ function Melee(id, name, limit, trigger, mainMsg) {
             return rply;
         }
         if (Designation == 9999) {
+            for (var fd = 0; fd < player.length; fd++) {
+                if (player[fd].participate == 1 && player[fd].Alive == 1 && player[fd].HP <= 0) {
+                    player[fd].Alive == 0;
+                    rply.text += player[fd].Name + '撤退\n';
+                    var count = 0;
+                    for (var i = 0; i < player.length; i++) {
+                        if (player[i].participate == 1 && player[fdiAlive == 1) count++;
+                    }
+                    if (count == 1) {
+                        for (var i = 0; i < player.length; i++) {
+                            if (player[i].participate == 1 && player[i].Alive == 1) {
+                                rply.text += player[Designation].Name + '取得勝利';
+                                return rply;
+                                Reset();
+                            }
+                        }
+                    }
+                }
+            }
             for (var turn = 150; turn >= 0; turn--) {
                 var AddRound = 0;
                     for (var fd = 0; fd < player.length; fd++) {
