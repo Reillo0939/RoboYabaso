@@ -39,7 +39,7 @@ function Reset() {
         player[fd].Position = {};
         player[fd].Position.x = 0;
         player[fd].Position.y = 0;
-        if (player[fd].Camp = 'G.U.') player[fd].Shield = player[fd].MShield; 
+        if (player[fd].Camp == 'G.U.') player[fd].Shield = player[fd].MShield; 
         if (player[fd].Weaponry == undefined) {
             player[fd].Weaponry = {};
             player[fd].Weaponry.main = {};
@@ -185,6 +185,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
                             var addition = Math.floor((player[Designation].Fighting - 10) / 10) * 0.1 + 1;  
                             for (i = x; i <= player[Designation].Weaponry.secondary.max_combo + x; i++) {
                                 console.log('test2');
+                                Damage[i] = {};
                                 Damage[i].Damage = Math.round(player[Designation].Weaponry.secondary.Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
                             }
                             console.log('test3');
