@@ -183,7 +183,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
                         if (player[Designation].Weaponry.main.mode == player[Designation].Weaponry.secondary.mode) {
                             var addition = Math.floor((player[Designation].Fighting - 10) / 10) * 0.1 + 1;
                             console.log('test2');
-                            for (i = x; i < player[Designation].Weaponry.secondary.max_combo+x; i++) {
+                            for (i = x; i <= player[Designation].Weaponry.secondary.max_combo+x; i++) {
                                 Damage[i].Damage = Math.round(player[Designation].Weaponry.secondary.Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
                             }
                         }
