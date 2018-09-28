@@ -330,6 +330,9 @@ function Melee(id, name, limit, trigger, mainMsg) {
                                             ' x:' + player[i].Position.x + ' y:' + player[i].Position.y +'\n';
                                     }
                                 }
+                                rply.text += '------------------------------\n移動 x,y\n';
+                                if (player[Designation].Weaponry.main.Type == '近距離武器' || player[Designation].Weaponry.main.Type == '複合武器' || player[Designation].Weaponry.secondary.Type == '近距離武器')
+                                    rply.text += '近戰攻擊 目標';
                                 return rply;
                             }
                         }
