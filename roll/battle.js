@@ -187,6 +187,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
                                 console.log('test2');
                                 Damage[i].Damage = Math.round(player[Designation].Weaponry.secondary.Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
                             }
+                            console.log('test3');
                         }
                     }
                     if (player[Designation].Weaponry.main.Type != '近距離武器' && player[Designation].Weaponry.secondary.Type == '近距離武器') {
@@ -254,6 +255,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
                     }
                     rply.text = player[target].Name + 'HP' + player[target].HP + '/' + player[target].MHP +'\n(';
                     for (i = 0; i < Damage.length; i++) {
+                        console.log('test3 ' + Damage[i].Status);
                         if (Damage[i].Damage == 0) rply.text +=Damage[i].Status;
                         if (Damage[i].Damage > 0) rply.text += '-' + Damage[i].Damage;
                         if (Damage[i].Status == 'Critical') rply.text += '[' + Damage[i].Status + ']';
