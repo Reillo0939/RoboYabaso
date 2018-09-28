@@ -321,7 +321,7 @@ function Melee(id, name, limit, trigger, mainMsg) {
                     rply.text += player[fd].Name + '撤退\n';
                     var count = 0;
                     for (var i = 0; i < player.length; i++) {
-                        if (player[i].participate == 1 && player[fdiAlive == 1) count++;
+                        if (player[i].participate == 1 && player[i].Alive == 1) count++;
                     }
                     if (count == 1) {
                         for (var i = 0; i < player.length; i++) {
