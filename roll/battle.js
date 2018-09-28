@@ -196,7 +196,9 @@ function Melee(id, name, limit, trigger, mainMsg) {
                         for (i = 0; i < player[Designation].Weaponry.main.Fighting_max_combo; i++) {
                             var x = Damage.length;
                             Damage[i] = {};
+                            
                             Damage[i].Damage = Math.round(player[Designation].Weaponry.main.Fighting_Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
+                            Console.log(Damage[i].Damage);
                         }
                     }
                     var Avoid = (player[target].Fighting - player[Designation].Fighting) *2 + 50;
