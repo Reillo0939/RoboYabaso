@@ -43,8 +43,7 @@ let rplyArr = [
 '\[N] 大口徑狙擊槍',
 '\[N] 刀',
 '\[N] 長槍',
-    '\[N] 盾',
-    '\[UR] 你以為是UR，其實是我DIO噠',
+'\[N] 盾',
 '\[N] 路邊的石頭'
 ];
 rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
@@ -61,8 +60,7 @@ let rplyArr = [
 '\[R] 武器-霰射炸藥', 
 '\[R] 武器-FrostGiant', 
 '\[R] 武器-我不知道能不能用', 
-    '\[R] 武器-Caliburn', 
-    '\[UR] 給你UR聽起來不錯，但是我拒絕',
+'\[R] 武器-Caliburn', 
 '\[R] 武器-3HIT'
 ];
 rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
@@ -92,7 +90,7 @@ return rply;
 }
 function MSSR() {
     let rplyArr = [
-        '\[SSR] 輪迴眼',
+     '\[SSR] 輪迴眼',
     '\[SSR] 過載插件',
     '\[SSR] 無人擊敗-愚人節boss',
     '\[SSR] β粒子研究報告',
@@ -111,7 +109,7 @@ function MSSR() {
     '\[SSR] 神劍-干將',
     '\[SSR] 魔劍-提爾鋒',
     '\[SSR] 神槍-岡格尼爾',
-     '\[SSR] 程式設計師-夜月',
+    '\[SSR] 程式設計師-夜月',
     '\[SSR] 獸娘蘿莉充氣娃娃(?'
     ];
 rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
@@ -119,8 +117,11 @@ return rply;
 }
 
 function MUR() {
-let rplyArr = [
-    '\[UR] 課金獎勵-普利珠',
+let rplyArr = [覇剣イフリート
+'\[UR] 覇剣イフリート',
+'\[UR] 霊刀セイレーン',
+'\[UR] 課金獎勵-普利珠',
+'\[UR] 我喬魯諾喬巴拿有一個夢想',
     '\[UR] https://www.youtube.com/watch?v=h-mUGj41hWA&index=18&list=PLP3hF47qMk4JiEo8SHISpQc9sePDbzLFm&t=0s',
 '\[UR] 賢者之石',
 '\[UR] 水晶研究者-雷洛',
