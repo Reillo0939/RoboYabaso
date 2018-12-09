@@ -67,7 +67,13 @@ rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length
 return rply;	
 }
 function MSR() {
-let rplyArr = [
+let rplyArr = [	
+'\[SR] スサノオ',
+'\[SR] イージス',
+'\[SR] アイオーン',
+'\[SR] ケリュケイオン',
+'\[SR] ムラサメ',	       
+'\[SR] 雷洛的研究紀錄',	       
 '\[SR] 雷洛的研究紀錄',
 '\[SR] 粒子儲能電池',
 '\[SR] 忙碌者-Wings',
@@ -90,7 +96,13 @@ return rply;
 }
 function MSSR() {
     let rplyArr = [
-     '\[SSR] 輪迴眼',
+    '\[SSR] 神剣グラム',
+    '\[SSR] 覇剣デュランダル',
+    '\[SSR] 霊刀イザナミ',
+    '\[SSR] 滅剣・ベリアル',		   
+    '\[SSR] 神槍グングニル',		   
+    '\[SSR] 神槍グングニル',			    
+    '\[SSR] 古代機バルバトス',
     '\[SSR] 過載插件',
     '\[SSR] 無人擊敗-愚人節boss',
     '\[SSR] β粒子研究報告',
@@ -117,7 +129,7 @@ return rply;
 }
 
 function MUR() {
-let rplyArr = [覇剣イフリート
+let rplyArr = [
 '\[UR] 覇剣イフリート',
 '\[UR] 霊刀セイレーン',
 '\[UR] 課金獎勵-普利珠',
