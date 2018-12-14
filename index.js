@@ -95,7 +95,7 @@ var msg = '';
 let a = event.source.userId;
 	let b='';
 	var c=event.source.groupId
-	
+	 console.log(c);
 	
 	
 event.source.profile().then(function (profile) {
