@@ -172,7 +172,7 @@ require('fs').readdirSync(__dirname + '/modules/').forEach(function(file) {
    
   }
 });
-app.set('port', (process.env.PORT || 5000));
+//app.set('port', (process.env.PORT || 5000));
 // views is directory for all template files
 app.get('/', function(req, res) {
 //	res.send(parseInput(req.query.input));
