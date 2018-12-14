@@ -180,9 +180,12 @@ app.get('/', function(req, res) {
 //	res.send('Hello');
 res.sendFile(__dirname + '/index.html');
 });
+
 //app.use('/socket.io', express.static(__dirname + '/socket.io'));
-app.post('/', jsonParser, function(req, res) {
-});
+
+/*app.post('/', jsonParser, function(req, res) {
+});*/
+
 /*app.listen(app.get('port'), function() {
 	console.log('Node app is running on port', app.get('port'));
 });*/
