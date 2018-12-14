@@ -172,8 +172,8 @@ require('fs').readdirSync(__dirname + '/modules/').forEach(function(file) {
    
   }
 });
-app.set('port', (process.env.PORT || 5000));
-
+//app.set('port', (process.env.PORT || 5000));
+app.listen((process.env.PORT || 3000), () => console.log(`Listening on ${ (process.env.PORT || 3000) }`));
 
 // views is directory for all template files
 app.get('/', function(req, res) {
