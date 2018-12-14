@@ -190,13 +190,15 @@ io.on('connection', function(socket){
 				io.emit('chat message', '['+Name+']：'+msg);
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '['+Name+']：'+msg );
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '已關閉戰鬥模式' );
-				io.emit('chat message', "已關閉戰鬥模式<br>");
+				io.emit('chat message', "已關閉戰鬥模式");
 				Not_instruction=2;
 			}
+			else{
 			ionm = battles.battles(UUID,Name,msg);
 			bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2','['+Name+']：'+msg);
+			io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
 			if(ionm)bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',ionm.text);
-			//io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
+			}
 		}
 		if(battle==0){
 			if(msg=='戰鬥模式啟動'){
@@ -205,7 +207,7 @@ io.on('connection', function(socket){
 				io.emit('chat message', '['+Name+']：'+msg);
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '['+Name+']：'+msg );
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '已啟動戰鬥模式' );
-				io.emit('chat message', "已啟動戰鬥模式<br>");
+				io.emit('chat message', "已啟動戰鬥模式");
 				Not_instruction=2;
 			}
 		ionm=re.parseInput(0, msg, UUID, Name);
@@ -217,11 +219,11 @@ io.on('connection', function(socket){
 				Character.load_player_data();
 				Character.CK();
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '重新載入，請稍後片刻' );
-				io.emit('chat message', "重新載入，請稍後片刻<br>");
+				io.emit('chat message', "重新載入，請稍後片刻");
 			}
 			else{
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', 'GM才能使用' );
-				io.emit('chat message', "GM才能使用<br>");
+				io.emit('chat message', "GM才能使用");
 			}
 		}
 		if(!ionm && Not_instruction==0)ionm={},ionm.text='['+Name+']：'+msg,Not_instruction=1;
