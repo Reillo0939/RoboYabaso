@@ -1,371 +1,381 @@
-var rollbase = require('./rollbase.js');
-var Character = require('./Character.js');
-var xweapon=require('./weapon.js');
+var express = require('express');//
+var bodyParser = require('body-parser');
+var app = express();//262
 
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
+var Character = require('./roll/Character.js');
+var battles = require('./roll/battle.js');
+var re = require('./roll/analytics.js');
 var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
 var channelSecret = process.env.LINE_CHANNEL_SECRET;
-var linebot = require('linebot');///030
+var linebot = require('linebot');
  var channelId='1567989750';
 var bot = linebot({
   channelId: channelId,
   channelSecret: channelSecret,
   channelAccessToken: channelAccessToken
 });
+var jsonParser = bot.parser();
+var google = require('googleapis');
+var sheets = google.sheets('v4');
+var googleAuth = require('google-auth-library');
+var auth = new googleAuth();
+var OAuth2 = google.auth.OAuth2;
+var REDIRECT_URL='urn:ietf:wg:oauth:2.0:oob';
+// generate a url that asks permissions for Google+ and Google Calendar scopes
+var API_KEY = 'AIzaSyBM_GM_ZVEqwDsOPmpVBR3XI3BhwD4Bfm4'; 
+var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
+var cat='';
+var input='';
+var battle=0;
+var a=0;
+var to_web_msg='',to_switch=0;
+Character.load_player_data();
+Character.CK();
 
 
-var rply ={type : 'text'}; //type是必需的,但可以更改
-var player = [];
-var mode = 0;
-var BattleRound = 0;
-var Designation = 9999;
-var start=0;
-var ot= new Date();;
-function Reset() {
-    start = 0;
-    BattleRound = 0;
-    Designation = 9999;
-    player = Character.get_player_data();
-    for (var fd = 0; fd < player.length; fd++) {
-        player[fd].participate = 0; 
-        player[fd].HP = player[fd].MHP; 
-        player[fd].CE = player[fd].MCE; 
-        player[fd].Alive = 1;
-        player[fd].Action = 0;
-        player[fd].MaxAction = 2;
-        if (player[fd].Reaction >= 100) player[fd].MaxAction++;
-        player[fd].MovingDistance = 3;
-        player[fd].Status = {};
-        player[fd].Round = 0;
-        player[fd].Position = {};
-        player[fd].Position.x = 0;
-        player[fd].Position.y = 0;
-        if (player[fd].Camp == 'G.U.') player[fd].Shield = player[fd].MShield; 
-        if (player[fd].Weaponry == undefined) {
-            player[fd].Weaponry = {};
-            player[fd].Weaponry.main = {};
-            player[fd].Weaponry.secondary = {};
+var myLineTemplate = {
+    type: 'template',
+    altText: '選單',
+    template: {
+        type: 'buttons',
+        text: '選單',
+        actions: [
+		{
+            type: 'postback',
+            label: '玩家自身情報',
+            data: '玩家自身情報'
+        }, 
+		  {
+            type: 'postback',
+                label: '武器查看',
+                data: '武器查看'
+        }, 
+		  {
+            type: 'postback',
+              label: '水晶時代抽卡',
+              data: '水晶時代抽卡'
+        },
+		{
+            type: 'postback',
+            label: '水晶時代10連抽',
+            data: '水晶時代10連抽'
         }
-        if (player[fd].Weaponry.main.Type == '槍械') player[fd].Weaponry.main.Bullet = player[fd].Weaponry.main.MBullet;
-        if (player[fd].Weaponry.secondary.Type == '槍械') player[fd].Weaponry.secondary.Bullet = player[fd].Weaponry.secondary.MBullet;
-        if (player[fd].Weaponry.main.Type == '複合武器') player[fd].Weaponry.main.Fire_Bullet = player[fd].Weaponry.main.Fire_MBullet;
+		 ]
     }
-}
-
-/*setInterval(function(){
-	var nt = new Date();
-	if((((nt.getTime() - ot.getTime()) / (1000 * 60)) >=1) && start == 1){
-		//console.log('debug'+(((nt.getTime() - ot.getTime()) / (1000 * 60))));
-				var rr='';
-				self++;
-				ds=1;
-				if(self>=player.length)self=0;
-				rr='自動跳過\n\n'+BR();
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',rr);
-				var nowt = new Date();
-				ot=nowt;
-	}
-			},1000);*/
-
-
-
-function battles(id,name,in_text) {
-	let msgSplitor = (/\S+/ig);	
-    let mainMsg = in_text.match(msgSplitor); //定義輸入字串
-	let trigger = mainMsg[0].toString()
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------
-	if (trigger.match(/武器/) != null ){
-        if (trigger.match(/製作/) != null) return exports.weapon.weapon_make(id, name, mainMsg[1], mainMsg[2], mainMsg[3], mainMsg[4], mainMsg[5]);
-        if (trigger.match(/查看/) != null) return exports.weapon.weapon_view(id, name);
-        if (trigger.match(/破壞/) != null) return exports.weapon.weapon_break(id, name, mainMsg[1]);
-	}
-	if (trigger.match(/玩家/) != null){
-        if (trigger.match(/自身情報/) != null) return Character.CV(id,name) ;
-	}
-	if (trigger.match(/技能/) != null){
-        if (trigger.match(/查看/) != null) return Character.CKV(name,mainMsg[1]) ;
-    }
-
-    if (trigger.match(/^測試模式$/) != null) mode = 1;
-
-    if (mode == 1) {
-        Melee(id, name, 2, trigger, mainMsg);
-        return rply;
-    }
-}
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------
-function Melee(id, name, limit, trigger, mainMsg) {
-    rply.text = '';
-    if (start == 0) {
-        if (trigger.match(/^戰鬥參與$/) != null) {
-            var participate_player = 0;
-            for (var fd = 0; fd < player.length; fd++) {
-                if (player[fd].participate == 1) participate_player++;
-            }
-            if (participate_player >= limit) {
-                rply.text = '人數已滿';
-                return rply;
-            }
-            for (var fd = 0; fd < player.length; fd++) {
-                if (player[fd].ID == id) {
-                    if (player[fd].Camp == 'A.A.U.F') {
-                        player[fd].participate = 1;
-                        participate_player = 0;
-                        for (var i = 0; i < player.length; i++) {
-                            if (player[i].participate == 1) participate_player++;
-                        }
-                        rply.text =
-                            '[' + name + ']的角色[' + player[fd].Name + ']已參與 (' + participate_player + '/' + limit + ')';
-                    }
-                    if (player[fd].Camp == 'G.U.') {
-                        player[fd].participate = 1;
-                        participate_player = 0;
-                        for (var i = 0; i < player.length; i++) {
-                            if (player[i].participate == 1) participate_player++;
-                        }
-                        rply.text =
-                            '[' + name + ']的角色[' + player[fd].Name + ']已參與 (' + participate_player + '/' + limit + ')';
-                    }
-                    return rply;
-                }
-            }
-        }
-        if (trigger.match(/^取消參與$/) != null) {
-            for (var fd = 0; fd < player.length; fd++) {
-                if (player[fd].ID == id) {
-                    if (player[fd].participate == 1) {
-                        player[fd].participate = 0;
-                        var participate_player = 0;
-                        for (var i = 0; i < player.length; i++) {
-                            if (player[i].participate == 1) participate_player++;
-                        }
-                        rply.text =
-                            '[' + name + ']的角色[' + player[fd].Name + ']已取消參與(' + participate_player + '/' + limit + ')';
-                    }
-                    return rply;
-                }
-            }
-        }
-        if (trigger.match(/^戰鬥開始$/) != null) {
-            start = 1;
-            for (var fd = 0; fd < player.length; fd++) {
-                if (player[fd].participate == 1) {
-                    player[fd].Position.x = rollbase.Dice(25);
-                    player[fd].Position.y = rollbase.Dice(25);
-                }
-            }
-        }
-    }
-    if (start == 1) {
-        if (trigger.match(/^測試移動$/) != null) {
-
-                       
-            for (var fd = 0; fd < player.length; fd++) {
-                if (player[fd].participate == 1) {
-                    player[fd].Position.x = 12;
-                    player[fd].Position.y = 12;
-                }
-            }
-            Designation = 9999;
-                      
-        }
-        if (trigger.match(/^近戰攻擊$/) != null && id == player[Designation].ID && mainMsg[1] != null && (player[Designation].Weaponry.main.Type == '近距離武器' || player[Designation].Weaponry.main.Type == '複合武器' || player[Designation].Weaponry.secondary.Type == '近距離武器')) {
-            for (var target = 0; target < player.length; target++) {
-                if (player[target].Name == mainMsg[1] && player[Designation].Position.x == player[target].Position.x && player[Designation].Position.y == player[target].Position.y) {
-                    var Damage = [];
-                    if (player[Designation].Weaponry.main.Type == '近距離武器') {
-                        for (i = 0; i < player[Designation].Weaponry.main.max_combo; i++) {
-                            var addition = Math.floor((player[Designation].Fighting - 10) / 10) * 0.1 + 1;
-                           
-                            Damage[i] = {};
-                            Damage[i].Damage = Math.round(player[Designation].Weaponry.main.Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
-                        }
-                        var x = Damage.length;
-                        if (player[Designation].Weaponry.main.mode == player[Designation].Weaponry.secondary.mode) {
-                            var addition = Math.floor((player[Designation].Fighting - 10) / 10) * 0.1 + 1;  
-                            for (i = x; i < player[Designation].Weaponry.secondary.max_combo + x; i++) {
-                                
-                                Damage[i] = {};
-                                Damage[i].Damage = Math.round(player[Designation].Weaponry.secondary.Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
-                            }
-                        }
-                    }
-                    if (player[Designation].Weaponry.main.Type != '近距離武器' && player[Designation].Weaponry.secondary.Type == '近距離武器') {
-                        for (i = 0; i < player[Designation].Weaponry.secondary.max_combo; i++) {
-                            var addition = Math.floor((player[Designation].Fighting - 10) / 10) * 0.1 + 1;
-                                Damage[i] = {};
-                            Damage[i].Damage = Math.round(player[Designation].Weaponry.secondary.Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
-                            } 
-                    }
-                    if (player[Designation].Weaponry.main.Type == '複合武器') {
-                        for (i = 0; i < player[Designation].Weaponry.main.Fighting_max_combo; i++) {
-                            var addition = Math.floor((player[Designation].Fighting - 10) / 10) * 0.1 + 1;
-                            var x = Damage.length;
-                            Damage[i] = {};
-                            
-                            Damage[i].Damage = Math.round(player[Designation].Weaponry.main.Fighting_Damage * (rollbase.Dice(51) + 74) * 0.01 * addition);
-                            
-                        }
-                    }
-                    var Avoid = (player[target].Fighting - player[Designation].Fighting) *2 + 50;
-                    var Critical = (player[Designation].Fighting - player[target].Fighting) + 20;
-                    for (i = 0; i < Damage.length; i++) {
-                        var Probability = rollbase.Dice(100);
-                        if (Probability <= Avoid) {
-                            Damage[i].status = 'Avoid';
-                            Damage[i].Damage = 0;
-                        }
-                        else {
-                            Probability = rollbase.Dice(100);
-                            if (Probability <= Critical) {
-                                Damage[i].status = 'Critical';
-                                Damage[i].Damage = Math.round(Damage[i].Damage*1.5);
-                            }
-                            if (player[target].Weaponry.main.mode == '盾' && player[target].Weaponry.main.Type == '近距離武器') {               
-                                Probability = rollbase.Dice(100);
-                                if (Probability <= player[target].Weaponry.main.Defense) {
-                                    Damage[i].status = 'Hinder';
-                                    Damage[i].Damage = 0;
-                                }
-                            }
-                            if (player[target].Weaponry.main.mode == '盾' && player[target].Weaponry.secondary.Type == '近距離武器') {
-                                Probability = rollbase.Dice(100);
-                                if (Probability <= player[target].Weaponry.secondary.Defense) {
-                                    Damage[i].status = 'Hinder';
-                                    Damage[i].Damage = 0;
-                                }
-                            }
-                            if (player[target].Weaponry.main.Fighting_mode == '盾' && player[target].Weaponry.main.Type == '複合武器') {
-                                Probability = rollbase.Dice(100);
-                                if (Probability <= player[target].Weaponry.main.Fighting_Defense) {
-                                    Damage[i].status = 'Hinder';
-                                    Damage[i].Damage = 0;
-                                }
-                            }
-                        }
-                    }
-                    if (player[target].Camp == 'A.A.U.F') {
-                        for (i = 0; i < Damage.length; i++) {
-                            Damage[i].Damage = Math.round(Damage[i].Damage * (1 - (player[target].Defense / (player[target].Defense + 150))));
-                            player[target].HP -= Damage[i].Damage;
-                        }
-                    }
-                    if (player[target].Camp == 'G.U.') {
-                        for (i = 0; i < Damage.length; i++)player[target].HP -= Damage[i].Damage;
-                    }
-                    rply.text = player[target].Name + 'HP' + player[target].HP + '/' + player[target].MHP +'\n(';
-                    for (i = 0; i < Damage.length; i++) {       
-                        if (Damage[i].Damage == 0) rply.text += Damage[i].status;
-                        if (Damage[i].Damage > 0) rply.text += '-' + Damage[i].Damage;
-                        if (Damage[i].status == 'Critical') rply.text += '[' + Damage[i].status + ']';
-                        if (i != Damage.length - 1) rply.text += ',';
-                    }
-                    rply.text += ')\n';
-                    player[Designation].Action++;
-                    if (player[Designation].Action == player[Designation].MaxAction) {
-                        player[Designation].Action = 0;
-                        player[Designation].Round++;
-                    }
-                    Designation = 9999;
-                }
-            }
-        }
-        if (trigger.match(/^移動$/) != null && id == player[Designation].ID && mainMsg[1] != null ) {
-            let xxyy = mainMsg[1].split(','); //定義輸入字串
-            if (isNaN(xxyy[0]) == 0 && isNaN(xxyy[1]) == 0) {
-                var temp = 0;
-                temp = Math.pow(Math.pow(Math.floor(xxyy[0]) - player[Designation].Position.x, 2) + Math.pow(Math.floor(xxyy[1]) - player[Designation].Position.y, 2), 0.5);
-                if (temp > player[Designation].MovingDistance) {
-
-                    rply.text = '距離太遠，無法移動';
-                    return rply;
-                }
-                else {
-                    if (xxyy[0] >= 1 && xxyy[0] <= 25 && xxyy[1] >= 1 && xxyy[1] <= 25) {
-
-                        rply.text = '已移動到 座標' + xxyy[0] + ',' + xxyy[1] +'\n';
-                        player[Designation].Position.x = xxyy[0] ;
-                        player[Designation].Position.y = xxyy[1];
-                        player[Designation].Action++;
-                        if (player[Designation].Action == player[Designation].MaxAction) {
-                            player[Designation].Action = 0;
-                            player[Designation].Round++;
-                        }
-                        Designation = 9999;
-                    }
-                    else {
-                        rply.text = '位置錯誤，無法移動';
-                        return rply;
-                    }
-                }
-            }
-            else {
-                rply.text = '格式錯誤';
-                return rply;
-            }
-        }
-        if (trigger.match(/^跳過$/) != null) {
-            player[Designation].Round++;
-            player[Designation].Action = 0;
-            Designation = 9999;
-           
-        }
-        if (trigger.match(/^重置$/) != null) {
-            Reset();
-            rply.text = '重置';
-            return rply;
-        }
-        if (Designation == 9999) {
-            for (var fd = 0; fd < player.length; fd++) {
-                if (player[fd].participate == 1 && player[fd].Alive == 1 && player[fd].HP <= 0) {
-                    player[fd].Alive = 0;
-                    rply.text += player[fd].Name + '撤退\n';
-                    var count = 0;
-                    for (var i = 0; i < player.length; i++) {
-                        if (player[i].participate == 1 && player[i].Alive == 1) count++;
-                    }
-                    if (count == 1) {
-                        for (var i = 0; i < player.length; i++) {
-                            if (player[i].participate == 1 && player[i].Alive == 1) {
-                                rply.text += player[i].Name + '取得勝利';
-                                return rply;
-                                Reset();
-                            }
-                        }
-                    }
-                }
-            }
-            for (var turn = 150; turn >= 0; turn--) {
-                var AddRound = 0;
-                    for (var fd = 0; fd < player.length; fd++) {
-                        if (player[fd].Round == BattleRound && player[fd].participate == 1 && player[fd].Alive == 1) {
-                            AddRound++;
-                            if (player[fd].Reaction == turn) {
-
-                                Designation = fd;
-                                rply.text += '[回合' + BattleRound + ']\n' + player[Designation].Name + ' 的回合第' + (player[Designation].Action + 1) + '次行動\n';
-                                for (var i = 0; i < player.length; i++) {
-                                    if (player[i].participate == 1 && player[i].Alive == 1) {
-                                        rply.text +='------------------------------\n'+ player[i].Name + ' HP:' + player[i].HP + '/' + player[i].MHP + ' CE:' + player[i].CE + '/' + player[i].MCE +
-                                            ' x:' + player[i].Position.x + ' y:' + player[i].Position.y +'\n';
-                                    }
-                                }
-                                rply.text += '------------------------------\n移動 x,y\n';
-                                if (player[Designation].Weaponry.main.Type == '近距離武器' || player[Designation].Weaponry.main.Type == '複合武器' || player[Designation].Weaponry.secondary.Type == '近距離武器')
-                                    rply.text += '近戰攻擊 目標';
-                                return rply;
-                            }
-                        }
-                    }
-                if (AddRound == 0) BattleRound++;
-                }
-                
-        }
-       
-    }
-}
-module.exports = {
-	battles:battles,
-    Reset: Reset
 };
 
+bot.on('postback', function (event) {
+    let a = event.source.userId;
+    var b = '';
+    event.source.profile().then(function (profile) {
+        b = profile.displayName;
+ var myResult = event.postback.data;
+    if (myResult != '') {
+        var msg = re.parseInput(event.rplyToken, myResult, a, b);
+        event.reply(msg);
+}
+
+    });
+   
+    
+});
+
+
+/*setInterval(function(){
+    var userId = 'Ca8fea1f8ef1ef2519860ee21fb740fd2';
+    var sendMsg = a.toString(10);
+    tis(userId,sendMsg);
+    console.log('send: '+sendMsg);
+},2000);*/
+bot.on('message', function(event) { if (event.message.type = 'text') { 
+var msg = '';
+let a = event.source.userId;
+	let b='';
+	var c=event.source.groupId
+	 console.log(c);
+	
+	
+event.source.profile().then(function (profile) {
+    b = profile.displayName;
+//Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
+	if(battle==1){
+		if(event.message.text=='戰鬥模式關閉'){
+			battle=0;
+			io.emit('chat message', '['+b+']：'+event.message.text);
+			bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '已關閉戰鬥模式' );
+			io.emit('chat message', "已關閉戰鬥模式<br>");
+		}
+		msg = battles.battles(a,b,event.message.text);
+		event.reply(msg);
+		io.emit('chat message', msg.text.replace(/\n/g,"<br>"));
+	}
+	if(battle==0){
+		if(event.message.text=='戰鬥模式啟動'){
+			battle=1;
+			battles.Reset();
+			io.emit('chat message', '['+b+']：'+event.message.text);
+			bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '已啟動戰鬥模式' );
+			io.emit('chat message', "已啟動戰鬥模式<br>");
+		}
+		msg =re.parseInput(event.rplyToken, event.message.text,a,b);	
+		if(event.message.text=='武裝裝甲聯合戰線'){
+			event.reply([{
+			  type: 'image',
+			  originalContentUrl: 'https://2.bp.blogspot.com/-b7JvOc_z2SU/WqfgwGgmylI/AAAAAAAADJI/k1rhP5ERtycFl6D4OqCEip1ShubvAbedgCLcBGAs/s1600/AAUF.jpg',
+			  previewImageUrl: 'https://2.bp.blogspot.com/-b7JvOc_z2SU/WqfgwGgmylI/AAAAAAAADJI/k1rhP5ERtycFl6D4OqCEip1ShubvAbedgCLcBGAs/s1600/AAUF.jpg'
+			},
+			  { type: 'text', text: '武裝裝甲聯合戰線是由數個高發展高技術的國家，\n以人才技術互通協約所產生的武裝研究機關。' }]);
+		}
+		if(event.message.text=='蓋爾奇亞聯合'){
+			event.reply([{
+			  type: 'image',
+			  originalContentUrl: 'https://1.bp.blogspot.com/-esavyLGBQ8I/WqfgwIWh0XI/AAAAAAAADJM/ZYR8ZXdjkzgOzGc_VEetoGgtHPEvSbzUwCLcBGAs/s1600/GU.jpg',
+			  previewImageUrl: 'https://1.bp.blogspot.com/-esavyLGBQ8I/WqfgwIWh0XI/AAAAAAAADJM/ZYR8ZXdjkzgOzGc_VEetoGgtHPEvSbzUwCLcBGAs/s1600/GU.jpg'
+			},
+			  { type: 'text', text: '蓋爾奇亞聯合是研究水晶能量的聯合陣營，與聯合外的部分國家互相簽定了人才技術互通協約。' }]
+				   );
+		}
+		if (event.message.text == '選單') {
+			msg = myLineTemplate;
+		}
+		if(!msg && c=='Ca8fea1f8ef1ef2519860ee21fb740fd2')to_web_msg='['+b+']：'+event.message.text,io.emit('chat message', to_web_msg.replace(/\n/g,"<br>"));;
+		event.reply(msg);		 
+	}
+	if(event.message.text=='重新載入'){
+		if(a=='U7c4779fd913aff927f26d7f6bedd87d1'||a=='Uc9b4571605aabd3e94edd7c189144278'){
+			Character.load_player_data();
+			Character.CK();
+			event.reply({ type: 'text', text: '重新載入，請稍後片刻' });	
+		}
+		else{
+			event.reply({type: 'text', text: 'GM才能使用' });	
+		}
+	}
+  console.log(a+'   '+b+'  '+event.message.text+'   '+cat);
+});
+  } });
+ 
+require('fs').readdirSync(__dirname + '/modules/').forEach(function(file) {
+  if (file.match(/\.js$/) !== null && file !== 'index.js') {
+    var name = file.replace('.js', '');
+    exports[name] = require('./modules/' + file);
+   
+  }
+});
+app.set('port', (process.env.PORT || 5000));
+
+// views is directory for all template files
+app.get('/', function(req, res) {
+//	res.send(parseInput(req.query.input));
+//	res.send('Hello');
+res.sendFile(__dirname + '/index.html');
+});
+
+app.use('/socket.io', express.static(__dirname + '/socket.io'));
+app.post('/', jsonParser);
+/*app.post('/', jsonParser, function(req, res) {
+});*/
+
+/*app.listen(app.get('port'), function() {
+	console.log('Node app is running on port', app.get('port'));
+});*/
+io.on('connection', function(socket){
+	socket.on('chat message', function(msg,UUID,Name){
+		var ionm,Not_instruction=0;
+		if(battle==1){
+			if(msg=='戰鬥模式關閉'){
+				battle=0;
+				io.emit('chat message', '['+Name+']：'+msg);
+				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '['+Name+']：'+msg );
+				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '已關閉戰鬥模式' );
+				io.emit('chat message', "已關閉戰鬥模式<br>");
+				Not_instruction=2;
+			}
+			ionm = battles.battles(UUID,Name,msg);
+			bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2','['+Name+']：'+msg);
+			bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',ionm.text);
+			//io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
+		}
+		if(battle==0){
+			if(msg=='戰鬥模式啟動'){
+				battle=1;
+				battles.Reset();
+				io.emit('chat message', '['+Name+']：'+msg);
+				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '['+Name+']：'+msg );
+				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '已啟動戰鬥模式' );
+				io.emit('chat message', "已啟動戰鬥模式<br>");
+				Not_instruction=2;
+			}
+		ionm=re.parseInput(0, msg, UUID, Name);
+		if(msg=='武裝裝甲聯合戰線'|| msg=='AAUF')ionm = { type: 'text', text: '武裝裝甲聯合戰線是由數個高發展高技術的國家，\n以人才技術互通協約所產生的武裝研究機關。' };
+		if(msg=='蓋爾奇亞聯合'|| msg=='GU')ionm =  { type: 'text', text: '蓋爾奇亞聯合是研究水晶能量的聯合陣營，與聯合外的部分國家互相簽定了人才技術互通協約。' };
+		}
+		if(msg=='重新載入'){
+			if(UUID=='U7c4779fd913aff927f26d7f6bedd87d1'||UUID=='Uc9b4571605aabd3e94edd7c189144278'){
+				Character.load_player_data();
+				Character.CK();
+				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '重新載入，請稍後片刻' );
+				io.emit('chat message', "重新載入，請稍後片刻<br>");
+			}
+			else{
+				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', 'GM才能使用' );
+				io.emit('chat message', "GM才能使用<br>");
+			}
+		}
+		if(!ionm && Not_instruction==0)ionm={},ionm.text='['+Name+']：'+msg,Not_instruction=1;
+		if(Not_instruction==1)bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',ionm.text);
+		io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
+	})
+  });
+http.listen((process.env.PORT || 5000), function(){
+  console.log('listening on *:'+(process.env.PORT || 5000));
+});
+
+var fs = require('fs');
+var readline = require('readline');
+var google = require('googleapis');
+var googleAuth = require('google-auth-library');
+
+// If modifying these scopes, delete your previously saved credentials
+// at ~./sheetsapi.json
+var SCOPES = [
+  'https://www.googleapis.com/auth/drive',
+  'https://www.googleapis.com/auth/drive.file',
+'https://www.googleapis.com/auth/drive.readonly',
+	'https://www.googleapis.com/auth/spreadsheets',
+	'https://www.googleapis.com/auth/spreadsheets.readonly'
+];
+var TOKEN_DIR = './';
+var TOKEN_PATH = TOKEN_DIR + 'sheetsapi.json';
+
+
+
+/**
+ * Create an OAuth2 client with the given credentials, and then execute the
+ * given callback function.
+ *
+ * @param {Object} credentials The authorization client credentials.
+ * @param {function} callback The callback to call with the authorized client.
+ */
+function authorize(credentials, callback) {
+  var clientSecret = 'm7LO-KOhUMl3TZ4ni1FA8xGo';
+  var clientId = '399740110786-f7j06o0tsbmvbk2v570qc13g0a034iqa.apps.googleusercontent.com';
+  var redirectUrl ='urn:ietf:wg:oauth:2.0:oob';
+  var auth = new googleAuth();
+  var oauth2Client = new auth.OAuth2(clientId, clientSecret, redirectUrl);
+  fs.readFile(TOKEN_PATH, function(err, token) {
+    if (err) {
+      getNewToken(oauth2Client, callback);
+    } else {
+      oauth2Client.credentials = JSON.parse(token);
+      callback(oauth2Client);
+    }
+  });
+}
+
+function getNewToken(oauth2Client, callback) {
+  var authUrl = oauth2Client.generateAuthUrl({
+    access_type: 'offline',
+    scope: SCOPES
+  });
+  console.log('Authorize this app by visiting this url: ', authUrl);
+  var rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+  rl.question('Enter the code from that page here: ', function(code) {
+    rl.close();
+    oauth2Client.getToken(code, function(err, token) {
+      if (err) {
+        console.log('Error while trying to retrieve access token', err);
+        return;
+      }
+      oauth2Client.credentials = token;
+      storeToken(token);
+      callback(oauth2Client);
+    });
+  });
+}
+function storeToken(token) {
+  try {
+    fs.mkdirSync(TOKEN_DIR);
+  } catch (err) {
+    if (err.code != 'EEXIST') {
+      throw err;
+    }
+  }
+  fs.writeFile(TOKEN_PATH, JSON.stringify(token));
+  console.log('Token stored to ' + TOKEN_PATH);
+}
+
+function tests(auth) {
+ sheets.spreadsheets.values.get({
+    auth: auth,
+    spreadsheetId: mySheetId,
+    range: 'test',
+  }, function(err, response) {
+    if (err) {
+      console.log('The API returned an error: ' + err);
+      return;
+    }
+    var rows = response.values;
+    if (rows.length == 0) {
+      console.log('No data found.');
+    } else {
+	     var a='';
+      for (var i = 0; i < rows.length; i++) {
+        var row = rows[i];
+	    
+        // Print columns A and E, which correspond to indices 0 and 4.
+	      if(i ==rows.length-1){
+        a += 'id ' + row[0]+' name '+row[1] +' LV '+row[2];}
+	      else{
+		      a += 'id ' + row[0]+' name '+row[1] +' LV '+row[2]+'\n';
+	      }
+	
+}
+    cat=a;
+    }})}
+
+function gotgpt(auth) {
+var c ='';
+c=input;
+	var values = [
+  [c
+  ],
+];
+var body = {
+  values: values
+};
+	var request = {
+    spreadsheetId: mySheetId,
+        range: 'test!A7:A7',
+      valueInputOption: 'RAW',
+        resource: {
+      values: values
+    },
+
+    auth: auth,
+  };
+	
+sheets.spreadsheets.values.update(request, function(err, result) {
+  if(err) {
+    // Handle error
+    console.log(err);
+  } else {
+    console.log('%d cells updated.', result.updatedCells);
+  }
+});
+}
+
+function tis(ga,gb){
+	bot.push(ga,gb);
+}
+
+module.exports = {
+	tis:tis
+};
 
