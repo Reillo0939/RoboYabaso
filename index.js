@@ -147,7 +147,7 @@ event.reply([{
     if (event.message.text == '選單') {
         msg = myLineTemplate;
     }
-		if(!msg && c='Ca8fea1f8ef1ef2519860ee21fb740fd2')to_web_msg='['+b+']：'+event.message.text;
+		if(!msg && c=='Ca8fea1f8ef1ef2519860ee21fb740fd2')to_web_msg='['+b+']：'+event.message.text;
 		 event.reply(msg);
 		 
 	}
