@@ -1,6 +1,10 @@
 var express = require('express');//
 var bodyParser = require('body-parser');
 var app = express();//262
+
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
 var Character = require('./roll/Character.js');
 var battles = require('./roll/battle.js');
 var re = require('./roll/analytics.js');
@@ -172,13 +176,28 @@ app.set('port', (process.env.PORT || 5000));
 // views is directory for all template files
 app.get('/', function(req, res) {
 //	res.send(parseInput(req.query.input));
-	res.send('Hello');
+//	res.send('Hello');
+res.sendFile(__dirname + '/index.html');
 });
 app.post('/', jsonParser, function(req, res) {
 });
 app.listen(app.get('port'), function() {
 	console.log('Node app is running on port', app.get('port'));
 });
+io.on('connection', function(socket){
+ /* console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });*/
+  socket.on('chat message', function(msg){
+    console.log('message: ' + msg);
+  });
+});
+
+http.listen((process.env.PORT || 5000), function(){
+  console.log('listening on *:'+(process.env.PORT || 5000));
+});
+
 
 var fs = require('fs');
 var readline = require('readline');
