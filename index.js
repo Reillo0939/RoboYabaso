@@ -195,7 +195,7 @@ io.on('connection', function(socket){
 			}
 			ionm = battles.battles(UUID,Name,msg);
 			bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2','['+Name+']：'+msg);
-			bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',ionm.text);
+			if(ionm)bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',ionm.text);
 			//io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
 		}
 		if(battle==0){
