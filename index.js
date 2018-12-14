@@ -66,7 +66,7 @@ var myLineTemplate = {
     }
 };
 
-bot.on('postback', function (event) {
+/*bot.on('postback', function (event) {
     let a = event.source.userId;
     var b = '';
     event.source.profile().then(function (profile) {
@@ -81,7 +81,7 @@ bot.on('postback', function (event) {
    
     
 });
-
+*/
 
 /*setInterval(function(){
     var userId = 'Ca8fea1f8ef1ef2519860ee21fb740fd2';
@@ -89,7 +89,7 @@ bot.on('postback', function (event) {
     tis(userId,sendMsg);
     console.log('send: '+sendMsg);
 },2000);*/
-bot.on('message', function(event) { if (event.message.type = 'text') { 
+/*bot.on('message', function(event) { if (event.message.type = 'text') { 
 var msg = '';
 let a = event.source.userId;
 	let b='';
@@ -164,7 +164,7 @@ event.reply({type: 'text', text: 'GM才能使用' });
 	
 });
   } });
- 
+ */
 require('fs').readdirSync(__dirname + '/modules/').forEach(function(file) {
   if (file.match(/\.js$/) !== null && file !== 'index.js') {
     var name = file.replace('.js', '');
