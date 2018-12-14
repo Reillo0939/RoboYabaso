@@ -194,8 +194,9 @@ io.on('connection', function(socket){
 				io.emit('chat message', "已關閉戰鬥模式<br>");
 			}
 			ionm = battles.battles(UUID,Name,msg);
+			bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2','['+Name+']：'+msg);
 			bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',ionm.text);
-			io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
+			//io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
 		}
 		if(battle==0){
 			if(msg=='戰鬥模式啟動'){
