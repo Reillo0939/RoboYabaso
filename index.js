@@ -187,19 +187,13 @@ app.post('/', jsonParser, function(req, res) {
 	console.log('Node app is running on port', app.get('port'));
 });*/
 io.on('connection', function(socket){
- /* console.log('a user connected');
-  socket.on('disconnect', function(){
-    console.log('user disconnected');
-  });*/
   socket.on('chat message', function(msg){
-    console.log('message: ' + msg);
+    io.emit('chat message', msg);
   });
 });
 http.listen((process.env.PORT || 5000), function(){
-  console.log('listening on *:'+3000);
+  console.log('listening on *:'+(process.env.PORT || 5000));
 });
-
-
 
 var fs = require('fs');
 var readline = require('readline');
