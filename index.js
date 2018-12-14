@@ -191,8 +191,9 @@ app.post('/', jsonParser);
 });*/
 io.on('connection', function(socket){
   socket.on('chat message', function(msg,UUID,Name){
-	  var ionm=re.parseInput(0, msg, UUID, Name);
-	  if(!ionm)ionm={},ionm.text=Name+'：'+msg;
+	  var ionm=re.parseInput(0, msg, UUID, Name),Not_instruction=0;
+	  if(!ionm)ionm={},ionm.text=Name+'：'+msg,Not_instruction=1;
+	  bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2','來自網頁版的訊息\n'+ionm.text);
     io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
 	console.log(ionm.text);
 	console.log(ionm.text.replace(/\n/g,"<br>"));
