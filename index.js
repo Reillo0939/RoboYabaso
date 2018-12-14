@@ -147,7 +147,7 @@ event.reply([{
     if (event.message.text == '選單') {
         msg = myLineTemplate;
     }
-		if(!msg && c=='Ca8fea1f8ef1ef2519860ee21fb740fd2')to_web_msg='['+b+']：'+event.message.text,to_switch=1;
+		if(!msg && c=='Ca8fea1f8ef1ef2519860ee21fb740fd2')to_web_msg='['+b+']：'+event.message.text,io.emit('chat message', to_web_msg.replace(/\n/g,"<br>"));;
 		 event.reply(msg);
 		 
 	}
@@ -196,10 +196,6 @@ io.on('connection', function(socket){
 	  if(Not_instruction==1)bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',ionm.text);
     io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
   });
-  if(to_switch==1) {
-	  io.emit('chat message', to_web_msg.replace(/\n/g,"<br>"));
-	  to_switch=0;
-  }
 });
 http.listen((process.env.PORT || 5000), function(){
   console.log('listening on *:'+(process.env.PORT || 5000));
