@@ -210,7 +210,6 @@ io.on('connection', function(socket){
 		if(msg=='武裝裝甲聯合戰線')ionm = { type: 'text', text: '武裝裝甲聯合戰線是由數個高發展高技術的國家，\n以人才技術互通協約所產生的武裝研究機關。' };
 		if(msg=='蓋爾奇亞聯合')ionm =  { type: 'text', text: '蓋爾奇亞聯合是研究水晶能量的聯合陣營，與聯合外的部分國家互相簽定了人才技術互通協約。' };
 		}
-		event.reply(msg);
 		if(msg=='重新載入'){
 			if(UUID=='U7c4779fd913aff927f26d7f6bedd87d1'||UUID=='Uc9b4571605aabd3e94edd7c189144278'){
 				Character.load_player_data();
