@@ -178,6 +178,7 @@ app.get('/', function(req, res) {
 //	res.send(parseInput(req.query.input));
 //	res.send('Hello');
 res.sendFile(__dirname + '/index.html');
+res.sendFile(__dirname + '/socket.io/socket.io.js');
 });
 app.post('/', jsonParser, function(req, res) {
 });
