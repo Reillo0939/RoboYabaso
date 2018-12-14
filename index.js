@@ -31,6 +31,7 @@ var cat='';
 var input='';
 var battle=0;
 var a=0;
+var to_web_msg='',to_switch=0;
 Character.load_player_data();
 Character.CK();
 
@@ -93,25 +94,26 @@ bot.on('message', function(event) { if (event.message.type = 'text') {
 var msg = '';
 let a = event.source.userId;
 	let b='';
+	var c=event.source.groupId
 	
 	
 	
 event.source.profile().then(function (profile) {
     b = profile.displayName;
 //Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
-if(battle==1){
-if(event.message.text=='戰鬥模式關閉'){
-//if(a=='U7c4779fd913aff927f26d7f6bedd87d1'||a=='Uc9b4571605aabd3e94edd7c189144278'){
-battle=0;
-event.reply({ type: 'text', text: '已關閉戰鬥模式' });	
-//}
-//else{
-//event.reply({type: 'text', text: 'GM才能使用' });	
-//}
-}
-    msg = battles.battles(a,b,event.message.text);
-event.reply(msg);
-}
+	if(battle==1){
+		if(event.message.text=='戰鬥模式關閉'){
+			//if(a=='U7c4779fd913aff927f26d7f6bedd87d1'||a=='Uc9b4571605aabd3e94edd7c189144278'){
+			battle=0;
+			event.reply({ type: 'text', text: '已關閉戰鬥模式' });	
+			//}
+			//else{
+			//event.reply({type: 'text', text: 'GM才能使用' });	
+			//}
+		}
+		msg = battles.battles(a,b,event.message.text);
+		event.reply(msg);
+	}
 if(battle==0){
 if(event.message.text=='戰鬥模式啟動'){
 //if(a=='U7c4779fd913aff927f26d7f6bedd87d1'||a=='Uc9b4571605aabd3e94edd7c189144278'){
@@ -145,8 +147,9 @@ event.reply([{
     if (event.message.text == '選單') {
         msg = myLineTemplate;
     }
-
+		if(!msg && c='Ca8fea1f8ef1ef2519860ee21fb740fd2')to_web_msg='['+b+']：'+event.message.text;
 		 event.reply(msg);
+		 
 	}
 if(event.message.text=='重新載入'){
 if(a=='U7c4779fd913aff927f26d7f6bedd87d1'||a=='Uc9b4571605aabd3e94edd7c189144278'){
@@ -158,10 +161,7 @@ else{
 event.reply({type: 'text', text: 'GM才能使用' });	
 }
 }
-
   console.log(a+'   '+b+'  '+event.message.text+'   '+cat);
-
-	
 });
   } });
  
@@ -192,11 +192,10 @@ app.post('/', jsonParser);
 io.on('connection', function(socket){
   socket.on('chat message', function(msg,UUID,Name){
 	  var ionm=re.parseInput(0, msg, UUID, Name),Not_instruction=0;
-	  if(!ionm)ionm={},ionm.text=Name+'：'+msg,Not_instruction=1;
-	  if(Not_instruction==1)bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2','來自網頁版的訊息\n'+ionm.text);
+	  if(!ionm)ionm={},ionm.text='['+Name+']：'+msg,Not_instruction=1;
+	  if(Not_instruction==1)bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',ionm.text);
     io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
-	console.log(ionm.text);
-	console.log(ionm.text.replace(/\n/g,"<br>"));
+
   });
 });
 http.listen((process.env.PORT || 5000), function(){
