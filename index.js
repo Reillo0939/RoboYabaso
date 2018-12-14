@@ -192,7 +192,8 @@ app.post('/', jsonParser);
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
 	  var ionm=re.parseInput(0, msg, 123456789, '');
-    io.emit('chat message', ionm.text.replace(/\n/,"<br>")||'錯誤' );
+	  if(!ionm.text)ionm.text='錯誤';
+    io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
 	
   });
 });
