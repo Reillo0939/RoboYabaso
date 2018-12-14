@@ -103,27 +103,22 @@ event.source.profile().then(function (profile) {
 //Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
 	if(battle==1){
 		if(event.message.text=='戰鬥模式關閉'){
-			//if(a=='U7c4779fd913aff927f26d7f6bedd87d1'||a=='Uc9b4571605aabd3e94edd7c189144278'){
 			battle=0;
-			event.reply({ type: 'text', text: '已關閉戰鬥模式' });	
-			//}
-			//else{
-			//event.reply({type: 'text', text: 'GM才能使用' });	
-			//}
+			io.emit('chat message', '['+b+']：'+event.message.text);
+			bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '已關閉戰鬥模式' );
+			io.emit('chat message', "已關閉戰鬥模式<br>");
 		}
 		msg = battles.battles(a,b,event.message.text);
 		event.reply(msg);
+		io.emit('chat message', msg.text.replace(/\n/g,"<br>"));
 	}
 	if(battle==0){
 		if(event.message.text=='戰鬥模式啟動'){
-			//if(a=='U7c4779fd913aff927f26d7f6bedd87d1'||a=='Uc9b4571605aabd3e94edd7c189144278'){
 			battle=1;
-				battles.Reset();
-			event.reply({ type: 'text', text: '已啟動戰鬥模式' });	
-			//}
-			//else{
-			//event.reply({type: 'text', text: 'GM才能使用' });	
-			//}
+			battles.Reset();
+			io.emit('chat message', '['+b+']：'+event.message.text);
+			bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '已啟動戰鬥模式' );
+			io.emit('chat message', "已啟動戰鬥模式<br>");
 		}
 		msg =re.parseInput(event.rplyToken, event.message.text,a,b);	
 		if(event.message.text=='武裝裝甲聯合戰線'){
@@ -193,22 +188,27 @@ io.on('connection', function(socket){
 		if(battle==1){
 			if(msg=='戰鬥模式關閉'){
 				battle=0;
+				io.emit('chat message', '['+Name+']：'+msg);
+				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '['+Name+']：'+msg );
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '已關閉戰鬥模式' );
 				io.emit('chat message', "已關閉戰鬥模式<br>");
 			}
 			ionm = battles.battles(UUID,Name,msg);
 			bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',ionm.text);
+			io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
 		}
 		if(battle==0){
 			if(msg=='戰鬥模式啟動'){
 				battle=1;
 				battles.Reset();
+				io.emit('chat message', '['+Name+']：'+msg);
+				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '['+Name+']：'+msg );
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '已啟動戰鬥模式' );
 				io.emit('chat message', "已啟動戰鬥模式<br>");
 			}
 		ionm=re.parseInput(0, msg, UUID, Name);
-		if(msg=='武裝裝甲聯合戰線')ionm = { type: 'text', text: '武裝裝甲聯合戰線是由數個高發展高技術的國家，\n以人才技術互通協約所產生的武裝研究機關。' };
-		if(msg=='蓋爾奇亞聯合')ionm =  { type: 'text', text: '蓋爾奇亞聯合是研究水晶能量的聯合陣營，與聯合外的部分國家互相簽定了人才技術互通協約。' };
+		if(msg=='武裝裝甲聯合戰線'|| msg=='AAUF')ionm = { type: 'text', text: '武裝裝甲聯合戰線是由數個高發展高技術的國家，\n以人才技術互通協約所產生的武裝研究機關。' };
+		if(msg=='蓋爾奇亞聯合'|| msg=='GU')ionm =  { type: 'text', text: '蓋爾奇亞聯合是研究水晶能量的聯合陣營，與聯合外的部分國家互相簽定了人才技術互通協約。' };
 		}
 		if(msg=='重新載入'){
 			if(UUID=='U7c4779fd913aff927f26d7f6bedd87d1'||UUID=='Uc9b4571605aabd3e94edd7c189144278'){
