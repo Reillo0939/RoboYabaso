@@ -179,7 +179,7 @@ app.get('/', function(req, res) {
 //	res.send('Hello');
 res.sendFile(__dirname + '/index.html');
 });
-app.use(express.static('socket.io'));
+app.use('/socket.io', express.static(__dirname + '/socket.io'));
 app.post('/', jsonParser, function(req, res) {
 });
 app.listen(app.get('port'), function() {
