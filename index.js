@@ -191,7 +191,9 @@ app.post('/', jsonParser);
 });*/
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+	  var ionm=re.parseInput(0, msg, 123456789, '');
+    io.emit('chat message',ionm.text );
+	
   });
 });
 http.listen((process.env.PORT || 5000), function(){
