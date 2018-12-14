@@ -114,53 +114,51 @@ event.source.profile().then(function (profile) {
 		msg = battles.battles(a,b,event.message.text);
 		event.reply(msg);
 	}
-if(battle==0){
-if(event.message.text=='戰鬥模式啟動'){
-//if(a=='U7c4779fd913aff927f26d7f6bedd87d1'||a=='Uc9b4571605aabd3e94edd7c189144278'){
-battle=1;
-    battles.Reset();
-event.reply({ type: 'text', text: '已啟動戰鬥模式' });	
-//}
-//else{
-//event.reply({type: 'text', text: 'GM才能使用' });	
-//}
-}
-		msg =re.parseInput(event.rplyToken, event.message.text,a,b);
-		
-if(event.message.text=='武裝裝甲聯合戰線'){
-event.reply([{
-  type: 'image',
-  originalContentUrl: 'https://2.bp.blogspot.com/-b7JvOc_z2SU/WqfgwGgmylI/AAAAAAAADJI/k1rhP5ERtycFl6D4OqCEip1ShubvAbedgCLcBGAs/s1600/AAUF.jpg',
-  previewImageUrl: 'https://2.bp.blogspot.com/-b7JvOc_z2SU/WqfgwGgmylI/AAAAAAAADJI/k1rhP5ERtycFl6D4OqCEip1ShubvAbedgCLcBGAs/s1600/AAUF.jpg'
-},
-  { type: 'text', text: '武裝裝甲聯合戰線是由數個高發展高技術的國家，\n以人才技術互通協約所產生的武裝研究機關。' }]);
-}
-if(event.message.text=='蓋爾奇亞聯合'){
-event.reply([{
-  type: 'image',
-  originalContentUrl: 'https://1.bp.blogspot.com/-esavyLGBQ8I/WqfgwIWh0XI/AAAAAAAADJM/ZYR8ZXdjkzgOzGc_VEetoGgtHPEvSbzUwCLcBGAs/s1600/GU.jpg',
-  previewImageUrl: 'https://1.bp.blogspot.com/-esavyLGBQ8I/WqfgwIWh0XI/AAAAAAAADJM/ZYR8ZXdjkzgOzGc_VEetoGgtHPEvSbzUwCLcBGAs/s1600/GU.jpg'
-},
-  { type: 'text', text: '蓋爾奇亞聯合是研究水晶能量的聯合陣營，與聯合外的部分國家互相簽定了人才技術互通協約。' }]
-	   );
-}
-    if (event.message.text == '選單') {
-        msg = myLineTemplate;
-    }
+	if(battle==0){
+		if(event.message.text=='戰鬥模式啟動'){
+			//if(a=='U7c4779fd913aff927f26d7f6bedd87d1'||a=='Uc9b4571605aabd3e94edd7c189144278'){
+			battle=1;
+				battles.Reset();
+			event.reply({ type: 'text', text: '已啟動戰鬥模式' });	
+			//}
+			//else{
+			//event.reply({type: 'text', text: 'GM才能使用' });	
+			//}
+		}
+		msg =re.parseInput(event.rplyToken, event.message.text,a,b);	
+		if(event.message.text=='武裝裝甲聯合戰線'){
+			event.reply([{
+			  type: 'image',
+			  originalContentUrl: 'https://2.bp.blogspot.com/-b7JvOc_z2SU/WqfgwGgmylI/AAAAAAAADJI/k1rhP5ERtycFl6D4OqCEip1ShubvAbedgCLcBGAs/s1600/AAUF.jpg',
+			  previewImageUrl: 'https://2.bp.blogspot.com/-b7JvOc_z2SU/WqfgwGgmylI/AAAAAAAADJI/k1rhP5ERtycFl6D4OqCEip1ShubvAbedgCLcBGAs/s1600/AAUF.jpg'
+			},
+			  { type: 'text', text: '武裝裝甲聯合戰線是由數個高發展高技術的國家，\n以人才技術互通協約所產生的武裝研究機關。' }]);
+		}
+		if(event.message.text=='蓋爾奇亞聯合'){
+			event.reply([{
+			  type: 'image',
+			  originalContentUrl: 'https://1.bp.blogspot.com/-esavyLGBQ8I/WqfgwIWh0XI/AAAAAAAADJM/ZYR8ZXdjkzgOzGc_VEetoGgtHPEvSbzUwCLcBGAs/s1600/GU.jpg',
+			  previewImageUrl: 'https://1.bp.blogspot.com/-esavyLGBQ8I/WqfgwIWh0XI/AAAAAAAADJM/ZYR8ZXdjkzgOzGc_VEetoGgtHPEvSbzUwCLcBGAs/s1600/GU.jpg'
+			},
+			  { type: 'text', text: '蓋爾奇亞聯合是研究水晶能量的聯合陣營，與聯合外的部分國家互相簽定了人才技術互通協約。' }]
+				   );
+		}
+		if (event.message.text == '選單') {
+			msg = myLineTemplate;
+		}
 		if(!msg && c=='Ca8fea1f8ef1ef2519860ee21fb740fd2')to_web_msg='['+b+']：'+event.message.text,io.emit('chat message', to_web_msg.replace(/\n/g,"<br>"));;
-		 event.reply(msg);
-		 
+		event.reply(msg);		 
 	}
-if(event.message.text=='重新載入'){
-if(a=='U7c4779fd913aff927f26d7f6bedd87d1'||a=='Uc9b4571605aabd3e94edd7c189144278'){
-    Character.load_player_data();
-    Character.CK();
-event.reply({ type: 'text', text: '重新載入，請稍後片刻' });	
-}
-else{
-event.reply({type: 'text', text: 'GM才能使用' });	
-}
-}
+	if(event.message.text=='重新載入'){
+		if(a=='U7c4779fd913aff927f26d7f6bedd87d1'||a=='Uc9b4571605aabd3e94edd7c189144278'){
+			Character.load_player_data();
+			Character.CK();
+			event.reply({ type: 'text', text: '重新載入，請稍後片刻' });	
+		}
+		else{
+			event.reply({type: 'text', text: 'GM才能使用' });	
+		}
+	}
   console.log(a+'   '+b+'  '+event.message.text+'   '+cat);
 });
   } });
@@ -190,7 +188,6 @@ app.post('/', jsonParser);
 	console.log('Node app is running on port', app.get('port'));
 });*/
 io.on('connection', function(socket){
-	
 	socket.on('chat message', function(msg,UUID,Name){
 		var ionm,Not_instruction=0;
 		if(battle==1){
@@ -213,25 +210,24 @@ io.on('connection', function(socket){
 		if(event.message.text=='武裝裝甲聯合戰線')ionm = { type: 'text', text: '武裝裝甲聯合戰線是由數個高發展高技術的國家，\n以人才技術互通協約所產生的武裝研究機關。' };
 		if(event.message.text=='蓋爾奇亞聯合')ionm =  { type: 'text', text: '蓋爾奇亞聯合是研究水晶能量的聯合陣營，與聯合外的部分國家互相簽定了人才技術互通協約。' };
 		}
-	event.reply(msg);
-	}
-	if(event.message.text=='重新載入'){
-		if(UUID=='U7c4779fd913aff927f26d7f6bedd87d1'||UUID=='Uc9b4571605aabd3e94edd7c189144278'){
-			Character.load_player_data();
-			Character.CK();
-			bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '重新載入，請稍後片刻' );
-			io.emit('chat message', "重新載入，請稍後片刻<br>");
+		event.reply(msg);
+		if(event.message.text=='重新載入'){
+			if(UUID=='U7c4779fd913aff927f26d7f6bedd87d1'||UUID=='Uc9b4571605aabd3e94edd7c189144278'){
+				Character.load_player_data();
+				Character.CK();
+				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '重新載入，請稍後片刻' );
+				io.emit('chat message', "重新載入，請稍後片刻<br>");
+			}
+			else{
+				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', 'GM才能使用' );
+				io.emit('chat message', "GM才能使用<br>");
+			}
 		}
-		else{
-			bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', 'GM才能使用' );
-			io.emit('chat message', "GM才能使用<br>");
-		}
-	}
-	  if(!ionm)ionm={},ionm.text='['+Name+']：'+msg,Not_instruction=1;
-	  if(Not_instruction==1)bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',ionm.text);
-	  io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
+		if(!ionm)ionm={},ionm.text='['+Name+']：'+msg,Not_instruction=1;
+		if(Not_instruction==1)bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',ionm.text);
+		io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
+	})
   });
-});
 http.listen((process.env.PORT || 5000), function(){
   console.log('listening on *:'+(process.env.PORT || 5000));
 });
