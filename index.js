@@ -191,7 +191,7 @@ io.on('connection', function(socket){
 	socket.on('chat message', function(msg,UUID,Name){
 		var ionm,Not_instruction=0;
 		if(battle==1){
-			if(event.message.text=='戰鬥模式關閉'){
+			if(msg=='戰鬥模式關閉'){
 				battle=0;
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '已關閉戰鬥模式' );
 				io.emit('chat message', "已關閉戰鬥模式<br>");
@@ -200,18 +200,18 @@ io.on('connection', function(socket){
 			bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',ionm.text);
 		}
 		if(battle==0){
-			if(event.message.text=='戰鬥模式啟動'){
+			if(msg=='戰鬥模式啟動'){
 				battle=1;
 				battles.Reset();
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '已啟動戰鬥模式' );
 				io.emit('chat message', "已啟動戰鬥模式<br>");
 			}
 		ionm=re.parseInput(0, msg, UUID, Name);
-		if(event.message.text=='武裝裝甲聯合戰線')ionm = { type: 'text', text: '武裝裝甲聯合戰線是由數個高發展高技術的國家，\n以人才技術互通協約所產生的武裝研究機關。' };
-		if(event.message.text=='蓋爾奇亞聯合')ionm =  { type: 'text', text: '蓋爾奇亞聯合是研究水晶能量的聯合陣營，與聯合外的部分國家互相簽定了人才技術互通協約。' };
+		if(msg=='武裝裝甲聯合戰線')ionm = { type: 'text', text: '武裝裝甲聯合戰線是由數個高發展高技術的國家，\n以人才技術互通協約所產生的武裝研究機關。' };
+		if(msg=='蓋爾奇亞聯合')ionm =  { type: 'text', text: '蓋爾奇亞聯合是研究水晶能量的聯合陣營，與聯合外的部分國家互相簽定了人才技術互通協約。' };
 		}
 		event.reply(msg);
-		if(event.message.text=='重新載入'){
+		if(msg=='重新載入'){
 			if(UUID=='U7c4779fd913aff927f26d7f6bedd87d1'||UUID=='Uc9b4571605aabd3e94edd7c189144278'){
 				Character.load_player_data();
 				Character.CK();
