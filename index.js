@@ -83,7 +83,6 @@ bot.on('postback', function (event) {
     
 });
 
-
 /*setInterval(function(){
     var userId = 'Ca8fea1f8ef1ef2519860ee21fb740fd2';
     var sendMsg = a.toString(10);
@@ -192,6 +191,7 @@ io.on('connection', function(socket){
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '['+Name+']：'+msg );
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '已關閉戰鬥模式' );
 				io.emit('chat message', "已關閉戰鬥模式<br>");
+				Not_instruction=2;
 			}
 			ionm = battles.battles(UUID,Name,msg);
 			bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2','['+Name+']：'+msg);
@@ -206,6 +206,7 @@ io.on('connection', function(socket){
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '['+Name+']：'+msg );
 				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '已啟動戰鬥模式' );
 				io.emit('chat message', "已啟動戰鬥模式<br>");
+				Not_instruction=2;
 			}
 		ionm=re.parseInput(0, msg, UUID, Name);
 		if(msg=='武裝裝甲聯合戰線'|| msg=='AAUF')ionm = { type: 'text', text: '武裝裝甲聯合戰線是由數個高發展高技術的國家，\n以人才技術互通協約所產生的武裝研究機關。' };
@@ -223,7 +224,7 @@ io.on('connection', function(socket){
 				io.emit('chat message', "GM才能使用<br>");
 			}
 		}
-		if(!ionm)ionm={},ionm.text='['+Name+']：'+msg,Not_instruction=1;
+		if(!ionm && Not_instruction==0)ionm={},ionm.text='['+Name+']：'+msg,Not_instruction=1;
 		if(Not_instruction==1)bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',ionm.text);
 		io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
 	})
@@ -308,72 +309,3 @@ function storeToken(token) {
   fs.writeFile(TOKEN_PATH, JSON.stringify(token));
   console.log('Token stored to ' + TOKEN_PATH);
 }
-
-function tests(auth) {
- sheets.spreadsheets.values.get({
-    auth: auth,
-    spreadsheetId: mySheetId,
-    range: 'test',
-  }, function(err, response) {
-    if (err) {
-      console.log('The API returned an error: ' + err);
-      return;
-    }
-    var rows = response.values;
-    if (rows.length == 0) {
-      console.log('No data found.');
-    } else {
-	     var a='';
-      for (var i = 0; i < rows.length; i++) {
-        var row = rows[i];
-	    
-        // Print columns A and E, which correspond to indices 0 and 4.
-	      if(i ==rows.length-1){
-        a += 'id ' + row[0]+' name '+row[1] +' LV '+row[2];}
-	      else{
-		      a += 'id ' + row[0]+' name '+row[1] +' LV '+row[2]+'\n';
-	      }
-	
-}
-    cat=a;
-    }})}
-
-function gotgpt(auth) {
-var c ='';
-c=input;
-	var values = [
-  [c
-  ],
-];
-var body = {
-  values: values
-};
-	var request = {
-    spreadsheetId: mySheetId,
-        range: 'test!A7:A7',
-      valueInputOption: 'RAW',
-        resource: {
-      values: values
-    },
-
-    auth: auth,
-  };
-	
-sheets.spreadsheets.values.update(request, function(err, result) {
-  if(err) {
-    // Handle error
-    console.log(err);
-  } else {
-    console.log('%d cells updated.', result.updatedCells);
-  }
-});
-}
-
-function tis(ga,gb){
-	bot.push(ga,gb);
-}
-
-module.exports = {
-	tis:tis
-};
-
