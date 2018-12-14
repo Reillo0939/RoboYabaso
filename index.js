@@ -225,8 +225,11 @@ io.on('connection', function(socket){
 			}
 		}
 		if(!ionm && Not_instruction==0)ionm={},ionm.text='['+Name+']：'+msg,Not_instruction=1;
-		if(Not_instruction==1)bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',ionm.text);
-		io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
+		if(Not_instruction==1){
+			bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',ionm.text);
+			io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
+		}
+		if(Not_instruction==0)io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
 	})
   });
 http.listen((process.env.PORT || 5000), function(){
