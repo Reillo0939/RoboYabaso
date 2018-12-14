@@ -192,9 +192,10 @@ app.post('/', jsonParser);
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
 	  var ionm=re.parseInput(0, msg, 123456789, '');
-	  if(!ionm.text)ionm.text='錯誤';
+	  if(!ionm)ionm.text='錯誤';
     io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
-	
+	console.log(ionm.text);
+	console.log(ionm.text.replace(/\n/g,"<br>"));
   });
 });
 http.listen((process.env.PORT || 5000), function(){
