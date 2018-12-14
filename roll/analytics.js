@@ -70,6 +70,11 @@ function parseInput(rplyToken, inputStr, id,name) {
 	
 	if (trigger.match(/^廣播$/) != null) bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',mainMsg[1]);
 	
+	if (trigger.match(/^取得UUID$/) != null) {
+		asdf={},asdf.type='text',asdf.texr=id;
+		return asdf;
+	}
+	
 }
 
 
