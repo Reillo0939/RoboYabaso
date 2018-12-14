@@ -172,8 +172,7 @@ require('fs').readdirSync(__dirname + '/modules/').forEach(function(file) {
    
   }
 });
-//app.set('port', (process.env.PORT || 5000));
-app.listen((process.env.PORT || 3000), () => console.log(`Listening on ${ (process.env.PORT || 3000) }`));
+app.set('port', (process.env.PORT || 5000));
 
 // views is directory for all template files
 app.get('/', function(req, res) {
@@ -184,9 +183,9 @@ res.sendFile(__dirname + '/index.html');
 //app.use('/socket.io', express.static(__dirname + '/socket.io'));
 app.post('/', jsonParser, function(req, res) {
 });
-app.listen(app.get('port'), function() {
+/*app.listen(app.get('port'), function() {
 	console.log('Node app is running on port', app.get('port'));
-});
+});*/
 io.on('connection', function(socket){
  /* console.log('a user connected');
   socket.on('disconnect', function(){
@@ -196,9 +195,9 @@ io.on('connection', function(socket){
     console.log('message: ' + msg);
   });
 });
-/*http.listen((process.env.PORT || 5000), function(){
+http.listen((process.env.PORT || 5000), function(){
   console.log('listening on *:'+3000);
-});*/
+});
 
 
 
