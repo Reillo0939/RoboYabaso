@@ -172,11 +172,9 @@ require('fs').readdirSync(__dirname + '/modules/').forEach(function(file) {
    
   }
 });
-//app.set('port', (process.env.PORT || 5000));
+app.set('port', (process.env.PORT || 5000));
 
-http.listen((process.env.PORT || 5000), function(){
-  console.log('listening on *:'+3000);
-});
+
 // views is directory for all template files
 app.get('/', function(req, res) {
 //	res.send(parseInput(req.query.input));
@@ -198,7 +196,9 @@ io.on('connection', function(socket){
     console.log('message: ' + msg);
   });
 });
-
+/*http.listen((process.env.PORT || 5000), function(){
+  console.log('listening on *:'+3000);
+});*/
 
 
 
