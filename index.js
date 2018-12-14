@@ -182,7 +182,7 @@ res.sendFile(__dirname + '/index.html');
 });
 
 //app.use('/socket.io', express.static(__dirname + '/socket.io'));
-
+app.post('/linewebhook', jsonParser);
 /*app.post('/', jsonParser, function(req, res) {
 });*/
 
