@@ -190,9 +190,9 @@ app.post('/', jsonParser);
 	console.log('Node app is running on port', app.get('port'));
 });*/
 io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-	  var ionm=re.parseInput(0, msg, 123456789, '');
-	  if(!ionm)ionm={},ionm.text='錯誤';
+  socket.on('chat message', function(msg,UUID,Name){
+	  var ionm=re.parseInput(0, msg, UUID, Name);
+	  if(!ionm)ionm={},ionm.text=Name+'：'+msg;
     io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
 	console.log(ionm.text);
 	console.log(ionm.text.replace(/\n/g,"<br>"));

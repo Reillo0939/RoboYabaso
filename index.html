@@ -12,9 +12,16 @@
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
       #messages { margin-bottom: 40px }
+	  #B ul li { display:inline;}
     </style>
   </head>
   <body>
+  <div id="B">
+	<ul>
+	<li>Line_UUID：<input id="UUID" type="text" size="20" onchange="getValue()" /></li>
+	<li>暱稱：<input id="UserName" type="text" size="20" onchange="getValue()" /></li>
+	</ul>
+	</div>
     <ul id="messages"></ul>
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
@@ -25,7 +32,7 @@
       $(function () {
         var socket = io();
         $('form').submit(function(){
-          socket.emit('chat message', $('#m').val());
+          socket.emit('chat message', $('#m').val(),$('#UUID').val(),$('#UserName').val());
           $('#m').val('');
           return false;
         });
