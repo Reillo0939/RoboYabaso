@@ -34,7 +34,7 @@ const insertDocuments = function(db, callback) {
     callback(result);
   });*/
   for(var i=0;i<player.length;i++){
-   collection.updateMany(player[i], {$set: player[i]},{
+   collection.updateMany(player[i].ID, {$set: player[i]},{
           upsert: true
         }, function(err, r) {
         assert.equal(null, err);
