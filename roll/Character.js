@@ -33,11 +33,13 @@ const insertDocuments = function(db, callback) {
     console.log("Inserted 3 documents into the collection");
     callback(result);
   });*/
-   collection.updateMany(player, {$set: player},{
+  for(var i=0,i<player.length;i++){
+   collection.updateMany(player[i], {$set: player[i]},{
           upsert: true
         }, function(err, r) {
         assert.equal(null, err);
       });
+  }
 }
 
 var SCOPES = [
