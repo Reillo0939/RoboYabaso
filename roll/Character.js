@@ -28,11 +28,16 @@ const insertDocuments = function(db, callback) {
   // Get the documents collection
   const collection = db.collection('player');
   // Insert some documents
-  collection.insertMany(player, function(err, result) {
+  /*collection.insertMany(player, function(err, result) {
     assert.equal(err, null);
     console.log("Inserted 3 documents into the collection");
     callback(result);
-  });
+  });*/
+   collection.updateMany(player, {$set: player},{
+          upsert: true
+        }, function(err, r) {
+        assert.equal(null, err);
+      });
 }
 
 var SCOPES = [
