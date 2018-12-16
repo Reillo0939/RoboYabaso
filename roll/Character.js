@@ -33,7 +33,7 @@ const insertDocuments = function(db, callback) {
     console.log("Inserted 3 documents into the collection");
     callback(result);
   });*/
-  for(var i=0,i<player.length;i++){
+  for(var i=0;i<player.length;i++){
    collection.updateMany(player[i], {$set: player[i]},{
           upsert: true
         }, function(err, r) {
