@@ -7,6 +7,23 @@ var sheets = google.sheets('v4');
 var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
 // If modifying these scopes, delete your previously saved credentials
 // at ~./sheetsapi.json
+const MongoClient = require('mongodb').MongoClient;
+const assert = require('assert');
+// Connection URL
+const url = process.env.DB_URL;
+// Database Name
+const dbName = 'dream-realm-v2';
+// Create a new MongoClient
+const client = new MongoClient(url);
+// Use connect method to connect to the Server
+client.connect(function(err) {
+  assert.equal(null, err);
+  console.log("Connected successfully to server");
+  const db = client.db(dbName);
+  client.close();
+});
+
+
 var SCOPES = [
   'https://www.googleapis.com/auth/drive',
   'https://www.googleapis.com/auth/drive.file',
