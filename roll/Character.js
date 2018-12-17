@@ -33,6 +33,11 @@ const insertDocuments = function(db, callback) {
     console.log("Inserted 3 documents into the collection");
     callback(result);
   });*/
+     collection.find({}).toArray(function(err, docs) {
+      console.log(docs.length);
+      client.close();
+    });
+  
   for(var i=0;i<player.length;i++){
    collection.updateMany({ ID : player[i].ID }, {$set: player[i]},{
           upsert: true
@@ -40,6 +45,7 @@ const insertDocuments = function(db, callback) {
         assert.equal(null, err);
       });
   }
+
 }
 
 var SCOPES = [
