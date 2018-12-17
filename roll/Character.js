@@ -1,12 +1,4 @@
 var rollbase = require('./rollbase.js');
-var fs = require('fs');
-var readline = require('readline');
-var google = require('googleapis');
-var googleAuth = require('google-auth-library');
-var sheets = google.sheets('v4');
-var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
-// If modifying these scopes, delete your previously saved credentials
-// at ~./sheetsapi.json
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 // Connection URL
@@ -16,67 +8,6 @@ const dbName = 'dream-realm-v2';
 // Create a new MongoClient
 const client = new MongoClient(url);
 // Use connect method to connect to the Server
-
-
-var SCOPES = [
-  'https://www.googleapis.com/auth/drive',
-  'https://www.googleapis.com/auth/drive.file',
-'https://www.googleapis.com/auth/drive.readonly',
-	'https://www.googleapis.com/auth/spreadsheets',
-	'https://www.googleapis.com/auth/spreadsheets.readonly'
-];
-var TOKEN_DIR = './';
-var TOKEN_PATH = TOKEN_DIR + 'sheetsapi.json';
-function authorize(credentials, callback) {
-  var clientSecret = 'm7LO-KOhUMl3TZ4ni1FA8xGo';
-  var clientId = '399740110786-f7j06o0tsbmvbk2v570qc13g0a034iqa.apps.googleusercontent.com';
-  var redirectUrl ='urn:ietf:wg:oauth:2.0:oob';
-  var auth = new googleAuth();
-  var oauth2Client = new auth.OAuth2(clientId, clientSecret, redirectUrl);
-  fs.readFile(TOKEN_PATH, function(err, token) {
-    if (err) {
-      getNewToken(oauth2Client, callback);
-    } else {
-      oauth2Client.credentials = JSON.parse(token);
-      callback(oauth2Client);
-    }
-  });
-}
-function getNewToken(oauth2Client, callback) {
-  var authUrl = oauth2Client.generateAuthUrl({
-    access_type: 'offline',
-    scope: SCOPES
-  });
-  console.log('Authorize this app by visiting this url: ', authUrl);
-  var rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
-  rl.question('Enter the code from that prace here: ', function(code) {
-    rl.close();
-    oauth2Client.getToken(code, function(err, token) {
-      if (err) {
-        console.log('Error while trying to retrieve access token', err);
-        return;
-      }
-      oauth2Client.credentials = token;
-      storeToken(token);
-      callback(oauth2Client);
-    });
-  });
-}
-function storeToken(token) {
-  try {
-    fs.mkdirSync(TOKEN_DIR);
-  } catch (err) {
-    if (err.code != 'EEXIST') {
-      throw err;
-    }
-  }
-  fs.writeFile(TOKEN_PATH, JSON.stringify(token));
-  console.log('Token stored to ' + TOKEN_PATH);
-}
-
 //-------------------------------------------------------------------------------------------------------------------------------
 var rply ={type : 'text'}; //type是必需的,但可以更改
 var Characters = [];
@@ -102,35 +33,6 @@ const load_data = function(db, callback) {
 		player=docs;
     });
 }
-/*function load_player_data() {
-    fs.readFile('client_secret.json', function processClientSecrets(err, content) {
-        if (err) {
-            console.log('Error loading client secret file: ' + err);
-            return;
-        }
-        authorize(JSON.parse(content), data_load);
-    });
-}
-function data_load(auth) {
-    sheets.spreadsheets.values.get({
-        auth: auth,
-        spreadsheetId: mySheetId,
-        range: 'Character',
-    }, function (err, response) {
-        if (err) {
-            console.log('The API returned an error: ' + err);
-            return;
-        }
-        var rows = response.values;
-        if (rows.length == 0) {
-            console.log('No data found.');
-        } else {
-            player = JSON.parse(rows[0][0]);
-           // console.log(JSON.stringify(player));
-            
-        }
-    })
-}*/
 //-------------------------------------------------更新資料-------------------------------------------------
 function updata_player_data() {
        client.connect(function(err) {
@@ -152,42 +54,6 @@ const updata_data = function(db, callback) {
     });
   }
 }
-/*function updata_player_data() {
-    fs.readFile('client_secret.json', function processClientSecrets(err, content) {
-        if (err) {
-            console.log('Error loading client secret file: ' + err);
-            return;
-        }
-        authorize(JSON.parse(content), player_updata);
-    });
-}
-function player_updata(auth) {
-    var values = [
-        [JSON.stringify(player)]
-    ];
-    console.log('test OK');
-    var range = 'Character!A1';
-    var body = {
-        values: values
-    };
-    var request = {
-        spreadsheetId: mySheetId,
-        range: range,
-        valueInputOption: 'RAW',
-        resource: {
-            values: values
-        },
-        auth: auth,
-    }
-    sheets.spreadsheets.values.update(request, function (err, result) {
-        if (err) {
-            // Handle error
-            console.log(err);
-        } else {
-            console.log('%d cells updated.', result.updatedCells);
-        }
-    });
-}*/
 //-------------------------------------------------GU創角-------------------------------------------------
 function CM(player_name,race,Occupation,id,names) {          
 for (var fd = 0; fd < player.length; fd++) {
@@ -500,24 +366,90 @@ function player_Inquire(name,names) {
 }
 //-------------------------------------------------技能查詢-------------------------------------------------
 function Skill_View(name,num) {
-for(var fd=0;fd<SKILLS.length;fd++){
-if(SKILLS[fd][0]==num){
-	rply.text=
-'['+name +']'+'編號['+num+']'+'的技能為\n'+
-SKILLS[fd][1]+'\n'+
-'說明 '+SKILLS[fd][10]+'\n'+
-'類型 '+SKILLS[fd][2]+'\n'+
-'距離 '+SKILLS[fd][3]+'\n'+
-'傷害/回復 '+SKILLS[fd][4]+'\n'+
-'命中率/成功率 '+SKILLS[fd][5]+'\n'+
-'CE消耗量 '+SKILLS[fd][6]+'\n'+
-'屬性 '+SKILLS[fd][7]+'\n'+
-'適性增幅 '+SKILLS[fd][8]+'\n';
+	for(var fd=0;fd<SKILLS.length;fd++){
+		if(SKILLS[fd][0]==num){
+			rply.text=
+				'['+name +']'+'編號['+num+']'+'的技能為\n'+
+				SKILLS[fd][1]+'\n'+
+				'說明 '+SKILLS[fd][10]+'\n'+
+				'類型 '+SKILLS[fd][2]+'\n'+
+				'距離 '+SKILLS[fd][3]+'\n'+
+				'傷害/回復 '+SKILLS[fd][4]+'\n'+
+				'命中率/成功率 '+SKILLS[fd][5]+'\n'+
+				'CE消耗量 '+SKILLS[fd][6]+'\n'+
+				'屬性 '+SKILLS[fd][7]+'\n'+
+				'適性增幅 '+SKILLS[fd][8]+'\n';
+			return rply;	
+		}
+	}
+	rply.text='不好意思'+'['+name+']'+'找不到編號為'+num+'的技能';
 	return rply;	
 }
+
+
+var fs = require('fs');
+var readline = require('readline');
+var google = require('googleapis');
+var googleAuth = require('google-auth-library');
+var sheets = google.sheets('v4');
+var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
+var SCOPES = [
+  'https://www.googleapis.com/auth/drive',
+  'https://www.googleapis.com/auth/drive.file',
+'https://www.googleapis.com/auth/drive.readonly',
+	'https://www.googleapis.com/auth/spreadsheets',
+	'https://www.googleapis.com/auth/spreadsheets.readonly'
+];
+var TOKEN_DIR = './';
+var TOKEN_PATH = TOKEN_DIR + 'sheetsapi.json';
+function authorize(credentials, callback) {
+  var clientSecret = 'm7LO-KOhUMl3TZ4ni1FA8xGo';
+  var clientId = '399740110786-f7j06o0tsbmvbk2v570qc13g0a034iqa.apps.googleusercontent.com';
+  var redirectUrl ='urn:ietf:wg:oauth:2.0:oob';
+  var auth = new googleAuth();
+  var oauth2Client = new auth.OAuth2(clientId, clientSecret, redirectUrl);
+  fs.readFile(TOKEN_PATH, function(err, token) {
+    if (err) {
+      getNewToken(oauth2Client, callback);
+    } else {
+      oauth2Client.credentials = JSON.parse(token);
+      callback(oauth2Client);
+    }
+  });
 }
-rply.text='不好意思'+'['+name+']'+'找不到編號為'+num+'的技能';
-return rply;	
+function getNewToken(oauth2Client, callback) {
+  var authUrl = oauth2Client.generateAuthUrl({
+    access_type: 'offline',
+    scope: SCOPES
+  });
+  console.log('Authorize this app by visiting this url: ', authUrl);
+  var rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+  rl.question('Enter the code from that prace here: ', function(code) {
+    rl.close();
+    oauth2Client.getToken(code, function(err, token) {
+      if (err) {
+        console.log('Error while trying to retrieve access token', err);
+        return;
+      }
+      oauth2Client.credentials = token;
+      storeToken(token);
+      callback(oauth2Client);
+    });
+  });
+}
+function storeToken(token) {
+  try {
+    fs.mkdirSync(TOKEN_DIR);
+  } catch (err) {
+    if (err.code != 'EEXIST') {
+      throw err;
+    }
+  }
+  fs.writeFile(TOKEN_PATH, JSON.stringify(token));
+  console.log('Token stored to ' + TOKEN_PATH);
 }
 
 function CKSV(id,name) {
@@ -542,16 +474,16 @@ function CKSV(id,name) {
 }
 
 function CKR(num) {
-for(var fd=0;fd<SKILLS.length;fd++){
-if(SKILLS[fd][0]==num){
-	var x=
-SKILLS[fd][1]+','+SKILLS[fd][2]+','+SKILLS[fd][3]+','+SKILLS[fd][4]+','+SKILLS[fd][5]+','+
-SKILLS[fd][6]+','+SKILLS[fd][7]+','+SKILLS[fd][8]+','+SKILLS[fd][9]+','+SKILLS[fd][10];
+	for(var fd=0;fd<SKILLS.length;fd++){
+		if(SKILLS[fd][0]==num){
+			var x=
+				SKILLS[fd][1]+','+SKILLS[fd][2]+','+SKILLS[fd][3]+','+SKILLS[fd][4]+','+SKILLS[fd][5]+','+
+				SKILLS[fd][6]+','+SKILLS[fd][7]+','+SKILLS[fd][8]+','+SKILLS[fd][9]+','+SKILLS[fd][10];
+			return x;	
+		}
+	}
+	x='0,0,0,0,0,0,0,0,0,0';
 	return x;	
-}
-}
-x='0,0,0,0,0,0,0,0,0,0';
-return x;	
 }
 
 function CK() {
@@ -562,8 +494,6 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   }
   authorize(JSON.parse(content), CKS);
 });
-
-
 }
 function CKS(auth) {
  sheets.spreadsheets.values.get({
@@ -582,23 +512,58 @@ function CKS(auth) {
 	    SKILLS.splice(0,100);
 	    cat=rows.length;
 	    for (var i = 0; i < rows.length; i++) {
-	     var row = rows[i];
-	     var Cha=[];
-		for(var j = 0 ; j < 11;j++){
-			if(row[j]!= null){
-	    			Cha[j]=row[j];
-			}
-			else{
-				Cha[j]='0';
-			}
-		}
-		    SKILLS[i]=Cha;
+			var row = rows[i];
+			SKILLS[i].ID=row[0];
+			SKILLS[i].Name=row[1];
+			SKILLS[i].Type=row[2];
+			SKILLS[i].Range=row[3];
+			SKILLS[i].Affect=row[4];
+			SKILLS[i].Success_Rate=row[5];
+			SKILLS[i].Consumption=row[6];
+			SKILLS[i].Attributes=row[7];
+			SKILLS[i].Fitness=row[8];
+			SKILLS[i].Giving_Effect=row[9];
+			SKILLS[i].Narrative=row[10];
 	    }
-	    
+	    client.connect(function(err) {
+		assert.equal(null, err);
+		console.log("Connected successfully to server");
+		const db = client.db(dbName);
+		load_skill(db, function() {
+	  });
+});
     }})
-
 }
-
+//-------------------------------------------------讀取資料-------------------------------------------------
+function load_Skill_data() {
+    client.connect(function(err) {
+  assert.equal(null, err);
+  console.log("Connected successfully to server");
+  const db = client.db(dbName);
+   load_skill(db, function() {
+  });
+});
+}
+const load_skill = function(db, callback) {
+  // Get the documents collection
+	const collection = db.collection('skill');
+	collection.find({}).toArray(function(err, docs) {
+		assert.equal(null, err);
+		player=docs;
+    });
+}
+//-------------------------------------------------更新資料-------------------------------------------------
+const updata_skill = function(db, callback) {
+  // Get the documents collection
+  const collection = db.collection('skill');
+  for(var i=0;i<player.length;i++){
+		collection.updateMany({ ID : SKILLS[i].ID }, {$set: SKILLS[i]},{
+          upsert: true
+        }, function(err, r) {
+        assert.equal(null, err);
+    });
+  }
+}
 module.exports = {
     get_player_data: get_player_data,
     save_player_data: save_player_data,
