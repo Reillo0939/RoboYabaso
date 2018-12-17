@@ -513,6 +513,7 @@ function CKS(auth) {
 	    cat=rows.length;
 	    for (var i = 0; i < rows.length; i++) {
 			var row = rows[i];
+			SKILLS[i]={};
 			SKILLS[i].ID=row[0];
 			SKILLS[i].Name=row[1];
 			SKILLS[i].Type=row[2];
