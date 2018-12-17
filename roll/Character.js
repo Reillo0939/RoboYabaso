@@ -418,12 +418,11 @@ function CKSV(id,name) {
 }
 
 function CKR(num) {
-	for(var fd=0;fd<SKILLS.length;fd++){
-		if(SKILLS[fd].id==num)return SKILLS[fd];	
-		}
+	for(var fd=0;fd<SKILLS.length;fd++)if(SKILLS[fd].id==num)return SKILLS[fd];	
+		return null;	
 	}
-	return null;	
-}
+
+
 
 module.exports = {
     get_player_data: get_player_data,
