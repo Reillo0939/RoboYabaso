@@ -23,6 +23,8 @@ function load_player_data() {
   const db = client.db(dbName);
    load_data(db, function() {
   });
+   load_skill(db, function() {
+  });
 });
 }
 const load_data = function(db, callback) {
@@ -31,6 +33,14 @@ const load_data = function(db, callback) {
 	collection.find({}).toArray(function(err, docs) {
 		assert.equal(null, err);
 		player=docs;
+    });
+}
+const load_skill = function(db, callback) {
+  // Get the documents collection
+	const collection = db.collection('skill');
+	collection.find({}).toArray(function(err, docs) {
+		assert.equal(null, err);
+		SKILLS=docs;
     });
 }
 //-------------------------------------------------更新資料-------------------------------------------------
@@ -367,89 +377,23 @@ function player_Inquire(name,names) {
 //-------------------------------------------------技能查詢-------------------------------------------------
 function Skill_View(name,num) {
 	for(var fd=0;fd<SKILLS.length;fd++){
-		if(SKILLS[fd][0]==num){
+		if(SKILLS[fd].ID==num){
 			rply.text=
 				'['+name +']'+'編號['+num+']'+'的技能為\n'+
-				SKILLS[fd][1]+'\n'+
-				'說明 '+SKILLS[fd][10]+'\n'+
-				'類型 '+SKILLS[fd][2]+'\n'+
-				'距離 '+SKILLS[fd][3]+'\n'+
-				'傷害/回復 '+SKILLS[fd][4]+'\n'+
-				'命中率/成功率 '+SKILLS[fd][5]+'\n'+
-				'CE消耗量 '+SKILLS[fd][6]+'\n'+
-				'屬性 '+SKILLS[fd][7]+'\n'+
-				'適性增幅 '+SKILLS[fd][8]+'\n';
+				SKILLS[fd].Name+'\n'+
+				'說明 '+SKILLS[fd].Narrative+'\n'+
+				'類型 '+SKILLS[fd].Type+'\n'+
+				'距離 '+SKILLS[fd].Range+'\n'+
+				'傷害/回復 '+SKILLS[fd].Affect+'\n'+
+				'命中率/成功率 '+SKILLS[fd].Success_Rate+'\n'+
+				'CE消耗量 '+SKILLS[fd].Consumption+'\n'+
+				'屬性 '+SKILLS[fd].Attributes+'\n'+
+				'適性增幅 '+SKILLS[fd].Fitness+'\n';
 			return rply;	
 		}
 	}
 	rply.text='不好意思'+'['+name+']'+'找不到編號為'+num+'的技能';
 	return rply;	
-}
-
-
-var fs = require('fs');
-var readline = require('readline');
-var google = require('googleapis');
-var googleAuth = require('google-auth-library');
-var sheets = google.sheets('v4');
-var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
-var SCOPES = [
-  'https://www.googleapis.com/auth/drive',
-  'https://www.googleapis.com/auth/drive.file',
-'https://www.googleapis.com/auth/drive.readonly',
-	'https://www.googleapis.com/auth/spreadsheets',
-	'https://www.googleapis.com/auth/spreadsheets.readonly'
-];
-var TOKEN_DIR = './';
-var TOKEN_PATH = TOKEN_DIR + 'sheetsapi.json';
-function authorize(credentials, callback) {
-  var clientSecret = 'm7LO-KOhUMl3TZ4ni1FA8xGo';
-  var clientId = '399740110786-f7j06o0tsbmvbk2v570qc13g0a034iqa.apps.googleusercontent.com';
-  var redirectUrl ='urn:ietf:wg:oauth:2.0:oob';
-  var auth = new googleAuth();
-  var oauth2Client = new auth.OAuth2(clientId, clientSecret, redirectUrl);
-  fs.readFile(TOKEN_PATH, function(err, token) {
-    if (err) {
-      getNewToken(oauth2Client, callback);
-    } else {
-      oauth2Client.credentials = JSON.parse(token);
-      callback(oauth2Client);
-    }
-  });
-}
-function getNewToken(oauth2Client, callback) {
-  var authUrl = oauth2Client.generateAuthUrl({
-    access_type: 'offline',
-    scope: SCOPES
-  });
-  console.log('Authorize this app by visiting this url: ', authUrl);
-  var rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
-  rl.question('Enter the code from that prace here: ', function(code) {
-    rl.close();
-    oauth2Client.getToken(code, function(err, token) {
-      if (err) {
-        console.log('Error while trying to retrieve access token', err);
-        return;
-      }
-      oauth2Client.credentials = token;
-      storeToken(token);
-      callback(oauth2Client);
-    });
-  });
-}
-function storeToken(token) {
-  try {
-    fs.mkdirSync(TOKEN_DIR);
-  } catch (err) {
-    if (err.code != 'EEXIST') {
-      throw err;
-    }
-  }
-  fs.writeFile(TOKEN_PATH, JSON.stringify(token));
-  console.log('Token stored to ' + TOKEN_PATH);
 }
 
 function CKSV(id,name) {
@@ -458,7 +402,7 @@ function CKSV(id,name) {
             var CSkill = [];
             for (var i = 0; i < 5; i++) {
                 for (var aa = 0; aa < SKILLS.length; aa++) {
-                    if (SKILLS[aa][0] == player[fd].Skills[i]) CSkill[i] = SKILLS[aa][1];
+                    if (SKILLS[aa].ID == player[fd].Skills[i]) CSkill[i] = SKILLS[aa].Name;
                 }
             }
             rply.text = '[' + name + ']的角色\n[' + player[fd].Name + ']裝備的技能';
@@ -475,104 +419,18 @@ function CKSV(id,name) {
 
 function CKR(num) {
 	for(var fd=0;fd<SKILLS.length;fd++){
-		if(SKILLS[fd][0]==num){
-			var x=
-				SKILLS[fd][1]+','+SKILLS[fd][2]+','+SKILLS[fd][3]+','+SKILLS[fd][4]+','+SKILLS[fd][5]+','+
-				SKILLS[fd][6]+','+SKILLS[fd][7]+','+SKILLS[fd][8]+','+SKILLS[fd][9]+','+SKILLS[fd][10];
-			return x;	
+		if(SKILLS[fd].id==num)return SKILLS[fd];	
 		}
 	}
-	x='0,0,0,0,0,0,0,0,0,0';
-	return x;	
+	return null;	
 }
 
-function CK() {
-fs.readFile('client_secret.json', function processClientSecrets(err, content) {
-  if (err) {
-    console.log('Error loading client secret file: ' + err);
-    return;
-  }
-  authorize(JSON.parse(content), CKS);
-});
-}
-function CKS(auth) {
- sheets.spreadsheets.values.get({
-    auth: auth,
-    spreadsheetId: mySheetId,
-    range: 'skill',
-  }, function(err, response) {
-    if (err) {
-      console.log('The API returned an error: ' + err);
-      return;
-    }
-    var rows = response.values;
-    if (rows.length == 0) {
-      console.log('No data found.');
-    } else {
-	    SKILLS.splice(0,100);
-	    cat=rows.length;
-	    for (var i = 0; i < rows.length; i++) {
-			var row = rows[i];
-			SKILLS[i]={};
-			SKILLS[i].ID=row[0];
-			SKILLS[i].Name=row[1];
-			SKILLS[i].Type=row[2];
-			SKILLS[i].Range=row[3];
-			SKILLS[i].Affect=row[4];
-			SKILLS[i].Success_Rate=row[5];
-			SKILLS[i].Consumption=row[6];
-			SKILLS[i].Attributes=row[7];
-			SKILLS[i].Fitness=row[8];
-			SKILLS[i].Giving_Effect=row[9];
-			SKILLS[i].Narrative=row[10];
-			console.log("TEST "+i);
-	    }
-	    client.connect(function(err) {
-		assert.equal(null, err);
-		console.log("Connected successfully to server");
-		const db = client.db(dbName);
-		updata_skill(db, function() {
-	  });
-});
-    }})
-}
-//-------------------------------------------------讀取資料-------------------------------------------------
-function load_Skill_data() {
-    client.connect(function(err) {
-  assert.equal(null, err);
-  console.log("Connected successfully to server");
-  const db = client.db(dbName);
-   load_skill(db, function() {
-  });
-});
-}
-const load_skill = function(db, callback) {
-  // Get the documents collection
-	const collection = db.collection('skill');
-	collection.find({}).toArray(function(err, docs) {
-		assert.equal(null, err);
-		player=docs;
-    });
-}
-//-------------------------------------------------更新資料-------------------------------------------------
-const updata_skill = function(db, callback) {
-  // Get the documents collection
-  const collection = db.collection('skill');
-  for(var i=0;i<SKILLS.length;i++){
-		collection.updateMany({ ID : SKILLS[i].ID }, {$set: SKILLS[i]},{
-          upsert: true
-        }, function(err, r) {
-        assert.equal(null, err);
-    });
-  }
-}
 module.exports = {
     get_player_data: get_player_data,
     save_player_data: save_player_data,
     CM: CM,
     updata_player_data: updata_player_data,
     CT: CT,
-    CK: CK,
     Skill_View: Skill_View,
     CKSV: CKSV,
     CKR: CKR,
