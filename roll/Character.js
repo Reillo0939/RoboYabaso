@@ -530,7 +530,7 @@ function CKS(auth) {
 		assert.equal(null, err);
 		console.log("Connected successfully to server");
 		const db = client.db(dbName);
-		load_skill(db, function() {
+		updata_skill(db, function() {
 	  });
 });
     }})
