@@ -558,7 +558,7 @@ const load_skill = function(db, callback) {
 const updata_skill = function(db, callback) {
   // Get the documents collection
   const collection = db.collection('skill');
-  for(var i=0;i<player.length;i++){
+  for(var i=0;i<SKILLS.length;i++){
 		collection.updateMany({ ID : SKILLS[i].ID }, {$set: SKILLS[i]},{
           upsert: true
         }, function(err, r) {
