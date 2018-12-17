@@ -11,31 +11,19 @@ var re = require('./roll/analytics.js');
 var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
 var channelSecret = process.env.LINE_CHANNEL_SECRET;
 var linebot = require('linebot');
- var channelId='1567989750';
+var channelId='1567989750';
 var bot = linebot({
-  channelId: channelId,
-  channelSecret: channelSecret,
-  channelAccessToken: channelAccessToken
+	channelId: channelId,
+	channelSecret: channelSecret,
+	channelAccessToken: channelAccessToken
 });
 var jsonParser = bot.parser();
-var google = require('googleapis');
-var sheets = google.sheets('v4');
-var googleAuth = require('google-auth-library');
-var auth = new googleAuth();
-var OAuth2 = google.auth.OAuth2;
-var REDIRECT_URL='urn:ietf:wg:oauth:2.0:oob';
-// generate a url that asks permissions for Google+ and Google Calendar scopes
-var API_KEY = 'AIzaSyBM_GM_ZVEqwDsOPmpVBR3XI3BhwD4Bfm4'; 
-var mySheetId='1QUIuFsRa1PP-862kS7TmwWSPxRrqhv5HBuu2n9tHIlg';
 var cat='';
 var input='';
 var battle=0;
 var a=0;
 var to_web_msg='',to_switch=0;
 Character.load_player_data();
-Character.CK();
-
-
 var myLineTemplate = {
     type: 'template',
     altText: '選單',
@@ -43,61 +31,50 @@ var myLineTemplate = {
         type: 'buttons',
         text: '選單',
         actions: [
-		{
-            type: 'postback',
-            label: '玩家自身情報',
-            data: '玩家自身情報'
-        }, 
-		  {
-            type: 'postback',
-                label: '武器查看',
-                data: '武器查看'
-        }, 
-		  {
-            type: 'postback',
-              label: '水晶時代抽卡',
-              data: '水晶時代抽卡'
-        },
-		{
-            type: 'postback',
-            label: '水晶時代10連抽',
-            data: '水晶時代10連抽'
-        }
-		 ]
+			{
+				type: 'postback',
+				label: '玩家自身情報',
+				data: '玩家自身情報'
+			}, 
+			  {
+				type: 'postback',
+					label: '武器查看',
+					data: '武器查看'
+			}, 
+			  {
+				type: 'postback',
+				  label: '水晶時代抽卡',
+				  data: '水晶時代抽卡'
+			},
+			{
+				type: 'postback',
+				label: '水晶時代10連抽',
+				data: '水晶時代10連抽'
+			}
+		]
     }
 };
-
 bot.on('postback', function (event) {
     let a = event.source.userId;
     var b = '';
     event.source.profile().then(function (profile) {
         b = profile.displayName;
- var myResult = event.postback.data;
-    if (myResult != '') {
-        var msg = re.parseInput(event.rplyToken, myResult, a, b);
-        event.reply(msg);
-}
+		var myResult = event.postback.data;
+		if (myResult != '') {
+			var msg = re.parseInput(event.rplyToken, myResult, a, b);
+			event.reply(msg);
+		}
 
     });
-   
-    
 });
 
-/*setInterval(function(){
-    var userId = 'Ca8fea1f8ef1ef2519860ee21fb740fd2';
-    var sendMsg = a.toString(10);
-    tis(userId,sendMsg);
-    console.log('send: '+sendMsg);
-},2000);*/
 bot.on('message', function(event) { if (event.message.type = 'text') { 
-var msg = '';
-let a = event.source.userId;
+	var msg = '';
+	let a = event.source.userId;
 	let b='';
 	var c=event.source.groupId
-	 console.log(c);
-	
-	
-event.source.profile().then(function (profile) {
+	console.log(c);
+	event.source.profile().then(function (profile) {
     b = profile.displayName;
 //Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
 	if(battle==1){
@@ -156,20 +133,8 @@ event.source.profile().then(function (profile) {
   console.log(a+'   '+b+'  '+event.message.text+'   '+cat);
 });
   } });
- 
-require('fs').readdirSync(__dirname + '/modules/').forEach(function(file) {
-  if (file.match(/\.js$/) !== null && file !== 'index.js') {
-    var name = file.replace('.js', '');
-    exports[name] = require('./modules/' + file);
-   
-  }
-});
 app.set('port', (process.env.PORT || 5000));
-
-// views is directory for all template files
 app.get('/', function(req, res) {
-//	res.send(parseInput(req.query.input));
-//	res.send('Hello');
 res.sendFile(__dirname + '/index.html');
 });
 
@@ -237,80 +202,3 @@ io.on('connection', function(socket){
 http.listen((process.env.PORT || 5000), function(){
   console.log('listening on *:'+(process.env.PORT || 5000));
 });
-
-var fs = require('fs');
-var readline = require('readline');
-var google = require('googleapis');
-var googleAuth = require('google-auth-library');
-
-// If modifying these scopes, delete your previously saved credentials
-// at ~./sheetsapi.json
-var SCOPES = [
-  'https://www.googleapis.com/auth/drive',
-  'https://www.googleapis.com/auth/drive.file',
-'https://www.googleapis.com/auth/drive.readonly',
-	'https://www.googleapis.com/auth/spreadsheets',
-	'https://www.googleapis.com/auth/spreadsheets.readonly'
-];
-var TOKEN_DIR = './';
-var TOKEN_PATH = TOKEN_DIR + 'sheetsapi.json';
-
-
-
-/**
- * Create an OAuth2 client with the given credentials, and then execute the
- * given callback function.
- *
- * @param {Object} credentials The authorization client credentials.
- * @param {function} callback The callback to call with the authorized client.
- */
-function authorize(credentials, callback) {
-  var clientSecret = 'm7LO-KOhUMl3TZ4ni1FA8xGo';
-  var clientId = '399740110786-f7j06o0tsbmvbk2v570qc13g0a034iqa.apps.googleusercontent.com';
-  var redirectUrl ='urn:ietf:wg:oauth:2.0:oob';
-  var auth = new googleAuth();
-  var oauth2Client = new auth.OAuth2(clientId, clientSecret, redirectUrl);
-  fs.readFile(TOKEN_PATH, function(err, token) {
-    if (err) {
-      getNewToken(oauth2Client, callback);
-    } else {
-      oauth2Client.credentials = JSON.parse(token);
-      callback(oauth2Client);
-    }
-  });
-}
-
-function getNewToken(oauth2Client, callback) {
-  var authUrl = oauth2Client.generateAuthUrl({
-    access_type: 'offline',
-    scope: SCOPES
-  });
-  console.log('Authorize this app by visiting this url: ', authUrl);
-  var rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
-  rl.question('Enter the code from that page here: ', function(code) {
-    rl.close();
-    oauth2Client.getToken(code, function(err, token) {
-      if (err) {
-        console.log('Error while trying to retrieve access token', err);
-        return;
-      }
-      oauth2Client.credentials = token;
-      storeToken(token);
-      callback(oauth2Client);
-    });
-  });
-}
-function storeToken(token) {
-  try {
-    fs.mkdirSync(TOKEN_DIR);
-  } catch (err) {
-    if (err.code != 'EEXIST') {
-      throw err;
-    }
-  }
-  fs.writeFile(TOKEN_PATH, JSON.stringify(token));
-  console.log('Token stored to ' + TOKEN_PATH);
-}
