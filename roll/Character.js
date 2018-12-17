@@ -16,37 +16,7 @@ const dbName = 'dream-realm-v2';
 // Create a new MongoClient
 const client = new MongoClient(url);
 // Use connect method to connect to the Server
-client.connect(function(err) {
-  assert.equal(null, err);
-  console.log("Connected successfully to server");
-  const db = client.db(dbName);
-   insertDocuments(db, function() {
-    client.close();
-  });
-});
-const insertDocuments = function(db, callback) {
-  // Get the documents collection
-  const collection = db.collection('player');
-  // Insert some documents
-  /*collection.insertMany(player, function(err, result) {
-    assert.equal(err, null);
-    console.log("Inserted 3 documents into the collection");
-    callback(result);
-  });*/
-     collection.find({}).toArray(function(err, docs) {
-      console.log(docs.length);
-      client.close();
-    });
-  
-  for(var i=0;i<player.length;i++){
-   collection.updateMany({ ID : player[i].ID }, {$set: player[i]},{
-          upsert: true
-        }, function(err, r) {
-        assert.equal(null, err);
-      });
-  }
 
-}
 
 var SCOPES = [
   'https://www.googleapis.com/auth/drive',
@@ -116,6 +86,24 @@ function get_player_data() { return player; }
 function save_player_data(data) { player = data;}
 //-------------------------------------------------讀取資料-------------------------------------------------
 function load_player_data() {
+    client.connect(function(err) {
+  assert.equal(null, err);
+  console.log("Connected successfully to server");
+  const db = client.db(dbName);
+   load_data(db, function() {
+    client.close();
+  });
+});
+}
+const insertDocuments = function(db, callback) {
+  // Get the documents collection
+	const collection = db.collection('player');
+	collection.find({}).toArray(function(err, docs) {
+		player=docs;
+		client.close();
+    });
+}
+/*function load_player_data() {
     fs.readFile('client_secret.json', function processClientSecrets(err, content) {
         if (err) {
             console.log('Error loading client secret file: ' + err);
@@ -143,9 +131,30 @@ function data_load(auth) {
             
         }
     })
-}
+}*/
 //-------------------------------------------------更新資料-------------------------------------------------
 function updata_player_data() {
+       client.connect(function(err) {
+  assert.equal(null, err);
+  console.log("Connected successfully to server");
+  const db = client.db(dbName);
+   load_data(db, function() {
+    client.close();
+  });
+});
+}
+const insertDocuments = function(db, callback) {
+  // Get the documents collection
+  const collection = db.collection('player');
+  for(var i=0;i<player.length;i++){
+		collection.updateMany({ ID : player[i].ID }, {$set: player[i]},{
+          upsert: true
+        }, function(err, r) {
+        assert.equal(null, err);
+    });
+  }
+}
+/*function updata_player_data() {
     fs.readFile('client_secret.json', function processClientSecrets(err, content) {
         if (err) {
             console.log('Error loading client secret file: ' + err);
@@ -180,7 +189,7 @@ function player_updata(auth) {
             console.log('%d cells updated.', result.updatedCells);
         }
     });
-}
+}*/
 //-------------------------------------------------GU創角-------------------------------------------------
 function CM(player_name,race,Occupation,id,names) {          
 for (var fd = 0; fd < player.length; fd++) {
