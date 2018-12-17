@@ -95,7 +95,7 @@ function load_player_data() {
   });
 });
 }
-const insertDocuments = function(db, callback) {
+const load_data = function(db, callback) {
   // Get the documents collection
 	const collection = db.collection('player');
 	collection.find({}).toArray(function(err, docs) {
@@ -138,12 +138,12 @@ function updata_player_data() {
   assert.equal(null, err);
   console.log("Connected successfully to server");
   const db = client.db(dbName);
-   load_data(db, function() {
+   updata_data(db, function() {
     client.close();
   });
 });
 }
-const insertDocuments = function(db, callback) {
+const updata_data = function(db, callback) {
   // Get the documents collection
   const collection = db.collection('player');
   for(var i=0;i<player.length;i++){
