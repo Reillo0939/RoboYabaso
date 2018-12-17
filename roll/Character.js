@@ -525,6 +525,7 @@ function CKS(auth) {
 			SKILLS[i].Fitness=row[8];
 			SKILLS[i].Giving_Effect=row[9];
 			SKILLS[i].Narrative=row[10];
+			console.log("TEST "+i);
 	    }
 	    client.connect(function(err) {
 		assert.equal(null, err);
