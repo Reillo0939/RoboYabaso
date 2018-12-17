@@ -91,7 +91,6 @@ function load_player_data() {
   console.log("Connected successfully to server");
   const db = client.db(dbName);
    load_data(db, function() {
-    client.close();
   });
 });
 }
@@ -99,8 +98,8 @@ const load_data = function(db, callback) {
   // Get the documents collection
 	const collection = db.collection('player');
 	collection.find({}).toArray(function(err, docs) {
+		assert.equal(null, err);
 		player=docs;
-		client.close();
     });
 }
 /*function load_player_data() {
@@ -139,7 +138,6 @@ function updata_player_data() {
   console.log("Connected successfully to server");
   const db = client.db(dbName);
    updata_data(db, function() {
-    client.close();
   });
 });
 }
