@@ -38,7 +38,7 @@ function parseInput(rplyToken, inputStr, id,name) {
 
 
 	//if (trigger.match(/^卡片查詢$/) != null) return exports.card_help.CardH(mainMsg[1]) ;
-	if (trigger.match(/^卡池資訊$/) != null) return exports.card.ICard() ;
+	if (trigger.match(/^卡池資訊$/) != null) return exports.card.ICard(mainMsg[1]) ;
 	
 	if (trigger.match(/(^玩家權限$|^玩家權限$)/) != null) return exports.card.IDCA(id,name) ;
 	if (trigger.match(/^gu角色創建$/) != null) return exports.Character.CM(mainMsg[1],mainMsg[2],mainMsg[3],id,name) ;

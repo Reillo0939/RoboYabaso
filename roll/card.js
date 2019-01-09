@@ -9,23 +9,29 @@ return rply;
 }
 
 function MCard(frequency,id,name) {
-
+var SMC={};
+SMC.UR=2;
+SMC.SSR=10;
+SMC.SR=100;
+SMC.R=588;
+SMC.TUR=50;
+SMC.TSSR=250;
 rply.text=name+'抽到了：';
 for(i=1;i<=frequency;i++){
-let rarity=rollbase.Dice(1000);
-if(rarity>=999)MUR();
-if((rarity>=989) && (rarity<=998))MSSR();
- if((rarity>=889) && (rarity<=988))MSR();
-  if((rarity>=589) && (rarity<=888))MR();
- if(rarity<=588)MN();
+	let rarity=rollbase.Dice(1000);
+	if(rarity<=SMC.UR)MUR();
+	else if(rarity-=SMC.UR,rarity<=SMC.SSR)MSSR();
+	else if(rarity-=SMC.SSR,rarity<=SMC.SR)MSR();
+	else if(rarity-=SMC.SR,rarity<=SMC.R)MR();
+	else MN();
 }
 
 if(frequency==9){
 rply.text+='\n保底：';
-let rarity=rollbase.Dice(100);
-if(rarity>=100)MUR();
-if((rarity>=96) && (rarity<=99))MSSR();
-if(rarity<=95)MSR();
+let rarity=rollbase.Dice(1000);
+if(rarity<=SMC.TUR)MUR();
+	else if(rarity-=SMC.TUR,rarity<=SMC.TSSR)MSSR();
+	else MSR();
 }
 return rply;
 }
@@ -143,11 +149,8 @@ rply.text = rply.text +'\n'+ rplyArr[Math.floor((Math.random() * (rplyArr.length
 return rply;	
 }
 
-function ICard() {
-rply.text = 
-	'抽卡方式 \n'+
-	'單抽："卡池名稱"抽卡\n'+
-	'十連抽："卡池名稱"10連抽\n'+
+function ICard(ICName) {
+	rply.text =
 	'本周卡池\n'+
 	'===水晶時代===\n'+
 	' -[UR]機率0.2% \n'+
@@ -156,11 +159,22 @@ rply.text =
 	' -[R]機率30% \n'+
 	' -[N]機率58.8% \n'+
 	'===10連抽保底SR機率：===\n'+
+	' -[UR]機率5% \n'+
+	' -[SSR]機率25% \n'+
+	' -[SR]機率70% \n';
+	if(ICName=='GU特選武器'){
+		rply.text =
+	'===GU特選武器===\n'+
+	' -[UR]機率1.0% \n'+
+	' -[SSR]機率4.0% \n'+
+	' -[SR]機率15.0% \n'+
+	' -[R]機率30.0% \n'+
+	' -[N]機率50.0% \n'+
+	'===10連抽保底SR機率：===\n'+
 	' -[UR]機率1% \n'+
 	' -[SSR]機率4% \n'+
-	' -[SR]機率95% \n'
-	
-	;
+	' -[SR]機率95% \n';
+	}
 return rply;	
 }
 
