@@ -123,7 +123,6 @@ bot.on('message', function(event) { if (event.message.type = 'text') {
 	if(event.message.text=='重新載入'){
 		if(a=='U7c4779fd913aff927f26d7f6bedd87d1'||a=='Uc9b4571605aabd3e94edd7c189144278'){
 			Character.load_player_data();
-			Character.CK();
 			event.reply({ type: 'text', text: '重新載入，請稍後片刻' });	
 		}
 		else{
