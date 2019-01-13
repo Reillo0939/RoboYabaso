@@ -28,9 +28,7 @@
       $(function () {
         var socket = io();
 		var username,useruuid;
-		  liff.init(function (data) {
-                initializeApp(data);
-            });
+		  liff.init();
 			 liff.getProfile().then(
                     profile=> {
                         //顯示在text box中
