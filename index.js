@@ -139,7 +139,10 @@ res.sendFile(__dirname + '/index.html');
 });
 
 app.use('/socket.io', express.static(__dirname + '/socket.io'));
+app.use('/LIFF', express.static(__dirname + '/LIFF'));
 app.post('/', jsonParser);
+
+
 /*app.post('/', jsonParser, function(req, res) {
 });*/
 
