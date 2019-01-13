@@ -86,12 +86,12 @@ body {
     top: 114px;
 }
 .gwd-div-a811 {
-    height: 50%;
-    width: 50%;
+    height: 100%;
+    width: 100%;
 }
 .gwd-page-17fl {
-    height: 50%;
-    width: 50%;
+    height: 100%;
+    width: 100%;
 }
 .gwd-button-nule {
     position: absolute;
@@ -161,16 +161,13 @@ body {
   <script type="text/javascript" id="gwd-init-code">
 	liff.init();
 	function gotoline(){
-		var to=document.getElementById("Camp").value+'角色創建 '+document.getElementById("Name")+' '+document.getElementById("race")+' '+document.getElementById("Occupation");
+		var to=document.getElementById("Camp").value+'角色創建 '+document.getElementById("Name").value+' '+document.getElementById("race").value+' '+document.getElementById("Occupation").value;
 		liff.sendMessages([
                  {
                      type: 'text',
                      text: to
                  }
-                ])
-               .then(() => {
-                   alert('done');
-               });
+                ]);
 	}
     setInterval(ch, 100);
     var last;
