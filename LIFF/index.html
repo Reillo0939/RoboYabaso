@@ -35,8 +35,7 @@
 		profile => {
 			a.displayName= profile.displayName;
 			a.userId=profile.userId;
-});
-		 a=liff.getProfile();
+		});
           socket.emit('chat message', $('#m').val(),a.userId,a.displayName);
           $('#m').val('');
           return false;
