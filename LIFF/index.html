@@ -25,17 +25,24 @@
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 	<script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
     <script>
-      $(function () {
-        var socket = io();
-		var a={};
-		  liff.init();
-		 
-        $('form').submit(function(){
-		liff.getProfile().then(
+	var a={};
+	  function initializeApp(data) {
+            let urlParams = new URLSearchParams(window.location.search);
+			liff.getProfile().then(
 		profile => {
 			a.displayName= profile.displayName;
 			a.userId=profile.userId;
 		});
+        }
+      $(function () {
+	  
+        var socket = io();
+		 liff.init(function (data) {
+                initializeApp(data);
+            });
+		 
+        $('form').submit(function(){
+		
           socket.emit('chat message', $('#m').val(),a.userId,a.displayName);
           $('#m').val('');
           return false;
