@@ -27,12 +27,11 @@
     <script>
       $(function () {
         var socket = io();
-		var a;
+		var a={};
 		  liff.init();
-		  a=liff.getProfile();
+		  //a=liff.getProfile();
         $('form').submit(function(){
           socket.emit('chat message', $('#m').val(),a.userId,a.displayName);
-		  socket.emit('chat message', '......',0,0);
           $('#m').val('');
           return false;
         });
