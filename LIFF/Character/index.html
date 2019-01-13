@@ -161,6 +161,10 @@ body {
   <script type="text/javascript" id="gwd-init-code">
 	liff.init();
 	function gotoline(){
+		if(!document.getElementById("Name").value){
+			alert('名字未輸入');
+			return 0;
+		}
 		var to=document.getElementById("Camp").value+'角色創建 '+document.getElementById("Name").value+' '+document.getElementById("race").value+' '+document.getElementById("Occupation").value;
 		liff.sendMessages([
                  {
@@ -168,6 +172,7 @@ body {
                      text: to
                  }
                 ]);
+		liff.closeWindow()
 	}
     setInterval(ch, 100);
     var last;
