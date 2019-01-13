@@ -182,12 +182,12 @@ return rply;
 }
 //-------------------------------------------------AAUF創角-------------------------------------------------
 function CT(player_name,race,Occupation,id,names) {
-for(var tt=0;tt<Characters.length;tt++){
-if(Characters[tt][0]==id){
-rply.text=names +' 你已有角色，若要修改請找GM';
-return rply;	
-}
-}
+	for(var fd = 0; fd < player.length; fd++) {
+		if (player[fd].ID == id) {
+			rply.text=names +' 你已有角色，若要修改請找GM';
+			return rply;	
+		}
+	}
     if (player_name==null && race==null && Occupation==null){
 rply.text='缺少名稱 種族 兵種'+
 		  '\n種族有 純人種 貓科種 犬科種 兔科種'+
