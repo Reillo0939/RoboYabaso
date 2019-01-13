@@ -17,23 +17,31 @@
     </style>
   </head>
   <body>
-  <div id="B" style='position:fixed; z-index:999; top:0; right: 0;'>
-	<ul>
-	<li>Line_UUID：<input id="UUID" type="text" size="20" onchange="getValue()" /></li>
-	<li>暱稱：<input id="UserName" type="text" size="20" onchange="getValue()" /></li>
-	</ul>
-	</div>
     <ul id="messages"></ul>
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	<script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
     <script>
       $(function () {
         var socket = io();
+		var username,useruuid;
+		  liff.init(function (data) {
+                initializeApp(data);
+            });
+			 liff.getProfile().then(
+                    profile=> {
+                        //顯示在text box中
+                        username=profile.displayName;
+						useruuid=profile.userId;
+                        //居然可以alert
+                        alert('done');
+                    }
+                );
         $('form').submit(function(){
-          socket.emit('chat message', $('#m').val(),$('#UUID').val(),$('#UserName').val());
+          socket.emit('chat message', $('#m').val(),useruuid,username);
           $('#m').val('');
           return false;
         });
