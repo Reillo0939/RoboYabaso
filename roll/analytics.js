@@ -44,7 +44,7 @@ function parseInput(rplyToken, inputStr, id,name) {
 	if (trigger.match(/^gu角色創建$/) != null) return exports.Character.CM(mainMsg[1],mainMsg[2],mainMsg[3],id,name) ;
 	if (trigger.match(/^aauf角色創建$/) != null) return exports.Character.CT(mainMsg[1],mainMsg[2],mainMsg[3],id,name) ;
 	if (trigger.match(/^角色建立$/) != null) return 'line://app/1567989750-WKrVXk6p';
-	if (trigger.match(/^武器_製作Link$/) != null) return 'line://app/1567989750-lYvLaAZk';
+	if (trigger.match(/^武器_製作link$/) != null) return 'line://app/1567989750-lYvLaAZk';
 	if (trigger.match(/玩家/) != null){
         if (trigger.match(/自身情報/) != null) return exports.Character.player_View(id,name) ;
         if (trigger.match(/查詢/) != null) return exports.Character.player_Inquire(name,mainMsg[1]) ;
