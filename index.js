@@ -109,7 +109,7 @@ var Menu_Skill = {
 			{
 				type: 'postback',
 				label: '技能查看',
-				data: '技能查看'
+				data: '玩家技能'
 			}
 		]
     }
