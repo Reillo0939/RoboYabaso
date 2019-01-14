@@ -88,6 +88,11 @@ var Menu_Weapon = {
 			}, 
 			{
 				type: 'postback',
+				label:'武器製作',
+				data: '武器_製作Link'
+			}, 
+			{
+				type: 'postback',
 				label:'武器破壞 主武器',
 				data: '武器破壞 主武器'
 			}, 
