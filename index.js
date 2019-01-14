@@ -24,7 +24,7 @@ var battle=0;
 var a=0;
 var to_web_msg='',to_switch=0;
 Character.load_player_data();
-var myLineTemplate = {
+var Menu = {
     type: 'template',
     altText: '選單',
     template: {
@@ -33,22 +33,107 @@ var myLineTemplate = {
         actions: [
 			{
 				type: 'postback',
-				label: '玩家自身情報',
-				data: '玩家自身情報'
+				label: '角色相關',
+				data: 'Menu_Character'
 			}, 
-			  {
+			{
 				type: 'postback',
-					label: '武器查看',
-					data: '武器查看'
+				label: '武器相關',
+				data: 'Menu_Weapon'
 			}, 
-			  {
+			{
 				type: 'postback',
-				  label: '水晶時代抽卡',
-				  data: '水晶時代抽卡'
+				label: '技能相關',
+				data: 'Menu_Skill'
 			},
 			{
 				type: 'postback',
-				label: '水晶時代10連抽',
+				label: '抽卡相關',
+				data: 'Menu_Card'
+			}
+		]
+    }
+};
+var Menu_Character = {
+    type: 'template',
+    altText: '角色相關選單',
+    template: {
+        type: 'buttons',
+        text: '角色相關',
+        actions: [
+			{
+				type: 'postback',
+				label: '玩家情報',
+				data: '玩家自身情報'
+			},
+			{
+				type: 'postback',
+				label:'角色建立',
+				data: '角色建立'
+			},
+		]
+    }
+};
+var Menu_Weapon = {
+    type: 'template',
+    altText: '武器相關選單',
+    template: {
+        type: 'buttons',
+        text: '武器相關',
+        actions: [
+			{
+				type: 'postback',
+				label:'武器查看',
+				data: '武器查看'
+			}, 
+			{
+				type: 'postback',
+				label:'武器破壞 主武器',
+				data: '武器破壞 主武器'
+			}, 
+			{
+				type: 'postback',
+				label:'武器破壞 副武器',
+				data: '武器破壞 副武器'
+			}
+		]
+    }
+};
+var Menu_Skill = {
+    type: 'template',
+    altText: '技能相關選單',
+    template: {
+        type: 'buttons',
+        text: '技能相關',
+        actions: [
+			{
+				type: 'postback',
+				label: '技能查看',
+				data: '技能查看'
+			}
+		]
+    }
+};
+var Menu_Card = {
+    type: 'template',
+    altText: '抽卡相關選單',
+    template: {
+        type: 'buttons',
+        text: '抽卡相關',
+        actions: [
+			{
+				type: 'postback',
+				label:'卡池資訊',
+				data: '卡池資訊'
+			}, 
+			{
+				type: 'postback',
+				label:'水晶時代抽卡',
+				data: '水晶時代抽卡'
+			}, 
+			{
+				type: 'postback',
+				label:'水晶時代10連抽',
 				data: '水晶時代10連抽'
 			}
 		]
@@ -61,7 +146,23 @@ bot.on('postback', function (event) {
         b = profile.displayName;
 		var myResult = event.postback.data;
 		if (myResult != '') {
-			var msg = re.parseInput(event.rplyToken, myResult, a, b);
+			var msg;
+			switch(myResult){
+				case 'Menu_Character':
+					msg=Menu_Character;
+				break;
+				case 'Menu_Weapon':
+					msg=Menu_Weapon;
+				break;
+				case 'Menu_Skill':
+					msg=Menu_Skill;
+				break;
+				case 'Menu_Card':
+					msg=Menu_Card;
+				break;
+				default:
+					msg=re.parseInput(event.rplyToken, myResult, a, b);
+			}
 			event.reply(msg);
 		}
 
@@ -115,7 +216,7 @@ bot.on('message', function(event) { if (event.message.type = 'text') {
 				   );
 		}
 		if (event.message.text == '選單') {
-			msg = myLineTemplate;
+			msg = Menu;
 		}
 		if(!msg && c=='Ca8fea1f8ef1ef2519860ee21fb740fd2')to_web_msg='['+b+']：'+event.message.text,io.emit('chat message', to_web_msg.replace(/\n/g,"<br>"));;
 		event.reply(msg);		 
