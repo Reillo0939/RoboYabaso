@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head><meta name="GCD" content="YTk3ODQ3ZWZhN2I4NzZmMzBkNTEwYjJl44f99c94fe5ca25f5f517074770785ef"/>
+<html><head><meta name="GCD" content="YTk3ODQ3ZWZhN2I4NzZmMzBkNTEwYjJl46178d137629fb674bade24872a2974d"/>
   <meta charset="utf-8">
   <title>Weaponry</title>
   <meta name="generator" content="Google Web Designer 5.0.1.1129">
@@ -179,6 +179,7 @@ body {
   <script data-source="gwd_webcomponents_min.js" data-version="6" data-exports-type="gwd_webcomponents" src="gwd_webcomponents_min.js"></script>
   <script data-source="gwdpage_min.js" data-version="12" data-exports-type="gwd-page" src="gwdpage_min.js"></script>
   <script data-source="gwdpagedeck_min.js" data-version="11" data-exports-type="gwd-pagedeck" src="gwdpagedeck_min.js"></script>
+  <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
 </head>
 
 <body class="document-body">
@@ -201,12 +202,82 @@ body {
           <option value="近距離武器">近距離武器</option>
           <option value="複合武器">複合武器</option>
         </select>
-        <select id="select_1" class="gwd-select-1h06"></select>
-        <select id="select_2" class="gwd-select-z0bj"></select>
+        <select id="Weaponry_mode" class="gwd-select-1h06"></select>
+        <select id="Weaponry_complex" class="gwd-select-z0bj" hidden="hidden"></select>
       </div>
     </gwd-page>
   </gwd-pagedeck>
   <script type="text/javascript" id="gwd-init-code">
+	liff.init();
+	function gotoline(){
+		if(!document.getElementById("Weaponry_Name").value){
+			alert('武器名字未輸入');
+			return 0;
+		}
+		var to='武器製作 '+document.getElementById("main_or_secondary").value+' '+document.getElementById("Weaponry_Name").value+' '+document.getElementById("Weaponry_Type").value
+		+' '+document.getElementById("Weaponry_mode").value+' '+document.getElementById("Weaponry_complex").value;
+		liff.sendMessages([
+                 {
+                     type: 'text',
+                     text: to
+                 }
+                ]);
+		liff.closeWindow()
+	}
+	setInterval(ch, 100);
+    var last;
+
+    function ch() {
+		switch(document.getElementById("Weaponry_Type").value){
+			case '槍械':
+				if(last!='槍械'){
+					 last = '槍械';
+					 document.getElementById("Weaponry_mode").innerHTML =
+					'<option value="手槍" selected="">手槍</option>' +
+					'<option value="步槍">步槍</option>' +
+					'<option value="狙擊槍">狙擊槍</option>'+
+					'<option value="能量放出槍">能量放出槍</option>';
+					document.getElementById("Weaponry_complex").hidden ='hidden';
+					document.getElementById("Weaponry_complex").innerHTML ='';
+					document.getElementById("Weaponry_mode_word").innerHTML='武器模組：';
+					document.getElementById("Weaponry_complex_word").innerHTML='';
+				}
+			break;
+			case '近距離武器':
+				if(last!='近距離武器'){
+					last = '近距離武器';
+					 document.getElementById("Weaponry_mode").innerHTML =
+					'<option value="拳" selected="">拳</option>' +
+					'<option value="刀">刀</option>' +
+					'<option value="長槍">長槍</option>'+
+					'<option value="盾">盾</option>';
+					document.getElementById("Weaponry_complex").hidden ='hidden';
+					document.getElementById("Weaponry_complex").innerHTML ='';
+					document.getElementById("Weaponry_mode_word").innerHTML='武器模組：';
+					document.getElementById("Weaponry_complex_word").innerHTML='';
+				}
+			break;
+			case '複合武器':
+				if(last!='複合武器'){
+					last = '複合武器';
+					document.getElementById("Weaponry_mode").innerHTML =
+					'<option value="拳" selected="">拳</option>' +
+					'<option value="刀">刀</option>' +
+					'<option value="長槍">長槍</option>'+
+					'<option value="盾">盾</option>';
+					document.getElementById("Weaponry_complex").removeAttribute("hidden"); 
+					document.getElementById("Weaponry_complex").innerHTML =
+					'<option value="手槍" selected="">手槍</option>' +
+					'<option value="步槍">步槍</option>' +
+					'<option value="狙擊槍">狙擊槍</option>'+
+					'<option value="能量放出槍">能量放出槍</option>';
+					document.getElementById("Weaponry_mode_word").innerHTML='近距離模組：';
+					document.getElementById("Weaponry_complex_word").innerHTML='遠距離模組：';
+				}
+			break;
+		
+		}
+      }
     (function() {
       document.body.style.opacity = "0";
       var pageDeck = document.getElementById('pagedeck');
