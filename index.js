@@ -24,7 +24,7 @@ var battle=0;
 var a=0;
 var to_web_msg='',to_switch=0;
 Character.load_player_data();
-var Menu = JSON.parse('{"type":"bubble","body":{"type":"box","layout":"vertical","spacing":"md","contents":[{"type":"button","style":"secondary","color":"#bdf7a3","action":{"type":"postback","label":"角色相關","data":"Menu_Character"}},{"type":"button","style":"secondary","color":"#fae178","action":{"type":"postback","label":"武器相關","data":"Menu_Weapon"}},{"type":"button","color":"#a8fde9","style":"secondary","action":{"type":"postback","label":"技能相關","data":"Menu_Skill"}},{"type":"button","style":"secondary","color":"#e67ffb","action":{"type":"postback","label":"抽卡相關","data":"Menu_Card"}}]}}');
+var Menu = JSON.parse('{"type":"flex","altText":"選單","contents":{"type":"bubble","body":{"type":"box","layout":"vertical","spacing":"md","contents":[{"type":"button","style":"secondary","color":"#bdf7a3","action":{"type":"postback","label":"角色相關","data":"Menu_Character"}},{"type":"button","style":"secondary","color":"#fae178","action":{"type":"postback","label":"武器相關","data":"Menu_Weapon"}},{"type":"button","color":"#a8fde9","style":"secondary","action":{"type":"postback","label":"技能相關","data":"Menu_Skill"}},{"type":"button","style":"secondary","color":"#e67ffb","action":{"type":"postback","label":"抽卡相關","data":"Menu_Card"}}]}}}');
 var Menu_Character = {
     type: 'template',
     altText: '角色相關選單',
