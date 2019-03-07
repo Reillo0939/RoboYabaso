@@ -8,6 +8,7 @@ var io = require('socket.io')(http);
 var Character = require('./roll/Character.js');
 var battles = require('./roll/battle.js');
 var re = require('./roll/analytics.js');
+
 var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
 var channelSecret = process.env.LINE_CHANNEL_SECRET;
 var linebot = require('linebot');
@@ -17,6 +18,11 @@ var bot = linebot({
 	channelSecret: channelSecret,
 	channelAccessToken: channelAccessToken
 });
+
+const Discord = require('discord.js');
+const client = new Discord.Client();
+ 
+
 var jsonParser = bot.parser();
 var cat='';
 var input='';
@@ -177,3 +183,17 @@ io.on('connection', function(socket){
 http.listen((process.env.PORT || 5000), function(){
   console.log('listening on *:'+(process.env.PORT || 5000));
 });
+
+
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
+ 
+client.on('message', msg => {
+  if (msg.content === 'ping') {
+    msg.reply('pong');
+  }
+});
+ 
+client.login(process.env.DISCORD_CHANNEL_ACCESSTOKEN);
+
