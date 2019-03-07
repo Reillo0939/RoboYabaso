@@ -189,10 +189,11 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
  
-client.on('message', msg => {
-  if (msg.content === 'ping') {
-    msg.reply('pong');
-  }
+client.on('message', msg => { 
+  var msga=re.parseInput(0, msg.content, 0, '');
+	  
+    msg.reply(msga.text);
+  
 });
  
 client.login(process.env.DISCORD_CHANNEL_ACCESSTOKEN);
