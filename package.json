@@ -1,10 +1,7 @@
 {
-  "name": "Zetetic",
+  "name": "Dream",
   "version": "1.0.0",
-  "description": "Zetetic Line Bot",
-  "engines": {
-    "node": "6.9.1"
-  },
+  "description": "Dream Line Bot",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -22,8 +19,6 @@
     "socket.io": "^2.2.0"
   },
   "keywords": [
-    "LeoLi",
-    "Zetetic",
     "Line"
   ],
   "license": "MIT"
