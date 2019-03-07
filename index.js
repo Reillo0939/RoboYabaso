@@ -192,7 +192,7 @@ client.on('ready', () => {
 client.on('message', msg => { 
   var msga=re.parseInput(0, msg.content, 0, '');
 	  
-    msg.reply(msga.text);
+    if(msga)msg.reply("\n"+msga.text);
   
 });
  
