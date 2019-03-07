@@ -29,6 +29,7 @@ function parseInput(rplyToken, inputStr, id,name) {
 	let trigger = mainMsg[0].toString().toLowerCase()
 	console.log(trigger);
 	; //指定啟動詞在第一個詞&把大階強制轉成細階
+	if (inputStr.toLowerCase().match(/^\d+\s+\d+d\d+/) != null || inputStr.toLowerCase().match(/^\d+d\d+/) != null) return exports.rollbase.nomalDiceRoller(inputStr, mainMsg[0], mainMsg[1], mainMsg[2]);
 	if (trigger.match(/^help$/)!= null ) return exports.help.Help();
 
 	//87
