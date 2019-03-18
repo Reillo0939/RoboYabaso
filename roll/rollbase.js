@@ -11,7 +11,7 @@ function sortNumber(a,b){
 function RollDice(inputStr){
 	//先把inputStr變成字串（不知道為什麼非這樣不可）
 	let comStr=inputStr.toString();
-	let finalStr = '';
+	let finalStr = '(';
 	let temp = 0;
 	var totally = 0;
 	for (let i = 1; i <= comStr.split('d')[0]; i++) {
@@ -19,7 +19,7 @@ function RollDice(inputStr){
 		totally +=temp;
 		finalStr = finalStr + temp + '+';
 	}
-	finalStr = finalStr.substring(0, finalStr.length - 1);
+	finalStr = finalStr.substring(0, finalStr.length - 1)+')';
 	return finalStr;
 }
 
@@ -69,8 +69,8 @@ function nomalDiceRoller(inputStr,text0,text1,text2){
 	let finalStr = '' ;	
 	//是複數擲骰喔
 	if(mutiOrNot.toString().match(/\D/)==null ) {
-		if(text2 != null)finalStr= text0 + '次擲骰：\n' + text1 +' ' + text2 + '\n';
-		else finalStr= text0 + '次擲骰：\n' + text1 +'\n';
+		if(text2 != null)finalStr= '擲'+text0 + '次' + text1 +'： ' + text2 + '\n';
+		else finalStr= '擲'+text0 + '次' + text1 +'：\n';
 		if(mutiOrNot>30){
 			rply.text = '不支援30次以上的複數擲骰。';
 			return rply;
@@ -90,7 +90,7 @@ function nomalDiceRoller(inputStr,text0,text1,text2){
 			aaa = aaa.replace(/]/ig, ')' );
 			//aaa = aaa.replace(/[[]\d+|]/ig, "");
 			let answer = eval(aaa.toString());
-			finalStr = finalStr + i + '# ' + equation + ' = ' + answer + '\n';
+			finalStr = finalStr +'['+ i +']' + equation + ' = ' + answer + '\n';
 		}
 		
 	}
@@ -111,7 +111,6 @@ function nomalDiceRoller(inputStr,text0,text1,text2){
 		let aaa = equation;
 		aaa = aaa.replace(/\d+[[]/ig, '(' );
 		aaa = aaa.replace(/]/ig, ')' );
-		console.log(aaa);
 		let answer = eval(aaa.toString());
 		if(text1 != null)finalStr= text0 + '：' + text1 + '\n' + equation + ' = ' + answer;
 		else finalStr= text0 + '：\n' + equation + ' = ' + answer;
