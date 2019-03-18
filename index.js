@@ -82,13 +82,13 @@ bot.on('message', function(event)
 							{ type: 'text', text: '蓋爾奇亞聯合是研究水晶能量的聯合陣營，與聯合外的部分國家互相簽定了人才技術互通協約。' }]
 							);
 						}
-						if(event.message.text=='test123'){
-							event.reply([{
+						var test=event.message.text.match('-');
+						if(test[0]=='sticker'){
+							event.reply({
 							type: 'image',
-							originalContentUrl: 'https://stickershop.line-scdn.net/stickershop/v1/sticker/'+33729320+'/android/sticker.png',
-							previewImageUrl: 'https://stickershop.line-scdn.net/stickershop/v1/sticker/'+33729320+'/android/sticker.png'
-							},
-							{ type: 'text', text: '蓋爾奇亞聯合是研究水晶能量的聯合陣營，與聯合外的部分國家互相簽定了人才技術互通協約。' }]
+							originalContentUrl: 'https://stickershop.line-scdn.net/stickershop/v1/sticker/'+test[1]+'/android/sticker.png',
+							previewImageUrl: 'https://stickershop.line-scdn.net/stickershop/v1/sticker/'+test[1]+'/android/sticker.png'
+							}
 							);
 						}
 						if (event.message.text == '選單')msg = Menu;
