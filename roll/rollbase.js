@@ -110,6 +110,7 @@ function nomalDiceRoller(inputStr,text0,text1,text2){
 		let aaa = equation;
 		aaa = aaa.replace(/\d+[[]/ig, '(' );
 		aaa = aaa.replace(/]/ig, ')' );
+		console.log(aaa);
 		let answer = eval(aaa.toString());
 		if(text1 != null)finalStr= text0 + '：' + text1 + '\n' + equation + ' = ' + answer;
 		else finalStr= text0 + '：\n' + equation + ' = ' + answer;
