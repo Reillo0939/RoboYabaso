@@ -82,7 +82,7 @@ bot.on('message', function(event)
 							{ type: 'text', text: '蓋爾奇亞聯合是研究水晶能量的聯合陣營，與聯合外的部分國家互相簽定了人才技術互通協約。' }]
 							);
 						}
-						var test=event.message.text.match('-');
+						var test=event.message.text.split('-');
 						if(test[0]=='sticker'){
 							event.reply({
 							type: 'image',
