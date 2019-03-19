@@ -34,7 +34,7 @@ var Menu = JSON.parse('{"type":"flex","contents":{"type":"carousel","contents":[
 
 bot.on('message', function(event) 
 	{ 
-		console.log(event.message.type);
+		console.log(event);
 		if (event.message.type == 'text') { 
 			var msg = '';
 			let a = event.source.userId;
