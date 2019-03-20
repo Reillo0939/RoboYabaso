@@ -34,14 +34,6 @@ var Menu = JSON.parse('{"type":"flex","contents":{"type":"carousel","contents":[
 
 bot.on('message', function(event) 
 	{ 
-		if (event.message.type == 'image'){
-			event.message.content().then(
-				function (content) {
-					console.log(content);
-				}
-			);
-			
-		}
 		if (event.message.type == 'text') { 
 			var msg = '';
 			let a = event.source.userId;
@@ -51,7 +43,6 @@ bot.on('message', function(event)
 			console.log(c);
 			event.source.profile().then(
 				function (profile) {
-					console.log(profile);
 					b = profile.displayName;
 					//Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
 					if(battle==1){
