@@ -40,5 +40,5 @@ function join(PN,UUID,Name){
 }
 
 module.exports = {
-	special:main
+	main:main
 };
