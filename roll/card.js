@@ -137,10 +137,10 @@ function Test(frequency,id,name) {
 	SMC[2].name='UR-3'; 	SMC[2].count=3;
 	SMC[3].name='UR-4'; 	SMC[3].count=4;
 	SMC[4].name='UR-5'; 	SMC[4].count=5;
-	SMC[5].name='SSR'; 	SMC[5].count=150;
-	SMC[6].name='SR'; 	SMC[6].count=1500;
-	SMC[7].name='R'; 	SMC[7].count=7500;
-	SMC[8].name='N'; 	SMC[8].count=15000;
+	SMC[5].name='SSR'; 	SMC[5].count=15;
+	SMC[6].name='SR'; 	SMC[6].count=150;
+	SMC[7].name='R'; 	SMC[7].count=750;
+	SMC[8].name='N'; 	SMC[8].count=1500;
 	rply.text=name+'抽到了：\n';
 	var total=0;
 	for(i=0;i<SMC.length;i++)total+=SMC[i].count;
