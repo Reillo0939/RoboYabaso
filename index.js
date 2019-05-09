@@ -7,6 +7,7 @@ var io = require('socket.io')(http);
 
 var Character = require('./roll/Character.js');
 var battles = require('./roll/battle.js');
+var special = require('./roll/special.js');
 var re = require('./roll/analytics.js');
 
 var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
@@ -72,7 +73,19 @@ bot.on('message', function(event)
 						event.reply(msg);
 						io.emit('chat message', msg.text.replace(/\n/g,"<br>"));
 					}
+					if(battle==2){
+						if(event.message.text=='特殊模式關閉'){
+							battle=0;
+							bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '已關閉戰鬥模式' );
+						}
+						msg = special.main(a,b,event.message.text);
+						event.reply(msg);
+					}
 					if(battle==0){
+						if(event.message.text=='小型pvp測試'){
+							battle=2;
+							bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '特殊模式已啟動' );
+						}
 						if(event.message.text=='戰鬥模式啟動'){
 							battle=1;
 							battles.Reset();
