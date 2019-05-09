@@ -132,15 +132,15 @@ return rply;
 function Test(frequency,id,name) {
 	var SMC=[];
 	for(i=0;i<9;i++)SMC[i]={};
-	SMC[0].name='UR-1'; 	SMC[0].count=1;
-	SMC[1].name='UR-2'; 	SMC[1].count=2;
-	SMC[2].name='UR-3'; 	SMC[2].count=3;
-	SMC[3].name='UR-4'; 	SMC[3].count=4;
-	SMC[4].name='UR-5'; 	SMC[4].count=5;
-	SMC[5].name='SSR-15'; 	SMC[5].count=15;
-	SMC[6].name='SR-150'; 	SMC[6].count=150;
-	SMC[7].name='R-750'; 	SMC[7].count=750;
-	SMC[8].name='N-1500'; 	SMC[8].count=1500;
+	SMC[0].name='UR-'; 	SMC[0].count=1;
+	SMC[1].name='UR-'; 	SMC[1].count=2;
+	SMC[2].name='UR-'; 	SMC[2].count=3;
+	SMC[3].name='UR-'; 	SMC[3].count=4;
+	SMC[4].name='UR-'; 	SMC[4].count=5;
+	SMC[5].name='SSR-'; 	SMC[5].count=15;
+	SMC[6].name='SR-'; 	SMC[6].count=150;
+	SMC[7].name='R-'; 	SMC[7].count=750;
+	SMC[8].name='N-'; 	SMC[8].count=1500;
 	rply.text=name+'抽到了：\n';
 	var total=0;
 	for(i=0;i<SMC.length;i++)total+=SMC[i].count;
@@ -151,7 +151,7 @@ function Test(frequency,id,name) {
 		for(i=0;i<SMC.length;i++){
 			rarity-=SMC[i].count;
 			if(rarity<=0){
-				rply.text+='['+SMC[i].name+']';
+				rply.text+='['+SMC[i].name+SMC[i].count+'/'+total+']';
 				return rply;
 			}
 		}
@@ -162,7 +162,7 @@ function Test(frequency,id,name) {
 			for(i=0;i<SMC.length;i++){
 				rarity-=SMC[i].count;
 				if(rarity<=0){
-					rply.text+='['+SMC[i].name+']\n';
+					rply.text+='['+SMC[i].name+SMC[i].count+'/'+total+']\n';
 					break;
 				}
 				
