@@ -50,7 +50,7 @@ function join(PN,UUID,Name){
 }
 
 function start(){
-	if(n<4){
+	if(player.length<2){
 		rply.text ='人數未滿4人';
 		return rply;
 	}
