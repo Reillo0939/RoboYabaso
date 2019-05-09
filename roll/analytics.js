@@ -36,8 +36,8 @@ function parseInput(rplyToken, inputStr, id,name) {
 	if (trigger.match(/^help$/)!= null ) return exports.help.Help();
 	if (trigger.match(/^水晶時代抽卡/) != null) return exports.card.MCard(1,id,name) ;//"G.U"抽卡
 	if (trigger.match(/^水晶時代10連抽/) != null) return exports.card.MCard(9,id,name) ;//"G.U"10連抽
-	if (trigger.match(/^新抽卡系統測試/) != null) return exports.card.Test(1,id,name) ;//"G.U"10連抽
-	
+	if (trigger.match(/^新抽卡系統測試/) != null) return exports.card.Test(1,id,name) ;
+	if (trigger.match(/^新抽卡系統10連/) != null) return exports.card.Test(10,id,name) ;
 	
 	
 	//if (trigger.match(/^卡片查詢$/) != null) return exports.card_help.CardH(mainMsg[1]) ;

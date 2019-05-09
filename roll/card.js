@@ -144,13 +144,30 @@ function Test(frequency,id,name) {
 	rply.text=name+'抽到了：\n';
 	var total=0;
 	for(i=0;i<SMC.length;i++)total+=SMC[i].count;
-	var rarity=rollbase.Dice(total);
-	for(i=0;i<SMC.length;i++){
-		rarity-=SMC[i].count;
-		if(rarity<=0){
-			rply.text+='['+SMC[i].name+']';
-			return rply;
+	
+	
+	if(frequency==1){
+		var rarity=rollbase.Dice(total);
+		for(i=0;i<SMC.length;i++){
+			rarity-=SMC[i].count;
+			if(rarity<=0){
+				rply.text+='['+SMC[i].name+']';
+				return rply;
+			}
 		}
+	}
+	if(frequency==10){
+		for(k=0;k<10;k++){
+			var rarity=rollbase.Dice(total);
+			for(i=0;i<SMC.length;i++){
+				rarity-=SMC[i].count;
+				if(rarity<=0){
+					rply.text+='['+SMC[i].name+']\n';
+					
+				}
+			}
+		}
+		return rply;
 	}
 }
 
