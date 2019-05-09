@@ -34,8 +34,8 @@ function join(PN,UUID,Name){
 	player[n].Weaponry=rollbase.Dice(Weaponry.length)-1;
 	player[n].skill=rollbase.Dice(skill.length)-1;
 	rply.text ='[' + Name + ']的[' + player[n].PlayerName + '\n'+
-	'武器'+Weaponry[player[n].Weaponry]+'\n'+
-	'技能'+skill[player[n].skill];
+	'武器：'+Weaponry[player[n].Weaponry]+'\n'+
+	'技能：'+skill[player[n].skill];
 	return rply;
 }
 
