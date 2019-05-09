@@ -29,7 +29,7 @@ function join(PN,UUID,Name){
 			return rply;
 		}
 	}
-	if(n>=4){
+	if(n>=2){
 		rply.text ='人數已滿';
 		return rply;
 	}
