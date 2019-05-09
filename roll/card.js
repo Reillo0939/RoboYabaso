@@ -129,10 +129,33 @@ return rply;
 }
 
 
-
+function Test(frequency,id,name) {
+	var SMC=[];
+	SMC[0].name='UR-1'; 	SMC[0].count=1;
+	SMC[1].name='UR-2'; 	SMC[1].count=2;
+	SMC[2].name='UR-3'; 	SMC[2].count=3;
+	SMC[3].name='UR-4'; 	SMC[3].count=4;
+	SMC[4].name='UR-5'; 	SMC[4].count=5;
+	SMC[5].name='SSR'; 	SMC[5].count=150;
+	SMC[6].name='SR'; 	SMC[6].count=1500;
+	SMC[7].name='R'; 	SMC[7].count=7500;
+	SMC[8].name='N'; 	SMC[8].count=15000;
+	rply.text=name+'抽到了：\n';
+	var total=0;
+	for(i=0;i<SMC.length;i++)total+=SMC[i].count;
+	var rarity=rollbase.Dice(total);
+	for(i=0;i<SMC.length;i++){
+		rarity-=SMC[i].count;
+		if(rarity<=0){
+			rply.text+='['+SMC[i].name+']';
+			return rply;
+		}
+	}
+}
 
 module.exports = {
 	MCard:MCard,
 	ICard:ICard,
-	IDCA:IDCA
+	IDCA:IDCA,
+	Test:Test
 };
