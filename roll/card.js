@@ -151,7 +151,7 @@ function Test(frequency,id,name) {
 		for(i=0;i<SMC.length;i++){
 			rarity-=SMC[i].count;
 			if(rarity<=0){
-				rply.text+='['+SMC[i].name+SMC[i].count+'/'+total+'約'+(SMC[i].count/total*100).toFixed(2)+'%]';
+				rply.text+='['+SMC[i].name+'約'+(SMC[i].count/total*100).toFixed(2)+'%]';
 				return rply;
 			}
 		}
@@ -162,7 +162,7 @@ function Test(frequency,id,name) {
 			for(i=0;i<SMC.length;i++){
 				rarity-=SMC[i].count;
 				if(rarity<=0){
-					rply.text+='['+SMC[i].name+SMC[i].count+'/'+total+'約'+(SMC[i].count/total*100).toFixed(2)+'%]\n';
+					rply.text+='['+SMC[i].name+'約'+(SMC[i].count/total*100).toFixed(2)+'%]\n';
 					break;
 				}
 				
