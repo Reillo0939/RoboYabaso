@@ -163,8 +163,9 @@ function Test(frequency,id,name) {
 				rarity-=SMC[i].count;
 				if(rarity<=0){
 					rply.text+='['+SMC[i].name+']\n';
-					
+					break;
 				}
+				
 			}
 		}
 		return rply;
