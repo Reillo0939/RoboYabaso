@@ -56,10 +56,11 @@ function start(){
 	}
 	rply.text ='玩家'+player[turn].PlayerName+'行動\n'+
 	'可用指令:\n'+
-	'攻擊 目標名 --依武器攻擊目標，但你不會知道你是什麼武器'+
-	'裝彈 --武器是手槍可以裝彈，但你不會知道你是什麼武器';
-	return rply;
+	'\n攻擊 目標名 --依武器攻擊目標，但你不會知道你是什麼武器'+
+	'\n裝彈 --武器是手槍可以裝彈，但你不會知道你是什麼武器';
 	battle=1;
+	return rply;
+	
 }
 
 function atk(Target,UUID,Name){
