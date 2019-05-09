@@ -131,6 +131,7 @@ return rply;
 
 function Test(frequency,id,name) {
 	var SMC=[];
+	for(i=0;i<9;i++)SMC[i]={};
 	SMC[0].name='UR-1'; 	SMC[0].count=1;
 	SMC[1].name='UR-2'; 	SMC[1].count=2;
 	SMC[2].name='UR-3'; 	SMC[2].count=3;
