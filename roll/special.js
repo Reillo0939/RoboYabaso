@@ -42,7 +42,7 @@ function join(PN,UUID,Name){
 	player[n].bullet=6;
 	player[n].Weaponry=rollbase.Dice(Weaponry.length)-1;
 	player[n].skill=rollbase.Dice(skill.length)-1;
-	rply.text ='[' + Name + ']的[' + player[n].PlayerName + '\n';
+	rply.text ='[' + Name + ']的[' + player[i].PlayerName + ']已進入等待';
 	/*
 	'武器:"'+Weaponry[player[n].Weaponry]+'\n'+
 	'技能:"['+(player[n].skill+1)+']'+skill[player[n].skill];*/
