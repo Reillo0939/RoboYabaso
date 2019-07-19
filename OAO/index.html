@@ -15,6 +15,7 @@
 	
     <script>
 	i=0;
+	    var sen=1;
 	 window.setInterval("getValue()", 10);
 function getValue()
 {
@@ -24,7 +25,7 @@ document.getElementById("OAO").innerHTML=i;
       $(function () {
         var socket = io();
         $('form').submit(function(){
-          socket.emit('test', 1);
+          socket.emit('test', sen);
           return false;
         });
         socket.on('test', function(msg){
