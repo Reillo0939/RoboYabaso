@@ -155,6 +155,7 @@ app.post('/', jsonParser);
 /*app.listen(app.get('port'), function() {
 	console.log('Node app is running on port', app.get('port'));
 });*/
+var tit=0;
 io.on('connection', function(socket){
 	socket.on('chat message', function(msg,UUID,Name){
 		var ionm,Not_instruction=0;
@@ -178,6 +179,10 @@ io.on('connection', function(socket){
 			io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
 		}
 		if(Not_instruction==0)io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
+	})
+	socket.on('test', function(){
+		tit++;
+		io.emit('test', tit);
 	})
   });
 http.listen((process.env.PORT || 5000), function(){
