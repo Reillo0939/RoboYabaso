@@ -27,7 +27,7 @@ document.getElementById("OAO").innerHTML=i;
           socket.emit('test', 1);
           return false;
         });
-        socket.on('ctest', function(msg){
+        socket.on('test', function(msg){
           i=msg;
     
         });
