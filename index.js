@@ -181,8 +181,8 @@ io.on('connection', function(socket){
 		}
 		if(Not_instruction==0)io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
 	})
-	socket.on('test', function(){
-		tit++;
+	socket.on('test', function(t){
+		tit+=t;
 		io.emit('test', tit);
 	})
   });
