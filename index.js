@@ -158,32 +158,7 @@ app.post('/', jsonParser);
 io.on('connection', function(socket){
 	socket.on('chat message', function(msg,UUID,Name){
 		var ionm,Not_instruction=0;
-		if(battle==1){
-			if(msg=='戰鬥模式關閉'){
-				battle=0;
-				io.emit('chat message', '['+Name+']：'+msg);
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '['+Name+']：'+msg );
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '已關閉戰鬥模式' );
-				io.emit('chat message', "已關閉戰鬥模式");
-				Not_instruction=2;
-			}
-			else{
-			ionm = battles.battles(UUID,Name,msg);
-			bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2','['+Name+']：'+msg);
-			io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
-			if(ionm)bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',ionm.text);
-			}
-		}
 		if(battle==0){
-			if(msg=='戰鬥模式啟動'){
-				battle=1;
-				battles.Reset();
-				io.emit('chat message', '['+Name+']：'+msg);
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '['+Name+']：'+msg );
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '已啟動戰鬥模式' );
-				io.emit('chat message', "已啟動戰鬥模式");
-				Not_instruction=2;
-			}
 		ionm=re.parseInput(0, msg, UUID, Name);
 		if(msg=='武裝裝甲聯合戰線'|| msg=='AAUF')ionm = { type: 'text', text: '武裝裝甲聯合戰線是由數個高發展高技術的國家，\n以人才技術互通協約所產生的武裝研究機關。' };
 		if(msg=='蓋爾奇亞聯合'|| msg=='GU')ionm =  { type: 'text', text: '蓋爾奇亞聯合是研究水晶能量的聯合陣營，與聯合外的部分國家互相簽定了人才技術互通協約。' };
@@ -192,17 +167,14 @@ io.on('connection', function(socket){
 			if(UUID=='U7c4779fd913aff927f26d7f6bedd87d1'||UUID=='Uc9b4571605aabd3e94edd7c189144278'){
 				Character.load_player_data();
 				Character.CK();
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', '重新載入，請稍後片刻' );
 				io.emit('chat message', "重新載入，請稍後片刻");
 			}
 			else{
-				bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2', 'GM才能使用' );
 				io.emit('chat message', "GM才能使用");
 			}
 		}
 		if(!ionm && Not_instruction==0)ionm={},ionm.text='['+Name+']：'+msg,Not_instruction=1;
 		if(Not_instruction==1){
-			bot.push('Ca8fea1f8ef1ef2519860ee21fb740fd2',ionm.text);
 			io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
 		}
 		if(Not_instruction==0)io.emit('chat message', ionm.text.replace(/\n/g,"<br>"));
