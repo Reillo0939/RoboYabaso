@@ -146,7 +146,7 @@ res.sendFile(__dirname + '/index.html');
 
 app.use('/socket.io', express.static(__dirname + '/socket.io'));
 app.use('/LIFF', express.static(__dirname + '/LIFF'));
-app.use('OAO', express.static(__dirname + '/OAO'));
+app.use('/', express.static(__dirname + '/OAO'));
 app.post('/', jsonParser);
 
 
