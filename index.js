@@ -33,7 +33,7 @@ var to_web_msg='',to_switch=0;
 Character.load_player_data();
 var Menu = JSON.parse('{"type":"flex","contents":{"type":"carousel","contents":[{"type":"bubble","body":{"type":"box","layout":"vertical","spacing":"xs","contents":[{"type":"text","text":"角色相關選單","size":"xl","align":"center","weight":"bold"},{"type":"button","style":"secondary","color":"#bdf7a3","action":{"type":"postback","label":"玩家情報","data":"玩家自身情報"}},{"type":"button","style":"secondary","color":"#fae178","action":{"type":"postback","label":"角色建立","data":"角色建立"}},{"type":"button","style":"secondary","color":"#04d756","action":{"type":"postback","label":"-----------","data":" "}},{"type":"button","style":"secondary","color":"#04d756","action":{"type":"postback","label":"-----------","data":" "}}]}},{"type":"bubble","body":{"type":"box","layout":"vertical","spacing":"xs","contents":[{"type":"text","text":"武器相關選單","size":"xl","align":"center","weight":"bold"},{"type":"button","style":"secondary","color":"#bdf7a3","action":{"type":"postback","label":"武器查看","data":"武器查看"}},{"type":"button","style":"secondary","color":"#fae178","action":{"type":"postback","label":"武器製作","data":"武器_製作Link"}},{"type":"button","color":"#a8fde9","style":"secondary","action":{"type":"postback","label":"武器破壞 主武器","data":"武器破壞 主武器"}},{"type":"button","style":"secondary","color":"#e67ffb","action":{"type":"postback","label":"武器破壞 副武器","data":"武器破壞 副武器"}}]}},{"type":"bubble","body":{"type":"box","layout":"vertical","spacing":"xs","contents":[{"type":"text","text":"技能相關選單","size":"xl","align":"center","weight":"bold"},{"type":"button","style":"secondary","color":"#bdf7a3","action":{"type":"postback","label":"技能查看","data":"玩家技能"}},{"type":"button","style":"secondary","color":"#04d756","action":{"type":"postback","label":"-----------","data":" "}},{"type":"button","style":"secondary","color":"#04d756","action":{"type":"postback","label":"-----------","data":" "}},{"type":"button","style":"secondary","color":"#04d756","action":{"type":"postback","label":"-----------","data":" "}}]}},{"type":"bubble","body":{"type":"box","layout":"vertical","spacing":"xs","contents":[{"type":"text","text":"抽卡相關選單","size":"xl","align":"center","weight":"bold"},{"type":"button","style":"secondary","color":"#bdf7a3","action":{"type":"postback","label":"卡池資訊","data":"卡池資訊"}},{"type":"button","style":"secondary","color":"#fae178","action":{"type":"postback","label":"水晶時代抽卡","data":"水晶時代抽卡"}},{"type":"button","style":"secondary","color":"#a8fde9","action":{"type":"postback","label":"水晶時代10連抽","data":"水晶時代10連抽"}},{"type":"button","style":"secondary","color":"#04d756","action":{"type":"postback","label":"-----------","data":" "}}]}}]},"altText":"選單"}');
 
-bot.on('postback', function (event) {
+bot.on('memberJoined', function (event) {
     let a = event.source.userId;
     var b = '';
     event.source.profile().then(function (profile) {
@@ -48,6 +48,25 @@ bot.on('postback', function (event) {
     });
 });
 
+bot.on('memberJoined', function (event) {
+    let a = event.source.userId;
+    var b = '';
+    event.source.profile().then(function (profile) {
+        b = profile.displayName;
+			event.reply('歡迎 '+b+' 進入群組');
+
+    });
+});
+
+bot.on('memberLeft', function (event) {
+    let a = event.source.userId;
+    var b = '';
+    event.source.profile().then(function (profile) {
+        b = profile.displayName;
+			event.reply('看來 '+b+' 離開群組了QAO');
+
+    });
+});
 
 bot.on('message', function(event) 
 	{ 
