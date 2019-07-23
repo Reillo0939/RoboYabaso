@@ -51,21 +51,27 @@ bot.on('postback', function (event) {
 bot.on('memberJoined', function (event) {
     let a = event.joined.members[0].userId;
     var b = '';
-    event.joined.members[0].profile().then(function (profile) {
+	console.log(event.joined.members[0]);
+	
+    /*event.joined.members[0].profile().then(function (profile) {
         b = profile.displayName;
 			event.reply('歡迎 '+b+' 進入群組');
 
-    });
+    });*/
 });
 
 bot.on('memberLeft', function (event) {
     let a = event.left.members[0].userId;
     var b = '';
-    event.left.members[0].profile().then(function (profile) {
+	
+	console.log(event.left.members[0]);
+	
+	
+    /*event.left.members[0].profile().then(function (profile) {
         b = profile.displayName;
 			event.reply('看來 '+b+' 離開群組了QAO');
 
-    });
+    });*/
 });
 
 bot.on('message', function(event) 
