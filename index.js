@@ -52,7 +52,7 @@ bot.on('memberJoined', function (event) {
     let a = event.joined.members[0].userId;
     var b = '';
 	b=bot.getUserProfile(a);
-	b.then({
+	b.then(function(){
 		console.log(b);
 		event.reply('歡迎 '+b.displayName+' 進入群組');
 	});
@@ -63,7 +63,7 @@ bot.on('memberLeft', function (event) {
     let a = event.left.members[0].userId;
     var b = '';
 	b=bot.getUserProfile(a);
-	b.then({
+	b.then(function(){
 		console.log(b);
 		event.reply('歡迎 '+b.displayName+' 離開群組了QAO');
 	});
