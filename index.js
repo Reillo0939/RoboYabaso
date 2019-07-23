@@ -52,18 +52,21 @@ bot.on('memberJoined', function (event) {
     let a = event.joined.members[0].userId;
     var b = '';
 	b=bot.getUserProfile(a);
-	console.log(b);
-	event.reply('歡迎 '+b.displayName+' 進入群組');
+	b.then({
+		console.log(b);
+		event.reply('歡迎 '+b.displayName+' 進入群組');
+	});
+	
 });
 
 bot.on('memberLeft', function (event) {
     let a = event.left.members[0].userId;
     var b = '';
-	console.log(event.left.members[0]);
-	var b = '';
 	b=bot.getUserProfile(a);
-	console.log(b);
-	event.reply('歡迎 '+b.displayName+' 離開群組了QAO');
+	b.then({
+		console.log(b);
+		event.reply('歡迎 '+b.displayName+' 離開群組了QAO');
+	});
 });
 
 bot.on('message', function(event) 
