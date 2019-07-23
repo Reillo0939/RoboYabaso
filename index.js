@@ -51,7 +51,7 @@ bot.on('postback', function (event) {
 bot.on('memberJoined', function (event) {
     let a = event.joined.members[0].userId;
     var b = '';
-	b=LineBot.getUserProfile(a);
+	b=bot.getUserProfile(a);
 	console.log(b);
 	event.reply('歡迎 '+b.displayName+' 進入群組');
 });
@@ -61,7 +61,7 @@ bot.on('memberLeft', function (event) {
     var b = '';
 	console.log(event.left.members[0]);
 	var b = '';
-	b=LineBot.getUserProfile(a);
+	b=bot.getUserProfile(a);
 	console.log(b);
 	event.reply('歡迎 '+b.displayName+' 離開群組了QAO');
 });
