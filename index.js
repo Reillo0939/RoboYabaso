@@ -54,7 +54,7 @@ bot.on('memberJoined', function (event) {
 	b=bot.getUserProfile(a);
 	b.then(function(Promise ){
 		console.log(Promise);
-		event.reply('歡迎 '+Promise.displayName+' 進入群組');
+		event.reply('歡迎 '+Promise.displayName+' 加入群組');
 	});
 	
 });
@@ -64,8 +64,9 @@ bot.on('memberLeft', function (event) {
     var b = '';
 	b=bot.getUserProfile(a);
 	b.then(function(Promise){
-		console.log(Promise );
-		event.reply('看來 '+Promise.displayName+' 離開群組了QAO');
+		console.log(Promise);
+		bot.reply(event.replyToken, '看來 '+Promise.displayName+' 離開群組了QAO');
+		//event.reply('看來 '+Promise.displayName+' 離開群組了QAO');
 	});
 });
 
