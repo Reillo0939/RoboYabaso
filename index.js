@@ -19,6 +19,7 @@ const Mongoclient = new MongoClient(url);
 var Character = require('./roll/Character.js');
 var battles = require('./roll/battle.js');
 var special = require('./roll/special.js');
+var analyze=require('./system/analyze.js');
 var re = require('./roll/analytics.js');
 //---------------------------------------------------------------------------------------------------------
 
@@ -77,7 +78,7 @@ bot.on(	'message', function(event){
 									assert.equal(null, err);
 								});
 						});
-					
+					msg=analyze.parseInput(UId,UName,event.message.text);
 					event.reply(msg);		 
 					if(event.message.text=='重新載入'){
 						if(UId=='U7c4779fd913aff927f26d7f6bedd87d1'||UId=='Uc9b4571605aabd3e94edd7c189144278'){
