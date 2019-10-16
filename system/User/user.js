@@ -12,11 +12,6 @@ let msgSplitor = (/\S+/ig);
 
 function create_User(UserId,UserName,Message){
 	var finder;
-	return create_User_f(UserId,UserName,Message);
-	
-}
-
-function create_User_f(UserId,UserName,Message){
 	Mongoclient.connect(function(err) {
 			assert.equal(null, err);
 			//console.log("Connected successfully to server");
@@ -43,8 +38,8 @@ function create_User_f(UserId,UserName,Message){
 			}
 		});
 	});
+	console.log(rply);
 }
-
 function Inquire_User(UserId,UserName,Message){
 	var finder;
 	Mongoclient.connect(function(err) {
