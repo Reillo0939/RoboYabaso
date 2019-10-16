@@ -26,9 +26,12 @@ function create_User(UserId,UserName,Message){
 	else{
 		let mainMsg = Message.match(msgSplitor);
 		let NickName=mainMsg[1];
+		if(NickName==null||NickName==undefined){
+			rply.text=UserName+" 缺少暱稱";
+		}
 		Mongoclient.connect(function(err) {
 			assert.equal(null, err);
-			Mongoclient.db(dbName).collection('message').insertOne({UserId : UserId,NickName:NickName,money:2000 }, function(err, r) {
+			Mongoclient.db(dbName).collection('user').insertOne({UserId : UserId,NickName:NickName,money:2000 }, function(err, r) {
 				assert.equal(null, err);
 			});
 		});
