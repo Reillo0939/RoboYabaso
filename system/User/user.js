@@ -17,6 +17,7 @@ function create_User(UserId,UserName,Message){
 			//console.log("Connected successfully to server");
 			Mongoclient.db(dbName).collection('user').findOne({UserId:UserId}).then(function(data) {
 			finder=data;
+			console.log(finder);
 		});
 	});
 	if(finder!=null){
