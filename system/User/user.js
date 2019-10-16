@@ -12,9 +12,9 @@ const Mongoclient = new MongoClient(url);
 function create_User(UserId){
 	Mongoclient.connect(function(err) {
 			assert.equal(null, err);
-			console.log("Connected successfully to server");
+			//console.log("Connected successfully to server");
 			const db = Mongoclient.db(dbName);
-			var finder=db.collection('user').findOne({id:UserId})(function(err, docs) {
+			var finder=db.collection('user').find({id:UserId})(function(err, docs) {
 			assert.equal(null, err);
 			console.log(finder);
 		});
