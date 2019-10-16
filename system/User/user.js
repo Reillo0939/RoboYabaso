@@ -6,7 +6,6 @@ const url = process.env.DB_URL;
 const dbName = 'dream-realm-v2';
 // Create a new MongoClient
 const Mongoclient = new MongoClient(url);
-const db = Mongoclient.db(dbName);
 
 
 
@@ -14,6 +13,7 @@ function create_User(UserId){
 	Mongoclient.connect(function(err) {
 			assert.equal(null, err);
 			console.log("Connected successfully to server");
+			const db = Mongoclient.db(dbName);
 			var finder=db.collection('user').findOne({id:UserId})(function(err, docs) {
 			assert.equal(null, err);
 			console.log(finder);
