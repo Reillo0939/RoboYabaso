@@ -8,23 +8,54 @@ const dbName = 'dream-realm-v2';
 const Mongoclient = new MongoClient(url);
 
 var rply ={type : 'text'};
-
+let msgSplitor = (/\S+/ig);	
 
 function create_User(UserId,UserName,Message){
 	var finder;
 	Mongoclient.connect(function(err) {
 			assert.equal(null, err);
 			//console.log("Connected successfully to server");
-			const db = Mongoclient.db(dbName);
-			db.collection('user').findOne({UserId:UserId}).then(function(data) {
+			Mongoclient.db(dbName).collection('user').findOne({UserId:UserId}).then(function(data) {
 			finder=data;
 		});
 	});
 	if(finder!=null){
-		rply.text=UserName+"帳號已存在";
+		rply.text=UserName+" 帳號已存在";
+		return rply;
+	}
+	else{
+		let mainMsg = Message.match(msgSplitor);
+		let NickName=mainMsg[1];
+		Mongoclient.connect(function(err) {
+			assert.equal(null, err);
+			Mongoclient.db(dbName).collection('message').insertOne({UserId : UserId,NickName:NickName,money:2000 }, function(err, r) {
+				assert.equal(null, err);
+			});
+		});
+		rply.text=UserName+" / "+NickName+" 帳號已創建完畢";
 		return rply;
 	}
 }
+function Inquire_User(UserId,UserName,Message){
+	var finder;
+	Mongoclient.connect(function(err) {
+			assert.equal(null, err);
+			//console.log("Connected successfully to server");
+			Mongoclient.db(dbName).collection('user').findOne({UserId:UserId}).then(function(data) {
+			finder=data;
+		});
+	});
+	if(finder!=null){
+		rply.text=finder.NickName+"\n擁有"+finder.money+"G";
+		return rply;
+	}
+	else{
+		rply.text=UserName+" 沒有帳號喔";
+		return rply;
+	}
+}
+
 module.exports = {
-	create_User:create_User
+	create_User:create_User,
+	Inquire_User:Inquire_User
 };
