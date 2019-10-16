@@ -20,11 +20,7 @@ function create_User(UserId,UserName,Message){
 			console.log(finder);
 		});
 	});
-	if(finder!=null){
-		rply.text=UserName+" 帳號已存在";
-		return rply;
-	}
-	else{
+	if(finder==null){
 		let mainMsg = Message.match(msgSplitor);
 		let NickName=mainMsg[1];
 		if(NickName==null||NickName==undefined){
@@ -39,6 +35,11 @@ function create_User(UserId,UserName,Message){
 		});
 		rply.text=UserName+" / "+NickName+" 帳號已創建完畢";
 		return rply;
+
+	}
+	else{
+		rply.text=UserName+" 帳號已存在";
+		return rply;
 	}
 }
 function Inquire_User(UserId,UserName,Message){
@@ -50,12 +51,12 @@ function Inquire_User(UserId,UserName,Message){
 			finder=data;
 		});
 	});
-	if(finder!=null){
-		rply.text=finder.NickName+"\n擁有"+finder.money+"G";
+	if(finder==null){
+		rply.text=UserName+" 沒有帳號喔";
 		return rply;
 	}
 	else{
-		rply.text=UserName+" 沒有帳號喔";
+		rply.text=finder.NickName+"\n擁有"+finder.money+"G";
 		return rply;
 	}
 }
