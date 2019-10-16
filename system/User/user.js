@@ -26,7 +26,7 @@ function create_User(UserId,UserName,Message,replyToken){
 			Mongoclient.db(dbName).collection('user').findOne({UserId:UserId}).then((data)=> {
 			if(data!=null){
 				rply.text=UserName+" 帳號已存在";
-				LineBot.reply(replyToken, rply);
+				bot.reply(replyToken, rply);
 				return rply;
 			}
 			else{
@@ -34,7 +34,7 @@ function create_User(UserId,UserName,Message,replyToken){
 				let NickName=mainMsg[1];
 				if(NickName==null||NickName==undefined){
 					rply.text=UserName+" 缺少暱稱";
-					LineBot.reply(replyToken, rply);
+					bot.reply(replyToken, rply);
 					return rply;
 				}
 				Mongoclient.connect(function(err) {
@@ -44,7 +44,7 @@ function create_User(UserId,UserName,Message,replyToken){
 					});
 				});
 				rply.text=UserName+" / "+NickName+" 帳號已創建完畢";
-				LineBot.reply(replyToken, rply);
+				bot.reply(replyToken, rply);
 				return rply;
 			}
 		});
