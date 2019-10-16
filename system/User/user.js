@@ -28,6 +28,7 @@ function create_User(UserId,UserName,Message){
 		let NickName=mainMsg[1];
 		if(NickName==null||NickName==undefined){
 			rply.text=UserName+" 缺少暱稱";
+			return rply;
 		}
 		Mongoclient.connect(function(err) {
 			assert.equal(null, err);
