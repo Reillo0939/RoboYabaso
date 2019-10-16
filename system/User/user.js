@@ -49,6 +49,7 @@ function create_User(UserId,UserName,Message,replyToken){
 			}
 		});
 	});
+	return -1;
 }
 function Inquire_User(UserId,UserName,Message,replyToken){
 	var finder;

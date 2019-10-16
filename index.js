@@ -78,8 +78,8 @@ bot.on(	'message', function(event){
 									assert.equal(null, err);
 								});
 						});
-					msg=analyze.parseInput(UId,UName,event.message.text);
-					event.reply(msg);		 
+					msg=analyze.parseInput(UId,UName,event.message.text,event.replyToken);
+					if(msg!=-1)event.reply(msg);		 
 					if(event.message.text=='重新載入'){
 						if(UId=='U7c4779fd913aff927f26d7f6bedd87d1'||UId=='Uc9b4571605aabd3e94edd7c189144278'){
 							Character.load_player_data();
