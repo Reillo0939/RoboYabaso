@@ -15,7 +15,7 @@ function create_User(UserId,UserName,Message){
 	Mongoclient.connect(function(err) {
 			assert.equal(null, err);
 			//console.log("Connected successfully to server");
-			Mongoclient.db(dbName).collection('user').findOne({UserId:UserId}).then(function(data) {
+			return Mongoclient.db(dbName).collection('user').findOne({UserId:UserId}).then(function(data) {
 			if(data!=null){
 				rply.text=UserName+" 帳號已存在";
 				return rply;
@@ -45,7 +45,7 @@ function Inquire_User(UserId,UserName,Message){
 	Mongoclient.connect(function(err) {
 		assert.equal(null, err);
 		//console.log("Connected successfully to server");
-		Mongoclient.db(dbName).collection('user').findOne({UserId:UserId}).then(function(data) {
+		return Mongoclient.db(dbName).collection('user').findOne({UserId:UserId}).then(function(data) {
 			if(data!=null){
 				rply.text=data.NickName+"\n擁有"+data.money+"G";
 				return rply;
