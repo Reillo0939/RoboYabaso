@@ -13,7 +13,7 @@ var re = require('./roll/analytics.js');
 var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
 var channelSecret = process.env.LINE_CHANNEL_SECRET;
 var linebot = require('linebot');
-var channelId='1567989750';
+var channelId=process.env.LINE_CHANNEL_ID;
 var bot = linebot({
 	channelId: channelId,
 	channelSecret: channelSecret,
