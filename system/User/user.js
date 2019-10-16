@@ -33,13 +33,15 @@ function create_User(UserId,UserName,Message,replyToken){
 				if(NickName==null||NickName==undefined){
 					rply.text=UserName+" 缺少暱稱";
 				}
-				Mongoclient.connect(function(err) {
-					assert.equal(null, err);
-					Mongoclient.db(dbName).collection('user').insertOne({UserId : UserId,NickName:NickName,money:2000 }, function(err, r) {
+				else{
+					Mongoclient.connect(function(err) {
 						assert.equal(null, err);
+						Mongoclient.db(dbName).collection('user').insertOne({UserId : UserId,NickName:NickName,money:2000 }, function(err, r) {
+							assert.equal(null, err);
+						});
 					});
-				});
-				rply.text=UserName+" / "+NickName+" 帳號已創建完畢";
+					rply.text=UserName+" / "+NickName+" 帳號已創建完畢";
+				}
 			}
 			bot.reply(replyToken, rply);
 		});
