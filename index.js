@@ -67,17 +67,15 @@ bot.on(	'message', function(event){
 					let UName = profile.displayName;
 					//Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
 					if (event.message.text == '選單')msg = Menu;
-						let time=new Date (new Date().getTime()-28800000);
+						let time=new Date (new Date().getTime()+28800000);
 						Mongoclient.connect(function(err) {
 							assert.equal(null, err);
 							console.log("Connected successfully to server");
 							const db = Mongoclient.db(dbName);
-							//function(db, function(db, callback) {
 								const collection = db.collection('message');
-								collection.insert({Time : time,UserName:UName,UserId:UId,GroupId:GId,Message:event.message.text }, function(err, r) {
+								collection.insertOne({Time : time,UserName:UName,UserId:UId,GroupId:GId,Message:event.message.text }, function(err, r) {
 									assert.equal(null, err);
 								});
-							//});
 						});
 					
 					event.reply(msg);		 
