@@ -1,3 +1,11 @@
+var linebot = require('linebot');
+var bot = linebot({
+	channelId: process.env.LINE_CHANNEL_ID,
+	channelSecret: process.env.LINE_CHANNEL_SECRET,
+	channelAccessToken: process.env.LINE_CHANNEL_ACCESSTOKEN
+});
+
+
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 // Connection URL
@@ -10,14 +18,15 @@ const Mongoclient = new MongoClient(url);
 var rply ={type : 'text'};
 let msgSplitor = (/\S+/ig);	
 
-function create_User(UserId,UserName,Message){
-	var finder;
+function create_User(UserId,UserName,Message,replyToken){
+	var i=0;
 	Mongoclient.connect(function(err) {
 			assert.equal(null, err);
 			//console.log("Connected successfully to server");
 			Mongoclient.db(dbName).collection('user').findOne({UserId:UserId}).then((data)=> {
 			if(data!=null){
 				rply.text=UserName+" 帳號已存在";
+				LineBot.reply(replyToken, rply);
 				return rply;
 			}
 			else{
@@ -25,6 +34,7 @@ function create_User(UserId,UserName,Message){
 				let NickName=mainMsg[1];
 				if(NickName==null||NickName==undefined){
 					rply.text=UserName+" 缺少暱稱";
+					LineBot.reply(replyToken, rply);
 					return rply;
 				}
 				Mongoclient.connect(function(err) {
@@ -34,13 +44,13 @@ function create_User(UserId,UserName,Message){
 					});
 				});
 				rply.text=UserName+" / "+NickName+" 帳號已創建完畢";
+				LineBot.reply(replyToken, rply);
 				return rply;
 			}
 		});
 	});
-	console.log(rply);
 }
-function Inquire_User(UserId,UserName,Message){
+function Inquire_User(UserId,UserName,Message,replyToken){
 	var finder;
 	Mongoclient.connect(function(err) {
 		assert.equal(null, err);
