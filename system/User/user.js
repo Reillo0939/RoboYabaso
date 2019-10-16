@@ -10,7 +10,7 @@ const db = Mongoclient.db(dbName);
 
 
 
-var create_User(UserId){
+function create_User(UserId){
 	Mongoclient.connect(function(err) {
 			assert.equal(null, err);
 			console.log("Connected successfully to server");
