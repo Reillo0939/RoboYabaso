@@ -14,8 +14,10 @@ function create_User(UserId){
 			assert.equal(null, err);
 			//console.log("Connected successfully to server");
 			const db = Mongoclient.db(dbName);
-			var finder=db.collection('user').findOne({id:UserId});
-			console.log(finder);
+			var finder=db.collection('user').findOne({id:UserId})(function() {
+				console.log(finder);
+			});
+			
 	});
 }
 module.exports = {
