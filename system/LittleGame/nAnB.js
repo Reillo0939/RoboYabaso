@@ -95,9 +95,9 @@ function Game(UserId,UserName,Message,replyToken){
 								if(data!=null){
 									var return_money=[10,7,5,5,3,3,2,2,1,1];
 									var give=player.money_in*return_money[player.count-1];
-									data.money+=give;
-									rply.text=data.NickName+" 4A 遊戲結束\n依據你猜題的次數你可以獲得"+give+"G\n你共有"+data.money+"G";
-									player={};
+									data.money+=(give*100);
+									rply.text=data.NickName+" 4A 遊戲結束\n依據你猜題的次數你可以獲得"+(give*100)+"G\n你共有"+data.money+"G";
+									delete_play(player.UserId);
 									Mongoclient.db(dbName).collection('user').update({UserId:UserId},{"$set":data}, function(err, r) {
 										assert.equal(null, err);
 									});
@@ -110,7 +110,8 @@ function Game(UserId,UserName,Message,replyToken){
 					else{
 						if(player.count==10){
 							rply.text=player.NickName+" 遊戲失敗";
-							player={};
+							delete_play(player.UserId);
+							re_message.Line_reply(replyToken, rply);
 						}
 						else{
 							player.count++;
@@ -123,6 +124,14 @@ function Game(UserId,UserName,Message,replyToken){
 		}
 	}
 	
+}
+
+function delete_play(UserId){
+	for(var i=0;i<Gameing.length;i++){
+		if(Gameing[i].UserId==UserId{
+			Gameing.splice(i,1);
+		}
+	}
 }
 
 module.exports = {
