@@ -23,12 +23,6 @@ function ingame(UserId, NickName, money_in,count,answer) {
 
 function Game(UserId,UserName,Message,replyToken){
 	let mainMsg = Message.match(msgSplitor);
-	let NickName=mainMsg[1];
-	
-	if(NickName==null||NickName==undefined){
-		rply.text=UserName+" 缺少暱稱";
-	}
-	
 	if(mainMsg[1]=="開始"){
 		for(var player of Gameing){
 			if(player.UserId==UserId){
@@ -43,6 +37,8 @@ function Game(UserId,UserName,Message,replyToken){
 						if(data!=null){
 							if(mainMsg[2]==undefined||mainMsg[2]==null){
 								rply.text=data.NickName+" 賭金未填或者錯誤";
+								re_message.Line_reply(replyToken, rply);
+								return false;
 							}
 							else{
 								var list=[0,1,2,3,4,5,6,7,8,9];
