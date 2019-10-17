@@ -23,7 +23,7 @@ function ingame(UserId, NickName, money_in,count,answer) {
 
 function Game(UserId,UserName,Message,replyToken){
 	let mainMsg = Message.match(msgSplitor);
-	if(mainMsg[1]=="開始"){
+	if(mainMsg[1]=="參加"){
 		for(var player of Gameing){
 			if(player.UserId==UserId){
 				console.log(Gameing);
@@ -44,19 +44,24 @@ function Game(UserId,UserName,Message,replyToken){
 								return false;
 							}
 							else{
-								var list=[0,1,2,3,4,5,6,7,8,9];
-								var answer=[];
-								for(var k=0;k<4;k++){
-									var tag=Math.floor(Math.random()*list.length);
-									answer[k]=list[tag];
-									list.splice(tag,1);
+								if(mainMsg[2]*100>data.money){
+									rply.text=data.NickName+" 賭金不夠";
 								}
-								Gameing[Gameing.length]=new ingame(UserId, data.NickName, mainMsg[2],1,answer);
-								rply.text=data.NickName+" 遊戲開始\n第"+Gameing[Gameing.length-1].count+"/10次猜題\n賭金(x100):"+Gameing[Gameing.length-1].money_in;
-								data.money-=mainMsg[2]*100;
-								Mongoclient.db(dbName).collection('user').update({UserId:UserId},{"$set":data}, function(err, r) {
-									assert.equal(null, err);
-								});
+								else{
+									var list=[0,1,2,3,4,5,6,7,8,9];
+									var answer=[];
+									for(var k=0;k<4;k++){
+										var tag=Math.floor(Math.random()*list.length);
+										answer[k]=list[tag];
+										list.splice(tag,1);
+									}
+									Gameing[Gameing.length]=new ingame(UserId, data.NickName, mainMsg[2],1,answer);
+									rply.text=data.NickName+" 遊戲開始\n第"+Gameing[Gameing.length-1].count+"/10次猜題\n賭金(x100):"+Gameing[Gameing.length-1].money_in;
+									data.money-=mainMsg[2]*100;
+									Mongoclient.db(dbName).collection('user').update({UserId:UserId},{"$set":data}, function(err, r) {
+										assert.equal(null, err);
+									});
+								}
 							}
 						}
 						else{
