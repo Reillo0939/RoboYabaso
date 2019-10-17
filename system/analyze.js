@@ -6,6 +6,7 @@ function parseInput(UserId,UserName,Message,replyToken) {
 	let trigger = mainMsg[0].toString();
 	if(trigger=="創建帳號")return User.create_User(UserId,UserName,Message,replyToken);
 	if(trigger=="查看帳號")return User.Inquire_User(UserId,UserName,Message,replyToken);
+	if(trigger=="簽到")return User.check_in(UserId,UserName,Message,replyToken);
 }
 
 module.exports = {

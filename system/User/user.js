@@ -58,6 +58,7 @@ function create_User(UserId,UserName,Message,replyToken){
 	});
 	return -1;
 }
+
 function Inquire_User(UserId,UserName,Message,replyToken){
 	var finder;
 	Mongoclient.connect(function(err) {
@@ -76,7 +77,40 @@ function Inquire_User(UserId,UserName,Message,replyToken){
 	return -1;
 }
 
+function check_in(UserId,UserName,Message,replyToken){
+	var finder;
+	Mongoclient.connect(function(err) {
+		assert.equal(null, err);
+		//console.log("Connected successfully to server");
+		Mongoclient.db(dbName).collection('user').findOne({UserId:UserId}).then((data)=>{
+			if(data!=null){
+				var today=new Date (new Date().getTime()+28800000);
+				var check_in_date=(new Date(today.getFullYear(),today.getMonth()+1,today.getDate()).getTime()-new Date(2019,10,17).getTime())/86400000;
+				if(data.login_date[data.login_date.length-1]==check_in_date){
+					rply.text=data.NickName+" 你已經簽到完嘍";
+				}
+				else{
+					data.login_date[data.login_date.length]=check_in_date;
+					if(data.login_date[data.login_date.length-1]-data.login_date[data.login_date.length-2]==1)data.Always_check_in=0;
+					data.money+=100+20*data.Always_check_in;
+					rply.text=UserName+" 簽到成功\n獲得100G\n已連續簽到"+data.Always_check_in+"天\n額外獲得"+(20*data.Always_check_in)+"G\n現有"+data.money+"G";
+					data.Always_check_in++;
+					Mongoclient.db(dbName).collection('user').update({UserId:UserId},{data}, function(err, r) {
+						assert.equal(null, err);
+					});
+				}
+			}
+			else{
+				rply.text=UserName+" 沒有帳號喔";
+			}
+			bot.reply(replyToken, rply);
+		});
+	});
+	return -1;
+}
+
 module.exports = {
 	create_User:create_User,
-	Inquire_User:Inquire_User
+	Inquire_User:Inquire_User,
+	check_in:check_in
 };
