@@ -41,7 +41,7 @@ function create_User(UserId,UserName,Message,replyToken){
 					new_user.login_date=[];
 					var today=new Date (new Date().getTime()+28800000);
 					new_user.login_date[0]=(new Date(today.getFullYear(),today.getMonth(),today.getDate()).getTime()-new Date(2019,10,17).getTime())/86400000;
-					new_user.Always_check-in=0;
+					new_user.Always_check_in=0;
 					new_user.money=2000;
 					
 					Mongoclient.connect(function(err) {
