@@ -26,6 +26,7 @@ function Game(UserId,UserName,Message,replyToken){
 	if(mainMsg[1]=="開始"){
 		for(var player of Gameing){
 			if(player.UserId==UserId){
+				console.log(Gameing);
 				rply.text=player.NickName+" 你正在遊戲中";
 				re_message.Line_reply(replyToken, rply);
 				return false;
