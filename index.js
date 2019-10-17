@@ -67,29 +67,17 @@ bot.on(	'message', function(event){
 				function (profile) {
 					let UName = profile.displayName;
 					//Ca8fea1f8ef1ef2519860ee21fb740fd2   群id
-					if (event.message.text == '選單')msg = Menu;
-						let time=new Date (new Date().getTime()+28800000);
-						Mongoclient.connect(function(err) {
-							assert.equal(null, err);
-							console.log("Connected successfully to server");
-							const db = Mongoclient.db(dbName);
-								const collection = db.collection('message');
-								collection.insertOne({Time : time,UserName:UName,UserId:UId,GroupId:GId,Message:event.message.text }, function(err, r) {
-									assert.equal(null, err);
-								});
-						});
-					msg=analyze.parseInput(UId,UName,event.message.text,event.replyToken);
-					if(msg!=-1)event.reply(msg);		 
-					if(event.message.text=='重新載入'){
-						if(UId=='U7c4779fd913aff927f26d7f6bedd87d1'||UId=='Uc9b4571605aabd3e94edd7c189144278'){
-							Character.load_player_data();
-							event.reply({ type: 'text', text: '重新載入，請稍後片刻' });	
-						}
-						else
-							event.reply({type: 'text', text: 'GM才能使用' });	
-						
-					}
-					console.log(UId+'   '+UName+'  '+event.message.text+'   ');
+					let time=new Date (new Date().getTime()+28800000);
+					Mongoclient.connect(function(err) {
+						assert.equal(null, err);
+						console.log("Connected successfully to server");
+						const db = Mongoclient.db(dbName);
+							const collection = db.collection('message');
+							collection.insertOne({Time : time,UserName:UName,UserId:UId,GroupId:GId,Message:event.message.text }, function(err, r) {
+								assert.equal(null, err);
+							});
+					});
+					analyze.parseInput(UId,UName,event.message.text,event.replyToken);
 				}
 			);
 		} 

@@ -1,11 +1,4 @@
-var linebot = require('linebot');
-var bot = linebot({
-	channelId: process.env.LINE_CHANNEL_ID,
-	channelSecret: process.env.LINE_CHANNEL_SECRET,
-	channelAccessToken: process.env.LINE_CHANNEL_ACCESSTOKEN
-});
-
-
+var re_message = require('../message.js');
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 // Connection URL
@@ -53,10 +46,9 @@ function create_User(UserId,UserName,Message,replyToken){
 					rply.text=UserName+" / "+NickName+" 帳號已創建完畢";
 				}
 			}
-			bot.reply(replyToken, rply);
+			re_message.Line_reply(replyToken, rply);
 		});
 	});
-	return -1;
 }
 
 function Inquire_User(UserId,UserName,Message,replyToken){
@@ -71,10 +63,9 @@ function Inquire_User(UserId,UserName,Message,replyToken){
 			else{
 				rply.text=UserName+" 沒有帳號喔";
 			}
-			bot.reply(replyToken, rply);
+			re_message.Line_reply(replyToken, rply);
 		});
 	});
-	return -1;
 }
 
 function check_in(UserId,UserName,Message,replyToken){
@@ -103,10 +94,9 @@ function check_in(UserId,UserName,Message,replyToken){
 			else{
 				rply.text=UserName+" 沒有帳號喔";
 			}
-			bot.reply(replyToken, rply);
+			re_message.Line_reply(replyToken, rply);
 		});
 	});
-	return -1;
 }
 
 module.exports = {
