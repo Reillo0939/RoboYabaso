@@ -46,6 +46,8 @@ function Game(UserId,UserName,Message,replyToken){
 							else{
 								if(mainMsg[2]*100>data.money){
 									rply.text=data.NickName+" 賭金不夠";
+									re_message.Line_reply(replyToken, rply);
+								return false;
 								}
 								else{
 									var list=[0,1,2,3,4,5,6,7,8,9];
