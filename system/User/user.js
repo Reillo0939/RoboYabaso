@@ -34,9 +34,19 @@ function create_User(UserId,UserName,Message,replyToken){
 					rply.text=UserName+" 缺少暱稱";
 				}
 				else{
+					var new_user={};
+					new_user.UserId=UserId;
+					new_user.NickName=NickName;
+					new_user.create_date=new Date (new Date().getTime()+28800000);
+					new_user.login_date=[];
+					var today=new Date (new Date().getTime()+28800000);
+					new_user.login_date[0]=(new Date(today.getFullYear(),today.getMonth(),today.getDate()).getTime()-new Date(2019,10,17).getTime())/86400000;
+					new_user.Always_check-in=0;
+					new_user.money=2000;
+					
 					Mongoclient.connect(function(err) {
 						assert.equal(null, err);
-						Mongoclient.db(dbName).collection('user').insertOne({UserId : UserId,NickName:NickName,money:2000 }, function(err, r) {
+						Mongoclient.db(dbName).collection('user').insertOne(new_user, function(err, r) {
 							assert.equal(null, err);
 						});
 					});
