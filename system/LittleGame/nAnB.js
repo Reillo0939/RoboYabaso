@@ -128,7 +128,7 @@ function Game(UserId,UserName,Message,replyToken){
 
 function delete_play(UserId){
 	for(var i=0;i<Gameing.length;i++){
-		if(Gameing[i].UserId==UserId{
+		if(Gameing[i].UserId==UserId){
 			Gameing.splice(i,1);
 		}
 	}
