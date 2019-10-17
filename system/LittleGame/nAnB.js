@@ -38,7 +38,7 @@ function Game(UserId,UserName,Message,replyToken){
 					Mongoclient.db(dbName).collection('user').findOne({UserId:UserId}).then((data)=>{
 						
 						if(data!=null){
-							if(mainMsg[2]==undefined||mainMsg[2]==null){
+							if(mainMsg[2]==undefined||mainMsg[2]==null||mainMsg[2]<0){
 								rply.text=data.NickName+" 賭金未填或者錯誤";
 								re_message.Line_reply(replyToken, rply);
 								return false;
