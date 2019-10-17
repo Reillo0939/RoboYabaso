@@ -27,8 +27,10 @@ function Game(UserId,UserName,Message,replyToken){
 		for(var player of Gameing){
 			if(player.UserId==UserId){
 				rply.text=player.NickName+" 你正在遊戲中";
+				re_message.Line_reply(replyToken, rply);
+				return false;
 			}
-			else{
+		}
 				Mongoclient.connect(function(err) {
 					assert.equal(null, err);
 					//console.log("Connected successfully to server");
@@ -62,8 +64,7 @@ function Game(UserId,UserName,Message,replyToken){
 						re_message.Line_reply(replyToken, rply);
 					});
 				});
-			}
-		}
+		
 	}
 	else{
 		for(var player of Gameing){
