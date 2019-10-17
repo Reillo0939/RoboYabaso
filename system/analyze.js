@@ -8,7 +8,7 @@ function parseInput(UserId,UserName,Message,replyToken) {
 	if(trigger=="創建帳號")User.create_User(UserId,UserName,Message,replyToken);
 	if(trigger=="查看帳號")User.Inquire_User(UserId,UserName,Message,replyToken);
 	if(trigger=="簽到")User.check_in(UserId,UserName,Message,replyToken);
-	if(trigger=="猜數字")User.Game(UserId,UserName,Message,replyToken);
+	if(trigger=="猜數字")nAnB.Game(UserId,UserName,Message,replyToken);
 }
 
 module.exports = {
