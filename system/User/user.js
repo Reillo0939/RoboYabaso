@@ -84,7 +84,7 @@ function check_in(UserId,UserName,Message,replyToken){
 					data.login_date[data.login_date.length]=check_in_date;
 					if(data.login_date[data.login_date.length-1]-data.login_date[data.login_date.length-2]!=1)data.Always_check_in=0;
 					data.money+=100+5*data.Always_check_in;
-					rply.text=UserName+" 簽到成功\n獲得100G\n已連續簽到"+data.Always_check_in+"天\n額外獲得"+(5*data.Always_check_in)+"G\n現有"+data.money+"G";
+					rply.text=data.NickName+" 簽到成功\n獲得100G\n已連續簽到"+data.Always_check_in+"天\n額外獲得"+(5*data.Always_check_in)+"G\n現有"+data.money+"G";
 					data.Always_check_in++;
 					Mongoclient.db(dbName).collection('user').update({UserId:UserId},{"$set":data}, function(err, r) {
 						assert.equal(null, err);
