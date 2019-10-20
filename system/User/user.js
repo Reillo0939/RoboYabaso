@@ -99,8 +99,39 @@ function check_in(UserId,UserName,Message,replyToken){
 	});
 }
 
+function Rename(UserId,UserName,Message,replyToken){
+	Mongoclient.connect(function(err) {
+			assert.equal(null, err);
+			//console.log("Connected successfully to server");
+			Mongoclient.db(dbName).collection('user').findOne({UserId:UserId}).then((data)=> {
+			if(data!=null){
+				
+				let mainMsg = Message.match(msgSplitor);
+				let NickName=mainMsg[1];
+				if(NickName==null||NickName==undefined){
+					rply.text=data.NickName+" 缺少暱稱";
+				}
+				else{
+					data.NickName=NickName;
+					Mongoclient.db(dbName).collection('user').update({UserId:UserId},{"$set":data}, function(err, r) {
+						assert.equal(null, err);
+					});
+					rply.text=NickName+" 帳號已創建完畢";
+				}
+			}
+			else{
+				rply.text=UserName+" 沒有帳號喔";
+			}
+			re_message.Line_reply(replyToken, rply);
+		});
+	});
+	
+	
+}
+
 module.exports = {
 	create_User:create_User,
 	Inquire_User:Inquire_User,
-	check_in:check_in
+	check_in:check_in,
+	Rename:Rename
 };
