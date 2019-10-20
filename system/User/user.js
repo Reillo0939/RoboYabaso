@@ -116,7 +116,7 @@ function Rename(UserId,UserName,Message,replyToken){
 					Mongoclient.db(dbName).collection('user').update({UserId:UserId},{"$set":data}, function(err, r) {
 						assert.equal(null, err);
 					});
-					rply.text=NickName+" 帳號已創建完畢";
+					rply.text=NickName+" 暱稱已修改完成";
 				}
 			}
 			else{
@@ -125,8 +125,6 @@ function Rename(UserId,UserName,Message,replyToken){
 			re_message.Line_reply(replyToken, rply);
 		});
 	});
-	
-	
 }
 
 module.exports = {
