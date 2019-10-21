@@ -38,7 +38,7 @@ function Game(UserId,UserName,Message,replyToken){
 					Mongoclient.db(dbName).collection('user').findOne({UserId:UserId}).then((data)=>{
 						
 						if(data!=null){
-							if(mainMsg[2]==undefined||mainMsg[2]==null||mainMsg[2]<0){
+							if(mainMsg[2]==undefined||mainMsg[2]==null||!isNaN(mainMsg[2])){
 								rply.text=data.NickName+" 賭金未填或者錯誤";
 								re_message.Line_reply(replyToken, rply);
 								return false;
@@ -116,7 +116,7 @@ function Game(UserId,UserName,Message,replyToken){
 					}
 					else{
 						if(player.count==10){
-							rply.text=player.NickName+" 遊戲失敗";
+							rply.text=player.NickName+" 遊戲失敗\n答案為"+player.answer[0]+player.answer[1]+player.answer[2]+player.answer[3]+"\n繼續努力吧";
 							delete_play(player.UserId);
 							re_message.Line_reply(replyToken, rply);
 						}
