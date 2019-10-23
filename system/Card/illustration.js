@@ -30,7 +30,9 @@ function illustration(UserId,UserName,Message,replyToken){
 			});
 		}
 		else{
-			Mongoclient.db(dbName).collection('card').findOne({ID:mainMsg[1]}).then((data)=> {
+			let XID=mainMsg[1];
+			Mongoclient.db(dbName).collection('card').findOne({ID:XID}).then((data)=> {
+				console.log(data);
 				if(data!=null){
 					rply.text="["+data.ID+"]"+data.Name+"\n"+
 								  "簡介:"+data.Introduction+"\n"+
@@ -52,7 +54,6 @@ function illustration(UserId,UserName,Message,replyToken){
 					re_message.Line_reply(replyToken, rply);
 				}
 			});
-			
 		}
 	});
 }
