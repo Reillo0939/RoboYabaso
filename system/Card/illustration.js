@@ -42,7 +42,7 @@ function illustration(UserId,UserName,Message,replyToken){
 									  "--MP消耗/AP消耗/範圍:"+card.skill3.MPcost+"/"+card.skill3.APcost+"/"+card.skill3.range+"\n"+
 									  "被動技能1:"+card.Passive_skill1+"\n"+
 									  "被動技能2:"+card.Passive_skill2+"\n"+
-									  "被動技能3:"+card.Passive_skill3+"\n"+
+									  "被動技能3:"+card.Passive_skill3+"\n";
 						}
 					}
 				}
