@@ -16,7 +16,10 @@ function illustration(UserId,UserName,Message,replyToken){
 	Mongoclient.connect(function(err) {
 		assert.equal(null, err);
 		//console.log("Connected successfully to server");
-		Mongoclient.db(dbName).collection('card').find().sort({ID:1}).then((data)=>{
+		Mongoclient.db(dbName).collection('card').find().then((data)=>{
+				data.sort(function(a, b) {
+				  return a.ID - b.ID;
+				});
 				if(mainMsg[1]==undefined||mainMsg[1]==null||isNaN(mainMsg[1])){
 					rply.text="圖鑑";
 					for(let card of data){
