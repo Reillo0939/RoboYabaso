@@ -11,7 +11,7 @@ function parseInput(UserId,UserName,Message,replyToken) {
 	if(trigger=="簽到")User.check_in(UserId,UserName,Message,replyToken);
 	if(trigger=="暱稱更改")User.Rename(UserId,UserName,Message,replyToken);
 	if(trigger=="猜數字")nAnB.Game(UserId,UserName,Message,replyToken);
-	if(trigger=="圖鑑")card.illustration(UserId,UserName,Message,replyToken);
+	if(trigger=="圖鑑")illustration.illustration(UserId,UserName,Message,replyToken);
 }
 
 module.exports = {
