@@ -30,7 +30,7 @@ function illustration(UserId,UserName,Message,replyToken){
 			});
 		}
 		else{
-			let XID=mainMsg[1];
+			let XID=parseInt(mainMsg[1]);
 			Mongoclient.db(dbName).collection('card').findOne({ID:XID}).then((data)=> {
 				console.log(data);
 				if(data!=null){
