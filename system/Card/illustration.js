@@ -28,7 +28,7 @@ function illustration(UserId,UserName,Message,replyToken){
 						if(card.ID==mainMsg[1]){
 							rply.text="["+card.ID+"]"+card.Name+"\n"+
 									  "簡介:"+card.Introduction+"\n"+
-									  "HP/MP/AP/ATK:"+card.HP+"/"+card.MP+"/"+card.AP++"/"+card.ATK"\n"+
+									  "HP/MP/AP/ATK:"+card.HP+"/"+card.MP+"/"+card.AP++"/"+card.ATK+"\n"+
 									  "移動消耗的AP/攻擊消耗的AP:"+card.MoveAP+"/"+card.AttackAP+"\n"+
 									  "攻擊距離:"+card.AttackRange+"\n"+
 									  "技能1:"+card.skill1.Name+"\n"+
