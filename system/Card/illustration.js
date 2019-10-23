@@ -16,7 +16,7 @@ function illustration(UserId,UserName,Message,replyToken){
 	Mongoclient.connect(function(err) {
 		assert.equal(null, err);
 		//console.log("Connected successfully to server");
-		Mongoclient.db(dbName).collection('card').find({}).then((data)=>{
+		Mongoclient.db(dbName).collection('card').find({}).toArray().then((data)=> {
 				console.log(data);
 				data.sort(function(a, b) {
 				  return a.ID - b.ID;
