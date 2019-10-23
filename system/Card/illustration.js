@@ -17,7 +17,7 @@ function illustration(UserId,UserName,Message,replyToken){
 		assert.equal(null, err);
 		//console.log("Connected successfully to server");
 		if(mainMsg[1]==undefined||mainMsg[1]==null||isNaN(mainMsg[1])){
-			Mongoclient.db(dbName).collection('card').find({},projection: { _id: 0, ID: 1,Name:1 }).toArray().then((data)=> {
+			Mongoclient.db(dbName).collection('card').find({},{projection: { _id: 0, ID: 1,Name:1 }}).toArray().then((data)=> {
 				console.log(data);
 				data.sort(function(a, b) {
 				  return a.ID - b.ID;
