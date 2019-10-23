@@ -17,14 +17,14 @@ function illustration(UserId,UserName,Message,replyToken){
 		assert.equal(null, err);
 		//console.log("Connected successfully to server");
 		if(mainMsg[1]==undefined||mainMsg[1]==null||isNaN(mainMsg[1])){
-			Mongoclient.db(dbName).collection('card').find({},{projection: { _id: 0, ID: 1,Name:1 }}).toArray().then((data)=> {
+			Mongoclient.db(dbName).collection('card').find({},{projection: { _id: 0, ID: 1,Name:1,Race:1 }}).toArray().then((data)=> {
 				console.log(data);
 				data.sort(function(a, b) {
 				  return a.ID - b.ID;
 				});
 				rply.text="圖鑑";
 					for(let card of data){
-						rply.text+="\n["+card.ID+"]"+card.Name;
+						rply.text+="\n["+card.ID+"]"+card.Race+"-"+card.Name;
 					}
 				re_message.Line_reply(replyToken, rply);
 			});
@@ -34,7 +34,7 @@ function illustration(UserId,UserName,Message,replyToken){
 			Mongoclient.db(dbName).collection('card').findOne({ID:XID}).then((data)=> {
 				console.log(data);
 				if(data!=null){
-					rply.text="["+data.ID+"]"+data.Name+"\n"+
+					rply.text="["+data.ID+"]"+card.Race+"-"+data.Name+"\n"+
 								  "簡介:"+data.Introduction+"\n"+
 								  "HP/MP/AP/ATK:"+data.HP+"/"+data.MP+"/"+data.AP+"/"+data.ATK+"\n"+
 								  "移動消耗的AP/攻擊消耗的AP:"+data.MoveAP+"/"+data.AttackAP+"\n"+
