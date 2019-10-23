@@ -34,7 +34,7 @@ function illustration(UserId,UserName,Message,replyToken){
 			Mongoclient.db(dbName).collection('card').findOne({ID:XID}).then((data)=> {
 				console.log(data);
 				if(data!=null){
-					rply.text="["+data.ID+"]"+card.Race+"-"+data.Name+"\n"+
+					rply.text="["+data.ID+"]"+data.Race+"-"+data.Name+"\n"+
 								  "簡介:"+data.Introduction+"\n"+
 								  "HP/MP/AP/ATK:"+data.HP+"/"+data.MP+"/"+data.AP+"/"+data.ATK+"\n"+
 								  "移動消耗的AP/攻擊消耗的AP:"+data.MoveAP+"/"+data.AttackAP+"\n"+
