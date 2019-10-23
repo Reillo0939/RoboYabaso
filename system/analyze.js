@@ -1,5 +1,6 @@
 var User = require('./User/user');
 var nAnB = require('./LittleGame/nAnB.js');
+var illustration = require('./Card/illustration.js');
 
 function parseInput(UserId,UserName,Message,replyToken) {
 	let msgSplitor = (/\S+/ig);	
@@ -10,6 +11,7 @@ function parseInput(UserId,UserName,Message,replyToken) {
 	if(trigger=="簽到")User.check_in(UserId,UserName,Message,replyToken);
 	if(trigger=="暱稱更改")User.Rename(UserId,UserName,Message,replyToken);
 	if(trigger=="猜數字")nAnB.Game(UserId,UserName,Message,replyToken);
+	if(trigger=="圖鑑")card.illustration(UserId,UserName,Message,replyToken);
 }
 
 module.exports = {
