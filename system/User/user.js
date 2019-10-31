@@ -76,7 +76,7 @@ function check_in(UserId,UserName,Message,replyToken){
 		Mongoclient.db(dbName).collection('user').findOne({UserId:UserId}).then((data)=>{
 			if(data!=null){
 				var today=new Date (new Date().getTime()+28800000);
-				var check_in_date=(new Date(today.getFullYear(),today.getMonth()+1,today.getDate()).getTime()-new Date(2019,10,17).getTime())/86400000;
+				var check_in_date=(new Date(today.getFullYear(),today.getMonth()-1,today.getDate()).getTime()-new Date(2019,9,17).getTime())/86400000;
 				if(data.login_date[data.login_date.length-1]==check_in_date){
 					rply.text=data.NickName+" 你已經簽到完嘍";
 				}
