@@ -41,13 +41,13 @@ function illustration(UserId,UserName,Message,replyToken){
 								  "攻擊距離:"+data.AttackRange+"\n"+
 								  "技能1:"+data.skill1.Name+"\n"+
 								  "--效果:"+data.skill1.Introduction+"\n"+
-								  "--MP消耗/AP消耗/範圍:"+data.skill1.MPcost+"/"+data.skill1.APcost+"/"+data.skill1.range+"\n"+
+								  "--MP消耗/AP消耗:"+data.skill1.MPcost+"/"+data.skill1.APcost+"\n"+
 								  "技能2:"+data.skill2.Name+"\n"+
 								  "--效果:"+data.skill2.Introduction+"\n"+
-								  "--MP消耗/AP消耗/範圍:"+data.skill2.MPcost+"/"+data.skill2.APcost+"/"+data.skill2.range+"\n"+
+								  "--MP消耗/AP消耗:"+data.skill2.MPcost+"/"+data.skill2.APcost+"\n"+
 								  "技能3:"+data.skill3.Name+"\n"+
 								  "--效果:"+data.skill3.Introduction+"\n"+
-								  "--MP消耗/AP消耗/範圍:"+data.skill3.MPcost+"/"+data.skill3.APcost+"/"+data.skill3.range+"\n"+
+								  "--MP消耗/AP消耗:"+data.skill3.MPcost+"/"+data.skill3.APcost+"\n"+
 								  "被動技能1:"+data.Passive_skill1+"\n"+
 								  "被動技能2:"+data.Passive_skill2+"\n"+
 								  "被動技能3:"+data.Passive_skill3+"\n";
