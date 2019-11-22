@@ -11,12 +11,12 @@ const Mongoclient = new MongoClient(url);
 var rply ={type : 'text'};
 let msgSplitor = (/\S+/ig);	
 var Probability={
-	UR=1,
-	SSR=4,
-	SR=10,
-	R=25,
-	N=60,
-	All=100
+	UR:1,
+	SSR:4,
+	SR:10,
+	R:25,
+	N:60,
+	All:100
 };
 			
 function one(UserId,UserName,Message,replyToken){
