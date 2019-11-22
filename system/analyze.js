@@ -13,7 +13,10 @@ function parseInput(UserId,UserName,Message,replyToken) {
 	if(trigger=="暱稱更改")User.Rename(UserId,UserName,Message,replyToken);
 	if(trigger=="猜數字")nAnB.Game(UserId,UserName,Message,replyToken);
 	if(trigger=="圖鑑")illustration.illustration(UserId,UserName,Message,replyToken);
-	if(trigger=="試手氣")ct.test(UserId,UserName,Message,replyToken);
+	if(trigger=="試抽一次")ct.one(UserId,UserName,Message,replyToken);
+	if(trigger=="試抽十次")ct.ten(UserId,UserName,Message,replyToken);
+	if(trigger=="試抽理論值")ct.theory(UserId,UserName,Message,replyToken);
+	if(trigger=="試抽統計值")ct.real(UserId,UserName,Message,replyToken);
 }
 
 module.exports = {
