@@ -19,6 +19,7 @@ function test(UserId,UserName,Message,replyToken){
 		Mongoclient.db(dbName).collection('system').findOne({name:"test"}).then((data)=> {
 			var all=data.N+data.R+data.SR+data.SSR+data.UR;
 			data.UR++;
+			console.log(data);
 			Mongoclient.db(dbName).collection('system').update({name:"test"},{"$set":data}, function(err, r) {
 				assert.equal(null, err);
 			});
