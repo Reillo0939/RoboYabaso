@@ -25,7 +25,7 @@ function one(UserId,UserName,Message,replyToken){
 		assert.equal(null, err);
 		//console.log("Connected successfully to server");
 		Mongoclient.db(dbName).collection('system').findOne({name:"test"}).then((data)=> {
-			var Rng=Math.random()*Probability.All+1;
+			var Rng=Math.floor(Math.random()*Probability.All)+1;
 			if(Rng<=Probability.UR){
 				data.UR++;
 				rply.text="UR";
@@ -64,7 +64,7 @@ function ten(UserId,UserName,Message,replyToken){
 			
 			rply.text="";
 			for(var i=0;i<10;i++){
-				var Rng=Math.random()*Probability.All+1;
+				var Rng=Math.floor(Math.random()*Probability.All)+1;
 				if(Rng<=Probability.UR){
 					data.UR++;
 					rply.text+="UR";
