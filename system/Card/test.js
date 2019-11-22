@@ -85,7 +85,7 @@ function ten(UserId,UserName,Message,replyToken){
 					data.N++;
 					rply.text+="N";
 				}
-				if(i<9)rply.text+=",";
+				if(i<9)rply.text+=" ";
 			}
 			re_message.Line_reply(replyToken, rply);
 			var all=data.N+data.R+data.SR+data.SSR+data.UR;
