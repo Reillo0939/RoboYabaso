@@ -116,11 +116,11 @@ function real(UserId,UserName,Message,replyToken){
 			"SR "+data.SR+"抽\n"+
 			"R "+data.R+"抽\n"+
 			"N "+data.N+"抽\n"+
-			"UR機率為 "+(data.UR/all).toFixed(2)+"%\n"+
-			"SSR機率為 "+(data.SSR/all).toFixed(2)+"%\n"+
-			"SR機率為 "+(data.SR/all).toFixed(2)+"%\n"+
-			"R機率為 "+(data.R/all).toFixed(2)+"%\n"+
-			"N機率為 "+(data.N/all).toFixed(2)+"%\n";
+			"UR機率為 "+(data.UR/all*100).toFixed(2)+"%\n"+
+			"SSR機率為 "+(data.SSR/all*100).toFixed(2)+"%\n"+
+			"SR機率為 "+(data.SR/all*100).toFixed(2)+"%\n"+
+			"R機率為 "+(data.R/all*100).toFixed(2)+"%\n"+
+			"N機率為 "+(data.N/all*100).toFixed(2)+"%\n";
 			re_message.Line_reply(replyToken, rply);
 		});
 	});
