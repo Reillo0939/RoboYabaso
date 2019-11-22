@@ -111,11 +111,11 @@ function real(UserId,UserName,Message,replyToken){
 			var all=data.N+data.R+data.SR+data.SSR+data.UR;
 			rply.text=
 			"總共"+all+"抽\n"+
-			"UR "+data.UR+"抽\n"
-			"SSR "+data.SSR+"抽\n"
-			"SR "+data.SR+"抽\n"
-			"R "+data.R+"抽\n"
-			"N "+data.N+"抽\n"
+			"UR "+data.UR+"抽\n"+
+			"SSR "+data.SSR+"抽\n"+
+			"SR "+data.SR+"抽\n"+
+			"R "+data.R+"抽\n"+
+			"N "+data.N+"抽\n"+
 			"UR機率為 "+(data.UR/all).toFixed(2);+"%\n"+
 			"SSR機率為 "+(data.SSR/all).toFixed(2);+"%\n"+
 			"SR機率為 "+(data.SR/all).toFixed(2);+"%\n"+
