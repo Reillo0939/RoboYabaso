@@ -53,10 +53,10 @@ function ten(UserId,UserName,Message,replyToken){
 		assert.equal(null, err);
 		//console.log("Connected successfully to server");
 		Mongoclient.db(dbName).collection('system').findOne({name:"test"}).then((data)=> {
-			
+			var All=data.Probability.N+data.Probability.R+data.Probability.SR+data.Probability.SSR+data.Probability.UR;
 			rply.text="";
 			for(var i=0;i<10;i++){
-				var Rng=Math.floor(Math.random()*data.Probability.All)+1;
+				var Rng=Math.floor(Math.random()*All)+1;
 				if(Rng<=data.Probability.UR){
 					data.UR++;
 					rply.text+="UR";
@@ -92,12 +92,13 @@ function theory(UserId,UserName,Message,replyToken){
 	Mongoclient.connect(function(err) {
 		assert.equal(null, err);
 		Mongoclient.db(dbName).collection('system').findOne({name:"test"}).then((data)=> {
+			var All=data.Probability.N+data.Probability.R+data.Probability.SR+data.Probability.SSR+data.Probability.UR;
 			rply.text=
-				"UR機率為 "+(data.Probability.UR/data.Probability.All*100).toFixed(2)+"%\n"+
-				"SSR機率為 "+(data.Probability.SSR/data.Probability.All*100).toFixed(2)+"%\n"+
-				"SR機率為 "+(data.Probability.SR/data.Probability.All*100).toFixed(2)+"%\n"+
-				"R機率為 "+(data.Probability.R/data.Probability.All*100).toFixed(2)+"%\n"+
-				"N機率為 "+(data.Probability.N/data.Probability.All*100).toFixed(2)+"%";
+				"UR機率為 "+(data.Probability.UR/All*100).toFixed(2)+"%\n"+
+				"SSR機率為 "+(data.Probability.SSR/All*100).toFixed(2)+"%\n"+
+				"SR機率為 "+(data.Probability.SR/All*100).toFixed(2)+"%\n"+
+				"R機率為 "+(data.Probability.R/All*100).toFixed(2)+"%\n"+
+				"N機率為 "+(data.Probability.N/All*100).toFixed(2)+"%";
 			re_message.Line_reply(replyToken, rply);
 		});
 	});
