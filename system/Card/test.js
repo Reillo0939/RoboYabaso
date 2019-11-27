@@ -88,13 +88,19 @@ function ten(UserId,UserName,Message,replyToken){
 	});
 }
 function theory(UserId,UserName,Message,replyToken){
-	rply.text=
-	"UR機率為 1%\n"+
-	"SSR機率為 4%\n"+
-	"SR機率為 10%\n"+
-	"R機率為 25%\n"+
-	"N機率為 60%";
-	re_message.Line_reply(replyToken, rply);
+	
+	Mongoclient.connect(function(err) {
+		assert.equal(null, err);
+		Mongoclient.db(dbName).collection('system').findOne({name:"test"}).then((data)=> {
+			rply.text=
+				"UR機率為 "+(data.Probability.UR/data.Probability.All*100).toFixed(2)+"%\n"+
+				"SSR機率為 "+(data.Probability.SSR/data.Probability.All*100).toFixed(2)+"%\n"+
+				"SR機率為 "+(data.Probability.SR/data.Probability.All*100).toFixed(2)+"%\n"+
+				"R機率為 "+(data.Probability.R/data.Probability.All*100).toFixed(2)+"%\n"+
+				"N機率為 "+(data.Probability.N/data.Probability.All*100).toFixed(2)+"%";
+			re_message.Line_reply(replyToken, rply);
+		});
+	});
 }
 function real(UserId,UserName,Message,replyToken){
 	Mongoclient.connect(function(err) {
