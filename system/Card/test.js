@@ -10,14 +10,6 @@ const Mongoclient = new MongoClient(url);
 
 var rply ={type : 'text'};
 let msgSplitor = (/\S+/ig);	
-var Probability={
-	UR:1,
-	SSR:4,
-	SR:10,
-	R:25,
-	N:60,
-	All:100
-};
 			
 function one(UserId,UserName,Message,replyToken){
 	let mainMsg = Message.match(msgSplitor);
@@ -25,20 +17,20 @@ function one(UserId,UserName,Message,replyToken){
 		assert.equal(null, err);
 		//console.log("Connected successfully to server");
 		Mongoclient.db(dbName).collection('system').findOne({name:"test"}).then((data)=> {
-			var Rng=Math.floor(Math.random()*Probability.All)+1;
-			if(Rng<=Probability.UR){
+			var Rng=Math.floor(Math.random()*data.Probability.All)+1;
+			if(Rng<=data.Probability.UR){
 				data.UR++;
 				rply.text="UR";
 			}
-			else if(Rng-=Probability.UR,Rng<=Probability.SSR){
+			else if(Rng-=data.Probability.UR,Rng<=data.Probability.SSR){
 				data.SSR++;
 				rply.text="SSR";
 			}
-			else if(Rng-=Probability.SSR,Rng<=Probability.SR){
+			else if(Rng-=data.Probability.SSR,Rng<=data.Probability.SR){
 				data.SR++;
 				rply.text="SR";
 			}
-			else if(Rng-=Probability.SR,Rng<=Probability.R){
+			else if(Rng-=data.Probability.SR,Rng<=data.Probability.R){
 				data.R++;
 				rply.text="R";
 			}
@@ -64,20 +56,20 @@ function ten(UserId,UserName,Message,replyToken){
 			
 			rply.text="";
 			for(var i=0;i<10;i++){
-				var Rng=Math.floor(Math.random()*Probability.All)+1;
-				if(Rng<=Probability.UR){
+				var Rng=Math.floor(Math.random()*data.Probability.All)+1;
+				if(Rng<=data.Probability.UR){
 					data.UR++;
 					rply.text+="UR";
 				}
-				else if(Rng-=Probability.UR,Rng<=Probability.SSR){
+				else if(Rng-=data.Probability.UR,Rng<=data.Probability.SSR){
 					data.SSR++;
 					rply.text+="SSR";
 				}
-				else if(Rng-=Probability.SSR,Rng<=Probability.SR){
+				else if(Rng-=data.Probability.SSR,Rng<=data.Probability.SR){
 					data.SR++;
 					rply.text+="SR";
 				}
-				else if(Rng-=Probability.SR,Rng<=Probability.R){
+				else if(Rng-=data.Probability.SR,Rng<=data.Probability.R){
 					data.R++;
 					rply.text+="R";
 				}
@@ -116,12 +108,12 @@ function real(UserId,UserName,Message,replyToken){
 			"SSR "+data.SSR+"抽\n"+
 			"SR "+data.SR+"抽\n"+
 			"R "+data.R+"抽\n"+
-			"N "+data.N+"抽\n"+
-			"UR機率為 "+(data.UR/all*100).toFixed(2)+"%\n"+
-			"SSR機率為 "+(data.SSR/all*100).toFixed(2)+"%\n"+
-			"SR機率為 "+(data.SR/all*100).toFixed(2)+"%\n"+
-			"R機率為 "+(data.R/all*100).toFixed(2)+"%\n"+
-			"N機率為 "+(data.N/all*100).toFixed(2)+"%\n";
+			"N "+data.N+"抽\n\------------\n"+
+			"UR佔比為 "+(data.UR/all*100).toFixed(2)+"%\n"+
+			"SSR佔比為 "+(data.SSR/all*100).toFixed(2)+"%\n"+
+			"SR佔比為 "+(data.SR/all*100).toFixed(2)+"%\n"+
+			"R佔比為 "+(data.R/all*100).toFixed(2)+"%\n"+
+			"N佔比為 "+(data.N/all*100).toFixed(2)+"%";
 			re_message.Line_reply(replyToken, rply);
 		});
 	});
