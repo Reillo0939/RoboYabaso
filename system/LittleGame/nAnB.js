@@ -100,8 +100,8 @@ function Game(UserId,UserName,Message,replyToken){
 							//console.log("Connected successfully to server");
 							Mongoclient.db(dbName).collection('user').findOne({UserId:UserId}).then((data)=>{
 								if(data!=null){
-									var return_money=[10,7,5,5,3,3,2,2,1,1];
-									var give=player.money_in*return_money[player.count-1];
+									var return_money=[10,7,3,2,1.5,1.4,1.3,1.2,1.1,1];
+									var give=Math.floor(player.money_in*return_money[player.count-1]);
 									data.money+=(give*100);
 									rply.text=data.NickName+" 4A 遊戲結束\n依據你猜題的次數你可以獲得"+(give*100)+"G\n你共有"+data.money+"G";
 									delete_play(player.UserId);
