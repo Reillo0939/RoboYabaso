@@ -64,7 +64,8 @@ function ten(UserId,UserName,Message,replyToken){
 			Mongoclient.db(dbName).collection('card').find({},{projection: { _id: 0, ID: 1,Name:1,Race:1 }}).toArray().then((data_C)=> {
 				var CID=[];
 				for(var i=0;i<10;i++){
-					var Rng=Math.floor(Math.random()*data.Probability.All)+1;
+					var All=data.Probability.N+data.Probability.R+data.Probability.SR+data.Probability.SSR+data.Probability.UR;
+					var Rng=Math.floor(Math.random()*All)+1;
 					if(Rng<=data.Probability.UR){
 						data.UR++;
 						CID[i]=data.Card.UR[Math.floor(Math.random()*data.Card.UR.length)];
