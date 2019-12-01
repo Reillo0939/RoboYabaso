@@ -120,6 +120,26 @@ function Game(UserId,UserName,Message,replyToken){
 							delete_play(player.UserId);
 							re_message.Line_reply(replyToken, rply);
 						}
+						else if(player.money_in>5 && player.count==8){
+							rply.text=player.NickName+" 遊戲失敗\n答案為"+player.answer[0]+player.answer[1]+player.answer[2]+player.answer[3]+"\n繼續努力吧";
+							delete_play(player.UserId);
+							re_message.Line_reply(replyToken, rply);
+						}
+						else if(player.money_in>10 && player.count==6){
+							rply.text=player.NickName+" 遊戲失敗\n答案為"+player.answer[0]+player.answer[1]+player.answer[2]+player.answer[3]+"\n繼續努力吧";
+							delete_play(player.UserId);
+							re_message.Line_reply(replyToken, rply);
+						}
+						else if(player.money_in>50 && player.count==4){
+							rply.text=player.NickName+" 遊戲失敗\n答案為"+player.answer[0]+player.answer[1]+player.answer[2]+player.answer[3]+"\n繼續努力吧";
+							delete_play(player.UserId);
+							re_message.Line_reply(replyToken, rply);
+						}
+						else if(player.money_in>250 && player.count==2){
+							rply.text=player.NickName+" 遊戲失敗\n答案為"+player.answer[0]+player.answer[1]+player.answer[2]+player.answer[3]+"\n繼續努力吧";
+							delete_play(player.UserId);
+							re_message.Line_reply(replyToken, rply);
+						}
 						else{
 							player.count++;
 							rply.text=player.NickName+" "+a+"A"+b+"B"+"\n第"+player.count+"/10次猜題\n賭金(x100):"+player.money_in;
