@@ -27,19 +27,19 @@ function one(UserId,UserName,Message,replyToken){
 				}
 				else if(Rng-=data.Probability.UR,Rng<=data.Probability.SSR){
 					data.SSR++;
-					CID=data.Card.UR[Math.floor(Math.random()*data.Card.SSR.length)];
+					CID=data.Card.SSR[Math.floor(Math.random()*data.Card.SSR.length)];
 				}
 				else if(Rng-=data.Probability.SSR,Rng<=data.Probability.SR){
 					data.SR++;
-					CID=data.Card.UR[Math.floor(Math.random()*data.Card.SR.length)];
+					CID=data.Card.SR[Math.floor(Math.random()*data.Card.SR.length)];
 				}
 				else if(Rng-=data.Probability.SR,Rng<=data.Probability.R){
 					data.R++;
-					CID=data.Card.UR[Math.floor(Math.random()*data.Card.R.length)];
+					CID=data.Card.R[Math.floor(Math.random()*data.Card.R.length)];
 				}
 				else {
 					data.N++;
-					CID=data.Card.UR[Math.floor(Math.random()*data.Card.N.length)];
+					CID=data.Card.N[Math.floor(Math.random()*data.Card.N.length)];
 				}
 				Mongoclient.db(dbName).collection('system').update({name:"test"},{"$set":data}, function(err, r) {
 					assert.equal(null, err);
@@ -71,19 +71,19 @@ function ten(UserId,UserName,Message,replyToken){
 					}
 					else if(Rng-=data.Probability.UR,Rng<=data.Probability.SSR){
 						data.SSR++;
-						CID[i]=data.Card.UR[Math.floor(Math.random()*data.Card.SSR.length)];
+						CID[i]=data.Card.SSR[Math.floor(Math.random()*data.Card.SSR.length)];
 					}
 					else if(Rng-=data.Probability.SSR,Rng<=data.Probability.SR){
 						data.SR++;
-						CID[i]=data.Card.UR[Math.floor(Math.random()*data.Card.SR.length)];
+						CID[i]=data.Card.SR[Math.floor(Math.random()*data.Card.SR.length)];
 					}
 					else if(Rng-=data.Probability.SR,Rng<=data.Probability.R){
 						data.R++;
-						CID[i]=data.Card.UR[Math.floor(Math.random()*data.Card.R.length)];
+						CID[i]=data.Card.R[Math.floor(Math.random()*data.Card.R.length)];
 					}
 					else {
 						data.N++;
-						CID[i]=data.Card.UR[Math.floor(Math.random()*data.Card.N.length)];
+						CID[i]=data.Card.N[Math.floor(Math.random()*data.Card.N.length)];
 					}
 				}
 				Mongoclient.db(dbName).collection('system').update({name:"test"},{"$set":data}, function(err, r) {
