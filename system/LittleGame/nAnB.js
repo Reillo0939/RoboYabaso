@@ -44,7 +44,7 @@ function Game(UserId,UserName,Message,replyToken){
 								return false;
 							}
 							else{
-								if(mainMsg[2]*100>data.money){
+								if(mainMsg[2]*10>data.money){
 									rply.text=data.NickName+" 賭金不夠";
 									re_message.Line_reply(replyToken, rply);
 								return false;
@@ -58,8 +58,8 @@ function Game(UserId,UserName,Message,replyToken){
 										list.splice(tag,1);
 									}
 									Gameing[Gameing.length]=new ingame(UserId, data.NickName, mainMsg[2],1,answer);
-									rply.text=data.NickName+" 遊戲開始\n第"+Gameing[Gameing.length-1].count+"/10次猜題\n賭金(x100):"+Gameing[Gameing.length-1].money_in;
-									data.money-=mainMsg[2]*100;
+									rply.text=data.NickName+" 遊戲開始\n第"+Gameing[Gameing.length-1].count+"/10次猜題\n賭金(x10):"+Gameing[Gameing.length-1].money_in;
+									data.money-=mainMsg[2]*10;
 									Mongoclient.db(dbName).collection('user').update({UserId:UserId},{"$set":data}, function(err, r) {
 										assert.equal(null, err);
 									});
@@ -102,8 +102,8 @@ function Game(UserId,UserName,Message,replyToken){
 								if(data!=null){
 									var return_money=[10,7,3,2,1.5,1.4,1.3,1.2,1.1,1];
 									var give=Math.floor(player.money_in*return_money[player.count-1]);
-									data.money+=(give*100);
-									rply.text=data.NickName+" 4A 遊戲結束\n依據你猜題的次數你可以獲得"+(give*100)+"G\n你共有"+data.money+"G";
+									data.money+=(give*10);
+									rply.text=data.NickName+" 4A 遊戲結束\n依據你猜題的次數你可以獲得"+(give*10)+"G\n你共有"+data.money+"G";
 									delete_play(player.UserId);
 									Mongoclient.db(dbName).collection('user').update({UserId:UserId},{"$set":data}, function(err, r) {
 										assert.equal(null, err);
@@ -142,7 +142,7 @@ function Game(UserId,UserName,Message,replyToken){
 						}
 						else{
 							player.count++;
-							rply.text=player.NickName+" "+a+"A"+b+"B"+"\n第"+player.count+"/10次猜題\n賭金(x100):"+player.money_in;
+							rply.text=player.NickName+" "+a+"A"+b+"B"+"\n第"+player.count+"/10次猜題\n賭金(x10):"+player.money_in;
 							re_message.Line_reply(replyToken, rply);
 						}
 					}
