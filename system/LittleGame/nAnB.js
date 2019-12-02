@@ -59,10 +59,10 @@ function Game(UserId,UserName,Message,replyToken){
 										list.splice(tag,1);
 									}
 									var Difficulty=10;
-									if(player.money_in>5 && player.money_in<=10)Difficulty=8;
-									if(player.money_in>10 && player.money_in<=50)Difficulty=6;
-									if(player.money_in>50 && player.money_in<=250)Difficulty=4;
-									if(player.money_in>250 )Difficulty=2;
+									if(mainMsg[2]>5 && mainMsg[2]<=10)Difficulty=8;
+									if(mainMsg[2]>10 && mainMsg[2]<=50)Difficulty=6;
+									if(mainMsg[2]>50 && mainMsg[2]<=250)Difficulty=4;
+									if(mainMsg[2]>250 )Difficulty=2;
 									Gameing[Gameing.length]=new ingame(UserId, data.NickName, mainMsg[2],1,answer,Difficulty);
 									rply.text=data.NickName+" 遊戲開始\n第"+Gameing[Gameing.length-1].count+"/"+Difficulty+"次猜題\n賭金(x10):"+Gameing[Gameing.length-1].money_in;
 									data.money-=mainMsg[2]*10;
