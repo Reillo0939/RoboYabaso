@@ -8,7 +8,8 @@ const dbName = 'dream-realm-v2';
 // Create a new MongoClient
 const Mongoclient = new MongoClient(url);
 
-var rply ={type : 'text'};
+var rply =[];
+rply[0]={type : 'text'};
 let msgSplitor = (/\S+/ig);	
 
 function illustration(UserId,UserName,Message,replyToken){
@@ -22,9 +23,9 @@ function illustration(UserId,UserName,Message,replyToken){
 				data.sort(function(a, b) {
 				  return a.ID - b.ID;
 				});
-				rply.text="圖鑑";
+				rply[0].text="圖鑑";
 					for(let card of data){
-						rply.text+="\n["+card.ID+"]"+card.Race+"-"+card.Name;
+						rply[0].text+="\n["+card.ID+"]"+card.Race+"-"+card.Name;
 					}
 				re_message.Line_reply(replyToken, rply);
 			});
@@ -34,7 +35,7 @@ function illustration(UserId,UserName,Message,replyToken){
 			Mongoclient.db(dbName).collection('card').findOne({ID:XID}).then((data)=> {
 				console.log(data);
 				if(data!=null){
-					rply.text="["+data.ID+"]"+data.Race+"-"+data.Name+"\n"+
+					rply[0].text="["+data.ID+"]"+data.Race+"-"+data.Name+"\n"+
 								  "簡介:"+data.Introduction+"\n"+
 								  "HP/MP/AP/ATK:"+data.HP+"/"+data.MP+"/"+data.AP+"/"+data.ATK+"\n"+
 								  "移動消耗的AP/攻擊消耗的AP:"+data.MoveAP+"/"+data.AttackAP+"\n"+
@@ -51,6 +52,12 @@ function illustration(UserId,UserName,Message,replyToken){
 								  "被動技能1:"+data.Passive_skill1+"\n"+
 								  "被動技能2:"+data.Passive_skill2+"\n"+
 								  "被動技能3:"+data.Passive_skill3+"\n";
+					if(data.imgae_URL)
+						rply[1]={
+								type: 'image',
+								originalContentUrl: data.imgae_URL,
+								previewImageUrl: data.imgae_URL
+								};
 					re_message.Line_reply(replyToken, rply);
 				}
 			});
