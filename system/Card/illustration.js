@@ -8,8 +8,8 @@ const dbName = 'dream-realm-v2';
 // Create a new MongoClient
 const Mongoclient = new MongoClient(url);
 
-var rply =[];
-rply[0]={type : 'text'};
+var rply ={type : 'text'};
+
 let msgSplitor = (/\S+/ig);	
 
 function illustration(UserId,UserName,Message,replyToken){
@@ -23,9 +23,10 @@ function illustration(UserId,UserName,Message,replyToken){
 				data.sort(function(a, b) {
 				  return a.ID - b.ID;
 				});
-				rply[0].text="圖鑑";
+				rply ={type : 'text'};
+				rply.text="圖鑑";
 					for(let card of data){
-						rply[0].text+="\n["+card.ID+"]"+card.Race+"-"+card.Name;
+						rply.text+="\n["+card.ID+"]"+card.Race+"-"+card.Name;
 					}
 				re_message.Line_reply(replyToken, rply);
 			});
@@ -34,6 +35,8 @@ function illustration(UserId,UserName,Message,replyToken){
 			let XID=parseInt(mainMsg[1]);
 			Mongoclient.db(dbName).collection('card').findOne({ID:XID}).then((data)=> {
 				console.log(data);
+				rply=[];
+				rply[0]={type : 'text'};
 				if(data!=null){
 					rply[0].text="["+data.ID+"]"+data.Race+"-"+data.Name+"\n"+
 								  "簡介:"+data.Introduction+"\n"+
@@ -52,7 +55,6 @@ function illustration(UserId,UserName,Message,replyToken){
 								  "被動技能1:"+data.Passive_skill1+"\n"+
 								  "被動技能2:"+data.Passive_skill2+"\n"+
 								  "被動技能3:"+data.Passive_skill3+"\n";
-					rply[1]={};
 					if(data.imgae_URL)
 						rply[1]={
 								type: 'image',
