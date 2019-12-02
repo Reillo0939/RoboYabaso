@@ -13,12 +13,13 @@ let msgSplitor = (/\S+/ig);
 
 var Gameing=[];
 
-function ingame(UserId, NickName, money_in,count,answer) {
+function ingame(UserId, NickName, money_in,count,answer,Difficulty) {
   this.UserId = UserId;
   this.NickName = NickName;
   this.money_in = money_in;
   this.count = count;
   this.answer = answer;
+  this.Difficulty=Difficulty;
 }
 
 function Game(UserId,UserName,Message,replyToken){
@@ -57,8 +58,13 @@ function Game(UserId,UserName,Message,replyToken){
 										answer[k]=list[tag];
 										list.splice(tag,1);
 									}
-									Gameing[Gameing.length]=new ingame(UserId, data.NickName, mainMsg[2],1,answer);
-									rply.text=data.NickName+" 遊戲開始\n第"+Gameing[Gameing.length-1].count+"/10次猜題\n賭金(x10):"+Gameing[Gameing.length-1].money_in;
+									var Difficulty=10;
+									if(player.money_in>5 && player.money_in<=10)Difficulty=8;
+									if(player.money_in>10 && player.money_in<=50)Difficulty=6;
+									if(player.money_in>50 && player.money_in<=250)Difficulty=4;
+									if(player.money_in>250 )Difficulty=2;
+									Gameing[Gameing.length]=new ingame(UserId, data.NickName, mainMsg[2],1,answer,Difficulty);
+									rply.text=data.NickName+" 遊戲開始\n第"+Gameing[Gameing.length-1].count+"/"+Difficulty+"次猜題\n賭金(x10):"+Gameing[Gameing.length-1].money_in;
 									data.money-=mainMsg[2]*10;
 									Mongoclient.db(dbName).collection('user').update({UserId:UserId},{"$set":data}, function(err, r) {
 										assert.equal(null, err);
@@ -115,27 +121,7 @@ function Game(UserId,UserName,Message,replyToken){
 						
 					}
 					else{
-						if( player.money_in<=5&&player.count==10){
-							rply.text=player.NickName+" 遊戲失敗\n答案為"+player.answer[0]+player.answer[1]+player.answer[2]+player.answer[3]+"\n繼續努力吧";
-							delete_play(player.UserId);
-							re_message.Line_reply(replyToken, rply);
-						}
-						else if(player.money_in>5 && player.money_in<=10 && player.count==8){
-							rply.text=player.NickName+" 遊戲失敗\n答案為"+player.answer[0]+player.answer[1]+player.answer[2]+player.answer[3]+"\n繼續努力吧";
-							delete_play(player.UserId);
-							re_message.Line_reply(replyToken, rply);
-						}
-						else if(player.money_in>10 && player.money_in<=50&& player.count==6){
-							rply.text=player.NickName+" 遊戲失敗\n答案為"+player.answer[0]+player.answer[1]+player.answer[2]+player.answer[3]+"\n繼續努力吧";
-							delete_play(player.UserId);
-							re_message.Line_reply(replyToken, rply);
-						}
-						else if(player.money_in>50 && player.money_in<=250 && player.count==4){
-							rply.text=player.NickName+" 遊戲失敗\n答案為"+player.answer[0]+player.answer[1]+player.answer[2]+player.answer[3]+"\n繼續努力吧";
-							delete_play(player.UserId);
-							re_message.Line_reply(replyToken, rply);
-						}
-						else if(player.money_in>250 && player.count==2){
+						if(player.count==player.Difficulty){
 							rply.text=player.NickName+" 遊戲失敗\n答案為"+player.answer[0]+player.answer[1]+player.answer[2]+player.answer[3]+"\n繼續努力吧";
 							delete_play(player.UserId);
 							re_message.Line_reply(replyToken, rply);
