@@ -52,7 +52,7 @@ function illustration(UserId,UserName,Message,replyToken){
 								  "被動技能1:"+data.Passive_skill1+"\n"+
 								  "被動技能2:"+data.Passive_skill2+"\n"+
 								  "被動技能3:"+data.Passive_skill3+"\n";
-					rply[1]=null;
+					rply[1]={};
 					if(data.imgae_URL)
 						rply[1]={
 								type: 'image',
