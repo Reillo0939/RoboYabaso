@@ -25,7 +25,7 @@ function illustration(UserId,UserName,Message,replyToken){
 				  return a.ID - b.ID;
 				});
 				rply ={type : 'text'};
-				rply.text="圖鑑"+(f-1)*10+"～"+f*10;
+				rply.text="圖鑑"+((f-1)*10+1)+"～"+f*10;
 					for(let card of data){
 						if(card.ID>((f-1)*10) && card.ID<=(f*10))
 							rply.text+="\n["+card.ID+"]"+card.Race+"-"+card.Name;
