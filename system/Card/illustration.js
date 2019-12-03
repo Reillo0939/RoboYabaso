@@ -17,7 +17,8 @@ function illustration(UserId,UserName,Message,replyToken){
 	Mongoclient.connect(function(err) {
 		assert.equal(null, err);
 		//console.log("Connected successfully to server");
-		if(mainMsg[1]==undefined||mainMsg[1]==null||isNaN(mainMsg[1])){
+		if(!isNaN(mainMsg[1])){
+			var f=mainMsg[1];
 			Mongoclient.db(dbName).collection('card').find({},{projection: { _id: 0, ID: 1,Name:1,Race:1 }}).toArray().then((data)=> {
 				console.log(data);
 				data.sort(function(a, b) {
@@ -26,13 +27,15 @@ function illustration(UserId,UserName,Message,replyToken){
 				rply ={type : 'text'};
 				rply.text="圖鑑";
 					for(let card of data){
-						rply.text+="\n["+card.ID+"]"+card.Race+"-"+card.Name;
+						if(card.ID>((f-1)*10) && card.ID<=(f*10))
+							rply.text+="\n["+card.ID+"]"+card.Race+"-"+card.Name;
+						if(card.ID>(f*10))break;
 					}
 				re_message.Line_reply(replyToken, rply);
 			});
 		}
-		else{
-			let XID=parseInt(mainMsg[1]);
+		else if(mainMsg[1]=="ID"){
+			let XID=parseInt(mainMsg[2]);
 			Mongoclient.db(dbName).collection('card').findOne({ID:XID}).then((data)=> {
 				console.log(data);
 				rply=[];
