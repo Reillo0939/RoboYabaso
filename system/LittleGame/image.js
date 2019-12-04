@@ -8,7 +8,7 @@ const dbName = 'dream-realm-v2';
 // Create a new MongoClient
 const Mongoclient = new MongoClient(url);
 
-var rply =={
+var rply ={
 		type: 'image',
 		originalContentUrl: "",
 		previewImageUrl: ""
