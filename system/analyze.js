@@ -2,6 +2,7 @@ var User = require('./User/user');
 var nAnB = require('./LittleGame/nAnB.js');
 var illustration = require('./Card/illustration.js');
 var ct = require('./Card/test.js');
+var image = require('./LittleGame/image.js');
 
 function parseInput(UserId,UserName,Message,replyToken) {
 	let msgSplitor = (/\S+/ig);	
@@ -17,6 +18,8 @@ function parseInput(UserId,UserName,Message,replyToken) {
 	if(trigger=="試抽十次")ct.ten(UserId,UserName,Message,replyToken);
 	if(trigger=="試抽理論值")ct.theory(UserId,UserName,Message,replyToken);
 	if(trigger=="試抽統計值")ct.real(UserId,UserName,Message,replyToken);
+	
+	if(trigger=="圖片")image.image(UserId,UserName,Message,replyToken);
 }
 
 module.exports = {
