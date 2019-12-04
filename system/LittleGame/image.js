@@ -8,18 +8,17 @@ const dbName = 'dream-realm-v2';
 // Create a new MongoClient
 const Mongoclient = new MongoClient(url);
 
-var rply ={
-		type: 'image',
-		originalContentUrl: "",
-		previewImageUrl: ""
-};
+
 
 let msgSplitor = (/\S+/ig);	
 
 function image(UserId,UserName,Message,replyToken){
 	let mainMsg = Message.match(msgSplitor);
-	rply.originalContentUrl=mainMsg;
-	rply.previewImageUrl=mainMsg;
+	var rply ={
+		type: 'image',
+		originalContentUrl: mainMsg[1],
+		previewImageUrl: mainMsg[1]
+	};
 	re_message.Line_reply(replyToken, rply);
 }
 
