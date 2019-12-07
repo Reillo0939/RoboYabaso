@@ -25,11 +25,11 @@ function illustration(UserId,UserName,Message,replyToken){
 				  return a.ID - b.ID;
 				});
 				rply ={type : 'text'};
-				rply.text="圖鑑"+((f-1)*10+1)+"～"+f*10;
+				rply.text="圖鑑"+((f-1)*20+1)+"～"+f*20;
 					for(let card of data){
-						if(card.ID>((f-1)*10) && card.ID<=(f*10))
+						if(card.ID>((f-1)*20) && card.ID<=(f*20))
 							rply.text+="\n["+card.ID+"]"+card.Race+"-"+card.Name;
-						if(card.ID>(f*10))break;
+						if(card.ID>(f*20))break;
 					}
 				re_message.Line_reply(replyToken, rply);
 			});
