@@ -18,9 +18,9 @@ function one(UserId,UserName,Message,replyToken){
 		//console.log("Connected successfully to server");
 		
 		
-		Mongoclient.db(dbName).collection('user').findOne({UserId:UserId}).then((data)=>{
-			if(data!=null){
-				if(data.money>=100){
+		Mongoclient.db(dbName).collection('user').findOne({UserId:UserId}).then((Udata)=>{
+			if(Udata!=null){
+				if(Udata.money>=100){
 					Mongoclient.db(dbName).collection('system').findOne({name:"pool1"}).then((data)=> {
 						var All=data.Probability.N+data.Probability.R+data.Probability.SR+data.Probability.SSR+data.Probability.UR;
 						var Rng=Math.floor(Math.random()*All)+1;
@@ -49,17 +49,17 @@ function one(UserId,UserName,Message,replyToken){
 							assert.equal(null, err);
 						});
 						
-						data.money-=100;
-						if(!data.draw_all)data.draw_all=0;
-						data.draw_all++;
-						if(!data.card)data.card=[];
+						Udata.money-=100;
+						if(!Udata.draw_all)Udata.draw_all=0;
+						Udata.draw_all++;
+						if(!Udata.card)Udata.card=[];
 						Mongoclient.db(dbName).collection('card').findOne({"ID":CID},{projection: { _id: 0, ID: 1,Name:1,Race:1 }}).then((data_C)=> {
-							rply.text=data.NickName+" 你抽到了\n["+data_C.ID+"]"+data_C.Race+"-"+data_C.Name;
-							if(!data.card[CID])
-								data.card[CID]={Race:data_C.Race,repeat:0};
+							rply.text=Udata.NickName+" 你抽到了\n["+data_C.ID+"]"+data_C.Race+"-"+data_C.Name;
+							if(!Udata.card[CID])
+								Udata.card[CID]={Race:data_C.Race,repeat:0};
 							else
-								data.card[CID].repeat++;
-							Mongoclient.db(dbName).collection('user').update({UserId:UserId},{"$set":data}, function(err, r) {
+								Udata.card[CID].repeat++;
+							Mongoclient.db(dbName).collection('user').update({UserId:UserId},{"$set":Udata}, function(err, r) {
 								assert.equal(null, err);
 							});
 							re_message.Line_reply(replyToken, rply);
@@ -72,7 +72,7 @@ function one(UserId,UserName,Message,replyToken){
 					});
 				}
 				else{
-					rply.text=data.NickName+" 金幣不足";
+					rply.text=Udata.NickName+" 金幣不足";
 					re_message.Line_reply(replyToken, rply);
 				}
 			}
@@ -89,9 +89,9 @@ function ten(UserId,UserName,Message,replyToken){
 	Mongoclient.connect(function(err) {
 		assert.equal(null, err);
 		//console.log("Connected successfully to server");
-		Mongoclient.db(dbName).collection('user').findOne({UserId:UserId}).then((data)=>{
-			if(data!=null){
-				if(data.money>=1000){
+		Mongoclient.db(dbName).collection('user').findOne({UserId:UserId}).then((Udata)=>{
+			if(Udata!=null){
+				if(Udata.money>=1000){
 					Mongoclient.db(dbName).collection('system').findOne({name:"pool1"}).then((data)=> {
 						var CID=[];
 						for(var i=0;i<10;i++){
@@ -123,23 +123,23 @@ function ten(UserId,UserName,Message,replyToken){
 							assert.equal(null, err);
 						});
 						
-						data.money-=100;
-						if(!data.draw_all)data.draw_all=0;
-						data.draw_all++;
+						Udata.money-=100;
+						if(!Udata.draw_all)Udata.draw_all=0;
+						Udata.draw_all++;
 									
 						Mongoclient.db(dbName).collection('card').find({"$or":CID},{projection: { _id: 0, ID: 1,Name:1,Race:1 }}).toArray().then((data_C)=> {
-							rply.text=data.NickName+" 你抽到了";
+							rply.text=Udata.NickName+" 你抽到了";
 							for(let k of CID)
 								for(let card of data_C)
 									if(card.ID==k.ID){
 										rply.text+="\n["+card.ID+"]"+card.Race+"-"+card.Name;
-										if(!data.card[k.ID])
-											data.card[k.ID]={Race:card.Race,repeat:0};
+										if(!Udata.card[k.ID])
+											Udata.card[k.ID]={Race:card.Race,repeat:0};
 										else
-											data.card[k.ID].repeat++;
+											Udata.card[k.ID].repeat++;
 									}
 							re_message.Line_reply(replyToken, rply);
-							Mongoclient.db(dbName).collection('user').update({UserId:UserId},{"$set":data}, function(err, r) {
+							Mongoclient.db(dbName).collection('user').update({UserId:UserId},{"$set":Udata}, function(err, r) {
 								assert.equal(null, err);
 							});
 
@@ -154,7 +154,7 @@ function ten(UserId,UserName,Message,replyToken){
 					});
 				}
 				else{
-					rply.text=data.NickName+" 金幣不足";
+					rply.text=Udata.NickName+" 金幣不足";
 					re_message.Line_reply(replyToken, rply);
 				}
 			}
