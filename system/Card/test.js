@@ -47,6 +47,7 @@ function one(UserId,UserName,Message,replyToken){
 			Mongoclient.db(dbName).collection('card').findOne({"ID":CID},{projection: { _id: 0, ID: 1,Name:1,Race:1 }}).then((data_C)=> {
 				rply.text="你抽到了\n["+data_C.ID+"]"+data_C.Race+"-"+data_C.Name;
 				re_message.Line_reply(replyToken, rply);
+				let time=new Date (new Date().getTime()+28800000);
 				ToLog=time+" "+UserId+" "+CID;
 				Mongoclient.db(dbName).collection('system').update({name:"Log"},{"$push" : { content : ToLog }}, function(err, r) {
 					assert.equal(null, err);
