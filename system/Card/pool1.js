@@ -62,6 +62,7 @@ function one(UserId,UserName,Message,replyToken){
 							Mongoclient.db(dbName).collection('user').update({UserId:UserId},{"$set":Udata}, function(err, r) {
 								assert.equal(null, err);
 							});
+							rply.text+="\n剩餘"+Udata.money+"G";
 							re_message.Line_reply(replyToken, rply);
 							let time=new Date (new Date().getTime()+28800000);
 							ToLog=time+" "+UserId+" "+CID;
@@ -139,6 +140,7 @@ function ten(UserId,UserName,Message,replyToken){
 										else
 											Udata.card[k.ID].repeat++;
 									}
+							rply.text+="\n剩餘"+Udata.money+"G";
 							re_message.Line_reply(replyToken, rply);
 							Mongoclient.db(dbName).collection('user').update({UserId:UserId},{"$set":Udata}, function(err, r) {
 								assert.equal(null, err);
