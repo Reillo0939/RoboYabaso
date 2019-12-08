@@ -56,7 +56,7 @@ function one(UserId,UserName,Message,replyToken){
 						Mongoclient.db(dbName).collection('card').findOne({"ID":CID},{projection: { _id: 0, ID: 1,Name:1,Race:1 }}).then((data_C)=> {
 							rply.text=data.NickName+" 你抽到了\n["+data_C.ID+"]"+data_C.Race+"-"+data_C.Name;
 							if(!data.card[CID])
-								data.card[CID]={Race:data_C.Race,repeat=0};
+								data.card[CID]={Race:data_C.Race,repeat:0};
 							else
 								data.card[CID].repeat++;
 							Mongoclient.db(dbName).collection('user').update({UserId:UserId},{"$set":data}, function(err, r) {
@@ -134,7 +134,7 @@ function ten(UserId,UserName,Message,replyToken){
 									if(card.ID==k.ID){
 										rply.text+="\n["+card.ID+"]"+card.Race+"-"+card.Name;
 										if(!data.card[k.ID])
-											data.card[k.ID]={Race:card.Race,repeat=0};
+											data.card[k.ID]={Race:card.Race,repeat:0};
 										else
 											data.card[k.ID].repeat++;
 									}
