@@ -1,6 +1,7 @@
 var User = require('./User/user');
 var nAnB = require('./LittleGame/nAnB.js');
 var illustration = require('./Card/illustration.js');
+var Inquire = require('./Card/Inquire.js');
 var ct = require('./Card/test.js');
 var pool1 = require('./Card/pool1.js');
 var image = require('./LittleGame/image.js');
@@ -15,6 +16,7 @@ function parseInput(UserId,UserName,Message,replyToken) {
 	if(trigger=="暱稱更改")User.Rename(UserId,UserName,Message,replyToken);
 	if(trigger=="猜數字")nAnB.Game(UserId,UserName,Message,replyToken);
 	if(trigger=="圖鑑")illustration.illustration(UserId,UserName,Message,replyToken);
+	if(trigger=="查看已有數據")Inquire.Inquire(UserId,UserName,Message,replyToken);
 	
 	if(trigger=="試抽一次")ct.one(UserId,UserName,Message,replyToken);
 	if(trigger=="試抽十次")ct.ten(UserId,UserName,Message,replyToken);
