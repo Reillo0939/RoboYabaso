@@ -95,7 +95,6 @@ function ten(UserId,UserName,Message,replyToken){
 				assert.equal(null, err);
 			});
 			Mongoclient.db(dbName).collection('card').find({"$or":CID},{projection: { _id: 0, ID: 1,Name:1,Race:1 }}).toArray().then((data_C)=> {
-				find({$or:[ {"ID": 1},{"ID":20}]});
 				rply.text="你抽到了";
 				for(let k of CID)
 					for(let card of data_C)
