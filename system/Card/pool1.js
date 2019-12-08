@@ -123,9 +123,10 @@ function ten(UserId,UserName,Message,replyToken){
 							assert.equal(null, err);
 						});
 						
-						Udata.money-=100;
+						Udata.money-=1000;
 						if(!Udata.draw_all)Udata.draw_all=0;
 						Udata.draw_all++;
+						if(!Udata.card)Udata.card=[];
 									
 						Mongoclient.db(dbName).collection('card').find({"$or":CID},{projection: { _id: 0, ID: 1,Name:1,Race:1 }}).toArray().then((data_C)=> {
 							rply.text=Udata.NickName+" 你抽到了";
