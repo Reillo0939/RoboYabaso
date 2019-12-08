@@ -2,6 +2,7 @@ var User = require('./User/user');
 var nAnB = require('./LittleGame/nAnB.js');
 var illustration = require('./Card/illustration.js');
 var ct = require('./Card/test.js');
+var pool1 = require('./Card/pool1.js');
 var image = require('./LittleGame/image.js');
 
 function parseInput(UserId,UserName,Message,replyToken) {
@@ -14,10 +15,16 @@ function parseInput(UserId,UserName,Message,replyToken) {
 	if(trigger=="暱稱更改")User.Rename(UserId,UserName,Message,replyToken);
 	if(trigger=="猜數字")nAnB.Game(UserId,UserName,Message,replyToken);
 	if(trigger=="圖鑑")illustration.illustration(UserId,UserName,Message,replyToken);
+	
 	if(trigger=="試抽一次")ct.one(UserId,UserName,Message,replyToken);
 	if(trigger=="試抽十次")ct.ten(UserId,UserName,Message,replyToken);
 	if(trigger=="試抽理論值")ct.theory(UserId,UserName,Message,replyToken);
 	if(trigger=="試抽統計值")ct.real(UserId,UserName,Message,replyToken);
+	
+	if(trigger=="抽取數據1個")pool1.one(UserId,UserName,Message,replyToken);
+	if(trigger=="抽取數據10個")pool1.ten(UserId,UserName,Message,replyToken);
+	if(trigger=="抽卡機率")pool1.theory(UserId,UserName,Message,replyToken);
+	if(trigger=="抽卡統計")pool1.real(UserId,UserName,Message,replyToken);
 	
 	if(trigger=="圖片")image.image(UserId,UserName,Message,replyToken);
 }
