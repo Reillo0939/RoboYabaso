@@ -49,6 +49,10 @@ function one(UserId,UserName,Message,replyToken){
 						rply.text="你抽到了\n["+card.ID+"]"+card.Race+"-"+card.Name;
 				}
 				re_message.Line_reply(replyToken, rply);
+				ToLog=time+" "+UserId+" "+CID;
+				Mongoclient.db(dbName).collection('system').update({name:"Log"},{"$push" : { content : ToLog }}, function(err, r) {
+					assert.equal(null, err);
+				});
 			});
 			
 		});
