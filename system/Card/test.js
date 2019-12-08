@@ -65,39 +65,41 @@ function ten(UserId,UserName,Message,replyToken){
 		assert.equal(null, err);
 		//console.log("Connected successfully to server");
 		Mongoclient.db(dbName).collection('system').findOne({name:"test"}).then((data)=> {
-			Mongoclient.db(dbName).collection('card').find({},{projection: { _id: 0, ID: 1,Name:1,Race:1 }}).toArray().then((data_C)=> {
-				var CID=[];
-				for(var i=0;i<10;i++){
-					var All=data.Probability.N+data.Probability.R+data.Probability.SR+data.Probability.SSR+data.Probability.UR;
-					var Rng=Math.floor(Math.random()*All)+1;
-					if(Rng<=data.Probability.UR){
-						data.UR++;
-						CID[i]=data.Card.UR[Math.floor(Math.random()*data.Card.UR.length)];
-					}
-					else if(Rng-=data.Probability.UR,Rng<=data.Probability.SSR){
-						data.SSR++;
-						CID[i]=data.Card.SSR[Math.floor(Math.random()*data.Card.SSR.length)];
-					}
-					else if(Rng-=data.Probability.SSR,Rng<=data.Probability.SR){
-						data.SR++;
-						CID[i]=data.Card.SR[Math.floor(Math.random()*data.Card.SR.length)];
-					}
-					else if(Rng-=data.Probability.SR,Rng<=data.Probability.R){
-						data.R++;
-						CID[i]=data.Card.R[Math.floor(Math.random()*data.Card.R.length)];
-					}
-					else {
-						data.N++;
-						CID[i]=data.Card.N[Math.floor(Math.random()*data.Card.N.length)];
-					}
+			var CID=[];
+			for(var i=0;i<10;i++){
+				CID[i]={ID:0};
+				var All=data.Probability.N+data.Probability.R+data.Probability.SR+data.Probability.SSR+data.Probability.UR;
+				var Rng=Math.floor(Math.random()*All)+1;
+				if(Rng<=data.Probability.UR){
+					data.UR++;
+					CID[i].ID=data.Card.UR[Math.floor(Math.random()*data.Card.UR.length)];
 				}
-				Mongoclient.db(dbName).collection('system').update({name:"test"},{"$set":data}, function(err, r) {
-					assert.equal(null, err);
-				});
+				else if(Rng-=data.Probability.UR,Rng<=data.Probability.SSR){
+					data.SSR++;
+					CID[i].ID=data.Card.SSR[Math.floor(Math.random()*data.Card.SSR.length)];
+				}
+				else if(Rng-=data.Probability.SSR,Rng<=data.Probability.SR){
+					data.SR++;
+					CID[i].ID=data.Card.SR[Math.floor(Math.random()*data.Card.SR.length)];
+				}
+				else if(Rng-=data.Probability.SR,Rng<=data.Probability.R){
+					data.R++;
+					CID[i].ID=data.Card.R[Math.floor(Math.random()*data.Card.R.length)];
+				}
+				else {
+					data.N++;
+					CID[i].ID=data.Card.N[Math.floor(Math.random()*data.Card.N.length)];
+				}
+			}
+			Mongoclient.db(dbName).collection('system').update({name:"test"},{"$set":data}, function(err, r) {
+				assert.equal(null, err);
+			});
+			Mongoclient.db(dbName).collection('card').find({"$or":CID},{projection: { _id: 0, ID: 1,Name:1,Race:1 }}).toArray().then((data_C)=> {
+				find({$or:[ {"ID": 1},{"ID":20}]});
 				rply.text="你抽到了";
 				for(let k of CID)
 					for(let card of data_C)
-						if(card.ID==k)
+						if(card.ID==k.ID)
 							rply.text+="\n["+card.ID+"]"+card.Race+"-"+card.Name;
 				re_message.Line_reply(replyToken, rply);
 				let time=new Date (new Date().getTime()+28800000);
@@ -107,7 +109,6 @@ function ten(UserId,UserName,Message,replyToken){
 				Mongoclient.db(dbName).collection('system').update({name:"Log"},{"$push" : { content : ToLog }}, function(err, r) {
 					assert.equal(null, err);
 				});
-				
 			});
 		});
 	});
