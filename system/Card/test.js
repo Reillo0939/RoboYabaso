@@ -96,6 +96,14 @@ function ten(UserId,UserName,Message,replyToken){
 						if(card.ID==k)
 							rply.text+="\n["+card.ID+"]"+card.Race+"-"+card.Name;
 				re_message.Line_reply(replyToken, rply);
+				let time=new Date (new Date().getTime()+28800000);
+				ToLog=time+" "+UserId+" ";
+				for(let k of CID)
+					ToLog+=k+" ";
+				Mongoclient.db(dbName).collection('system').update({name:"Log"},{"$push" : { content : ToLog }}, function(err, r) {
+					assert.equal(null, err);
+				});
+				
 			});
 		});
 	});
