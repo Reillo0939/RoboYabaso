@@ -24,7 +24,7 @@ function Inquire(UserId,UserName,Message,replyToken){
 				rply ={type : 'text'};
 				rply.text="擁有";
 				for(let i in Udata.card){
-					if(Udata.card[i])rply.text+="\nID:"+i+"重複數量"+Udata.card[i].repeat;
+					if(Udata.card[i])rply.text+="\nID:"+i+" 重複數量"+Udata.card[i].repeat;
 				}
 				re_message.Line_reply(replyToken, rply);
 			}
