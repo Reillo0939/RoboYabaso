@@ -126,7 +126,7 @@ function ten(UserId,UserName,Message,replyToken){
 						
 						Udata.money-=1000;
 						if(!Udata.draw_all)Udata.draw_all=0;
-						Udata.draw_all++;
+						Udata.draw_all+=10;
 						if(!Udata.card)Udata.card=[];
 									
 						Mongoclient.db(dbName).collection('card').find({"$or":CID},{projection: { _id: 0, ID: 1,Name:1,Race:1 }}).toArray().then((data_C)=> {
