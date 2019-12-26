@@ -77,14 +77,26 @@ function check_in(UserId,UserName,Message,replyToken){
 			if(data!=null){
 				var today=new Date (new Date().getTime()+28800000);
 				var check_in_date=(new Date(today.getFullYear(),today.getMonth(),today.getDate()).getTime()-new Date(2019,9,17).getTime())/86400000;
+				var Christmas=(new Date(today.getFullYear(),today.getMonth(),today.getDate()).getTime()-new Date(2019,12,27).getTime())/86400000;
+				var NewYear=(new Date(today.getFullYear(),today.getMonth(),today.getDate()).getTime()-new Date(2020,1,1).getTime())/86400000;
 				if(data.login_date[data.login_date.length-1]==check_in_date){
 					rply.text=data.NickName+" 你已經簽到完嘍";
 				}
 				else{
 					data.login_date[data.login_date.length]=check_in_date;
 					if(data.login_date[data.login_date.length-1]-data.login_date[data.login_date.length-2]!=1)data.Always_check_in=0;
-					data.money+=100+Math.min(5*data.Always_check_in,100);
-					rply.text=data.NickName+" 簽到成功\n獲得100G\n已連續簽到"+data.Always_check_in+"天\n額外獲得"+Math.min(5*data.Always_check_in,100)+"G\n現有"+data.money+"G";
+					if(Christmas==0){
+						data.money+=3000+Math.min(5*data.Always_check_in,100);
+						rply.text=data.NickName+" 簽到成功\n獲得聖誕節忘了給的1000G\n已連續簽到"+data.Always_check_in+"天\n額外獲得"+Math.min(5*data.Always_check_in,100)+"G\n現有"+data.money+"G";
+					}
+					else if(NewYear==0){
+						data.money+=3000+Math.min(5*data.Always_check_in,100);
+						rply.text=data.NickName+" 簽到成功\n獲得新年簽到賞3000G\n已連續簽到"+data.Always_check_in+"天\n額外獲得"+Math.min(5*data.Always_check_in,100)+"G\n現有"+data.money+"G";
+					}
+					else{
+						data.money+=100+Math.min(5*data.Always_check_in,100);
+						rply.text=data.NickName+" 簽到成功\n獲得100G\n已連續簽到"+data.Always_check_in+"天\n額外獲得"+Math.min(5*data.Always_check_in,100)+"G\n現有"+data.money+"G";
+					}
 					data.Always_check_in++;
 					Mongoclient.db(dbName).collection('user').update({UserId:UserId},{"$set":data}, function(err, r) {
 						assert.equal(null, err);
